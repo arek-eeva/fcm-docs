@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cottage Garden Threads — Content Production Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --light: #f4f1ec;
+    --grey: #888888;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .label, .meta, .khand {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 56px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,1) 100%),
+      repeating-linear-gradient(
+        -20deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.012) 2px,
+        rgba(255,255,255,0.012) 4px
+      );
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.06;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px;
+    transform: skewY(-2deg);
+  }
+
+  .hero-red-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--red);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+  }
+
+  .hero-overline {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-overline::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--grey);
+    max-width: 680px;
+    line-height: 1.8;
+  }
+
+  /* ─── LOGO ─── */
+  .logo-bar {
+    position: absolute;
+    top: 32px;
+    right: 56px;
+    z-index: 10;
+  }
+
+  .logo-bar img {
+    height: 50px;
+    width: auto;
+    opacity: 0.85;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 80px 56px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  section h2 em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  .section-label {
+    font-family: 'Khand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  section p {
+    color: #cccccc;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1.5px;
+    background: var(--red);
+    margin: 40px 0;
+  }
+
+  /* ─── CONTENT TYPE CARDS ─── */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .content-card {
+    background: var(--dark);
+    border: 1px solid #222;
+    border-radius: 4px;
+    padding: 32px;
+    transition: border-color 0.2s;
+  }
+
+  .content-card:hover {
+    border-color: #333;
+  }
+
+  .content-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .content-card p {
+    font-size: 0.95rem;
+    color: var(--grey);
+    line-height: 1.65;
+  }
+
+  .content-card .price-indicator {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #222;
+  }
+
+  .content-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* ─── PRICING TABLE ─── */
+  .pricing-section {
+    margin-top: 40px;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+  }
+
+  .pricing-table th {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #333;
+  }
+
+  .pricing-table td {
+    padding: 16px;
+    border-bottom: 1px solid #1a1a1a;
+    vertical-align: top;
+  }
+
+  .pricing-table td:first-child {
+    color: var(--white);
+    font-weight: normal;
+  }
+
+  .pricing-table td:nth-child(2) {
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+
+  .pricing-table td:last-child {
+    color: var(--red);
+    font-family: 'Khand', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .pricing-note {
+    color: var(--grey);
+    font-size: 0.85rem;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* ─── QUESTIONS LIST ─── */
+  .question-group {
+    margin-top: 40px;
+  }
+
+  .question-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .question-group .badge {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: rgba(189, 32, 45, 0.1);
+    border: 1px solid rgba(189, 32, 45, 0.25);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  .question-list {
+    list-style: none;
+    counter-reset: q;
+  }
+
+  .question-list li {
+    counter-increment: q;
+    padding: 14px 0 14px 48px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #cccccc;
+    position: relative;
+    font-size: 0.95rem;
+  }
+
+  .question-list li::before {
+    content: counter(q, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── PHASE 2 ─── */
+  .phase2-card {
+    background: var(--mid);
+    border: 1px solid #222;
+    border-left: 3px solid var(--grey);
+    border-radius: 4px;
+    padding: 32px;
+    margin-top: 32px;
+  }
+
+  .phase2-card h3 {
+    color: var(--grey);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .phase2-card p, .phase2-card li {
+    color: #999;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .phase2-card ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-top: 12px;
+  }
+
+  .phase2-card li {
+    margin-bottom: 8px;
+  }
+
+  /* ─── NEXT STEPS ─── */
+  .steps-list {
+    list-style: none;
+    counter-reset: step;
+    margin-top: 32px;
+  }
+
+  .steps-list li {
+    counter-increment: step;
+    padding: 20px 0 20px 64px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #cccccc;
+    position: relative;
+  }
+
+  .steps-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 20px;
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 1.6rem;
+    color: var(--red);
+    opacity: 0.7;
+  }
+
+  .steps-list li strong {
+    color: var(--white);
+    font-weight: normal;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 60px 56px;
+    border-top: 1px solid #1a1a1a;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  footer p {
+    color: var(--grey);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  footer .brand-name {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  footer a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { padding: 0 24px 60px; }
+    section { padding: 60px 24px; }
+    footer { padding: 40px 24px; }
+    .content-grid { grid-template-columns: 1fr; }
+    .logo-bar { right: 24px; top: 20px; }
+    .logo-bar img { height: 36px; }
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    .hero { min-height: auto; padding: 40px; }
+    .hero-bg, .hero-grid, .hero-red-bar { display: none; }
+    .hero h1, .hero h1 em { color: black; }
+    section h2, section h2 em { color: black; }
+    .content-card { border-color: #ccc; background: #f9f9f9; }
+    .content-card h3, .content-card p { color: #333; }
+    .pricing-table td:last-child { color: var(--red); }
+    footer { border-top-color: #ccc; }
+    footer p, footer .brand-name { color: #333; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="logo-bar">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF
+GmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
+TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRh
+LyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5
+LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3Jn
+LzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0i
+IiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRw
+Oi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMu
+YWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+bS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9z
+VHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIu
+MSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAi
+IHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFE
+YXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhv
+dG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYt
+Mi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2
+MTM4ZmY2M2MzYSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0NmM1Yy1hMDQyLTQzNmUt
+YmQ1Ni03NjEzOGZmNjNjM2EiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0
+NmM1Yy1hMDQyLTQzNmUtYmQ1Ni03NjEzOGZmNjNjM2EiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpT
+ZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAu
+aWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2MTM4ZmY2M2MzYSIgc3RFdnQ6d2hlbj0iMjAy
+MC0xMS0xNFQwOTo1MDoyMisxMTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9z
+aG9wIDIyLjEgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRm
+OkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+
+hIO+YwAAP0lJREFUeNrt3WuTI9l9J+bEdPcMJXE1ICVybpwdMOZKbrQb8wkG7fkAqv4ErIpYirou
+qzccIkVp1dUidSFFqVq2V0uJa1dNODbsXTuimx+gozDhV37VGM+bISVHgxEektI6TIhcmqTI7vI5
+haxmTXXhkpkHQAJ4nogc9KAKt4PMyl/+T56TjcPDwwwAAIp6RBMAACBIAgAgSAIAIEgCACBIAgCA
+IAkAgCAJAIAgCQCAIAkAgCAJAACCJAAAgiQAAIIkAACCJAAAgiQAAAiSAAAIkgAALNZ5TZBOo9HQ
+CLCC/tOzH9/+3v37t/7lu+/0tQaslsPDQ41QJftoQEESONvt1sVmuNkb3L+/8d179wbh31dCmOxq
+GRAkGdK1DXB2iGyFm4OwbOR3xVB58O+feWVT6wAIkgCjQmQ73NwJS/uMH++FMLmnlQB0badtTF3b
+sAohcjOGxZP3De7fz757797pX+1mw67ugVaD5SUHVaMiCfCzELl3OkSO0QnLna8+80pbywHrSkUy
+ZWOqSMKyBshmuLmZh8OHjKhIHgl/QQfhZuuT775zS0vC8pGDqlGRBNY9RLaz4aCaTsmnOAqhX33m
+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" alt="Fifth Castle Media">
+</div>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-red-bar"></div>
+  <div class="hero-content">
+    <div class="hero-overline">Content Production Proposal</div>
+    <h1>Cottage Garden Threads<br><em>Ad Content Production</em></h1>
+    <p class="hero-sub">Prepared by Fifth Castle Media for CGT and Spicy Web. March 2026.</p>
+  </div>
+</div>
+
+<!-- ─── THE OPPORTUNITY ─── -->
+<section>
+  <div class="section-label">The Opportunity</div>
+  <h2>Volume and <em>variety</em></h2>
+  <div class="divider"></div>
+  <p>CGT is scaling its Meta ad campaigns with Spicy Web. To do that well, Spicy Web needs a library of authentic, high-quality video content featuring Katie on camera, with enough variety to test across audiences, placements, and messaging angles.</p>
+  <p>This proposal covers Phase 1: a focused production day designed to deliver maximum usable content in a single session. Katie's product knowledge, humour, and genuine connection to the craft community are CGT's greatest creative assets. This shoot is built around that.</p>
+  <p>We are asking CGT and Spicy Web to drive the content. You know your products and your customers. Tell us which products to feature, which questions to answer, and what stories to tell. We will handle the rest: direction, production, and editing that gives Spicy Web everything they need to run and test.</p>
+</section>
+
+<!-- ─── PHASE 1 ─── -->
+<section>
+  <div class="section-label">Phase 1</div>
+  <h2>Ad content <em>production</em></h2>
+  <div class="divider"></div>
+  <p>A volume-driven shoot day across two locations, capturing as many usable content pieces as possible for Meta campaigns and organic channels.</p>
+
+  <div class="content-grid">
+
+    <div class="content-card">
+      <h3>Product Demo / How-To</h3>
+      <p>Katie demonstrating priority products on camera. Close-up detail, practical and educational. 1-2 minutes each. These show customers exactly how a product works and why it is worth buying.</p>
+      <p>Products filmed in use and being made, where possible.</p>
+          </div>
+
+    <div class="content-card">
+      <h3>Short-Form Ad Creative</h3>
+      <p>Hook-driven videos built for Meta placements. 15-60 seconds, structured to stop the scroll in the first three seconds. Multiple hooks per topic where footage allows. Purpose-built for paid social, not repurposed longer content.</p>
+          </div>
+
+    <div class="content-card">
+      <h3>Q&amp;A / FAQ Videos</h3>
+      <p>Katie answering real customer questions about products, shipping, education, and USPs. 1-2 minutes each. Minimal editing by design. These build trust and reduce purchase friction, especially for US customers.</p>
+          </div>
+
+    <div class="content-card">
+      <h3>Longer-Form Content</h3>
+      <p>2+ minute videos that can be cut into multiple shorter ad variants for campaign testing. Founder-led storytelling, product deep-dives, or project-based content showing the full journey from thread to finished piece.</p>
+          </div>
+
+    <div class="content-card full-width">
+      <h3>What We Capture on Shoot Day</h3>
+      <p>Products being used (stitching, demonstrating, finished pieces). Products being made (dyeing process, quality, hands-on craft). Multiple hooks and openers per topic for A/B testing. Close-up detail shots, progress and transformation clips, and supporting b-roll for ad overlays. All footage is professionally edited and delivered. We also retain the raw footage library for future use, so new cuts can be made without the cost of another shoot.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── INDICATIVE PRICING ─── -->
+<section>
+  <div class="section-label">Indicative Pricing</div>
+  <h2>Investment <em>guide</em></h2>
+  <div class="divider"></div>
+  <p>The figures below are our standard rates for this type of work. We will produce one sample video at no charge so we can nail the format together before committing to the full run.</p>
+
+  <div class="pricing-section">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Indicative Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Content Production Day</td>
+          <td>Director + videographer, two locations (CGT workspace + Katie's home studio), full raw footage library delivered</td>
+          <td>$2,500</td>
+        </tr>
+        <tr>
+          <td>Travel (Mirboo North)</td>
+          <td>Return travel Melbourne to Mirboo North for two crew</td>
+          <td>$450</td>
+        </tr>
+        <tr>
+          <td>Product Demo / How-To (per video)</td>
+          <td>1-2 min, Katie on camera, close-up detail, one revision round</td>
+          <td>$400</td>
+        </tr>
+        <tr>
+          <td>Short-Form Ad Creative (per video)</td>
+          <td>15-60 sec, hook-driven, optimised for Meta, one revision round</td>
+          <td>$250</td>
+        </tr>
+        <tr>
+          <td>Q&amp;A / FAQ Video (per video)</td>
+          <td>1-2 min, Katie answering customer questions, minimal edit</td>
+          <td>$400</td>
+        </tr>
+        <tr>
+          <td>Longer-Form Content (per video)</td>
+          <td>2+ min, founder-led or project-based, can be cut into shorter variants</td>
+          <td>$800</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pricing-note">All prices exclude GST. Per-video pricing means you order what you need now and can add more as the campaign develops. One sample video included at no charge to confirm the format before the full run. Quantity pricing available for larger batches.</p>
+  </div>
+</section>
+
+<!-- ─── PRODUCTION DETAILS ─── -->
+<section>
+  <div class="section-label">Production Details</div>
+  <h2>How it <em>works</em></h2>
+  <div class="divider"></div>
+  <p><strong style="color: var(--white); font-weight: normal;">Crew:</strong> Arek Rainczuk (Director) and Sam Young (Videographer).</p>
+  <p><strong style="color: var(--white); font-weight: normal;">Locations:</strong> CGT workspace, Mirboo North, and Katie's home studio.</p>
+  <p><strong style="color: var(--white); font-weight: normal;">Shoot format:</strong> Horizontal (16:9) as the primary filming format, with the option to crop into vertical (9:16) and square (1:1) for different placements.</p>
+  <p><strong style="color: var(--white); font-weight: normal;">Style:</strong> Lightly edited, natural, authentic. No over-polished ad look. Katie's genuine voice and delivery are the creative asset.</p>
+  <p><strong style="color: var(--white); font-weight: normal;">Delivery:</strong> Edited videos delivered within one to three weeks, depending on our current workload, speed of revisions, and any additional material we need from CGT. One round of revisions included per video. Raw footage library retained for future use.</p>
+</section>
+
+<!-- ─── WHAT WE NEED FROM YOU ─── -->
+<section>
+  <div class="section-label">Before We Shoot</div>
+  <h2>What we need <em>from you</em></h2>
+  <div class="divider"></div>
+  <p>To make the most of the shoot day, we need a few things confirmed ahead of time. The more prepared we are, the more content we can capture.</p>
+
+  <div class="question-group">
+    <h3>For CGT <span class="badge">Katie &amp; Angela</span></h3>
+    <ol class="question-list">
+      <li>Which products are the priority for this shoot? (Specific thread collections, Tack It Easy shapes, kits)</li>
+      <li>Which products will Spicy Web be running ads for first?</li>
+      <li>What are the most common customer questions you get? (For Q&amp;A videos: product use, colour selection, US shipping, paper piecing tips, thread quality)</li>
+      <li>Are there any products being made on shoot day we can film? (Dyeing, packaging, quality checks)</li>
+      <li>Do you have finished project examples we can film as "after" shots? (Completed embroidery, patchwork pieces)</li>
+      <li>Any upcoming launches, seasonal themes, or collections we should tie content to?</li>
+      <li>Who needs to be on camera? Just Katie, or anyone else?</li>
+      <li>Any topics or angles you want to make sure we cover?</li>
+      <li>Can you have the priority products prepared and ready for filming on the day? (Thread collections laid out, Tack It Easy shapes set up, any finished project examples on hand)</li>
+    </ol>
+  </div>
+
+  <div class="question-group">
+    <h3>For Spicy Web <span class="badge">Ashleigh</span></h3>
+    <ol class="question-list">
+      <li>What are the priority ad formats and placements? (Reels, Stories, Feed, Advantage Plus)</li>
+      <li>Confirmed specs: vertical (9:16) primary, croppable to 1:1 and 16:9?</li>
+      <li>Are there specific hooks or messaging angles you want us to test?</li>
+      <li>What is your ideal number of finished ad creatives from this shoot?</li>
+      <li>Do you need raw footage delivered as well, or only edited pieces?</li>
+      <li>What is your turnaround expectation for edited content?</li>
+      <li>Any performance benchmarks or creative references we should see before the shoot?</li>
+      <li>What aspect ratios do you need for each placement? We will film in 16:9 and can crop to 9:16 and 1:1. Are there any other formats required?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─── PHASE 2 ─── -->
+<section>
+  <div class="section-label">Looking Ahead</div>
+  <h2>Phase 2: <em>Brand Story</em></h2>
+  <div class="divider"></div>
+  <p>Once the ad engine is running and we have data on what performs, we will come back to build the deeper brand narrative. This is planned for later in the year, when things are more settled and we can give it the attention it deserves.</p>
+
+  <div class="phase2-card">
+    <h3>Planned for Later in 2026</h3>
+    <p>These are the items we want to do properly, not rushed alongside an ad content shoot:</p>
+    <ul>
+      <li>Katie's founder story: the full narrative piece, 18 years building CGT from scratch</li>
+      <li>Mirboo North location and environment footage: the beautiful country town setting as part of CGT's brand identity</li>
+      <li>CGT's new space: once the move is complete, the new premises will be a much better backdrop for brand content</li>
+      <li>Behind-the-scenes brand documentary content</li>
+      <li>Designer collaboration content (expected to begin around August 2026)</li>
+      <li>Double down on the ad formats that performed best from Phase 1, with fresh content and refined creative direction based on real campaign data</li>
+    </ul>
+    <p style="margin-top: 16px;">This is where we capture the story that builds lasting brand equity, beyond the ads. By then, we will have performance data from Phase 1 to guide what we produce next. A separate proposal will follow when the time is right.</p>
+  </div>
+</section>
+
+<!-- ─── NEXT STEPS ─── -->
+<section>
+  <div class="section-label">Next Steps</div>
+  <h2>Where we go <em>from here</em></h2>
+  <div class="divider"></div>
+
+  <ol class="steps-list">
+    <li><strong>CGT and Spicy Web review this proposal</strong> and answer the questions above. The product list, customer questions, and creative direction will shape the final scope.</li>
+    <li><strong>We confirm the deliverables and quantities together.</strong> Once we know what content to produce, we will lock in a final quote.</li>
+    <li><strong>Fifth Castle Media provides confirmed pricing</strong> based on the agreed scope.</li>
+    <li><strong>Shoot date confirmed.</strong> Currently targeting the week of 25 March, or adjusted to suit.</li>
+  </ol>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p class="brand-name">Fifth Castle Media</p>
+  <p><a href="https://fifthcastle.media">fifthcastle.media</a></p>
+  <p style="margin-top: 16px;">Arek Rainczuk</p>
+  <p>0467 676 205 &nbsp;|&nbsp; <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a></p>
+  <p style="margin-top: 12px; font-size: 0.8rem;">Five Castles Pty Ltd &nbsp;|&nbsp; ABN 76 651 385 545</p>
+</footer>
+
+</body>
+</html>
