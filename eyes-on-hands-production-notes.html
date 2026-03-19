@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eyes on Hands — Production Notes | Fifth Castle Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #222222;
+      --bg-card: #252525;
+      --bg-card-alt: #2a2a2a;
+      --red: #BD202D;
+      --red-dark: #8e1820;
+      --white: #FFFFFF;
+      --light: #e8e8e8;
+      --muted: #aaaaaa;
+      --border: #333333;
+      --border-light: #3d3d3d;
+      --amber: #E8A317;
+      --amber-dark: #a87410;
+      --blue: #2D5F8B;
+      --blue-dark: #1e4060;
+      --green: #2D8B5F;
+      --green-dark: #1e6040;
+      --purple: #6B2D8B;
+      --purple-dark: #4a1e62;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--light);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LAYOUT ===== */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* ===== HEADER ===== */
+    .doc-header {
+      background: #111111;
+      border-bottom: 3px solid var(--red);
+      padding: 28px 32px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .header-title {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .header-title h1 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 2.6rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+    }
+
+    .header-title .subtitle {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .header-meta {
+      text-align: right;
+      font-family: 'Khand', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .header-meta .status-badge {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-family: 'Khand', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+
+    /* ===== RED RULE ===== */
+    .red-rule {
+      height: 2px;
+      background: var(--red);
+      margin: 0;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section {
+      margin-top: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-alt {
+      background: var(--bg-card-alt);
+    }
+
+    /* ===== STAT BOX ===== */
+    .stat-box {
+      background: #1e1e1e;
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--red);
+      border-radius: 4px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat-item {
+      background: #1e1e1e;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .stat-item .stat-value {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.9rem;
+      color: var(--red);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .stat-item .stat-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .waiting-note {
+      background: #1e1a12;
+      border: 1px solid #4a3a12;
+      border-left: 4px solid var(--amber);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: 'Khand', sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+    }
+
+    /* ===== SCHEDULE TABLE ===== */
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .schedule-table th {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      background: #1e1e1e;
+    }
+
+    .schedule-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--light);
+    }
+
+    .schedule-table tr:last-child td { border-bottom: none; }
+
+    .schedule-table tr:hover td {
+      background: rgba(255,255,255,0.025);
+    }
+
+    .time-cell {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      white-space: nowrap;
+      min-width: 190px;
+    }
+
+    .pacing-note {
+      background: #1a1e1a;
+      border: 1px solid #2d4030;
+      border-left: 4px solid var(--green);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #aaccaa;
+      margin-top: 14px;
+    }
+
+    /* ===== CONTACT CARDS ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 16px 18px;
+    }
+
+    .contact-card .contact-name {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .contact-card .contact-role {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .contact-card .contact-detail {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-card .contact-detail a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .contact-section-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin: 20px 0 10px;
+    }
+
+    .crh-note {
+      background: #1a1a1e;
+      border: 1px solid #2d2d4a;
+      border-left: 4px solid #7070cc;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #aaaadd;
+      margin-top: 14px;
+    }
+
+    /* ===== PPE / LOGISTICS ===== */
+    .ppe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .ppe-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 16px 18px;
+    }
+
+    .ppe-card h4 {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .ppe-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ppe-card ul li {
+      font-size: 0.88rem;
+      color: var(--light);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ppe-card ul li:last-child { border-bottom: none; }
+
+    .ppe-card ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .accom-box {
+      background: #1a1a1e;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      color: var(--light);
+      line-height: 1.9;
+    }
+
+    .accom-box strong {
+      color: var(--white);
+    }
+
+    .accom-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    /* ===== SCENARIO CARDS ===== */
+    .scenario-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .scenario-card.separate-day {
+      border-color: var(--purple);
+      opacity: 0.92;
+    }
+
+    .scenario-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      background: #1e1e1e;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scenario-number {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 2.4rem;
+      color: var(--red);
+      padding: 16px 22px;
+      border-right: 1px solid var(--border);
+      line-height: 1;
+      min-width: 80px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scenario-title-block {
+      flex: 1;
+      padding: 14px 18px;
+    }
+
+    .scenario-title {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .scenario-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .badge {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 3px 9px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .badge-ir {
+      background: #2a2a2a;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge-mti {
+      background: #3a2800;
+      color: var(--amber);
+      border: 1px solid #5a3c00;
+    }
+
+    .badge-lti {
+      background: #3a0a0e;
+      color: #ff6070;
+      border: 1px solid var(--red-dark);
+    }
+
+    .badge-precast {
+      background: var(--blue-dark);
+      color: #aac8e8;
+      border: 1px solid var(--blue);
+    }
+
+    .badge-pipes {
+      background: var(--green-dark);
+      color: #aae8c8;
+      border: 1px solid var(--green);
+    }
+
+    .badge-cubis {
+      background: var(--purple-dark);
+      color: #d0aae8;
+      border: 1px solid var(--purple);
+    }
+
+    .badge-separate-day {
+      background: #3a1a4a;
+      color: #e070ff;
+      border: 1px solid var(--purple);
+      font-size: 0.68rem;
+    }
+
+    .badge-session-am {
+      background: #1a2a3a;
+      color: #70a8e0;
+      border: 1px solid #2d5080;
+    }
+
+    .badge-session-pm {
+      background: #1a3a2a;
+      color: #70d0a0;
+      border: 1px solid #2d6045;
+    }
+
+    .scenario-body {
+      padding: 20px 22px;
+    }
+
+    .scenario-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .scenario-columns { grid-template-columns: 1fr; }
+    }
+
+    .scenario-block-title {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .scenario-text {
+      font-size: 0.9rem;
+      color: var(--light);
+      line-height: 1.65;
+    }
+
+    .scenario-block {
+      background: #1e1e1e;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .shot-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .shot-list li {
+      font-size: 0.87rem;
+      color: var(--light);
+      padding: 5px 0;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .shot-list li:last-child { border-bottom: none; }
+
+    .shot-list li .shot-type {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      white-space: nowrap;
+      padding-top: 1px;
+      min-width: 62px;
+    }
+
+    .prod-note {
+      background: #1a1e24;
+      border: 1px solid #2d3a48;
+      border-left: 4px solid #4a80b0;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.87rem;
+      color: #b0c8e0;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .prod-note .prod-note-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6090b8;
+      margin-bottom: 6px;
+    }
+
+    /* ===== FILMING ORDER ===== */
+    .session-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+
+    .session-block h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .session-block.am h3 { color: #70a8e0; border-color: #2d5080; }
+    .session-block.pm h3 { color: #70d0a0; border-color: #2d6045; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--light);
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border-light);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-number {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--red);
+      line-height: 1;
+      min-width: 26px;
+    }
+
+    .checklist li .item-detail {
+      flex: 1;
+    }
+
+    .checklist li .item-title {
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    .checklist li .item-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .checklist li .item-ir {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .pacing-note-order {
+      background: #1a1e1a;
+      border: 1px solid #2d4030;
+      border-left: 4px solid var(--green);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #aaccaa;
+      margin-top: 14px;
+    }
+
+    /* ===== SOUND DESIGN ===== */
+    .sound-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .sound-item {
+      background: #1e1e1e;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .sound-item .sound-stage {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+
+    .sound-item .sound-desc {
+      font-size: 0.87rem;
+      color: var(--light);
+      line-height: 1.55;
+    }
+
+    /* ===== OUTSTANDING ITEMS ===== */
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .items-table th {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      background: #1e1e1e;
+    }
+
+    .items-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      vertical-align: middle;
+      color: var(--light);
+    }
+
+    .items-table tr:last-child td { border-bottom: none; }
+    .items-table tr:hover td { background: rgba(255,255,255,0.025); }
+
+    .status-waiting {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      background: #3a2800;
+      border: 1px solid #5a3c00;
+      padding: 3px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .status-pending {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #aaaacc;
+      background: #1e1e3a;
+      border: 1px solid #3a3a6a;
+      padding: 3px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .status-tbs {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #aaccaa;
+      background: #1a2e1a;
+      border: 1px solid #2d4a2d;
+      padding: 3px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .no-block-note {
+      background: #1a2e1a;
+      border: 1px solid #2d4a2d;
+      border-left: 4px solid var(--green);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #aaccaa;
+      margin-top: 14px;
+    }
+
+    /* ===== CARRUM DOWNS ===== */
+    .carrum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .carrum-item {
+      background: #1e1a22;
+      border: 1px solid #3a2a4a;
+      border-radius: 5px;
+      padding: 14px 16px;
+    }
+
+    .carrum-item .c-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--purple);
+      margin-bottom: 4px;
+    }
+
+    .carrum-item .c-value {
+      font-size: 0.9rem;
+      color: var(--light);
+      line-height: 1.5;
+    }
+
+    /* ===== FOOTER ===== */
+    .doc-footer {
+      margin-top: 60px;
+      padding: 24px 32px;
+      background: #111111;
+      border-top: 3px solid var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .doc-footer .footer-brand {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .doc-footer .footer-brand span {
+      color: var(--red);
+    }
+
+    .doc-footer .footer-generated {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #555555;
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body { background: #1a1a1a !important; color: var(--light) !important; }
+      .section { page-break-inside: avoid; }
+      .scenario-card { page-break-inside: avoid; margin-bottom: 16px; }
+      .doc-header { page-break-after: always; }
+      .section:nth-child(3) { page-break-before: always; }
+    }
+
+    /* ===== UTILITIES ===== */
+    strong { color: var(--white); }
+    em { color: var(--muted); font-style: italic; }
+
+    .inline-red { color: var(--red); }
+    .inline-amber { color: var(--amber); }
+    .inline-muted { color: var(--muted); }
+
+    .tagline-box {
+      background: #1a0c0e;
+      border: 1px solid var(--red-dark);
+      border-left: 4px solid var(--red);
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 1.1rem;
+      color: #e8a0a8;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    .concept-beat {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.89rem;
+    }
+
+    .concept-beat:last-child { border-bottom: none; }
+
+    .beat-num {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      min-width: 28px;
+      padding-top: 1px;
+    }
+
+    .beat-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      min-width: 220px;
+    }
+
+    .beat-desc {
+      color: var(--muted);
+      font-size: 0.87rem;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <div class="doc-header">
+    <div class="header-logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDIt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" alt="Fifth Castle Media" style="height:52px;width:auto;">
+    </div>
+    <div class="header-title">
+      <h1>EYES ON HANDS</h1>
+      <div class="subtitle">Production Notes &mdash; Shepparton Filming Day</div>
+    </div>
+    <div class="header-meta">
+      <div>Monday 23 March 2026</div>
+      <div>CivilMart Group / CRH IPA</div>
+      <div>Arek Rainczuk, Director</div>
+      <div class="status-badge">Confirmed &mdash; Invoice Paid</div>
+    </div>
+  </div>
+  <div class="red-rule"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="page-wrap">
+
+    <!-- ===== SECTION 1: PROJECT OVERVIEW ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 01</div>
+        <h2 class="section-title">Project Overview</h2>
+      </div>
+
+      <div class="card">
+        <p class="scenario-text">A safety training video for CivilMart workers demonstrating 10 real hand injury scenarios and correct preventative behaviour. Based on actual incident data from 2022 to 2026. The finished film is one master training video of five to ten minutes, with all 10 scenarios presented in sequence.</p>
+        <p class="scenario-text" style="margin-top:12px;"><strong>Tone target:</strong> 8 out of 10 on the confronting scale. Visceral impact, not gratuitously graphic. The purpose is to stay with workers long after they leave the room.</p>
+      </div>
+
+      <div class="section-header" style="margin-top:28px;margin-bottom:14px;padding-bottom:8px;">
+        <div class="section-number" style="font-size:0.62rem;">Core Concept</div>
+        <h3 style="font-family:'Vidaloka',Georgia,serif;font-size:1.05rem;color:var(--white);">The 7-Beat Structure &mdash; Repeated Across All 10 Scenarios</h3>
+      </div>
+
+      <div class="card">
+        <div class="concept-beat">
+          <div class="beat-num">01</div>
+          <div class="beat-label">The Wider Situation</div>
+          <div class="beat-desc">Normal workplace activity. Everything looks routine.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">02</div>
+          <div class="beat-label">The Victim</div>
+          <div class="beat-desc">A worker doing a routine task. Familiar. Focused. Not careless.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">03</div>
+          <div class="beat-label">The Mistake</div>
+          <div class="beat-desc">Hand goes to the wrong place. Close-up. The moment before impact.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">04</div>
+          <div class="beat-label">The Accident</div>
+          <div class="beat-desc">AI-generated injury extension. 8 out of 10 on the confronting scale. The consequence is real.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">05</div>
+          <div class="beat-label">The Rewind</div>
+          <div class="beat-desc">Footage rewinds back to the critical moment. A second chance.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">06</div>
+          <div class="beat-label">The Gesture</div>
+          <div class="beat-desc">A coworker taps eyes, points at hands. Simple. Clear. No words needed.</div>
+        </div>
+        <div class="concept-beat">
+          <div class="beat-num">07</div>
+          <div class="beat-label">The Safe Correction</div>
+          <div class="beat-desc">Worker moves hand to the safe position. Scene resolves. Life continues.</div>
+        </div>
+
+        <div class="tagline-box">"If you're touching it, you're risking it. Hands off. Eyes on hands."</div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 2: OPENING STATISTICS ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 02</div>
+        <h2 class="section-title">Opening Statistics — Montage Assets</h2>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <span class="stat-value">36</span>
+          <span class="stat-label">Hand injuries with working days lost (2023 to present)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">799</span>
+          <span class="stat-label">Total working days lost</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">22</span>
+          <span class="stat-label">Average working days lost per injury</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">164</span>
+          <span class="stat-label">Working days lost from a single injury (approx. 8 months)</span>
+        </div>
+      </div>
+
+      <div class="waiting-note">Still needed: MTI / LTI breakdown and surgery count &mdash; Glenn chasing via SkyTrust</div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="scenario-block-title">Assets Confirmed for Opening Montage</div>
+        <ul class="shot-list">
+          <li><span class="shot-type">Received</span> "Injured man" body diagram</li>
+          <li><span class="shot-type">Received</span> Year-by-year injury chart, 2021&ndash;2026</li>
+          <li><span class="shot-type" style="color:var(--amber);">Waiting</span> Injury photos from past incidents &mdash; Glenn chasing the team</li>
+          <li><span class="shot-type" style="color:var(--muted);">Optional</span> Joe at Pipes testimonial (30 seconds to camera) &mdash; Thomas checking</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 3: SHOOT DAY SCHEDULE ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 03</div>
+        <h2 class="section-title">Shoot Day Schedule</h2>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Activity</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">Mon 23 Mar, 06:00</td>
+              <td>Arrive at Shepparton Precast. Thomas Smith on site.</td>
+              <td>Precast yard</td>
+            </tr>
+            <tr>
+              <td class="time-cell">06:00 &ndash; ~14:00</td>
+              <td>Film 7 scenarios at Shepparton Precast. Workers wrap around 2pm. Thomas coordinating crew and staging.</td>
+              <td>Precast yard</td>
+            </tr>
+            <tr>
+              <td class="time-cell">~14:00 &ndash; ~14:30</td>
+              <td>Travel to Shepparton Pipes. Approximately 1 km.</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr>
+              <td class="time-cell">~14:30 &ndash; ~17:00</td>
+              <td>Film 2 scenarios at Shepparton Pipes. Different shift schedule allows later filming. Pipe for Scenario 6 already segregated by Thomas.</td>
+              <td>Pipes yard</td>
+            </tr>
+            <tr>
+              <td class="time-cell">~17:00</td>
+              <td>Wrap. Drive back to Melbourne. Approximately 2.5 hours.</td>
+              <td>&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pacing-note"><strong>Pacing note:</strong> 7 scenarios at Precast across approximately 8 hours gives around 70 minutes per scenario, including setup, rehearsal, and filming. Precast workers wrap around 2pm, so we stay as long as we can and maximise time for the more complex setups. Pipes is close by and workers are on a different shift schedule, allowing us to film into the late afternoon.</div>
+    </div>
+
+    <!-- ===== SECTION 4: CREW AND CONTACTS ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 04</div>
+        <h2 class="section-title">Crew and Contacts</h2>
+      </div>
+
+      <div class="contact-section-label">Crew on Set &mdash; Monday 23 March</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-name">Arek Rainczuk</div>
+          <div class="contact-role">Director</div>
+          <div class="contact-detail">
+            0467 676 205<br>
+            info@fifthcastle.media
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Sam Young</div>
+          <div class="contact-role">Videographer</div>
+          <div class="contact-detail">
+            0435 501 793
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-section-label" style="margin-top:20px;">Client On Site &mdash; All Day, Both Locations</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-name">Thomas Smith</div>
+          <div class="contact-role">Safety Officer &mdash; Victorian Sites</div>
+          <div class="contact-detail">
+            0497 263 748<br>
+            On site all day at Precast and Pipes.<br>
+            Coordinating crew, actors, and staging for all scenarios.
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-section-label" style="margin-top:20px;">Client Contacts &mdash; Reachable by Phone</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-name">Glenn Ducat</div>
+          <div class="contact-role">National HSEQ Manager</div>
+          <div class="contact-detail">
+            0438 715 421<br>
+            Glenn.Ducat@civilmart.com.au
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Dini Agushi</div>
+          <div class="contact-role">WHSE Advisor &mdash; Cubis / Carrum Downs</div>
+          <div class="contact-detail">
+            0418 729 876<br>
+            dagushi@infrastructureproducts.com.au<br>
+            <em style="font-size:0.8rem;">Carrum Downs shoot, separate day</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="crh-note"><strong>CRH Group visibility:</strong> Michael Keating (CRH Group Health and Safety Director) is watching this project. This film has group-level attention beyond the CivilMart division. Deliver accordingly.</div>
+    </div>
+
+    <!-- ===== SECTION 5: LOGISTICS AND PPE ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 05</div>
+        <h2 class="section-title">Logistics and PPE</h2>
+      </div>
+
+      <div class="ppe-grid">
+        <div class="ppe-card">
+          <h4>PPE &mdash; Mandatory on Site</h4>
+          <ul>
+            <li>Steel-toed safety boots</li>
+            <li>Long pants</li>
+            <li>Long sleeves</li>
+            <li>High-vis vest (provided on site)</li>
+          </ul>
+        </div>
+        <div class="ppe-card">
+          <h4>Equipment to Pack</h4>
+          <ul>
+            <li>Camera kit (Sam)</li>
+            <li>Audio recording gear</li>
+            <li>Spare batteries and memory cards</li>
+            <li>Shot list printouts (this document)</li>
+          </ul>
+        </div>
+        <div class="ppe-card">
+          <h4>Travel</h4>
+          <ul>
+            <li>Belgrave to Shepparton: ~180 km, ~2.5 hrs</li>
+            <li>Precast to Pipes: ~1 km</li>
+            <li>Return trip: ~2.5 hrs</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== SECTION 6: THE 10 SCENARIOS ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 06</div>
+        <h2 class="section-title">The 10 Scenarios</h2>
+      </div>
+
+      <!-- SCENARIO 1 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">1</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Rolling Pipe</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR1100</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-pipes">Shepparton Pipes</span>
+              <span class="badge badge-session-pm">Afternoon Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Operator completing patching process on a pipe. Rolling pipes on the bench, not quick enough to move hands. Hand crushed between the pipe being rolled and the adjacent pipe.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Step away from the table while pipes are being placed. Maintain the exclusion zone from the forklift and its load at all times.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Shepparton Pipes yard establishing shot. Scale of the operation, concrete pipes stacked high, workers and forklifts moving.</li>
+              <li><span class="shot-type">Wide</span>Forklift approaching pipe storage area. Picks up a large concrete pipe from the stack.</li>
+              <li><span class="shot-type">Tracking</span>Forklift driving through the yard with the pipe, weaving between work areas. Shows the weight and scale of the load.</li>
+              <li><span class="shot-type">Medium</span>Patching worker at the far end of the table. Focused on his task, head down. Comfortable rhythm. Done this every day.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hands on the table surface. Patching detail. Skilled, routine hand movements.</li>
+              <li><span class="shot-type">Wide</span>Over-forklift angle. Forklift approaching the patching table from the opposite end. Worker visible in the background, unaware.</li>
+              <li><span class="shot-type">Medium</span>Forklift operator placing the pipe onto the table. Concentrating on his placement.</li>
+              <li><span class="shot-type">Close-up</span>Table surface tilting as the weight shifts. Subtle but visible movement.</li>
+              <li><span class="shot-type">Close-up</span>Pipe beginning to roll along the tilted table. Slow. Inevitable.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hands still flat on the table. The pipe rolling toward them. The danger.</li>
+              <li><span class="shot-type">Medium</span>Worker glances up. Recognition. But too late.</li>
+              <li><span class="shot-type">AI</span>Pipe rolls into the worker's hands. Crush impact.</li>
+              <li><span class="shot-type">Rewind</span>Footage reverses to the moment before the forklift places the pipe. Freeze on the worker's hands flat on the table.</li>
+              <li><span class="shot-type">Wide</span>A worker walking nearby, carrying something, going about his business. He notices the forklift approaching the patching table.</li>
+              <li><span class="shot-type">Medium</span>Passerby's eyeline. He looks at the forklift, then at the patching worker's hands on the table. He sees the situation developing.</li>
+              <li><span class="shot-type">Close-up</span>Passerby pauses. A beat of recognition. He makes the decision to act.</li>
+              <li><span class="shot-type">Close-up</span>Passerby taps his own eyes with two fingers. Deliberate. Clear.</li>
+              <li><span class="shot-type">Close-up</span>Passerby points directly at the patching worker's hands. The gesture.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Both workers in frame. The gesture connecting them.</li>
+              <li><span class="shot-type">Medium</span>Worker steps back from the table. Hands clear. Forklift places the pipe. Table tilts. Pipe shifts. Nobody near it.</li>
+              <li><span class="shot-type">Wide</span>Worker waits. Steps back in. Continues patching. Both carry on with their day. Resolved.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Requires the pipe patching table and a forklift with a real pipe. The roll needs to look natural on camera &mdash; stage it with Thomas first. The table tilt should be subtle but clearly visible. Thomas has a "hands poster" related to this incident; review it before filming for reference.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 2 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">2</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Lifting a Grate by Hand</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR2906</span>
+              <span class="badge badge-lti">LTI &mdash; Surgery</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker tried to straighten a 54 kg galvanised metal grate sitting on top of another. The underside has extended fins. When he grasped underneath, the fins fell through the gaps in the lower grate, crushing his left middle finger. Surgery required.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Use an approved mechanical lifting aid. Glenn confirmed: chains with gantry, clamp, magnet, or designated cover lifters. Reference "Woodsy's" section &mdash; stack grates the right way, roll correctly, then use chains.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Grate storage area at Shepparton Precast. Stacked heavy steel grates, industrial scale, workers in the background.</li>
+              <li><span class="shot-type">Medium</span>Workers moving product around. Normal production rhythm. Busy.</li>
+              <li><span class="shot-type">Medium</span>Worker walks over to a stack of two grates. The top one is sitting crooked.</li>
+              <li><span class="shot-type">Close-up</span>Worker's face. Assessing the situation. Making a quick decision.</li>
+              <li><span class="shot-type">Wide</span>The lifting aid or gantry is visible nearby, maybe 10 metres away. He glances at it. Decides not to bother.</li>
+              <li><span class="shot-type">Medium</span>Worker crouches down beside the grates. No tools. Just bare hands.</li>
+              <li><span class="shot-type">Close-up</span>Underside of the top grate. Extended fins visible. Dangerous geometry.</li>
+              <li><span class="shot-type">Close-up</span>Gaps in the lower grate. The trap is set.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hands reaching under the top grate. Fingers threading between the fins.</li>
+              <li><span class="shot-type">XCU</span>Finger positioned directly above a gap in the lower grate. The pinch point.</li>
+              <li><span class="shot-type">Close-up</span>Worker lifts and shifts. The fin slips through the gap onto his left middle finger.</li>
+              <li><span class="shot-type">AI</span>Crush. Fin drops through gap onto finger.</li>
+              <li><span class="shot-type">Rewind</span>Back to hands going under the grate. Freeze. Fins, gaps, fingers aligned.</li>
+              <li><span class="shot-type">Medium</span>Another worker nearby, carrying equipment, sees the first worker crouching beside the grates.</li>
+              <li><span class="shot-type">Close-up</span>Passerby's face. Recognition. He sees the hands going under. Puts down what he is carrying.</li>
+              <li><span class="shot-type">Close-up</span>Passerby taps his own eyes. The signal.</li>
+              <li><span class="shot-type">Close-up</span>Passerby points at the hands under the grate.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. The gesture lands. Worker stops. Looks at his own hands.</li>
+              <li><span class="shot-type">Medium</span>Worker stands up. Walks to the gantry. Attaches the lifting aid to the grate.</li>
+              <li><span class="shot-type">Wide</span>Mechanical repositioning. Hands clear of the underside the entire time. Worker straightens up, walks away. Done properly.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Need the actual grate type (galvanised, finned underside, approximately 54 kg) and the correct lifting aid used on site. The "decides to do it himself" moment is the key beat &mdash; make the lifting aid visible in the background while he walks past it. LTI with surgery: AI extension should reflect the severity.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 3 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">3</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Placing Timber Under a Rebar Bundle</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR1501</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">While a 16 mm x 12 m rebar bundle was being lifted by forklift, a worker placed timbers underneath. The tie wire strap holding the bundle snapped, releasing the bars, crushing his right pinky finger between two timbers.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Sling the bundle properly. Do not rely on tie wire for load security. Timbers are placed only once all hands are confirmed clear of the drop zone.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Rebar storage yard at Shepparton Precast. Bundles stacked, forklift activity, open industrial space.</li>
+              <li><span class="shot-type">Medium</span>Forklift approaches a stack of rebar bundles. Picks up a 16 mm x 12 m bundle.</li>
+              <li><span class="shot-type">Close-up</span>Tie wire straps holding the bundle together. Visible tension on the wire.</li>
+              <li><span class="shot-type">Tracking</span>Forklift carries the bundle across to the work area. The load sways slightly.</li>
+              <li><span class="shot-type">Medium</span>Worker waiting with timber dunnage. Ready. Routine. He has done this a hundred times.</li>
+              <li><span class="shot-type">Medium</span>Forklift holds the bundle in position. Worker crouches and starts sliding timbers underneath.</li>
+              <li><span class="shot-type">Close-up</span>Worker's right hand between the timbers, positioning them. Practised movement.</li>
+              <li><span class="shot-type">Close-up</span>Tie wire strap under increasing tension. Straining. The hidden danger.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hand is between timbers, directly under the load. Totally exposed.</li>
+              <li><span class="shot-type">Close-up</span>Wire snaps. A sharp release. Bars shift and spread.</li>
+              <li><span class="shot-type">AI</span>Bars fall. Right pinky crushed between two timbers.</li>
+              <li><span class="shot-type">Rewind</span>Back to the moment hand goes between timbers. Freeze. Wire visible, under strain, hand in the crush zone.</li>
+              <li><span class="shot-type">Wide</span>A worker walking past the area. Coming from another task. Normal movement.</li>
+              <li><span class="shot-type">Medium</span>Passerby sees the hand going under the suspended bundle. He stops walking.</li>
+              <li><span class="shot-type">Close-up</span>Passerby's reaction. Concern, then decision.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hands between the timbers.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Gesture connects. Worker looks up.</li>
+              <li><span class="shot-type">Medium</span>Worker pulls hand clear. Sling wrapped around the bundle. Forklift lifts properly.</li>
+              <li><span class="shot-type">Wide</span>Timbers placed while hands completely clear. Bundle set down. Both workers walk off.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Need forklift, rebar bundle, timbers, tie wire, and sling. The tie wire snap is the dramatic centre of the scene &mdash; stage it safely and convincingly. The body language matters: this worker has done this a hundred times. He is not reckless. That is the point.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 4 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">4</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Holding Rebar During MIG Welding</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR2486</span>
+              <span class="badge badge-lti">LTI &mdash; Hospital &amp; Surgery</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Left-handed worker tack welding rebar into a precast cage. MIG wire pierced the welding glove and punctured his right index finger. He did not report it until the next day. Hospital admission and surgery to flush debris from the wound.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Use a clamp or holding tool to secure the piece being welded. Hands stay completely out of the weld zone. Gloves are a last line of defence, not a solution.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Precast cage assembly area. Multiple stations, welding sparks flying, rebar cages in various stages.</li>
+              <li><span class="shot-type">Medium</span>Worker at a partially completed cage. Picks up a segment of rebar and positions it.</li>
+              <li><span class="shot-type">Close-up</span>Worker positions the rebar into the cage. Needs to hold it in place with one hand.</li>
+              <li><span class="shot-type">Medium</span>Worker grabs the rebar with his right hand (gloved), picks up the MIG welder with his left. Standard setup.</li>
+              <li><span class="shot-type">Close-up</span>Right hand gripping the rebar. Fingers close to the weld point.</li>
+              <li><span class="shot-type">Close-up</span>MIG wire feeding automatically from the handpiece. Glowing hot.</li>
+              <li><span class="shot-type">XCU</span>Welder's glove material. Thin. Standard issue. Not designed for direct wire contact.</li>
+              <li><span class="shot-type">Close-up</span>Wire tip moving toward the glove. Contact approaching.</li>
+              <li><span class="shot-type">Close-up</span>Wire contacts the glove. Pierces through the fabric.</li>
+              <li><span class="shot-type">AI</span>Wire penetrates through glove into pointer finger. Puncture.</li>
+              <li><span class="shot-type">Rewind</span>Back to the moment worker grabs rebar with bare hand in weld zone. Freeze. Hand, glove, nothing else between finger and hot wire.</li>
+              <li><span class="shot-type">Wide</span>Worker at the next cage over. Finishes a joint on his own cage, looks up.</li>
+              <li><span class="shot-type">Medium</span>Adjacent worker sees the hand holding rebar right in the weld zone. He knows that is wrong.</li>
+              <li><span class="shot-type">Close-up</span>Adjacent worker's face. Concern.</li>
+              <li><span class="shot-type">Close-up</span>Taps his own eyes. Clear, deliberate.</li>
+              <li><span class="shot-type">Close-up</span>Points across at the hand in the weld zone.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Both workers. The welder stops. Looks at his own hand.</li>
+              <li><span class="shot-type">Medium</span>Worker puts down the welder. Grabs a clamp from the workbench.</li>
+              <li><span class="shot-type">Close-up</span>Clamp attached to the rebar segment. Secure. Hands free.</li>
+              <li><span class="shot-type">Medium</span>Weld proceeds with both hands well clear. Finishes the joint. Stands up. Moves to the next one.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Need MIG welder, partially built rebar cage, and a clamp or holding tool. Confirm safe crew distances during welding shots. The delayed reporting element is worth covering in narration &mdash; it compounded the injury. LTI with hospitalisation and surgery: high severity.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 5 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">5</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Cleaning a Kibble Jaw by Hand</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR3263</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker clearing clogged concrete from a skip (kibble) jaw by hand. A second worker at a remote control station operated the jaw, closing it on the first worker's right middle finger. Laceration resulted.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Use a long-handled tool such as a jimmy bar to clear the jaw. The kibble has no proper lockout isolation point. The safe behaviour is hands off, tool in. Confirm verbally with remote operator before approaching.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Concrete batching and pouring area. Skip (kibble) hanging from crane or sitting on a frame. Active production.</li>
+              <li><span class="shot-type">Medium</span>Workers at different stations. Concrete production in progress. Busy site.</li>
+              <li><span class="shot-type">Medium</span>Worker A notices the skip jaw is clogged with dried concrete. Walks up and assesses.</li>
+              <li><span class="shot-type">Close-up</span>The clogged jaw. Concrete build-up visible. The blockage is the problem.</li>
+              <li><span class="shot-type">Close-up</span>Worker A's hands. No tools. He reaches in and starts picking at the concrete.</li>
+              <li><span class="shot-type">Medium</span>Worker A, hand inside the jaw opening, clearing it quickly. Just a minute's work.</li>
+              <li><span class="shot-type">Wide</span>Cut to Worker B at the remote control station. Separate location. Out of Worker A's line of sight entirely.</li>
+              <li><span class="shot-type">Close-up</span>Worker B at the remote. Ready to operate the skip. Does not know anyone is near the jaw.</li>
+              <li><span class="shot-type">Close-up</span>Worker A's fingers deep inside the jaw opening.</li>
+              <li><span class="shot-type">Close-up</span>Worker B presses the button. The jaw starts to close.</li>
+              <li><span class="shot-type">AI</span>Jaw closes on fingers. Laceration to right middle finger.</li>
+              <li><span class="shot-type">Rewind</span>Two frames shown: Worker A's hand inside the jaw, and Worker B at the remote, unable to see Worker A. The disconnect.</li>
+              <li><span class="shot-type">Medium</span>Worker B, about to press the remote, pauses. Looks toward the skip first.</li>
+              <li><span class="shot-type">Close-up</span>Worker B's eyeline. He can see movement near the jaw.</li>
+              <li><span class="shot-type">Close-up</span>Worker B puts the remote down. Walks over.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hand in the jaw.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Worker A steps away from the jaw.</li>
+              <li><span class="shot-type">Medium</span>Worker A grabs a jimmy bar. Long-handled scraping tool. Clears the concrete with hands well clear of the opening.</li>
+              <li><span class="shot-type">Wide</span>Both workers confirm verbally before operating the skip again. Skip operates. Both walk away.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Requires concrete skip with an operable jaw and remote control. Two actors. The physical separation between the two workers is the core danger &mdash; frame it so the audience understands neither can see the other. Do not show lockout tag-out as the solution here. Tool use is the message.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 6 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">6</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Patching a Pipe — Protruding Reo Puncture</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR740</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-pipes">Shepparton Pipes</span>
+              <span class="badge badge-session-pm">Afternoon Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker patching a concrete pipe spigot end. Running their hand around the pipe surface, they punctured their hand on protruding reinforcement they could not see from their position.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Inspect the pipe visually all the way around before beginning to patch. Look before you touch. Ten seconds of inspection prevents the injury.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Shepparton Pipes work area. Concrete pipes in various stages of production. Different environment from Precast.</li>
+              <li><span class="shot-type">Medium</span>Workers patching and finishing pipes. Normal production rhythm.</li>
+              <li><span class="shot-type">Medium</span>Worker walks up to a concrete pipe that needs patching on the spigot end. Picks up his materials.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hands beginning the patching process. Confident, skilled work.</li>
+              <li><span class="shot-type">Medium</span>Worker running his hand around the pipe surface. Feeling for imperfections. Smoothing the patch. Relaxed.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hand sliding along the pipe. Routine touch.</li>
+              <li><span class="shot-type">Close-up</span>On the far side of the pipe, out of the worker's line of sight: protruding reinforcement. Sharp. Angled outward.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hand continues around the pipe. Moving toward the reo. He cannot see it from where he stands.</li>
+              <li><span class="shot-type">Close-up</span>Hand approaching the reo. Centimetres away.</li>
+              <li><span class="shot-type">AI</span>Hand runs into the protruding reo. Puncture wound.</li>
+              <li><span class="shot-type">Rewind</span>Back to the hand starting its path around the pipe. Freeze. The reo is visible to the camera but not to the worker.</li>
+              <li><span class="shot-type">Medium</span>A coworker nearby, working on another pipe, glances over.</li>
+              <li><span class="shot-type">Close-up</span>Coworker sees the worker about to run his hand blind around the pipe.</li>
+              <li><span class="shot-type">Close-up</span>Coworker's face. He has seen people do this before. Decides to act.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hands.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. The worker stops. Looks at his own hand.</li>
+              <li><span class="shot-type">Medium</span>Worker steps back. Walks around the pipe. Inspects the full surface visually before touching it.</li>
+              <li><span class="shot-type">Close-up</span>Spots the protruding reo. There it is. Flags it or removes it.</li>
+              <li><span class="shot-type">Medium</span>Worker proceeds to patch with full awareness of where hazards are. Finishes the job. Walks away.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Thomas has identified and segregated the specific pipe on site. The protruding reo is real. Camera placement is critical: the reo must be clearly visible to the audience but invisible to the actor from their working angle. Simple scenario, clean message.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 7 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">7</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Reaching Into a Rebar Cutter</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR2525</span>
+              <span class="badge badge-lti">LTI &mdash; Partial Amputation</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker cutting five lengths of 12 mm rebar on a cutting machine. After the cut, he reached into the machine to remove the cut portions. The blade activated unexpectedly and amputated a portion of his right ring finger.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Isolate the machine before reaching in. Power off, lock out, confirm dead. Do not reach into any cutting machine while it has power, no matter how quick the retrieval seems.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Rebar processing area. Cutting and bending machines, stacks of rebar, production rhythm.</li>
+              <li><span class="shot-type">Medium</span>Worker feeding 12 mm rebar into the cutting machine. Makes a cut, then another. Routine.</li>
+              <li><span class="shot-type">Close-up</span>Machine in operation. Rhythmic cutting sounds. Efficient.</li>
+              <li><span class="shot-type">Medium</span>Worker finishes his fifth cut. Cut pieces sitting inside the machine. They need clearing.</li>
+              <li><span class="shot-type">Close-up</span>Worker pauses. Looks at the pieces inside the machine.</li>
+              <li><span class="shot-type">Close-up</span>Worker's face. Quick calculation. Does not bother turning the machine off. It will only take a second.</li>
+              <li><span class="shot-type">Close-up</span>Machine controls. Still powered. The humming has not changed.</li>
+              <li><span class="shot-type">Close-up</span>Worker's hand entering the cutting zone. Fingers reaching for the cut pieces.</li>
+              <li><span class="shot-type">Close-up</span>Blade mechanism. Still powered. Something triggers it. A sensor. A fault.</li>
+              <li><span class="shot-type">Close-up</span>The blade moves.</li>
+              <li><span class="shot-type">AI</span>Blade contacts right ring finger. Partial amputation of the fingertip.</li>
+              <li><span class="shot-type">Rewind</span>Back to hand entering the machine. Freeze. Machine running. Hand inside. No isolation.</li>
+              <li><span class="shot-type">Medium</span>Worker at the next machine. Looks across. Sees movement.</li>
+              <li><span class="shot-type">Close-up</span>Adjacent worker's reaction. Alarm. He sees a hand going into a live machine.</li>
+              <li><span class="shot-type">Close-up</span>Shouts. Alert. Verbal warning.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hand in the machine.</li>
+              <li><span class="shot-type">Medium</span>Worker pulls hand back. Hits the power-off switch.</li>
+              <li><span class="shot-type">Close-up</span>Lock-out being applied. Machine confirmed dead. Blade does not move.</li>
+              <li><span class="shot-type">Medium</span>Worker clears pieces from the isolated machine. Loads the next batch. Carries on. Properly.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            This is the most severe incident in the series &mdash; partial amputation. AI extension needs impact, not exploitation. Film the actual site lock and tag during the safe correction; it makes the procedure tangible. The "it'll only take a second" mindset is the universal danger here, not recklessness. Capture that in the actor's demeanour.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 8 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">8</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Truck Driver's Hand on the Tray</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR1204</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Forklift placing the last pallet on a truck. The truck driver placed his hand on the truck body between an already loaded pallet and the side rail. The forklift pushed the new pallet to centre, crushing the driver's finger.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Follow the loading bay exclusion zone rules. Hands off the truck while loading is in progress. Stand in the designated safe zone until the forklift operator signals completion.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Loading bay at Shepparton Precast. Truck backed in. Pallets already on the tray. Loading in progress.</li>
+              <li><span class="shot-type">Medium</span>Forklift picks up the last pallet from the staging area. Drives toward the truck.</li>
+              <li><span class="shot-type">Wide</span>Loading bay showing the exclusion zone markings on the ground. The rules are right there.</li>
+              <li><span class="shot-type">Medium</span>Truck driver. He has been waiting. He walks up to the side of the truck to check the load.</li>
+              <li><span class="shot-type">Close-up</span>Driver leans against the tray. Casual. Comfortable. Watching the forklift come in.</li>
+              <li><span class="shot-type">Close-up</span>Driver's right hand rests on the top edge of the truck body. Between the last pallet and the side rail.</li>
+              <li><span class="shot-type">Medium</span>Forklift approaching. Operator focused on pallet placement. Cannot see the driver's hand on the far side.</li>
+              <li><span class="shot-type">Close-up</span>Forklift places the pallet. Pushes it in to centre it.</li>
+              <li><span class="shot-type">Close-up</span>Pallet slides toward the loaded pallet. The driver's hand is between them, against the rail.</li>
+              <li><span class="shot-type">AI</span>Pallet slides into hand against side rail. Finger crush.</li>
+              <li><span class="shot-type">Rewind</span>Back to the moment the driver leans on the tray. Freeze. He is inside the exclusion zone. Hand in the path. Forklift approaching.</li>
+              <li><span class="shot-type">Medium</span>Forklift operator, sitting in the cab, before approaching. Looks toward the truck.</li>
+              <li><span class="shot-type">Close-up</span>Forklift operator sees the truck driver leaning on the tray. Hand visible on the edge.</li>
+              <li><span class="shot-type">Close-up</span>Forklift operator stops the forklift. Pauses.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes from the cab.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hand on the tray.</li>
+              <li><span class="shot-type">Medium</span>Driver looks at his own hand. Realises where it is.</li>
+              <li><span class="shot-type">Medium</span>Driver takes hand off the tray. Walks to the designated safe zone marked on the ground. Stands clear.</li>
+              <li><span class="shot-type">Close-up</span>Loading bay rules signage. The rules exist. They just need following.</li>
+              <li><span class="shot-type">Wide</span>Forklift places and centres the pallet with nobody near the truck. Driver walks back. Signs off. Both move on.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Need a truck in the loading bay, forklift, and pallets. Two actors: forklift operator and truck driver. The casualness of leaning on the truck is essential &mdash; this is not carelessness, it is comfort. That is exactly the trap. Thomas attached the actual loading bay rules document; use it in the safe correction shot.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 9 -->
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-number">9</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Using a Hand Tool — Hammer on Bash Plate</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR2414</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-precast">Shepparton Precast</span>
+              <span class="badge badge-session-am">Morning Session</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker using a hammer to release a mould from a completed riser. Fixed bash plates protrude from the lower sides of the mould. Worker squatted and swung downward forcefully. His right index finger (middle portion) struck the edge of the bash plate while gripping the hammer handle.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Use a tool that removes hands from the impact zone &mdash; a bash bar rather than a hand-held hammer. The bash bar adds distance between the grip and the strike point.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Mould and riser area. Moulds in various stages of production.</li>
+              <li><span class="shot-type">Medium</span>Worker approaches a completed riser. Hammer in hand.</li>
+              <li><span class="shot-type">Close-up</span>Fixed bash plates protruding from the bottom sides of the mould. Close to the floor. Establish the geometry and the tight space.</li>
+              <li><span class="shot-type">Medium</span>Worker assesses the mould. Decides how to position himself.</li>
+              <li><span class="shot-type">Close-up</span>Worker squats on his haunches. Positioning himself for a downward swing.</li>
+              <li><span class="shot-type">Close-up</span>Worker's grip on the hammer handle. Right hand wrapped firmly around it.</li>
+              <li><span class="shot-type">Medium</span>Worker swings the hammer downwards forcefully. Targeting the bash plate.</li>
+              <li><span class="shot-type">Close-up</span>The hammer descending. His right index finger on the handle is very close to the edge of the bash plate.</li>
+              <li><span class="shot-type">Close-up</span>Finger impacts the edge of the bash plate while gripping the handle. The proximity is the danger.</li>
+              <li><span class="shot-type">AI</span>Finger crushed against bash plate edge.</li>
+              <li><span class="shot-type">Rewind</span>Back to the squat position. Freeze. Hammer, hand, bash plate edge all in tight proximity.</li>
+              <li><span class="shot-type">Medium</span>A worker passing through the area. Sees the first worker crouching with a hammer near the bash plates.</li>
+              <li><span class="shot-type">Close-up</span>Passerby watches the setup. Can see the hand is going to be very close to the metal edge.</li>
+              <li><span class="shot-type">Close-up</span>Passerby's face. He has seen this before.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the hand on the hammer, near the bash plate.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Worker looks up. Pauses.</li>
+              <li><span class="shot-type">Medium</span>Worker stands up. Puts the hammer down. Picks up a bash bar. Long-handled tool.</li>
+              <li><span class="shot-type">Close-up</span>Bash bar striking the bash plate. Hands well clear of the impact zone. Full arm's length away.</li>
+              <li><span class="shot-type">Medium</span>Mould releases. Worker stands up. Walks away. Job done. No risk.</li>
+            </ul>
+          </div>
+          <div class="prod-note">
+            <div class="prod-note-label">Production Notes</div>
+            Need a completed riser with mould and visible bash plates, plus both a hammer and a bash bar on set. The squatting body position with a forceful downward swing is the key visual &mdash; the awkward geometry puts the fingers dangerously close to the plate edge. Show the body position clearly.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO 10 -->
+      <div class="scenario-card separate-day">
+        <div class="scenario-header">
+          <div class="scenario-number" style="color:var(--purple);">10</div>
+          <div class="scenario-title-block">
+            <div class="scenario-title">Tool Clamp &mdash; Cubis, Carrum Downs</div>
+            <div class="scenario-badges">
+              <span class="badge badge-ir">IR2785</span>
+              <span class="badge badge-mti">MTI</span>
+              <span class="badge badge-cubis">Cubis &mdash; Carrum Downs</span>
+              <span class="badge badge-separate-day">NOT FILMING MONDAY &mdash; SEPARATE DAY</span>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <div class="scenario-columns">
+            <div>
+              <div class="scenario-block-title">What Happened</div>
+              <div class="scenario-block">
+                <p class="scenario-text">Worker aligning tool clamps while lowering a lid with a crane. Finger was squashed between the lid and the base of the collar tool as the gap closed.</p>
+              </div>
+            </div>
+            <div>
+              <div class="scenario-block-title">Safe Method</div>
+              <div class="scenario-block">
+                <p class="scenario-text">When using the crane to lower the lid and close the mould, keep hands clear of all line-of-fire and pinch point areas. Clamps are aligned before the lid begins to descend.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-block-title">Shot List</div>
+          <div class="scenario-block">
+            <ul class="shot-list">
+              
+              <li><span class="shot-type">Wide</span>Cubis production floor at Carrum Downs. Different environment from Precast. Plastics, moulds, ovens.</li>
+              <li><span class="shot-type">Medium</span>Workers at various stations. A crane overhead. Establishing the space.</li>
+              <li><span class="shot-type">Medium</span>Worker at a mould station. Base in position. Lid needs to come down.</li>
+              <li><span class="shot-type">Close-up</span>Tool clamps on the mould. These need aligning as the lid descends.</li>
+              <li><span class="shot-type">Medium</span>Worker operates the crane. Lid begins to lower.</li>
+              <li><span class="shot-type">Close-up</span>Worker reaches in to align the clamps. Fingers guiding them into position while the lid is still moving.</li>
+              <li><span class="shot-type">Close-up</span>Worker's fingers on the clamp, between the lid and the base of the collar tool. The pinch point.</li>
+              <li><span class="shot-type">Close-up</span>Lid continues to descend. Gap closing. Fingers still in there.</li>
+              <li><span class="shot-type">Close-up</span>Worker focused on alignment, not on where his hands are relative to the closing gap.</li>
+              <li><span class="shot-type">AI</span>Lid meets base with finger trapped between. Crush.</li>
+              <li><span class="shot-type">Rewind</span>Back to the reach-in moment. Freeze. Hand in line of fire. Lid above. Base below. Fingers between.</li>
+              <li><span class="shot-type">Medium</span>A coworker at the next station. Working. Glances over.</li>
+              <li><span class="shot-type">Close-up</span>Coworker sees the hand going into the closing gap.</li>
+              <li><span class="shot-type">Close-up</span>Coworker's face. Concern. Decision.</li>
+              <li><span class="shot-type">Close-up</span>Taps eyes.</li>
+              <li><span class="shot-type">Close-up</span>Points at the fingers between lid and base.</li>
+              <li><span class="shot-type">Medium</span>Two-shot. Worker stops. Pulls hand clear.</li>
+              <li><span class="shot-type">Medium</span>Worker stops the crane. Steps back. Aligns clamps with a tool, or positions them before lowering begins.</li>
+              <li><span class="shot-type">Close-up</span>Clamps aligned with hands clear of the pinch point.</li>
+              <li><span class="shot-type">Wide</span>Lid lowers with hands well clear. Mould closes cleanly. Worker steps back. Different site, same message.</li>
+            </ul>
+          </div>
+          <div class="prod-note" style="border-left-color:var(--purple);background:#1e1a22;color:#d0aae8;">
+            <div class="prod-note-label" style="color:var(--purple);">Production Notes &mdash; Separate Day</div>
+            Filmed at Carrum Downs on a separate day to be scheduled. Arek directing solo; Sam not required. Contact Dini Agushi to confirm date. Budget of $640 is included in the approved quote. This is the only Cubis scenario &mdash; it provides CRH-wide representation and a visually distinct environment. Capture that difference.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== SECTION 7: FILMING ORDER ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 07</div>
+        <h2 class="section-title">Filming Order &mdash; Recommended</h2>
+      </div>
+
+      <div class="session-block am">
+        <h3>Morning &mdash; Shepparton Precast (06:00 &ndash; ~14:00)</h3>
+        <ul class="checklist">
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">8</div>
+            <div class="item-detail">
+              <div class="item-title">Truck Driver's Hand on the Tray</div>
+              <div class="item-ir">IR1204 &mdash; MTI</div>
+              <div class="item-note">Film first while truck access is available. Needs truck in bay, forklift, and pallets. Two actors.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">3</div>
+            <div class="item-detail">
+              <div class="item-title">Placing Timber Under a Rebar Bundle</div>
+              <div class="item-ir">IR1501 &mdash; MTI</div>
+              <div class="item-note">Needs forklift and rebar bundle. Tie wire snap staging must be rehearsed first.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">2</div>
+            <div class="item-detail">
+              <div class="item-title">Lifting a Grate by Hand</div>
+              <div class="item-ir">IR2906 &mdash; LTI (Surgery)</div>
+              <div class="item-note">Needs grate storage area and the correct mechanical lifting aid. High severity.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">5</div>
+            <div class="item-detail">
+              <div class="item-title">Cleaning a Kibble Jaw by Hand</div>
+              <div class="item-ir">IR3263 &mdash; MTI</div>
+              <div class="item-note">Needs concrete skip with remote control. Two actors in separate locations &mdash; blocking is key.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">7</div>
+            <div class="item-detail">
+              <div class="item-title">Reaching Into a Rebar Cutter</div>
+              <div class="item-ir">IR2525 &mdash; LTI (Partial Amputation)</div>
+              <div class="item-note">Most severe scenario. Needs cutting machine. Film the actual lockout procedure.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">4</div>
+            <div class="item-detail">
+              <div class="item-title">Holding Rebar During MIG Welding</div>
+              <div class="item-ir">IR2486 &mdash; LTI (Hospital &amp; Surgery)</div>
+              <div class="item-note">Needs welder, cage, and clamp. Confirm crew safe distances before starting.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">9</div>
+            <div class="item-detail">
+              <div class="item-title">Hammer on Bash Plate</div>
+              <div class="item-ir">IR2414 &mdash; MTI</div>
+              <div class="item-note">Needs completed riser with mould, bash plates, hammer, and bash bar. Final Precast scenario.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="session-block pm">
+        <h3>Afternoon &mdash; Shepparton Pipes (~14:30 &ndash; ~17:00)</h3>
+        <ul class="checklist">
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">1</div>
+            <div class="item-detail">
+              <div class="item-title">Rolling Pipe</div>
+              <div class="item-ir">IR1100 &mdash; MTI</div>
+              <div class="item-note">Needs patching table and forklift with a real pipe. Stage the roll on arrival.</div>
+            </div>
+          </li>
+          <li>
+            <div class="check-box"></div>
+            <div class="check-number">6</div>
+            <div class="item-detail">
+              <div class="item-title">Pipe Patching &mdash; Protruding Reo</div>
+              <div class="item-ir">IR740 &mdash; MTI</div>
+              <div class="item-note">Pipe already segregated on site by Thomas. Camera angle is critical &mdash; reo visible to lens, invisible to actor.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pacing-note-order"><strong>Shift hours:</strong> Precast workers start at 06:00 and finish between 13:30 and 14:30. Pipes workers finish later. Prioritise the heavier forklift and crane scenarios in the first half of the Precast session while energy is highest and all crew are available.</div>
+    </div>
+
+    <!-- ===== SECTION 8: SOUND DESIGN ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 08</div>
+        <h2 class="section-title">Sound Design Notes</h2>
+      </div>
+
+      <div class="sound-grid">
+        <div class="sound-item">
+          <div class="sound-stage">Setup</div>
+          <div class="sound-desc">Ambient site and factory sound. Natural. Busy. Nothing unusual.</div>
+        </div>
+        <div class="sound-item">
+          <div class="sound-stage">Accident</div>
+          <div class="sound-desc">Sharp audio cue: impact, crunch, or sudden silence. The sound must land before the AI visual does.</div>
+        </div>
+        <div class="sound-item">
+          <div class="sound-stage">Rewind</div>
+          <div class="sound-desc">Tape-rewind sound effect. Unmistakable. Signals the second chance.</div>
+        </div>
+        <div class="sound-item">
+          <div class="sound-stage">Safe Correction</div>
+          <div class="sound-desc">Calm resolution. Ambient sound returns to normal. Tension releases.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:4px;">
+        <p class="scenario-text"><strong>No music bed during scenarios.</strong> Music appears only in the opening statistics montage and the closing sequence. The silence after each accident is intentional &mdash; it should land on the audience. Do not fill it.</p>
+        <p class="scenario-text" style="margin-top:10px;"><strong>Narration:</strong> Voiceover runs through the full video. Factual and direct in tone, not dramatic. It states what happened, what went wrong, and what should have been done. The images carry the emotion.</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 9: OUTSTANDING ITEMS ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 09</div>
+        <h2 class="section-title">Outstanding Items</h2>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Owner</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Injury photos from past incidents</td>
+              <td>Glenn Ducat</td>
+              <td><span class="status-waiting">Waiting &mdash; Glenn sending SOS to team</span></td>
+            </tr>
+            <tr>
+              <td>Working day loss reports &mdash; 3-year data (from Mar 2023)</td>
+              <td>Glenn Ducat</td>
+              <td><span class="status-waiting">Waiting &mdash; Glenn has this data</span></td>
+            </tr>
+            <tr>
+              <td>CRH IPA branding assets (logos, colours, fonts)</td>
+              <td>Glenn Ducat / Kirk Buckley</td>
+              <td><span class="status-waiting">Waiting &mdash; Kirk to contact Arek directly</span></td>
+            </tr>
+            <tr>
+              <td>Joe at Shepparton Pipes testimonial (30 seconds, on camera)</td>
+              <td>Thomas Smith</td>
+              <td><span class="status-pending">Pending &mdash; Optional, Thomas checking</span></td>
+            </tr>
+            <tr>
+              <td>Carrum Downs filming day &mdash; Scenario 10, Dini Agushi</td>
+              <td>Arek / Glenn</td>
+              <td><span class="status-tbs">To Be Scheduled</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-block-note">None of these items are shoot-critical for Monday. Filming at Shepparton Precast and Pipes can proceed as planned.</div>
+    </div>
+
+    <!-- ===== SECTION 10: CARRUM DOWNS ===== -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">Section 10</div>
+        <h2 class="section-title">Carrum Downs &mdash; Separate Day</h2>
+      </div>
+
+      <div class="card" style="border-color:var(--purple);background:#1e1a22;">
+        <p class="scenario-text" style="margin-bottom:16px;">Scenario 10 (IR2785 &mdash; Tool Clamp) is filmed at the Cubis site in Carrum Downs on a separate day to be confirmed. Arek directs solo; Sam is not required for this shoot.</p>
+        <div class="carrum-grid">
+          <div class="carrum-item">
+            <div class="c-label">Location</div>
+            <div class="c-value">Cubis site, Carrum Downs<br><em style="font-size:0.82rem;color:var(--muted);">Approx. 40 min from Belgrave</em></div>
+          </div>
+          <div class="carrum-item">
+            <div class="c-label">Scenario</div>
+            <div class="c-value">IR2785 &mdash; Tool Clamp<br>MTI outcome</div>
+          </div>
+          <div class="carrum-item">
+            <div class="c-label">Site Contact</div>
+            <div class="c-value">Dini Agushi<br>0418 729 876<br>dagushi@infrastructureproducts.com.au</div>
+          </div>
+          <div class="carrum-item">
+            <div class="c-label">Budget</div>
+            <div class="c-value">$640 &mdash; included in approved quote</div>
+          </div>
+          <div class="carrum-item">
+            <div class="c-label">Status</div>
+            <div class="c-value">To be scheduled after Shepparton shoot. Contact Dini to confirm date.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="doc-footer">
+    <div class="footer-brand">
+      <span>Fifth Castle Media</span> &mdash; Your strategic partner in video production<br>
+      fifthcastle.media
+    </div>
+    <div class="footer-generated">Document generated 19 March 2026</div>
+  </div>
+
+</body>
+</html>
