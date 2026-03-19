@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annalise Haigh — Leadership and Employment Story — Production Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --fcm-red: #BD202D;
+      --light-grey: #f5f5f5;
+      --mid-grey: #e0e0e0;
+      --text: #1a1a1a;
+      --muted: #666666;
+    }
+
+    body {
+      font-family: 'Inter', Georgia, serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--black);
+      color: var(--white);
+      padding: 40px 48px 36px;
+      position: relative;
+    }
+
+    .header-logo {
+      height: 48px;
+      margin-bottom: 20px;
+    }
+
+    .header-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      margin-bottom: 14px;
+    }
+
+    .header h1 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .header-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+    }
+
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 22px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* RED ACCENT BAR */
+    .accent-bar {
+      height: 3px;
+      background: var(--fcm-red);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 36px 48px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-number {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section h2 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--mid-grey);
+    }
+
+    /* OVERVIEW */
+    .overview-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .overview-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .deliverable-card {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .deliverable-card h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--fcm-red);
+      margin-bottom: 8px;
+    }
+
+    .deliverable-card p {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* SCHEDULE */
+    .schedule-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: start;
+      gap: 20px;
+      padding: 16px 18px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--fcm-red);
+    }
+
+    .schedule-time {
+      font-family: 'Khand', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-top: 2px;
+    }
+
+    .schedule-detail h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+
+    .schedule-detail .address {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .schedule-detail .focus-list {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .schedule-gap {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      padding: 10px 18px;
+    }
+
+    .schedule-gap .gap-time {
+      font-family: 'Khand', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .schedule-gap .gap-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* LOCATIONS */
+    .location-card {
+      border: 1px solid var(--mid-grey);
+      padding: 20px 22px;
+    }
+
+    .location-badge {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      display: inline-block;
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+
+    .location-card h3 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .location-detail {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .location-notes {
+      font-size: 12px;
+      color: var(--text);
+      border-top: 1px solid var(--mid-grey);
+      padding-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* TALENT */
+    .presenter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .presenter-card {
+      border: 1px solid var(--mid-grey);
+      padding: 20px 22px;
+    }
+
+    .presenter-name {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+
+    .presenter-role {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .presenter-story {
+      font-size: 12px;
+      color: var(--text);
+      border-left: 2px solid var(--mid-grey);
+      padding-left: 10px;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .presenter-direction {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .presenter-direction strong {
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    /* INTERVIEW QUESTIONS */
+    .interview-block {
+      margin-bottom: 28px;
+    }
+
+    .interview-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .interview-person {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .interview-topic {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-top: 14px;
+    }
+
+    .interview-topic:first-of-type {
+      margin-top: 0;
+    }
+
+    .question-list {
+      list-style: decimal;
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .question-list li {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .interview-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--mid-grey);
+    }
+
+    /* SHOT LIST */
+    .shot-location-block {
+      margin-bottom: 28px;
+    }
+
+    .shot-location-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .shot-location-title {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .shot-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .shot-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--mid-grey);
+      background: var(--light-grey);
+    }
+
+    .shot-table tbody td {
+      font-size: 12px;
+      padding: 9px 10px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .shot-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .shot-num {
+      font-family: 'Khand', sans-serif;
+      font-weight: 600;
+      color: var(--fcm-red);
+      white-space: nowrap;
+    }
+
+    .shot-type {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    /* TECHNICAL */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .tech-card {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .tech-card h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tech-list li {
+      font-size: 12px;
+      color: var(--text);
+      display: flex;
+      gap: 8px;
+    }
+
+    .tech-list li::before {
+      content: "\2014";
+      color: var(--fcm-red);
+      flex-shrink: 0;
+    }
+
+    .tech-list li strong {
+      font-weight: 600;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: var(--light-grey);
+      border-left: 3px solid var(--fcm-red);
+      padding: 16px 18px;
+      margin-top: 20px;
+    }
+
+    .highlight-box h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--fcm-red);
+      margin-bottom: 10px;
+    }
+
+    .highlight-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .highlight-box ul li {
+      font-size: 12px;
+      color: var(--text);
+      display: flex;
+      gap: 8px;
+      line-height: 1.6;
+    }
+
+    .highlight-box ul li::before {
+      content: "\2014";
+      color: var(--fcm-red);
+      flex-shrink: 0;
+    }
+
+    /* CONTACTS */
+    .contacts-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .contacts-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 7px 12px;
+      background: var(--light-grey);
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .contacts-table tbody td {
+      font-size: 12px;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--mid-grey);
+      vertical-align: top;
+    }
+
+    .contacts-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* OUTSTANDING ITEMS */
+    .outstanding-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .outstanding-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .outstanding-item .bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--fcm-red);
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-doc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* PRINT */
+    @media print {
+      @page { size: A4; margin: 10mm 10mm 12mm; }
+      body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .container { max-width: 100%; }
+      .section { padding: 24px 32px; }
+      .header { padding: 28px 32px 24px; }
+      .footer { padding: 14px 32px; }
+      h2 { break-after: avoid; }
+      h3 { break-after: avoid; }
+      .presenter-grid { break-inside: avoid; }
+      .schedule-item { break-inside: avoid; }
+      .tech-grid { break-inside: avoid; }
+      .footer { break-inside: avoid; }
+      p { orphans: 2; widows: 2; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">Fifth Castle Media / Down Syndrome Australia — Production Brief</div>
+    <h1>Annalise Haigh's Leadership and Employment Story</h1>
+    <div class="header-sub">Tasmania Video Shoot</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Shoot Date</span>
+        <span class="meta-value">Monday 23 March 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Director</span>
+        <span class="meta-value">Kate Jeremiah (DSA)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Videographer</span>
+        <span class="meta-value">Andrew Walton</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Deliverables</span>
+        <span class="meta-value">2 x 3-minute videos</span>
+      </div>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <!-- SECTION 01 — OVERVIEW -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Project Overview</h2>
+      <div class="section-rule"></div>
+    </div>
+    <p class="overview-text">This shoot tells Annalise Haigh's story. It connects two key areas of DSA's work: leadership development and employment. Annalise was a recipient of the Sherry Hogan Leadership Scholarship at the 2024 World Down Syndrome Congress, where she grew from being reluctant to speak publicly to delivering a confident, unscripted speech on stage. She now works at Speak Out, a disability advocacy organisation in Hobart, and lives independently.</p>
+    <p class="overview-text">From this single shoot, two videos will be produced. Both share much of the same footage, with edits tailored to suit each audience. Existing footage of Annalise at the 2024 Congress will be woven into the leadership edit to show her growth over time.</p>
+
+    <div class="deliverables-grid">
+      <div class="deliverable-card">
+        <h3>Video 1 — Leadership Impact</h3>
+        <p><strong>Audience:</strong> Sherry Hogan Foundation and other funders.<br><br>
+        <strong>Goal:</strong> Show the life-changing impact of leadership training. Funders see real-world results and choose to continue or expand their investment.<br><br>
+        <strong>Focus:</strong> Confidence growth, independence, willingness to take on new challenges, the link from leadership skills to meaningful employment.</p>
+      </div>
+      <div class="deliverable-card">
+        <h3>Video 2 — Employment Good News Story</h3>
+        <p><strong>Audience:</strong> Employers, families, and the wider community.<br><br>
+        <strong>Goal:</strong> Employers take the next step and explore inclusive hiring. Families and individuals feel informed and encouraged.<br><br>
+        <strong>Focus:</strong> The real work Annalise does, her strengths, the benefits of inclusive employment for the workplace, how meaningful work builds independence and purpose.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 02 — DAY SCHEDULE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Day Schedule</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="schedule-block">
+
+      <div class="schedule-item">
+        <div class="schedule-time">10:30 — 11:00</div>
+        <div class="schedule-detail">
+          <h3>Arrival and Setup</h3>
+          <div class="address">Speak Out, 168 Collins St, Hobart TAS 7000</div>
+          <div class="focus-list">
+            Set up cameras, audio and lighting<br>
+            Confirm quiet interview space<br>
+            Scout indoor and outdoor b-roll locations<br>
+            Set up Interview Setup 1 (Annalise)
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">11:00 — 12:00</div>
+        <div class="schedule-detail">
+          <h3>Interview — Annalise Haigh</h3>
+          <div class="focus-list">
+            Interview Setup 1<br>
+            Led by Liz Christodoulou, supported by Kate Jeremiah<br>
+            Covers: Sherry Hogan scholarship, leadership growth, life changes, work at Speak Out, radio/podcast/advocacy<br>
+            <strong>Cinematic portrait lighting. Relaxed, genuine tone. Allow pauses.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:00 — 12:30</div>
+        <div class="schedule-detail">
+          <h3>Interview — Mark Mason (CEO, Speak Out)</h3>
+          <div class="focus-list">
+            Interview Setup 2 (adjust angle or move to a different space)<br>
+            Covers: Annalise's role and strengths, what led him to hire her, inclusive employment benefits, confidence growth<br>
+            <strong>Different framing from Annalise's setup</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:30 — 1:00</div>
+        <div class="schedule-detail">
+          <h3>Interview — Liz Christodoulou (DSA Employment Project Manager)</h3>
+          <div class="focus-list">
+            Interview Setup 3 (adjust angle or move to a third space)<br>
+            Covers: First impressions of Annalise, the speech moment, leadership to employment connection, what Annalise's story shows about what is possible<br>
+            <strong>Different framing from both previous setups</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-gap">
+        <div class="gap-time">1:00 — 1:30</div>
+        <div class="gap-note">Lunch break</div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">1:30 — 3:00</div>
+        <div class="schedule-detail">
+          <h3>B-Roll — Workplace, Independence and Confidence</h3>
+          <div class="focus-list">
+            Extensive b-roll coverage across two themes (see shot list below)<br>
+            <strong>All b-roll at 50fps. Slow, deliberate camera movement throughout. Minimum two angles per scenario (wide + mid, or mid + close-up).</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 03 — LOCATION -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Location</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="location-card">
+      <div class="location-badge">Primary Location — Full Day</div>
+      <h3>Speak Out</h3>
+      <div class="location-detail">
+        168 Collins St, Hobart TAS 7000<br>
+        Phone: (03) 6231 2344<br>
+        <strong>10:30am — 3:00pm</strong>
+      </div>
+      <div class="location-notes">
+        Disability advocacy organisation. Annalise works here in admin and at the front desk. The office provides the interview setting and most b-roll opportunities (workplace scenes, meetings, front desk). Outdoor locations nearby for independence/confidence b-roll (street, cafe, building entrance).
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 04 — TALENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Talent</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="presenter-grid">
+
+      <div class="presenter-card">
+        <div class="presenter-name">Annalise Haigh</div>
+        <div class="presenter-role">Primary Subject — Interviewee</div>
+        <div class="presenter-story">Recipient of the Sherry Hogan Leadership Scholarship. Grew from reluctant speaker to confident advocate. Now works at Speak Out, lives independently, and is involved in radio, podcasts, and self-advocacy.</div>
+        <div class="presenter-direction">
+          <strong>Tone:</strong> Warm, relaxed, genuine. Not performative. Allow natural pauses and responses.<br><br>
+          <strong>Appears in:</strong> Both videos. Interview + all b-roll.
+        </div>
+      </div>
+
+      <div class="presenter-card">
+        <div class="presenter-name">Mark Mason</div>
+        <div class="presenter-role">CEO, Speak Out — Interviewee</div>
+        <div class="presenter-story">Annalise's employer. Can speak to the real-world benefits of inclusive employment, her strengths, and her contribution to the team.</div>
+        <div class="presenter-direction">
+          <strong>Tone:</strong> Professional, direct, warm. Employer perspective.<br><br>
+          <strong>Appears in:</strong> Employment video primarily. Some grabs may suit leadership edit.
+        </div>
+      </div>
+
+      <div class="presenter-card">
+        <div class="presenter-name">Liz Christodoulou</div>
+        <div class="presenter-role">DSA Employment PM — Interviewee</div>
+        <div class="presenter-story">Was present for Annalise's leadership training and the pivotal speech moment at Congress. Can speak to the before-and-after and the link between leadership skills and employment.</div>
+        <div class="presenter-direction">
+          <strong>Tone:</strong> Reflective, knowledgeable, grounded.<br><br>
+          <strong>Appears in:</strong> Both videos. Provides narrative context and emotional arc.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 05 — INTERVIEW SETUPS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Interview Setup Direction</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="interview-note">
+      We want three visually distinct interview setups so each interviewee has a different look on screen. If only one space is available, adjust the camera angle, background, and lighting direction between each interview. If multiple rooms or areas are available, consider quick setups in different spaces. The goal is that when the three interviews are intercut, each person is clearly in their own visual world.
+    </div>
+
+    <div class="highlight-box">
+      <h3>Lighting Direction</h3>
+      <ul>
+        <li><strong>Cinematic portrait lighting</strong> for all three interviews. This is the priority. The interviews carry the story.</li>
+        <li>Key light slightly off-centre with soft fill. Look for depth and dimension in the face.</li>
+        <li>Use the available space creatively: window light as key or rim, supplemented with LED if needed.</li>
+        <li>Background separation is important. Use depth of field and practical lights in the background where possible.</li>
+        <li>Each setup should have a different feel: consider varying the lighting direction (key left vs key right) or background tone between subjects.</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 16px;">
+      <h3>Framing Direction</h3>
+      <ul>
+        <li><strong>Setup 1 (Annalise):</strong> Slightly tighter framing. She is the heart of the story. Capture warmth and personality.</li>
+        <li><strong>Setup 2 (Mark):</strong> Shift angle. Consider a workplace element in the background (desk, shelves, office context). Employer perspective.</li>
+        <li><strong>Setup 3 (Liz):</strong> Shift angle again. Softer background if possible. She provides the reflective, narrative voice.</li>
+        <li>All interviews framed as a standard off-axis interview (subject looking just past camera to interviewer).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 06 — INTERVIEW QUESTIONS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>Interview Questions</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="interview-note">
+      Liz leads all interviews. Kate supports by ensuring key themes are covered, taking note of strong quotes, matching key statements with b-roll ideas, and prompting where needed. Interviews should feel relaxed and genuine. No over-scripted answers.
+    </div>
+
+    <!-- Annalise -->
+    <div class="interview-block">
+      <div class="interview-person">Annalise Haigh — 11:00 to 12:00</div>
+
+      <div class="interview-topic">Sherry Hogan / Leadership</div>
+      <ol class="question-list">
+        <li>Before you did the leadership program, how did you feel about speaking in front of a group?</li>
+        <li>On the speech day, you said you weren't going to give a speech. Can you tell us what was going through your mind?</li>
+        <li>What made you change your mind and decide to give the speech?</li>
+        <li>How did you feel after you finished?</li>
+        <li>What do you think makes a great leader?</li>
+        <li>What can you do now that felt harder before the program?</li>
+        <li>Why are leadership programs important for people with Down syndrome?</li>
+        <li>What would you say to someone with Down syndrome who wants to build their confidence?</li>
+      </ol>
+
+      <div class="interview-topic">Life</div>
+      <ol class="question-list">
+        <li>What has changed in your life since building your confidence?</li>
+        <li>You now live independently. How does it feel living more independently?</li>
+        <li>What are you most proud of in your life right now?</li>
+      </ol>
+
+      <div class="interview-topic">Work</div>
+      <ol class="question-list">
+        <li>Where do you work now, and what is your job?</li>
+        <li>How did you get the job?</li>
+        <li>What are some things you do at work?</li>
+        <li>What do you enjoy most about working?</li>
+        <li>How has having a job changed your life?</li>
+        <li>You also do radio, podcasts and self advocacy. Can you tell us about that?</li>
+        <li>What do you enjoy about using your voice?</li>
+        <li>What would you say to an employer thinking about hiring someone with Down syndrome?</li>
+      </ol>
+    </div>
+
+    <!-- Mark -->
+    <div class="interview-block">
+      <div class="interview-person">Mark Mason (CEO, Speak Out) — 12:00 to 12:30</div>
+      <ol class="question-list">
+        <li>How would you describe Speak Out in a sentence or two?</li>
+        <li>What led you to hire Annalise?</li>
+        <li>What is Annalise's role at Speak Out?</li>
+        <li>What does she do particularly well?</li>
+        <li>What strengths does she bring to your team?</li>
+        <li>How have you seen her confidence grow since she started?</li>
+        <li>What difference does she make in the workplace day to day?</li>
+        <li>What would you say to employers who are considering hiring someone with Down syndrome or intellectual disability?</li>
+        <li>Some employers worry it might be difficult. What has your experience been?</li>
+        <li>How does inclusive employment benefit your organisation, not just the individual?</li>
+      </ol>
+    </div>
+
+    <!-- Liz -->
+    <div class="interview-block">
+      <div class="interview-person">Liz Christodoulou (DSA Employment PM) — 12:30 to 1:00</div>
+      <ol class="question-list">
+        <li>When you first met Annalise, what was she like?</li>
+        <li>What do you remember about the day she said she wasn't going to give the speech?</li>
+        <li>Can you describe the moment she changed her mind and stood up to speak?</li>
+        <li>What shifted in her after that experience?</li>
+        <li>If Annalise had never had that leadership opportunity, where do you think she might be today?</li>
+        <li>Looking at Annalise now, what feels different to you?</li>
+        <li>How have you seen the skills she built through leadership flow into other parts of her life?</li>
+        <li>In your view, how does leadership development connect to independence and employment?</li>
+        <li>Why is meaningful employment so important in someone's life?</li>
+        <li>What does Annalise's journey show about what is possible for people with Down syndrome?</li>
+        <li>What would you say to funders or decision-makers who are considering investing in leadership programs?</li>
+        <li>And what would you say to organisations thinking about employing people with Down syndrome?</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- SECTION 07 — B-ROLL SHOT LIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>B-Roll Shot List</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="interview-note">
+      <strong>Key rules for all b-roll:</strong><br>
+      1. Shoot everything at <strong>50fps</strong> for smooth slow-motion in post.<br>
+      2. Introduce <strong>slow, deliberate camera movement</strong> throughout. No static locked-off b-roll. Gentle slides, pushes, or pulls on a slider or gimbal. Even handheld with controlled breathing works if it is smooth.<br>
+      3. For every b-roll scenario, capture at least <strong>two different angles</strong>: a wide and a mid, or a mid and a close-up. This gives the editor options and makes cuts feel natural.<br>
+      4. Watch for moments that echo what was said in the interviews. If Annalise mentions something specific, try to capture b-roll that supports it.
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Workplace B-Roll — 1:30 to 2:15</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:90px;">Angles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">B1</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Annalise answering the phone at the front desk. Slow push in.</td>
+            <td>Wide + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B2</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Typing on computer. Over-the-shoulder and side profile.</td>
+            <td>Mid + CU</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B3</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Organising paperwork at her desk. Hands detail and wider desk shot.</td>
+            <td>CU + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B4</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Greeting colleagues or visitors at reception. Natural interaction.</td>
+            <td>Wide + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B5</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Speaking with a colleague at her desk. Relaxed conversation.</td>
+            <td>Wide + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B6</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Sitting in a meeting with Mark. Looking at documents together. Annalise contributing.</td>
+            <td>Wide + CU</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B7</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Annalise laughing, smiling, speaking, listening in natural workplace moments. Candid reactions.</td>
+            <td>Mid + CU</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Independence and Confidence B-Roll — 2:15 to 3:00</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:90px;">Angles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">B8</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Walking confidently down Collins Street. Purposeful stride. Slow gimbal follow.</td>
+            <td>Wide + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B9</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Entering or exiting the Speak Out building independently. Door, steps, street.</td>
+            <td>Wide + Mid</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B10</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Ordering and paying for coffee at a nearby cafe. Natural interaction with barista.</td>
+            <td>Wide + CU</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B11</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Sitting at a cafe table. Relaxed, content moment. Slow push or slide.</td>
+            <td>Mid + CU</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B12</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Relaxed conversation outdoors or at the cafe. Smiling, engaged.</td>
+            <td>Mid + CU</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B13</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Purposeful walking shots. Different pace and framing from B8. Perhaps from across the street or low angle.</td>
+            <td>Wide + Low</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B14</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Any additional moments that connect to key themes from the interviews. Be responsive to what Annalise or Kate flag.</td>
+            <td>As needed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 08 — TECHNICAL SETTINGS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Technical Settings</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="tech-grid">
+
+      <div class="tech-card">
+        <h3>Camera</h3>
+        <ul class="tech-list">
+          <li><strong>4K, Rec.709 colour profile (no log).</strong> Log requires perfect lighting and significantly longer grading time — not worth the trade-off for this shoot.</li>
+          <li><strong>Manual white balance at every location.</strong> Do not rely on auto white balance. When mixing artificial lighting with ambient light, match the colour temperature so footage cuts together cleanly in the edit. Re-set white balance when moving between locations.</li>
+          <li><strong>25fps</strong> for all interview/presenter shots</li>
+          <li><strong>50fps</strong> for all b-roll (to allow for slow-motion in the edit)</li>
+          <li>Shutter: 1/50 at 25fps, 1/100 at 50fps</li>
+          <li>Shallow depth of field for interviews (f/2.8 or wider where possible)</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Interview Framing and Setup</h3>
+        <ul class="tech-list">
+          <li><strong>Framing:</strong> Wider than a standard talking-head shot. Include from above the head (do not cut off the top of the head) down to the navel/midsection. Give the subject room in the frame.</li>
+          <li><strong>Subject posture:</strong> Interviewee seated comfortably and leaning slightly toward the camera. Avoid stiff, upright posture.</li>
+          <li><strong>Background:</strong> Position the subject well away from the back wall so the depth of field falls off naturally. Choose the far end of a room and keep the subject at a distance from it. Background should be visually interesting but soft and out of focus.</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Stabilisation and Movement</h3>
+        <ul class="tech-list">
+          <li><strong>Interviews:</strong> Tripod-mounted, stable. No movement during interviews.</li>
+          <li><strong>B-roll:</strong> Gimbal-stabilised. No tripod for b-roll unless specifically required by the shot.</li>
+          <li><strong>Movement in every b-roll shot:</strong> Sweeping side-to-side movements, reveals, and foreground elements to add depth. No static locked-off b-roll.</li>
+          <li>B-roll footage will often be slowed down further in the edit, so movements should be smooth and deliberate.</li>
+          <li>Handheld acceptable for b-roll only if movement is smooth and deliberate.</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Audio</h3>
+        <ul class="tech-list">
+          <li><strong>Record audio in-camera wherever possible.</strong> This saves significant time in post-production by avoiding the need to sync separate audio tracks.</li>
+          <li>Wireless lapel mic on each interviewee</li>
+          <li>Headphones for live monitoring on all interview takes</li>
+          <li>30 seconds room tone recorded at Speak Out office</li>
+          <li>If a separate audio recorder is used, ensure a sync point (clap or slate) is captured on both devices</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Lighting</h3>
+        <ul class="tech-list">
+          <li><strong>Professional portrait lighting for all interviews.</strong> Not flat, not harsh. Shape the face.</li>
+          <li>Key light: LED panel or window light, slightly off-centre, with soft diffusion</li>
+          <li>Fill: bounce board or low-power LED to control contrast ratio</li>
+          <li>Background: practical lights or ambient separation from subject</li>
+          <li>Vary lighting direction between each of the three interview setups</li>
+          <li>B-roll: work with available light, supplement as needed</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 09 — LOOK AND FEEL -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2>Look and Feel</h2>
+      <div class="section-rule"></div>
+    </div>
+    <p class="overview-text">Same overall style as the DSA "Perspectives on Ageing Well with Down Syndrome" video, but more upbeat. A mix of interviews with natural b-roll. Captions will be added in post. Music will be consistent with previous DSA employment videos. Same branding as previous DSA videos.</p>
+    <div class="highlight-box">
+      <h3>Tone Keywords</h3>
+      <ul>
+        <li>Engaging</li>
+        <li>Warm</li>
+        <li>Natural</li>
+        <li>Inclusive</li>
+        <li>Professional</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 10 — CONTACTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2>Contacts</h2>
+      <div class="section-rule"></div>
+    </div>
+    <table class="contacts-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Phone</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kate Jeremiah</strong></td>
+          <td>Director / DSA Communications Officer</td>
+          <td>0409 353 090</td>
+          <td><strong>Key contact for videographer on the day.</strong> Directing shoot flow, ensuring themes are covered, flagging b-roll opportunities.</td>
+        </tr>
+        <tr>
+          <td><strong>Liz Christodoulou</strong></td>
+          <td>Interviewer / DSA Employment Project Manager</td>
+          <td>0425 629 923</td>
+          <td>Secondary contact for videographer. Leading all interviews.</td>
+        </tr>
+        <tr>
+          <td><strong>Andrew Walton</strong></td>
+          <td>Videographer</td>
+          <td>0467 451 716</td>
+          <td>Camera, audio, and lighting on the day.</td>
+        </tr>
+        <tr>
+          <td><strong>Annalise Haigh</strong></td>
+          <td>Interviewee (primary subject)</td>
+          <td>0420 928 371</td>
+          <td>Mum Helen's phone number.</td>
+        </tr>
+        <tr>
+          <td><strong>Mark Mason</strong></td>
+          <td>Interviewee / CEO, Speak Out</td>
+          <td>(03) 6231 2344 / 0447 675 884</td>
+          <td>On site at Speak Out.</td>
+        </tr>
+        <tr>
+          <td><strong>Arek Rainczuk</strong></td>
+          <td>Producer — Fifth Castle Media</td>
+          <td>0467 676 205</td>
+          <td>Not on site. Available by phone if needed.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 11 — OUTSTANDING ITEMS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">11</span>
+      <h2>Outstanding Before Shoot Day</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="outstanding-list">
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>Confirm with Andrew Walton</strong> — Ensure Andrew has received and reviewed this brief, confirm gear availability (lighting kit, gimbal/slider, wireless audio).</div>
+      </div>
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>Interview space scouting</strong> — Kate or Liz to confirm whether multiple spaces are available at Speak Out for the three interview setups, or whether all interviews will be in one room.</div>
+      </div>
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>Nearby cafe</strong> — Identify a cafe within walking distance of Speak Out for the independence b-roll (ordering coffee, sitting at a table).</div>
+      </div>
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>Footage delivery</strong> — Confirm how Andrew will transfer footage to FCM after the shoot (upload to NAS, hard drive post, or cloud transfer).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Fifth Castle Media — Confidential Production Brief</div>
+    <div class="footer-doc">Annalise Haigh — Leadership and Employment Story &nbsp;|&nbsp; Monday 23 March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
