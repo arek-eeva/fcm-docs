@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cottage Garden Threads — Phase 1 Shoot Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --fcm-red: #BD202D;
+      --light-grey: #f5f5f5;
+      --mid-grey: #e0e0e0;
+      --dark-grey: #333333;
+      --text: #1a1a1a;
+      --muted: #666666;
+    }
+
+    body {
+      font-family: 'Inter', Georgia, serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      background: #ebebeb;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .header {
+      background: var(--black);
+      color: var(--white);
+      padding: 44px 52px 38px;
+    }
+
+    .header-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .header-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 30px;
+    }
+
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .meta-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .meta-value.tbc {
+      color: var(--fcm-red);
+      font-style: italic;
+    }
+
+    .meta-value.confirmed {
+      color: #5EC97A;
+    }
+
+    /* RED ACCENT BAR */
+    .accent-bar {
+      height: 4px;
+      background: var(--fcm-red);
+    }
+
+    /* ============================================================
+       SECTIONS
+       ============================================================ */
+    .section {
+      padding: 38px 52px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .section-number {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      font-weight: 600;
+      padding: 4px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--mid-grey);
+    }
+
+    /* ============================================================
+       OVERVIEW
+       ============================================================ */
+    .overview-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .overview-body p + p {
+      margin-top: 12px;
+    }
+
+    .overview-note {
+      margin-top: 18px;
+      padding: 14px 18px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--mid-grey);
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       CREW + TRAVEL
+       ============================================================ */
+    .crew-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .crew-card {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .crew-card-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .crew-card-name {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 17px;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .crew-card-detail {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .travel-block {
+      background: var(--light-grey);
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .travel-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .travel-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .travel-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .post-note {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: #fff8f8;
+      border-left: 3px solid var(--fcm-red);
+      font-size: 12.5px;
+      color: var(--text);
+    }
+
+    .post-note strong {
+      color: var(--fcm-red);
+    }
+
+    /* ============================================================
+       LOCATIONS
+       ============================================================ */
+    .location-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .location-card {
+      border: 1px solid var(--mid-grey);
+      padding: 20px 24px;
+    }
+
+    .location-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .location-badge {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      display: inline-block;
+      padding: 4px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .location-card h3 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    .location-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .location-notes {
+      font-size: 13px;
+      color: var(--text);
+      border-top: 1px solid var(--mid-grey);
+      padding-top: 12px;
+      line-height: 1.7;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .status-tag.pending {
+      background: #FFF3CD;
+      color: #856404;
+    }
+
+    .status-tag.optional {
+      background: var(--light-grey);
+      color: var(--muted);
+    }
+
+    /* ============================================================
+       PRIORITY PRODUCTS TABLE
+       ============================================================ */
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .products-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--light-grey);
+      border-bottom: 2px solid var(--mid-grey);
+    }
+
+    .products-table tbody td {
+      font-size: 12.5px;
+      padding: 11px 12px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--mid-grey);
+      line-height: 1.6;
+    }
+
+    .products-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .products-table tbody tr:hover {
+      background: #fafafa;
+    }
+
+    .priority-num {
+      font-family: 'Khand', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fcm-red);
+      white-space: nowrap;
+    }
+
+    .priority-num.secondary {
+      color: var(--muted);
+    }
+
+    .product-name {
+      font-weight: 600;
+      color: var(--black);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .product-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .stretch-tag {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--light-grey);
+      color: var(--muted);
+      padding: 2px 6px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       CONTENT TYPES
+       ============================================================ */
+    .content-type-block {
+      margin-bottom: 26px;
+    }
+
+    .content-type-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-type-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .content-type-badge {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      padding: 4px 10px;
+      font-weight: 600;
+    }
+
+    .content-type-title {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 16px;
+      color: var(--black);
+    }
+
+    .content-type-duration {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .content-type-body {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .content-type-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .content-type-list li {
+      font-size: 12.5px;
+      color: var(--text);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .content-type-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--fcm-red);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .hook-examples {
+      margin-top: 12px;
+      background: var(--light-grey);
+      padding: 14px 16px;
+    }
+
+    .hook-examples-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .hook-item {
+      font-size: 12.5px;
+      color: var(--text);
+      font-style: italic;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--mid-grey);
+      line-height: 1.5;
+    }
+
+    .hook-item:last-child {
+      border-bottom: none;
+    }
+
+    .hook-style {
+      font-style: normal;
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ============================================================
+       CLIENT CHECKLIST
+       ============================================================ */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .checklist-item {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--mid-grey);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checklist-item strong {
+      color: var(--black);
+    }
+
+    .checklist-item .detail {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       WARDROBE + STYLING
+       ============================================================ */
+    .styling-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .styling-list li {
+      font-size: 13px;
+      color: var(--text);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    .styling-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--fcm-red);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* ============================================================
+       CALLOUT BOXES (Key Production Notes)
+       ============================================================ */
+    .callout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .callout {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .callout-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .callout-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--fcm-red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .callout h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .callout-body {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .callout.alert {
+      border-color: var(--fcm-red);
+      background: #fff8f8;
+    }
+
+    .callout.alert .callout-dot {
+      background: var(--fcm-red);
+    }
+
+    /* ============================================================
+       POST-PRODUCTION
+       ============================================================ */
+    .post-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .post-card {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .post-card h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .post-list li {
+      font-size: 12.5px;
+      color: var(--text);
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      line-height: 1.55;
+    }
+
+    .post-list li::before {
+      content: "–";
+      color: var(--fcm-red);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       CONTACTS TABLE
+       ============================================================ */
+    .contacts-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .contacts-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 14px;
+      background: var(--light-grey);
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .contacts-table tbody td {
+      font-size: 12.5px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--mid-grey);
+      vertical-align: top;
+    }
+
+    .contacts-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .contact-name {
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .tbc-tag {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      padding: 2px 7px;
+      display: inline-block;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 22px 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-doc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 680px) {
+      .header { padding: 28px 22px 24px; }
+      .header-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .header h1 { font-size: 26px; }
+      .section { padding: 28px 22px; }
+      .crew-grid { grid-template-columns: 1fr; }
+      .travel-block { grid-template-columns: 1fr 1fr; }
+      .callout-grid { grid-template-columns: 1fr; }
+      .post-grid { grid-template-columns: 1fr; }
+      .footer { padding: 18px 22px; flex-direction: column; gap: 6px; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       PRINT
+       ============================================================ */
+    @media print {
+      @page { size: A4; margin: 12mm 10mm 14mm; }
+      body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .container {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+      }
+      .header { padding: 28px 32px 24px; }
+      .section { padding: 26px 32px; }
+      .footer { padding: 16px 32px; }
+
+      /* Section page breaks */
+      .section-break { break-before: page; }
+
+      h2 { break-after: avoid; }
+      h3 { break-after: avoid; }
+      .section-header { break-after: avoid; }
+
+      .location-card { break-inside: avoid; }
+      .crew-card { break-inside: avoid; }
+      .callout { break-inside: avoid; }
+      .post-card { break-inside: avoid; }
+      .checklist-item { break-inside: avoid; }
+      .content-type-block { break-inside: avoid; }
+      .hook-examples { break-inside: avoid; }
+      .footer { break-inside: avoid; }
+
+      .products-table tr { break-inside: avoid; }
+
+      p { orphans: 2; widows: 2; }
+      li { orphans: 2; widows: 2; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <div class="header">
+    <div class="header-label">Fifth Castle Media — Production Brief</div>
+    <h1>Cottage Garden Threads</h1>
+    <div class="header-sub">Phase 1 Content Production Day</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Shoot Date</span>
+        <span class="meta-value">Wednesday 25 March 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value confirmed">Confirmed</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Director</span>
+        <span class="meta-value">Arek Rainczuk</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">On Location</span>
+        <span class="meta-value">Mirboo North, VIC</span>
+      </div>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <!-- ============================================================
+       SECTION 01 — OVERVIEW
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Overview</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="overview-body">
+      <p>One production day focused on volume and variety. The goal: give Spicy Web (CGT's Meta agency) a library of short-form content with enough variety to A/B test hooks, products, and formats across campaigns. Spicy Web tests what works, then we produce more of what wins.</p>
+      <p>Everything shot today should be authentic, natural, and true to the craft community. The handmade audience is highly attuned to anything that feels forced or produced for production's sake. Natural lighting, genuine reactions, real workspace. That is the brief.</p>
+      <p>Content types: B-roll library, short-form ad creatives (multiple hook variants), FAQ and how-to videos, talking-head product showcases, and some playful process content. Multiple setups, multiple products. Aim to be versatile across the day rather than perfecting any single piece.</p>
+    </div>
+    <div class="overview-note">
+      Phase 1 is volume-focused ad content. Phase 2 (later in 2026, after the move to new premises) covers brand story, Mirboo North location footage, and the full founder narrative. Keep today's focus tight.
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 02 — CREW AND TRAVEL
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Crew and Travel</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-card-label">Director / Producer</div>
+        <div class="crew-card-name">Arek Rainczuk</div>
+        <div class="crew-card-detail">Direction, on-day decisions, client liaison, brief keeper.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-card-label">Camera Operator</div>
+        <div class="crew-card-name" style="color: var(--muted); font-style: italic;">TBC</div>
+        <div class="crew-card-detail">Experienced operator. Small kit, own lighting setup. Confirm before end of week.</div>
+      </div>
+    </div>
+
+    <div class="travel-block" style="margin-top: 16px;">
+      <div class="travel-item">
+        <span class="travel-label">Departure</span>
+        <span class="travel-value">Belgrave, VIC</span>
+      </div>
+      <div class="travel-item">
+        <span class="travel-label">Travel</span>
+        <span class="travel-value">Carpool, approx. 1.5 hrs</span>
+      </div>
+      <div class="travel-item">
+        <span class="travel-label">Drive</span>
+        <span class="travel-value">Capture scenic footage en route to Mirboo North</span>
+      </div>
+      <div class="travel-item">
+        <span class="travel-label">Call Time (on location)</span>
+        <span class="travel-value">Approx. 10:00 am</span>
+      </div>
+      <div class="travel-item">
+        <span class="travel-label">Wrap</span>
+        <span class="travel-value">Approx. 3:00–4:00 pm</span>
+      </div>
+      <div class="travel-item">
+        <span class="travel-label">Hours On Location</span>
+        <span class="travel-value">4–5 hours</span>
+      </div>
+    </div>
+
+    <div class="post-note">
+      <strong>Note:</strong> Arek departs for the US on Monday 30 March. Editing team must be briefed before departure with footage, brand assets, and priority edit notes.
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 03 — LOCATIONS
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Locations</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="location-list">
+
+      <div class="location-card">
+        <div class="location-top">
+          <div class="location-badge">Location 1 — Primary</div>
+          <div>
+            <h3>CGT Workshop, Mirboo North</h3>
+            <div class="location-sub">Main production location. Where the team works day to day.</div>
+          </div>
+        </div>
+        <div class="location-notes">
+          This is where most content will be captured. The workshop is where the dyeing happens, products are packed, and the team creates. Small space, fully utilised, naturally lit by the work inside it. Expect shelving, thread colours, packing tables, and a team of women in aprons and gloves. Lean into it.
+          <br><br>
+          Expect to capture B-roll across all product categories, talking-head segments with Katie, FAQ videos, and how-to demonstrations. This is the core location for the day.
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="location-top">
+          <div class="location-badge">Location 2 — Conditional</div>
+          <div>
+            <h3>New Space (Old Grand Ridge Brewery), Mirboo North</h3>
+            <div class="location-sub">CGT's future home. Useful if keys are available.</div>
+          </div>
+        </div>
+        <div class="location-notes">
+          CGT is planning a move to this larger premises. Even a brief walkthrough or exterior footage would be valuable, particularly for the Kickstarter campaign video showing the contrast between current cramped conditions and the potential of the new space. Interior access preferred but not essential. Exterior footage alone has value.
+          <br><br>
+          <div class="status-tag pending">Katie to confirm key access before shoot day</div>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="location-top">
+          <div class="location-badge">Location 3 — Final Stop</div>
+          <div>
+            <h3>Katie's Home Studio, Mirboo North</h3>
+            <div class="location-sub">Personal workspace. More intimate setting.</div>
+          </div>
+        </div>
+        <div class="location-notes">
+          Katie's personal studio where she films and works. Small room. A different environment from the workshop, which gives footage variety and makes content appear as though it was shot on different days. Good for wardrobe change and more personal, close-to-camera content.
+          <br><br>
+          Plan to wrap the main workshop session with enough time to get to the home studio for a focused 45–60 minute block.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 04 — PRIORITY PRODUCTS
+       ============================================================ -->
+  <div class="section section-break">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Priority Products</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th style="width: 52px;">Priority</th>
+          <th style="width: 200px;">Product</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="priority-num">1</span></td>
+          <td>
+            <span class="product-name">Takadisi New Shapes</span>
+          </td>
+          <td class="product-note">Hexagon, half hexagon, square, honeycomb. Stock on hand, not yet promoted. Spicy Web's first ad focus. Katie has some existing footage but wants more with different hooks. First priority for the day.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num">2</span></td>
+          <td>
+            <span class="product-name">Field Journal Quilt</span>
+          </td>
+          <td class="product-note">$1,500–$1,800 purchase point. Embroidery combined with Liberty fabrics. A year-long maker project. The physical quilt is in Queensland, so film Katie talking about it on camera and use existing photos and YouTube footage in post. Talking-head content works well here.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num">3</span></td>
+          <td>
+            <span class="product-name">New Space / Kickstarter Campaign</span>
+          </td>
+          <td class="product-note">Angela and Katie discussed a Kickstarter-style product bundle to fund the move. Film a short talking-head video (approx. 1 minute) showing the current cramped workshop vs the potential of the new space. Raw and honest tone works best for fundraising content.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num secondary">4</span></td>
+          <td>
+            <span class="product-name">Liberty Girls Collection</span>
+          </td>
+          <td class="product-note">Smaller priority. Film if time allows after the top three are covered.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num secondary">5</span></td>
+          <td>
+            <span class="product-name">Hedgehog Collection</span>
+          </td>
+          <td class="product-note">Smaller priority. Film if time allows.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num secondary">6</span></td>
+          <td>
+            <span class="product-name">Takadisi Embroidery Collection</span>
+          </td>
+          <td class="product-note">Combined project showcase. Film if time allows.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num secondary">7</span></td>
+          <td>
+            <span class="product-name">Kids Kits</span>
+          </td>
+          <td class="product-note"><span class="stretch-tag">Stretch</span>&nbsp; Only if time permits.</td>
+        </tr>
+        <tr>
+          <td><span class="priority-num secondary">8</span></td>
+          <td>
+            <span class="product-name">Mara's Embroidered Clothes</span>
+          </td>
+          <td class="product-note"><span class="stretch-tag">Stretch</span>&nbsp; Mara to bring samples. Potential future campaign around modern mending. For now, just capture some footage to have in the library.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================
+       SECTION 05 — CONTENT TYPES TO CAPTURE
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Content Types to Capture</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">A</div>
+        <div class="content-type-title">B-Roll Library</div>
+        <div class="content-type-duration">Slow motion, no audio</div>
+      </div>
+      <div class="content-type-body">
+        The foundation of everything. Shoot this across all three locations and throughout the day, not just at the start. Good B-roll is what editors reach for. Prioritise variety: different angles, different distances, different subjects.
+      </div>
+      <ul class="content-type-list">
+        <li>Workshop environment: shelving, products arranged by colour, textures, materials</li>
+        <li>Team at work: packing, organising, discussing. Dyeing process: snippets only, not full process (trade secrets apply)</li>
+        <li>Product close-ups: thread colours, Takadisi shapes, Field Journal fabrics, Liberty prints</li>
+        <li>Hands working: stitching, cutting, arranging, handling thread</li>
+        <li>Team of women in aprons and gloves, working naturally</li>
+        <li>Workshop details: equipment, labels, supplies, the organised chaos of a real working studio</li>
+        <li>New space walkthrough or exterior if access is confirmed</li>
+        <li>Scenic footage driving into Mirboo North, captured en route</li>
+      </ul>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">B</div>
+        <div class="content-type-title">Short-Form Ad Creatives</div>
+        <div class="content-type-duration">30–60 seconds each</div>
+      </div>
+      <div class="content-type-body">
+        Multiple versions of each piece, with different hooks. The core content stays the same. The opening 10 seconds changes. Spicy Web will test which hooks drive the best results and brief more content based on what wins.
+      </div>
+      <div class="hook-examples">
+        <div class="hook-examples-label">Hook Templates from Spicy Web (film these)</div>
+        <div class="hook-item"><span class="hook-style">Pain point</span>"If you're struggling with [specific pain], this is for you"</div>
+        <div class="hook-item"><span class="hook-style">Correction</span>"Stop doing this if you want [desired outcome]"</div>
+        <div class="hook-item"><span class="hook-style">Myth-bust</span>"This is why your [current approach] isn't working"</div>
+        <div class="hook-item"><span class="hook-style">Insider</span>"No one tells you this about [topic]"</div>
+        <div class="hook-item"><span class="hook-style">Discovery</span>"This changed everything for me..."</div>
+        <div class="hook-item"><span class="hook-style">Surprise</span>"I didn't expect this to work, but..."</div>
+        <div class="hook-item"><span class="hook-style">IYKYK</span>"This is very 'if you know, you know'"</div>
+        <div class="hook-item"><span class="hook-style">Sleeper hit</span>"The kind of thing you don't think you need until you try it"</div>
+        <div class="hook-item"><span class="hook-style">Experience</span>"One thing I've learned after working with this every day..."</div>
+        <div class="hook-item"><span class="hook-style">Hidden detail</span>"This is the detail we obsessed over that no one notices at first"</div>
+        <div class="hook-item"><span class="hook-style">Social proof</span>"I've been seeing how people are using this lately..."</div>
+        <div class="hook-item"><span class="hook-style">UGC-style</span>"The way people are styling/using this is actually so good"</div>
+      </div>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">C</div>
+        <div class="content-type-title">FAQ Videos</div>
+        <div class="content-type-duration">1–2 minutes each</div>
+      </div>
+      <div class="content-type-body">
+        Katie answering common customer questions. Natural, conversational tone. These are quick to shoot: one question, one answer, one take (with a few attempts if needed). Katie to bring a written or mental list of her most frequently asked questions. Film as many as time allows.
+      </div>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">D</div>
+        <div class="content-type-title">How-To Tips and Tricks</div>
+        <div class="content-type-duration">1–2 minutes each</div>
+      </div>
+      <div class="content-type-body">
+        Short, practical demonstrations. These perform well in the craft community because they deliver real value quickly. Film at least two or three of these.
+      </div>
+      <ul class="content-type-list">
+        <li>Product storage and organisation tips</li>
+        <li>How to start with Takadisi shapes</li>
+        <li>Thread care and preparation</li>
+        <li>The packaging and unpacking experience (satisfying for social)</li>
+      </ul>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">E</div>
+        <div class="content-type-title">Talking-Head Product Showcases</div>
+        <div class="content-type-duration">2–4 minutes each</div>
+      </div>
+      <div class="content-type-body">
+        Katie presenting priority products. Why she created them, what makes them special, who they're for. These are the pieces Spicy Web can cut into multiple shorter ads. Film the priority products (1–3 above) in this format first, before moving to anything else.
+      </div>
+    </div>
+
+    <div class="content-type-block">
+      <div class="content-type-header">
+        <div class="content-type-badge">F</div>
+        <div class="content-type-title">Secret Process Content</div>
+        <div class="content-type-duration">30–60 seconds</div>
+      </div>
+      <div class="content-type-body">
+        Playful snippets of the dyeing process with "censored" or pixelated overlays added in post on any trade-secret steps. Creates intrigue, signals expertise, and gives audiences a reason to keep watching. Works as a hook and as a standalone organic post.
+        <br><br>
+        <strong>Important:</strong> Do NOT film the full dyeing process. Always check with Katie before filming any process step. Capture snippets: hands, colours in water, results. Not method.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       SECTION 06 — WHAT CGT NEEDS TO PREPARE
+       ============================================================ -->
+  <div class="section section-break">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>What CGT Needs to Prepare</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="checklist">
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Priority product list with FAQs</strong>
+          <span class="detail">Angela to email Arek confirming which products are being promoted and which customer questions to cover. This drives the shoot order.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Brand assets</strong>
+          <span class="detail">Logo, fonts, and brand colours shared to the Spicy Web Google Drive. Editing team needs these before post-production begins.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Field Journal photos and footage</strong>
+          <span class="detail">Upload existing product photos and any of Katie's YouTube footage to the shared Google Drive. The quilt is in Queensland, so existing visuals are essential for post.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>New space key access</strong>
+          <span class="detail">Katie to confirm before Wednesday whether interior access to the old Grand Ridge Brewery site is possible on shoot day. Exterior footage is the backup.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Wardrobe variety</strong>
+          <span class="detail">Katie to bring 2–3 different tops to change between setups. No uniform required. Just enough variety so the content doesn't all look like it was filmed in one go.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Mara's embroidered clothes</strong>
+          <span class="detail">If possible, Mara to bring some samples to the workshop. Stretch goal only — no pressure if logistics don't work.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>Products staged and accessible</strong>
+          <span class="detail">Priority products (Takadisi shapes, Field Journal materials, collection samples) to be accessible and presentable at the workshop before crew arrives.</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div>
+          <strong>FAQ list</strong>
+          <span class="detail">Katie's most common customer questions, either written down or ready to recall. The more prepared she is, the faster these will go.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 07 — WARDROBE AND STYLING
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>Wardrobe and Styling</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <ul class="styling-list">
+      <li>No uniforms. The audience expects to see a real working studio, not a branded shoot. Workwear is the right call.</li>
+      <li>Aprons and gloves when dyeing — that is the natural costume and it reads as authentic.</li>
+      <li>Katie to bring 2–3 different tops to swap between setups. Same person, different look. Content appears shot on multiple occasions.</li>
+      <li>No lab coats. They read as "chemicals" and conflict with the natural, handmade brand positioning.</li>
+      <li>The rest of the team wears whatever they normally wear. Best-presenting version of their usual workwear is the goal.</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       SECTION 08 — KEY PRODUCTION NOTES
+       ============================================================ -->
+  <div class="section section-break">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Key Production Notes</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="callout-grid">
+
+      <div class="callout alert">
+        <div class="callout-top">
+          <div class="callout-dot"></div>
+          <h3>Trade Secrets</h3>
+        </div>
+        <div class="callout-body">
+          The dyeing process involves proprietary techniques developed over 18 years. Film snippets and stages, never the full process. Playful "censored" or pixelated overlays can be added in post for intrigue. Always check with Katie before filming any process step.
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-top">
+          <div class="callout-dot"></div>
+          <h3>Camera-Shy Talent</h3>
+        </div>
+        <div class="callout-body">
+          Katie has flagged she gets awkward on camera. This is normal. Every client says this. Be patient, keep it conversational, build confidence gradually. Her existing content proves she is excellent on camera. She just needs time to warm up before the first take matters.
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-top">
+          <div class="callout-dot"></div>
+          <h3>Small Spaces</h3>
+        </div>
+        <div class="callout-body">
+          Both the workshop and home studio are compact. Bring small equipment and own lighting. Plan the camera placement before setting up anything else. Be ready to rethink the setup if the space doesn't allow it.
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-top">
+          <div class="callout-dot"></div>
+          <h3>Music and Tone</h3>
+        </div>
+        <div class="callout-body">
+          The previous agency used jarring music choices. CGT's audience is the craft community — warm, authentic, community-driven. Music choices must reflect that. Nothing corporate. Nothing stock. Confirm music approach with Katie before edits are delivered.
+        </div>
+      </div>
+
+      <div class="callout alert" style="grid-column: 1 / -1;">
+        <div class="callout-top">
+          <div class="callout-dot"></div>
+          <h3>Authenticity is Non-Negotiable</h3>
+        </div>
+        <div class="callout-body">
+          The handmade and craft community instantly rejects anything that feels fake, polished for its own sake, or AI-generated. Confirmed at the US trade show in Nashville (September 2025): AI in front-facing content is "suicide" in this space. Natural lighting, real reactions, real workspace. That is what this audience trusts. That is what we produce.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 09 — POST-PRODUCTION PLAN
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2>Post-Production Plan</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="post-grid">
+
+      <div class="post-card">
+        <h3>Priority Edits (Before 30 March)</h3>
+        <ul class="post-list">
+          <li>Two short videos delivered before Arek departs: Takadisi New Shapes and Field Journal Quilt.</li>
+          <li>Editing team briefed with raw footage, brand assets, and written notes before Monday 30 March.</li>
+          <li>Brief must include shoot notes on which takes to use and which hooks to try first.</li>
+        </ul>
+      </div>
+
+      <div class="post-card">
+        <h3>Remaining Edits</h3>
+        <ul class="post-list">
+          <li>Produced in queue order after Arek returns from the US.</li>
+          <li>Multiple hook variant edits per product video for A/B testing by Spicy Web.</li>
+          <li>Content that does not perform as ads gets repurposed for organic social.</li>
+        </ul>
+      </div>
+
+      <div class="post-card">
+        <h3>Delivery Specs (confirmed by Spicy Web)</h3>
+        <ul class="post-list">
+          <li><strong>Target: 8-12 finished videos</strong> from this shoot day.</li>
+          <li><strong>Formats:</strong> Stories 9:16 + Square 1:1 (Meta), 16:9 (Google Ads). We film 16:9, crop to 9:16 and 1:1.</li>
+          <li><strong>Turnaround:</strong> ~1 week from shoot day.</li>
+          <li><strong>Deliver both</strong> edited pieces and raw footage to Spicy Web.</li>
+          <li><strong>Editing rule:</strong> Do NOT bake in captions or image overlays on the videos. Spicy Web will add these. Clean edits only.</li>
+          <li>Content delivered to Spicy Web (Ashleigh Mascitti) for ad campaigns. CGT receives the same files for organic use.</li>
+        </ul>
+      </div>
+
+      <div class="post-card">
+        <h3>Special Post Notes</h3>
+        <ul class="post-list">
+          <li>Field Journal: use existing product photos and Katie's YouTube footage in edit alongside on-camera talent pieces.</li>
+          <li>Dyeing process snippets: add pixelated or "censored" overlays on trade-secret steps in post. Treat as a deliberate creative element, not a workaround.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 10 — CONTACTS
+       ============================================================ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2>Key Contacts</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <table class="contacts-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Contact</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="contact-name">Arek Rainczuk</span></td>
+          <td>Director, Fifth Castle Media</td>
+          <td>0467 676 205</td>
+          <td>Primary point of contact on the day</td>
+        </tr>
+        <tr>
+          <td><span class="contact-name">Camera Operator</span></td>
+          <td>Camera and lighting</td>
+          <td><span class="tbc-tag">TBC</span></td>
+          <td>Confirm name and number before shoot day</td>
+        </tr>
+        <tr>
+          <td><span class="contact-name">Katie Dawson</span></td>
+          <td>CEO, face of brand, Cottage Garden Threads</td>
+          <td>On file</td>
+          <td>Primary client on the day. Key on-camera talent.</td>
+        </tr>
+        <tr>
+          <td><span class="contact-name">Angela Hose</span></td>
+          <td>Co-owner, operations, Cottage Garden Threads</td>
+          <td>On file</td>
+          <td>Coordinating product list and pre-shoot checklist</td>
+        </tr>
+        <tr>
+          <td><span class="contact-name">Ashleigh Mascitti</span></td>
+          <td>Paid Media Specialist, Spicy Web</td>
+          <td>ashleigh@spicyweb.com.au<br>0490 201 313</td>
+          <td>Spicy Web's day-to-day contact. Content delivered to Ash for ad campaigns.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Fifth Castle Media</div>
+    <div class="footer-doc">CGT Phase 1 Shoot Brief &nbsp;|&nbsp; Prepared 20 March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
