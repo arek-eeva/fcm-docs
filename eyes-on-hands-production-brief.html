@@ -388,10 +388,47 @@ footer {
   letter-spacing: 0.15em; text-transform: uppercase; color: var(--border);
 }
 
+/* LOCATION GROUP HEADER */
+.location-group-header {
+  background: var(--red);
+  padding: 0 40px;
+}
+.location-group-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.location-group-header-inner .lgh-label {
+  font-family: 'Khand', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+.location-group-header-inner .lgh-title {
+  font-family: 'Khand', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  font-weight: 600;
+}
+.location-group-header-inner .lgh-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
 /* PRINT */
 @media print {
   nav { display: none; }
   .scenario-section { break-inside: avoid; page-break-inside: avoid; }
+  .location-group-header { break-inside: avoid; page-break-inside: avoid; }
   body { font-size: 12px; }
 }
 </style>
@@ -407,15 +444,15 @@ footer {
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#approach">Approach</a></li>
     <li><a href="#opening">Opening</a></li>
-    <li><a href="#s1">S1</a></li>
     <li><a href="#s2">S2</a></li>
     <li><a href="#s3">S3</a></li>
     <li><a href="#s4">S4</a></li>
     <li><a href="#s5">S5</a></li>
-    <li><a href="#s6">S6</a></li>
     <li><a href="#s7">S7</a></li>
     <li><a href="#s8">S8</a></li>
     <li><a href="#s9">S9</a></li>
+    <li><a href="#s1">S1</a></li>
+    <li><a href="#s6">S6</a></li>
     <li><a href="#s10">S10</a></li>
     <li><a href="#closing">Closing</a></li>
     <li><a href="#outstanding">Outstanding</a></li>
@@ -628,115 +665,12 @@ footer {
   </div>
 </div>
 
-<!-- SCENARIO 1 -->
-<div class="scenario-section" id="s1">
-  <div class="scenario-inner">
-    <div class="scenario-header">
-      <div class="scenario-num">01</div>
-      <div class="scenario-title-group">
-        <div class="section-eyebrow">Scenario 1</div>
-        <h2>Rolling Pipe</h2>
-        <div class="scenario-meta">
-          <span class="scenario-tag ir">IR1100</span>
-          <span class="scenario-tag mti">MTI</span>
-          <span class="scenario-tag location">Shepparton Pipes (afternoon)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-columns">
-      <div class="incident-box">
-        <h4>The Incident</h4>
-        <p>A worker was completing the patching process on a pipe at one end of a table. A forklift brought a pipe from inside the shed and placed it on the table, bumping the pipes already there and causing them to move. A pipe rolled and crushed the worker's hand between the rolling pipe and the pipe he was patching.</p>
-      </div>
-      <div class="safe-box">
-        <h4>The Safe Way</h4>
-        <p>Step away from the table while pipes are being placed. Maintain an exclusion zone from the forklift and its load at all times.</p>
-      </div>
-    </div>
-
-    <div class="beats-section">
-      <h3>Storyboard Beats</h3>
-      <table class="beats-table">
-        <thead>
-          <tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="beat-label situation">Wider Situation</span></td>
-            <td>Wide establishing shot of Shepparton Pipes yard. Scale of the operation, concrete pipes stacked high, workers and forklifts moving. A forklift picks up a large concrete pipe from inside the shed and brings it outside to the production area. Drives through the yard. Approaches the patching table.</td>
-            <td>Site ambience. Forklift engine, beeping.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label victim">The Victim</span></td>
-            <td>Worker at the far end of the patching table. Focused on his task, both hands on the pipe, completing the patching process. Comfortable rhythm. Done this every day. Doesn't look up. Forklift approaching from the other end.</td>
-            <td>Patching sounds. Forklift getting louder.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label mistake">The Mistake</span></td>
-            <td>Over-forklift angle: approaching from opposite end. Worker visible in background, unaware. Forklift places the pipe, bumping existing pipes, causing them to move. Table surface shifts. A pipe begins to roll. Slow. Inevitable. Worker's hands still on the pipe he's patching. Glances up. Too late.</td>
-            <td>Low rumble building.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label accident">The Accident</span></td>
-            <td>AI extension: rolling pipe impacts the pipe he's patching, crushing his hand between the two pipes.</td>
-            <td>Heavy impact. Silence.</td>
-          </tr>
-          <tr class="narration-row">
-            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
-            <td>Black screen.</td>
-            <td><em>"A pipe rolled down that table and crushed his hand between two pieces of concrete. He never looked up. Never heard it coming. The forklift was loading right behind him and he didn't step back."</em></td>
-          </tr>
-          <tr>
-            <td><span class="beat-label rewind">Rewind</span></td>
-            <td>Footage rewinds to before the forklift places the pipe. Worker's hands on the pipe, patching. Freeze.</td>
-            <td>Rewind sound.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label gesture">The Gesture</span></td>
-            <td>Worker walking nearby sees the forklift approaching. Looks at the forklift, then at the patching worker's hands. Sees the situation developing. Pauses. Taps his own eyes with two fingers. Deliberate. Clear. Points directly at the hands. Two-shot: both workers in frame, the gesture connecting them.</td>
-            <td>Short alert tone.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label safe">Safe Correction</span></td>
-            <td>Patching worker steps back. Hands clear. Forklift places the pipe. Table shifts. Pipe moves. Nobody near it. Worker waits. Steps back in. Continues patching. Both carry on.</td>
-            <td>Ambience returns to normal.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="shot-list">
-      <h4>Shot List</h4>
-      <ul>
-        <li><strong>Wide:</strong> Shep Pipes yard establishing shot. Scale of the operation.</li>
-        <li><strong>Wide:</strong> Forklift approaching pipe storage area. Picks up pipe from inside shed to outside.</li>
-        <li><strong>Tracking:</strong> Forklift driving through the yard with the pipe. Driving in the production area.</li>
-        <li><strong>Medium:</strong> Patching worker at far end of table. Focused, head down. Comfortable rhythm.</li>
-        <li><strong>Close-up:</strong> Worker's hands on pipe. Patching detail. Both hands on the pipe.</li>
-        <li><strong>Wide:</strong> Over-forklift angle. Approaching table from opposite end. Worker visible, unaware.</li>
-        <li><strong>Medium:</strong> Forklift operator placing the pipe. Concentrating on placement.</li>
-        <li><strong>Close-up:</strong> Table surface shifting as weight lands. Pipes bumping and moving.</li>
-        <li><strong>Close-up:</strong> Pipe beginning to roll. Slow. Inevitable.</li>
-        <li><strong>Close-up:</strong> Worker's hands still on pipe, patching. Rolling pipe approaching. The danger.</li>
-        <li><strong>Medium:</strong> Worker glances up. Recognition. Too late.</li>
-        <li><strong>Close-up:</strong> Passer-by taps eyes with two fingers. Deliberate. Clear.</li>
-        <li><strong>Close-up:</strong> Passer-by points directly at patching worker's hands.</li>
-        <li><strong>Medium:</strong> Two-shot. Both workers in frame. Gesture connecting them.</li>
-        <li><strong>Medium:</strong> Worker steps back. Hands clear. Forklift places pipe. Nobody near it.</li>
-        <li><strong>Wide:</strong> Worker waits. Steps back in. Continues patching.</li>
-      </ul>
-    </div>
-
-    <div class="prod-notes">
-      <h4>Production Notes</h4>
-      <ul>
-        <li>Film at Shepparton Pipes (afternoon session). Requires pipe patching table and forklift with a real pipe.</li>
-        <li>Pipe comes from inside the shed to outside. Film the forklift drive through the yard to establish the environment.</li>
-        <li>The roll needs to look natural. The table shift should be subtle but visible on camera.</li>
-        <li>Thomas mentioned a "hands poster" related to this incident (attached 13 March). Review for reference.</li>
-      </ul>
-    </div>
+<!-- LOCATION GROUP: SHEPPARTON PRECAST — MORNING -->
+<div class="location-group-header">
+  <div class="location-group-header-inner">
+    <span class="lgh-label">Shoot Day 1 &mdash; Morning</span>
+    <span class="lgh-divider"></span>
+    <span class="lgh-title">Shepparton Precast &mdash; 6:00am &ndash; ~12:00pm, 23 March</span>
   </div>
 </div>
 
@@ -1155,109 +1089,6 @@ footer {
   </div>
 </div>
 
-<!-- SCENARIO 6 -->
-<div class="scenario-section" id="s6">
-  <div class="scenario-inner">
-    <div class="scenario-header">
-      <div class="scenario-num">06</div>
-      <div class="scenario-title-group">
-        <div class="section-eyebrow">Scenario 6</div>
-        <h2>Patching a Pipe (Protruding Reo Puncture)</h2>
-        <div class="scenario-meta">
-          <span class="scenario-tag ir">IR740</span>
-          <span class="scenario-tag mti">MTI</span>
-          <span class="scenario-tag location">Shepparton Pipes (afternoon)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-columns">
-      <div class="incident-box">
-        <h4>The Incident</h4>
-        <p>A worker was patching a concrete pipe spigot end. As the worker ran their hand around the pipe, they punctured their hand on protruding reinforcement they couldn't see.</p>
-      </div>
-      <div class="safe-box">
-        <h4>The Safe Way</h4>
-        <p>Inspect the pipe before patching. Walk around it, look at the full surface before touching it. Look before you touch.</p>
-      </div>
-    </div>
-
-    <div class="beats-section">
-      <h3>Storyboard Beats</h3>
-      <table class="beats-table">
-        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="beat-label situation">Wider Situation</span></td>
-            <td>Wide shot of Shepparton Pipes work area. Concrete pipes in various stages of production. Workers patching, finishing, moving product. Normal production rhythm.</td>
-            <td>Factory ambience. Concrete work sounds.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label victim">The Victim</span></td>
-            <td>A worker walks up to a concrete pipe that needs patching on the spigot end. Picks up patching materials and starts working. Done this before. Routine. Runs his hand around the pipe surface, feeling for imperfections, smoothing the patch.</td>
-            <td>Patching sounds. Hands on concrete.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label mistake">The Mistake</span></td>
-            <td>Close-up: the worker's hand slides around the pipe. On the far side, out of his line of sight, a piece of reinforcement protrudes from the concrete. The reo is sharp, sticking out at an angle. His hand moves toward it. He can't see it from where he's standing.</td>
-            <td>Subtle tension tone.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label accident">The Accident</span></td>
-            <td>AI extension: the hand runs into the protruding reo. Puncture wound.</td>
-            <td>Sharp impact. Silence.</td>
-          </tr>
-          <tr class="narration-row">
-            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
-            <td>Black screen.</td>
-            <td><em>"A piece of reo was sticking out the other side of the pipe. He couldn't see it. He ran his hand straight into it. Ten seconds to walk around and check. That's all it would have taken."</em></td>
-          </tr>
-          <tr>
-            <td><span class="beat-label rewind">Rewind</span></td>
-            <td>Rewind to the moment the hand starts moving around the pipe. Freeze. The reo is visible to the camera but not to the worker. His hand is heading straight for it.</td>
-            <td>Rewind sound.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label gesture">The Gesture</span></td>
-            <td>A coworker nearby sees the worker about to run his hand blind around the pipe. Taps eyes. Points at the hands.</td>
-            <td>Alert tone.</td>
-          </tr>
-          <tr>
-            <td><span class="beat-label safe">Safe Correction</span></td>
-            <td>The worker stops. Steps back. Walks around the pipe and inspects the full surface visually before touching it. Spots the protruding reo. Flags it or removes it. Then proceeds to patch with full awareness of where hazards are. Finishes the job. Walks away.</td>
-            <td>Ambience returns to normal.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="shot-list">
-      <h4>Shot List</h4>
-      <ul>
-        <li><strong>Wide:</strong> Pipes work area, concrete pipes, production activity</li>
-        <li><strong>Medium:</strong> Worker approaching pipe, picking up patching materials</li>
-        <li><strong>Close-up:</strong> Hand running along pipe surface (smooth, routine)</li>
-        <li><strong>Close-up:</strong> Protruding reo on the far side of the pipe (visible to camera, not to worker)</li>
-        <li><strong>Close-up:</strong> Hand approaching the reo (the danger)</li>
-        <li><strong>Close-up:</strong> "Eyes on hands" gesture</li>
-        <li><strong>Medium:</strong> Worker walking around the pipe, inspecting visually</li>
-        <li><strong>Close-up:</strong> Reo spotted, flagged or removed</li>
-        <li><strong>Medium:</strong> Worker patching with full visibility, finishing</li>
-      </ul>
-    </div>
-
-    <div class="prod-notes">
-      <h4>Production Notes</h4>
-      <ul>
-        <li>Film at Shepparton Pipes (afternoon session, after Precast scenarios wrap).</li>
-        <li>Thomas has identified the specific pipe to be used and segregated it on site. The protruding reo is real.</li>
-        <li>This scenario replaced IR909 to rebalance the Pipes workload.</li>
-        <li>The inspection before patching is the key safe behaviour. Simple, takes 10 seconds, prevents the injury entirely.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <!-- SCENARIO 7 -->
 <div class="scenario-section" id="s7">
   <div class="scenario-inner">
@@ -1564,6 +1395,239 @@ footer {
         <li>The casualness of leaning on the truck is important. This isn't someone being careless, it's someone being comfortable. That's the trap.</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<!-- LOCATION GROUP: SHEPPARTON PIPES — AFTERNOON -->
+<div class="location-group-header">
+  <div class="location-group-header-inner">
+    <span class="lgh-label">Shoot Day 1 &mdash; Afternoon</span>
+    <span class="lgh-divider"></span>
+    <span class="lgh-title">Shepparton Pipes &mdash; ~12:00pm to Wrap, 23 March</span>
+  </div>
+</div>
+
+<!-- SCENARIO 1 -->
+<div class="scenario-section" id="s1">
+  <div class="scenario-inner">
+    <div class="scenario-header">
+      <div class="scenario-num">01</div>
+      <div class="scenario-title-group">
+        <div class="section-eyebrow">Scenario 1</div>
+        <h2>Rolling Pipe</h2>
+        <div class="scenario-meta">
+          <span class="scenario-tag ir">IR1100</span>
+          <span class="scenario-tag mti">MTI</span>
+          <span class="scenario-tag location">Shepparton Pipes (afternoon)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-columns">
+      <div class="incident-box">
+        <h4>The Incident</h4>
+        <p>A worker was completing the patching process on a pipe at one end of a table. A forklift brought a pipe from inside the shed and placed it on the table, bumping the pipes already there and causing them to move. A pipe rolled and crushed the worker's hand between the rolling pipe and the pipe he was patching.</p>
+      </div>
+      <div class="safe-box">
+        <h4>The Safe Way</h4>
+        <p>Step away from the table while pipes are being placed. Maintain an exclusion zone from the forklift and its load at all times.</p>
+      </div>
+    </div>
+
+    <div class="beats-section">
+      <h3>Storyboard Beats</h3>
+      <table class="beats-table">
+        <thead>
+          <tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide establishing shot of Shepparton Pipes yard. Scale of the operation, concrete pipes stacked high, workers and forklifts moving. A forklift picks up a large concrete pipe from inside the shed and brings it outside to the production area. Drives through the yard. Approaches the patching table.</td>
+            <td>Site ambience. Forklift engine, beeping.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker at the far end of the patching table. Focused on his task, both hands on the pipe, completing the patching process. Comfortable rhythm. Done this every day. Doesn't look up. Forklift approaching from the other end.</td>
+            <td>Patching sounds. Forklift getting louder.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Over-forklift angle: approaching from opposite end. Worker visible in background, unaware. Forklift places the pipe, bumping existing pipes, causing them to move. Table surface shifts. A pipe begins to roll. Slow. Inevitable. Worker's hands still on the pipe he's patching. Glances up. Too late.</td>
+            <td>Low rumble building.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: rolling pipe impacts the pipe he's patching, crushing his hand between the two pipes.</td>
+            <td>Heavy impact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"A pipe rolled down that table and crushed his hand between two pieces of concrete. He never looked up. Never heard it coming. The forklift was loading right behind him and he didn't step back."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Footage rewinds to before the forklift places the pipe. Worker's hands on the pipe, patching. Freeze.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>Worker walking nearby sees the forklift approaching. Looks at the forklift, then at the patching worker's hands. Sees the situation developing. Pauses. Taps his own eyes with two fingers. Deliberate. Clear. Points directly at the hands. Two-shot: both workers in frame, the gesture connecting them.</td>
+            <td>Short alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>Patching worker steps back. Hands clear. Forklift places the pipe. Table shifts. Pipe moves. Nobody near it. Worker waits. Steps back in. Continues patching. Both carry on.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-list">
+      <h4>Shot List</h4>
+      <ul>
+        <li><strong>Wide:</strong> Shep Pipes yard establishing shot. Scale of the operation.</li>
+        <li><strong>Wide:</strong> Forklift approaching pipe storage area. Picks up pipe from inside shed to outside.</li>
+        <li><strong>Tracking:</strong> Forklift driving through the yard with the pipe. Driving in the production area.</li>
+        <li><strong>Medium:</strong> Patching worker at far end of table. Focused, head down. Comfortable rhythm.</li>
+        <li><strong>Close-up:</strong> Worker's hands on pipe. Patching detail. Both hands on the pipe.</li>
+        <li><strong>Wide:</strong> Over-forklift angle. Approaching table from opposite end. Worker visible, unaware.</li>
+        <li><strong>Medium:</strong> Forklift operator placing the pipe. Concentrating on placement.</li>
+        <li><strong>Close-up:</strong> Table surface shifting as weight lands. Pipes bumping and moving.</li>
+        <li><strong>Close-up:</strong> Pipe beginning to roll. Slow. Inevitable.</li>
+        <li><strong>Close-up:</strong> Worker's hands still on pipe, patching. Rolling pipe approaching. The danger.</li>
+        <li><strong>Medium:</strong> Worker glances up. Recognition. Too late.</li>
+        <li><strong>Close-up:</strong> Passer-by taps eyes with two fingers. Deliberate. Clear.</li>
+        <li><strong>Close-up:</strong> Passer-by points directly at patching worker's hands.</li>
+        <li><strong>Medium:</strong> Two-shot. Both workers in frame. Gesture connecting them.</li>
+        <li><strong>Medium:</strong> Worker steps back. Hands clear. Forklift places pipe. Nobody near it.</li>
+        <li><strong>Wide:</strong> Worker waits. Steps back in. Continues patching.</li>
+      </ul>
+    </div>
+
+    <div class="prod-notes">
+      <h4>Production Notes</h4>
+      <ul>
+        <li>Film at Shepparton Pipes (afternoon session). Requires pipe patching table and forklift with a real pipe.</li>
+        <li>Pipe comes from inside the shed to outside. Film the forklift drive through the yard to establish the environment.</li>
+        <li>The roll needs to look natural. The table shift should be subtle but visible on camera.</li>
+        <li>Thomas mentioned a "hands poster" related to this incident (attached 13 March). Review for reference.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SCENARIO 6 -->
+<div class="scenario-section" id="s6">
+  <div class="scenario-inner">
+    <div class="scenario-header">
+      <div class="scenario-num">06</div>
+      <div class="scenario-title-group">
+        <div class="section-eyebrow">Scenario 6</div>
+        <h2>Patching a Pipe (Protruding Reo Puncture)</h2>
+        <div class="scenario-meta">
+          <span class="scenario-tag ir">IR740</span>
+          <span class="scenario-tag mti">MTI</span>
+          <span class="scenario-tag location">Shepparton Pipes (afternoon)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-columns">
+      <div class="incident-box">
+        <h4>The Incident</h4>
+        <p>A worker was patching a concrete pipe spigot end. As the worker ran their hand around the pipe, they punctured their hand on protruding reinforcement they couldn't see.</p>
+      </div>
+      <div class="safe-box">
+        <h4>The Safe Way</h4>
+        <p>Inspect the pipe before patching. Walk around it, look at the full surface before touching it. Look before you touch.</p>
+      </div>
+    </div>
+
+    <div class="beats-section">
+      <h3>Storyboard Beats</h3>
+      <table class="beats-table">
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of Shepparton Pipes work area. Concrete pipes in various stages of production. Workers patching, finishing, moving product. Normal production rhythm.</td>
+            <td>Factory ambience. Concrete work sounds.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>A worker walks up to a concrete pipe that needs patching on the spigot end. Picks up patching materials and starts working. Done this before. Routine. Runs his hand around the pipe surface, feeling for imperfections, smoothing the patch.</td>
+            <td>Patching sounds. Hands on concrete.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: the worker's hand slides around the pipe. On the far side, out of his line of sight, a piece of reinforcement protrudes from the concrete. The reo is sharp, sticking out at an angle. His hand moves toward it. He can't see it from where he's standing.</td>
+            <td>Subtle tension tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the hand runs into the protruding reo. Puncture wound.</td>
+            <td>Sharp impact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"A piece of reo was sticking out the other side of the pipe. He couldn't see it. He ran his hand straight into it. Ten seconds to walk around and check. That's all it would have taken."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the hand starts moving around the pipe. Freeze. The reo is visible to the camera but not to the worker. His hand is heading straight for it.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A coworker nearby sees the worker about to run his hand blind around the pipe. Taps eyes. Points at the hands.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker stops. Steps back. Walks around the pipe and inspects the full surface visually before touching it. Spots the protruding reo. Flags it or removes it. Then proceeds to patch with full awareness of where hazards are. Finishes the job. Walks away.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-list">
+      <h4>Shot List</h4>
+      <ul>
+        <li><strong>Wide:</strong> Pipes work area, concrete pipes, production activity</li>
+        <li><strong>Medium:</strong> Worker approaching pipe, picking up patching materials</li>
+        <li><strong>Close-up:</strong> Hand running along pipe surface (smooth, routine)</li>
+        <li><strong>Close-up:</strong> Protruding reo on the far side of the pipe (visible to camera, not to worker)</li>
+        <li><strong>Close-up:</strong> Hand approaching the reo (the danger)</li>
+        <li><strong>Close-up:</strong> "Eyes on hands" gesture</li>
+        <li><strong>Medium:</strong> Worker walking around the pipe, inspecting visually</li>
+        <li><strong>Close-up:</strong> Reo spotted, flagged or removed</li>
+        <li><strong>Medium:</strong> Worker patching with full visibility, finishing</li>
+      </ul>
+    </div>
+
+    <div class="prod-notes">
+      <h4>Production Notes</h4>
+      <ul>
+        <li>Film at Shepparton Pipes (afternoon session, after Precast scenarios wrap).</li>
+        <li>Thomas has identified the specific pipe to be used and segregated it on site. The protruding reo is real.</li>
+        <li>This scenario replaced IR909 to rebalance the Pipes workload.</li>
+        <li>The inspection before patching is the key safe behaviour. Simple, takes 10 seconds, prevents the injury entirely.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION GROUP: CARRUM DOWNS, CUBIS — SEPARATE DAY -->
+<div class="location-group-header">
+  <div class="location-group-header-inner">
+    <span class="lgh-label">Shoot Day 2</span>
+    <span class="lgh-divider"></span>
+    <span class="lgh-title">Carrum Downs, Cubis &mdash; Separate Day, TBD</span>
   </div>
 </div>
 
