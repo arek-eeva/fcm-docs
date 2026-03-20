@@ -249,9 +249,23 @@ nav a:hover { color: var(--red); }
 .beat-label.victim { color: var(--dark); }
 .beat-label.mistake { color: var(--amber); }
 .beat-label.accident { color: var(--red); }
+.beat-label.narration { color: #1a1a1a; }
 .beat-label.rewind { color: #9c27b0; }
 .beat-label.gesture { color: var(--green); }
 .beat-label.safe { color: var(--green); }
+
+/* Narration beat row — dark background to represent black screen */
+.beats-table tr.narration-row td {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+.beats-table tr.narration-row td .beat-label.narration {
+  color: #aaaaaa;
+}
+.beats-table tr.narration-row td em {
+  color: #e0e0e0;
+  font-style: italic;
+}
 
 /* SHOT LIST */
 .shot-list {
@@ -295,7 +309,7 @@ nav a:hover { color: var(--red); }
   color: var(--amber); flex-shrink: 0; font-size: 14px;
 }
 
-/* NARRATION */
+/* NARRATION CARD (Creative Approach section) */
 .narration {
   background: var(--card-bg); border-left: 3px solid var(--red);
   border: 1px solid var(--border); border-left: 3px solid var(--red);
@@ -348,6 +362,8 @@ nav a:hover { color: var(--red); }
 .status-waiting { color: var(--amber); font-weight: 600; }
 .status-pending { color: var(--blue); }
 .status-done { color: var(--green); font-weight: 600; }
+.status-resolved { color: var(--green); font-weight: 600; }
+.status-cancelled { color: var(--mid); text-decoration: line-through; }
 
 /* CLOSING */
 .closing-block {
@@ -427,7 +443,7 @@ footer {
       </div>
       <div class="hero-meta-item">
         <div class="label">Version</div>
-        <div class="value">Draft 4 — 20 March 2026</div>
+        <div class="value">Draft 5 &mdash; 20 March 2026</div>
       </div>
     </div>
   </div>
@@ -489,10 +505,10 @@ footer {
 
     <div class="approach-grid">
       <div class="approach-text">
-        <p>The video opens with hard statistics, then moves through 10 real incident scenarios. Each scenario is a self-contained 30&ndash;60 second mini-story that follows a consistent seven-beat pattern.</p>
+        <p>The video opens with hard statistics, then moves through 10 real incident scenarios. Each scenario is a self-contained 30&ndash;60 second mini-story that follows a consistent eight-beat pattern.</p>
         <p><strong>Pacing:</strong> Opening stats (60&ndash;90s), each scenario (30&ndash;60s), closing (30&ndash;45s). Estimated total runtime: 7&ndash;12 minutes.</p>
-        <p><strong>Sound design:</strong> Ambient site sound during setup. Sharp audio cue at accident. Tape-rewind effect. Calm resolution. No music bed during scenarios. Music only in the opening montage and closing.</p>
-        <p><strong>Narration:</strong> Voiceover throughout. Factual and direct, not dramatic. States what happened, what went wrong, and what should have been done.</p>
+        <p><strong>Sound design:</strong> Ambient site sound during setup. Sharp audio cue at accident. Voiceover over black screen. Tape-rewind effect. Calm resolution. No music bed during scenarios. Music only in the opening montage and closing.</p>
+        <p><strong>Narration:</strong> Voiceover plays over a black screen after each accident, between the AI-generated injury and the rewind. The viewer watches the accident, the screen fades to black, and the narrator speaks in the darkness. Factual and direct, not dramatic. States what happened and what went wrong. Then the footage rewinds and the safe correction plays out visually, without voiceover.</p>
       </div>
       <div class="beat-list">
         <div class="beat-item">
@@ -524,21 +540,28 @@ footer {
           </div>
         </div>
         <div class="beat-item">
-          <div class="beat-num">05</div>
+          <div class="beat-num" style="color:#1a1a1a;">05</div>
+          <div class="beat-text">
+            <strong style="color:#1a1a1a;">Fade to Black &mdash; Narration</strong>
+            <p>Screen goes black. Voiceover lands in the darkness. Factual. Direct. The viewer sits with the weight of it.</p>
+          </div>
+        </div>
+        <div class="beat-item">
+          <div class="beat-num">06</div>
           <div class="beat-text">
             <strong>Rewind</strong>
             <p>Footage rewinds to the critical moment. Freeze.</p>
           </div>
         </div>
         <div class="beat-item">
-          <div class="beat-num">06</div>
+          <div class="beat-num">07</div>
           <div class="beat-text">
             <strong>The Gesture</strong>
             <p>A worker sees it. Taps their own eyes. Points at the hands.</p>
           </div>
         </div>
         <div class="beat-item">
-          <div class="beat-num">07</div>
+          <div class="beat-num">08</div>
           <div class="beat-text">
             <strong>Safe Correction</strong>
             <p>Hands clear. Task completes normally. They walk away.</p>
@@ -578,30 +601,28 @@ footer {
     </div>
 
     <div class="shot-list">
-      <h4>Shot list</h4>
+      <h4>Shot List</h4>
       <ul>
         <li>Black screen. Factory floor fading in. Title card: "EYES ON HANDS"</li>
-        <li>"Injured man" body diagram, hands highlighted (asset from Glenn)</li>
+        <li>"Injured man" body diagram with hands highlighted (received from Glenn)</li>
         <li>Year-by-year hand injury chart, 2021&ndash;2026 (Thomas, received 13 March)</li>
         <li>Rapid-fire data cards: incident dates, sites, outcomes. One every 1&ndash;2 seconds.</li>
         <li>Real injury photos where available (awaiting from Glenn/Thomas)</li>
         <li>Key statistics on screen with voiceover</li>
-        <li>Optional: 15&ndash;20 sec piece to camera from Joe at Shepparton Pipes (Thomas to confirm)</li>
       </ul>
     </div>
 
     <div class="narration">
-      <div class="narration-label">Draft Narration</div>
+      <div class="narration-label">Draft Narration &mdash; Over Black</div>
       "Over the past four years, hand injuries have been the most common serious injury across the Civilmart Group. [X] medical treatments. [X] lost time injuries. [X] surgeries. [X] weeks of lost work. Every single one was preventable. This is how."
     </div>
 
     <div class="prod-notes">
       <h4>Assets Needed</h4>
       <ul>
-        <li>"Injured man" body diagram screenshot (Glenn)</li>
+        <li>"Injured man" body diagram screenshot &mdash; Received from Glenn</li>
         <li>Full SkyTrust stats: MTI/LTI breakdown, surgeries, cumulative time lost (Glenn)</li>
         <li>Real injury photos (Glenn/Thomas)</li>
-        <li>Joe testimonial decision (Thomas)</li>
       </ul>
     </div>
   </div>
@@ -638,7 +659,7 @@ footer {
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
         <thead>
-          <tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr>
+          <tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -661,9 +682,14 @@ footer {
             <td>AI extension: rolling pipe impacts the pipe he's patching, crushing his hand between the two pipes.</td>
             <td>Heavy impact. Silence.</td>
           </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"A pipe rolled down that table and crushed his hand between two pieces of concrete. He never looked up. Never heard it coming. The forklift was loading right behind him and he didn't step back."</em></td>
+          </tr>
           <tr>
             <td><span class="beat-label rewind">Rewind</span></td>
-            <td>Rewinds to before the forklift places the pipe. Worker's hands on the pipe, patching. Freeze.</td>
+            <td>Footage rewinds to before the forklift places the pipe. Worker's hands on the pipe, patching. Freeze.</td>
             <td>Rewind sound.</td>
           </tr>
           <tr>
@@ -744,15 +770,48 @@ footer {
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of grate storage area at Shepparton Precast. Stacked grates, heavy steel. Workers moving product around. Normal day.</td><td>Factory ambience. Metal clanking.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker walks over to two stacked grates. Top one is crooked. Makes a quick decision. The forklift with jib attachment is visible nearby, maybe 10 metres away. He glances at it. Decides not to bother. Crouches down. No tools. Just bare hands.</td><td>Footsteps. Fabric rustling.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: hands reach under the top grate. We see the fins on the underside. We see the gaps in the lower grate. Fingers thread between the fins. He lifts and shifts. The fins slip through. Left middle finger is between them.</td><td>Subtle tension tone building.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: fin drops through the gap onto the finger. Crush.</td><td>Crunch. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to hands going under the grate. Freeze. Fins, gaps, fingers in the path.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Another worker nearby sees the crouch, sees the hands going under. Puts down what he's carrying. Taps eyes. Points at hands.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker stands up. Walks to the forklift with jib attachment. Uses the mechanical lifting aid to reposition the grate. Hands stay clear of the underside. Walks away. Done properly.</td><td>Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of grate storage area at Shepparton Precast. Stacked grates, heavy steel. Workers moving product around. Normal day.</td>
+            <td>Factory ambience. Metal clanking.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker walks over to two stacked grates. Top one is crooked. Makes a quick decision. The forklift with jib attachment is visible nearby, maybe 10 metres away. He glances at it. Decides not to bother. Crouches down. No tools. Just bare hands.</td>
+            <td>Footsteps. Fabric rustling.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: hands reach under the top grate. We see the fins on the underside. We see the gaps in the lower grate. Fingers thread between the fins. He lifts and shifts. The fins slip through. Left middle finger is between them.</td>
+            <td>Subtle tension tone building.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: fin drops through the gap onto the finger. Crush.</td>
+            <td>Crunch. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"Fifty-four kilograms of galvanised steel, and he tried to shift it with his bare hands. The fin dropped through the gap and took his finger to surgery. The forklift with the jib was ten metres away."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to hands going under the grate. Freeze. Fins, gaps, fingers in the path.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>Another worker nearby sees the crouch, sees the hands going under. Puts down what he's carrying. Taps eyes. Points at hands.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>Worker stands up. Walks to the forklift with jib attachment. Uses the mechanical lifting aid to reposition the grate. Hands stay clear of the underside. Walks away. Done properly.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -807,22 +866,55 @@ footer {
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>Sling the bundle properly. Don't rely on tie wire. Place timbers when hands are clear.</p>
+        <p>Sling the bundle properly. Don't rely on tie wire. Place timbers when hands are clear of the load.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of rebar storage yard. Forklift picks up a 16mm x 12m bundle held with tie wire. Carries it to the work area. Holds it in position.</td><td>Forklift engine. Metal shifting.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker waiting with timber dunnage. Crouches down and starts sliding timbers underneath while forklift holds the load. Right hand between the timbers, positioning. Routine. Done it a hundred times.</td><td>Timber scraping on concrete.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: tie wire strap under tension. Straining. Worker's hand still between the timbers. The wire snaps. Bars shift and spread.</td><td>Wire snap. Sharp ping.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: bars release and fall. Right pinky crushed between two timbers.</td><td>Metal clang, impact. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to hand between timbers with tie wire holding. Freeze. Wire visible, under strain. Hand in the crush zone.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Worker walking past sees the hand going under the suspended bundle. Stops. Taps eyes. Points at the hands between the timbers.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker pulls hand clear. A sling is wrapped around the bundle. Forklift lifts properly. Timbers placed with hands completely clear. Bundle set down. Both walk off.</td><td>Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the rebar storage yard at Shepparton Precast. A forklift drives over to a stack of rebar bundles. Picks one up, a 16mm x 12m bundle held together with tie wire. Carries it across to the work area and holds it in position.</td>
+            <td>Forklift engine. Metal shifting.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker waiting with timber dunnage. Forklift holds the bundle. Worker crouches down and starts sliding timbers underneath while the forklift holds the load. His right hand is between the timbers, positioning them. Routine. Done it a hundred times.</td>
+            <td>Timber scraping on concrete.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: the tie wire strap under tension. It's straining. The worker's hand is still between the timbers. The wire snaps. The bars shift and spread.</td>
+            <td>Wire snap, a sharp ping.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: bars release and fall. Right pinky is crushed between two timbers.</td>
+            <td>Metal clang, impact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"The wire snapped. Twelve metres of rebar came loose and his hand was between the timbers underneath. A suspended load held together by tie wire. And he put his hands right under it."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the worker puts his hand between the timbers with the tie wire still holding. Freeze. The wire is visible, under strain. His hand is in the crush zone.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A worker walking past the area sees the hand going under the suspended bundle. Stops. Taps eyes. Points at the hands between the timbers.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker pulls his hand clear. A sling is wrapped around the bundle. The forklift lifts it properly. Timbers are placed while the worker's hands are completely clear of the load. The bundle is set down. Both workers walk off.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -846,8 +938,8 @@ footer {
       <h4>Production Notes</h4>
       <ul>
         <li>Need forklift, rebar bundle, timbers, tie wire, and sling.</li>
-        <li>The tie wire snap is the dramatic moment. Stage safely and convincingly.</li>
-        <li>The "done it a hundred times" body language is important. Routine, not reckless. That's the point.</li>
+        <li>The tie wire snap is the dramatic moment. Needs to be staged safely and convincingly.</li>
+        <li>The "done it a hundred times" body language is important. This is routine, not reckless. That's the point.</li>
       </ul>
     </div>
   </div>
@@ -863,7 +955,7 @@ footer {
         <h2>Holding Rebar During MIG Welding</h2>
         <div class="scenario-meta">
           <span class="scenario-tag ir">IR2486</span>
-          <span class="scenario-tag lti">LTI (Hospital + Surgery)</span>
+          <span class="scenario-tag lti">LTI (Hospitalisation, Surgery)</span>
           <span class="scenario-tag location">Shepparton Precast (morning)</span>
         </div>
       </div>
@@ -872,26 +964,59 @@ footer {
     <div class="scenario-columns">
       <div class="incident-box">
         <h4>The Incident</h4>
-        <p>Left-handed worker tack welding rebar into a precast cage. MIG wire pierced the welding glove and punctured his right index finger. Did not report until the next day. Hospital admission, surgery to flush debris.</p>
+        <p>A left-handed worker was tack welding rebar into a precast cage. His right hand held the bar in position. The MIG wire pierced through his welding glove and punctured his right pointer finger. He didn't report it until the next day. Hospital admission, surgery to flush debris from the wound.</p>
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>Use the jig that's meant to be used to make the cages. Hands out of the weld zone entirely. Gloves are a last line of defence, not a solution.</p>
+        <p>Use a clamp or jig to hold the piece. Hands out of the weld zone entirely.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of precast cage assembly area. Rebar cages in various stages. Welding sparks from a few stations. Workers moving around.</td><td>Factory floor. Welding buzz. Metal on metal.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker at a partially completed cage. Picks up a rebar segment, positions it. Needs to hold with one hand, weld with the other. Grabs the piece with right hand (gloved), picks up MIG welder with left. Standard setup.</td><td>Welding arc starting up.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: right hand grips rebar, fingers close to weld point. MIG wire feeds automatically from handpiece, glowing hot. Wire tip moves toward the glove. Contacts. Pierces through the fabric.</td><td>Welding buzz intensifying.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: wire penetrates through glove into finger. Puncture.</td><td>Welding cuts to silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to the moment worker grabs rebar with bare hand in weld zone. Freeze. Hand, glove, nothing else between finger and hot wire.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Worker at the next cage over sees the hand holding rebar right in the weld zone. Taps eyes. Points at the hand.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker puts down the welder. Grabs the jig meant for making cages. Places rebar in the jig, hands free. Both hands now on the welder or well clear. Weld proceeds. Finishes joint, stands up, moves to the next one.</td><td>Ambience returns. Welding at comfortable distance.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the precast cage assembly area. Rebar cages in various stages of construction. Welding sparks flying from a few stations. Workers moving around.</td>
+            <td>Factory floor. Welding buzz. Metal on metal.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker at a partially completed rebar cage. Picks up a segment of rebar and positions it. Needs to hold it in place with one hand and weld with the other. Grabs the piece with his right hand (gloved), picks up the MIG welder with his left. Standard setup.</td>
+            <td>Welding arc starting up.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: his right hand grips the rebar, fingers close to the weld point. The MIG wire feeds automatically, glowing hot. Close-up: the wire tip moves toward the glove. It contacts. It pierces through the fabric.</td>
+            <td>Welding buzz intensifying.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the wire penetrates through the glove into the finger. Puncture. The worker pulls his hand back, but the damage is done.</td>
+            <td>Welding cuts to silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"The MIG wire went through his glove and into his finger. He didn't say anything until the next day. By then he needed surgery to flush the debris out. He was holding the rebar with his bare hand in the weld zone. The jig was right there on the bench."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the worker grabs the rebar with his bare hand in the weld zone. Freeze. His hand, a glove, and nothing else between his finger and a hot wire.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A worker at the next cage over looks across. Sees the hand holding rebar right in the weld zone. Taps eyes. Points at the hand.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker puts down the welder. Grabs the jig on the bench. Places the rebar in the jig, hands free. Both hands on the welder or well clear. The weld proceeds. He finishes the joint, stands up, moves to the next one. Normal.</td>
+            <td>Ambience returns. Welding resumes at a safe distance.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -902,11 +1027,11 @@ footer {
         <li><strong>Wide:</strong> Cage assembly area, multiple stations, sparks</li>
         <li><strong>Medium:</strong> Worker picking up rebar, positioning into cage</li>
         <li><strong>Close-up:</strong> Right hand gripping rebar near weld point</li>
-        <li><strong>XCU:</strong> MIG wire feeding from handpiece</li>
-        <li><strong>Close-up:</strong> Glove material. Thin, insufficient.</li>
+        <li><strong>Extreme close-up:</strong> MIG wire feeding from handpiece</li>
+        <li><strong>Close-up:</strong> Glove material, thin and insufficient</li>
         <li><strong>Close-up:</strong> Wire contacting/piercing glove (the danger)</li>
         <li><strong>Close-up:</strong> "Eyes on hands" gesture from adjacent worker</li>
-        <li><strong>Medium:</strong> Worker grabbing the jig meant for making cages</li>
+        <li><strong>Medium:</strong> Worker grabbing the jig</li>
         <li><strong>Close-up:</strong> Rebar in the jig, hands free</li>
         <li><strong>Close-up:</strong> Weld proceeding, hands well clear</li>
         <li><strong>Medium:</strong> Worker finishing, standing up, moving on</li>
@@ -918,7 +1043,7 @@ footer {
       <ul>
         <li>Need MIG welder, rebar cage (partially built), and the jig used on site for making cages.</li>
         <li>Welding PPE and safe distances for crew during filming.</li>
-        <li>The delayed reporting element is worth mentioning in narration. Adds weight to the "it didn't seem like much" attitude.</li>
+        <li>The delayed reporting element is worth mentioning in narration. It adds weight to the "it didn't seem like much" attitude that makes these injuries worse.</li>
         <li>LTI with hospitalisation and surgery. High severity.</li>
       </ul>
     </div>
@@ -936,7 +1061,7 @@ footer {
         <div class="scenario-meta">
           <span class="scenario-tag ir">IR3263</span>
           <span class="scenario-tag mti">MTI</span>
-          <span class="scenario-tag location">Shepparton Precast (morning)</span>
+          <span class="scenario-tag location">Shepparton Precast</span>
         </div>
       </div>
     </div>
@@ -948,21 +1073,55 @@ footer {
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>Use a long-handled tool (jimmy bar) to clear the jaw. The kibble has no proper lockout/isolation point. The safe behaviour is: communicate, isolate, then hands off, tool in.</p>
+        <p>Use a tool (jimmy bar or similar) to scrape the jaw clean. Hands off the jaw entirely. The kibble has no proper lockout point, so tool use and communication are the safe behaviours.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of concrete batching/pouring area. Skip (kibble) hanging from crane or sitting on frame. Concrete production in progress. Workers at different stations.</td><td>Concrete plant ambience. Machinery humming.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker notices the skip jaw is clogged with dried concrete. Walks up. Looks at the blockage. Reaches in with bare hand, picking at the concrete. Just clearing it quickly so the job can continue.</td><td>Scraping. Concrete chipping.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Cut to: another worker at the remote control station, out of sight. Ready to operate the skip. Doesn't know anyone is near the jaw. Close-up: Worker A's fingers inside the jaw opening. Worker B presses the button. Jaw starts to close.</td><td>Remote control click. Hydraulic movement.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: jaw closes on fingers. Laceration to right middle finger.</td><td>Metal jaw closing. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to Worker A reaching into the jaw. Freeze. Worker A's hand inside the jaw, Worker B at the remote out of sight. The disconnect.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker A yells out to Worker B: the jaw is clogged and needs to be cleaned. Worker B puts the remote down. They turn off the kibble and isolate it. Worker A grabs a jimmy bar. Using the long-handled tool, he clears the concrete with the kibble isolated and the remote down. Hands well clear. Both confirm verbally before operating the skip again. Skip operates. Both walk away.</td><td>Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the concrete batching/pouring area. A skip (kibble) hangs from a crane or sits on a frame. Concrete production in progress. Workers at different stations.</td>
+            <td>Concrete plant ambience. Machinery humming.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker notices the skip jaw is clogged with dried concrete. It's not opening cleanly. Walks up, looks at the blockage. Reaches in with his bare hand and starts picking at the concrete, pulling chunks out. Just clearing it quickly so the job can continue.</td>
+            <td>Scraping. Concrete chipping.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Cut to: another worker at the remote control station, not in the first worker's line of sight. Ready to operate the skip. Doesn't know anyone is near the jaw. Close-up: Worker A's fingers inside the jaw opening. Worker B presses the button. The jaw starts to close.</td>
+            <td>Remote control click. Hydraulic movement.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the jaw closes on the fingers. Laceration to right middle finger.</td>
+            <td>Metal jaw closing. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"He reached into the jaw with his bare hand. Ten metres away, someone else hit the remote. No call out. No isolation. The jaw closed on his finger."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment Worker A reaches into the jaw. Freeze. Worker A's hand inside the jaw, Worker B at the remote out of sight. The disconnect.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>Worker A yells out to Worker B. Worker B puts the remote down. They confirm with each other before anything happens near the jaw. [Note: No classic "eyes on hands" gesture in this scenario. The correction is communication and tool use.]</td>
+            <td>Alert tone. Verbal confirmation.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>Worker B puts the remote down. They turn off the kibble and isolate it. Worker A grabs a jimmy bar. Using the long-handled tool, he clears the concrete with the remote down and hands well clear. Both workers confirm verbally before operating the skip again. The skip operates. Both walk away.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -975,7 +1134,7 @@ footer {
         <li><strong>Medium:</strong> Worker A walking up, assessing, reaching in</li>
         <li><strong>Medium:</strong> Worker B at remote control station (separate location, can't see Worker A)</li>
         <li><strong>Close-up:</strong> Fingers inside jaw opening (the danger)</li>
-        <li><strong>Medium:</strong> Worker A yelling out to Worker B about the clogged jaw</li>
+        <li><strong>Medium:</strong> Worker A yelling out to Worker B</li>
         <li><strong>Medium:</strong> Worker B putting remote down</li>
         <li><strong>Medium:</strong> Kibble being turned off and isolated</li>
         <li><strong>Medium:</strong> Worker A with jimmy bar, clearing the jaw with hands clear</li>
@@ -988,8 +1147,9 @@ footer {
       <h4>Production Notes</h4>
       <ul>
         <li>Requires a concrete skip with operable jaw and remote control. Two actors.</li>
-        <li>The physical separation between the two workers is the core danger. Film to emphasise that neither can see the other.</li>
-        <li>Thomas confirmed: the kibble has no proper lockout/isolation point. The safe correction is verbal communication + isolation + tool use (jimmy bar). Do not show lock-out tag-out as the solution.</li>
+        <li>The split between the two workers, neither can see the other, is the core danger. Film to emphasise the physical separation.</li>
+        <li>Thomas confirmed: the kibble doesn't have a proper lockout point. The safe correction is using a tool (jimmy bar). Don't show lock-out tag-out as the solution here.</li>
+        <li>Filming confirmed at Shepparton Precast.</li>
       </ul>
     </div>
   </div>
@@ -1014,26 +1174,59 @@ footer {
     <div class="scenario-columns">
       <div class="incident-box">
         <h4>The Incident</h4>
-        <p>A worker was patching a concrete pipe spigot end. As he ran his hand around the pipe, he punctured his hand on protruding reinforcement he couldn't see.</p>
+        <p>A worker was patching a concrete pipe spigot end. As the worker ran their hand around the pipe, they punctured their hand on protruding reinforcement they couldn't see.</p>
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>Inspect the pipe before patching. Check for any hazards visually. Look before you touch.</p>
+        <p>Inspect the pipe before patching. Walk around it, look at the full surface before touching it. Look before you touch.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of Shepparton Pipes work area. Concrete pipes in various stages of production. Workers patching, finishing, moving product. Normal production rhythm.</td><td>Factory ambience. Concrete work sounds.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker walks up to a pipe needing patching on the spigot end. Picks up patching materials. Runs his hand around the pipe surface, feeling for imperfections. Routine task.</td><td>Patching sounds. Hands on concrete.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: hand slides around the pipe. On the far side, out of his line of sight, a piece of reo protrudes from the concrete. Sharp, sticking out at an angle. His hand moves toward it. Can't see it from where he's standing.</td><td>Subtle tension tone.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: hand runs into the protruding reo. Puncture wound.</td><td>Sharp impact. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to hand starting to move around the pipe. Freeze. Reo visible to camera but not to worker. Hand heading straight for it.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Coworker nearby sees the worker about to run his hand blind around the pipe. Taps eyes. Points at the hands.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker stops. Steps back. Walks around the pipe and inspects the full surface visually before touching. Spots the protruding reo. Flags it or removes it. Proceeds to patch with full awareness. Finishes the job. Walks away.</td><td>Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of Shepparton Pipes work area. Concrete pipes in various stages of production. Workers patching, finishing, moving product. Normal production rhythm.</td>
+            <td>Factory ambience. Concrete work sounds.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>A worker walks up to a concrete pipe that needs patching on the spigot end. Picks up patching materials and starts working. Done this before. Routine. Runs his hand around the pipe surface, feeling for imperfections, smoothing the patch.</td>
+            <td>Patching sounds. Hands on concrete.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: the worker's hand slides around the pipe. On the far side, out of his line of sight, a piece of reinforcement protrudes from the concrete. The reo is sharp, sticking out at an angle. His hand moves toward it. He can't see it from where he's standing.</td>
+            <td>Subtle tension tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the hand runs into the protruding reo. Puncture wound.</td>
+            <td>Sharp impact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"A piece of reo was sticking out the other side of the pipe. He couldn't see it. He ran his hand straight into it. Ten seconds to walk around and check. That's all it would have taken."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the hand starts moving around the pipe. Freeze. The reo is visible to the camera but not to the worker. His hand is heading straight for it.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A coworker nearby sees the worker about to run his hand blind around the pipe. Taps eyes. Points at the hands.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker stops. Steps back. Walks around the pipe and inspects the full surface visually before touching it. Spots the protruding reo. Flags it or removes it. Then proceeds to patch with full awareness of where hazards are. Finishes the job. Walks away.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1044,10 +1237,10 @@ footer {
         <li><strong>Wide:</strong> Pipes work area, concrete pipes, production activity</li>
         <li><strong>Medium:</strong> Worker approaching pipe, picking up patching materials</li>
         <li><strong>Close-up:</strong> Hand running along pipe surface (smooth, routine)</li>
-        <li><strong>Close-up:</strong> Protruding reo on far side of pipe (visible to camera, not worker)</li>
+        <li><strong>Close-up:</strong> Protruding reo on the far side of the pipe (visible to camera, not to worker)</li>
         <li><strong>Close-up:</strong> Hand approaching the reo (the danger)</li>
         <li><strong>Close-up:</strong> "Eyes on hands" gesture</li>
-        <li><strong>Medium:</strong> Worker walking around pipe, inspecting visually</li>
+        <li><strong>Medium:</strong> Worker walking around the pipe, inspecting visually</li>
         <li><strong>Close-up:</strong> Reo spotted, flagged or removed</li>
         <li><strong>Medium:</strong> Worker patching with full visibility, finishing</li>
       </ul>
@@ -1056,8 +1249,9 @@ footer {
     <div class="prod-notes">
       <h4>Production Notes</h4>
       <ul>
-        <li>Film at Shepparton Pipes (afternoon, after Precast scenarios wrap).</li>
-        <li>Thomas has identified the specific pipe and segregated it on site. The protruding reo is real.</li>
+        <li>Film at Shepparton Pipes (afternoon session, after Precast scenarios wrap).</li>
+        <li>Thomas has identified the specific pipe to be used and segregated it on site. The protruding reo is real.</li>
+        <li>This scenario replaced IR909 to rebalance the Pipes workload.</li>
         <li>The inspection before patching is the key safe behaviour. Simple, takes 10 seconds, prevents the injury entirely.</li>
       </ul>
     </div>
@@ -1074,7 +1268,7 @@ footer {
         <h2>Lowering a Mould Onto a Resting Hand</h2>
         <div class="scenario-meta">
           <span class="scenario-tag ir">IR3532</span>
-          <span class="scenario-tag mti">Confirm MTI/LTI</span>
+          <span class="scenario-tag mti">Confirm with Thomas</span>
           <span class="scenario-tag location">Shepparton Precast (morning)</span>
         </div>
       </div>
@@ -1087,22 +1281,55 @@ footer {
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>The person guiding should be the same person on the crane remote. One person, one control, one set of hands.</p>
+        <p>The person guiding should be the same person on the crane remote. One person, one control, one set of hands. Or: confirm hand position before every down movement.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of mould assembly area. Overhead crane moving slowly. 900 pit mould base on the floor. Outer shell suspended from the crane. Two workers approach. One grabs the crane remote, the other positions at the mould.</td><td>Crane motor humming. Factory ambience.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker B at the mould base. Reaches up to guide the outer shell as it comes down. Aligning bolt holes. Right thumb rests on the edge of the mould base while he peers at the bolt holes.</td><td>Metal on metal, gentle clinking as shell sways.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Worker A on the crane remote, a few metres away. Can see the shell but not Worker B's hand position in detail. Thinks they're aligned. Presses down. Shell lowers. Thumb is on the base. Worker B doesn't move it in time.</td><td>Crane motor engaging. Descending tone.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: outer shell comes down on the thumb against the base. Crush.</td><td>Heavy metal contact. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to Worker B placing thumb on the base. Freeze. Two workers, two roles, no coordinated view of the hand. The disconnect is the danger.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Worker A, before pressing the down button, pauses. Looks directly at Worker B's hands. Sees the thumb on the base. Taps eyes. Points at the thumb. Waits.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker B takes hand off the base. Steps back. Worker A lowers the shell. Or Worker B takes the remote himself. One person guides and controls. Shell lowers cleanly. Bolts align. They bolt it together. Walk away.</td><td>Ambience returns to normal. Crane settles.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the mould assembly area. Overhead crane moving slowly. A 900 pit mould base sitting on the floor. The outer shell is suspended from the crane, ready to be lowered. Two workers approach. One grabs the crane remote, the other positions himself at the mould.</td>
+            <td>Crane motor humming. Factory ambience.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>Worker B stands at the mould base. Reaches up to guide the outer shell as it comes down. Aligning bolt holes, adjusting the shell's position with his hands. His right thumb rests on the edge of the mould base while he peers at the bolt holes.</td>
+            <td>Metal on metal, gentle clinking as the shell sways.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Cut to Worker A on the crane remote, a few metres away. Can see the shell but not Worker B's hand position in detail. Thinks they're aligned. Presses down. Cut back to Worker B: the shell lowers. His thumb is on the base. Doesn't move it in time.</td>
+            <td>Crane motor engaging. A descending tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the outer shell comes down on the thumb against the base. Crush.</td>
+            <td>Heavy metal contact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"His thumb was resting on the base when the crane brought the shell down on top of it. Two blokes, one set of controls, and nobody watching where the hands were."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment Worker B places his thumb on the base. Freeze. Two workers, two roles, no coordinated view of the hand. The disconnect is the danger.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>Worker A, before pressing the down button, pauses. Looks directly at Worker B's hands. Sees the thumb on the base. Taps eyes. Points at the thumb. Waits.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>Worker B takes his hand off the base. Steps back. Worker A lowers the shell with the remote, or Worker B takes the remote himself. One person guides and controls. The shell lowers cleanly onto the base. Bolts align. They bolt it together. Walk away.</td>
+            <td>Ambience returns to normal. Crane settles.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1115,7 +1342,7 @@ footer {
         <li><strong>Close-up:</strong> Worker B's thumb on mould base, peering at bolt holes</li>
         <li><strong>Medium:</strong> Worker A at crane remote, separate position (show the physical gap)</li>
         <li><strong>Close-up:</strong> Shell descending toward the thumb (the danger)</li>
-        <li><strong>Close-up:</strong> "Eyes on hands" gesture. Worker A pausing, looking at the hand</li>
+        <li><strong>Close-up:</strong> "Eyes on hands" gesture, Worker A pausing and looking at the hand</li>
         <li><strong>Medium:</strong> Worker B stepping back / taking the remote himself</li>
         <li><strong>Wide:</strong> Shell lowering cleanly, both workers finishing the job</li>
       </ul>
@@ -1125,7 +1352,8 @@ footer {
       <h4>Production Notes</h4>
       <ul>
         <li>Need a 900 pit mould (base + outer shell) and overhead crane.</li>
-        <li>The two-worker disconnect is the core visual. Frame the separation so the audience understands neither can see the other's hands clearly.</li>
+        <li>The two-worker disconnect is the core visual. Camera should show the separation between them.</li>
+        <li>This may relate to the Queanbeyan incident (10 March 2026, fractured thumb). Confirm with Glenn.</li>
         <li>Confirm outcome (MTI or LTI) with Thomas.</li>
       </ul>
     </div>
@@ -1151,26 +1379,59 @@ footer {
     <div class="scenario-columns">
       <div class="incident-box">
         <h4>The Incident</h4>
-        <p>A worker was cutting 5 lengths of 12mm rebar. After a cut, he reached in to remove the pieces. The blade activated unexpectedly and amputated a portion of his right ring finger.</p>
+        <p>A worker was cutting 5 lengths of 12mm rebar on a cutting machine. After a cut, he reached into the machine to remove the cut pieces. The blade activated unexpectedly and amputated a portion of his right ring finger.</p>
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>Isolate the machine before reaching in. Power off, lock out, confirm dead.</p>
+        <p>Isolate the machine before reaching in. Power off, lock out, confirm dead. Then clear the pieces.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of rebar processing area. Cutting machines, bending machines, stacks of rebar. Worker feeds 12mm rebar into the cutting machine. Makes a cut. Then another. Routine. Efficient.</td><td>Machine hum. Rhythmic cutting sounds.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker finishes fifth cut. Cut pieces sitting inside the machine. Needs to clear them. Doesn't bother turning the machine off. It'll only take a second. Reaches in with right hand.</td><td>Machine still humming. Still live.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: fingers enter cutting zone. Cut pieces right there. Almost got them. Close-up: blade mechanism. Still powered. Something triggers it. The blade moves.</td><td>Mechanical click. Blade engaging.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: blade contacts right ring finger. Partial amputation of fingertip.</td><td>Blade activation. Total silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to hand entering the machine. Freeze. Machine is running. Hand is inside. No isolation.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Worker at the next machine sees the hand going in. Shouts. Taps eyes. Points at the hand in the machine.</td><td>Alert tone. Verbal "Oi!"</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker pulls hand back. Hits power-off switch. Applies lock-out. Confirms machine is dead. Then reaches in and clears the pieces. Or uses a tool to hook them out. Loads next batch. Carries on.</td><td>Machine winding down. Normal ambience returns.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the rebar processing area. Cutting machines, bending machines, stacks of rebar. A worker feeds 12mm rebar into the cutting machine. Makes a cut. Then another. Routine. Efficient. The machine is running smoothly.</td>
+            <td>Machine hum. Rhythmic cutting sounds.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>The worker finishes his fifth cut. The cut pieces are sitting inside the machine. He needs to clear them before the next batch. Pauses. Looks at the pieces. Doesn't bother turning the machine off. It'll only take a second. Reaches in with his right hand.</td>
+            <td>Machine still humming. No change in ambient sound. The machine is still live.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: his fingers enter the cutting zone. The cut pieces are right there. He's almost got them. Close-up: the blade mechanism. Still powered. Something triggers it. An automatic cycle, a sensor, a fault. The blade moves.</td>
+            <td>A mechanical click. The blade engaging.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the blade contacts the right ring finger. Partial amputation of the fingertip.</td>
+            <td>Blade activation. Sharp cut to total silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"He reached into a live machine to grab five pieces of rebar. The blade came down and took part of his finger. Ten seconds to hit the switch. Ten seconds to lock it out. He didn't bother."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment his hand enters the machine. Freeze. The machine is running. His hand is inside. No isolation.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A worker at the next machine sees the hand going in. Shouts. Taps eyes. Points at the hand in the machine.</td>
+            <td>Alert tone. Verbal "Oi!"</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker pulls his hand back. Hits the power-off switch. Applies the lock-out. Confirms the machine is dead. Then reaches in and clears the pieces. Or uses a tool to hook them out. Loads the next batch. Carries on.</td>
+            <td>Machine winding down. Silence. Then normal ambience returns.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1183,7 +1444,7 @@ footer {
         <li><strong>Close-up:</strong> Cut pieces sitting inside the machine</li>
         <li><strong>Close-up:</strong> Worker's hand entering cutting zone (the danger)</li>
         <li><strong>Close-up:</strong> Blade mechanism still powered (the hidden threat)</li>
-        <li><strong>Close-up:</strong> "Eyes on hands" gesture. Shout + gesture.</li>
+        <li><strong>Close-up:</strong> "Eyes on hands" gesture, shout and gesture</li>
         <li><strong>Close-up:</strong> Power-off switch, lock-out being applied</li>
         <li><strong>Medium:</strong> Worker clearing pieces from isolated machine</li>
         <li><strong>Medium:</strong> Worker loading next batch, carrying on</li>
@@ -1193,10 +1454,10 @@ footer {
     <div class="prod-notes">
       <h4>Production Notes</h4>
       <ul>
-        <li>This is the most severe outcome (partial amputation). AI extension needs impact but must not be exploitative.</li>
+        <li>This is the most severe outcome (partial amputation). The AI extension needs impact but must not be exploitative.</li>
         <li>Need the actual rebar cutting machine.</li>
         <li>Lock-out tag-out is the key safe behaviour. Film the actual site lock and tag.</li>
-        <li>The "it'll only take a second" attitude is the universal danger. Body language should show impatience, not recklessness.</li>
+        <li>The "it'll only take a second" attitude is the universal danger here. Body language should show impatience, not recklessness.</li>
       </ul>
     </div>
   </div>
@@ -1232,15 +1493,48 @@ footer {
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of loading bay at Shepparton Precast. Truck backed in. Pallets already on the tray. Forklift picks up the last pallet and starts driving toward the truck.</td><td>Yard ambience. Truck idling. Forklift beeping.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Truck driver walks up to the side. Checks the load. Leans against the tray. Right hand rests casually on the top edge, between the last pallet and the side rail. Watching the forklift come in. Inside the exclusion area.</td><td>Casual. Truck idling. No urgency.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Forklift approaches. Operator focused on pallet placement. Can see the tray, the gap, but not the driver's hand on the far side. Places pallet and pushes in to centre. Pallet slides toward the driver's hand against the rail.</td><td>Forklift hydraulics. Pallet scraping.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: pallet slides into the hand against the side rail. Finger crush.</td><td>Heavy sliding impact. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to the driver leaning on the tray, hand on the edge. Freeze. Inside the exclusion zone. Hand in the path. Forklift approaching.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Forklift operator, before approaching, sees the driver leaning on the tray. Stops the forklift. Gets driver's attention. Taps eyes. Points at the hand on the tray.</td><td>Forklift stopping. Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Driver takes hand off the tray. Walks to the designated safe zone. Stands clear. Forklift places and centres the pallet with no one near the truck. Driver walks back, checks the load with hands in pockets, signs off. Both move on.</td><td>Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the loading bay at Shepparton Precast. A truck is backed in. Pallets of product already on the tray. A forklift picks up the last pallet from the staging area and starts driving toward the truck.</td>
+            <td>Yard ambience. Truck idling. Forklift beeping in reverse.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>The truck driver. He's been waiting. Walks up to the side of the truck to check the load. Leans against the tray. His right hand rests casually on the top edge, right between the last loaded pallet and the side rail. He's watching the forklift come in. Inside the exclusion area.</td>
+            <td>Casual. Truck idling. No urgency.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>The forklift approaches. Operator focused on pallet placement. Can see the tray, the gap, but not the driver's hand on the far side. Places the pallet and pushes it in to centre it. The pallet slides toward the already-loaded pallet. The driver's hand is between them, against the rail.</td>
+            <td>Forklift hydraulics. Pallet scraping on the tray.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the pallet slides into the hand against the side rail. Finger crush.</td>
+            <td>Heavy sliding impact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"He wasn't even working. He was leaning on the truck, watching. His hand was between the pallet and the rail. The forklift pushed the load in and crushed his finger."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the truck driver leans on the tray and places his hand on the edge. Freeze. He's inside the exclusion zone. His hand is in the path. The forklift is approaching.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>The forklift operator, before approaching, sees the truck driver leaning on the tray. Stops the forklift. Gets the driver's attention. Taps eyes. Points at the hand on the tray.</td>
+            <td>Forklift stopping. Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The truck driver takes his hand off the tray. Walks to the designated safe zone (marked on the ground). Stands clear. The forklift places and centres the pallet with no one near the truck. The driver walks back, checks the load with hands in pockets, signs off. Both move on.</td>
+            <td>Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1253,7 +1547,7 @@ footer {
         <li><strong>Medium:</strong> Truck driver walking up, leaning on tray (casual, comfortable)</li>
         <li><strong>Close-up:</strong> Hand resting on tray edge, between pallet and rail (the danger)</li>
         <li><strong>Wide:</strong> Forklift approaching, driver's hand not visible to operator</li>
-        <li><strong>Close-up:</strong> "Eyes on hands" gesture. Forklift stops, operator gestures.</li>
+        <li><strong>Close-up:</strong> "Eyes on hands" gesture, forklift stops, operator gestures</li>
         <li><strong>Wide:</strong> Driver walking to safe zone, standing clear</li>
         <li><strong>Close-up:</strong> Loading bay rules signage</li>
         <li><strong>Medium:</strong> Forklift placing pallet, driver clear</li>
@@ -1267,7 +1561,7 @@ footer {
         <li>Need a truck in the loading bay, forklift, and pallets.</li>
         <li>Thomas attached the actual loading bay rules (13 March). Incorporate the real signage.</li>
         <li>Two actors: forklift operator and truck driver.</li>
-        <li>The casualness of leaning on the truck is important. Not careless, just comfortable. That's the trap.</li>
+        <li>The casualness of leaning on the truck is important. This isn't someone being careless, it's someone being comfortable. That's the trap.</li>
       </ul>
     </div>
   </div>
@@ -1284,7 +1578,7 @@ footer {
         <div class="scenario-meta">
           <span class="scenario-tag ir">IR2785</span>
           <span class="scenario-tag mti">MTI</span>
-          <span class="scenario-tag location">Carrum Downs, Cubis (separate day TBD)</span>
+          <span class="scenario-tag location">Carrum Downs, Cubis (separate day, TBD)</span>
         </div>
       </div>
     </div>
@@ -1296,22 +1590,55 @@ footer {
       </div>
       <div class="safe-box">
         <h4>The Safe Way</h4>
-        <p>When using the crane to lower the lid and close the mould, keep hands clear of the line of fire and pinch point area.</p>
+        <p>When using the crane to lower the lid and close the mould, keep hands clear of the line of fire and pinch point area throughout the descent.</p>
       </div>
     </div>
 
     <div class="beats-section">
       <h3>Storyboard Beats</h3>
       <table class="beats-table">
-        <thead><tr><th style="width:120px">Beat</th><th>Visual</th><th style="width:180px">Audio</th></tr></thead>
+        <thead><tr><th style="width:140px">Beat</th><th>Visual</th><th style="width:200px">Audio</th></tr></thead>
         <tbody>
-          <tr><td><span class="beat-label situation">Wider Situation</span></td><td>Wide shot of Cubis production floor at Carrum Downs. Different environment from precast. Plastic products, moulds, ovens. Workers at various stations. Crane in use overhead.</td><td>Factory ambience. Lighter machinery.</td></tr>
-          <tr><td><span class="beat-label victim">The Victim</span></td><td>Worker at a mould station. Base in position. Lid needs to come down. Operates the crane to lower the lid. As it descends, reaches in to align the tool clamps. Guiding them with fingers while the lid is still moving.</td><td>Crane motor. Metal on metal as lid descends.</td></tr>
-          <tr><td><span class="beat-label mistake">The Mistake</span></td><td>Close-up: fingers on the clamp, between the lid and the base of the collar tool. Lid continues to descend. Gap closing. Fingers in the pinch point. Focused on alignment, not on hand position.</td><td>Descending tone. Gap narrowing.</td></tr>
-          <tr><td><span class="beat-label accident">The Accident</span></td><td>AI extension: lid meets the base with finger trapped between. Crush.</td><td>Metal contact. Silence.</td></tr>
-          <tr><td><span class="beat-label rewind">Rewind</span></td><td>Rewind to worker reaching in to align clamps while lid is descending. Freeze. Hand in the line of fire. Lid above, base below, fingers between.</td><td>Rewind sound.</td></tr>
-          <tr><td><span class="beat-label gesture">The Gesture</span></td><td>Coworker at the next station sees the hand going into the closing gap. Taps eyes. Points at the fingers between lid and base.</td><td>Alert tone.</td></tr>
-          <tr><td><span class="beat-label safe">Safe Correction</span></td><td>Worker pulls hand clear. Stops the crane. Aligns the clamps with hands clear of the pinch point. Uses a tool to guide them, or positions clamps before lowering. Lowers the lid with hands well away. Mould closes cleanly. Steps back. Done.</td><td>Crane settling. Ambience returns to normal.</td></tr>
+          <tr>
+            <td><span class="beat-label situation">Wider Situation</span></td>
+            <td>Wide shot of the Cubis production floor at Carrum Downs. Different environment from precast. Plastic products, moulds, ovens. Workers at various stations. A crane is in use overhead.</td>
+            <td>Factory ambience. Different tone from the precast scenes. Lighter machinery, different materials.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label victim">The Victim</span></td>
+            <td>A worker is at a mould station. The base is in position. The lid needs to come down. He operates the crane to lower the lid. As it descends, he reaches in to align the tool clamps, guiding them into position with his fingers while the lid is still moving.</td>
+            <td>Crane motor. Metal on metal as the lid descends.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label mistake">The Mistake</span></td>
+            <td>Close-up: the worker's fingers are on the clamp, between the lid and the base of the collar tool. The lid continues to descend. The gap is closing. His fingers are in the pinch point. He's focused on the alignment, not on where his hands are.</td>
+            <td>Descending tone. The gap narrowing.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label accident">The Accident</span></td>
+            <td>AI extension: the lid meets the base with the finger trapped between. Crush.</td>
+            <td>Metal contact. Silence.</td>
+          </tr>
+          <tr class="narration-row">
+            <td><span class="beat-label narration">Fade to Black &mdash; Narration</span></td>
+            <td>Black screen.</td>
+            <td><em>"His fingers were between the lid and the base while the crane was still coming down. The gap closed. His hand was in the pinch point the whole time."</em></td>
+          </tr>
+          <tr>
+            <td><span class="beat-label rewind">Rewind</span></td>
+            <td>Rewind to the moment the worker reaches in to align the clamps while the lid is descending. Freeze. His hand is in the line of fire. The lid is above, the base is below, and his fingers are in between.</td>
+            <td>Rewind sound.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label gesture">The Gesture</span></td>
+            <td>A coworker at the next station sees the hand going into the closing gap. Taps eyes. Points at the fingers between the lid and base.</td>
+            <td>Alert tone.</td>
+          </tr>
+          <tr>
+            <td><span class="beat-label safe">Safe Correction</span></td>
+            <td>The worker pulls his hand clear. Stops the crane. Aligns the clamps with hands clear of the pinch point, using a tool to guide them, or positioning the clamps before lowering begins. Once aligned, lowers the lid with hands well away from the closing gap. The mould closes cleanly. He steps back. Done.</td>
+            <td>Crane settling. Ambience returns to normal.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1334,16 +1661,16 @@ footer {
     <div class="prod-notes">
       <h4>Production Notes</h4>
       <ul>
-        <li>Filmed at Carrum Downs on a separate day (TBD). Arek directing solo (Sam not needed).</li>
-        <li>Contact: Dini Agushi, WHSE Advisor, dagushi@infrastructureproducts.com.au, (03) 5249 4105, 0418 729 876.</li>
-        <li>This is the only Cubis scenario. Provides CRH-wide representation beyond precast.</li>
-        <li>The Cubis environment looks different from Shepparton. Capture that difference.</li>
+        <li>Filmed at Carrum Downs on a separate day (TBD). Arek directing solo.</li>
+        <li>Contact: Dini Agushi, WHSE Advisor, dagushi@infrastructureproducts.com.au, (03) 5249 4105 / 0418 729 876.</li>
+        <li>This is the only Cubis scenario. Capture the Cubis environment distinctly. It shows the "eyes on hands" message applies across the whole business, not just Shepparton.</li>
+        <li>This scenario replaced IR2414 (hammer on bash plate) to provide Carrum Downs representation.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- CLOSING -->
+<!-- Closing -->
 <div class="section" id="closing" style="background: var(--white);">
   <div class="section-inner">
     <div class="section-header">
@@ -1352,49 +1679,59 @@ footer {
     </div>
     <div class="divider"></div>
 
+    <div class="closing-block">
+      <p style="font-family:'Khand',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;">Final Title Cards</p>
+      <blockquote>"If you're touching it, you're risking it."</blockquote>
+      <blockquote>"Hands off. Eyes on hands."</blockquote>
+    </div>
+
     <div class="shot-list">
-      <h4>Visual</h4>
+      <h4>Shot List</h4>
       <ul>
         <li>Final scenario ends. Beat of silence.</li>
-        <li>Slow-motion "eyes on hands" gesture. Worker taps his own eyes. Points at another worker's hands. Clean, deliberate.</li>
+        <li>Slow-motion "eyes on hands" gesture. Clean, deliberate, unmistakable.</li>
         <li>Rapid montage of safe corrections from all 10 scenarios. Quick cuts. Positive. Capable.</li>
-        <li>Black screen. White text: "If you're touching it, you're risking it."</li>
+        <li>Black screen. White text, centred: "If you're touching it, you're risking it."</li>
         <li>Beat. "Hands off. Eyes on hands."</li>
-        <li>CivilMart logo. CRH logo (if approved by Glenn).</li>
+        <li>CivilMart logo. CRH logo (confirm with Glenn whether approved).</li>
       </ul>
     </div>
 
     <div class="narration">
-      <div class="narration-label">Draft Narration</div>
+      <div class="narration-label">Draft Narration &mdash; Closing</div>
       "Every one of these injuries was real. Every one was preventable. Watch your mates. Watch their hands. If you see something, do something. Eyes on hands."
     </div>
 
     <div class="prod-notes">
       <h4>Notes</h4>
       <ul>
-        <li>Confirm with Glenn whether CRH logo should appear alongside CivilMart.</li>
-        <li>The safe-correction montage should feel competent and confident, not preachy. Workers doing things right. The normal way.</li>
+        <li>Confirm with Glenn whether the CRH logo should appear alongside CivilMart.</li>
+        <li>The safe-correction montage should feel competent and confident, not preachy. Workers doing things right. The message is: this is the normal way.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- OUTSTANDING ITEMS -->
+<!-- Outstanding Items -->
 <div class="section" id="outstanding">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Action Items</div>
+      <div class="section-eyebrow">Pre-Production</div>
       <h2>Outstanding Items</h2>
     </div>
     <div class="divider"></div>
 
     <table class="outstanding-table">
       <thead>
-        <tr><th>Item</th><th>Owner</th><th>Status</th></tr>
+        <tr>
+          <th>Item</th>
+          <th>Owner</th>
+          <th>Status</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Injury photos from past incidents</td>
+          <td>Injury photos from past incidents, upload to Dropbox</td>
           <td>Glenn Ducat</td>
           <td><span class="status-waiting">Waiting</span> &mdash; Glenn sending SOS to team 16 Mar</td>
         </tr>
@@ -1406,45 +1743,67 @@ footer {
         <tr>
           <td>CRH IPA branding (logos, colours, fonts) from Kirk Buckley</td>
           <td>Glenn / Kirk</td>
-          <td><span class="status-waiting">Waiting</span> &mdash; Kirk to reach out to Arek</td>
+          <td><span class="status-waiting">Waiting</span> &mdash; Glenn contacting Kirk</td>
         </tr>
         <tr>
-          <td>Confirm 7/2/1 split &mdash; which Precast scenario drops, or doing 11?</td>
+          <td>Confirm 7/2/1 split: which Precast scenario drops, or are we doing 11?</td>
           <td>Glenn / Thomas</td>
           <td><span class="status-waiting">Waiting</span> &mdash; email sent 18 March</td>
         </tr>
         <tr>
-          <td>IR3532 (Scenario 7) &mdash; confirm outcome (MTI or LTI)</td>
+          <td>IR3532 (Scenario 7): confirm outcome (MTI or LTI)</td>
           <td>Thomas Smith</td>
           <td><span class="status-pending">Confirm</span></td>
         </tr>
         <tr>
-          <td>Joe at Shep Pipes &mdash; willing to do 30 sec on camera?</td>
+          <td>Joe at Shep Pipes, 30 sec piece to camera</td>
           <td>Thomas Smith</td>
-          <td><span class="status-pending">Pending</span></td>
+          <td><span class="status-cancelled">Not going ahead</span> &mdash; confirmed 20 Mar</td>
         </tr>
         <tr>
-          <td>Cubis filming day &mdash; date and site access</td>
+          <td>Cubis filming day: date and site access</td>
           <td>Arek / Glenn</td>
           <td><span class="status-pending">Pending</span> &mdash; contact Dini Agushi</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="section-header" style="margin-top: 32px;">
-      <div class="section-eyebrow">Resolved</div>
+    <div class="section-header" style="margin-top:40px;margin-bottom:16px;">
+      <div class="section-eyebrow">Resolved since Draft 2</div>
     </div>
+
     <table class="outstanding-table">
       <thead>
-        <tr><th>Item</th><th>Resolution</th></tr>
+        <tr>
+          <th>Item</th>
+          <th>Resolution</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>Cubis scenario details</td><td><span class="status-done">Done</span> &mdash; IR2785 tool clamp. Dini Agushi confirmed 18 Mar.</td></tr>
-        <tr><td>Hand injury stats</td><td><span class="status-done">Done</span> &mdash; 36 injuries, 799 days lost, avg 22/injury, max 164 days</td></tr>
-        <tr><td>"Injured man" body diagram</td><td><span class="status-done">Done</span> &mdash; received from Glenn</td></tr>
-        <tr><td>Quote v2 signature</td><td><span class="status-done">Done</span> &mdash; approved 16 Mar, invoiced 17 Mar ($15,394.50)</td></tr>
-        <tr><td>IR3263 (Scenario 5) filming location</td><td><span class="status-done">Done</span> &mdash; confirmed Shepparton Precast</td></tr>
-        <tr><td>Pipes replacement scenario (Scenario 6)</td><td><span class="status-done">Done</span> &mdash; IR740, pipe patching/reo puncture</td></tr>
+        <tr>
+          <td>Cubis scenario details</td>
+          <td><span class="status-resolved">Done</span> &mdash; IR2785 tool clamp. Dini Agushi confirmed details 18 Mar.</td>
+        </tr>
+        <tr>
+          <td>Hand injury stats</td>
+          <td><span class="status-resolved">Done</span> &mdash; 36 injuries, 799 days lost, avg 22/injury, max 164 days (Thomas, 18 Mar).</td>
+        </tr>
+        <tr>
+          <td>"Injured man" body diagram</td>
+          <td><span class="status-resolved">Done</span> &mdash; Received from Glenn.</td>
+        </tr>
+        <tr>
+          <td>Quote v2 signature</td>
+          <td><span class="status-resolved">Done</span> &mdash; Approved 16 Mar, invoiced 17 Mar (#20260317002, $15,394.50).</td>
+        </tr>
+        <tr>
+          <td>IR3263 (Scenario 5) filming location</td>
+          <td><span class="status-resolved">Done</span> &mdash; Confirmed Shepparton Precast.</td>
+        </tr>
+        <tr>
+          <td>Pipes replacement scenario (Scenario 6)</td>
+          <td><span class="status-resolved">Done</span> &mdash; IR740, pipe patching / reo puncture (Thomas, 18 Mar).</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -1454,11 +1813,10 @@ footer {
 <footer>
   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDIt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" alt="Fifth Castle Media" class="footer-logo">
   <div class="footer-contact">
-    <p>Arek Rainczuk, Director</p>
-    <p>info@fifthcastle.media | 0467 676 205</p>
-    <p>fifthcastle.media</p>
+    Fifth Castle Media &mdash; 26 Park Drive, Belgrave VIC 3160<br>
+    info@fifthcastle.media &mdash; 0467 676 205
   </div>
-  <div class="footer-line">Production Brief &mdash; Eyes on Hands &mdash; Draft 4 &mdash; 20 March 2026</div>
+  <div class="footer-line">Eyes on Hands Production Brief &mdash; Draft 5 &mdash; 20 March 2026 &mdash; Confidential</div>
 </footer>
 
 </body>
