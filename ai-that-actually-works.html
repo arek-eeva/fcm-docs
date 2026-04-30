@@ -141,6 +141,40 @@ body::after {
   background: rgba(20, 20, 19, 0.7);
   backdrop-filter: blur(8px);
 }
+
+.nav-hint {
+  position: fixed;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-hint::before, .nav-hint::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+.nav-hint.show {
+  opacity: 1;
+  animation: hintPulse 2s infinite ease-in-out;
+}
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
 .nav-btn {
   width: 44px;
   height: 32px;
@@ -1226,17 +1260,225 @@ body::after {
   background: var(--accent);
 }
 
-/* ========== Responsiveness clamp ========== */
+/* ========== Responsiveness ========== */
 @media (max-width: 1100px) {
-  .slide { padding: 70px 60px 90px; }
+  .slide { padding: 70px 60px 100px; }
   .slide-num { left: 60px; }
-  .two-col { gap: 50px; }
+  .two-col { grid-template-columns: 1fr; gap: 40px; align-items: start; }
   .icon-grid { grid-template-columns: repeat(2, 1fr); }
-  .step-flow { grid-template-columns: 1fr; gap: 40px; }
+  .step-flow { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
   .step-flow::before { display: none; }
-  .closing-grid { grid-template-columns: 1fr; }
-  .compare-grid { grid-template-columns: 1fr; }
-  .curve-wrap { grid-template-columns: 1fr; }
+  .closing-grid { grid-template-columns: 1fr; gap: 24px; }
+  .compare-grid { grid-template-columns: 1fr; gap: 24px; }
+  .curve-wrap { grid-template-columns: 1fr; gap: 30px; }
+  .stat-callout { position: static; width: auto; text-align: left; margin-top: 30px; }
+  .stat-callout .stat-counter { justify-content: flex-start; }
+}
+
+@media (max-width: 768px) {
+  html, body { font-size: 15px; }
+
+  .slide {
+    padding: 60px 24px 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reposition fixed UI for small screens */
+  .slide-num {
+    top: 24px;
+    left: 24px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    gap: 10px;
+  }
+  .slide-num::before { width: 20px; }
+
+  .wordmark { left: 20px; bottom: 22px; gap: 8px; }
+  .wordmark img { width: 16px; height: 16px; }
+  .wordmark .text { font-size: 9px; letter-spacing: 0.25em; }
+
+  .counter { right: 20px; bottom: 22px; font-size: 9px; letter-spacing: 0.25em; gap: 8px; }
+  .counter .current { font-size: 11px; }
+  .counter .divider { width: 16px; }
+
+  .nav-buttons { bottom: 56px; }
+  .nav-btn { width: 48px; height: 36px; font-size: 18px; }
+
+  .nav-hint { bottom: 100px; font-size: 9px; letter-spacing: 0.3em; }
+  .nav-hint::before, .nav-hint::after { width: 18px; }
+
+  /* Common typography — stronger downscale */
+  .slide-title { font-size: clamp(32px, 9vw, 44px); margin-top: 36px; line-height: 1.05; }
+  .subtitle { font-size: 16px; margin-top: 12px; }
+  .problem-line { font-size: 19px; margin-top: 18px; }
+  .body-list { margin-top: 22px; }
+  .body-list li { font-size: 15px; padding: 12px 0 12px 22px; }
+  .body-list li::before { top: 22px; width: 10px; }
+  .accent-line { font-size: 18px; margin-top: 24px; padding-top: 18px; }
+
+  /* SLIDE 1 — Title */
+  .slide-1 { padding-top: 50px; padding-bottom: 130px; justify-content: flex-start; }
+  .s1-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .s1-tag-left, .s1-tag-right { font-size: 9px; letter-spacing: 0.25em; }
+  .s1-tag-left::before { width: 24px; }
+  .s1-main { margin-top: 36px; margin-bottom: 36px; }
+  .s1-title { font-size: clamp(48px, 16vw, 76px) !important; line-height: 0.98; }
+  .s1-sub { font-size: 16px; margin-top: 22px; }
+  .s1-bottom { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .s1-presenter { font-size: 9px; letter-spacing: 0.28em; }
+  .s1-presenter .name { font-size: 22px; margin-top: 6px; }
+  .s1-frame { width: 110px; height: 150px; right: 6%; top: 12%; opacity: 0.18; }
+
+  /* SLIDE 2 — flow diagram boxes go full width */
+  .flow-box { width: 100%; padding: 22px 20px; }
+  .flow-box .box-label { font-size: 19px; }
+  .flow-arrow { height: 32px; }
+  .flow-diagram { padding: 0; }
+
+  /* SLIDE 3 — three-row collapse to stack */
+  .concept-line { font-size: 24px; margin: 12px auto 32px; }
+  .three-rows { gap: 0; }
+  .row-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 0;
+  }
+  .row-item .row-num { font-size: 11px; letter-spacing: 0.2em; }
+  .row-item .row-label { font-size: 22px; }
+  .row-item .row-desc { font-size: 15px; }
+
+  /* SLIDE 4 — file tree */
+  .file-tree { padding: 22px 18px; font-size: 12px; line-height: 1.5; }
+  .tree-row { padding: 4px 6px; gap: 8px; }
+  .tree-row .file-name.indent-1 { padding-left: 12px; }
+  .tree-row .file-name.indent-2 { padding-left: 24px; }
+  .tree-row .annotation { font-size: 8px; letter-spacing: 0.2em; }
+  .tree-row .annotation::before { width: 10px; }
+
+  /* SLIDE 5 — connectors */
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 32px auto 24px;
+  }
+  .icon-cell {
+    padding: 22px 18px 18px;
+    min-height: 140px;
+    gap: 10px;
+  }
+  .icon-cell .icon { width: 24px; height: 24px; }
+  .icon-cell .icon-label { font-size: 18px; }
+  .icon-cell .icon-status { font-size: 9px; letter-spacing: 0.2em; padding-top: 10px; }
+  .takeaway { font-size: 17px; margin-top: 18px; }
+
+  /* SLIDE 6 — three-step + counter */
+  .step-flow { margin-top: 32px; gap: 28px; }
+  .step { padding-top: 40px; }
+  .step .step-num { font-size: 11px; letter-spacing: 0.25em; }
+  .step .step-num::before { width: 4px; height: 4px; transform: translate(-10px, -50%); }
+  .step .step-title { font-size: 24px; margin-bottom: 12px; }
+  .step .step-desc { font-size: 15px; max-width: none; }
+  .stat-callout { margin-top: 24px; padding-top: 12px; }
+  .stat-callout .stat-line1 { font-size: 9px; letter-spacing: 0.28em; }
+  .stat-callout .stat-counter { font-size: 64px; }
+  .stat-callout .stat-counter .x { font-size: 38px; }
+
+  /* SLIDE 7 — compare panels */
+  .compare-grid { margin-top: 28px; }
+  .panel { padding: 28px 22px; }
+  .panel-label { font-size: 9px; letter-spacing: 0.32em; margin-bottom: 18px; padding-bottom: 12px; }
+  .panel ul li { font-size: 15px; padding: 9px 0; padding-left: 22px; }
+
+  /* SLIDE 8 — timeline goes vertical */
+  .timeline-wrap { margin-top: 24px; }
+  .timeline {
+    height: auto;
+    margin: 24px 0 30px;
+    padding-left: 28px;
+  }
+  .timeline-line {
+    top: 0;
+    left: 4px;
+    width: 1px;
+    height: 100%;
+  }
+  .timeline-line-fill {
+    top: 0;
+    left: 4px;
+    width: 1px;
+    height: 0;
+    background: var(--accent);
+  }
+  .slide.active .timeline-line-fill {
+    animation: timelineFillVertical 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+  }
+  @keyframes timelineFillVertical {
+    from { height: 0; }
+    to { height: 100%; }
+  }
+  .milestone {
+    position: relative;
+    top: auto;
+    left: auto !important;
+    transform: none;
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+  }
+  .milestone .ms-top {
+    order: 1;
+    flex: 0 0 64px;
+    text-align: left;
+    padding-top: 4px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+  }
+  .milestone .ms-dot {
+    order: 0;
+    margin: 6px 0 0 -28px;
+    position: absolute;
+    left: 0;
+    width: 10px;
+    height: 10px;
+  }
+  .milestone .ms-bottom {
+    order: 2;
+    flex: 1;
+    text-align: left;
+  }
+  .milestone .ms-label { font-size: 18px; }
+  .milestone .ms-label br { display: none; }
+  .milestone .ms-sub { font-size: 9px; letter-spacing: 0.22em; margin-top: 4px; }
+  .timeline-body { font-size: 15px; }
+  .timeline-accent { font-size: 18px; margin-top: 16px; }
+
+  /* SLIDE 9 — frenzy */
+  .curve-wrap { margin-top: 24px; gap: 18px; }
+  .curve-svg { max-height: 220px; }
+  .curve-accent { font-size: 17px; margin-top: 18px; padding-top: 14px; }
+
+  /* SLIDE 10 — long game */
+  .closing-panel { padding: 26px 22px; }
+  .closing-panel-num { font-size: 9px; letter-spacing: 0.28em; }
+  .closing-panel-title { font-size: 22px; margin-bottom: 18px; padding-bottom: 12px; }
+  .closing-panel ul li { font-size: 15px; padding: 9px 0; padding-left: 20px; }
+  .closing-panel ul li::before { font-size: 22px; top: 12px; }
+  .closing-statement { font-size: 22px; margin-top: 26px; line-height: 1.25; }
+  .closing-footer { margin-top: 18px; font-size: 9px; letter-spacing: 0.32em; }
+  .closing-footer::before, .closing-footer::after { width: 20px; }
+}
+
+@media (max-width: 420px) {
+  .icon-grid { grid-template-columns: 1fr; }
+  .s1-title { font-size: clamp(40px, 14vw, 60px) !important; }
 }
 </style>
 </head>
@@ -1254,6 +1496,8 @@ body::after {
   <span class="divider"></span>
   <span>10</span>
 </div>
+
+<div class="nav-hint" id="navHint">Press <span style="color: var(--text); margin: 0 4px;">→</span> to begin</div>
 
 <div class="nav-buttons">
   <button class="nav-btn" id="prev" aria-label="Previous">←</button>
@@ -1284,7 +1528,7 @@ body::after {
       Presented by
       <span class="name">Arek Rainczuk</span>
     </div>
-    <div class="s1-cta anim-fade-in d6">Press → to begin</div>
+    <div class="s1-tag-right anim-fade-in d5">Belgrave · Naarm</div>
   </div>
 </section>
 
@@ -1654,6 +1898,7 @@ body::after {
   const progress = document.getElementById('progress');
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
+  const navHint = document.getElementById('navHint');
   let current = 0;
   let counterRAF = null;
 
@@ -1673,6 +1918,7 @@ body::after {
     progress.style.width = ((idx + 1) / total * 100) + '%';
     prevBtn.disabled = idx === 0;
     nextBtn.disabled = idx === total - 1;
+    navHint.classList.toggle('show', idx === 0);
 
     triggerSlideEffects(idx);
   }
@@ -1748,8 +1994,31 @@ body::after {
   prevBtn.addEventListener('click', () => showSlide(current - 1));
   nextBtn.addEventListener('click', () => showSlide(current + 1));
 
+  // Touch swipe (mobile)
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchActive = false;
+  document.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchActive = true;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (!touchActive) return;
+    touchActive = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      if (dx < 0) showSlide(current + 1);
+      else showSlide(current - 1);
+    }
+  }, { passive: true });
+
   // Init
   prevBtn.disabled = true;
+  navHint.classList.add('show');
   triggerSlideEffects(0);
 })();
 </script>
