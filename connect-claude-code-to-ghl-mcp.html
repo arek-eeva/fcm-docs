@@ -290,6 +290,55 @@ code:not(pre code) {
   border: 1px solid var(--line);
 }
 
+.placeholder {
+  background: var(--accent-soft);
+  color: #FFD9DC;
+  padding: 1px 5px;
+  border-radius: 2px;
+  border-bottom: 1px dashed var(--accent);
+  font-style: normal;
+}
+
+.swap-key {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 8px;
+  padding: 18px 22px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+}
+.swap-key-title {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.swap-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 200px) 1fr;
+  gap: 18px;
+  align-items: baseline;
+}
+.swap-row .ph {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #FFD9DC;
+}
+.swap-row .desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+@media (max-width: 680px) {
+  .swap-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
 /* ─── CALLOUT ──────────────────────────────────────────── */
 .callout {
   background: var(--bg-elevated);
@@ -578,33 +627,62 @@ footer {
     <div class="section-body">
 
       <h3 style="font-family:var(--font-display);font-weight:400;font-size:22px;margin:8px 0 14px;">Option A. The one-line command (recommended).</h3>
-      <p>From any terminal, run:</p>
+      <p>Open your Mac's <strong>Terminal</strong> app (or Windows <strong>PowerShell</strong>), copy the command below, and paste it in. Before you hit Enter, swap in the two values you saved earlier from GoHighLevel (SceneOps).</p>
+
 <pre><code>claude mcp add --transport http gohighlevel \
   https://services.leadconnectorhq.com/mcp/ \
-  --header "Authorization: Bearer YOUR_PIT_TOKEN" \
-  --header "locationId: YOUR_LOCATION_ID"</code></pre>
-      <p>Add <code>--scope user</code> to make it available across every project on your machine, or leave it off to scope it to the current project folder.</p>
+  --scope user \
+  --header "Authorization: Bearer <span class="placeholder">YOUR_PIT_TOKEN</span>" \
+  --header "locationId: <span class="placeholder">YOUR_LOCATION_ID</span>"</code></pre>
 
-      <h3 style="font-family:var(--font-display);font-weight:400;font-size:22px;margin:32px 0 14px;">Option B. Edit the config file directly.</h3>
-      <p>If you'd rather see the config, create <code>.mcp.json</code> in your project root, or edit <code>~/.claude.json</code> for global scope. Either way, add this to the <code>mcpServers</code> block:</p>
+      <div class="swap-key">
+        <div class="swap-key-title">What to swap in</div>
+        <div class="swap-row">
+          <div class="ph">YOUR_PIT_TOKEN</div>
+          <div class="desc">The Private Integration Token you copied from SceneOps in Step 04. Starts with <code>pit-</code>.</div>
+        </div>
+        <div class="swap-row">
+          <div class="ph">YOUR_LOCATION_ID</div>
+          <div class="desc">The sub-account ID you found in Section 03. A long string of letters and numbers.</div>
+        </div>
+      </div>
+
+      <p>So once you've pasted your real values in, it will look something like this:</p>
+
+<pre><code>claude mcp add --transport http gohighlevel \
+  https://services.leadconnectorhq.com/mcp/ \
+  --scope user \
+  --header "Authorization: Bearer <span class="placeholder">pit-9f8a2c1e-b3d4-4e5f-a6b7-8c9d0e1f2a3b</span>" \
+  --header "locationId: <span class="placeholder">VVllOg2Zj3tOJQ0dPrtb</span>"</code></pre>
+
+      <p>(Those are made-up examples. Yours will look similar but with your own characters.)</p>
+
+      <p>The <code>--scope user</code> bit tells Claude Code to remember this connection everywhere on your machine, so you don't have to set it up again project-by-project. That's the right default for most people.</p>
+
+      <h3 style="font-family:var(--font-display);font-weight:400;font-size:22px;margin:36px 0 14px;">Option B. Edit the config file directly.</h3>
+      <p>Skip this if Option A worked. This is for people who'd rather edit a text file than run a command. Create a file called <code>.mcp.json</code> in your project folder, or open <code>~/.claude.json</code> in a text editor for the global version. Paste this into the <code>mcpServers</code> block, then swap in your two values:</p>
 <pre><code>{
   "mcpServers": {
     "gohighlevel": {
       "type": "http",
       "url": "https://services.leadconnectorhq.com/mcp/",
       "headers": {
-        "Authorization": "Bearer YOUR_PIT_TOKEN",
-        "locationId": "YOUR_LOCATION_ID"
+        "Authorization": "Bearer <span class="placeholder">YOUR_PIT_TOKEN</span>",
+        "locationId": "<span class="placeholder">YOUR_LOCATION_ID</span>"
       }
     }
   }
 }</code></pre>
 
       <div class="callout">
-        <div class="callout-label">Better Practice</div>
-        <p>Keep the raw token out of the config file. Use an environment variable instead:</p>
-<pre style="margin:8px 0 6px;"><code>"Authorization": "Bearer ${GHL_BEARER_TOKEN}"</code></pre>
-        <p>Then export the variable from your shell profile, <code>export GHL_BEARER_TOKEN=pit-...</code>, or load it from a <code>.env</code> file. That way the config can be committed to git without leaking credentials.</p>
+        <div class="callout-label">Keep your token safe</div>
+        <p>That PIT token is the master key to your SceneOps sub-account. Anyone who has it can read and edit your contacts, send messages from your account, and change settings. Treat it the same way you'd treat your bank login.</p>
+        <p style="margin-top:14px;"><strong>The three rules:</strong></p>
+        <ul style="list-style:none;padding-left:0;margin-top:8px;">
+          <li style="padding-left:22px;position:relative;margin-bottom:8px;"><span style="position:absolute;left:0;top:13px;width:10px;height:1px;background:var(--accent);"></span>Don't paste it into a public chat, screenshot, or shared document.</li>
+          <li style="padding-left:22px;position:relative;margin-bottom:8px;"><span style="position:absolute;left:0;top:13px;width:10px;height:1px;background:var(--accent);"></span>Don't email the config file to anyone. If you need help, share the file with the token bit blanked out.</li>
+          <li style="padding-left:22px;position:relative;margin-bottom:8px;"><span style="position:absolute;left:0;top:13px;width:10px;height:1px;background:var(--accent);"></span>If you ever think someone else has seen it, go back into SceneOps and delete the integration. That instantly kills the token. Then create a new one and re-run Option A.</li>
+        </ul>
       </div>
 
     </div>
