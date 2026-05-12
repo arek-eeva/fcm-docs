@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Statement — Down Syndrome Australia | Fifth Castle Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --black: #0a0a0a;
+    --ink: #1a1a1a;
+    --grey-900: #2a2a2a;
+    --grey-700: #555;
+    --grey-500: #888;
+    --grey-300: #d4d4d4;
+    --grey-200: #e6e6e6;
+    --grey-100: #f1ede6;
+    --paper: #faf8f4;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--black);
+  }
+
+  .label, .meta, .khand, .brand-mark {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(189,32,45,0.25); transition: all 0.15s; }
+  a:hover { color: var(--black); border-bottom-color: var(--black); }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 40px 80px; }
+
+  /* HEADER */
+  header.masthead {
+    border-top: 4px solid var(--red);
+    padding-top: 32px;
+    margin-bottom: 48px;
+  }
+
+  .brand-mark {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    letter-spacing: 0.22em;
+  }
+
+  .brand-mark .accent { color: var(--red); }
+
+  .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .doc-meta .left h1 {
+    font-size: 42px;
+    margin-bottom: 6px;
+  }
+
+  .doc-meta .left .subtitle {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--grey-700);
+  }
+
+  .doc-meta .right {
+    text-align: right;
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--grey-700);
+    line-height: 1.7;
+  }
+
+  .doc-meta .right strong {
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  /* SUPPLIER / BILL TO */
+  .parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+  }
+
+  .parties .col .label {
+    font-size: 11px;
+    color: var(--grey-500);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .parties .col .name {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 22px;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .parties .col p {
+    font-size: 14px;
+    color: var(--grey-700);
+    line-height: 1.6;
+  }
+
+  /* SECTIONS */
+  section { margin-bottom: 56px; }
+
+  section h2 {
+    font-size: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  section h2 .count {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--grey-500);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* SUMMARY TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+  }
+
+  thead th {
+    font-family: 'Khand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--black);
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  thead th.num { text-align: right; }
+
+  tbody td {
+    padding: 16px;
+    border-bottom: 1px solid var(--grey-200);
+    font-size: 14.5px;
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  tbody td .sub {
+    display: block;
+    font-family: 'Khand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--grey-500);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  tfoot td {
+    padding: 18px 16px;
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 20px;
+    background: var(--grey-100);
+    color: var(--black);
+    border-top: 2px solid var(--black);
+  }
+
+  tfoot td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ORDER CARD */
+  .order {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-left: 4px solid var(--red);
+    margin-bottom: 20px;
+    padding: 26px 28px;
+  }
+
+  .order.paid {
+    border-left-color: var(--grey-300);
+  }
+
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .order h3 {
+    font-size: 22px;
+    line-height: 1.25;
+    flex: 1 1 60%;
+  }
+
+  .status {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border: 1px solid currentColor;
+    color: var(--red);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .status.paid {
+    color: var(--grey-700);
+    border-color: var(--grey-300);
+  }
+
+  .order-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px 24px;
+    margin-bottom: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+  }
+
+  .order-grid .field .label {
+    display: block;
+    font-size: 10.5px;
+    color: var(--grey-500);
+    margin-bottom: 3px;
+  }
+
+  .order-grid .field .val {
+    font-family: Georgia, serif;
+    font-size: 14.5px;
+    color: var(--black);
+  }
+
+  .order-grid .field .val.amount {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 17px;
+  }
+
+  .order-grid .field .val.amount.due {
+    color: var(--red);
+  }
+
+  .order-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .order-links a {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 9px 16px;
+    border: 1px solid var(--black);
+    color: var(--black);
+    background: var(--white);
+    border-bottom: 1px solid var(--black);
+  }
+
+  .order-links a:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .order-links a.primary {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .order-links a.primary:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  /* TOTALS PANEL */
+  .totals {
+    background: var(--black);
+    color: var(--white);
+    padding: 36px 40px;
+    margin-bottom: 56px;
+  }
+
+  .totals h2 {
+    color: var(--white);
+    border-color: var(--red);
+    font-size: 24px;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+  }
+
+  .totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .totals-row:last-child { border-bottom: none; }
+
+  .totals-row .lbl {
+    font-family: 'Khand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .totals-row .val {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .totals-row.outstanding .val { color: var(--red); font-size: 30px; }
+
+  /* PAYMENT BLOCK */
+  .pay-block {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+
+  .pay-block h2 {
+    border-bottom: 2px solid var(--black);
+  }
+
+  .pay-block .pay-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+    margin-top: 8px;
+  }
+
+  .pay-block .field .label {
+    display: block;
+    font-size: 11px;
+    color: var(--grey-500);
+    margin-bottom: 4px;
+  }
+
+  .pay-block .field .val {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: var(--black);
+  }
+
+  /* CLOSING */
+  .closing {
+    padding: 32px 0;
+    border-top: 1px solid var(--grey-200);
+    font-size: 14.5px;
+    color: var(--grey-700);
+  }
+
+  .closing strong { color: var(--black); }
+
+  /* FOOTER */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'Khand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+    color: var(--grey-500);
+  }
+
+  footer .red-dot { color: var(--red); }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .wrap { padding: 32px 22px 60px; }
+    .doc-meta { flex-direction: column; }
+    .doc-meta .right { text-align: left; }
+    .doc-meta .left h1 { font-size: 32px; }
+    .parties { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+    .order { padding: 22px 20px; }
+    .order-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pay-block { padding: 22px; }
+    .pay-block .pay-grid { grid-template-columns: 1fr; }
+    .totals { padding: 28px 22px; }
+    .totals-row.outstanding .val { font-size: 24px; }
+    section h2 { font-size: 22px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .order h3 { font-size: 18px; }
+    thead { display: none; }
+    tbody td { display: block; padding: 8px 12px; border: none; }
+    tbody tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--grey-200); }
+    tbody td.num { text-align: left; }
+    tbody td::before { content: attr(data-label); display: block; font-family: 'Khand', sans-serif; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 2px; }
+    tfoot td { display: block; }
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .wrap { padding: 24px; max-width: none; }
+    .order, .parties, .pay-block, table, .totals { break-inside: avoid; }
+    a { color: var(--black); border-bottom-color: transparent; }
+    .order-links a { border-color: #aaa; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="brand-mark">Fifth Castle <span class="accent">Media</span></div>
+    <div class="doc-meta">
+      <div class="left">
+        <h1>Account Statement</h1>
+        <div class="subtitle">Down Syndrome Australia (DSAN)</div>
+      </div>
+      <div class="right">
+        <div><strong>Statement date</strong></div>
+        <div>12 May 2026</div>
+        <div style="margin-top:10px"><strong>Outstanding</strong></div>
+        <div style="color:var(--red); font-family: 'Vidaloka', Georgia, serif; font-size: 24px; line-height:1.1; margin-top:2px">A$22,041.25</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="parties">
+    <div class="col">
+      <span class="label">From</span>
+      <div class="name">Fifth Castle Media</div>
+      <p>
+        Five Castles Pty Ltd<br>
+        ABN 76 651 385 545<br>
+        26 Park Drive, Belgrave VIC 3160<br>
+        <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &middot; 0467 676 205
+      </p>
+    </div>
+    <div class="col">
+      <span class="label">Billed to</span>
+      <div class="name">Down Syndrome Australia</div>
+      <p>
+        Attention: Judy Thompson<br>
+        Finance and Governance Officer<br>
+        Contacts on file: Kate Jeremiah, Elizabeth Christodoulou, Alyssa Shaw
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Outstanding balance summary <span class="count">3 open invoices</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Billed to</th>
+          <th>Invoice date</th>
+          <th class="num">Amount due (AUD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Order">&ldquo;Cat&rsquo;s&rdquo; educational videos<span class="sub">Order 20260504001</span></td>
+          <td data-label="Billed to">Kate Jeremiah</td>
+          <td data-label="Invoice date">4 May 2026</td>
+          <td class="num" data-label="Amount due">A$16,280.00</td>
+        </tr>
+        <tr>
+          <td data-label="Order">Event photography + light B-roll capture<span class="sub">Order 20260310001</span></td>
+          <td data-label="Billed to">Kate Jeremiah</td>
+          <td data-label="Invoice date">10 Mar 2026</td>
+          <td class="num" data-label="Amount due">A$880.00</td>
+        </tr>
+        <tr>
+          <td data-label="Order">Instructional Video Series for Employers (revised v3)<span class="sub">Order 20251201001r2</span></td>
+          <td data-label="Billed to">Elizabeth Christodoulou</td>
+          <td data-label="Invoice date">1 Dec 2025</td>
+          <td class="num" data-label="Amount due">A$4,881.25</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total outstanding</td>
+          <td class="num">A$22,041.25</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <section>
+    <h2>Outstanding invoices <span class="count">Detail &amp; access links</span></h2>
+
+    <article class="order">
+      <div class="order-header">
+        <h3>&ldquo;Cat&rsquo;s&rdquo; educational videos</h3>
+        <span class="status">Past due</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">4 May 2026</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$16,280.00</span></div>
+        <div class="field"><span class="label">Balance due</span><span class="val amount due">A$16,280.00</span></div>
+      </div>
+      <div class="order-links">
+        <a class="primary" href="https://portal.fifthcastle.media/order/receipt/bac57aebede5068ae2e7b2e7" target="_blank" rel="noopener">View invoice</a>
+        <a href="https://portal.fifthcastle.media/order/printout/bac57aebede5068ae2e7b2e7/order-20260504001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order">
+      <div class="order-header">
+        <h3>Event photography + light B-roll capture</h3>
+        <span class="status">Past due</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">10 March 2026</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$880.00</span></div>
+        <div class="field"><span class="label">Balance due</span><span class="val amount due">A$880.00</span></div>
+      </div>
+      <div class="order-links">
+        <a class="primary" href="https://portal.fifthcastle.media/order/receipt/78e94078f513ecb84ea7d8a3" target="_blank" rel="noopener">View invoice</a>
+        <a href="https://portal.fifthcastle.media/order/printout/78e94078f513ecb84ea7d8a3/order-20260310001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order">
+      <div class="order-header">
+        <h3>Instructional Video Series for Employers (revised v3)</h3>
+        <span class="status">Past due</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Elizabeth Christodoulou</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">1 December 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$19,525.00</span></div>
+        <div class="field"><span class="label">Balance due</span><span class="val amount due">A$4,881.25</span></div>
+      </div>
+      <div class="order-links">
+        <a class="primary" href="https://portal.fifthcastle.media/order/receipt/ef32db3630e4c15792276b7f" target="_blank" rel="noopener">View invoice</a>
+        <a href="https://portal.fifthcastle.media/order/printout/ef32db3630e4c15792276b7f/order-20251201001r2.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+  </section>
+
+  <div class="totals">
+    <h2>Account totals</h2>
+    <div class="totals-row">
+      <span class="lbl">Lifetime invoiced</span>
+      <span class="val">A$74,893.50</span>
+    </div>
+    <div class="totals-row">
+      <span class="lbl">Paid to date</span>
+      <span class="val">A$52,852.25</span>
+    </div>
+    <div class="totals-row outstanding">
+      <span class="lbl">Outstanding balance</span>
+      <span class="val">A$22,041.25</span>
+    </div>
+  </div>
+
+  <div class="pay-block">
+    <h2>Payment details</h2>
+    <div class="pay-grid">
+      <div class="field"><span class="label">Account name</span><span class="val">Five Castles Pty Ltd</span></div>
+      <div class="field"><span class="label">BSB</span><span class="val">033-609</span></div>
+      <div class="field"><span class="label">Account number</span><span class="val">586014</span></div>
+      <div class="field"><span class="label">Reference</span><span class="val">DSAN + order number</span></div>
+    </div>
+    <p style="margin-top:22px; font-size:14px; color:var(--grey-700);">Each invoice can also be paid directly through the portal links above. Please use the order number as the payment reference so it reconciles cleanly against the right invoice.</p>
+  </div>
+
+  <section>
+    <h2>Completed &amp; paid orders <span class="count">9 paid in full</span></h2>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>World Down Syndrome Day 2026 — Connection &amp; Belonging Video</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">2 March 2026</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$1,650.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/b3cb265ac5b032a6eb1637fc" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/b3cb265ac5b032a6eb1637fc/order-20260302001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Perspectives on Ageing Video Project</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">13 February 2026</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$8,195.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/8a8653b62e574955aee17717" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/8a8653b62e574955aee17717/order-20260213001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Supporting My Rights App videos</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Elizabeth Christodoulou</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">15 December 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$4,235.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/6c54a0995026acbbd5df9361" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/6c54a0995026acbbd5df9361/order-20251215001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Social edits</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">25 November 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$770.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/7d04052ed70365d5eb07daa9" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/7d04052ed70365d5eb07daa9/order-20251125001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Existing videos edits</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">3 October 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$2,640.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/8ee52722cd58807c060690ee" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/8ee52722cd58807c060690ee/order-20251003003r1.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Quick filming with Darryl in QLD</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Kate Jeremiah</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">19 June 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$275.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/166506b64a85e44e267a58ce" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/166506b64a85e44e267a58ce/order-20250619001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>DSA Photo &amp; Video Shoot — 6 June 2025 &amp; Supported Employment Video</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Alyssa Shaw</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">5 June 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$12,100.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/259f7c4281959443b82c8195" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/259f7c4281959443b82c8195/order-20250129003.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>Geelong Conference Videos</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Alyssa Shaw</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">23 January 2025</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$6,600.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/241815bdbe2c30ccb748f30f" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/241815bdbe2c30ccb748f30f/order-20250129001r1.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>DSAN Video recut</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Alyssa Shaw</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">28 June 2024</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$93.50</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/67260dc540349fafe15f4b80" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/67260dc540349fafe15f4b80/order-20240628001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+
+    <article class="order paid">
+      <div class="order-header">
+        <h3>DSAN Videos</h3>
+        <span class="status paid">Paid</span>
+      </div>
+      <div class="order-grid">
+        <div class="field"><span class="label">Billed to</span><span class="val">Alyssa Shaw</span></div>
+        <div class="field"><span class="label">Sold on</span><span class="val">29 February 2024</span></div>
+        <div class="field"><span class="label">Order total</span><span class="val amount">A$1,650.00</span></div>
+        <div class="field"><span class="label">Balance</span><span class="val amount">A$0.00</span></div>
+      </div>
+      <div class="order-links">
+        <a href="https://portal.fifthcastle.media/order/receipt/f5f4853e0d2f983ce99f47d5" target="_blank" rel="noopener">View receipt</a>
+        <a href="https://portal.fifthcastle.media/order/printout/f5f4853e0d2f983ce99f47d5/order-20240229001.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </article>
+  </section>
+
+  <div class="closing">
+    <p>Hi Judy, this statement covers every order on the DSAN account in our system, with direct portal and PDF links for each one. If anything looks out of line with your records, or you need the outstanding invoices re-issued to a different contact for processing, please let me know and we will sort it the same day.</p>
+    <p style="margin-top:14px"><strong>Arek Rainczuk</strong> &middot; Fifth Castle Media &middot; <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &middot; 0467 676 205</p>
+  </div>
+
+  <footer>
+    <div>Fifth Castle Media <span class="red-dot">&bull;</span> Five Castles Pty Ltd <span class="red-dot">&bull;</span> ABN 76 651 385 545</div>
+    <div>Statement generated 12 May 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
