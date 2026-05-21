@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIT Scholarship Campaign Videos — Production Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --fcm-red: #BD202D;
+      --light-grey: #f5f5f5;
+      --mid-grey: #e0e0e0;
+      --text: #1a1a1a;
+      --muted: #666666;
+    }
+
+    body {
+      font-family: 'Inter', Georgia, serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--black);
+      color: var(--white);
+      padding: 40px 48px 36px;
+      position: relative;
+    }
+
+    .header-logo {
+      position: absolute;
+      top: 36px;
+      right: 48px;
+      height: 60px;
+      width: auto;
+    }
+
+    .header-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      margin-bottom: 14px;
+    }
+
+    .header h1 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .header-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+    }
+
+    .header-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 22px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .meta-value.tbc {
+      color: var(--fcm-red);
+      font-style: italic;
+    }
+
+    /* RED ACCENT BAR */
+    .accent-bar {
+      height: 3px;
+      background: var(--fcm-red);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 36px 48px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-number {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section h2 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--mid-grey);
+    }
+
+    /* SCHEDULE */
+    .schedule-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: start;
+      gap: 20px;
+      padding: 16px 18px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--fcm-red);
+    }
+
+    .schedule-time {
+      font-family: 'Khand', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-top: 2px;
+    }
+
+    .schedule-detail h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+
+    .schedule-detail .address {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .schedule-detail .focus-list {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .schedule-gap {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      padding: 10px 18px;
+    }
+
+    .schedule-gap .gap-time {
+      font-family: 'Khand', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .schedule-gap .gap-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .schedule-note {
+      font-size: 12px;
+      color: var(--fcm-red);
+      font-style: italic;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--fcm-red);
+    }
+
+    /* LOCATIONS */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .location-card {
+      border: 1px solid var(--mid-grey);
+      padding: 20px 22px;
+    }
+
+    .location-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .location-badge {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      display: inline-block;
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+
+    .location-card h3 {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .location-detail {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .location-notes {
+      font-size: 12px;
+      color: var(--text);
+      border-top: 1px solid var(--mid-grey);
+      padding-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* PRESENTERS / TALENT */
+    .presenter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .presenter-card {
+      border: 1px solid var(--mid-grey);
+      padding: 20px 22px;
+    }
+
+    .presenter-name {
+      font-family: 'Vidaloka', Georgia, serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+
+    .presenter-role {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fcm-red);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .presenter-story {
+      font-size: 12px;
+      color: var(--text);
+      border-left: 2px solid var(--mid-grey);
+      padding-left: 10px;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .presenter-direction {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .presenter-direction strong {
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    /* SHOT LIST */
+    .shot-location-block {
+      margin-bottom: 28px;
+    }
+
+    .shot-location-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .shot-location-title {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .shot-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .shot-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--mid-grey);
+      background: var(--light-grey);
+    }
+
+    .shot-table tbody td {
+      font-size: 12px;
+      padding: 9px 10px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .shot-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .shot-num {
+      font-family: 'Khand', sans-serif;
+      font-weight: 600;
+      color: var(--fcm-red);
+      white-space: nowrap;
+    }
+
+    .shot-type {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    /* SCRIPT */
+    .script-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: var(--light-grey);
+      border-left: 3px solid var(--mid-grey);
+    }
+
+    .script-block {
+      margin-bottom: 24px;
+    }
+
+    .script-cue {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      display: inline-block;
+      padding: 3px 9px;
+      margin-bottom: 8px;
+    }
+
+    .script-action {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .script-line {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text);
+      padding: 12px 16px;
+      background: var(--light-grey);
+      border-left: 2px solid var(--fcm-red);
+      margin-bottom: 4px;
+    }
+
+    .script-line .speaker {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--fcm-red);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .script-line.both {
+      border-left-color: var(--black);
+      background: #f0f0f0;
+    }
+
+    .script-key-message {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      padding: 6px 12px;
+      background: var(--light-grey);
+      border-left: 2px solid var(--mid-grey);
+    }
+
+    /* TECHNICAL */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .tech-card {
+      border: 1px solid var(--mid-grey);
+      padding: 18px 20px;
+    }
+
+    .tech-card h3 {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tech-list li {
+      font-size: 12px;
+      color: var(--text);
+      display: flex;
+      gap: 8px;
+    }
+
+    .tech-list li::before {
+      content: "\2014";
+      color: var(--fcm-red);
+      flex-shrink: 0;
+    }
+
+    /* CONTACTS */
+    .contacts-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .contacts-table thead th {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 7px 12px;
+      background: var(--light-grey);
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .contacts-table tbody td {
+      font-size: 12px;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--mid-grey);
+      vertical-align: top;
+    }
+
+    .contacts-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tbc-tag {
+      font-family: 'Khand', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--fcm-red);
+      padding: 1px 6px;
+      display: inline-block;
+    }
+
+    /* OUTSTANDING ITEMS */
+    .outstanding-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .outstanding-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .outstanding-item .bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--fcm-red);
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Khand', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-doc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* PRINT */
+    @media print {
+      @page { size: A4; margin: 10mm 10mm 12mm; }
+      body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .container { max-width: 100%; }
+      .section { padding: 24px 32px; }
+      .header { padding: 28px 32px 24px; }
+      .footer { padding: 14px 32px; }
+      h2 { break-after: avoid; }
+      h3 { break-after: avoid; }
+      .location-grid { break-inside: avoid; }
+      .presenter-grid { break-inside: avoid; }
+      .schedule-item { break-inside: avoid; }
+      .script-block { break-inside: avoid; }
+      .tech-grid { break-inside: avoid; }
+      .footer { break-inside: avoid; }
+      p { orphans: 2; widows: 2; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img class="header-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDIt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" alt="Fifth Castle Media">
+    <div class="header-label">Fifth Castle Media — Production Brief</div>
+    <h1>MIT Scholarship Campaign Videos</h1>
+    <div class="header-sub">Melbourne Institute of Technology — Progression Scholarship 2026</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Shoot Date</span>
+        <span class="meta-value">Tuesday 24 March 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Director</span>
+        <span class="meta-value">Arek Rainczuk</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Videographer</span>
+        <span class="meta-value">Sam Young</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Target Runtime</span>
+        <span class="meta-value">~30 seconds per video (x4)</span>
+      </div>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <!-- SECTION 01 — DAY SCHEDULE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Day Schedule</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="schedule-block">
+
+      <div class="schedule-item">
+        <div class="schedule-time">10:00–10:15 AM</div>
+        <div class="schedule-detail">
+          <h3>Arrive and Walk-Through</h3>
+          <div class="focus-list">
+            Arrive at 288 La Trobe St. Meet Sushma. Walk through campus.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">10:15–10:30 AM</div>
+        <div class="schedule-detail">
+          <h3>Setup and Teleprompter Test</h3>
+          <div class="focus-list">
+            Set up. Teleprompter test with Nihriti.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">10:30–11:00 AM</div>
+        <div class="schedule-detail">
+          <h3>Setup 1: Video 3 — Nihriti (Personal/Social)</h3>
+          <div class="focus-list">
+            Level 3 social area.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">11:00–11:30 AM</div>
+        <div class="schedule-detail">
+          <h3>Setup 2: Video 4 — Nihriti (Getting Involved)</h3>
+          <div class="focus-list">
+            Wardrobe change. Level 5 lounge.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">11:30–11:50 AM</div>
+        <div class="schedule-detail">
+          <h3>B-Roll with Nihriti</h3>
+          <div class="focus-list">
+            B-roll with Nihriti in campus environments.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-gap">
+        <div class="gap-time">11:50–12:00 PM</div>
+        <div class="gap-note">Transition / break.</div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:00–12:15 PM</div>
+        <div class="schedule-detail">
+          <h3>Setup for Norrin</h3>
+          <div class="focus-list">
+            Set up for Norrin. Teleprompter test.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:15–12:45 PM</div>
+        <div class="schedule-detail">
+          <h3>Setup 3: Video 1 — Norrin (Welcome/Support)</h3>
+          <div class="focus-list">
+            Campus entry.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:45–1:15 PM</div>
+        <div class="schedule-detail">
+          <h3>Setup 4: Video 2 — Norrin (Specialisation/IT)</h3>
+          <div class="focus-list">
+            Wardrobe change. IT lab.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">1:15–1:30 PM</div>
+        <div class="schedule-detail">
+          <h3>B-Roll with Norrin</h3>
+          <div class="focus-list">
+            B-roll with Norrin in campus environments.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">1:30–1:45 PM</div>
+        <div class="schedule-detail">
+          <h3>Additional B-Roll</h3>
+          <div class="focus-list">
+            Additional b-roll, campus exteriors, still frames.
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">1:45–2:00 PM</div>
+        <div class="schedule-detail">
+          <h3>Pack Down</h3>
+          <div class="focus-list">
+            Pack down.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="schedule-note">
+      Confirmed: Nihriti 10am-noon, Norrin noon-2pm
+    </div>
+  </div>
+
+  <!-- SECTION 02 — LOCATIONS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Locations</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="location-grid">
+
+      <div class="location-card full-width">
+        <div class="location-badge">Single Location — Multiple Areas</div>
+        <h3>MIT Campus, Melbourne CBD</h3>
+        <div class="location-detail">
+          Address: 288 La Trobe Street, Melbourne<br>
+          <strong>10:00 AM – 2:00 PM</strong>
+        </div>
+        <div class="location-notes">
+          <strong>Areas to use:</strong><br>
+          Campus entry point / walkway (Videos 1 and 2)<br>
+          Level 3 social area — lunch tables, casual seating (Video 3)<br>
+          Level 5 lounge / table tennis area (Video 4)<br>
+          IT lab / tutorial room — computers, screens (Video 2)<br>
+          Admin / reception area for mock orientation (Video 1)<br><br>
+          <strong>Parking:</strong> One car park may be available (TBC). Backup: Wilson's Parking next door.<br>
+          <strong>Access:</strong> Security guard on site can assist with equipment loading
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 03 — TALENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Talent</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="presenter-grid">
+
+      <div class="presenter-card">
+        <div class="presenter-name">Norrin</div>
+        <div class="presenter-role">Student — Bachelor of Networking, Major in Cybersecurity</div>
+        <div class="presenter-story">Current MIT student. Speaks about the welcoming, supportive culture at MIT and the specialised IT and Business focus.</div>
+        <div class="presenter-direction">
+          <strong>Tone:</strong> Warm, natural, confident. Not performative.<br><br>
+          <strong>Sections:</strong> Videos 1 and 2<br><br>
+          <strong>Movement:</strong> Walk-and-talk for arrival/campus sequences. Static with teleprompter for delivery pieces.<br><br>
+          <strong>Wardrobe:</strong> Two distinct tops (different colour/style). Smart casual. No visible logos or heavy patterns.
+        </div>
+      </div>
+
+      <div class="presenter-card">
+        <div class="presenter-name">Nihriti</div>
+        <div class="presenter-role">Student</div>
+        <div class="presenter-story">Current MIT student. Speaks about the personal, smaller-institution feel and the ease of getting involved.</div>
+        <div class="presenter-direction">
+          <strong>Tone:</strong> Friendly, relaxed, genuine. Grounded in real experience.<br><br>
+          <strong>Sections:</strong> Videos 3 and 4<br><br>
+          <strong>Movement:</strong> Social interaction sequences (joining friends, walking campus). Static with teleprompter for delivery pieces.<br><br>
+          <strong>Wardrobe:</strong> Two distinct tops (different colour/style). Smart casual. No visible logos or heavy patterns.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 04 — SHOT LIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Shot List</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Setup 1 — Video 1 (Norrin: Welcome/Support)</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:80px;">Talent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">S1</td>
+            <td class="shot-type">Walk + Talk</td>
+            <td>Norrin arriving on campus, walking through entry point</td>
+            <td>Norrin</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S2</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Greeting from staff or another student, natural, not staged</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S3</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Short student-support interaction, asking a question, being guided</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S4</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Mock orientation, student card / admin help / being shown where to go</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S5</td>
+            <td class="shot-type">Walk + Talk</td>
+            <td>Confident closing walk through campus, direct-to-camera finish</td>
+            <td>Norrin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Setup 2 — Video 2 (Norrin: Specialisation/IT)</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:80px;">Talent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">S6</td>
+            <td class="shot-type">Direct-to-Camera</td>
+            <td>Open in IT lab, tutorial room, or campus walkway</td>
+            <td>Norrin</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S7</td>
+            <td class="shot-type">B-Roll</td>
+            <td>IT learning environment, computers, screens, lecturer interaction</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S8</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Hands-on classroom moments, tutorial, lab, collaborative work</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S9</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Close-up detail shots of tech setup or problem-solving</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S10</td>
+            <td class="shot-type">Static</td>
+            <td>Ending with Norrin looking focused and confident</td>
+            <td>Norrin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Setup 3 — Video 3 (Nihriti: Personal/Social)</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:80px;">Talent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">S11</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Hanging out in Level 3 social area with friends</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S12</td>
+            <td class="shot-type">Walk + Talk</td>
+            <td>Nihriti joins friends at table, people eating lunch</td>
+            <td>Nihriti</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S13</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Social, fun, natural interactions. Movement and energy.</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S14</td>
+            <td class="shot-type">Optional</td>
+            <td>Interaction with a lecturer</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">Setup 4 — Video 4 (Nihriti: Getting Involved)</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:80px;">Talent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">S15</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Level 5 lounge / table tennis area activity</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S16</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Interaction with staff or student support</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S17</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Checking emails/messages about opportunities (on phone/laptop)</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">S18</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Footage suggesting orientation, events, volunteering, student roles</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shot-location-block">
+      <div class="shot-location-title">General B-Roll</div>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:90px;">Type</th>
+            <th>Description</th>
+            <th style="width:80px;">Talent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-num">B1</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Campus exteriors and signage</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B2</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Student life, corridors, conversations, movement</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B3</td>
+            <td class="shot-type">B-Roll</td>
+            <td>Classroom/lab environments</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B4</td>
+            <td class="shot-type">B-Roll</td>
+            <td>MIT branding in situ</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="shot-num">B5</td>
+            <td class="shot-type">B-Roll</td>
+            <td>High-quality still frame moments for banners/static ads</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- SECTION 05 — SCRIPTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Scripts</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="script-note">
+      Final scripts provided by Sara Tiefenbrun, 17 March 2026. Teleprompter delivery. Scripts can be adjusted during rehearsal so students feel relaxed and authentic.
+    </div>
+
+    <!-- VIDEO 1 -->
+    <div class="script-block">
+      <div class="script-cue">Video 1 — Norrin (Welcome/Support)</div>
+      <div class="script-key-message"><strong>Key message:</strong> MIT is supportive, you will feel at home.</div>
+      <div class="script-action">Teleprompter delivery. Alternate tighter version.</div>
+      <div class="script-line">
+        <span class="speaker">Norrin</span>
+        On my first day at MIT, one thing really stood out — people are genuinely welcoming.<br><br>
+        If I had a question, I could ask anyone and they'd help me on the spot, or point me in the right direction.<br><br>
+        That support made settling in so much easier. I feel like I can depend on the staff and students.<br><br>
+        Now when I walk into MIT, it just feels like home.
+      </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="script-block">
+      <div class="script-cue">Video 2 — Norrin (Specialisation/IT)</div>
+      <div class="script-key-message"><strong>Key message:</strong> MIT offers specialised IT and Business degrees, with like-minded students.</div>
+      <div class="script-action">Teleprompter delivery.</div>
+      <div class="script-line">
+        <span class="speaker">Norrin</span>
+        Other institutions felt more general. MIT felt more focused on the subjects I'm interested in.<br><br>
+        That was a big reason I chose it. It means the other students are interested in the same things I'm interested in.<br><br>
+        I also liked that the learning is hands-on, not just theory.<br><br>
+        With lectures, labs and tutorials, it feels practical and connected to where I want to go.
+      </div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="script-block">
+      <div class="script-cue">Video 3 — Nihriti (Personal/Social)</div>
+      <div class="script-key-message"><strong>Key message:</strong> A smaller institution feels more personal and supportive.</div>
+      <div class="script-action">Teleprompter delivery. Cut-down version.</div>
+      <div class="script-line">
+        <span class="speaker">Nihriti</span>
+        At MIT, it feels easy to connect.<br><br>
+        The lecturers are approachable, the staff are friendly, and it's easy to get to know other students.<br><br>
+        And because it's a smaller institution, it feels more personal.<br><br>
+        For me, that makes studying feel more comfortable and more supportive.
+      </div>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div class="script-block">
+      <div class="script-cue">Video 4 — Nihriti (Getting Involved)</div>
+      <div class="script-key-message"><strong>Key message:</strong> It is easier to get involved at MIT because it is smaller and more personal.</div>
+      <div class="script-action">Teleprompter delivery.</div>
+      <div class="script-line">
+        <span class="speaker">Nihriti</span>
+        At MIT, it's easy to step in and be part of things.<br><br>
+        We often hear about opportunities through the team, like events or ways to take part.<br><br>
+        And because the environment is smaller and more personal, it feels easier to take part.<br><br>
+        For me that's a really important part of the experience.<br><br>
+        You don't feel lost in the crowd — you feel like there's a place for you to step in and be involved.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 06 — TECHNICAL SETTINGS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>Technical Settings</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="tech-grid">
+
+      <div class="tech-card">
+        <h3>Camera</h3>
+        <ul class="tech-list">
+          <li>4K, neutral profile, no baked LUT</li>
+          <li>Manual white balance — set per location</li>
+          <li>25fps — all presenter / teleprompter shots</li>
+          <li>50fps — all b-roll and action footage</li>
+          <li>Shutter: 1/50 at 25fps, 1/100 at 50fps</li>
+          <li>Frame horizontal (16:9). Verticals (9:16) and feed (4:5) created as crops in post. Frame subjects with crop margins in mind.</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Support</h3>
+        <ul class="tech-list">
+          <li>Teleprompter — all scripted delivery</li>
+          <li>Gimbal — walk-and-talk, arrival sequences, campus movement</li>
+          <li>Tripod — static teleprompter setups, b-roll</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Audio</h3>
+        <ul class="tech-list">
+          <li>2x lav microphones (one per student, used alternately)</li>
+          <li>Headphones for live monitoring on all presenter takes</li>
+          <li>30 seconds room tone recorded at each location</li>
+          <li>Shotgun mic for ambient/b-roll audio</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Lighting</h3>
+        <ul class="tech-list">
+          <li>Mixed indoor environments (fluorescent + natural light)</li>
+          <li>Portable LED panel for fill on interview/teleprompter setups</li>
+          <li>Labs will have screen glow — plan controlled lighting</li>
+          <li>Reflector for fill in social/common areas</li>
+          <li>Bring gels for colour temperature matching if needed</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 07 — CONTACTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>Contacts</h2>
+      <div class="section-rule"></div>
+    </div>
+    <table class="contacts-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Phone</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Arek Rainczuk</strong></td>
+          <td>Director — Fifth Castle Media</td>
+        </tr>
+        <tr>
+          <td><strong>Sam Young</strong></td>
+          <td>Videographer — Fifth Castle Media</td>
+          <td>0435 501 793</td>
+          <td></td>
+          <td>0467 676 205</td>
+          <td>Primary contact on the day</td>
+        </tr>
+        <tr>
+          <td><strong>Sushma Gurung</strong></td>
+          <td>Marketing — MIT</td>
+          <td>0422 473 378</td>
+          <td>Client contact on site</td>
+        </tr>
+        <tr>
+          <td><strong>Norrin</strong></td>
+          <td>Student talent</td>
+          <td><span class="tbc-tag">TBC</span></td>
+          <td>Videos 1 and 2</td>
+        </tr>
+        <tr>
+          <td><strong>Nihriti</strong></td>
+          <td>Student talent</td>
+          <td><span class="tbc-tag">TBC</span></td>
+          <td>Videos 3 and 4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 08 — OUTSTANDING ITEMS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Outstanding Before Shoot Day</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="outstanding-list">
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>Availability of extra students/staff for b-roll scenes</strong> — social areas, labs</div>
+      </div>
+      <div class="outstanding-item">
+        <div class="bullet"></div>
+        <div><strong>End card choice (Option A or Option B)</strong> — decision needed before post-production</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Fifth Castle Media — Confidential Production Brief</div>
+    <div class="footer-doc">MIT Scholarship Campaign &nbsp;|&nbsp; 288 La Trobe St &nbsp;|&nbsp; 24 March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
