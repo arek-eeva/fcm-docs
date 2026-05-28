@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adbri — Rock to Market — Strategic Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --red-dim: #8a1820;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --card: #161616;
+    --light: #f4f1ec;
+    --grey-1: #d4d4d4;
+    --grey-2: #aaaaaa;
+    --grey-3: #777777;
+    --grey-4: #555555;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--grey-1);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+  }
+
+  .khand, .label, .meta, nav a, .eyebrow {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.75) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .nav-logo {
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  nav ul { display: flex; gap: 28px; list-style: none; }
+
+  nav a {
+    color: var(--grey-3);
+    text-decoration: none;
+    font-size: 11px;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--white); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 56px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(120deg, rgba(189,32,45,0.10) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,1) 100%),
+      repeating-linear-gradient(-20deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.05;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px;
+    transform: skewY(-2deg);
+  }
+
+  .hero-red-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); z-index: 2; }
+
+  .hero-content { position: relative; z-index: 3; max-width: 1100px; }
+
+  .hero-overline {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-overline::before { content: ''; display: block; width: 32px; height: 1px; background: var(--red); }
+
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 92px);
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.02;
+  }
+
+  .hero h1 .accent { color: var(--red); }
+
+  .hero-sub {
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: rgba(255,255,255,0.55);
+    font-family: 'Vidaloka', Georgia, serif;
+    margin-bottom: 56px;
+    max-width: 780px;
+    line-height: 1.4;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+    max-width: 880px;
+  }
+
+  .hero-meta-item .label { font-size: 12px; color: var(--red); margin-bottom: 8px; }
+
+  .hero-meta-item .value {
+    font-family: 'Khand', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  /* ─── CONFIDENTIALITY BANNER ─── */
+  .confidential {
+    background: var(--mid);
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    padding: 22px 56px;
+    text-align: center;
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .confidential strong { color: var(--red); font-weight: 600; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 110px 56px; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 56px;
+  }
+
+  .section-number {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 72px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: -8px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Khand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .section-title { font-size: clamp(30px, 4vw, 48px); color: var(--white); }
+
+  .section-lead {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 22px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 820px;
+    font-style: italic;
+  }
+
+  .section-alt { background: var(--dark); }
+
+  /* ─── BODY ─── */
+  p { margin-bottom: 22px; color: rgba(255,255,255,0.75); }
+
+  p strong { color: var(--white); font-weight: 400; }
+
+  em { color: rgba(255,255,255,0.95); font-style: italic; }
+
+  .section-inner > p,
+  .section-inner > ul {
+    max-width: 820px;
+  }
+
+  ul { padding-left: 24px; margin-bottom: 22px; max-width: 820px; }
+  ul li { margin-bottom: 12px; color: rgba(255,255,255,0.75); }
+  ul li::marker { color: var(--red); }
+
+  /* ─── PULL QUOTE ─── */
+  .pull {
+    background: var(--mid);
+    border-left: 3px solid var(--red);
+    padding: 32px 36px;
+    margin: 40px 0;
+    max-width: 880px;
+  }
+
+  .pull p {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ─── HALO BOX (used for the strategic-read insight) ─── */
+  .halo {
+    background: linear-gradient(135deg, rgba(189,32,45,0.12) 0%, rgba(189,32,45,0.04) 100%);
+    border: 1px solid rgba(189,32,45,0.25);
+    padding: 36px 40px;
+    margin: 40px 0;
+    max-width: 880px;
+    position: relative;
+  }
+
+  .halo .halo-label {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .halo p {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--white);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap { overflow-x: auto; margin: 32px 0; max-width: 100%; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: rgba(255,255,255,0.78);
+  }
+
+  thead th {
+    text-align: left;
+    padding: 14px 16px;
+    font-family: 'Khand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    background: var(--mid);
+    font-weight: 600;
+  }
+
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  tbody td:first-child {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ─── SITE CARDS ─── */
+  .cluster-label {
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .cluster-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .site-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 36px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .site-card:hover {
+    border-color: rgba(189,32,45,0.4);
+    background: #181818;
+  }
+
+  .site-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: var(--red);
+    opacity: 0.5;
+  }
+
+  .site-card h3 {
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .site-card .site-meta {
+    font-family: 'Khand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+  }
+
+  .site-card p {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .site-card p:last-child { margin-bottom: 0; }
+
+  .site-card .complexity {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .site-card .complexity strong {
+    font-family: 'Khand', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* ─── BRAND GRID ─── */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 32px 0;
+  }
+
+  .brand-tile {
+    background: var(--card);
+    padding: 22px 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s;
+  }
+
+  .brand-tile:hover { border-color: rgba(189,32,45,0.35); }
+
+  .brand-tile .brand-name {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .brand-tile .brand-cat {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .brand-tile p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .brand-tile .status {
+    margin-top: 10px;
+    font-family: 'Khand', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ─── QUESTION BLOCKS ─── */
+  .q-group {
+    margin-top: 36px;
+  }
+
+  .q-group-label {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(189,32,45,0.25);
+    max-width: 880px;
+  }
+
+  ol.questions {
+    list-style: none;
+    counter-reset: q;
+    padding: 0;
+    max-width: 880px;
+  }
+
+  ol.questions li {
+    counter-increment: q;
+    position: relative;
+    padding: 18px 0 18px 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+  }
+
+  ol.questions li::before {
+    content: counter(q, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 18px;
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  ol.questions li .why {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+
+  /* ─── TWO COLUMN VOLUNTEER GRID ─── */
+  .volunteer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+    max-width: 1100px;
+  }
+
+  @media (max-width: 800px) {
+    .volunteer-grid { grid-template-columns: 1fr; }
+  }
+
+  .v-card {
+    padding: 28px 32px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-top: 3px solid var(--red);
+  }
+
+  .v-card.dont { border-top-color: var(--grey-3); }
+
+  .v-card h4 {
+    font-family: 'Khand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .v-card.dont h4 { color: var(--grey-2); }
+
+  .v-card ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .v-card ul li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+    line-height: 1.55;
+  }
+
+  /* ─── PRICING TABLE ─── */
+  .pricing {
+    margin: 32px 0;
+    max-width: 880px;
+  }
+
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: baseline;
+  }
+
+  .pricing-row:last-child { border-bottom: none; }
+
+  .pricing-row .line {
+    font-size: 15px;
+    color: rgba(255,255,255,0.78);
+  }
+
+  .pricing-row .amt {
+    font-family: 'Khand', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  .pricing-total {
+    margin-top: 16px;
+    padding-top: 22px;
+    border-top: 2px solid var(--red);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+  }
+
+  .pricing-total .label {
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .pricing-total .amt {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 28px;
+    color: var(--white);
+  }
+
+  /* ─── MASTERMIND DISCUSSION ─── */
+  .discussion-block {
+    background: linear-gradient(135deg, rgba(189,32,45,0.08) 0%, rgba(10,10,10,0.5) 100%);
+    border: 1px solid rgba(189,32,45,0.18);
+    padding: 36px 40px;
+    margin-bottom: 18px;
+    max-width: 1000px;
+  }
+
+  .discussion-block h3 {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .discussion-block .qnum {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .discussion-block p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 56px 56px 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    margin-bottom: 16px;
+  }
+
+  .footer-logo span { color: var(--red); }
+
+  footer .footer-meta {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-3);
+    line-height: 1.8;
+  }
+
+  footer .footer-meta a { color: var(--grey-3); text-decoration: none; }
+  footer .footer-meta a:hover { color: var(--white); }
+
+  .footer-confidential {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Khand', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-4);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 24px; }
+    nav ul { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 80px 24px; }
+    footer { padding: 40px 24px 28px; }
+    .section-header { gap: 24px; }
+    .section-number { font-size: 56px; }
+    .confidential { padding: 18px 24px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <div class="nav-logo">Fifth <span>Castle</span> Media</div>
+  <ul>
+    <li><a href="#opportunity">Opportunity</a></li>
+    <li><a href="#strategic-read">Strategic Read</a></li>
+    <li><a href="#storyboard">Storyboard</a></li>
+    <li><a href="#sites">Sites</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#call">Call Strategy</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#mastermind">Mastermind</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-red-bar"></div>
+  <div class="hero-content">
+    <div class="hero-overline">Strategic Brief</div>
+    <h1>Adbri.<br><span class="accent">Rock to Market.</span></h1>
+    <div class="hero-sub">A multi-site film commissioned for the CRH Board visit, October 2026 &mdash; and the upstream opportunity it represents for Fifth Castle Media.</div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Prospect</div>
+        <div class="value">Adbri Limited<br>(CRH Australia)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Contact</div>
+        <div class="value">Georgia Allen<br>Communications Consultant</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Source</div>
+        <div class="value">Drew + Kirk Buckley<br>Civilmart (CRH internal)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Discovery Call</div>
+        <div class="value">Fri 29 May 2026<br>Zoom</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Prepared By</div>
+        <div class="value">Arek Rainczuk</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Audience</div>
+        <div class="value">Mastermind group<br>(private discussion)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONFIDENTIALITY ─── -->
+<div class="confidential">
+  <strong>Private</strong> &nbsp;&middot;&nbsp; Internal strategic brief &nbsp;&middot;&nbsp; Not for distribution outside the mastermind &nbsp;&middot;&nbsp; Page not indexed
+</div>
+
+<!-- ─── 01 OPPORTUNITY ─── -->
+<section id="opportunity">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div>
+        <div class="section-eyebrow">The Opportunity</div>
+        <h2 class="section-title">A cross-referral inside the world's largest building materials group</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">On Thursday 28 May at 10:01am, an email landed at info@fifthcastle.media. Georgia Allen at Adbri was looking for a videographer to film around twelve sites across South Australia and Victoria ahead of a CRH Board visit in October. She'd been given my details by Drew and Kirk at Civilmart. A Zoom is booked for tomorrow.</p>
+
+    <p>Adbri is the cement, lime, concrete, masonry and aggregates arm of Australian construction materials. Headquartered in Adelaide, born out of Adelaide Brighton Cement (origin 1882), rebranded Adbri in 2022. Until July 2024 it was ASX-listed as a $2 billion business with a national footprint.</p>
+
+    <p>On <strong>1 July 2024</strong>, CRH plc &mdash; the world's largest building materials business by revenue, NYSE and LSE listed &mdash; completed the acquisition of the 57% of Adbri it didn't already control alongside the Barro Group. Headline price: <strong>A$2.1 billion equity value</strong>. Adbri delisted. It became CRH's Australian cement and aggregates platform, sister-company to the Civilmart group of precast concrete businesses CRH had already built in Australia.</p>
+
+    <p>That's where the referral starts to matter. <strong>Kirk Buckley</strong> is the brand and communications contact at CRH Infrastructure Products Australia &mdash; the Civilmart side of the family. He's the same Kirk that Civilmart's National HSEQ Manager, Glenn Ducat, has been working with on the Eyes on Hands safety video FCM is currently in post-production for. Kirk recommending FCM to his Adbri counterpart isn't a casual handoff. It's CRH Australia's communications function starting to treat FCM as a panel rather than a vendor.</p>
+
+    <p><strong>Drew</strong> &mdash; the other named referrer &mdash; appears in Civilmart's order history as the leadership figure whose monthly update videos FCM produced in 2023. Two warm referrers inside Civilmart, both pointing the same way.</p>
+
+    <div class="pull">
+      <p>If FCM had been chasing CRH-Australia panel positioning explicitly, this is the inbound that would have signalled the door had opened. We weren't chasing it. The door opened anyway.</p>
+    </div>
+
+    <p>Total billed with Civilmart since April 2022: approximately <strong>A$189,000 across 35 orders</strong>. Most recent CRH-group-level work: the CRH Brand Values Video Series (October 2025, A$38,830). Adbri is the natural next ring outward.</p>
+  </div>
+</section>
+
+<!-- ─── 02 STRATEGIC READ ─── -->
+<section id="strategic-read" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div>
+        <div class="section-eyebrow">The Strategic Read</div>
+        <h2 class="section-title">This isn't a corporate video. It's Adbri's pitch to the CRH Board.</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">The storyboard Georgia attached is titled "Rock to Market". The file she sent was mis-named "Road to market", but the document's actual title gives the whole thing away. The narrative spine is vertical integration as competitive moat.</p>
+
+    <div class="halo">
+      <span class="halo-label">The argument the film is making</span>
+      <p>We own the rock (Klein Point Quarry). We own the boat (Yampu, the world's first fully electric-capable limestone carrier). We own the kiln (Birkenhead, Australia's lowest embodied carbon GP cements). We own the distribution (Port Melbourne, Yarraville, ICL terminals). We own the downstream concrete and masonry network (Hy-Tec, Mawsons, Central Premix, Swan, BPS, Adbri Masonry). And we feed the rest of the CRH Australia portfolio (Civilmart).</p>
+    </div>
+
+    <p>The language is board language, not marketing language. "Strategic asset within Adbri's vertically integrated model." "Secures long-term resource supply." "Redefining how materials move." "Australia's lowest embodied carbon general-purpose cements." "Integrated logistics network." "Stable demand channels and greater value capture across the construction lifecycle." "Fully integrated network &mdash; creating value, resilience and supporting Australia's growth."</p>
+
+    <p>The XX placeholder statistics scattered through the storyboard are the giveaway. They're waiting for operational performance numbers &mdash; tonnes extracted, tonnes shipped, percentage emissions reduction, tonnes diverted from landfill. Operational performance numbers don't go in a recruitment video. They go in a Board paper.</p>
+
+    <p><strong>Who the real client is:</strong> Georgia is the project lead. The real client is Adbri's leadership team preparing a value-add narrative for the CRH Board's October visit. CRH paid A$2.1 billion for Adbri eighteen months ago. The Board's October visit is when they evaluate the asset in person and start setting the next capex cycle. This film is the early proof-point that the deal was worth it.</p>
+
+    <p><strong>What this implies for FCM's positioning:</strong></p>
+
+    <ul>
+      <li><strong>Topline pricing pressure will be low.</strong> Story credibility and CRH-fit will be high. Board films don't get value-engineered.</li>
+      <li><strong>The dual-use ask is real.</strong> The same footage will become the company overview for new-talent recruitment. That's not an afterthought, that's deliberate &mdash; it's how Adbri amortises this investment.</li>
+      <li><strong>The Civilmart cameo in the storyboard is huge.</strong> One of the late scenes is "supply to Civilmart site". FCM has the Civilmart relationship. We can solve that scene ourselves without Adbri having to broker access. Small thing on paper, large thing in the room.</li>
+      <li><strong>The downstream prize is panel positioning.</strong> If this lands well, FCM is now the trusted CRH Australia video supplier across at least two business units. That changes the next five years of FCM revenue mix.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── 03 STORYBOARD DECODE ─── -->
+<section id="storyboard">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <div>
+        <div class="section-eyebrow">The Storyboard, Decoded</div>
+        <h2 class="section-title">Thirteen scenes, one narrative arc</h2>
+      </div>
+    </div>
+
+    <p>The storyboard runs thirteen scenes in a linear "Rock to Market" arc. The board version has on-screen statistics; the recruitment overview version drops the stats and tightens the narrative.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Scene</th>
+            <th>Location</th>
+            <th>What it shows</th>
+            <th>The story beat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Intro</td>
+            <td>Stock Australian city footage, Adbri logo, brand logos</td>
+            <td>"Critical infrastructure relies on a resilient supply of essential materials"</td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>Klein Point Quarry (SA)</td>
+            <td>Sign / dawn over quarry, limestone activity, pre-start machinery checks</td>
+            <td>"Quarries are the foundation &mdash; a critical strategic asset within Adbri's vertically integrated model"</td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>Klein Point Quarry</td>
+            <td>Loading limestone into Yampu via conveyors</td>
+            <td>"Our purpose-built vessel Yampu &mdash; the world's first fully electric-capable limestone carrier &mdash; is redefining how materials move"</td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>Yampu in transit</td>
+            <td>Vessel travelling to Birkenhead</td>
+            <td>"Meaning dolphin in local First Nations language &hellip; reducing emissions, demonstrating how innovation can deliver operational and sustainability outcomes"</td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td>Birkenhead (SA)</td>
+            <td>Kiln, conveyors, mills</td>
+            <td>"Australia's lowest embodied carbon general-purpose cements &mdash; reducing emissions while diverting waste from landfill"</td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td>Birkenhead</td>
+            <td>Product leaving by road and ship</td>
+            <td>"Integrated logistics network &mdash; spanning road and coastal shipping &mdash; ensures efficient supply across South Australia, Victoria, and beyond"</td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td>Port Melbourne</td>
+            <td>Ship arriving, unloading, truck loading at ICL terminal</td>
+            <td>"This flexibility strengthens resilience and supports consistent customer delivery"</td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td>South Wharf / Echuca</td>
+            <td>Hy-Tec / Mawsons cement truck arriving, agi loading and driving</td>
+            <td>"Downstream network of concrete and construction materials &mdash; closer customer relationships, stable demand, greater value capture"</td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td>TBC (customer project)</td>
+            <td>Metro and regional construction site</td>
+            <td>"From major metropolitan infrastructure to regional developments, Adbri supplies the essential materials that support Australia's growth"</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Yarraville</td>
+            <td>BPS bagging plant, pallets loaded onto BPS trucks</td>
+            <td>"Our bagged cement range supports retail and trade customers &mdash; strengthening and diversifying our business nationally"</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>TBC (Civilmart site)</td>
+            <td>Supply to a Civilmart facility</td>
+            <td>"As part of CRH, Adbri benefits from global scale, shared expertise, and a connected portfolio of businesses"</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>TBC (Masonry)</td>
+            <td>Masonry products in context</td>
+            <td>"From masonry products to precast solutions, our portfolio supports a wide range of construction needs"</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>End</td>
+            <td>Stock Australian cities, Adbri logo</td>
+            <td>"From quarry to customer, this is more than a supply chain &mdash; it's a fully integrated network creating value, resilience and supporting Australia's growth"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Site count audit.</strong> The storyboard names nine distinct ground locations plus the Yampu vessel and stock intro/end. Georgia said "around twelve". The most likely explanations: (1) some sites need sub-location coverage (Birkenhead alone has the kiln, the conveyors, the mills and the dispatch yard); (2) scope has expanded since the storyboard was drawn; (3) the three TBC sites haven't been narrowed yet and could be more than one each. Confirming the actual list is question one on the call.</p>
+  </div>
+</section>
+
+<!-- ─── 04 SITE INTEL ─── -->
+<section id="sites" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <div>
+        <div class="section-eyebrow">Site Intel</div>
+        <h2 class="section-title">What I should know before I walk into the call</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">Production complexity varies wildly across the storyboard &mdash; from "drone over a quarry" to "film aboard a working bulk carrier mid-voyage". Knowing each site's reality before the call lets me steer the conversation rather than absorb it.</p>
+
+    <div class="cluster-label">South Australia cluster</div>
+
+    <div class="site-card">
+      <h3>Klein Point Quarry</h3>
+      <div class="site-meta">Yorke Peninsula &middot; 6.5 km south of Stansbury</div>
+      <p>Limestone quarry operating continuously since 1925, when the Adelaide Cement Company began extracting here to feed the Birkenhead plant. ~1.5 million tonnes per year of off-white fossiliferous Port Willunga Formation limestone, 85&ndash;92% carbonate content. A 30-metre-thick limestone unit beneath 3&ndash;4 metres of calcrete overburden.</p>
+      <p>The site has its own active jetty &mdash; built in the 1920s, extended in the 1960s with a T-section &mdash; which is where Yampu loads. The quarry-jetty pairing is what makes the vertical integration possible: no third-party logistics between rock and ship.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Active quarry with daily blast schedules. Will need drone permissions, dust management, full PPE protocol, escort. ~2 hours from Adelaide via car ferry (Ardrossan).
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>Yampu (the vessel)</h3>
+      <div class="site-meta">CSL-owned bulk carrier, operated for Adbri</div>
+      <p>The single most innovation-laden subject in the storyboard. Yampu is the world's first battery-powered, fully electric-capable self-unloading bulk carrier. 11,000 deadweight tonnes, purpose-built at Jiangjiang Nanyang Shipyard in China, named at ceremonies in March 2026. Will carry 2.7 million tonnes of limestone per year &mdash; a 35% lift on the vessel she replaces (Accolade II).</p>
+      <p>Initial mode: hybrid diesel-battery, replacing 25% of diesel and lowering Scope 1 emissions by 40% versus Accolade II. By 2028 the AYK Energy Aries+S battery system (131 tonnes, 6,758 kWh) is installed. Target 2031: fully electric operation, Scope 1 emissions under 10% of the predecessor. The name "Yampu" means dolphin in the Kaurna language of the Adelaide plains.</p>
+      <p>Owned by Canada's CSL Group; operated by CSL Australia for Adbri under a long-term contract.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        The hardest shot in the storyboard. Three options: drone-from-shore at Klein Point and Birkenhead (cheapest, weather-dependent), drone-from-escort-vessel mid-voyage (more expensive, weather-dependent, permits), or staged shots aboard during loading/unloading. <strong>Critical question for the call:</strong> Is Yampu in service yet? She was named two months ago, and the AYK battery system doesn't install until 2028. If the vessel isn't fully operational, this scene may need to be partially stock or composite.
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>Birkenhead Cement Plant</h3>
+      <div class="site-meta">Port River, Port Adelaide</div>
+      <p>Adbri's flagship cement operation and the destination for every Yampu voyage. Uses refuse-derived fuel (RDF) supplied by a Veolia / ResourceCo partnership: over 1 million tonnes of RDF replacing natural gas, 1.48 million tonnes of waste diverted from landfill, an estimated 13,000 tonnes per year of greenhouse gas emissions avoided. The EPA SA approved the expanded RDF usage in 2023.</p>
+      <p>Adbri markets the output as "Australia's lowest embodied carbon general-purpose cements", a position the film leans into hard.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Heavy industrial: heat, dust, noise, multiple discrete shooting locations inside the same complex (kiln, conveyors, mills, dispatch). FCM has filmed comparable Civilmart precast sites &mdash; Glenn Ducat's network. <strong>Background risk for me to track (do not raise on the call):</strong> there is documented community opposition in Port Adelaide to expanded plastics-heavy RDF use. The storyboard sells RDF as a clean win. If I end up writing or refining script copy, I'll stick to the verified emissions and landfill numbers and avoid overclaim.
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>Adbri Masonry &mdash; Ottoway</h3>
+      <div class="site-meta">Blakeney Road / Grand Junction, Ottoway SA</div>
+      <p>Adbri's masonry head office and manufacturing, ten minutes from Birkenhead. Concrete bricks, blocks, pavers, retaining walls, reconstituted stone veneers. Includes the Brighton Masonry brand &mdash; exclusive to Bunnings &mdash; which is a recognisable Australian retail proof-point if the film wants to land a "you've seen this in your local store" moment for the recruitment cut.</p>
+      <p>Lineage: Besser blocks since 1957, formerly traded as Rocla Pavers and Masonry, Pioneer Building Products, Hanson and C&amp;M Brick before rebranding to Adbri Masonry in 2009.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Standard manufacturing site. Same SA trip as Birkenhead and Klein Point &mdash; one efficient three-day block.
+      </div>
+    </div>
+
+    <div class="cluster-label">Victoria cluster</div>
+
+    <div class="site-card">
+      <h3>Port Melbourne &mdash; ICL Terminal</h3>
+      <div class="site-meta">Adbri / Barro Group cement distribution</div>
+      <p>Independent Cement and Lime is Adbri's exclusive cement distribution arm into Victoria and NSW &mdash; historically a 50:50 joint venture with the Barro Group, though one industry source suggests the JV structure may have shifted post-CRH (worth confirming). A new 45,000-tonne silo was commissioned at the Port Melbourne terminal in 2023. This is where bulk cement from Birkenhead arrives by coastal shipping and reaches the Victorian market.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Active commercial port. Permits needed. Coordinate with the Yampu arrival schedule if we want the "ship arriving + unloading" shot to be authentic rather than staged.
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>South Wharf &mdash; Hy-Tec Concrete</h3>
+      <div class="site-meta">Pier 32, 469&ndash;591 Lorimer Street, Port Melbourne</div>
+      <p>Hy-Tec is Adbri's national premix concrete brand &mdash; established 1989, joined the Adbri group in 2018, supplies more than 1 million cubic metres of concrete per year nationally. Notable Hy-Tec project in the same precinct: 20,000 cubic metres supplied to the Hilton Melbourne South Wharf hotel.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Urban concrete plant. Filming during a real delivery cycle gives authenticity but coordination with despatch is essential.
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>Echuca &mdash; Mawsons Concrete</h3>
+      <div class="site-meta">McMillan Road, Echuca &middot; ~250 km north of Melbourne</div>
+      <p>Mawsons is Adbri's regional concrete and quarries play in Northern Victoria and Southern NSW &mdash; a 50:50 joint venture with the McCann family since 2007. Also trades as Milbrae and Country Concrete. Around 600 employees across 80 sites, 110+ year history. This is the "regional Australia" beat in the storyboard.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        2.5-hour drive from Melbourne &mdash; overnight crew likely. Good drone country, regional aesthetic differentiates from the metropolitan Hy-Tec scene.
+      </div>
+    </div>
+
+    <div class="site-card">
+      <h3>Yarraville &mdash; BPS Bagging Plant</h3>
+      <div class="site-meta">Bagged Product Solutions &middot; Western Melbourne</div>
+      <p>BPS is Adbri's bagged cement operation for retail and trade. The Yarraville plant has just been through a major modernisation: new automated mixer and weigher inside a renewed dry storage tower, a fully enclosed Z-conveyor to a new 17-metre processing structure, multi-level reclaim and packing systems. Dust and noise reduced, throughput improved.</p>
+      <p>The branded BPS trucks are part of the visual storyboard &mdash; the film wants to show the retail / trade end of the value chain.</p>
+      <div class="complexity">
+        <strong>Production complexity</strong>
+        Newly modernised facility &mdash; will look great on camera. Standard industrial filming protocols.
+      </div>
+    </div>
+
+    <div class="cluster-label">To-be-confirmed sites</div>
+
+    <div class="site-card">
+      <h3>Customer Project Site (TBC)</h3>
+      <div class="site-meta">Metro and regional construction</div>
+      <p>Adbri to nominate. Likely a flagship infrastructure or commercial project showing the finished concrete in use. End-client release required.</p>
+    </div>
+
+    <div class="site-card">
+      <h3>Civilmart Site (TBC)</h3>
+      <div class="site-meta">FCM-handled win</div>
+      <p>The "supply to Civilmart" scene proving CRH-internal synergy. <strong>FCM recommendation:</strong> Carrum Downs (Cubis), Victoria. Closest Civilmart site to the Vic crew, we just shot Eyes on Hands there, Sam knows the floor, Dini Agushi at Cubis already trusts us. The Cubis plastics process is visually distinctive (CRH's plastics division &mdash; Infrastructure Products Australia &mdash; not just precast). One day, one crew, solved.</p>
+    </div>
+
+    <div class="site-card">
+      <h3>Masonry Site (TBC)</h3>
+      <div class="site-meta">Already covered if Ottoway is in</div>
+      <p>If Adbri Masonry Ottoway is filmed during the SA block, this TBC may collapse into that. Otherwise an East Coast Adbri Masonry site.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 BRAND PORTFOLIO ─── -->
+<section id="brands">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <div>
+        <div class="section-eyebrow">The Adbri Portfolio</div>
+        <h2 class="section-title">Seventeen brands under one parent</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">When Georgia talks about "the Adbri family", she means this. Vertical integration is enabled by a deep brand portfolio &mdash; cement, distribution, concrete, quarries, masonry, bagged retail.</p>
+
+    <div class="brand-grid">
+      <div class="brand-tile">
+        <div class="brand-name">Adbri Cement</div>
+        <div class="brand-cat">Cement &middot; parent brand</div>
+        <p>The national rebrand of Adelaide Brighton Cement (2022). Brand mark used across the integrated portfolio.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Adelaide Brighton Cement</div>
+        <div class="brand-cat">Cement &middot; SA legacy</div>
+        <p>Origin brand, founded 1882. Still used in regional contexts. The Birkenhead plant operates under this lineage.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Cockburn Cement</div>
+        <div class="brand-cat">Cement &middot; WA</div>
+        <p>The Western Australian cement operation. Major WA market position.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Swan Materials</div>
+        <div class="brand-cat">Concrete + quarries + transport &middot; WA</div>
+        <p>The newly unified WA materials brand. Rolls up Swan Cement plus former BGC businesses Adbri acquired &mdash; concrete, quarries, transport, asphalt, materials technology centre.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Northern Cement</div>
+        <div class="brand-cat">Cement &middot; NT / Northern QLD</div>
+        <p>Cement supply into the northern markets.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Morgan Cement International</div>
+        <div class="brand-cat">Cement &middot; specialty / import</div>
+        <p>Specialty and imported cement product lines.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Sunstate Cement</div>
+        <div class="brand-cat">Cement &middot; QLD</div>
+        <p>The Queensland cement market position.</p>
+        <div class="status">50/50 joint venture</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Independent Cement &amp; Lime (ICL)</div>
+        <div class="brand-cat">Distribution &middot; VIC + NSW</div>
+        <p>The cement distribution arm into VIC and NSW. Port Melbourne and Glendenning terminals.</p>
+        <div class="status">JV with Barro (status fluid)</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Hy-Tec</div>
+        <div class="brand-cat">Premix concrete &middot; QLD / NSW / VIC</div>
+        <p>National premix brand. 1 million+ m&sup3; per year. South Wharf is the Melbourne flagship.</p>
+        <div class="status">Wholly owned (since 2018)</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Mawsons (Milbrae / Country Concrete)</div>
+        <div class="brand-cat">Concrete + quarries &middot; Regional</div>
+        <p>Family-run group, ~600 employees, 80 sites across Northern VIC and Southern NSW. 110+ year history.</p>
+        <div class="status">50/50 JV with McCann family</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Central Premix</div>
+        <div class="brand-cat">Premix concrete &middot; Regional</div>
+        <p>Regional premix concrete operations.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Adbri Quarries SA</div>
+        <div class="brand-cat">Quarries &middot; SA</div>
+        <p>SA quarry footprint. Materially expanded September 2025 via the SA Premix acquisition.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Seelander Quarries</div>
+        <div class="brand-cat">Quarry &middot; Barossa Valley SA</div>
+        <p>Boutique Barossa quarry, operating since 1950. Acquired September 2025 as part of the SA Premix deal.</p>
+        <div class="status">Wholly owned (since 2025)</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Batesford Quarry</div>
+        <div class="brand-cat">Limestone &middot; Geelong VIC</div>
+        <p>100+ year limestone quarry. Wind-down planned 2025&ndash;2030 to be transformed into Australia's largest freshwater lake this century.</p>
+        <div class="status">JV with McCann family</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Adbri Masonry</div>
+        <div class="brand-cat">Concrete bricks, blocks, pavers &middot; National</div>
+        <p>Australia's leading masonry manufacturer. HQ at Ottoway SA, sites East Coast and SA.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">Brighton Masonry</div>
+        <div class="brand-cat">Retail masonry &middot; Bunnings exclusive</div>
+        <p>The retail-facing masonry brand sold exclusively through Bunnings Warehouse stores.</p>
+        <div class="status">Sub-brand of Adbri Masonry</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-name">BPS &middot; Bagged Product Solutions</div>
+        <div class="brand-cat">Bagged cement &middot; National</div>
+        <p>Retail and trade bagged cement. Yarraville plant recently modernised.</p>
+        <div class="status">Wholly owned</div>
+      </div>
+    </div>
+
+    <p><strong>Movement worth knowing:</strong> Adbri acquired SA Premix (including Seelander Quarries) in <strong>September 2025</strong> following an ACCC informal review. That's 14 months into CRH ownership and signals CRH isn't coasting on the acquisition &mdash; they're actively investing into Adbri's SA quarry footprint. Good leading indicator of budget posture for the film.</p>
+  </div>
+</section>
+
+<!-- ─── 06 CALL STRATEGY ─── -->
+<section id="call" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">06</div>
+      <div>
+        <div class="section-eyebrow">The Call</div>
+        <h2 class="section-title">What I'm trying to learn, what I'm trying to plant</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">Tomorrow's Zoom is discovery. The goal is to understand the political map inside Adbri, confirm the actual site list, and signal to Georgia that I think about this work the same way she does &mdash; without quoting a price.</p>
+
+    <p><strong>About Georgia.</strong> Communications Consultant at Adbri, Central Coast NSW based. Came in via Fulton Hogan where she established the company's first communications function and was Group Manager, Communications &mdash; full remit across strategy, change management, internal comms, stakeholder engagement, media, brand and shareholder communications. She isn't a junior. She's a senior comms operator who has already managed acquisition-integration storytelling. Match her register.</p>
+
+    <div class="q-group">
+      <div class="q-group-label">A &middot; Storyboard intent</div>
+      <ol class="questions">
+        <li>The storyboard tells a powerful vertical-integration story. Before we get into production, can you walk me through who wrote it and what conversations led to that structure? <span class="why">Surfaces the political map &mdash; who internally owns this.</span></li>
+        <li>Who's the primary audience? You mentioned the CRH Board for the value-add cut and new talent for the overview. Is the Board visit a presentation, a site tour, or an offsite &mdash; when and how will they see this film? <span class="why">The viewing context shapes everything: pacing, length, music, voice.</span></li>
+        <li>How long do you want each cut to run? <span class="why">Board cut likely 4&ndash;6 minutes. Overview likely 2&ndash;3.</span></li>
+        <li>The placeholder stats &mdash; XX tonnes, XX% emissions &mdash; are these coming from Adbri's reporting team, or do you want help sourcing and verifying them? <span class="why">If they want help, that's a strategy line item.</span></li>
+        <li>The script uses "we" throughout. Will it be voiced by an Adbri executive, a professional voiceover, or something else? <span class="why">Voice choice changes the whole tone &mdash; CEO VO feels like a Board paper; pro VO feels like brand film; mixed approach feels like a documentary.</span></li>
+      </ol>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-label">B &middot; Site list and logistics</div>
+      <ol class="questions">
+        <li>Can you share the full site list for the twelve locations? I want to map it against my crew capacity in SA and Vic. <span class="why">Confirms the gap between the storyboard's 9 sites and the "~12" figure.</span></li>
+        <li>Is Yampu in service yet? <span class="why">She was named in March. The AYK battery system isn't installed until 2028. If she isn't operational, the transit shot becomes a planning problem.</span></li>
+        <li>For the customer project, the Civilmart site, and the masonry TBC, who selects them? Any leaning towards specific sites yet? <span class="why">Opens the door to recommend Carrum Downs Cubis for the Civilmart scene.</span></li>
+        <li>Who organises site access, PPE inductions, subject release forms, and any end-client permissions on the customer project site? <span class="why">Heavy industrial site access is the most underestimated production cost. Pin it down early.</span></li>
+        <li>What's the delivery deadline? October Board visit suggests late September final cut &mdash; does Adbri need internal review rounds before then?</li>
+      </ol>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-label">C &middot; Strategic fit</div>
+      <ol class="questions">
+        <li>For the new-talent overview cut, what's Adbri's current talent narrative? Operational, trades, leadership, all of it? <span class="why">Signals whether they have a defined employer brand or are still building one.</span></li>
+        <li>Are there must-show people &mdash; executives, plant managers, frontline workers &mdash; who'd carry weight in the Board cut?</li>
+        <li>Is the CRH connection something to lean into more in the story, or is it deliberately understated? The current storyboard ties it in twice &mdash; the Civilmart shot and the closing "global scale" line.</li>
+      </ol>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-label">D &middot; Decision and budget &mdash; last, soft</div>
+      <ol class="questions">
+        <li>Who'll be giving the green light on final scope and budget &mdash; you alone, with a CFO sign-off, or does it route through CRH?</li>
+        <li>Do you have a budget range you're working to, or is this brief still being shaped? I ask because that helps me tell you straight whether the storyboard as-drawn is realistic, or whether we'd need to trim or stage it. <span class="why">Permission-giving framing &mdash; not "what's your budget", but "let me give you honest feedback".</span></li>
+      </ol>
+    </div>
+
+    <div class="volunteer-grid">
+      <div class="v-card">
+        <h4>Volunteer naturally</h4>
+        <ul>
+          <li><strong>The Civilmart relationship.</strong> Four years, ~$189K, Glenn Ducat, Kirk Buckley's counterpart. Specifically that we already know how to film at a CRH-Australia plant and can solve the storyboard's Civilmart scene ourselves.</li>
+          <li><strong>Geography is solved.</strong> FCM has trusted crew in SA and across Victoria. No need to fly people anywhere.</li>
+          <li><strong>Dual-use thinking.</strong> The way she's framed this &mdash; one production feeding two distinct edits &mdash; is exactly how FCM thinks about video. Mention the Repurposing Pyramid: one pillar production, multiple cuts, each optimised for audience and channel.</li>
+          <li><strong>CRH register.</strong> The vertical integration story aligns with how CRH talks about its global model &mdash; resilience, capex efficiency, ESG progress. We can make sure pace and visual register match that audience.</li>
+        </ul>
+      </div>
+      <div class="v-card dont">
+        <h4>Don't volunteer (yet)</h4>
+        <ul>
+          <li>A price.</li>
+          <li>A timeline commitment.</li>
+          <li>Crew names.</li>
+          <li>Any critique of the storyboard &mdash; Georgia's draft is competent. Engage with it as the starting point.</li>
+          <li>The community-opposition context around Birkenhead RDF.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 07 PRICING ─── -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">07</div>
+      <div>
+        <div class="section-eyebrow">Pricing Mental Model</div>
+        <h2 class="section-title">A board-facing film proportional to a A$2.1 billion asset</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">FCM's top single-project pricing bracket. This is the kind of work I've been building toward. The discipline is: don't price the storyboard, price the strategic ambition.</p>
+
+    <div class="pricing">
+      <div class="pricing-row">
+        <div class="line">Pre-production, strategy, storyboard refinement, stat verification</div>
+        <div class="amt">$6&ndash;10K</div>
+      </div>
+      <div class="pricing-row">
+        <div class="line">SA shoot block (3 days &mdash; Klein Point, Birkenhead, Adbri Masonry Ottoway) &times; ~$7K all-in</div>
+        <div class="amt">$21K</div>
+      </div>
+      <div class="pricing-row">
+        <div class="line">VIC shoot block (3&ndash;4 days &mdash; Port Melb, South Wharf, Yarraville, Echuca, Civilmart Carrum Downs)</div>
+        <div class="amt">$21&ndash;28K</div>
+      </div>
+      <div class="pricing-row">
+        <div class="line">Yampu / vessel filming (option-dependent &mdash; drone-from-shore cheapest, on-board most expensive)</div>
+        <div class="amt">$5&ndash;10K</div>
+      </div>
+      <div class="pricing-row">
+        <div class="line">Post-production &mdash; CRH Board hero cut (~5min) + overview cut (~2.5min) + stills + 3 social shorts</div>
+        <div class="amt">$25&ndash;35K</div>
+      </div>
+      <div class="pricing-row">
+        <div class="line">Reserve &mdash; revisions, end-client releases, professional voiceover</div>
+        <div class="amt">$5K</div>
+      </div>
+      <div class="pricing-total">
+        <div class="label">Indicative band, inc GST</div>
+        <div class="amt">A$80&ndash;130K</div>
+      </div>
+    </div>
+
+    <p>This is large &mdash; my largest single project to date &mdash; but it is proportional. CRH paid A$2.1 billion for Adbri. A $100K board-facing film representing the entire vertically integrated business is a rounding error to the buyer. The discipline is: don't apologise for the number when it lands.</p>
+
+    <p><strong>Strategic pricing posture:</strong> I won't quote a number on the call tomorrow. I'll quote a range &mdash; if pressed &mdash; and only after we've established scope. The two-step I'm planning post-call is a branded HTML strategy document mapping the storyboard against an FCM production plan, then a formal VSCO quote once scope and price band are agreed.</p>
+
+    <p><strong>The upside scenario the band doesn't capture:</strong> if Adbri wants a full strategic positioning piece (separate from the film) &mdash; for example, a written messaging architecture, a brand-aligned set of B-roll guidelines for in-house use, or per-site shorts derived from the same footage &mdash; that's another $20&ndash;40K of strategy and editorial work without additional production days.</p>
+  </div>
+</section>
+
+<!-- ─── 08 MASTERMIND ─── -->
+<section id="mastermind" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">08</div>
+      <div>
+        <div class="section-eyebrow">Where I want the mastermind to push me</div>
+        <h2 class="section-title">The questions I'm bringing to the room</h2>
+      </div>
+    </div>
+
+    <p class="section-lead">I've worked the brief and I know my own bias. The mastermind is where I want the contrary view &mdash; the things I'm not seeing, the moves I'm under-weighting, the risks I'm minimising because the deal is exciting.</p>
+
+    <div class="discussion-block">
+      <span class="qnum">Q1 &middot; Pricing posture</span>
+      <h3>Is A$80&ndash;130K the right band, or am I anchoring too low?</h3>
+      <p>The band is built bottom-up from FCM's standard production costs. If I think of this from the <em>buyer's</em> direction &mdash; what an agency would charge a $2.1B parent for the same brief &mdash; the number could comfortably be A$150&ndash;250K. Am I pricing like a freelancer when I should be pricing like the strategic partner I am? Or is staying disciplined on cost the right way to secure the panel position for the long game?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q2 &middot; The Yampu question</span>
+      <h3>How do I handle a hero shot of a vessel that may not be operational?</h3>
+      <p>Yampu was named in March 2026. The AYK battery system isn't installed until 2028. The storyboard treats her as the centrepiece of the innovation narrative. If she isn't fully in service this year, the most marketable shot in the storyboard is either staged or stock. Do I flag this risk hard with Georgia on the call, or do I let it surface naturally once we get into logistics? Where's the line between honest counsel and creating doubt that costs me the deal?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q3 &middot; The Civilmart leverage</span>
+      <h3>How heavily do I lean on the Civilmart relationship in the room?</h3>
+      <p>It's the single strongest credibility chip I have. But I worry about two failure modes: (1) leaning so hard it sounds like a brag, which dampens the trust; (2) putting Glenn / Kirk in an awkward middle by overplaying the internal-referral angle when their endorsement was supposed to be quiet. What's the right register? One mention and move on, or weave it through the conversation?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q4 &middot; The panel-positioning play</span>
+      <h3>Should I be thinking about this as one project, or as the on-ramp to a CRH Australia retainer?</h3>
+      <p>If I treat this as a project, I'll quote a project price and deliver well. If I treat it as the on-ramp, I might intentionally under-price, deliver beyond scope, and use this as the proof-piece that gets FCM onto the CRH Australia panel. The second move has higher long-term EV but burns capacity. CRH Australia probably spends well into seven figures a year on video across its businesses. Am I being too conservative by treating it transactionally?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q5 &middot; The capacity question</span>
+      <h3>If this lands at the top of the band, can FCM actually deliver it well?</h3>
+      <p>I'm a one-person business with a network of trusted contractors. A 6&ndash;8 shoot day, 12-site, dual-edit, board-facing film with a hard October deadline is operationally meaningful. The Civilmart base load doesn't pause. The Rogerson Kenny launch (week of 22 June, delivery 6 July) doesn't pause. The Down Syndrome Australia four-video block in October doesn't pause. Where's the realistic ceiling on what I can take on this year without quality slipping &mdash; and is Adbri the right project to expand capacity for, or is this where I should resist?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q6 &middot; The dual-use trap</span>
+      <h3>Is "one shoot, two edits" a strength or a hidden margin killer?</h3>
+      <p>It's the framing Adbri wants and it matches how I think. But two edits with different audiences (CRH Board vs new-talent recruitment) means two scripts, two structural builds, two rounds of feedback, two delivery cycles. The "efficiency" of shared footage often hides the doubled post-production cost. Should I be quoting these as two clearly priced edits up front, rather than letting them feel bundled?</p>
+    </div>
+
+    <div class="discussion-block">
+      <span class="qnum">Q7 &middot; The Birkenhead RDF risk</span>
+      <h3>If the script makes claims that don't hold up to scrutiny, what's my obligation?</h3>
+      <p>Adbri sells the RDF story as a clean environmental win. The Veolia / ResourceCo emissions and landfill numbers are real, but there is documented community opposition in Port Adelaide around plastics-heavy RDF use. If I end up refining script copy and it overclaims, my name is on the production. Do I quietly stick to verified numbers and avoid overclaim? Do I raise the reputational risk proactively with Georgia? Or is this firmly Adbri's call and outside FCM's lane?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 09 OPEN ITEMS ─── -->
+<section id="open">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">09</div>
+      <div>
+        <div class="section-eyebrow">Open Items</div>
+        <h2 class="section-title">Before, during, and after the call</h2>
+      </div>
+    </div>
+
+    <p><strong>Before the call:</strong></p>
+    <ul>
+      <li>Check Sam's availability for ~5&ndash;6 Vic shoot days late August / early September so I can credibly signal timing.</li>
+      <li>Check <em>shared/People/Connections/</em> for any Adelaide-based videographer in network. If absent, default position is Sam to Adelaide for SA block + local AC/grip hire.</li>
+      <li>Re-read the Civilmart CRH Brand Values series notes (Oct 2025, $38,830) as the most relevant past-work precedent if Georgia asks for case studies.</li>
+    </ul>
+
+    <p><strong>During the call:</strong></p>
+    <ul>
+      <li>Listen for 70% of the time. Senior comms operators show you the map if you let them.</li>
+      <li>Take live notes &mdash; especially around the political question (who signs off).</li>
+      <li>Don't promise a quote or a follow-up deck on the call. Promise a recap email within 48 hours that captures what we covered and frames a next step.</li>
+    </ul>
+
+    <p><strong>After the call &mdash; likely next steps:</strong></p>
+    <ul>
+      <li>Recap email within 48 hours summarising scope, audience, decision process.</li>
+      <li>Build a branded HTML strategy presentation mapping the storyboard against an FCM production plan: site groupings, crew model, timeline, deliverable structure, indicative pricing band. Published at <em>docs.fifthcastle.media/adbri-rock-to-market-production-plan.html</em>.</li>
+      <li>Once strategy is approved, formal VSCO quote with two cost centres: Board Cut and Recruitment Overview Cut, split to give Adbri internal accounting clarity.</li>
+    </ul>
+
+    <div class="pull">
+      <p>The Adbri brief landed in my inbox at 10:01am yesterday. By 5pm tonight, the full strategic context, every site, every brand, the storyboard decoded, and a discussion document the mastermind can react to. That speed is the differentiator. Most agencies are still googling Adbri tomorrow morning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">Fifth <span>Castle</span> Media</div>
+  <div class="footer-meta">
+    Strategic Brief &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; 28 May 2026<br>
+    <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &nbsp;&middot;&nbsp; 0467 676 205 &nbsp;&middot;&nbsp; <a href="https://fifthcastle.media">fifthcastle.media</a>
+  </div>
+  <div class="footer-confidential">
+    Private &middot; Internal &middot; Not for distribution outside the mastermind group
+  </div>
+</footer>
+
+</body>
+</html>
