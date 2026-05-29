@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adbri Rock to Market: Production Location Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #BD202D;
+    --black: #0a0a0a;
+    --sa: #BD202D;       /* SA shoot sites */
+    --vic: #1f6fb2;      /* VIC shoot sites */
+    --tbd: #9a9a9a;      /* to be confirmed */
+    --lime: #2a9d8f;     /* Yampu + limestone route */
+    --cement: #d4972b;   /* cement route */
+    --cream: #f4f1ec;
+  }
+  html, body { height: 100%; }
+  body { font-family: Georgia, serif; color: var(--black); overflow: hidden; }
+
+  /* Header */
+  #bar {
+    position: fixed; top: 0; left: 0; right: 0; height: 62px; z-index: 1000;
+    background: var(--black); color: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; border-bottom: 3px solid var(--red);
+  }
+  #bar .brand { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.30em; font-size: 12px; color: #fff; }
+  #bar .brand span { color: var(--red); }
+  #bar .ttl { font-family: 'Vidaloka', serif; font-size: 19px; margin-top: 2px; }
+  #bar .sub { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: #bbb; text-align: right; }
+  #map { position: fixed; top: 62px; left: 0; right: 0; bottom: 0; }
+
+  /* Panels */
+  .panel {
+    position: fixed; z-index: 1000; background: rgba(255,255,255,0.97);
+    border: 1px solid #ddd; border-top: 3px solid var(--red);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18); font-size: 12.5px; line-height: 1.5;
+  }
+  #legend { bottom: 18px; left: 18px; padding: 14px 16px; max-width: 250px; }
+  #plan { top: 76px; right: 14px; padding: 0; max-width: 330px; max-height: calc(100vh - 94px); overflow: hidden; display: flex; flex-direction: column; }
+  .phead {
+    font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 600; font-size: 12px; color: var(--red);
+    padding: 12px 16px; border-bottom: 1px solid #eee; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; background: #fff;
+  }
+  #plan .body { padding: 4px 16px 14px; overflow-y: auto; }
+  .legtitle { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; font-size: 12px; color: var(--black); margin-bottom: 10px; }
+  .legrow { display: flex; align-items: center; gap: 9px; margin: 7px 0; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; flex-shrink: 0; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.25); }
+  .dot.sa { background: var(--sa); } .dot.vic { background: var(--vic); }
+  .dot.tbd { background: var(--tbd); } .dot.lime { background: var(--lime); }
+  .linekey { width: 22px; height: 0; flex-shrink: 0; }
+  .linekey.lime { border-top: 3px dashed var(--lime); }
+  .linekey.cement { border-top: 3px dashed var(--cement); }
+  .refkey { width: 12px; height: 12px; border-radius: 50%; background: #444; border: 2px solid #fff; flex-shrink: 0; }
+  #plan h4 { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12.5px; margin: 14px 0 4px; }
+  #plan h4:first-child { margin-top: 6px; }
+  #plan .blk-sa { color: var(--sa); } #plan .blk-vic { color: var(--vic); } #plan .blk-j { color: var(--lime); }
+  #plan p { margin: 3px 0; color: #333; }
+  #plan ul { margin: 4px 0 4px 16px; } #plan li { margin: 2px 0; color: #333; }
+  #plan .foot { margin-top: 14px; padding-top: 10px; border-top: 1px solid #eee; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 10.5px; color: #999; }
+
+  /* Markers */
+  .pin {
+    width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+    border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pin span { transform: rotate(45deg); color: #fff; font-family: 'Khand', sans-serif; font-weight: 600; font-size: 13px; }
+  .pin.tbd { opacity: 0.9; border-style: dashed; }
+  .vessel { width: 24px; height: 24px; border-radius: 50%; background: var(--lime); border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.45); }
+  .refpin { width: 11px; height: 11px; border-radius: 50%; background: #444; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+
+  /* Popups */
+  .leaflet-popup-content { margin: 12px 14px; font-size: 13px; line-height: 1.5; }
+  .pop-t { font-family: 'Vidaloka', serif; font-size: 16px; margin-bottom: 2px; }
+  .pop-loc { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; color: var(--red); margin-bottom: 4px; }
+  .pop-addr { font-size: 12px; color: #222; font-weight: bold; margin-bottom: 8px; }
+  .pop-tags { margin: 8px 0 4px; }
+  .tag { display: inline-block; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 10px; padding: 2px 7px; border-radius: 3px; margin: 0 3px 3px 0; color: #fff; }
+  .tag.drone { background: var(--vic); } .tag.full { background: var(--red); } .tag.half { background: #7a8b99; } .tag.over { background: #444; } .tag.dawn { background: #c77d2e; } .tag.stage { background: #777; } .tag.load { background: var(--lime); }
+  .pop-note { color: #555; font-size: 12px; margin-top: 6px; }
+  @media (max-width: 760px) {
+    #plan { display: none; }
+    #legend { max-width: 185px; font-size: 11px; }
+    #bar .sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="bar">
+  <div>
+    <div class="brand">Fifth <span>Castle</span> Media</div>
+    <div class="ttl">Adbri Rock to Market</div>
+  </div>
+  <div class="sub">Production location overview<br>May 2026</div>
+</div>
+
+<div id="map"></div>
+
+<div id="legend" class="panel">
+  <div class="legtitle">Legend</div>
+  <div class="legrow"><span class="dot sa"></span> South Australia shoot sites</div>
+  <div class="legrow"><span class="dot vic"></span> Victoria shoot sites</div>
+  <div class="legrow"><span class="dot tbd"></span> To be confirmed</div>
+  <div class="legrow"><span class="dot lime"></span> Yampu (limestone carrier)</div>
+  <div class="legrow"><span class="linekey lime"></span> Limestone by sea (Yampu)</div>
+  <div class="legrow"><span class="linekey cement"></span> Cement by sea (separate carrier)</div>
+  <div class="legrow"><span class="refkey"></span> Regional base / overnight</div>
+</div>
+
+<div id="plan" class="panel">
+  <div class="phead" onclick="var b=document.getElementById('planbody');b.style.display=b.style.display==='none'?'block':'none';">
+    The route, and how we'll film it <span>&#9662;</span>
+  </div>
+  <div class="body" id="planbody">
+    <h4 class="blk-j">The route, rock to market</h4>
+    <p>Limestone is shipped <b>Klein Point &rarr; Birkenhead</b> aboard the Yampu. Cement is then shipped <b>Birkenhead &rarr; Port Melbourne</b> by a separate carrier, and distributed across Victoria by road to concrete plants, masonry and customer projects.</p>
+
+    <h4 class="blk-sa">South Australia</h4>
+    <ul>
+      <li><b>Klein Point</b>: dawn opening over the quarry, plus the Yampu loading by conveyor (a morning window). Drone.</li>
+      <li><b>Birkenhead</b>: the cement plant and the Yampu unloading, with approach shots from across the water. Full day for the site's scale. Drone.</li>
+    </ul>
+    <p>Crew based in Adelaide, with an overnight near the quarry for the early start.</p>
+
+    <h4 class="blk-vic">Victoria</h4>
+    <ul>
+      <li><b>Port Melbourne, Yarraville, South Wharf, Campbellfield</b>: a metropolitan cluster of half-day visits.</li>
+      <li><b>Echuca</b>: a half-day, filmed by a local regional crew, with no Melbourne travel or overnight.</li>
+      <li><b>Customer projects</b>: one metro, one regional, selected closer to filming.</li>
+    </ul>
+
+    <h4>Timing</h4>
+    <p>Filming and post wrapped through August, ahead of the CRH board visit in October.</p>
+
+    <div class="foot">Prepared by Fifth Castle Media &middot; info@fifthcastle.media &middot; fifthcastle.media</div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  var map = L.map('map', { zoomControl: true, scrollWheelZoom: true });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
+
+  function pin(cat, num) {
+    return L.divIcon({ className: '', iconSize: [26,26], iconAnchor: [13,26], popupAnchor: [0,-26],
+      html: '<div class="pin '+(cat==='tbd'?'tbd':'')+'" style="background:var(--'+cat+')"><span>'+num+'</span></div>' });
+  }
+  function vesselIcon() { return L.divIcon({ className:'', iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-12], html:'<div class="vessel"></div>' }); }
+  function refIcon() { return L.divIcon({ className:'', iconSize:[11,11], iconAnchor:[5,5], html:'<div class="refpin"></div>' }); }
+  function tags(arr){ return arr.length? '<div class="pop-tags">'+arr.map(function(t){return '<span class="tag '+t[0]+'">'+t[1]+'</span>';}).join('')+'</div>':''; }
+
+  var sites = [
+    { n:1, cat:'sa', ll:[-34.962713,137.773332], t:'Klein Point Quarry', loc:'Yorke Peninsula, SA', addr:'Klein Point, Wool Bay SA 5575',
+      tags:[['dawn','Dawn'],['load','Yampu loading'],['drone','Drone']],
+      d:'Where it begins. The dawn opening over the limestone quarry, quarrying activity, and the Yampu being loaded by conveyor.',
+      note:'The Yampu loads in the morning, so this is our early start. Remote site, so we plan an overnight nearby.' },
+    { n:2, cat:'sa', ll:[-34.833158,138.502628], t:'Birkenhead Cement Plant', loc:'Port Adelaide, SA', addr:'62 Elder Rd, Birkenhead SA 5015',
+      tags:[['full','Full day'],['drone','Drone']],
+      d:'The cement plant and destination for the limestone: kiln, conveyors and mills, plus the Yampu unloading. Australia\'s lowest embodied-carbon cement. A striking, atmospheric site.',
+      note:'We allow a full day given the scale, with approach shots filmed from across the water. Operates around the clock, so daylight is flexible.' },
+    { n:3, cat:'vic', ll:[-37.821368,144.927694], t:'Port Melbourne: ICL terminal', loc:'Port Melbourne, VIC', addr:'750 Lorimer St, Port Melbourne VIC 3207',
+      tags:[['drone','Drone'],['stage','Branded truck']],
+      d:'Where the cement arrives in Victoria by sea, beside the Bolte Bridge. The carrier arriving and unloading, plus a branded truck loading.',
+      note:'This is a separate carrier to the Yampu, the cement leg of the route. The ship is on berth around a day, so the filming window is flexible. ICL has existing drone footage of arrivals.' },
+    { n:4, cat:'vic', ll:[-37.820069,144.899315], t:'Yarraville: bagging plant', loc:'Yarraville, VIC', addr:'295 Whitehall St, Yarraville VIC 3013',
+      tags:[],
+      d:'The bagging plant, with pallets loading onto branded trucks, bagged cement for retail and trade customers.',
+      note:'Minutes from Port Melbourne, so it pairs neatly into the metro day.' },
+    { n:5, cat:'vic', ll:[-37.8240,144.9175], t:'South Wharf: Hy-Tec concrete', loc:'Port Melbourne, VIC', addr:'469-591 Lorimer St, Port Melbourne VIC 3207',
+      tags:[],
+      d:'Metropolitan ready-mix concrete: an agitator truck loading and driving out to a project, the downstream concrete network in action.',
+      note:'Your storyboard pairs this with Echuca for the downstream-concrete scene. We can film either or both. Pin is approximate; the street address is exact.' },
+    { n:6, cat:'vic', ll:[-36.1305,144.7345], t:'Mawsons: concrete', loc:'Echuca, VIC', addr:'7 McMillan Rd, Echuca VIC 3564',
+      tags:[['half','Half day']],
+      d:'The regional concrete plant and delivery, the regional-Victoria texture for the downstream-concrete scene.',
+      note:'Filmed by a local crew based nearby, so no Melbourne travel or overnight. Pin approximate to McMillan Rd; the street address is exact.' },
+    { n:7, cat:'tbd', ll:[-37.86,145.06], t:'Customer project site: metro', loc:'Metropolitan VIC', addr:'To be selected closer to filming',
+      tags:[],
+      d:'Ready-mix concrete delivered to a live metropolitan project, the material finally in use.',
+      note:'Indicative position. We will confirm the project site closer to the shoot.' },
+    { n:8, cat:'tbd', ll:[-37.55,144.30], t:'Customer project site: regional', loc:'Regional VIC', addr:'To be selected closer to filming',
+      tags:[],
+      d:'A regional delivery to show the reach from metro into regional Victoria.',
+      note:'Indicative position. To be confirmed closer to the shoot.' },
+    { n:9, cat:'tbd', ll:[-38.0876,145.1820], t:'Civilmart site', loc:'Metropolitan VIC', addr:'Indicative metropolitan Victorian site',
+      tags:[],
+      d:'Adbri cement delivered to a Civilmart site, showing the connected CRH portfolio at work.',
+      note:'Indicative metropolitan Victorian location, to confirm.' },
+    { n:0, cat:'vessel', ll:[-34.90,138.14], t:'Yampu: limestone carrier', loc:'Gulf St Vincent (Klein Point &harr; Birkenhead)', addr:'',
+      tags:[],
+      d:'The world\'s first fully electric-capable limestone carrier, replacing the MV Accolade. It runs the daily limestone route from Klein Point to Birkenhead.',
+      note:'We film the Yampu being loaded at Klein Point and unloaded at Birkenhead. In-transit footage is supplied by Adbri.' }
+  ];
+
+  var refs = [
+    { ll:[-34.928,138.600], label:'Adelaide (regional base)' },
+    { ll:[-34.911,137.798], label:'Stansbury (overnight for Klein Point)' },
+    { ll:[-37.814,144.963], label:'Melbourne (regional base)' }
+  ];
+
+  var group = [];
+  sites.forEach(function(s){
+    var ic = (s.cat==='vessel') ? vesselIcon() : pin(s.cat, s.n);
+    var m = L.marker(s.ll, { icon: ic }).addTo(map);
+    var num = (s.cat==='vessel') ? '' : (s.n + '. ');
+    m.bindPopup('<div class="pop-t">'+num+s.t+'</div><div class="pop-loc">'+s.loc+'</div>'+(s.addr?'<div class="pop-addr">'+s.addr+'</div>':'')+tags(s.tags)+'<div>'+s.d+'</div>'+(s.note?'<div class="pop-note">'+s.note+'</div>':''));
+    group.push(m.getLatLng());
+  });
+  refs.forEach(function(r){
+    L.marker(r.ll, { icon: refIcon() }).addTo(map).bindTooltip(r.label, {direction:'top', offset:[0,-4]});
+  });
+
+  // Two distinct shipping legs / two different vessels
+  var limestoneLeg = [[-34.962713,137.773332],[-34.833158,138.502628]];
+  var cementLeg = [[-34.833158,138.502628],[-35.60,138.05],[-36.80,139.70],[-38.30,140.80],[-38.75,143.40],[-38.29,144.62],[-37.821368,144.927694]];
+  L.polyline(limestoneLeg, { color:'#2a9d8f', weight:4, opacity:0.85, dashArray:'8,6' }).addTo(map)
+    .bindTooltip('Limestone by sea: Yampu (Klein Point → Birkenhead, daily)', {sticky:true});
+  L.polyline(cementLeg, { color:'#d4972b', weight:4, opacity:0.85, dashArray:'8,6' }).addTo(map)
+    .bindTooltip('Cement by sea: separate carrier (Birkenhead → Port Melbourne)', {sticky:true});
+
+  map.fitBounds(L.latLngBounds(group).pad(0.12));
+</script>
+</body>
+</html>

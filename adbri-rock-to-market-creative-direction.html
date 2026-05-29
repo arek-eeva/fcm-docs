@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adbri Rock to Market: Initial Creative Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --red-dim: #8a1820;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --card: #161616;
+    --light: #f4f1ec;
+    --grey-1: #d4d4d4;
+    --grey-2: #aaaaaa;
+    --grey-3: #777777;
+    --grey-4: #555555;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--grey-1);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+  }
+
+  .khand, .label, .meta, .eyebrow {
+    font-family: 'Khand', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.72) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .nav-logo {
+    font-family: 'Khand', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .nav-logo span { color: var(--red); }
+
+  .nav-tag {
+    font-family: 'Khand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-3);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 56px 90px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      linear-gradient(120deg, rgba(189,32,45,0.12) 0%, rgba(10,10,10,0.7) 58%, rgba(10,10,10,1) 100%),
+      repeating-linear-gradient(-20deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.05;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px;
+    transform: skewY(-2deg);
+  }
+  .hero-red-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); z-index: 2; }
+
+  .hero-inner { position: relative; z-index: 3; max-width: 900px; }
+
+  .hero .eyebrow {
+    color: var(--red);
+    font-size: 15px;
+    letter-spacing: 0.34em;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 9vw, 104px);
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  .hero .sub {
+    font-family: 'Vidaloka', Georgia, serif;
+    color: var(--grey-1);
+    font-size: clamp(20px, 2.6vw, 27px);
+    line-height: 1.4;
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    font-family: 'Khand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 13px;
+    color: var(--grey-3);
+    line-height: 1.9;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 22px;
+    max-width: 520px;
+  }
+  .hero-meta strong { color: var(--grey-1); font-weight: 500; }
+
+  /* ─── SECTION SHELL ─── */
+  section { padding: 96px 56px; position: relative; }
+  .wrap { max-width: 820px; margin: 0 auto; }
+
+  .eyebrow-line {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .eyebrow-line .eyebrow { color: var(--red); font-size: 13px; letter-spacing: 0.28em; }
+  .eyebrow-line .rule { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+
+  section h2 { font-size: clamp(30px, 5vw, 46px); margin-bottom: 28px; }
+  section p { margin-bottom: 20px; color: var(--grey-1); }
+  section p.lead { font-size: 20px; color: var(--white); font-family: 'Vidaloka', Georgia, serif; line-height: 1.5; }
+  section em { color: var(--white); font-style: italic; }
+
+  .note { background: var(--dark); border-left: 3px solid var(--red); padding: 34px 38px; }
+  .note p:last-child { margin-bottom: 0; }
+
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); }
+
+  /* ─── PILLARS ─── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 12px;
+  }
+  .pillar { background: var(--card); padding: 38px 36px; position: relative; }
+  .pillar::before { content: ""; position: absolute; top: 0; left: 0; width: 46px; height: 3px; background: var(--red); }
+  .pillar .num {
+    font-family: 'Khand', sans-serif;
+    font-size: 12px; letter-spacing: 0.2em; color: var(--grey-4);
+    margin-bottom: 14px;
+  }
+  .pillar h3 { font-size: 24px; margin-bottom: 12px; color: var(--white); }
+  .pillar p { font-size: 16px; line-height: 1.7; color: var(--grey-2); margin-bottom: 0; }
+
+  /* ─── MOMENTS ─── */
+  .moment {
+    display: flex; gap: 26px; align-items: flex-start;
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .moment:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .moment .mnum {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-size: 30px; color: var(--red); line-height: 1; min-width: 44px;
+  }
+  .moment p { font-size: 18px; color: var(--grey-1); margin-bottom: 0; line-height: 1.6; }
+
+  /* ─── CLOSE ─── */
+  .close { background: var(--dark); }
+  .close .wrap { text-align: left; }
+  .signoff {
+    font-family: 'Vidaloka', Georgia, serif;
+    color: var(--white);
+    font-size: 22px;
+    margin-top: 30px;
+    line-height: 1.4;
+  }
+  .signoff .role {
+    display: block;
+    font-family: 'Khand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 13px;
+    color: var(--grey-3);
+    margin-top: 8px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 52px 56px 38px; text-align: center; }
+  .footer-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--grey-2); margin-bottom: 16px; }
+  .footer-logo span { color: var(--red); }
+  .footer-meta { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-3); line-height: 1.9; }
+  .footer-meta a { color: var(--grey-3); text-decoration: none; }
+  .footer-meta a:hover { color: var(--white); }
+  .footer-confidential { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'Khand', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-4); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 22px; }
+    .nav-tag { display: none; }
+    .hero { padding: 100px 24px 70px; }
+    section { padding: 70px 24px; }
+    .pillars { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px 30px; }
+    .moment { gap: 18px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #1a1a1a; font-size: 12pt; }
+    .topbar { position: static; background: #fff; }
+    .hero { min-height: auto; padding: 30px 0; background: #fff; }
+    .hero-bg, .hero-grid { display: none; }
+    .hero h1, section h2, .pillar h3 { color: #111; }
+    section { padding: 28px 0; break-inside: avoid; }
+    .note, .pillar, .close { background: #f5f3ef; }
+    .pillar p, .moment p, section p { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<div class="topbar">
+  <div class="nav-logo">Fifth <span>Castle</span> Media</div>
+  <div class="nav-tag">Initial Creative Direction</div>
+</div>
+
+<!-- ─── HERO ─── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-red-bar"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Adbri &nbsp;&middot;&nbsp; Board Film</div>
+    <h1>Rock to Market</h1>
+    <p class="sub">A first creative response to your storyboard, the feeling and the shape, before we get into the detail.</p>
+    <div class="hero-meta">
+      Prepared for <strong>Georgia Allen, Adbri</strong><br>
+      Fifth Castle Media &nbsp;&middot;&nbsp; Arek Rainczuk<br>
+      29 May 2026
+    </div>
+  </div>
+</header>
+
+<!-- ─── OPENING NOTE ─── -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Where I'm starting</span><span class="rule"></span></div>
+    <div class="note">
+      <p>Georgia, thank you for the storyboard. It is a strong, clear foundation, and it already does the hardest thing well: it is built around who the film is really for.</p>
+      <p>Rather than send back a line-by-line markup, I wanted to first share how I would approach this as a board-grade film, so you can see the direction before we work through the detail together. These are early thoughts, offered to open the conversation, and I am keen to hear yours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CORE IDEA ─── -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">The one idea</span><span class="rule"></span></div>
+    <h2>Value at every link, not a line on a map</h2>
+    <p class="lead">On our call you said the thing that makes this film work. You want to move away from a step-by-step process and toward the value behind each part of the chain. That instinct is right, and it is what I would build the whole film around.</p>
+    <p>A board does not need the process explained to them. They need to feel the scale of what Adbri owns, and understand why each link, the quarry, the vessel, the plant, the reach into market, is an advantage a competitor cannot easily copy.</p>
+    <p>Same locations and the same order as your storyboard, but the film makes a case rather than describing a route. That is what holds a board's attention. It is also what lets the sustainability story, lower-carbon cement and the electric-capable vessel, land as the answer to <em>why us</em>, rather than as a list of features.</p>
+  </div>
+</section>
+
+<!-- ─── HOW IT FEELS ─── -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">How it would feel</span><span class="rule"></span></div>
+    <h2>Four things that make it board-grade</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>Scale you can feel</h3>
+        <p>The board will never stand at Klein Point or walk Birkenhead. The film has to give them the physical size they will never see in person. That is where aerial work earns its place: not a pretty flyover, but reveals that make the enormity land.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>A story told in light</h3>
+        <p>The film can travel from cold first light over the quarry, through the heat of the plant, to golden hour as the cement reaches Melbourne. Handled well, light alone carries rock to market without a word of voiceover doing the work.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>Texture and atmosphere</h3>
+        <p>Real manufacturing is dust, steel and grit. We lean into that rather than hide it. Backlit dust in the morning sun, the dark interiors of an old plant cut by shafts of light. It reads as authentic and high-end at the same time.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <h3>The human side</h3>
+        <p>The board invests in its people, so we show them, and we show them compliant, framed against the scale of where they work. A few of these moments give the whole film a pulse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SIGNATURE MOMENTS ─── -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">A few moments I can already picture</span><span class="rule"></span></div>
+    <div class="moment">
+      <div class="mnum">i</div>
+      <p>First light breaking over the Klein Point quarry, dust hanging in the still morning air, the working face vast and quiet before the day begins.</p>
+    </div>
+    <div class="moment">
+      <div class="mnum">ii</div>
+      <p>The vessel cutting across open water at dawn, seen from above, the single clearest image of the lower-carbon story.</p>
+    </div>
+    <div class="moment">
+      <div class="mnum">iii</div>
+      <p>The close: the finished bridge, road or building that the rock became, the part of the story that stays in the world long after the board has moved on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLOSE ─── -->
+<section class="close">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Where this goes next</span><span class="rule"></span></div>
+    <p>This is the creative half of what I promised. With your feedback, and once Paul has had a look at the storyboard, I will follow up with a short, focused set of questions and clear parameters around investment, so you have a figure to react to alongside the direction.</p>
+    <p>I am looking forward to this one. Whenever you are ready, I would welcome your thoughts.</p>
+    <div class="signoff">
+      Arek Rainczuk
+      <span class="role">Fifth Castle Media</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">Fifth <span>Castle</span> Media</div>
+  <div class="footer-meta">
+    Initial Creative Direction &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; 29 May 2026<br>
+    <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &nbsp;&middot;&nbsp; 0467 676 205 &nbsp;&middot;&nbsp; <a href="https://fifthcastle.media">fifthcastle.media</a>
+  </div>
+  <div class="footer-confidential">
+    Private &middot; Prepared for Adbri
+  </div>
+</footer>
+
+</body>
+</html>
