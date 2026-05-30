@@ -54,6 +54,17 @@
   .nav-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--white); font-weight: 500; }
   .nav-logo span { color: var(--red); }
   .nav-tag { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-3); }
+  .topnav { display: flex; gap: 24px; align-items: center; }
+  .topnav a { font-family: 'Khand', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-2); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color .2s, border-color .2s; }
+  .topnav a:hover { color: var(--white); border-bottom-color: var(--red); }
+  .seealso { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 34px; }
+  .biglink { display: flex; flex-direction: column; gap: 5px; background: var(--card); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--red); padding: 22px 26px; text-decoration: none; transition: background .2s; }
+  .biglink:hover { background: #1c1c1c; }
+  .biglink .bk-k { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; color: var(--red); }
+  .biglink .bk-t { font-family: 'Vidaloka', serif; color: var(--white); font-size: 19px; }
+  .biglink .bk-t::after { content: " \2192"; color: var(--grey-3); }
+  .needs { margin-top: 38px; }
+  .needs h4 { font-size: 21px; color: var(--white); margin-bottom: 14px; }
 
   /* HERO */
   .hero {
@@ -167,17 +178,18 @@
   .footer-confidential { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'Khand', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-4); }
 
   @media (max-width: 768px) {
-    .topbar { padding: 14px 22px; } .nav-tag { display: none; }
+    .topbar { padding: 14px 22px; } .nav-tag, .topnav { display: none; }
     .hero { padding: 100px 24px 66px; }
     section { padding: 68px 24px; }
     .cards, .pillars { grid-template-columns: 1fr; }
     .timeline { grid-template-columns: 1fr 1fr; }
+    .seealso { grid-template-columns: 1fr; }
     .invest .desc { padding-right: 12px; font-size: 13.5px; }
     footer { padding: 40px 24px 30px; }
   }
   @media print {
     body { background: #fff; color: #1a1a1a; font-size: 11.5pt; }
-    .topbar { position: static; background: #fff; }
+    .topbar { position: static; background: #fff; } .topnav { display: none; }
     .hero { min-height: auto; padding: 26px 0; background: #fff; }
     .hero-bg, .hero-grid { display: none; }
     .hero h1, section h2, .pillar h3, h4, .invest .li { color: #111; }
@@ -191,7 +203,10 @@
 
 <div class="topbar">
   <div class="nav-logo">Fifth <span>Castle</span> Media</div>
-  <div class="nav-tag">Video Production Proposal</div>
+  <nav class="topnav">
+    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html" target="_blank" rel="noopener">Creative Direction</a>
+    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
+  </nav>
 </div>
 
 <!-- HERO -->
@@ -247,7 +262,10 @@
       <div class="moment"><div class="mnum">ii</div><p>A dust-streaked smile, and the small puff of dust that lifts off a shoulder where a mate has just clapped them. Pride and mateship in a single frame.</p></div>
       <div class="moment"><div class="mnum">iii</div><p>The finished infrastructure that the rock became, a project that sits well in the country around it, the part of the story that stays in the world long after the board has moved on.</p></div>
     </div>
-    <p style="margin-top:30px; font-size:15px; color:var(--grey-3);">The full creative direction is set out separately in <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html">the creative direction</a>, with a <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html">production location map</a> of every site.</p>
+    <div class="seealso">
+      <a class="biglink" href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html" target="_blank" rel="noopener"><span class="bk-k">Read in full</span><span class="bk-t">The Creative Direction</span></a>
+      <a class="biglink" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener"><span class="bk-k">Explore</span><span class="bk-t">The Location Map</span></a>
+    </div>
   </div>
 </section>
 
@@ -278,9 +296,19 @@
     <div class="timeline">
       <div class="tl"><div class="s">Now</div><div class="t">Discovery &amp; storyboard lock</div><div class="w">Direction agreed</div></div>
       <div class="tl"><div class="s">Winter</div><div class="t">Production</div><div class="w">SA + VIC shoot</div></div>
-      <div class="tl"><div class="s">Aug</div><div class="t">Edit &amp; review</div><div class="w">Adbri sign-off</div></div>
-      <div class="tl"><div class="s">Aug</div><div class="t">CRH approval</div><div class="w">Europe review</div></div>
+      <div class="tl"><div class="s">Winter</div><div class="t">Edit</div><div class="w">Hero cut built</div></div>
+      <div class="tl"><div class="s">August</div><div class="t">Reviews &amp; approvals</div><div class="w">Adbri + CRH Europe</div></div>
       <div class="tl"><div class="s">End Aug</div><div class="t">Delivery</div><div class="w">Ahead of October</div></div>
+    </div>
+
+    <div class="needs">
+      <h4>What we'll need from you</h4>
+      <ul class="checks">
+        <li><b>Vessel schedules.</b> Docking, loading and unloading windows at Klein Point, Birkenhead and Port Melbourne, and any site access limitations, so we can time the vessel shots to the day.</li>
+        <li><b>A branded truck on a run.</b> Access to a delivery run with a clean, branded truck, so we can plan a route that films well on open road rather than in city traffic.</li>
+        <li><b>The Civilmart sites that take Adbri product.</b> So the connection we film is a genuine one.</li>
+        <li><b>Figures and brand assets.</b> On-screen statistics and the brand logos, once the storyboard is signed off.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -304,7 +332,7 @@
         </tr>
         <tr>
           <td><span class="li">Post-Production &amp; Delivery</span><span class="desc">Board-grade hero edit with motion graphics (national brand map, brand logos, on-screen statistics), colour grade and a layered sound design, professional voiceover, licensed music with certificate, and delivery of the final film in all required formats.</span></td>
-          <td class="r"><span class="price">$25,300</span></td>
+          <td class="r"><span class="price">$19,350</span></td>
         </tr>
         <tr>
           <td><span class="li">Footage Library</span><span class="desc">The full set of master footage from every site, organised and tagged, colour-managed, securely transferred, backed up and archived, and licensed for reuse, so the same footage can be recut for the EVP / recruitment film and future videos.</span></td>
@@ -314,9 +342,9 @@
           <td><span class="li">Photography Library</span><span class="desc">A refreshed, fully compliant stills library captured across every site visited, professionally retouched and delivered, ready for reports, recruitment and digital use.</span></td>
           <td class="r"><span class="price">$14,750</span></td>
         </tr>
-        <tr class="sum sub"><td><span class="li">Subtotal (ex GST)</span></td><td class="r"><span class="price">$111,100</span></td></tr>
-        <tr class="sum gst"><td>GST (10%)</td><td class="r"><span class="price">$11,110</span></td></tr>
-        <tr class="sum tot"><td><span class="li">Total (inc GST)</span></td><td class="r"><span class="price">$122,210</span></td></tr>
+        <tr class="sum sub"><td><span class="li">Subtotal (ex GST)</span></td><td class="r"><span class="price">$105,150</span></td></tr>
+        <tr class="sum gst"><td>GST (10%)</td><td class="r"><span class="price">$10,515</span></td></tr>
+        <tr class="sum tot"><td><span class="li">Total (inc GST)</span></td><td class="r"><span class="price">$115,665</span></td></tr>
       </tbody>
     </table>
 
@@ -335,7 +363,7 @@
     <div class="eyebrow-line"><span class="eyebrow">Why Fifth Castle Media</span><span class="rule"></span></div>
     <h2>A safe pair of hands for a high-stakes film</h2>
     <ul class="checks">
-      <li><b>We already work across the CRH family in Australia.</b> Filming for Civilmart from Mackay to South Australia, and we delivered the CRH values and strategic-pillars rollout: dozens of locations, dozens of videos, approved quickly.</li>
+      <li><b>We already work across the CRH family in Australia.</b> Filming for Civilmart from Mackay through to Perth, including regional sites across the country, and we delivered the CRH values and strategic-pillars rollout: dozens of locations, dozens of videos, approved quickly.</li>
       <li><b>Compliance first.</b> We focus on health-and-safety compliance before anything else, because we know what the board will and will not accept on screen.</li>
       <li><b>A strategic partner, not a vendor.</b> Every project starts with purpose: what the film is for, who it is for, and what it should make them feel.</li>
       <li><b>Fully insured.</b> Public liability to $10M and professional indemnity to $5M, under Five Castles Pty Ltd.</li>
