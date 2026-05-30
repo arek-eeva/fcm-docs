@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adbri Rock to Market: Video Production Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --red-dim: #8a1820;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --card: #161616;
+    --light: #f4f1ec;
+    --grey-1: #d4d4d4;
+    --grey-2: #aaaaaa;
+    --grey-3: #777777;
+    --grey-4: #555555;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--grey-1);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  h1, h2, h3, h4, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+  }
+  .khand, .label, .meta, .eyebrow { font-family: 'Khand', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+
+  /* TOP BAR */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.72) 100%);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .nav-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--white); font-weight: 500; }
+  .nav-logo span { color: var(--red); }
+  .nav-tag { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-3); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 56px 84px; position: relative; overflow: hidden; background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      linear-gradient(120deg, rgba(189,32,45,0.12) 0%, rgba(10,10,10,0.7) 58%, rgba(10,10,10,1) 100%),
+      repeating-linear-gradient(-20deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.05;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px; transform: skewY(-2deg);
+  }
+  .hero-red-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); z-index: 2; }
+  .hero-inner { position: relative; z-index: 3; max-width: 940px; }
+  .hero .eyebrow { color: var(--red); font-size: 15px; letter-spacing: 0.34em; margin-bottom: 26px; }
+  .hero h1 { font-size: clamp(50px, 9.5vw, 116px); letter-spacing: -0.01em; margin-bottom: 22px; }
+  .hero .sub { font-family: 'Vidaloka', Georgia, serif; color: var(--grey-1); font-size: clamp(20px, 2.6vw, 28px); line-height: 1.4; max-width: 660px; margin-bottom: 42px; }
+  .hero-meta { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 13px; color: var(--grey-3); line-height: 1.95; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; max-width: 540px; }
+  .hero-meta strong { color: var(--grey-1); font-weight: 500; }
+
+  /* SECTION SHELL */
+  section { padding: 92px 56px; position: relative; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  .eyebrow-line { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .eyebrow-line .eyebrow { color: var(--red); font-size: 13px; letter-spacing: 0.28em; }
+  .eyebrow-line .rule { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+  section h2 { font-size: clamp(30px, 5vw, 48px); margin-bottom: 26px; }
+  section p { margin-bottom: 20px; color: var(--grey-1); }
+  section p.lead { font-size: 21px; color: var(--white); font-family: 'Vidaloka', Georgia, serif; line-height: 1.5; }
+  section em { color: var(--white); font-style: italic; }
+  a.inline { color: var(--grey-1); text-decoration: none; border-bottom: 1px solid var(--red); }
+  a.inline:hover { color: var(--white); }
+  .note { background: var(--dark); border-left: 3px solid var(--red); padding: 32px 36px; }
+  .note p:last-child { margin-bottom: 0; }
+
+  /* UNDERSTANDING CARDS */
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 14px; }
+  .uc { background: var(--card); border: 1px solid rgba(255,255,255,0.07); padding: 24px 26px; }
+  .uc .k { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--red); margin-bottom: 8px; }
+  .uc .v { font-size: 16px; color: var(--grey-1); line-height: 1.55; }
+
+  /* PILLARS */
+  .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 12px; }
+  .pillar { background: var(--card); padding: 34px 32px; position: relative; }
+  .pillar::before { content: ""; position: absolute; top: 0; left: 0; width: 46px; height: 3px; background: var(--red); }
+  .pillar h3 { font-size: 23px; margin-bottom: 11px; color: var(--white); }
+  .pillar p { font-size: 15.5px; line-height: 1.65; color: var(--grey-2); margin-bottom: 0; }
+
+  /* MOMENTS */
+  .moment { display: flex; gap: 24px; align-items: flex-start; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .moment:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .moment .mnum { font-family: 'Vidaloka', Georgia, serif; font-size: 26px; color: var(--red); line-height: 1; min-width: 40px; }
+  .moment p { font-size: 17px; color: var(--grey-1); margin-bottom: 0; line-height: 1.6; }
+
+  /* TIMELINE */
+  .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 18px; }
+  .tl { background: var(--card); padding: 22px 18px; }
+  .tl .s { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--red); margin-bottom: 8px; }
+  .tl .t { font-size: 15px; color: var(--white); font-family: 'Vidaloka', serif; line-height: 1.25; margin-bottom: 6px; }
+  .tl .w { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; color: var(--grey-3); }
+
+  /* CHECK LIST */
+  .checks { list-style: none; margin-top: 8px; }
+  .checks li { position: relative; padding-left: 30px; margin-bottom: 16px; color: var(--grey-1); }
+  .checks li::before { content: ""; position: absolute; left: 0; top: 11px; width: 12px; height: 12px; background: var(--red); transform: rotate(45deg); }
+  .checks li b { color: var(--white); font-family: 'Vidaloka', serif; font-weight: 400; }
+
+  /* INVESTMENT TABLE */
+  .invest { width: 100%; border-collapse: collapse; margin-top: 14px; }
+  .invest th { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: var(--grey-3); text-align: left; padding: 0 0 14px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .invest th.r, .invest td.r { text-align: right; white-space: nowrap; }
+  .invest td { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+  .invest .li { font-family: 'Vidaloka', serif; color: var(--white); font-size: 18px; margin-bottom: 6px; display: block; }
+  .invest .desc { font-size: 14.5px; color: var(--grey-2); line-height: 1.55; padding-right: 26px; }
+  .invest .price { font-family: 'Khand', sans-serif; font-size: 19px; color: var(--white); letter-spacing: 0.02em; }
+  .invest tr.sum td { border-bottom: none; padding: 12px 0 0; }
+  .invest tr.sub td { padding-top: 22px; }
+  .invest .tot td { border-top: 2px solid var(--red); padding-top: 16px; }
+  .invest .tot .li, .invest .tot .price { font-size: 22px; }
+  .invest .gst td { color: var(--grey-3); }
+  .invest .gst .price { color: var(--grey-2); font-size: 16px; }
+
+  .smallprint { font-size: 14px; color: var(--grey-3); margin-top: 24px; }
+  .smallprint b { color: var(--grey-1); font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; font-size: 12px; }
+
+  .phase2 { background: var(--mid); border: 1px solid rgba(255,255,255,0.08); padding: 26px 30px; margin-top: 26px; }
+  .phase2 .k { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red); margin-bottom: 8px; }
+  .phase2 p { margin-bottom: 0; font-size: 16px; color: var(--grey-1); }
+
+  /* CLOSE */
+  .close { background: var(--dark); }
+  .steps { counter-reset: step; margin-top: 8px; }
+  .step { display: flex; gap: 22px; align-items: flex-start; padding: 18px 0; }
+  .step .n { font-family: 'Vidaloka', serif; color: var(--red); font-size: 28px; line-height: 1; min-width: 44px; }
+  .step p { margin-bottom: 0; font-size: 17px; color: var(--grey-1); }
+  .signoff { font-family: 'Vidaloka', Georgia, serif; color: var(--white); font-size: 22px; margin-top: 34px; line-height: 1.4; }
+  .signoff .role { display: block; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 13px; color: var(--grey-3); margin-top: 8px; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 52px 56px 38px; text-align: center; }
+  .footer-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--grey-2); margin-bottom: 16px; }
+  .footer-logo span { color: var(--red); }
+  .footer-meta { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-3); line-height: 1.9; }
+  .footer-meta a { color: var(--grey-3); text-decoration: none; }
+  .footer-meta a:hover { color: var(--white); }
+  .footer-confidential { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'Khand', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-4); }
+
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 22px; } .nav-tag { display: none; }
+    .hero { padding: 100px 24px 66px; }
+    section { padding: 68px 24px; }
+    .cards, .pillars { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .invest .desc { padding-right: 12px; font-size: 13.5px; }
+    footer { padding: 40px 24px 30px; }
+  }
+  @media print {
+    body { background: #fff; color: #1a1a1a; font-size: 11.5pt; }
+    .topbar { position: static; background: #fff; }
+    .hero { min-height: auto; padding: 26px 0; background: #fff; }
+    .hero-bg, .hero-grid { display: none; }
+    .hero h1, section h2, .pillar h3, h4, .invest .li { color: #111; }
+    section { padding: 24px 0; break-inside: avoid; }
+    .uc, .pillar, .note, .close, .timeline, .tl, .phase2 { background: #f5f3ef; }
+    section p, .pillar p, .moment p, .uc .v, .invest .desc { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="nav-logo">Fifth <span>Castle</span> Media</div>
+  <div class="nav-tag">Video Production Proposal</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-red-bar"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Adbri &nbsp;&middot;&nbsp; Board Film 2026</div>
+    <h1>Rock to Market</h1>
+    <p class="sub">A board-grade film for Adbri, and the footage to power what comes next.</p>
+    <div class="hero-meta">
+      Prepared for <strong>Georgia Allen, Adbri</strong><br>
+      For <strong>Paul Headd</strong>, Chief Executive Officer, and the Adbri leadership team<br>
+      Fifth Castle Media &nbsp;&middot;&nbsp; Arek Rainczuk<br>
+      30 May 2026
+    </div>
+  </div>
+</header>
+
+<!-- 1. UNDERSTANDING -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">The brief</span><span class="rule"></span></div>
+    <h2>A film made for the room it will play in</h2>
+    <p class="lead">This film has one audience that matters first: the CRH board, in Melbourne this October. It is an internal value proposition, not an advertisement, and it has to feel like a high-end production, because the board invests heavily in these moments and will read Adbri partly through how it presents itself.</p>
+    <p>So it cannot simply describe a process: mine the limestone, ship it, make cement, ship it again. A board does not need the steps. They need to feel the scale of what Adbri owns and understand the value behind each link in the chain: why the quarry matters, why the new vessel was worth the investment, why making cement here, the lowest-carbon way in the country, is an advantage a competitor cannot easily copy.</p>
+    <p>It is also a distinctly Australian story. Unlike CRH in Europe, Adbri moves materials by sea across great distances: limestone from Klein Point to Birkenhead, then cement on to Port Melbourne, before the network carries it across Victoria by road. That reach, and that integration, are the point.</p>
+    <div class="cards">
+      <div class="uc"><div class="k">Audience</div><div class="v">The CRH board, October. Internal, high-end, heavy scrutiny.</div></div>
+      <div class="uc"><div class="k">Purpose</div><div class="v">Value and connection across the chain, not a linear process.</div></div>
+      <div class="uc"><div class="k">Tone</div><div class="v">Board-grade, confident, with real gravity.</div></div>
+      <div class="uc"><div class="k">Timeline</div><div class="v">Wrapped by the end of August to clear CRH approval well before October.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CREATIVE APPROACH -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">The approach</span><span class="rule"></span></div>
+    <h2>Value at every link</h2>
+    <p>Same locations and the same order as your storyboard, but the film argues a case rather than narrating a route. Each site answers a quiet question: why does this matter, and what value does it bring? That is what holds a board's attention, and it is what lets the sustainability story, lower-carbon cement and the electric-capable vessel, land as the answer to <em>why us</em>. Four things make it feel board-grade.</p>
+    <div class="pillars">
+      <div class="pillar"><h3>Scale you can feel</h3><p>The board will never stand at Klein Point or walk Birkenhead. Aerial work gives them the physical size they will never see in person, with reveals that pull back until the machinery is a speck against the operation.</p></div>
+      <div class="pillar"><h3>Light and colour</h3><p>From cold first light over the quarry to golden hour as the cement reaches Melbourne, and the colour travels too: the bare reds, greys and yellows of the South Australian country giving way to the greener tones of Victoria.</p></div>
+      <div class="pillar"><h3>Texture and atmosphere</h3><p>Real manufacturing is dust, steel and grit. We lean into it. Backlit dust in the morning sun, the dark interiors of an old plant cut by shafts of light. Authentic and high-end at once.</p></div>
+      <div class="pillar"><h3>The human side</h3><p>Genuine, unposed portraits of the people who make this happen: the pride they take in the work, the mateship between them, the real skill each stage demands. Every frame compliant.</p></div>
+    </div>
+    <p style="margin-top:34px;">Sound carries as much as the picture. Under a restrained musical bed, real sound seeps through and grounds every location: seagulls over the jetty as the lime loads, waves against the hull of the silent ship, the deep roar of fire in the kiln. The voice is one of Australia's respected male artists, a mature and profound delivery the board settles into and trusts.</p>
+    <div style="margin-top:18px;">
+      <div class="moment"><div class="mnum">i</div><p>First light breaking over the Klein Point quarry, dust hanging in the still morning air, the working face vast and quiet before the day begins.</p></div>
+      <div class="moment"><div class="mnum">ii</div><p>A dust-streaked smile, and the small puff of dust that lifts off a shoulder where a mate has just clapped them. Pride and mateship in a single frame.</p></div>
+      <div class="moment"><div class="mnum">iii</div><p>The finished infrastructure that the rock became, a project that sits well in the country around it, the part of the story that stays in the world long after the board has moved on.</p></div>
+    </div>
+    <p style="margin-top:30px; font-size:15px; color:var(--grey-3);">The full creative direction is set out separately in <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html">the creative direction</a>, with a <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html">production location map</a> of every site.</p>
+  </div>
+</section>
+
+<!-- 3. REUSE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Beyond the boardroom</span><span class="rule"></span></div>
+    <h2>One shoot, designed to become many films</h2>
+    <p class="lead">A board film that plays once and is never seen again is a wasted investment. We plan and shoot this so the footage keeps working long after October.</p>
+    <p>The same material, recut with a new narrative and voiceover, becomes your Employer Value Proposition and recruitment film: the "reinvent the way the world is built" story for the people you want to attract. It can feed an Australian overview of CRH, investor and town-hall content, and social and web cut-downs. We capture with that reuse in mind from the first day on site, in our framing, our coverage and our compliance, so nothing has to be reshot.</p>
+    <p>To make that practical, the project includes a <em>Footage Library</em>: the full set of master footage, organised and tagged by site and theme, colour-managed, backed up, and licensed for reuse. You are left with a living asset, not a single file.</p>
+  </div>
+</section>
+
+<!-- 4. PLAN -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">The plan</span><span class="rule"></span></div>
+    <h2>Ten locations, two states, one tight schedule</h2>
+    <ul class="checks">
+      <li><b>Coverage, efficiently.</b> Ten locations from quarry to customer across South Australia and Victoria. We pair sites into efficient days and use trusted local crews, so we are not flying gear and people around the country.</li>
+      <li><b>Compliance handled on site.</b> A safety liaison on every shoot, to keep the crew safe and to make sure every frame is compliant: chin straps, sleeves, masks in the dusty areas, hair tied. Nothing the board sees will have a compliance problem.</li>
+      <li><b>The vessel, made easy.</b> We film the Yampu loading and unloading; the in-transit footage you already hold is woven in, so there is no waiting on the ship's schedule.</li>
+      <li><b>Copyright, covered.</b> Licensed music delivered with the certificate your legal team requires, as standard.</li>
+      <li><b>Approval, de-risked.</b> A clear storyboard signed off up front, so the film that comes back is the film expected, then built to clear CRH review comfortably before October.</li>
+    </ul>
+    <div class="timeline">
+      <div class="tl"><div class="s">Now</div><div class="t">Discovery &amp; storyboard lock</div><div class="w">Direction agreed</div></div>
+      <div class="tl"><div class="s">Winter</div><div class="t">Production</div><div class="w">SA + VIC shoot</div></div>
+      <div class="tl"><div class="s">Aug</div><div class="t">Edit &amp; review</div><div class="w">Adbri sign-off</div></div>
+      <div class="tl"><div class="s">Aug</div><div class="t">CRH approval</div><div class="w">Europe review</div></div>
+      <div class="tl"><div class="s">End Aug</div><div class="t">Delivery</div><div class="w">Ahead of October</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. INVESTMENT -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Investment</span><span class="rule"></span></div>
+    <h2>A clear, itemised investment</h2>
+    <p>For a board-grade hero film, a full and compliant photography refresh, and a reusable footage library that powers your EVP and the films that follow. One production, several assets.</p>
+    <table class="invest">
+      <thead><tr><th>Deliverable</th><th class="r">Price (ex GST)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="li">Strategy, Pre-Production &amp; Project Management</span><span class="desc">Discovery and narrative development, storyboard refinement, scripting and voiceover direction; full production planning across all sites (scheduling, crew coordination, site and safety liaison); and end-to-end project management through the Adbri and CRH review process.</span></td>
+          <td class="r"><span class="price">$21,750</span></td>
+        </tr>
+        <tr>
+          <td><span class="li">Production</span><span class="desc">Professional filming across all ten South Australian and Victorian sites, with experienced crew and aerial / drone capture at Klein Point, Birkenhead and Port Melbourne. Board-grade production values, fully safety-compliant. Includes all interstate travel, accommodation and logistics.</span></td>
+          <td class="r"><span class="price">$43,350</span></td>
+        </tr>
+        <tr>
+          <td><span class="li">Post-Production &amp; Delivery</span><span class="desc">Board-grade hero edit with motion graphics (national brand map, brand logos, on-screen statistics), colour grade and a layered sound design, professional voiceover, licensed music with certificate, and delivery of the final film in all required formats.</span></td>
+          <td class="r"><span class="price">$25,300</span></td>
+        </tr>
+        <tr>
+          <td><span class="li">Footage Library</span><span class="desc">The full set of master footage from every site, organised and tagged, colour-managed, securely transferred, backed up and archived, and licensed for reuse, so the same footage can be recut for the EVP / recruitment film and future videos.</span></td>
+          <td class="r"><span class="price">$5,950</span></td>
+        </tr>
+        <tr>
+          <td><span class="li">Photography Library</span><span class="desc">A refreshed, fully compliant stills library captured across every site visited, professionally retouched and delivered, ready for reports, recruitment and digital use.</span></td>
+          <td class="r"><span class="price">$14,750</span></td>
+        </tr>
+        <tr class="sum sub"><td><span class="li">Subtotal (ex GST)</span></td><td class="r"><span class="price">$111,100</span></td></tr>
+        <tr class="sum gst"><td>GST (10%)</td><td class="r"><span class="price">$11,110</span></td></tr>
+        <tr class="sum tot"><td><span class="li">Total (inc GST)</span></td><td class="r"><span class="price">$122,210</span></td></tr>
+      </tbody>
+    </table>
+
+    <p class="smallprint"><b>Assumptions</b> &nbsp; Civilmart filming based on a metropolitan Victorian site, flexed if cement is supplied elsewhere. Customer project sites: one metro, one regional, confirmed closer to filming. Masonry captured at Campbellfield. Yampu in-transit footage supplied by Adbri. All filming within South Australia and Victoria.</p>
+
+    <div class="phase2">
+      <div class="k">Phase 2 &middot; when you are ready</div>
+      <p>Recruitment / EVP edit: a re-cut of the same footage with a new narrative and voiceover for talent attraction, scoped once the board film is locked. Built on the footage library above, so it starts from a low base.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. WHY US -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Why Fifth Castle Media</span><span class="rule"></span></div>
+    <h2>A safe pair of hands for a high-stakes film</h2>
+    <ul class="checks">
+      <li><b>We already work across the CRH family in Australia.</b> Filming for Civilmart from Mackay to South Australia, and we delivered the CRH values and strategic-pillars rollout: dozens of locations, dozens of videos, approved quickly.</li>
+      <li><b>Compliance first.</b> We focus on health-and-safety compliance before anything else, because we know what the board will and will not accept on screen.</li>
+      <li><b>A strategic partner, not a vendor.</b> Every project starts with purpose: what the film is for, who it is for, and what it should make them feel.</li>
+      <li><b>Fully insured.</b> Public liability to $10M and professional indemnity to $5M, under Five Castles Pty Ltd.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. NEXT STEPS -->
+<section class="close">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Next steps</span><span class="rule"></span></div>
+    <h2>Where to from here</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><p>You and Paul confirm the creative direction and the storyboard, so the story is locked before anyone is on site.</p></div>
+      <div class="step"><div class="n">2</div><p>We finalise scope and numbers together, and confirm the customer and Civilmart sites.</p></div>
+      <div class="step"><div class="n">3</div><p>We schedule the shoot to land delivery before the end of August, comfortably ahead of October.</p></div>
+    </div>
+    <p style="margin-top:30px;">It is a genuinely good story, and one this team is well placed to tell. Whenever you are ready, I would welcome the next conversation.</p>
+    <div class="signoff">
+      Arek Rainczuk
+      <span class="role">Fifth Castle Media</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Fifth <span>Castle</span> Media</div>
+  <div class="footer-meta">
+    Video Production Proposal &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; 30 May 2026<br>
+    <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &nbsp;&middot;&nbsp; 0467 676 205 &nbsp;&middot;&nbsp; <a href="https://fifthcastle.media">fifthcastle.media</a>
+  </div>
+  <div class="footer-confidential">
+    Private &middot; Prepared for Adbri
+  </div>
+</footer>
+
+</body>
+</html>
