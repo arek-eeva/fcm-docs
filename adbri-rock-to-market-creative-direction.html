@@ -198,6 +198,13 @@
   }
   .moment p { font-size: 18px; color: var(--grey-1); margin-bottom: 0; line-height: 1.6; }
 
+  /* ─── MOOD GRID ─── */
+  .moodgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+  .moodgrid figure { margin: 0; background: var(--card); border: 1px solid rgba(255,255,255,0.08); }
+  .moodgrid img { width: 100%; height: auto; display: block; }
+  .moodgrid figcaption { padding: 12px 16px; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.13em; font-size: 11.5px; color: var(--grey-3); }
+  .moodgrid figcaption b { color: var(--white); font-weight: 500; letter-spacing: 0.08em; }
+
   /* ─── CLOSE ─── */
   .close { background: var(--dark); }
   .close .wrap { text-align: left; }
@@ -234,6 +241,7 @@
     .hero { padding: 100px 24px 70px; }
     section { padding: 70px 24px; }
     .pillars { grid-template-columns: 1fr; }
+    .moodgrid { grid-template-columns: 1fr; }
     footer { padding: 40px 24px 30px; }
     .moment { gap: 18px; }
   }
@@ -367,6 +375,23 @@
     <div class="moment">
       <div class="mnum">vi</div>
       <p>The close: the finished infrastructure that the rock became, a project that sits well in the country around it, the part of the story that stays in the world long after the board has moved on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── THE LOOK (MOOD BOARD) ─── -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">The look</span><span class="rule"></span></div>
+    <h2>Mood and tone</h2>
+    <p>A first feel for the grade, the light and the texture we are reaching for, scene by scene. These are illustrative mood references to convey the look, not the actual sites or final footage.</p>
+    <div class="moodgrid">
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-01.jpg?v=1" alt="First light over the quarry"><figcaption><b>First light over the quarry</b> &middot; dawn, dust, scale</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-02.jpg?v=1" alt="The craft up close"><figcaption><b>Hands on the machinery</b> &middot; the craft up close</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-03.jpg?v=1" alt="Scale from the air"><figcaption><b>Scale from the air</b> &middot; the operation laid bare</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-04.jpg?v=1" alt="Pride and mateship"><figcaption><b>Two mates walking away</b> &middot; pride and mateship</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-05.jpg?v=1" alt="On the open road"><figcaption><b>On the open road</b> &middot; product on its way to market</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-06.jpg?v=1" alt="What the rock became"><figcaption><b>What the rock became</b> &middot; finished infrastructure at dusk</figcaption></figure>
     </div>
   </div>
 </section>
