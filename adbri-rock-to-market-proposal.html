@@ -231,16 +231,7 @@
     section p, .pillar p, .moment p, .uc .v, .invest .desc { color: #1a1a1a; }
   }
 
-  /* ─── TOPBAR RIGHT + THEME TOGGLE ─── */
-  .topright { display: flex; align-items: center; gap: 18px; }
-  .themetoggle { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; overflow: hidden; background: transparent; cursor: pointer; padding: 0; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; line-height: 1; }
-  .themetoggle span { padding: 6px 13px; color: var(--grey-3); transition: background .2s, color .2s; }
-  .themetoggle .th-d { background: var(--red); color: #fff; }
-  body.light .themetoggle { border-color: rgba(0,0,0,0.22); }
-  body.light .themetoggle .th-d { background: transparent; color: var(--grey-3); }
-  body.light .themetoggle .th-l { background: var(--red); color: #fff; }
-
-  /* ─── LIGHT THEME ─── */
+  /* ─── LIGHT THEME (only theme) ─── */
   body.light {
     --black: #ffffff; --dark: #f1efe9; --mid: #ece9e2; --card: #f7f5f1;
     --grey-1: #33312d; --grey-2: #56534d; --grey-3: #7c786f; --grey-4: #a6a29a; --white: #17150f;
@@ -262,17 +253,13 @@
   body.light .topbar { background: linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 100%); border-bottom: 1px solid rgba(0,0,0,0.07); }
 </style>
 </head>
-<body>
-<script>(function(){try{if(localStorage.getItem('adbri-theme')==='light')document.body.classList.add('light');}catch(e){}})();</script>
+<body class="light">
 
 <div class="topbar">
   <div class="nav-logo">Fifth <span>Castle</span> Media</div>
-  <div class="topright">
-    <nav class="topnav">
-      <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
-    </nav>
-    <button class="themetoggle" type="button" aria-label="Switch between dark and light theme" onclick="var d=document.body.classList.toggle('light');try{localStorage.setItem('adbri-theme',d?'light':'dark')}catch(e){}"><span class="th-d">Dark</span><span class="th-l">Light</span></button>
-  </div>
+  <nav class="topnav">
+    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
+  </nav>
 </div>
 
 <!-- HERO -->
@@ -290,7 +277,7 @@
       Prepared for <strong>Georgia Allen, Adbri</strong><br>
       For <strong>Paul Headd</strong>, Chief Executive Officer, and the Adbri leadership team<br>
       Fifth Castle Media &nbsp;&middot;&nbsp; Arek Rainczuk<br>
-      30 May 2026
+      1 June 2026
     </div>
   </div>
 </header>
@@ -506,7 +493,7 @@
 <footer>
   <div class="footer-logo">Fifth <span>Castle</span> Media</div>
   <div class="footer-meta">
-    Video Production Proposal &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; 30 May 2026<br>
+    Video Production Proposal &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; 1 June 2026<br>
     <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &nbsp;&middot;&nbsp; 0467 676 205 &nbsp;&middot;&nbsp; <a href="https://fifthcastle.media">fifthcastle.media</a>
   </div>
   <div class="footer-confidential">
