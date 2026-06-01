@@ -68,6 +68,12 @@
   .moodgrid img { width: 100%; height: auto; display: block; }
   .moodgrid figcaption { padding: 12px 16px; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.13em; font-size: 11.5px; color: var(--grey-3); }
   .moodgrid figcaption b { color: var(--white); font-weight: 500; letter-spacing: 0.08em; }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.5; }
+  .hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.62) 48%, rgba(10,10,10,0.34) 100%); }
+  .band { margin: 38px 0 0; border: 1px solid rgba(255,255,255,0.08); }
+  .band img { width: 100%; height: auto; display: block; }
+  .band .cap { padding: 12px 18px; background: var(--card); font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11.5px; color: var(--grey-3); }
+  .band .cap b { color: var(--white); font-weight: 500; }
   .needs { margin-top: 38px; }
   .needs h4 { font-size: 21px; color: var(--white); margin-bottom: 14px; }
   .teamphoto { margin: 6px 0 28px; border: 1px solid rgba(255,255,255,0.12); line-height: 0; }
@@ -235,6 +241,8 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg"></div>
+  <img class="hero-img" src="https://docs.fifthcastle.media/images/adbri-mood-01.jpg?v=1" alt="">
+  <div class="hero-scrim"></div>
   <div class="hero-grid"></div>
   <div class="hero-red-bar"></div>
   <div class="hero-inner">
@@ -264,6 +272,7 @@
       <div class="uc"><div class="k">Tone</div><div class="v">Board-grade, confident, with real gravity.</div></div>
       <div class="uc"><div class="k">Timeline</div><div class="v">Wrapped by the end of August to clear CRH approval well before October.</div></div>
     </div>
+    <div class="band"><img src="https://docs.fifthcastle.media/images/adbri-mood-03.jpg?v=1" alt="Scale from the air"><div class="cap"><b>Scale from the air</b> &middot; the operation laid bare</div></div>
   </div>
 </section>
 
@@ -280,18 +289,36 @@
       <div class="pillar"><h3>The human side</h3><p>Genuine, unposed portraits of the people who make this happen: the pride they take in the work, the mateship between them, the real skill each stage demands. Every frame compliant.</p></div>
     </div>
     <p style="margin-top:34px;">Sound does as much work as the picture. Under a quiet bed of music, the real sound of each place comes through: gulls over the jetty as the lime loads, water against the hull of the silent ship, the roar of the fire in the kiln. Over the top, one of Australia's best male voiceover artists, an older, considered voice with real gravity, the kind a board settles into and trusts.</p>
-    <p style="margin-top:32px;">Here is the look and feel we are reaching for, scene by scene. These are illustrative mood references to set the tone, not the actual sites or final footage. The full creative direction is developed in pre-production.</p>
+    <p style="margin-top:32px;">Here is the look and feel we are reaching for. The frames placed through this proposal are illustrative mood references to set the tone, not the actual sites or final footage. The full creative direction is developed in pre-production.</p>
     <div class="moodgrid">
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-01.jpg?v=1" alt="First light over the quarry"><figcaption><b>First light over the quarry</b> &middot; dawn, dust, scale</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-02.jpg?v=1" alt="The craft up close"><figcaption><b>Hands on the machinery</b> &middot; the craft up close</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-03.jpg?v=1" alt="Scale from the air"><figcaption><b>Scale from the air</b> &middot; the operation laid bare</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-04.jpg?v=1" alt="Pride and mateship"><figcaption><b>Two mates walking away</b> &middot; pride and mateship</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-05.jpg?v=1" alt="On the open road"><figcaption><b>On the open road</b> &middot; product on its way to market</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-06.jpg?v=1" alt="What the rock became"><figcaption><b>What the rock became</b> &middot; finished infrastructure at dusk</figcaption></figure>
       <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-07.jpg?v=1" alt="Inside the plant"><figcaption><b>Inside the plant</b> &middot; the kiln, heat and atmosphere</figcaption></figure>
-      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-08.jpg?v=1" alt="On-screen captions"><figcaption><b>On-screen captions</b> &middot; how the text would look</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-02.jpg?v=1" alt="The craft up close"><figcaption><b>Hands on the machinery</b> &middot; the craft up close</figcaption></figure>
     </div>
+    <div class="band"><img src="https://docs.fifthcastle.media/images/adbri-mood-08.jpg?v=1" alt="On-screen captions"><div class="cap"><b>On-screen captions</b> &middot; how the on-screen text would look</div></div>
     <p style="margin-top:26px; font-size:15px; color:var(--grey-3);">A production location map of every site is shared alongside this proposal: <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">view the location map</a>.</p>
+  </div>
+</section>
+
+<!-- RECENT WORK (moved up, after the approach) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Recent work</span><span class="rule"></span></div>
+    <h2>A look at what we make</h2>
+    <p>A few recent productions, including work across the CRH family. Best with the sound on.</p>
+    <div class="videos">
+      <figure class="vid feature">
+        <div class="vwrap"><iframe src="https://player.vimeo.com/video/943226671?h=a9bb2e041e" title="Civilmart film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <figcaption>Civilmart &middot; CRH family</figcaption>
+      </figure>
+      <figure class="vid">
+        <div class="vwrap"><iframe src="https://player.vimeo.com/video/1098098623?h=0575e481ac" title="Civilmart film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <figcaption>Civilmart &middot; CRH family</figcaption>
+      </figure>
+      <figure class="vid">
+        <div class="vwrap"><iframe src="https://player.vimeo.com/video/801105807?h=33ca7de282" title="HybridAG film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <figcaption>HybridAG</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -304,6 +331,7 @@
     <p>The same footage, recut with a new story and voiceover, becomes your EVP and recruitment film: the "reinvent the way the world is built" pitch to the people you want to hire. It can also feed a wider "who is CRH in Australia" piece, investor and town-hall content, and shorter cuts for social and web. We shoot with all of that in mind from the first day, in how we frame, how much we cover and how we keep it compliant, so you are not paying to reshoot later.</p>
     <p>It goes further than the board film and the EVP, and working that out is part of the strategy up front. We sit down with you and map what else each site can give you, so while we are there we also gather footage for the videos you will want down the track: marketing, safety and induction, product and process, and internal communications. The board film always comes first and nothing on the day compromises it, but wherever there is a window, we use the access. When I said you would not need to film these sites again, I meant it.</p>
     <p>To make that real, the project includes a <em>Footage Library</em>: every master clip, sorted and tagged by site, colour-managed, backed up and cleared for reuse. You end up owning something you can keep coming back to, not just one finished file.</p>
+    <div class="band"><img src="https://docs.fifthcastle.media/images/adbri-mood-04.jpg?v=1" alt="Pride and mateship"><div class="cap"><b>Two mates walking away</b> &middot; pride and mateship, the heart of the EVP recut</div></div>
   </div>
 </section>
 
@@ -336,6 +364,7 @@
         <li><b>Figures and brand assets.</b> On-screen statistics and the brand logos, once the storyboard is signed off.</li>
       </ul>
     </div>
+    <div class="band"><img src="https://docs.fifthcastle.media/images/adbri-mood-05.jpg?v=1" alt="On the open road"><div class="cap"><b>On the open road</b> &middot; product on its way to market</div></div>
   </div>
 </section>
 
@@ -394,6 +423,7 @@
       <li><b>A strategic partner, not a vendor.</b> Every project starts with purpose: what the film is for, who it is for, and what it should make them feel.</li>
       <li><b>Fully insured.</b> Public liability to $10M and professional indemnity to $5M, under Five Castles Pty Ltd.</li>
     </ul>
+    <div class="band"><img src="https://docs.fifthcastle.media/images/adbri-mood-06.jpg?v=1" alt="What the rock became"><div class="cap"><b>What the rock became</b> &middot; finished infrastructure at dusk</div></div>
   </div>
 </section>
 
@@ -409,29 +439,6 @@
       <div class="tm"><div class="nm">Nick</div><div class="rl">Editor</div></div>
       <div class="tm"><div class="nm">Arek Rainczuk</div><div class="rl">Director &amp; Producer</div></div>
       <div class="tm"><div class="nm">Jay</div><div class="rl">Camera &amp; Drone</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. RECENT WORK -->
-<section style="background:var(--dark);">
-  <div class="wrap">
-    <div class="eyebrow-line"><span class="eyebrow">Recent work</span><span class="rule"></span></div>
-    <h2>A look at what we make</h2>
-    <p>A few recent productions, including work across the CRH family. Best with the sound on.</p>
-    <div class="videos">
-      <figure class="vid feature">
-        <div class="vwrap"><iframe src="https://player.vimeo.com/video/943226671?h=a9bb2e041e" title="Civilmart film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-        <figcaption>Civilmart &middot; CRH family</figcaption>
-      </figure>
-      <figure class="vid">
-        <div class="vwrap"><iframe src="https://player.vimeo.com/video/1098098623?h=0575e481ac" title="Civilmart film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-        <figcaption>Civilmart &middot; CRH family</figcaption>
-      </figure>
-      <figure class="vid">
-        <div class="vwrap"><iframe src="https://player.vimeo.com/video/801105807?h=33ca7de282" title="HybridAG film" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-        <figcaption>HybridAG</figcaption>
-      </figure>
     </div>
   </div>
 </section>
