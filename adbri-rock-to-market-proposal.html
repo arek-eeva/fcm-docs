@@ -129,10 +129,11 @@
   .note p:last-child { margin-bottom: 0; }
 
   /* UNDERSTANDING CARDS */
-  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 14px; }
-  .uc { background: var(--card); border: 1px solid rgba(255,255,255,0.07); padding: 24px 26px; }
-  .uc .k { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--red); margin-bottom: 8px; }
-  .uc .v { font-size: 16px; color: var(--grey-1); line-height: 1.55; }
+  .cards { display: flex; flex-direction: column; margin-top: 20px; }
+  .uc { display: flex; gap: 30px; align-items: baseline; background: transparent; border: none; border-top: 1px solid rgba(255,255,255,0.1); padding: 18px 0; }
+  .uc:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .uc .k { flex: 0 0 130px; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 13px; color: var(--red); }
+  .uc .v { font-size: 18px; color: var(--grey-1); line-height: 1.5; }
 
   /* PILLARS */
   .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 12px; }
@@ -209,6 +210,8 @@
     .hero { padding: 100px 24px 66px; }
     section { padding: 68px 24px; }
     .cards, .pillars { grid-template-columns: 1fr; }
+    .uc { flex-direction: column; gap: 5px; padding: 16px 0; }
+    .uc .k { flex-basis: auto; }
     .team { grid-template-columns: 1fr 1fr; }
     .videos { grid-template-columns: 1fr; } .vid.feature { grid-column: auto; }
     .timeline { grid-template-columns: 1fr 1fr; }
@@ -227,15 +230,49 @@
     .uc, .pillar, .note, .close, .timeline, .tl, .phase2 { background: #f5f3ef; }
     section p, .pillar p, .moment p, .uc .v, .invest .desc { color: #1a1a1a; }
   }
+
+  /* ─── TOPBAR RIGHT + THEME TOGGLE ─── */
+  .topright { display: flex; align-items: center; gap: 18px; }
+  .themetoggle { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; overflow: hidden; background: transparent; cursor: pointer; padding: 0; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; line-height: 1; }
+  .themetoggle span { padding: 6px 13px; color: var(--grey-3); transition: background .2s, color .2s; }
+  .themetoggle .th-d { background: var(--red); color: #fff; }
+  body.light .themetoggle { border-color: rgba(0,0,0,0.22); }
+  body.light .themetoggle .th-d { background: transparent; color: var(--grey-3); }
+  body.light .themetoggle .th-l { background: var(--red); color: #fff; }
+
+  /* ─── LIGHT THEME ─── */
+  body.light {
+    --black: #ffffff; --dark: #f1efe9; --mid: #ece9e2; --card: #f7f5f1;
+    --grey-1: #33312d; --grey-2: #56534d; --grey-3: #7c786f; --grey-4: #a6a29a; --white: #17150f;
+    background: #ffffff; color: var(--grey-1);
+  }
+  body.light .eyebrow-line .rule { background: rgba(0,0,0,0.16); }
+  body.light .pillars, body.light .timeline, body.light .team { background: rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.1); }
+  body.light .moodgrid figure, body.light .band, body.light .vwrap, body.light .teamphoto, body.light .phase2 { border-color: rgba(0,0,0,0.12); }
+  body.light .uc { border-color: rgba(0,0,0,0.1); }
+  body.light .invest th { border-bottom-color: rgba(0,0,0,0.22); }
+  body.light .invest td { border-bottom-color: rgba(0,0,0,0.1); }
+  body.light footer, body.light .footer-confidential { border-top-color: rgba(0,0,0,0.1); }
+  /* hero + topbar stay legible over the photo in both themes */
+  body.light .hero { background: #0a0a0a; }
+  body.light .hero h1 { color: #ffffff; }
+  body.light .hero .sub { color: #e6e4df; }
+  body.light .hero-meta { color: #a8a39a; border-top-color: rgba(255,255,255,0.14); }
+  body.light .hero-meta strong { color: #efeee9; }
+  body.light .topbar { background: linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 100%); border-bottom: 1px solid rgba(0,0,0,0.07); }
 </style>
 </head>
 <body>
+<script>(function(){try{if(localStorage.getItem('adbri-theme')==='light')document.body.classList.add('light');}catch(e){}})();</script>
 
 <div class="topbar">
   <div class="nav-logo">Fifth <span>Castle</span> Media</div>
-  <nav class="topnav">
-    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
-  </nav>
+  <div class="topright">
+    <nav class="topnav">
+      <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
+    </nav>
+    <button class="themetoggle" type="button" aria-label="Switch between dark and light theme" onclick="var d=document.body.classList.toggle('light');try{localStorage.setItem('adbri-theme',d?'light':'dark')}catch(e){}"><span class="th-d">Dark</span><span class="th-l">Light</span></button>
+  </div>
 </div>
 
 <!-- HERO -->
