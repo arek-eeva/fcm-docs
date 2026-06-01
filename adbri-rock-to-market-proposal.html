@@ -63,6 +63,11 @@
   .biglink .bk-k { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; color: var(--red); }
   .biglink .bk-t { font-family: 'Vidaloka', serif; color: var(--white); font-size: 19px; }
   .biglink .bk-t::after { content: " \2192"; color: var(--grey-3); }
+  .moodgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+  .moodgrid figure { margin: 0; background: var(--card); border: 1px solid rgba(255,255,255,0.08); }
+  .moodgrid img { width: 100%; height: auto; display: block; }
+  .moodgrid figcaption { padding: 12px 16px; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.13em; font-size: 11.5px; color: var(--grey-3); }
+  .moodgrid figcaption b { color: var(--white); font-weight: 500; letter-spacing: 0.08em; }
   .needs { margin-top: 38px; }
   .needs h4 { font-size: 21px; color: var(--white); margin-bottom: 14px; }
   .teamphoto { margin: 6px 0 28px; border: 1px solid rgba(255,255,255,0.12); line-height: 0; }
@@ -202,6 +207,7 @@
     .videos { grid-template-columns: 1fr; } .vid.feature { grid-column: auto; }
     .timeline { grid-template-columns: 1fr 1fr; }
     .seealso { grid-template-columns: 1fr; }
+    .moodgrid { grid-template-columns: 1fr; }
     .invest .desc { padding-right: 12px; font-size: 13.5px; }
     footer { padding: 40px 24px 30px; }
   }
@@ -222,7 +228,6 @@
 <div class="topbar">
   <div class="nav-logo">Fifth <span>Castle</span> Media</div>
   <nav class="topnav">
-    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html" target="_blank" rel="noopener">Creative Direction</a>
     <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
   </nav>
 </div>
@@ -275,15 +280,18 @@
       <div class="pillar"><h3>The human side</h3><p>Genuine, unposed portraits of the people who make this happen: the pride they take in the work, the mateship between them, the real skill each stage demands. Every frame compliant.</p></div>
     </div>
     <p style="margin-top:34px;">Sound does as much work as the picture. Under a quiet bed of music, the real sound of each place comes through: gulls over the jetty as the lime loads, water against the hull of the silent ship, the roar of the fire in the kiln. Over the top, one of Australia's best male voiceover artists, an older, considered voice with real gravity, the kind a board settles into and trusts.</p>
-    <div style="margin-top:18px;">
-      <div class="moment"><div class="mnum">i</div><p>First light breaking over the Klein Point quarry, dust hanging in the still morning air, the working face vast and quiet before the day begins.</p></div>
-      <div class="moment"><div class="mnum">ii</div><p>A dust-streaked smile, and the small puff of dust that lifts off a shoulder where a mate has just clapped them. Pride and mateship in a single frame.</p></div>
-      <div class="moment"><div class="mnum">iii</div><p>The finished infrastructure that the rock became, a project that sits well in the country around it, the part of the story that stays in the world long after the board has moved on.</p></div>
+    <p style="margin-top:32px;">Here is the look and feel we are reaching for, scene by scene. These are illustrative mood references to set the tone, not the actual sites or final footage. The full creative direction is developed in pre-production.</p>
+    <div class="moodgrid">
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-01.jpg?v=1" alt="First light over the quarry"><figcaption><b>First light over the quarry</b> &middot; dawn, dust, scale</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-02.jpg?v=1" alt="The craft up close"><figcaption><b>Hands on the machinery</b> &middot; the craft up close</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-03.jpg?v=1" alt="Scale from the air"><figcaption><b>Scale from the air</b> &middot; the operation laid bare</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-04.jpg?v=1" alt="Pride and mateship"><figcaption><b>Two mates walking away</b> &middot; pride and mateship</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-05.jpg?v=1" alt="On the open road"><figcaption><b>On the open road</b> &middot; product on its way to market</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-06.jpg?v=1" alt="What the rock became"><figcaption><b>What the rock became</b> &middot; finished infrastructure at dusk</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-07.jpg?v=1" alt="Inside the plant"><figcaption><b>Inside the plant</b> &middot; the kiln, heat and atmosphere</figcaption></figure>
+      <figure><img src="https://docs.fifthcastle.media/images/adbri-mood-08.jpg?v=1" alt="On-screen captions"><figcaption><b>On-screen captions</b> &middot; how the text would look</figcaption></figure>
     </div>
-    <div class="seealso">
-      <a class="biglink" href="https://docs.fifthcastle.media/adbri-rock-to-market-creative-direction.html" target="_blank" rel="noopener"><span class="bk-k">Read in full</span><span class="bk-t">The Creative Direction</span></a>
-      <a class="biglink" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener"><span class="bk-k">Explore</span><span class="bk-t">The Location Map</span></a>
-    </div>
+    <p style="margin-top:26px; font-size:15px; color:var(--grey-3);">A production location map of every site is shared alongside this proposal: <a class="inline" href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">view the location map</a>.</p>
   </div>
 </section>
 
