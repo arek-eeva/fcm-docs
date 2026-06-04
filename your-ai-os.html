@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI OS | Arek Rainczuk</title>
+<meta name="description" content="An AI that actually knows your business. A working memory for how you run things, that helps you do the work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--bg);
+  }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* film grain + cinematic glow */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 96px clamp(24px, 8vw, 140px);
+    overflow: hidden;
+  }
+  .slide::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(189,32,45,0.07), transparent 55%),
+      radial-gradient(ellipse at 110% 120%, rgba(245,241,234,0.025), transparent 60%);
+  }
+  .inner { position: relative; z-index: 2; max-width: 920px; width: 100%; margin: 0 auto; }
+
+  .kicker {
+    font-family: var(--font-label);
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before {
+    content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(38px, 6.4vw, 82px);
+    line-height: 1.07;
+    letter-spacing: -0.015em;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(31px, 5.2vw, 60px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+  }
+  .lead {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 28px;
+    max-width: 56ch;
+  }
+  .lead .hot { color: var(--text); }
+  .accent-text { color: var(--accent-bright); }
+
+  /* title slide */
+  .title h1 { font-size: clamp(44px, 8vw, 104px); }
+  .title .sub {
+    font-size: clamp(19px, 2.6vw, 27px);
+    color: var(--muted); margin-top: 32px; max-width: 40ch; line-height: 1.5;
+  }
+  .title .sub .hot { color: var(--text); }
+
+  /* use-case grid */
+  .grid {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 40px;
+    max-width: 760px;
+  }
+  .grid .item {
+    font-size: clamp(16px, 1.9vw, 20px);
+    color: var(--text);
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .grid .item .dot { color: var(--accent); font-family: var(--font-mono); font-size: 0.7em; }
+
+  /* numbered / listed slides */
+  .list { margin-top: 40px; max-width: 700px; display: flex; flex-direction: column; gap: 22px; }
+  .list .row { display: flex; gap: 22px; align-items: flex-start; }
+  .list .row .n {
+    font-family: var(--font-display);
+    color: var(--accent);
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1; flex: 0 0 auto; width: 1.4em;
+  }
+  .list .row .body { font-size: clamp(17px, 2vw, 21px); line-height: 1.5; }
+  .list .row .body strong { color: var(--text); font-family: var(--font-body); font-weight: 700; }
+  .list .row .body span { color: var(--muted); }
+
+  .checks { margin-top: 40px; max-width: 680px; display: flex; flex-direction: column; gap: 18px; }
+  .checks .row { display: flex; gap: 18px; align-items: flex-start; font-size: clamp(17px, 2vw, 21px); line-height: 1.5; }
+  .checks .row .mk { color: var(--accent); font-family: var(--font-label); font-weight: 700; flex: 0 0 auto; }
+  .checks .row .mk::before { content: '\2713'; }
+  .checks .row span.hot { color: var(--text); font-weight: 700; }
+  .checks .row { color: var(--muted); }
+
+  .mono-note {
+    font-family: var(--font-mono);
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: var(--subtle);
+    margin-top: 36px;
+    letter-spacing: 0.02em;
+  }
+  .mono-note .on { color: var(--accent); }
+
+  /* fixed chrome */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--accent); z-index: 30;
+    box-shadow: 0 0 12px rgba(189,32,45,0.6);
+    transition: width 0.15s linear;
+  }
+  .wordmark {
+    position: fixed; bottom: 26px; left: clamp(20px, 4vw, 44px); z-index: 30;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .wordmark .red { color: var(--accent); }
+  .counter {
+    position: fixed; bottom: 26px; right: clamp(20px, 4vw, 44px); z-index: 30;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--muted);
+  }
+  .counter .cur { color: var(--text); }
+  .dots {
+    position: fixed; top: 50%; right: clamp(14px, 2.4vw, 30px); transform: translateY(-50%);
+    z-index: 30; display: flex; flex-direction: column; gap: 13px;
+  }
+  .dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0; cursor: pointer;
+    background: transparent; border: 1px solid var(--line-bright); transition: all 0.25s ease;
+  }
+  .dots button:hover { border-color: var(--muted); }
+  .dots button.active { background: var(--accent); border-color: var(--accent); transform: scale(1.25); }
+
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    z-index: 2; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--subtle); display: flex; flex-direction: column;
+    align-items: center; gap: 10px;
+  }
+  .scroll-hint .arrow { width: 1px; height: 30px; background: linear-gradient(var(--subtle), transparent); animation: drop 1.8s ease-in-out infinite; }
+  @keyframes drop { 0%,100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(6px); } }
+
+  /* reveal (only when JS is active, so content is fully visible without it) */
+  .js .inner > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js .slide.in .inner > * { opacity: 1; transform: none; }
+  .js .slide.in .inner > *:nth-child(2) { transition-delay: 0.08s; }
+  .js .slide.in .inner > *:nth-child(3) { transition-delay: 0.16s; }
+  .js .slide.in .inner > *:nth-child(4) { transition-delay: 0.24s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .inner > * { opacity: 1; transform: none; transition: none; }
+    .scroll-hint .arrow { animation: none; }
+  }
+  @media (max-width: 680px) {
+    .grid { grid-template-columns: 1fr; gap: 0; }
+    .dots { display: none; }
+    .slide { padding: 80px 24px; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<div class="progress" id="progress"></div>
+<div class="wordmark">AREK RAINCZUK <span class="red">/</span> AI OS</div>
+<div class="counter"><span class="cur" id="cur">01</span> / 12</div>
+<nav class="dots" id="dots"></nav>
+
+<!-- 1 -->
+<section class="slide title">
+  <div class="inner">
+    <div class="kicker">A different way to work</div>
+    <h1>An AI that actually<br>knows your business.</h1>
+    <p class="sub">Not another chatbot you re-explain yourself to every morning. <span class="hot">A working memory for how you run things, that helps you do the work.</span></p>
+  </div>
+  <div class="scroll-hint">Scroll<div class="arrow"></div></div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem</div>
+    <h2>Most AI forgets you the moment you close the tab.</h2>
+    <p class="lead">You've probably tried ChatGPT or Claude. They're clever. But every new chat starts cold. You re-explain your business, your clients, your prices, your tone, over and over. <span class="hot">It's a brilliant stranger who turns up with amnesia every single day.</span></p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The shift</div>
+    <h2>An AI OS remembers. It knows how you work.</h2>
+    <p class="lead">An AI operating system is the opposite of a blank chat. It holds everything about how you run your business: your priorities, your clients, your pricing, your voice. <span class="hot">You stop briefing it, and start working with it.</span></p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">What it is</div>
+    <h2>It's a folder on your computer. That's it.</h2>
+    <p class="lead">No new app to log into. No dashboard to learn. It's a folder that holds your business's knowledge, and an assistant that reads it, works in it, and keeps it up to date. <span class="hot">It's yours, it's private, and it lives on your own machine.</span></p>
+    <p class="mono-note"><span class="on">/</span> your-business/ &nbsp; what you do &middot; who you serve &middot; how you sound &middot; what's on</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">What it does</div>
+    <h2>If you'd do it on the computer, start here.</h2>
+    <div class="grid">
+      <div class="item"><span class="dot">&#9679;</span> Client emails and follow-ups</div>
+      <div class="item"><span class="dot">&#9679;</span> Proposals and quotes</div>
+      <div class="item"><span class="dot">&#9679;</span> Planning your week</div>
+      <div class="item"><span class="dot">&#9679;</span> Prepping for a call</div>
+      <div class="item"><span class="dot">&#9679;</span> Writing the actual deliverables</div>
+      <div class="item"><span class="dot">&#9679;</span> Chasing invoices and admin</div>
+      <div class="item"><span class="dot">&#9679;</span> Tracking jobs and prospects</div>
+      <div class="item"><span class="dot">&#9679;</span> Remembering what you promised</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Who it's for</div>
+    <h2>For people who are great at the work, and buried in the admin.</h2>
+    <p class="lead">Solo operators and small teams. Service businesses especially: studios, consultants, trades, agencies. <span class="hot">If you're the one who turns the lights on and also writes every email, this is for you.</span></p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Why it works</div>
+    <h2>It knows your priorities, your values, and how you think.</h2>
+    <p class="lead">That's the difference between a tidy notepad and a real partner. Because it understands what you're chasing and what you believe, it puts the right things in front of you at the right time, and everything it writes <span class="hot">sounds like you, not like a brochure.</span></p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Setting it up</div>
+    <h2>You don't build it. A wizard builds it with you.</h2>
+    <p class="lead">Open the folder, say "let's begin", and a patient guide walks you through it. It reads your website, learns from your old AI chats and your past invoices and proposals, and asks a few good questions. <span class="hot">Small steps. Stop whenever you like. No technical skill needed.</span></p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Getting the most from it</div>
+    <h2>Five habits that make it sing.</h2>
+    <div class="list">
+      <div class="row"><div class="n">1</div><div class="body"><strong>Start everything here.</strong> <span>Make it the first place you go, before the blank page.</span></div></div>
+      <div class="row"><div class="n">2</div><div class="body"><strong>Feed it your history.</strong> <span>The more it knows, the better it gets.</span></div></div>
+      <div class="row"><div class="n">3</div><div class="body"><strong>Correct it once.</strong> <span>It remembers, so it won't make the same slip twice.</span></div></div>
+      <div class="row"><div class="n">4</div><div class="body"><strong>Keep it backed up.</strong> <span>Put the folder in Dropbox, Drive, or iCloud.</span></div></div>
+      <div class="row"><div class="n">5</div><div class="body"><strong>Let it grow.</strong> <span>It'll suggest the next useful step when you're ready.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The honest bit</div>
+    <h2>Private, yours, and impossible to break.</h2>
+    <div class="checks">
+      <div class="row"><span class="mk"></span><span><span class="hot">It stays on your computer.</span> Nothing's uploaded.</span></div>
+      <div class="row"><span class="mk"></span><span><span class="hot">You can't break anything.</span> It asks before it does anything big.</span></div>
+      <div class="row"><span class="mk"></span><span><span class="hot">You don't need to be technical.</span> If you can send an email, you can use it.</span></div>
+      <div class="row"><span class="mk"></span><span><span class="hot">It's your folder, not a subscription</span> you're locked into.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">What changes</div>
+    <h2>You stop starting from scratch.</h2>
+    <p class="lead">No more blank pages. No more repeating yourself. The admin gets lighter, the writing sounds like you, and the things that matter stop slipping through the cracks. <span class="hot">You get your evenings back.</span></p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide title">
+  <div class="inner">
+    <div class="kicker">The next step</div>
+    <h1>Want one of<br>your own?</h1>
+    <p class="sub">I've packaged the whole thing into a simple kit. You unzip it, open it, and the wizard takes it from there. <span class="hot">If this is what you've been needing, tell me, and I'll send it over.</span></p>
+    <p class="mono-note" style="margin-top:40px"><span class="on">/</span> Arek Rainczuk</p>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var dotsWrap = document.getElementById('dots');
+    var progress = document.getElementById('progress');
+    var curEl = document.getElementById('cur');
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+
+    // build nav dots
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', function () { s.scrollIntoView(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var current = 0;
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          current = slides.indexOf(e.target);
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+          curEl.textContent = pad(current + 1);
+        }
+      });
+    }, { threshold: 0.55 });
+    slides.forEach(function (s) { io.observe(s); });
+
+    // progress bar
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // keyboard nav
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        if (current < slides.length - 1) slides[current + 1].scrollIntoView();
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (current > 0) slides[current - 1].scrollIntoView();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
