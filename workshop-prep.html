@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop Prep: Build Your AI OS | Arek Rainczuk</title>
+<meta name="description" content="What to prepare before the Sydney workshop so you walk out with a working AI operating system for your business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --card: #15130f;
+    --text: #F5F1EA;
+    --muted: #968f83;
+    --subtle: #5a554d;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+
+  /* sticky progress */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(10,10,10,0.86); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .track { height: 3px; background: var(--line); }
+  .topbar .fill { height: 3px; width: 0; background: var(--accent); box-shadow: 0 0 10px rgba(189,32,45,0.6); transition: width 0.4s ease; }
+  .topbar .meta {
+    max-width: 820px; margin: 0 auto; padding: 11px clamp(20px,5vw,40px);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 13px; color: var(--muted);
+  }
+  .topbar .meta .count { color: var(--text); }
+
+  .wrap { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: clamp(40px,7vw,72px) clamp(20px,5vw,40px) 100px; }
+
+  .kicker {
+    font-family: var(--font-label); font-size: 14px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px,6vw,58px); line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 22px; }
+  .intro { font-size: clamp(18px,2.3vw,22px); color: var(--muted); max-width: 60ch; }
+  .intro .hot { color: var(--text); }
+
+  .callout {
+    margin: 36px 0 8px; background: var(--accent-bright); background: linear-gradient(180deg, rgba(189,32,45,0.14), rgba(189,32,45,0.07));
+    border: 1px solid rgba(189,32,45,0.34); border-left: 3px solid var(--accent);
+    border-radius: 12px; padding: 22px 24px;
+  }
+  .callout .lab { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 13px; color: var(--accent-bright); font-weight: 600; margin-bottom: 8px; }
+  .callout p { color: var(--text); font-size: 17px; }
+
+  section.block { margin-top: 54px; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .sec-head .no { font-family: var(--font-mono); color: var(--accent); font-size: 15px; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px,3.6vw,34px); line-height: 1.15; }
+  .badges { display: flex; gap: 8px; margin-left: auto; }
+  .badge { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .badge.ess { color: #ffd9dc; background: rgba(189,32,45,0.2); border: 1px solid rgba(189,32,45,0.45); }
+  .badge.high { color: #f0e6cf; background: rgba(200,160,60,0.13); border: 1px solid rgba(200,160,60,0.32); }
+  .badge.bonus { color: var(--muted); background: rgba(245,241,234,0.05); border: 1px solid var(--line-bright); }
+  .badge.time { color: var(--muted); background: transparent; border: 1px solid var(--line-bright); }
+  .sec-note { color: var(--muted); font-size: 16px; margin: 8px 0 18px; max-width: 62ch; }
+
+  /* checklist */
+  .check { display: flex; gap: 15px; align-items: flex-start; padding: 13px 16px; border: 1px solid var(--line); border-radius: 11px; margin-bottom: 9px; cursor: pointer; background: var(--card); transition: border-color 0.2s ease, background 0.2s ease; }
+  .check:hover { border-color: var(--line-bright); }
+  .check input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .check .box { flex: 0 0 auto; width: 23px; height: 23px; border: 1.5px solid var(--line-bright); border-radius: 6px; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.18s ease; }
+  .check .box::after { content: '\2713'; color: #fff; font-family: var(--font-label); font-weight: 700; font-size: 15px; opacity: 0; transform: scale(0.6); transition: all 0.18s ease; }
+  .check input:checked + .box { background: var(--accent); border-color: var(--accent); }
+  .check input:checked + .box::after { opacity: 1; transform: scale(1); }
+  .check input:focus-visible + .box { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+  .check .txt { font-size: 17px; line-height: 1.5; }
+  .check .txt strong { color: var(--text); font-weight: 700; }
+  .check .txt span { color: var(--muted); }
+  .check input:checked ~ .txt { color: var(--subtle); }
+  .check input:checked ~ .txt strong { color: var(--muted); }
+  .check input:checked ~ .txt span { color: var(--subtle); }
+
+  /* prompt block */
+  .promptwrap { margin: 16px 0 4px; border: 1px solid var(--line-bright); border-radius: 12px; overflow: hidden; background: #0e0d0b; }
+  .promptwrap .bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+  .promptwrap .bar .t { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px; color: var(--muted); }
+  .promptwrap .copy { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; font-weight: 600; color: var(--text); background: var(--accent); border: none; border-radius: 6px; padding: 6px 14px; cursor: pointer; transition: background 0.2s ease; }
+  .promptwrap .copy:hover { background: var(--accent-bright); }
+  .promptwrap pre { margin: 0; padding: 18px 16px; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.65; color: #d8d2c6; white-space: pre-wrap; max-height: 320px; overflow-y: auto; }
+
+  .endnote { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+  .endnote strong { color: var(--text); }
+  .endnote a { color: var(--accent-bright); }
+  .wordmark { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); margin-top: 30px; }
+  .wordmark .red { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .badges { margin-left: 0; width: 100%; }
+    .sec-head { gap: 8px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #111; font-size: 12pt; }
+    body::before, .topbar { display: none; }
+    .wrap { padding: 0; max-width: 100%; }
+    .check, .callout, .promptwrap { border-color: #bbb !important; background: #fff !important; break-inside: avoid; }
+    .check .box { border-color: #555 !important; }
+    .check .box::after { color: #111; opacity: 1; }
+    .check input:checked + .box { background: #fff !important; }
+    h1, .sec-head h2 { color: #111; }
+    .kicker, .sec-head .no, .badge.ess { color: #BD202D; }
+    .intro, .sec-note, .check .txt span, .endnote { color: #333; }
+    .check .txt, .check .txt strong { color: #111; }
+    .badge { border: 1px solid #999; color: #333; }
+    a { color: #111; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="meta"><span>Workshop prep</span><span class="count" id="count">0 of 0 ready</span></div>
+</div>
+
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Sydney workshop &middot; one week to go</div>
+    <h1>Come ready, and we'll build your AI OS in a couple of hours.</h1>
+    <p class="intro">The whole day comes down to one thing: <span class="hot">what you bring with you.</span> The more of the list below you sort out beforehand, the more we get done together, and the less you sit watching me type. Most of this is gathering things you already have. Set aside an hour or two over the week and you'll walk out with a working OS, not a demo.</p>
+  </header>
+
+  <div class="callout">
+    <div class="lab">Short on time? The bare minimum</div>
+    <p>If you only do three things: install Claude Code and sign in, drop a year of invoices and a few proposals into one folder, and run the AI handover export (Section 3). That alone gets you most of the way.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">01</span>
+      <h2>Set up before you arrive</h2>
+      <div class="badges"><span class="badge ess">Essential</span><span class="badge time">~30 min</span></div>
+    </div>
+    <p class="sec-note">These are the things that, if they're not sorted, will eat into your build time on the day. Do them at home where you've got your passwords and a good connection.</p>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Install the Claude Code desktop app and sign in.</strong> <span>Get the Claude Max plan, the US$100 a month tier. It has enough usage to run your business on, where the cheaper plans run out fast. Open it once at home to check it works.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Make sure you can install software on your laptop.</strong> <span>You'll need your computer's admin password to install the app and connect your tools. If your laptop is locked down by an IT department, sort that out this week.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Have a cloud-backed folder ready.</strong> <span>Dropbox, Google Drive, iCloud Drive, or OneDrive, installed and syncing. Your OS will live in here so it's safe and follows you between machines.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Bring your laptop, charger, and phone.</strong> <span>The phone is for the security codes when we connect your tools on the day.</span></span></label>
+  </section>
+
+  <!-- 2 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">02</span>
+      <h2>Build your context folder</h2>
+      <div class="badges"><span class="badge high">High value</span><span class="badge time">~45 min</span></div>
+    </div>
+    <p class="sec-note">Make one folder called something like "AI-OS-stuff" and drop everything below into it. This is what teaches your OS who you are on day one. Don't tidy or rename anything, just gather. The more you bring, the more it sounds like you from the first session. It all stays on your own laptop.</p>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your proposals.</strong> <span>As many recent ones as you can find. These teach it what you sell and how you pitch.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your invoices, the last year or two.</strong> <span>These teach it your clients, your real pricing, your job sizes, and who pays well.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your brand voice work.</strong> <span>The tone-of-voice profile you developed last year, plus a few emails or posts that sound unmistakably like you. This is how it learns to write in your voice.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your brand kit.</strong> <span>Logo, colours, fonts, any brand guide. So everything it makes for you looks right.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your services and pricing.</strong> <span>A price sheet, a services page, or whatever you've got.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Examples of your best delivered work.</strong> <span>A few pieces you're proud of, so it learns what "good" means to you.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Anything you've written about your business.</strong> <span>An "about us", a one-pager, custom instructions you've fed to ChatGPT, a pinned doc. All gold.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your website address.</strong> <span>Just have it handy. The wizard reads your site and fills in a surprising amount on its own.</span></span></label>
+  </section>
+
+  <!-- 3 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">03</span>
+      <h2>Export your AI's memory</h2>
+      <div class="badges"><span class="badge high">High value</span><span class="badge time">~20 min</span></div>
+    </div>
+    <p class="sec-note">If you've used ChatGPT, Claude, or Gemini for your business, it already knows a lot about you. There's a trick to get all of it out in one go: ask it to write a handover, the way you'd brief someone taking over your job. Paste the prompt below into each AI tool or project you've used, then save the answer into your context folder. This is the single biggest head start you can give yourself.</p>
+
+    <div class="promptwrap">
+      <div class="bar"><span class="t">Paste this into your AI tool</span><button class="copy" id="copyBtn">Copy</button></div>
+      <pre id="promptText">I'm handing over our work to a new assistant who knows nothing about me or my business yet. Please write a complete handover document so they can pick up exactly where you left off.
+
+Organise it under clear headings, and be specific. Use real names, numbers, dates, and examples wherever you can, not vague generalities. Cover:
+
+1. My business: what it is, what I sell, who my customers are, where I operate.
+2. Me: my name, my role, how I like to work, anything personal you've learned that's relevant.
+3. My goals: what I'm working towards, and what matters most right now.
+4. Ongoing work: projects and jobs in motion, and where each one is up to.
+5. Key people: clients, team, suppliers, and the relationship with each.
+6. My preferences: how I like things done, my tone and writing style, pet hates.
+7. Decisions and rules: anything I've told you to always or never do.
+8. Anything else a new assistant would need to not start from zero.
+
+Write it as a clear document I can hand straight to someone else. Don't ask me questions first, just write the fullest handover you can from everything you already know.</pre>
+    </div>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Run it in each AI tool and project you've used,</strong> <span>and save every answer into your context folder. More handovers means a richer OS.</span></span></label>
+  </section>
+
+  <!-- 4 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">04</span>
+      <h2>Your client intelligence</h2>
+      <div class="badges"><span class="badge high">High value</span><span class="badge time">~20 min</span></div>
+    </div>
+    <p class="sec-note">Your live client picture is some of the most useful context there is. Bring it and your OS can start helping with real clients straight away, instead of in the abstract.</p>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your client and account list.</strong> <span>Export it from your CRM as a spreadsheet, or knock up a quick list. Names, contacts, what you do for them.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your current jobs and where each is up to.</strong> <span>The work in flight right now, even rough notes.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Anything you know about your key clients.</strong> <span>Preferences, history, quirks, the things you keep in your head. Getting them out of your head and into your OS is the whole point.</span></span></label>
+  </section>
+
+  <!-- 5 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">05</span>
+      <h2>Your tools and logins</h2>
+      <div class="badges"><span class="badge high">High value</span><span class="badge time">~15 min</span></div>
+    </div>
+    <p class="sec-note">On the day we'll plug your real software into your OS so it can read your calendar, draft from your email, pull up an invoice, and so on. Come knowing what you use and able to log in. I'll do the technical part with you, including finding the right connectors (the APIs and MCPs) for your particular stack.</p>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Write down the software you use.</strong> <span>Email, calendar, accounting (Xero, QuickBooks, MYOB), your CRM, project or task tool, file storage, payments (Stripe, Square). A simple list is fine.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Make sure you can log in to each one.</strong> <span>Bring your password manager, or have your logins to hand. We'll need them to connect each tool.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Don't worry about the techy bit.</strong> <span>You don't need to know what an API or a connector is. Just bring the list and the logins, and I'll sort the rest with you on the day.</span></span></label>
+  </section>
+
+  <!-- 6 -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="no">06</span>
+      <h2>Come having thought about three things</h2>
+      <div class="badges"><span class="badge ess">The secret sauce</span><span class="badge time">~15 min</span></div>
+    </div>
+    <p class="sec-note">This is the part that makes your OS genuinely yours instead of generic. No files to gather, just turn up having mulled these over. You don't need polished answers, rough is perfect. We'll shape them together.</p>
+
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your one big goal right now.</strong> <span>The single thing that, if it went well over the next few months, would make the biggest difference.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>Your values.</strong> <span>How you like to treat clients, what you believe about your work, the lines you won't cross.</span></span></label>
+    <label class="check"><input type="checkbox"><span class="box"></span><span class="txt"><strong>How you think.</strong> <span>What "good work" looks like to you, and how you make a call when it's a tough one.</span></span></label>
+  </section>
+
+  <div class="endnote">
+    <p><strong>That's the lot.</strong> Tick things off as you go, this page remembers what you've done. If you get most of it sorted, the workshop is the easy bit. New to the why behind all this? Have a look at <a href="https://docs.fifthcastle.media/your-ai-os.html">the short explainer</a> first.</p>
+    <p style="margin-top:14px">Any questions before the day, just reach out. See you in Sydney.</p>
+    <div class="wordmark">Arek Rainczuk <span class="red">/</span> AI OS</div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('.check input'));
+    var fill = document.getElementById('fill');
+    var count = document.getElementById('count');
+    var KEY = 'aos-workshop-prep-v1';
+
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+
+    function update() {
+      var done = 0;
+      boxes.forEach(function (b) { if (b.checked) done++; });
+      var pct = boxes.length ? Math.round((done / boxes.length) * 100) : 0;
+      fill.style.width = pct + '%';
+      count.textContent = done + ' of ' + boxes.length + ' ready';
+    }
+
+    boxes.forEach(function (b, i) {
+      if (saved[i]) b.checked = true;
+      b.addEventListener('change', function () {
+        saved[i] = b.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+        update();
+      });
+    });
+    update();
+
+    var copyBtn = document.getElementById('copyBtn');
+    var promptText = document.getElementById('promptText');
+    copyBtn.addEventListener('click', function () {
+      var text = promptText.innerText;
+      var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      } else {
+        var r = document.createRange(); r.selectNode(promptText);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        s.removeAllRanges();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
