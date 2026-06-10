@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mission Control — QuickBooks connection</title>
+<style>
+  body { font-family: Georgia, serif; background: #111; color: #eee; margin: 0;
+         display: flex; min-height: 100vh; align-items: center; justify-content: center; }
+  .card { max-width: 560px; padding: 40px; text-align: center; }
+  h1 { font-size: 22px; font-weight: normal; letter-spacing: 0.02em; }
+  .accent { color: #BD202D; }
+  p { line-height: 1.5; color: #bbb; }
+  button { background: #BD202D; color: #fff; border: 0; padding: 14px 28px; font-size: 16px;
+           border-radius: 6px; cursor: pointer; font-family: inherit; margin-top: 10px; }
+  button:active { transform: scale(0.98); }
+  .url { word-break: break-all; font-family: monospace; font-size: 11px; color: #777;
+         margin-top: 24px; user-select: all; }
+  .ok { color: #7bc47f; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Five Castles <span class="accent">Mission Control</span></h1>
+  <div id="msg"></div>
+</div>
+<script>
+  var q = new URLSearchParams(location.search);
+  var msg = document.getElementById('msg');
+  if (q.get('code')) {
+    msg.innerHTML = '<p class="ok">QuickBooks connection approved.</p>' +
+      '<p>One step left: copy this link and paste it back into the Terminal window that asked for it.</p>' +
+      '<button onclick="copyLink(this)">Copy the link</button>' +
+      '<div class="url">' + location.href.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</div>';
+  } else {
+    msg.innerHTML = '<p>This page is the landing point for the QuickBooks connection. ' +
+      'There is nothing to do here directly.</p>';
+  }
+  function copyLink(btn) {
+    navigator.clipboard.writeText(location.href).then(function () {
+      btn.textContent = 'Copied — now paste it into Terminal';
+    }, function () {
+      btn.textContent = 'Copy failed — select the small text below and copy it';
+    });
+  }
+</script>
+</body>
+</html>
