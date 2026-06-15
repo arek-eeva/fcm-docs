@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>HEVEN Founder Content Shoot — Day 2 (Wed 17 June)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #BD202D; --red-light: #f8e8e9; --black: #1a1a1a; --dark: #333333;
+    --mid: #666666; --light-bg: #f7f6f3; --white: #ffffff; --border: #e0ddd8;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--light-bg); color: var(--black); font-family: Georgia, 'Times New Roman', serif; line-height: 1.65; -webkit-font-smoothing: antialiased; font-size: 16px; }
+  h1, h2, h3 { font-family: 'Vidaloka', Georgia, serif; font-weight: 400; line-height: 1.2; color: var(--black); }
+  .label, .tag, .eyebrow, .overline { font-family: 'Khand', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 14px 40px; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .nav-brand { font-family: 'Vidaloka', Georgia, serif; font-size: 18px; }
+  .nav-meta { font-family: 'Khand', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+
+  .hero { background: var(--white); border-bottom: 3px solid var(--red); padding: 54px 40px 42px; }
+  .overline { font-size: 13px; letter-spacing: 0.2em; color: var(--red); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .overline::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+  .hero h1 { font-size: 40px; margin-bottom: 14px; }
+  .hero-sub { font-size: 20px; color: var(--mid); font-family: 'Vidaloka', Georgia, serif; font-style: italic; margin-bottom: 32px; }
+  .hero-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 32px; max-width: 700px; }
+  .hero-meta-item .label { font-size: 11px; color: var(--red); margin-bottom: 4px; letter-spacing: 0.16em; display: block; }
+  .hero-meta-item .value { font-family: 'Khand', sans-serif; font-size: 16px; color: var(--dark); letter-spacing: 0.02em; font-weight: 600; }
+
+  .section { padding: 40px; }
+  .section.alt { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: 12px; letter-spacing: 0.18em; color: var(--red); margin-bottom: 10px; display: block; }
+  .section h2 { font-size: 27px; }
+  .divider { width: 40px; height: 2px; background: var(--red); margin: 12px 0 26px; }
+  .section p { color: var(--dark); margin-bottom: 16px; max-width: 740px; }
+  .section p strong { color: var(--black); }
+  ul.clean { list-style: none; max-width: 740px; }
+  ul.clean li { position: relative; padding-left: 20px; margin-bottom: 11px; color: var(--dark); }
+  ul.clean li::before { content: ''; position: absolute; left: 0; top: 10px; width: 7px; height: 7px; background: var(--red); }
+  ul.clean li strong { color: var(--black); }
+
+  .schedule { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border); margin: 8px 0 6px; }
+  .schedule th { font-family: 'Khand', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--red); padding: 11px 16px; text-align: left; }
+  .schedule td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 15px; vertical-align: top; color: var(--dark); }
+  .schedule .t { font-family: 'Khand', sans-serif; font-weight: 600; white-space: nowrap; color: var(--black); width: 120px; }
+
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+  .block { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--red); padding: 18px 20px; }
+  .block .tag { font-size: 11px; letter-spacing: 0.16em; color: var(--red); margin-bottom: 6px; display: block; }
+  .block .name { font-family: 'Vidaloka', Georgia, serif; font-size: 19px; margin-bottom: 4px; }
+  .block p { font-size: 14.5px; margin: 0; color: var(--dark); }
+
+  .note { background: var(--red-light); border-left: 3px solid var(--red); padding: 16px 20px; font-size: 15px; color: var(--dark); margin-top: 18px; max-width: 740px; }
+
+  footer { background: var(--white); border-top: 3px solid var(--red); padding: 34px 40px; text-align: center; }
+  .footer-sig { font-family: 'Vidaloka', Georgia, serif; font-size: 20px; }
+  .footer-contact { font-size: 14px; color: var(--mid); line-height: 1.7; margin-top: 6px; }
+  .footer-line { margin-top: 16px; font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); }
+
+  @media (max-width: 680px) {
+    .hero-meta, .grid2 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+    nav, .hero, .section, footer { padding-left: 22px; padding-right: 22px; }
+  }
+  @media print {
+    body { background: var(--white); font-size: 12pt; }
+    nav { position: static; }
+    .section, .hero { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Fifth Castle Media</span>
+  <span class="nav-meta">Crew Brief · HEVEN Day 2</span>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="overline">Crew Brief · Day 2 of 2</div>
+    <h1>HEVEN Founder Content Shoot</h1>
+    <p class="hero-sub">Wednesday 17 June. Simple and clean, shot wide in 4K so we crop in later.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="label">Date</span><span class="value">Wednesday 17 June 2026</span></div>
+      <div class="hero-meta-item"><span class="label">Location</span><span class="value">Waterman Camberwell · 793 Burke Rd (middle floor, above Coles)</span></div>
+      <div class="hero-meta-item"><span class="label">Videographer</span><span class="value">Sam Young</span></div>
+      <div class="hero-meta-item"><span class="label">On site / coordinator</span><span class="value">Brigitte Knight · 0402 808 711</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <span class="eyebrow">The shoot</span>
+    <h2>Two interviews and some team photos</h2>
+    <div class="divider"></div>
+    <p>Day two for a returning client, HEVEN, an investment fund. This is the testimonial side of the project: a couple of relaxed interviews and a few photos of the fund team. Brigitte wants it kept simple, so the brief is the same easy setup as day one. Shoot wide in 4K so we can crop in to each person in the edit, get clean audio off a lapel, and grab the photos. Nice-looking footage at this stage, not a big production.</p>
+  </div>
+</div>
+
+<div class="section alt">
+  <div class="wrap">
+    <span class="eyebrow">Running order</span>
+    <h2>The afternoon</h2>
+    <div class="divider"></div>
+    <table class="schedule">
+      <tr><th>Time</th><th>What</th></tr>
+      <tr><td class="t">2:30 – 2:45</td><td>Arrive, set up and test</td></tr>
+      <tr><td class="t">2:45 – 3:30</td><td>Filming: interviews with Jason and Markus (Mena as backup content if there's time)</td></tr>
+      <tr><td class="t">4:00 – 4:30</td><td>Photos of the fund team</td></tr>
+    </table>
+    <p style="font-size:14.5px;color:var(--mid);margin-top:10px;">Brigitte is running the day and looking after the talent. Reach her on the number above.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <span class="eyebrow">Who's on camera</span>
+    <h2>Talent</h2>
+    <div class="divider"></div>
+    <div class="grid2">
+      <div class="block">
+        <span class="tag">Interview</span>
+        <div class="name">Jason Roberts</div>
+        <p>Success story of ELO. Solo interview.</p>
+      </div>
+      <div class="block">
+        <span class="tag">Interview</span>
+        <div class="name">Markus Koch</div>
+        <p>Testimonial-style commentary about Mena, Ben and their portfolio. Solo interview.</p>
+      </div>
+      <div class="block">
+        <span class="tag">Backup</span>
+        <div class="name">Mena Mikhail</div>
+        <p>HEVEN co-founder. Extra content if there's time after the two interviews.</p>
+      </div>
+      <div class="block">
+        <span class="tag">Photos only</span>
+        <div class="name">Melanie Davies</div>
+        <p>Part of the fund team for the group and individual photos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section alt">
+  <div class="wrap">
+    <span class="eyebrow">The setup</span>
+    <h2>Keep it simple</h2>
+    <div class="divider"></div>
+    <ul class="clean">
+      <li><strong>Camera:</strong> one body, wide-angle lens, 4K, locked off on a tripod. Frame each interviewee wide enough to crop and punch in to them in the edit. No moves.</li>
+      <li><strong>These are solo interviews</strong> (Jason, then Markus), so it's one person in frame at a time. Reset for each.</li>
+      <li><strong>Audio:</strong> a lapel mic on the interviewee plus a safety track. Clean audio is the main thing.</li>
+      <li><strong>Interviewer / prompt:</strong> sitting next to the camera on the light side, so the eyeline falls toward the camera and the key light.</li>
+      <li><strong>Lighting:</strong> simple and soft, one key to one side. Don't overthink it.</li>
+      <li><strong>Background:</strong> a clean navy or grey wall with a bit of depth (the talent are dressed to contrast it). Keep windows out of the background.</li>
+      <li><strong>Photos:</strong> a few relaxed photos of the fund team, Mena, Ben and Melanie, together and individually, for the pitch deck and fund collateral.</li>
+    </ul>
+    <div class="note"><strong>The look we're after:</strong> relaxed, clean, nicely lit, shot wide so we crop later. Easy setup over elaborate.</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <span class="eyebrow">What it's for</span>
+    <h2>Outputs</h2>
+    <div class="divider"></div>
+    <ul class="clean">
+      <li>Raw footage for repurposing, to drop into the Fund video and cut into testimonial reels for social.</li>
+      <li>A few photos of the fund team for the pitch deck and other fund collateral.</li>
+    </ul>
+    <p style="margin-top:18px;"><strong>After the shoot:</strong> send Arek all the footage and photos (transfer link or whatever suits).</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-sig">Fifth Castle Media</div>
+  <div class="footer-contact">Arek Rainczuk · info@fifthcastle.media · 0467 676 205</div>
+  <div class="footer-line">Crew brief · not for distribution</div>
+</footer>
+
+</body>
+</html>
