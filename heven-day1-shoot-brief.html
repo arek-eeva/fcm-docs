@@ -58,6 +58,18 @@
 
   .note { background: var(--red-light); border-left: 3px solid var(--red); padding: 16px 20px; font-size: 15px; color: var(--dark); margin-top: 18px; max-width: 740px; }
 
+  /* TL;DR copy-for-text block */
+  .tldr { background: var(--red-light); border-top: 3px solid var(--red); border-bottom: 1px solid var(--border); padding: 26px 40px; }
+  .tldr-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .tldr-head .eyebrow { margin-bottom: 0; }
+  .copy-btn { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 13px; background: var(--red); color: #fff; border: none; padding: 9px 18px; cursor: pointer; border-radius: 2px; }
+  .copy-btn:hover { background: #9e1b25; }
+  .tldr-list { list-style: none; max-width: 760px; }
+  .tldr-list li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--dark); font-size: 15px; }
+  .tldr-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; background: var(--red); }
+  .tldr-list li strong { color: var(--black); }
+  @media print { .copy-btn { display: none !important; } }
+
   footer { background: var(--white); border-top: 3px solid var(--red); padding: 34px 40px; text-align: center; }
   .footer-sig { font-family: 'Vidaloka', Georgia, serif; font-size: 20px; }
   .footer-contact { font-size: 14px; color: var(--mid); line-height: 1.7; margin-top: 6px; }
@@ -93,6 +105,22 @@
       <div class="hero-meta-item"><span class="label">Videographer</span><span class="value">Jordy Scott</span></div>
       <div class="hero-meta-item"><span class="label">On site / coordinator</span><span class="value">Brigitte Knight · 0402 808 711</span></div>
     </div>
+  </div>
+</div>
+
+<div class="tldr">
+  <div class="wrap">
+    <div class="tldr-head">
+      <span class="eyebrow">TL;DR · need to know</span>
+      <button class="copy-btn" onclick="copyTLDR(this)">Copy for text</button>
+    </div>
+    <ul class="tldr-list">
+      <li><strong>When:</strong> Tue 16 June. Arrive ~5:30 to set up, film ~6:15 to 7:30, photos to 8.</li>
+      <li><strong>Where:</strong> Waterman Richmond, Victoria Gardens, Yarra Boardroom.</li>
+      <li><strong>Who:</strong> Mena + Ben (co-founders), interviewed together. Interviewer: Colette.</li>
+      <li><strong>Setup:</strong> one camera, wide-angle 4K, locked off; two lavs; crop in post. Casual photos too.</li>
+      <li><strong>Contact:</strong> Brigitte 0402 808 711. Send footage + photos to Arek after.</li>
+    </ul>
   </div>
 </div>
 
@@ -181,6 +209,22 @@
   <div class="footer-contact">Arek Rainczuk · info@fifthcastle.media · 0467 676 205</div>
   <div class="footer-line">Crew brief · not for distribution</div>
 </footer>
+
+<script>
+function copyTLDR(btn){
+  var t = "HEVEN shoot, Tue 16 June (Day 1)\n"
+        + "Waterman Richmond, Victoria Gardens, Yarra Boardroom\n"
+        + "Arrive ~5:30 to set up (room from 5pm). Film ~6:15 to 7:30, photos to 8.\n"
+        + "On camera: Mena + Ben (co-founders), together side by side. Interviewer: Colette.\n"
+        + "Setup: one camera, wide-angle 4K, locked off; two lavs; crop in post. Grab casual photos too.\n"
+        + "Contact: Brigitte 0402 808 711. Send footage + photos to Arek after.";
+  var done = function(){ var o = btn.textContent; btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = o; }, 2000); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(done).catch(function(){ fb(t, done); });
+  } else { fb(t, done); }
+  function fb(text, cb){ var ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch(e){} document.body.removeChild(ta); cb(); }
+}
+</script>
 
 </body>
 </html>
