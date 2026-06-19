@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adbri Rock to Market: Two Leaner Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #BD202D;
+    --red-dim: #8a1820;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --card: #161616;
+    --light: #f4f1ec;
+    --grey-1: #d4d4d4;
+    --grey-2: #aaaaaa;
+    --grey-3: #777777;
+    --grey-4: #555555;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--grey-1);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  h1, h2, h3, h4, .display {
+    font-family: 'Vidaloka', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+  }
+  .khand, .label, .meta, .eyebrow { font-family: 'Khand', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+
+  /* TOP BAR */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.72) 100%);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .nav-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--white); font-weight: 500; }
+  .nav-logo span { color: var(--red); }
+  .topnav { display: flex; gap: 24px; align-items: center; }
+  .topnav a { font-family: 'Khand', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-2); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color .2s, border-color .2s; }
+  .topnav a:hover { color: var(--white); border-bottom-color: var(--red); }
+
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.5; }
+  .hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.62) 48%, rgba(10,10,10,0.34) 100%); }
+  .band { margin: 38px 0 0; border: 1px solid rgba(255,255,255,0.08); }
+  .band img { width: 100%; height: auto; display: block; }
+  .band .cap { padding: 12px 18px; background: var(--card); font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11.5px; color: var(--grey-3); }
+  .band .cap b { color: var(--white); font-weight: 500; }
+
+  /* HERO */
+  .hero {
+    min-height: 88vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 56px 84px; position: relative; overflow: hidden; background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      linear-gradient(120deg, rgba(189,32,45,0.12) 0%, rgba(10,10,10,0.7) 58%, rgba(10,10,10,1) 100%),
+      repeating-linear-gradient(-20deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.05;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px; transform: skewY(-2deg);
+  }
+  .hero-red-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); z-index: 2; }
+  .hero-inner { position: relative; z-index: 3; max-width: 940px; }
+  .hero .eyebrow { color: var(--red); font-size: 15px; letter-spacing: 0.34em; margin-bottom: 26px; }
+  .hero h1 { font-size: clamp(50px, 9.5vw, 116px); letter-spacing: -0.01em; margin-bottom: 22px; }
+  .hero .sub { font-family: 'Vidaloka', Georgia, serif; color: var(--grey-1); font-size: clamp(20px, 2.6vw, 28px); line-height: 1.4; max-width: 680px; margin-bottom: 42px; }
+  .hero-meta { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 13px; color: var(--grey-3); line-height: 1.95; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; max-width: 540px; }
+  .hero-meta strong { color: var(--grey-1); font-weight: 500; }
+
+  /* SECTION SHELL */
+  section { padding: 92px 56px; position: relative; }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  .wrap.narrow { max-width: 880px; }
+  .eyebrow-line { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .eyebrow-line .eyebrow { color: var(--red); font-size: 13px; letter-spacing: 0.28em; }
+  .eyebrow-line .rule { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+  section h2 { font-size: clamp(30px, 5vw, 48px); margin-bottom: 26px; }
+  section p { margin-bottom: 20px; color: var(--grey-1); }
+  section p.lead { font-size: 21px; color: var(--white); font-family: 'Vidaloka', Georgia, serif; line-height: 1.5; }
+  section em { color: var(--white); font-style: italic; }
+  a.inline { color: var(--grey-1); text-decoration: none; border-bottom: 1px solid var(--red); }
+  a.inline:hover { color: var(--white); }
+  .note { background: var(--dark); border-left: 3px solid var(--red); padding: 32px 36px; margin-top: 30px; }
+  .note p:last-child { margin-bottom: 0; }
+  .note h4 { font-size: 20px; color: var(--white); margin-bottom: 12px; }
+
+  /* CHECK LIST */
+  .checks { list-style: none; margin-top: 8px; }
+  .checks li { position: relative; padding-left: 30px; margin-bottom: 16px; color: var(--grey-1); }
+  .checks li::before { content: ""; position: absolute; left: 0; top: 11px; width: 12px; height: 12px; background: var(--red); transform: rotate(45deg); }
+  .checks li b { color: var(--white); font-family: 'Vidaloka', serif; font-weight: 400; }
+
+  /* TWO OPTIONS */
+  .priceline { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; color: var(--grey-3); margin-top: 6px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 24px; }
+  .opt { background: var(--card); padding: 36px 34px; display: flex; flex-direction: column; position: relative; }
+  .opt::before { content: ""; position: absolute; top: 0; left: 0; width: 52px; height: 3px; background: var(--red); }
+  .opt .tag { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red); margin-bottom: 8px; }
+  .opt h3 { font-size: 28px; margin-bottom: 10px; }
+  .opt .blurb { font-size: 15.5px; color: var(--grey-2); line-height: 1.62; margin-bottom: 22px; }
+  .opt .lochead { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11.5px; color: var(--grey-3); margin-bottom: 12px; }
+  .opt .locs { list-style: none; margin: 0 0 26px; }
+  .opt .locs li { position: relative; padding-left: 22px; margin-bottom: 11px; font-size: 14.5px; color: var(--grey-2); line-height: 1.5; }
+  .opt .locs li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; background: var(--red); transform: rotate(45deg); }
+  .opt .locs li b { color: var(--white); font-weight: 500; }
+  .opt .locs li.plus::before { background: var(--grey-3); }
+
+  .optprice { margin-top: auto; }
+  .optprice .row { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .optprice .row .n { font-size: 14.5px; color: var(--grey-2); line-height: 1.4; }
+  .optprice .row .a { font-family: 'Khand', sans-serif; letter-spacing: 0.02em; color: var(--grey-1); white-space: nowrap; font-size: 16px; }
+  .optprice .sub { padding-top: 13px; border-bottom: none; }
+  .optprice .sub .n { color: var(--white); font-family: 'Vidaloka', serif; font-size: 16px; }
+  .optprice .sub .a { color: var(--white); font-size: 19px; }
+  .optprice .add { color: var(--grey-2); }
+  .optprice .add .n { font-style: italic; }
+  .opttot { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; border-top: 2px solid var(--red); margin-top: 8px; padding-top: 15px; }
+  .opttot .n { font-family: 'Vidaloka', serif; color: var(--white); font-size: 17px; }
+  .opttot .a { font-family: 'Khand', sans-serif; color: var(--white); font-size: 25px; white-space: nowrap; }
+  .optinc { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; color: var(--grey-3); text-align: right; margin-top: 4px; }
+
+  .smallprint { font-size: 14px; color: var(--grey-3); margin-top: 28px; }
+  .smallprint b { color: var(--grey-1); font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; font-size: 12px; }
+
+  /* CLOSE */
+  .close { background: var(--dark); }
+  .signoff { font-family: 'Vidaloka', Georgia, serif; color: var(--white); font-size: 22px; margin-top: 34px; line-height: 1.4; }
+  .signoff .role { display: block; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 13px; color: var(--grey-3); margin-top: 8px; }
+  .ctawrap { margin-top: 36px; }
+  .cta { display: inline-block; background: var(--red); color: #fff; font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 15px; font-weight: 600; text-decoration: none; padding: 16px 40px; border: 1px solid var(--red); transition: background .2s, color .2s; }
+  .cta:hover { background: transparent; color: var(--white); }
+  .cta-sub { font-family: 'Khand', sans-serif; text-transform: uppercase; letter-spacing: 0.13em; font-size: 12px; color: var(--grey-3); margin-top: 14px; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 52px 56px 38px; text-align: center; }
+  .footer-logo { font-family: 'Khand', sans-serif; font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--grey-2); margin-bottom: 16px; }
+  .footer-logo span { color: var(--red); }
+  .footer-meta { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-3); line-height: 1.9; }
+  .footer-meta a { color: var(--grey-3); text-decoration: none; }
+  .footer-meta a:hover { color: var(--white); }
+  .footer-confidential { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'Khand', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-4); }
+
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 22px; } .topnav { display: none; }
+    .hero { padding: 100px 24px 66px; }
+    section { padding: 68px 24px; }
+    .options { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: #fff; color: #1a1a1a; font-size: 11.5pt; }
+    .topbar { position: static; background: #fff; } .topnav { display: none; }
+    .hero { min-height: auto; padding: 26px 0; background: #fff; }
+    .hero-bg, .hero-grid { display: none; }
+    .hero h1, section h2, .opt h3, h4 { color: #111; }
+    section { padding: 24px 0; break-inside: avoid; }
+    .opt, .note, .close { background: #f5f3ef; }
+    section p, .opt .blurb, .checks li { color: #1a1a1a; }
+    .options { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* LIGHT THEME (active) */
+  body.light {
+    --black: #ffffff; --dark: #f1efe9; --mid: #ece9e2; --card: #f7f5f1;
+    --grey-1: #33312d; --grey-2: #56534d; --grey-3: #7c786f; --grey-4: #a6a29a; --white: #17150f;
+    background: #ffffff; color: var(--grey-1);
+  }
+  body.light .eyebrow-line .rule { background: rgba(0,0,0,0.16); }
+  body.light .options { background: rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.1); }
+  body.light .optprice .row { border-bottom-color: rgba(0,0,0,0.1); }
+  body.light .band { border-color: rgba(0,0,0,0.12); }
+  body.light footer, body.light .footer-confidential { border-top-color: rgba(0,0,0,0.1); }
+  body.light .hero { background: #0a0a0a; }
+  body.light .hero h1 { color: #ffffff; }
+  body.light .hero .sub { color: #e6e4df; }
+  body.light .hero-meta { color: #a8a39a; border-top-color: rgba(255,255,255,0.14); }
+  body.light .hero-meta strong { color: #efeee9; }
+  body.light .topbar { background: linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 100%); border-bottom: 1px solid rgba(0,0,0,0.07); }
+</style>
+</head>
+<body class="light">
+
+<div class="topbar">
+  <div class="nav-logo">Fifth <span>Castle</span> Media</div>
+  <nav class="topnav">
+    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-proposal.html">&larr; Full Proposal</a>
+    <a href="https://docs.fifthcastle.media/adbri-rock-to-market-location-map.html" target="_blank" rel="noopener">Location Map</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-img" src="https://docs.fifthcastle.media/images/adbri-mood-01.jpg?v=1" alt="">
+  <div class="hero-scrim"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-red-bar"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Adbri &nbsp;&middot;&nbsp; Board Film 2026 &nbsp;&middot;&nbsp; Revised Options</div>
+    <h1>Rock to Market</h1>
+    <p class="sub">The same story, told leaner. Two focused ways to bring it to the board.</p>
+    <div class="hero-meta">
+      Prepared for <strong>Georgia Allen, Adbri</strong><br>
+      Fifth Castle Media &nbsp;&middot;&nbsp; Arek Rainczuk<br>
+      19 June 2026
+    </div>
+  </div>
+</header>
+
+<!-- 1. THE IDEA -->
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow-line"><span class="eyebrow">The idea</span><span class="rule"></span></div>
+    <h2>The same story, told leaner</h2>
+    <p class="lead">Here are two focused ways to make Rock to Market, both built on a single idea: be deliberate about where we film.</p>
+    <p>The first plan covered ten sites from quarry to customer. These two options carry the same story through fewer, carefully chosen locations, the ones that hold the most weight on screen. Filming less, but filming the right places, keeps the production tight: less travel, a shorter schedule, a leaner crew. That is what brings the cost down.</p>
+    <p>Both options are still board-grade. Both still give the CRH board the scale, the connection across the business and the gravity the room calls for. The difference between them is simply how much of the chain you want on screen.</p>
+  </div>
+</section>
+
+<!-- 2. THE TWO OPTIONS -->
+<section style="background:var(--dark);">
+  <div class="wrap">
+    <div class="eyebrow-line"><span class="eyebrow">Two options</span><span class="rule"></span></div>
+    <h2>Choose the scope that fits</h2>
+    <p>Both keep the rock-to-market spine and the same finish. Option A holds to the four locations that carry the whole arc. Option B adds the concrete side of the business and a real customer site, so the chain reaches all the way to market.</p>
+    <p class="priceline">All prices ex GST. Inc-GST totals shown beneath. Photography is optional in both.</p>
+
+    <div class="options">
+
+      <!-- OPTION A -->
+      <div class="opt">
+        <div class="tag">Option A &middot; Essential</div>
+        <h3>The hero spine</h3>
+        <p class="blurb">The four locations that carry the whole arc, from the quarry to the finished product. Three shoot days, tightly run.</p>
+        <div class="lochead">Locations</div>
+        <ul class="locs">
+          <li><b>Klein Point, SA</b> &middot; dawn at the quarry, the vessel loading, aerial scale. Full day.</li>
+          <li><b>Birkenhead, SA</b> &middot; the cement plant, kiln and conveyors, the vessel unloading, aerial. Full day.</li>
+          <li><b>Port Melbourne, VIC</b> &middot; cement arriving by sea beside the Bolte Bridge, a branded truck loading, aerial.</li>
+          <li><b>Campbellfield, VIC</b> &middot; the masonry line, the finished product you can hold.</li>
+        </ul>
+        <div class="optprice">
+          <div class="row"><span class="n">Strategy, Pre-Production &amp; Project Management</span><span class="a">$11,750</span></div>
+          <div class="row"><span class="n">Production &middot; 4 locations, 3 days</span><span class="a">$22,800</span></div>
+          <div class="row"><span class="n">Post-Production &amp; Delivery</span><span class="a">$15,400</span></div>
+          <div class="row sub"><span class="n">The board film</span><span class="a">$49,950</span></div>
+          <div class="optinc">$54,945 inc GST</div>
+          <div class="row add"><span class="n">+ Photography Library (optional)</span><span class="a">$8,500</span></div>
+          <div class="opttot"><span class="n">With photography</span><span class="a">$58,450</span></div>
+          <div class="optinc">$64,295 inc GST</div>
+        </div>
+      </div>
+
+      <!-- OPTION B -->
+      <div class="opt">
+        <div class="tag">Option B &middot; Focused</div>
+        <h3>A fuller picture</h3>
+        <p class="blurb">Everything in Essential, plus the concrete side of the business and a live customer site, so the chain reaches all the way to market. Four shoot days.</p>
+        <div class="lochead">Locations</div>
+        <ul class="locs">
+          <li class="plus">Everything in Essential, plus:</li>
+          <li><b>South Wharf, VIC</b> &middot; ready-mix concrete, the agitator truck loading and rolling out.</li>
+          <li><b>A customer project, VIC</b> &middot; Adbri product arriving at a live metropolitan site, in use.</li>
+        </ul>
+        <div class="optprice">
+          <div class="row"><span class="n">Strategy, Pre-Production &amp; Project Management</span><span class="a">$16,150</span></div>
+          <div class="row"><span class="n">Production &middot; 6 locations, 4 days</span><span class="a">$29,700</span></div>
+          <div class="row"><span class="n">Post-Production &amp; Delivery</span><span class="a">$17,400</span></div>
+          <div class="row sub"><span class="n">The board film</span><span class="a">$63,250</span></div>
+          <div class="optinc">$69,575 inc GST</div>
+          <div class="row add"><span class="n">+ Photography Library (optional)</span><span class="a">$11,000</span></div>
+          <div class="opttot"><span class="n">With photography</span><span class="a">$74,250</span></div>
+          <div class="optinc">$81,675 inc GST</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="smallprint"><b>Assumptions</b> &nbsp; Aerial / drone capture at Klein Point, Birkenhead and Port Melbourne. Customer and Civilmart sites based on metropolitan Victorian locations, flexed if product is supplied elsewhere. Yampu in-transit footage supplied by Adbri. All filming within South Australia and Victoria. Two rounds of revisions on the film are included; any further rounds are quoted separately. Photography, where taken, is captured across the same sites on the same days.</p>
+  </div>
+</section>
+
+<!-- 3. WHAT YOU KEEP -->
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow-line"><span class="eyebrow">Beyond the film</span><span class="rule"></span></div>
+    <h2>What you keep, either way</h2>
+    <p>You keep all the footage. We hand over every clip we capture, organised and tagged by site, so your team can use it straight away.</p>
+    <div class="note">
+      <h4>The reusable library, when you need it</h4>
+      <p>The fully managed, colour-graded master library, the version built to power the EVP and recruitment recut down the track, can be added whenever you want it. So the door to the next film stays open, without paying for it now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. BOARD-GRADE EITHER WAY -->
+<section style="background:var(--dark);">
+  <div class="wrap narrow">
+    <div class="eyebrow-line"><span class="eyebrow">The finish</span><span class="rule"></span></div>
+    <h2>Board-grade, either way</h2>
+    <p>Fewer locations, the same standard. Whichever option you choose, the film is finished to the level the room calls for.</p>
+    <ul class="checks">
+      <li><b>Directed personally.</b> I direct the film and am on the ground for the South Australian shoot, with a professional videographer and drone operator alongside.</li>
+      <li><b>Compliance handled on site.</b> A safety-aware crew and attention to every frame: chin straps, sleeves, masks in the dusty areas. Nothing the board sees will have a compliance problem.</li>
+      <li><b>Board-grade post.</b> Motion graphics, colour grade, a layered sound design, a senior Australian voiceover, and licensed music delivered with the certificate your legal team needs.</li>
+      <li><b>Approval de-risked.</b> A storyboard signed off up front, then built to clear CRH review comfortably before the end of August.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5. CLOSE -->
+<section class="close">
+  <div class="wrap narrow">
+    <div class="eyebrow-line"><span class="eyebrow">Where to from here</span><span class="rule"></span></div>
+    <h2>Whenever it helps</h2>
+    <p>If either option helps the conversation, I'm glad to talk it through, adjust the mix of sites, or turn it into a formal quote. There's no pressure at all, and whichever way Adbri lands, it has been a real pleasure working on this.</p>
+    <div class="ctawrap">
+      <a class="cta" href="mailto:info@fifthcastle.media?subject=Adbri%20Rock%20to%20Market%20-%20the%20leaner%20options&body=Hi%20Arek%2C%0D%0A%0D%0A">Start a conversation</a>
+      <div class="cta-sub">This opens a short email to us. Nothing is locked in until a formal quote is agreed.</div>
+    </div>
+    <div class="signoff">
+      Arek Rainczuk
+      <span class="role">Fifth Castle Media</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Fifth <span>Castle</span> Media</div>
+  <div class="footer-meta">
+    Video Production Proposal &nbsp;&middot;&nbsp; Adbri "Rock to Market" &nbsp;&middot;&nbsp; Revised options &nbsp;&middot;&nbsp; 19 June 2026<br>
+    <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> &nbsp;&middot;&nbsp; 0467 676 205 &nbsp;&middot;&nbsp; <a href="https://fifthcastle.media">fifthcastle.media</a>
+  </div>
+  <div class="footer-confidential">
+    Private &middot; Prepared for Adbri
+  </div>
+</footer>
+
+</body>
+</html>
