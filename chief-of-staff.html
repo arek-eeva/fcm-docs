@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chief of Staff | Arek Rainczuk</title>
+<meta name="description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm. Run your business like you've got a full back office.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+  .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
+
+  /* top bar */
+  .topbar {
+    position: relative; z-index: 2;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 880px; margin: 0 auto; padding: 32px clamp(24px, 6vw, 80px) 0;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .topbar .red { color: var(--accent); }
+
+  /* hero */
+  .hero { padding: clamp(70px, 13vh, 150px) 0 clamp(50px, 9vh, 100px); }
+  .kicker {
+    font-family: var(--font-label);
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6.8vw, 78px); line-height: 1.06; letter-spacing: -0.015em;
+  }
+  .hero .sub {
+    font-size: clamp(19px, 2.4vw, 26px); color: var(--muted);
+    margin-top: 30px; max-width: 48ch; line-height: 1.5;
+  }
+  .hero .sub .hot { color: var(--text); }
+
+  section { padding: clamp(44px, 8vh, 84px) 0; border-top: 1px solid var(--line); }
+  .eyebrow {
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 22px;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 4.4vw, 46px); line-height: 1.14; letter-spacing: -0.01em;
+    max-width: 20ch; margin-bottom: 26px;
+  }
+  p.body { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); max-width: 60ch; }
+  p.body + p.body { margin-top: 20px; }
+  p.body .hot { color: var(--text); }
+
+  /* presentation cards */
+  .cards { margin-top: 14px; display: flex; flex-direction: column; }
+  a.card {
+    display: flex; align-items: baseline; gap: clamp(18px, 3vw, 34px);
+    text-decoration: none; color: inherit;
+    padding: 28px 6px; border-top: 1px solid var(--line);
+    transition: padding-left 0.3s ease, border-color 0.3s ease;
+  }
+  a.card:last-child { border-bottom: 1px solid var(--line); }
+  a.card:hover { padding-left: 16px; border-color: var(--line-bright); }
+  a.card .num {
+    font-family: var(--font-display); color: var(--accent);
+    font-size: clamp(26px, 4vw, 40px); line-height: 1; flex: 0 0 auto; width: 1.3em;
+  }
+  a.card .text { flex: 1; }
+  a.card .text .t {
+    font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 28px);
+    color: var(--text); line-height: 1.2;
+  }
+  a.card .text .d { font-size: clamp(15px, 1.7vw, 17px); color: var(--muted); margin-top: 8px; }
+  a.card .text .tag {
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--subtle); margin-top: 10px;
+  }
+  a.card .arrow {
+    font-family: var(--font-mono); color: var(--subtle); font-size: 20px;
+    flex: 0 0 auto; align-self: center; transition: color 0.3s ease, transform 0.3s ease;
+  }
+  a.card:hover .arrow { color: var(--accent-bright); transform: translateX(4px); }
+
+  .lede-line { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 30px; max-width: 60ch; }
+  .lede-line .hot { color: var(--text); }
+
+  /* cta */
+  .cta { text-align: left; }
+  .btn {
+    display: inline-block; margin-top: 30px;
+    font-family: var(--font-label); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    border: 1px solid var(--accent); padding: 16px 34px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn:hover { background: var(--accent); color: #fff; }
+  .cta .or { margin-top: 18px; font-size: 16px; color: var(--subtle); }
+
+  footer {
+    border-top: 1px solid var(--line); margin-top: 20px;
+    padding: 40px 0 60px;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--subtle);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer .red { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    a.card { gap: 14px; }
+    a.card .arrow { display: none; }
+    .hero .sub { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Arek Rainczuk <span class="red">/</span> Chief of Staff</span><span>Fifth Castle Media</span></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">A different way to work</div>
+    <h1>Run your business like you've got a full back office.</h1>
+    <p class="sub">Because now you do. <span class="hot">A Chief of Staff that knows your business, drafts in your voice, and runs to a daily rhythm.</span></p>
+  </header>
+
+  <section>
+    <div class="eyebrow">What it is</div>
+    <h2>An AI that actually knows your business.</h2>
+    <p class="body">Most AI forgets you the moment you close the tab. You re-explain your business, your clients, your prices, your tone, over and over. A Chief of Staff is the opposite: <span class="hot">a working memory for how you run things, that helps you do the actual work.</span></p>
+    <p class="body">It lives on your own machine. It's private, it's yours, and everything it writes sounds like you, not like a brochure.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Start here</div>
+    <h2>Three short pieces. Go in order.</h2>
+    <p class="lede-line">Each one sets up the next: <span class="hot">first the why, then the what, then the how.</span></p>
+    <div class="cards">
+      <a class="card" href="https://docs.fifthcastle.media/ai-that-actually-works.html">
+        <span class="num">1</span>
+        <span class="text">
+          <span class="t">AI That Actually Works</span>
+          <span class="d">Why an AI that does the work beats asking a chatbot a question and then doing the real work yourself.</span>
+          <span class="tag">The why</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="card" href="https://docs.fifthcastle.media/your-ai-os.html">
+        <span class="num">2</span>
+        <span class="text">
+          <span class="t">Your AI OS</span>
+          <span class="d">What it actually is: an AI that remembers your business across every session, not another app to learn.</span>
+          <span class="tag">The what</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="card" href="https://docs.fifthcastle.media/the-shape-of-the-system.html">
+        <span class="num">3</span>
+        <span class="text">
+          <span class="t">The Shape of the System</span>
+          <span class="d">How it's built under the hood: the folders, the memory, and the rhythms that keep it running.</span>
+          <span class="tag">The how</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Who it's for</div>
+    <h2>Great at the work, buried in the admin.</h2>
+    <p class="body">Solo operators and small teams. Service businesses especially: studios, consultants, advisers, agencies, trades. <span class="hot">If you're the one who turns the lights on and also writes every email, this is for you.</span></p>
+  </section>
+
+  <section>
+    <div class="eyebrow">How it works</div>
+    <h2>You don't build it alone.</h2>
+    <p class="body">We build it together over a few short sessions, then you run it yourself. <span class="hot">If you're a single founder, it works best as a simple chat where you can do anything, backed by your own rules, a few automations, and a dashboard or two.</span></p>
+    <p class="body">If you've got a team, you stay the one at the controls while they get a simple front door to everything you've built, so they get the benefit without anyone having to learn AI.</p>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">The next step</div>
+    <h2>Want one of your own?</h2>
+    <p class="body">Watch the three above, and if it's what you've been needing, let's talk about what it would look like for your business.</p>
+    <a class="btn" href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a quick call</a>
+    <p class="or">Or just message me.</p>
+  </section>
+
+  <footer>
+    <span>Arek Rainczuk <span class="red">/</span> Chief of Staff</span>
+    <span>Fifth Castle Media</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
