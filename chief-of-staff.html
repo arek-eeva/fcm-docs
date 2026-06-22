@@ -35,7 +35,7 @@
     --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 80px; }
+  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 80px; overflow-x: hidden; }
   body {
     font-family: var(--font-body);
     color: var(--text);
@@ -43,6 +43,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
+    overflow-x: hidden;
   }
   body::before {
     content: '';
@@ -100,6 +101,72 @@
   p.body + p.body { margin-top: 20px; }
   p.body .hot { color: var(--text); }
 
+  /* system map */
+  figure.map {
+    margin-top: 44px;
+    border: 1px solid var(--line); border-radius: 14px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.06), transparent 60%),
+      var(--bg-2);
+    padding: clamp(18px, 4vw, 38px) clamp(14px, 3vw, 30px) clamp(8px, 2vw, 18px);
+  }
+  figure.map svg.sysmap { display: block; width: 100%; height: auto; }
+  figure.map figcaption {
+    font-family: var(--font-label); font-size: clamp(12px, 1.5vw, 14px);
+    letter-spacing: 0.12em; color: var(--muted); text-align: center;
+    margin-top: 18px; padding: 0 10px; line-height: 1.5;
+  }
+
+  /* screenshot-style mock windows */
+  .shots { margin-top: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .win {
+    background: var(--bg-2); border: 1px solid var(--line-bright); border-radius: 11px;
+    overflow: hidden; box-shadow: 0 36px 70px -38px rgba(0,0,0,0.85);
+  }
+  .win .bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 13px 16px; border-bottom: 1px solid var(--line);
+    background: rgba(245,241,234,0.02);
+  }
+  .win .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-bright); display: inline-block; }
+  .win .bar i:first-child { background: #4a4642; }
+  .win .bar .ttl {
+    margin-left: 8px; font-family: var(--font-label); font-size: 12px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+  .win .scr { padding: 22px; }
+
+  .chat .msg { margin-bottom: 16px; }
+  .chat .msg:last-child { margin-bottom: 0; }
+  .chat .who {
+    display: block; font-family: var(--font-label); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .chat .you .who { color: var(--subtle); }
+  .chat .cos .who { color: var(--accent-bright); }
+  .chat .line { font-size: 15.5px; line-height: 1.5; color: var(--text); }
+  .chat .cos .line { color: var(--muted); }
+  .chat .draft {
+    margin-top: 12px; padding: 13px 15px; border-left: 2px solid var(--accent);
+    background: rgba(189,32,45,0.07); color: var(--text); font-size: 14.5px; line-height: 1.55;
+  }
+  .chat .cursor { color: var(--accent); font-family: var(--font-mono); }
+
+  .road .rl {
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+  }
+  .road .rsub { font-size: 13px; color: var(--subtle); margin-bottom: 14px; }
+  .road .ri {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 13px 0; border-top: 1px solid var(--line);
+    font-size: 15.5px; color: var(--text); line-height: 1.4;
+  }
+  .road .ri b { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; align-self: center; }
+  .road .ri .rt { color: var(--subtle); font-size: 13px; display: block; margin-top: 3px; }
+  .road .ri .rt.warn { color: var(--accent-bright); }
+  .road .ri .col { display: flex; flex-direction: column; }
+
   /* presentation cards */
   .cards { margin-top: 14px; display: flex; flex-direction: column; }
   a.card {
@@ -156,20 +223,25 @@
   footer a:hover { color: var(--muted); }
   footer .red { color: var(--accent); }
 
+  @media (max-width: 760px) {
+    .shots { grid-template-columns: 1fr; }
+  }
   @media (max-width: 600px) {
     a.card { gap: 14px; }
     a.card .arrow { display: none; }
     .hero .sub { font-size: 19px; }
     .topbar { font-size: 11px; letter-spacing: 0.18em; }
+    .topbar .brand .pre { display: none; }
+    .topbar .nav-learn { display: none; }
   }
 </style>
 </head>
 <body>
 
 <nav class="topbar">
-  <a class="brand" href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a>
+  <a class="brand" href="chief-of-staff.html"><span class="pre">Arek Rainczuk <span class="red">/</span> </span>Chief of Staff</a>
   <span class="navlinks">
-    <a href="#learn">Learn more</a>
+    <a class="nav-learn" href="#learn">Learn more</a>
     <a href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a call</a>
   </span>
 </nav>
@@ -187,6 +259,94 @@
     <h2>An AI that actually knows your business.</h2>
     <p class="body">Most AI forgets you the moment you close the tab. You re-explain your business, your clients, your prices, your tone, over and over. A Chief of Staff is the opposite: <span class="hot">a working memory for how you run things, that helps you do the actual work.</span></p>
     <p class="body">It lives on your own machine. It's private, it's yours, and everything it writes sounds like you, not like a brochure.</p>
+
+    <figure class="map">
+      <svg class="sysmap" viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
+          </marker>
+        </defs>
+
+        <!-- daily rhythm -->
+        <rect x="328" y="32" width="244" height="34" rx="17" fill="none" stroke="#3c3833"/>
+        <text x="450" y="54" text-anchor="middle" font-family="'Khand',sans-serif" font-size="13" letter-spacing="3" fill="#8d877c">OPEN &#183; WORK &#183; LOG &#183; CLOSE</text>
+        <line x1="450" y1="66" x2="450" y2="150" stroke="#3c3833" stroke-dasharray="3 5"/>
+
+        <!-- YOU -->
+        <rect x="40" y="184" width="150" height="88" rx="10" fill="#131210" stroke="#3c3833"/>
+        <text x="115" y="225" text-anchor="middle" font-family="'Vidaloka',serif" font-size="25" fill="#F5F1EA">You</text>
+        <text x="115" y="250" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="1.5" fill="#8d877c">ASK IN PLAIN ENGLISH</text>
+
+        <line x1="192" y1="228" x2="320" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+
+        <!-- CHIEF OF STAFF -->
+        <rect x="330" y="150" width="240" height="150" rx="12" fill="#131210" stroke="#BD202D" stroke-width="1.5"/>
+        <circle cx="352" cy="173" r="3.5" fill="#e0303e"/>
+        <text x="450" y="217" text-anchor="middle" font-family="'Vidaloka',serif" font-size="26" fill="#F5F1EA">Chief of Staff</text>
+        <text x="450" y="244" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12.5" letter-spacing="1.5" fill="#8d877c">DRAFTS IN YOUR VOICE</text>
+
+        <line x1="572" y1="228" x2="710" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+
+        <!-- THE WORK -->
+        <rect x="720" y="184" width="150" height="88" rx="10" fill="#131210" stroke="#3c3833"/>
+        <text x="795" y="221" text-anchor="middle" font-family="'Vidaloka',serif" font-size="22" fill="#F5F1EA">The work</text>
+        <text x="795" y="246" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11" letter-spacing="1.2" fill="#8d877c">READY TO SEND</text>
+
+        <!-- feeder lines -->
+        <path d="M408,300 L290,348" stroke="#3c3833" fill="none"/>
+        <path d="M450,300 L450,348" stroke="#3c3833" fill="none"/>
+        <path d="M492,300 L610,348" stroke="#3c3833" fill="none"/>
+
+        <!-- BRAIN -->
+        <rect x="209" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
+        <text x="284" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">BRAIN</text>
+        <text x="284" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">rules &#183; voice &#183; prices</text>
+
+        <!-- MEMORY -->
+        <rect x="375" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
+        <text x="450" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">MEMORY</text>
+        <text x="450" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">clients &#183; this week</text>
+
+        <!-- HANDS -->
+        <rect x="541" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
+        <text x="616" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">HANDS</text>
+        <text x="616" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">trackers &#183; playbooks</text>
+      </svg>
+      <figcaption>One place that holds how you run things. You ask, it draws on what it knows, and the work comes back sounding like you.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="eyebrow">See it work</div>
+    <h2>Less like a chatbot. More like a colleague.</h2>
+    <p class="body">You ask the way you'd ask a good assistant. It already knows the context, so it gets straight to the work.</p>
+    <div class="shots">
+      <div class="win">
+        <div class="bar"><i></i><i></i><i></i><span class="ttl">Chief of Staff</span></div>
+        <div class="scr chat">
+          <div class="msg you">
+            <span class="who">You</span>
+            <span class="line">Draft a follow-up on the Acme proposal, and remind me what we quoted.</span>
+          </div>
+          <div class="msg cos">
+            <span class="who">Chief of Staff</span>
+            <span class="line">Acme was $6,500 + GST, sent 12 days ago, no reply yet. Here's a nudge in your voice:</span>
+            <div class="draft">Hi Sarah, just circling back on the proposal from a couple of weeks ago. Still keen to make this one for you, and I can hold a spot in the calendar if it helps. Want me to talk it through on a quick call this week?</div>
+          </div>
+        </div>
+      </div>
+      <div class="win">
+        <div class="bar"><i></i><i></i><i></i><span class="ttl">Your morning</span></div>
+        <div class="scr road">
+          <div class="rl">Today</div>
+          <div class="rsub">Three things, in the order that matters.</div>
+          <div class="ri"><b></b><span class="col"><span>Send the Acme proposal</span><span class="rt">last step before the invoice</span></span></div>
+          <div class="ri"><b></b><span class="col"><span>Follow up Rivera</span><span class="rt warn">quoted 8 days ago, no reply</span></span></div>
+          <div class="ri"><b></b><span class="col"><span>Call the venue back</span><span class="rt">you said you would on Tuesday</span></span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="learn">
