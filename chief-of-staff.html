@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chief of Staff | Arek Rainczuk</title>
-<meta name="description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm. Run your business like you've got a full back office.">
-<meta name="robots" content="noindex">
+<title>Chief of Staff | An AI that runs your business with you | Arek Rainczuk</title>
+<meta name="description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm. Run your business like you've got a full back office. A done-with-you build for founders and small teams.">
+<link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chief of Staff | Arek Rainczuk">
+<meta property="og:description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm. Run your business like you've got a full back office.">
+<meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff.html">
+<meta property="og:site_name" content="Fifth Castle Media">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chief of Staff | Arek Rainczuk">
+<meta name="twitter:description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,7 +35,7 @@
     --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: var(--bg); }
+  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 80px; }
   body {
     font-family: var(--font-body);
     color: var(--text);
@@ -43,18 +52,22 @@
   }
   .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
 
-  /* top bar */
+  /* nav */
   .topbar {
-    position: relative; z-index: 2;
-    display: flex; justify-content: space-between; align-items: center;
-    max-width: 880px; margin: 0 auto; padding: 32px clamp(24px, 6vw, 80px) 0;
-    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--muted);
+    position: relative; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    max-width: 880px; margin: 0 auto; padding: 30px clamp(24px, 6vw, 80px) 0;
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
   }
+  .topbar a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .topbar a:hover { color: var(--text); }
+  .topbar .brand { color: var(--muted); white-space: nowrap; }
   .topbar .red { color: var(--accent); }
+  .topbar .navlinks { display: flex; gap: clamp(16px, 3vw, 30px); white-space: nowrap; }
 
   /* hero */
-  .hero { padding: clamp(70px, 13vh, 150px) 0 clamp(50px, 9vh, 100px); }
+  .hero { padding: clamp(60px, 12vh, 140px) 0 clamp(50px, 9vh, 100px); }
   .kicker {
     font-family: var(--font-label);
     font-size: clamp(13px, 1.4vw, 15px);
@@ -139,18 +152,27 @@
     text-transform: uppercase; color: var(--subtle);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
   }
+  footer a { color: var(--subtle); text-decoration: none; }
+  footer a:hover { color: var(--muted); }
   footer .red { color: var(--accent); }
 
   @media (max-width: 600px) {
     a.card { gap: 14px; }
     a.card .arrow { display: none; }
     .hero .sub { font-size: 19px; }
+    .topbar { font-size: 11px; letter-spacing: 0.18em; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar"><span>Arek Rainczuk <span class="red">/</span> Chief of Staff</span><span>Fifth Castle Media</span></div>
+<nav class="topbar">
+  <a class="brand" href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a>
+  <span class="navlinks">
+    <a href="#learn">Learn more</a>
+    <a href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a call</a>
+  </span>
+</nav>
 
 <div class="wrap">
 
@@ -167,8 +189,8 @@
     <p class="body">It lives on your own machine. It's private, it's yours, and everything it writes sounds like you, not like a brochure.</p>
   </section>
 
-  <section>
-    <div class="eyebrow">Start here</div>
+  <section id="learn">
+    <div class="eyebrow">Start here &middot; Learn more</div>
     <h2>Three short pieces. Go in order.</h2>
     <p class="lede-line">Each one sets up the next: <span class="hot">first the why, then the what, then the how.</span></p>
     <div class="cards">
@@ -224,11 +246,28 @@
   </section>
 
   <footer>
-    <span>Arek Rainczuk <span class="red">/</span> Chief of Staff</span>
+    <span><a href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a></span>
     <span>Fifth Castle Media</span>
   </footer>
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Chief of Staff",
+  "serviceType": "AI operating system setup for founders and small teams",
+  "description": "A done-with-you build that gives a founder their own AI operating system: an AI that knows their business, drafts in their voice, and runs to a daily rhythm.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Fifth Castle Media",
+    "url": "https://fifthcastle.media"
+  },
+  "areaServed": "AU",
+  "url": "https://docs.fifthcastle.media/chief-of-staff.html"
+}
+</script>
 
 </body>
 </html>
