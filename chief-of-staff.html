@@ -176,6 +176,15 @@
   figure.quote figcaption .nm { font-family: var(--font-display); font-size: clamp(19px, 2.2vw, 23px); color: var(--text); display: block; }
   figure.quote figcaption .rl { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 6px; }
 
+  /* compact proof grid */
+  .proofgrid { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .pq { background: var(--bg); padding: 26px clamp(18px, 2.6vw, 30px); display: flex; flex-direction: column; }
+  .pq p { font-size: 15.5px; line-height: 1.62; color: var(--text); }
+  .pq .nm { margin-top: 16px; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+  .proofmore { display: inline-block; margin-top: 32px; font-family: var(--font-label); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line-bright); padding-bottom: 5px; transition: color 0.2s ease, border-color 0.2s ease; }
+  .proofmore:hover { color: var(--text); border-color: var(--accent); }
+  @media (max-width: 600px) { .proofgrid { grid-template-columns: 1fr; } }
+
   /* presentation cards */
   .cards { margin-top: 14px; display: flex; flex-direction: column; }
   a.card {
@@ -419,28 +428,22 @@
         <span class="rl">Founder, Video Business Accelerator</span>
       </figcaption>
     </figure>
-    <figure class="quote" style="margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--line);">
-      <span class="mark">&ldquo;</span>
-      <blockquote>
-        <p>Arek has helped us put innovation at the forefront of our business. As a founder, I wanted to streamline both our sales and marketing processes as well as the operational side of the business, and Arek helped us build the foundations of an AI operating system that is already delivering real value.</p>
-        <p>We're now able to generate proposal documents directly from client calls, produce fast and accurate quotes using our existing pricing, create detailed operational briefs for contractors, and develop a comprehensive policy handbook that includes our Workplace Health and Safety policies and Code of Conduct.</p>
-        <p>I'm incredibly grateful to Arek for helping us get this off the ground. His guidance, practical approach, and ability to turn ideas into working systems have made the whole process far less overwhelming. I'm excited to continue building on what we've started.</p>
-      </blockquote>
-      <figcaption>
-        <span class="nm">Orville</span>
-        <span class="rl">Founder, Greater Visuals</span>
-      </figcaption>
-    </figure>
-    <figure class="quote" style="margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--line);">
-      <span class="mark">&ldquo;</span>
-      <blockquote>
-        <p>While I understood and could appreciate the benefits of building AI into my workflow, Arek really unlocked how to connect it all together and make it work for me, not just with me. I'd highly recommend anyone talking to Arek about how he can help build out your own OS using the AI tools available to you.</p>
-      </blockquote>
-      <figcaption>
-        <span class="nm">Matt Smolen</span>
-        <span class="rl">Founder, Balloon Tree Productions</span>
-      </figcaption>
-    </figure>
+    <p class="lede-line" style="margin-top: 48px;">More founders who've built their own:</p>
+    <div class="proofgrid">
+      <div class="pq">
+        <p>"Arek helped us build the foundations of an AI operating system that is already delivering real value."</p>
+        <span class="nm">Orville, Greater Visuals</span>
+      </div>
+      <div class="pq">
+        <p>"It feels like having a second set of hands rather than another app to babysit."</p>
+        <span class="nm">Isaac Viglione, Bloom Films</span>
+      </div>
+      <div class="pq">
+        <p>"Arek really unlocked how to connect it all together and make it work for me, not just with me."</p>
+        <span class="nm">Matt Smolen, Balloon Tree Productions</span>
+      </div>
+    </div>
+    <a class="proofmore" href="chief-of-staff-testimonials.html">Read the full founder stories &rarr;</a>
   </section>
 
   <section class="cta">

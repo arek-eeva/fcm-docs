@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder stories | Chief of Staff | Arek Rainczuk</title>
+<meta name="description" content="What founders say after building their own Chief of Staff with Arek Rainczuk. Real founders, real builds, in their own words.">
+<link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff-testimonials.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Founder stories | Chief of Staff">
+<meta property="og:description" content="What founders say after building their own Chief of Staff with Arek Rainczuk.">
+<meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff-testimonials.html">
+<meta property="og:site_name" content="Fifth Castle Media">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Founder stories | Chief of Staff">
+<meta name="twitter:description" content="What founders say after building their own Chief of Staff with Arek Rainczuk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 80px; overflow-x: hidden; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+  .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
+
+  /* nav */
+  .topbar {
+    position: relative; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    max-width: 880px; margin: 0 auto; padding: 30px clamp(24px, 6vw, 80px) 0;
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
+  .topbar a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .topbar a:hover { color: var(--text); }
+  .topbar .brand { color: var(--muted); white-space: nowrap; }
+  .topbar .red { color: var(--accent); }
+  .topbar .navlinks { display: flex; gap: clamp(16px, 3vw, 30px); white-space: nowrap; }
+
+  /* hero */
+  .hero { padding: clamp(50px, 10vh, 110px) 0 clamp(30px, 5vh, 56px); }
+  .kicker {
+    font-family: var(--font-label);
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6.8vw, 78px); line-height: 1.06; letter-spacing: -0.015em;
+  }
+  .hero .sub {
+    font-size: clamp(19px, 2.4vw, 26px); color: var(--muted);
+    margin-top: 30px; max-width: 48ch; line-height: 1.5;
+  }
+  .hero .sub .hot { color: var(--text); }
+
+  section { padding: clamp(44px, 8vh, 84px) 0; border-top: 1px solid var(--line); }
+  .eyebrow {
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 22px;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 4.4vw, 46px); line-height: 1.14; letter-spacing: -0.01em;
+    max-width: 20ch; margin-bottom: 26px;
+  }
+  p.body { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); max-width: 60ch; }
+  p.body + p.body { margin-top: 20px; }
+  p.body .hot { color: var(--text); }
+
+  /* testimonial */
+  figure.quote { margin-top: 12px; max-width: 66ch; }
+  figure.quote .mark { font-family: var(--font-display); font-size: clamp(60px, 9vw, 100px); line-height: 0.5; color: var(--accent); display: block; margin-bottom: 8px; }
+  figure.quote blockquote p { font-size: clamp(17px, 2vw, 21px); color: var(--text); line-height: 1.65; }
+  figure.quote blockquote p + p { margin-top: 16px; }
+  figure.quote figcaption { margin-top: 28px; }
+  figure.quote figcaption .nm { font-family: var(--font-display); font-size: clamp(19px, 2.2vw, 23px); color: var(--text); display: block; }
+  figure.quote figcaption .rl { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 6px; }
+
+  /* cta */
+  .cta { text-align: left; }
+  .btn {
+    display: inline-block; margin-top: 30px;
+    font-family: var(--font-label); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    border: 1px solid var(--accent); padding: 16px 34px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn:hover { background: var(--accent); color: #fff; }
+  .cta .or { margin-top: 18px; font-size: 16px; color: var(--subtle); }
+
+  footer {
+    border-top: 1px solid var(--line); margin-top: 20px;
+    padding: 40px 0 60px;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--subtle);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--subtle); text-decoration: none; }
+  footer a:hover { color: var(--muted); }
+  footer .red { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero .sub { font-size: 19px; }
+    .topbar { font-size: 11px; letter-spacing: 0.18em; }
+    .topbar .brand .pre { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="chief-of-staff.html"><span class="pre">Arek Rainczuk <span class="red">/</span> </span>Chief of Staff</a>
+  <span class="navlinks">
+    <a href="chief-of-staff.html">Back to overview</a>
+    <a href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a call</a>
+  </span>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">Proof</div>
+    <h1>What founders say.</h1>
+    <p class="sub">Real founders, real builds. <span class="hot">Here's what changed for them, in their own words.</span></p>
+  </header>
+
+  <section>
+    <figure class="quote">
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        <p>Arek spent two days with my members last week and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building. What sets him apart is the generosity behind it, and the care he's put into making it genuinely usable. There's no one in the marketplace doing this with more intention right now. If you get the chance to learn from him, take it.</p>
+      </blockquote>
+      <figcaption>
+        <span class="nm">Den Lennie</span>
+        <span class="rl">Founder, Video Business Accelerator</span>
+      </figcaption>
+    </figure>
+
+    <figure class="quote" style="margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--line);">
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        <p>This has changed how I run my business. I came in not really knowing what was possible, and Arek walked me through it patiently. It only took 30-60 minutes for my brain to start to open to all the possibilities.</p>
+        <p>The system itself does the stuff I used to avoid. It keeps track of where every lead and job is at, drafts emails and proposals in our actual voice, and remembers the details I'd normally lose between sessions. I named mine Marty, and it feels like having a second set of hands rather than another app to babysit.</p>
+        <p>The best part is it bends to how you already work instead of forcing you into someone else's setup.</p>
+      </blockquote>
+      <figcaption>
+        <span class="nm">Isaac Viglione</span>
+        <span class="rl">Founder, Bloom Films</span>
+      </figcaption>
+    </figure>
+
+    <figure class="quote" style="margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--line);">
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        <p>Arek has helped us put innovation at the forefront of our business. As a founder, I wanted to streamline both our sales and marketing processes as well as the operational side of the business, and Arek helped us build the foundations of an AI operating system that is already delivering real value.</p>
+        <p>We're now able to generate proposal documents directly from client calls, produce fast and accurate quotes using our existing pricing, create detailed operational briefs for contractors, and develop a comprehensive policy handbook that includes our Workplace Health and Safety policies and Code of Conduct.</p>
+        <p>I'm incredibly grateful to Arek for helping us get this off the ground. His guidance, practical approach, and ability to turn ideas into working systems have made the whole process far less overwhelming. I'm excited to continue building on what we've started.</p>
+      </blockquote>
+      <figcaption>
+        <span class="nm">Orville</span>
+        <span class="rl">Founder, Greater Visuals</span>
+      </figcaption>
+    </figure>
+
+    <figure class="quote" style="margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--line);">
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        <p>While I understood and could appreciate the benefits of building AI into my workflow, Arek really unlocked how to connect it all together and make it work for me, not just with me. I'd highly recommend anyone talking to Arek about how he can help build out your own OS using the AI tools available to you.</p>
+      </blockquote>
+      <figcaption>
+        <span class="nm">Matt Smolen</span>
+        <span class="rl">Founder, Balloon Tree Productions</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">The next step</div>
+    <h2>Want one of your own?</h2>
+    <p class="body">If this is what you've been needing, let's talk about what it would look like for your business.</p>
+    <a class="btn" href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a quick call</a>
+    <p class="or">Or just message me.</p>
+  </section>
+
+  <footer>
+    <span><a href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a></span>
+    <span>Fifth Castle Media</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
