@@ -70,6 +70,37 @@
   .hero .sub { font-size: clamp(19px, 2.4vw, 26px); color: var(--muted); margin-top: 30px; max-width: 50ch; line-height: 1.5; }
   .hero .sub .hot { color: var(--text); }
 
+  /* full-bleed portrait hero */
+  .hero-full {
+    position: relative; z-index: 2;
+    min-height: min(86vh, 740px);
+    display: flex; align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-full .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: 70% center; z-index: 0;
+  }
+  .hero-full .hero-scrim {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(90deg, var(--bg) 4%, rgba(10,10,10,0.82) 34%, rgba(10,10,10,0.30) 62%, rgba(10,10,10,0.05) 100%),
+      linear-gradient(0deg, var(--bg) 0%, transparent 26%);
+  }
+  .hero-full .hero-inner {
+    position: relative; z-index: 2; width: 100%;
+    max-width: 880px; margin: 0 auto;
+    padding: clamp(80px,14vh,150px) clamp(24px,6vw,80px) clamp(50px,9vh,90px);
+  }
+  .hero-full .sub { font-size: clamp(19px, 2.4vw, 26px); color: var(--muted); margin-top: 30px; max-width: 48ch; line-height: 1.5; }
+  .hero-full .sub .hot { color: var(--text); }
+  @media (max-width: 700px) {
+    .hero-full { min-height: min(82vh, 680px); }
+    .hero-full .hero-img { object-position: 74% center; }
+    .hero-full .hero-scrim { background: linear-gradient(0deg, var(--bg) 8%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.42) 100%); }
+  }
+
   section { padding: clamp(44px, 8vh, 80px) 0; border-top: 1px solid var(--line); }
   .eyebrow { font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 22px; }
   h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.14; letter-spacing: -0.01em; max-width: 20ch; margin-bottom: 26px; }
@@ -149,14 +180,18 @@
   </span>
 </nav>
 
-<div class="wrap">
-
-  <header class="hero">
+<header class="hero-full">
+  <img class="hero-img" src="images/arek-portrait.jpg" alt="Arek Rainczuk, founder of Fifth Castle Media">
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
     <div class="kicker">Melbourne <span class="dot">&middot;</span> Q4 2026 <span class="dot">&middot;</span> 8 seats</div>
     <h1>Build your Chief of Staff in two days.</h1>
     <p class="sub">A handful of founders, one room, two days of building shoulder to shoulder. <span class="hot">You leave with your own AI Chief of Staff running, and the skill to drive it yourself.</span></p>
     <a class="btn" href="#waitlist">Put your hand up</a>
-  </header>
+  </div>
+</header>
+
+<div class="wrap">
 
   <section>
     <div class="eyebrow">The idea</div>
