@@ -157,6 +157,8 @@
   .btn { display: inline-block; margin-top: 30px; font-family: var(--font-label); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--accent); padding: 16px 34px; transition: background 0.25s ease, color 0.25s ease; }
   .btn:hover { background: var(--accent); color: #fff; }
   .cta .or { margin-top: 18px; font-size: 16px; color: var(--subtle); }
+  .formwrap { margin-top: 30px; max-width: 600px; }
+  .formwrap iframe { display: block; background: var(--bg); }
 
   footer { border-top: 1px solid var(--line); margin-top: 20px; padding: 40px 0 60px; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--subtle); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer a { color: var(--subtle); text-decoration: none; }
@@ -294,8 +296,24 @@
     <div class="eyebrow">The next step</div>
     <h2>Want a seat? Put your hand up.</h2>
     <p class="body">Seats are limited and dates land in Q4. <span class="hot">Add your name and you'll get the dates, the final price, and how to claim a seat before anyone else.</span> No payment now, no obligation.</p>
-    <a class="btn" href="mailto:info@fifthcastle.media?subject=2-Day%20Intensive%20waiting%20list&body=Hi%20Arek%2C%20please%20add%20me%20to%20the%20waiting%20list%20for%20the%20Chief%20of%20Staff%202-Day%20Intensive.%20My%20business%3A%20">Join the waiting list</a>
-    <p class="or">Or message me on LinkedIn. Prefer to build privately, one on one? <a href="chief-of-staff.html" style="color: var(--muted); border-bottom: 1px solid var(--line-bright); text-decoration: none;">See the Chief of Staff build</a>.</p>
+    <div class="formwrap">
+      <iframe src="https://links.eeva.au/widget/form/DZB6KMXWwbWgrGbtw4xt"
+        style="width:100%;min-height:1101px;border:none;border-radius:10px;"
+        id="inline-DZB6KMXWwbWgrGbtw4xt"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Intensive Waitlist"
+        data-height="1101"
+        data-layout-iframe-id="inline-DZB6KMXWwbWgrGbtw4xt"
+        data-form-id="DZB6KMXWwbWgrGbtw4xt"
+        title="Intensive Waitlist"></iframe>
+    </div>
+    <p class="or">Prefer to build privately, one on one? <a href="chief-of-staff.html" style="color: var(--muted); border-bottom: 1px solid var(--line-bright); text-decoration: none;">See the Chief of Staff build</a>.</p>
   </section>
 
   <footer>
@@ -317,6 +335,8 @@
   "url": "https://docs.fifthcastle.media/chief-of-staff-intensive.html"
 }
 </script>
+
+<script src="https://links.eeva.au/js/form_embed.js"></script>
 
 </body>
 </html>
