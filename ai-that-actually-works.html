@@ -4,2033 +4,286 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI That Actually Works | Arek Rainczuk</title>
-<meta name="description" content="Why an AI that does the work beats asking a chatbot a question and then doing the real work yourself. The first of three short pieces on building your own Chief of Staff.">
+<meta name="description" content="Most AI answers your question and leaves the work to you. A Chief of Staff does the work. Here's why that changes how you run your business.">
 <link rel="canonical" href="https://docs.fifthcastle.media/ai-that-actually-works.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI That Actually Works">
-<meta property="og:description" content="Why an AI that does the work beats asking a chatbot a question and then doing the real work yourself.">
+<meta property="og:description" content="Most AI answers your question and leaves the work to you. A Chief of Staff does the work. Here's why that changes how you run your business.">
 <meta property="og:url" content="https://docs.fifthcastle.media/ai-that-actually-works.html">
 <meta property="og:site_name" content="Fifth Castle Media">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg: #0A0A0A;
-  --bg-elevated: #141413;
-  --bg-deeper: #07070700;
-  --text: #F5F1EA;
-  --text-muted: #88847C;
-  --text-subtle: #4A4744;
-  --accent: #BD202D;
-  --accent-soft: rgba(189, 32, 45, 0.18);
-  --accent-glow: rgba(189, 32, 45, 0.10);
-  --line: #2A2724;
-  --line-bright: #3A3632;
-
-  --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
-  --font-label: 'Khand', sans-serif;
-  --font-body: Georgia, 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-html, body {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Subtle leather-like texture overlay (FCM premium feel) */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.06   0 0 0 0 0.05   0 0 0 0 0.04   0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  z-index: 100;
-}
-
-/* Faint horizontal scan to add cinematic depth */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.06), transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(245,241,234,0.03), transparent 60%);
-  z-index: 99;
-}
-
-/* Progress bar */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--accent);
-  width: 10%;
-  transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: 200;
-  box-shadow: 0 0 12px rgba(189, 32, 45, 0.6);
-}
-
-/* Persistent UI */
-.wordmark {
-  position: fixed;
-  bottom: 28px;
-  left: 44px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  z-index: 150;
-}
-.wordmark img {
-  width: 22px;
-  height: 22px;
-  display: block;
-}
-.wordmark .text {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-.wordmark .text .red { color: var(--accent); }
-
-.counter {
-  position: fixed;
-  bottom: 28px;
-  right: 44px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  z-index: 150;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.counter .current {
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-}
-.counter .divider {
-  width: 24px;
-  height: 1px;
-  background: var(--line-bright);
-}
-
-.nav-buttons {
-  position: fixed;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0;
-  z-index: 150;
-  border: 1px solid var(--line);
-  background: rgba(20, 20, 19, 0.7);
-  backdrop-filter: blur(8px);
-}
-
-.nav-hint {
-  position: fixed;
-  bottom: 76px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-  z-index: 150;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.nav-hint::before, .nav-hint::after {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--accent);
-}
-.nav-hint.show {
-  opacity: 1;
-  animation: hintPulse 2s infinite ease-in-out;
-}
-@keyframes hintPulse {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
-}
-.nav-btn {
-  width: 44px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-family: var(--font-label);
-  font-size: 16px;
-  font-weight: 400;
-  transition: all 0.18s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid var(--line);
-}
-.nav-btn:last-child { border-right: none; }
-.nav-btn:hover { color: var(--accent); background: rgba(189, 32, 45, 0.08); }
-.nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
-.nav-btn:disabled:hover { color: var(--text-muted); background: transparent; }
-
-/* Slide container */
-.slides {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-.slide {
-  position: absolute;
-  inset: 0;
-  padding: 80px 100px 100px;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.slide.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  animation: slideEnter 0.5s ease;
-}
-@keyframes slideEnter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Slide number badge */
-.slide-num {
-  position: absolute;
-  top: 60px;
-  left: 100px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-weight: 400;
-}
-.slide-num::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
-.slide-num .num { color: var(--accent); font-weight: 500; }
-.slide-num .label { color: var(--text-muted); }
-
-/* Animation primitives — only fire when .active is present */
-.slide.active .anim-fade-up { animation: fadeUp 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.slide.active .anim-fade-in { animation: fadeIn 0.9s ease both; }
-.slide.active .anim-slide-left { animation: slideLeft 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.slide.active .anim-slide-right { animation: slideRight 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.slide.active .anim-slide-up { animation: slideUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.slide.active .anim-pulse { animation: cellPulse 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(48px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes cellPulse {
-  0%   { opacity: 0; transform: scale(0.94); }
-  55%  { opacity: 1; transform: scale(1.035); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-/* Stagger delays */
-.d1 { animation-delay: 0.10s !important; }
-.d2 { animation-delay: 0.25s !important; }
-.d3 { animation-delay: 0.40s !important; }
-.d4 { animation-delay: 0.55s !important; }
-.d5 { animation-delay: 0.70s !important; }
-.d6 { animation-delay: 0.85s !important; }
-.d7 { animation-delay: 1.00s !important; }
-.d8 { animation-delay: 1.15s !important; }
-.d9 { animation-delay: 1.30s !important; }
-.d10 { animation-delay: 1.45s !important; }
-.d11 { animation-delay: 1.60s !important; }
-
-/* ========== Typography helpers ========== */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1;
-}
-.label {
-  font-family: var(--font-label);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-weight: 500;
-}
-.slide-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(44px, 5.5vw, 84px);
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  margin-top: 56px;
-}
-.slide-title .accent { color: var(--accent); font-style: italic; }
-.subtitle {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--text-muted);
-  margin-top: 18px;
-  line-height: 1.4;
-}
-
-/* ========== SLIDE 1: Title ========== */
-.slide-1 { justify-content: space-between; padding-top: 60px; }
-.s1-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.s1-tag-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.s1-tag-left::before {
-  content: '';
-  display: block;
-  width: 36px;
-  height: 1px;
-  background: var(--accent);
-}
-.s1-tag-right {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.s1-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 1280px;
-}
-.s1-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(72px, 11.5vw, 178px);
-  line-height: 0.96;
-  letter-spacing: -0.035em;
-}
-.s1-title .it { font-style: italic; color: var(--accent); }
-.s1-title .ws { display: inline-block; min-width: 0.18em; }
-.s1-sub {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--text-muted);
-  max-width: 660px;
-  margin-top: 36px;
-  line-height: 1.45;
-}
-.s1-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.s1-presenter {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.s1-presenter .name {
-  display: block;
-  font-family: var(--font-display);
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 28px;
-  color: var(--text);
-  margin-top: 8px;
-  font-weight: 400;
-}
-.s1-cta {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--accent);
-  animation: pulse 1.8s infinite ease-in-out;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.s1-cta::after {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: var(--accent);
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 1; }
-}
-
-/* Decorative diagonal frame element echo (subtle, top-right) */
-.s1-frame {
-  position: absolute;
-  top: 22%;
-  right: 7%;
-  width: 240px;
-  height: 320px;
-  border: 1px solid var(--accent);
-  transform: rotate(20deg);
-  opacity: 0.22;
-  pointer-events: none;
-}
-.s1-frame::after {
-  content: '';
-  position: absolute;
-  inset: 14px;
-  border: 1px solid var(--line-bright);
-  opacity: 0.5;
-}
-
-/* ========== Common: two-column ========== */
-.two-col {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 90px;
-  align-items: center;
-  margin-top: 32px;
-}
-
-.problem-line {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 28px;
-  color: var(--accent);
-  margin-top: 26px;
-  line-height: 1.25;
-  letter-spacing: -0.005em;
-}
-
-.body-list {
-  list-style: none;
-  margin-top: 36px;
-}
-.body-list li {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.5;
-  padding: 16px 0 16px 30px;
-  border-top: 1px solid var(--line);
-  color: var(--text);
-  position: relative;
-}
-.body-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 27px;
-  width: 14px;
-  height: 1px;
-  background: var(--accent);
-}
-.body-list li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-/* ========== SLIDE 2: Flow diagram ========== */
-.flow-diagram {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: center;
-  padding: 20px 0;
-}
-.flow-box {
-  width: 320px;
-  padding: 30px 28px;
-  border: 1px solid var(--line-bright);
-  background: var(--bg-elevated);
-  position: relative;
-  text-align: left;
-}
-.flow-box .num {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.35em;
-  color: var(--text-subtle);
-  margin-bottom: 8px;
-  display: block;
-}
-.flow-box .box-label {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: -0.005em;
-  color: var(--text);
-  line-height: 1.15;
-}
-.flow-box.highlight {
-  border-color: var(--accent);
-  background: linear-gradient(135deg, rgba(189,32,45,0.10), rgba(189,32,45,0.02));
-}
-.flow-box.highlight .box-label { color: var(--accent); font-style: italic; }
-.flow-box.highlight .num { color: var(--accent); }
-
-.flow-arrow {
-  width: 1px;
-  height: 48px;
-  position: relative;
-  background-image: linear-gradient(to bottom, var(--text-subtle) 50%, transparent 50%);
-  background-size: 1px 6px;
-  background-repeat: repeat-y;
-}
-.flow-arrow::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid var(--text-subtle);
-  border-bottom: 1px solid var(--text-subtle);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-/* ========== SLIDE 3: Three rows ========== */
-.s3-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30px;
-}
-.concept-line {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.4vw, 44px);
-  font-style: italic;
-  color: var(--text);
-  text-align: center;
-  max-width: 1000px;
-  margin: 16px auto 56px;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-}
-.concept-line .accent { color: var(--accent); }
-
-.three-rows {
-  max-width: 1180px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.row-item {
-  display: grid;
-  grid-template-columns: 80px 320px 1fr;
-  gap: 48px;
-  align-items: center;
-  padding: 28px 0;
-  border-top: 1px solid var(--line);
-}
-.row-item:last-child { border-bottom: 1px solid var(--line); }
-.row-item .row-num {
-  font-family: var(--font-label);
-  font-size: 14px;
-  letter-spacing: 0.25em;
-  color: var(--accent);
-  font-weight: 500;
-}
-.row-item .row-label {
-  font-family: var(--font-display);
-  font-size: 30px;
-  color: var(--text);
-  line-height: 1.1;
-}
-.row-item .row-label .em { font-style: italic; color: var(--accent); }
-.row-item .row-desc {
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--text-muted);
-}
-
-/* ========== SLIDE 4: File tree ========== */
-.file-tree-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.file-tree-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--text-subtle);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.file-tree-label::before, .file-tree-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-.file-tree {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.7;
-  background: var(--bg-elevated);
-  padding: 36px 32px;
-  border: 1px solid var(--line);
-  position: relative;
-}
-.file-tree::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--accent);
-}
-.tree-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 6px 12px;
-  opacity: 0;
-  transform: translateX(-12px);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.6s ease;
-  white-space: nowrap;
-}
-.tree-row.shown {
-  opacity: 1;
-  transform: translateX(0);
-}
-.tree-row.flash {
-  background: var(--accent-soft);
-}
-.tree-row .file-name { color: var(--text); }
-.tree-row .file-name.folder { color: var(--text-muted); }
-.tree-row .file-name.indent-1 { padding-left: 24px; }
-.tree-row .file-name.indent-2 { padding-left: 48px; }
-.tree-row .annotation {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tree-row .annotation::before {
-  content: '';
-  width: 16px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.accent-line {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 24px;
-  color: var(--accent);
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid var(--accent);
-  letter-spacing: -0.005em;
-}
-
-/* ========== SLIDE 5: Icon grid ========== */
-.s5-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 36px;
-}
-.icon-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 56px auto 36px;
-  width: 100%;
-}
-.icon-cell {
-  padding: 36px 32px 28px;
-  border: 1px solid var(--line-bright);
-  background: var(--bg-elevated);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: flex-start;
-  position: relative;
-  min-height: 200px;
-  opacity: 0;
-}
-.icon-cell .icon {
-  width: 32px;
-  height: 32px;
-  stroke: var(--text);
-  stroke-width: 1.2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.icon-cell .icon-label {
-  font-family: var(--font-display);
-  font-size: 26px;
-  color: var(--text);
-  line-height: 1;
-}
-.icon-cell .icon-status {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  width: 100%;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.icon-cell .icon-status::before {
-  content: '→';
-  color: var(--accent);
-  font-size: 13px;
-}
-
-.takeaway {
-  text-align: center;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 24px;
-  color: var(--text-muted);
-  margin-top: 24px;
-  letter-spacing: -0.005em;
-}
-.takeaway .accent { color: var(--text); font-style: normal; }
-
-/* ========== SLIDE 6: Three-step ========== */
-.s6-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30px;
-  position: relative;
-}
-.step-flow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 60px;
-  margin-top: 90px;
-  max-width: 1300px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-.step-flow::before {
-  content: '';
-  position: absolute;
-  top: 50px;
-  left: 8%;
-  width: 84%;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), var(--line) 70%, transparent);
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.slide.active .step-flow::before {
-  animation: stepLine 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
-}
-@keyframes stepLine {
-  to { opacity: 1; transform: scaleX(1); }
-}
-.step {
-  position: relative;
-  padding-top: 68px;
-}
-.step .step-num {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: var(--font-label);
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  color: var(--accent);
-  font-weight: 500;
-  background: var(--bg);
-  padding-right: 14px;
-}
-.step .step-num::before {
-  content: '';
-  position: absolute;
-  left: -2px;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  transform: translate(-12px, -50%);
-}
-.step .step-title {
-  font-family: var(--font-display);
-  font-size: 36px;
-  color: var(--text);
-  margin-bottom: 18px;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-}
-.step .step-desc {
-  font-family: var(--font-body);
-  font-size: 17px;
-  color: var(--text-muted);
-  line-height: 1.5;
-  max-width: 320px;
-}
-
-.stat-callout {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: right;
-  border-top: 1px solid var(--accent);
-  padding-top: 16px;
-  width: 320px;
-}
-.stat-callout .stat-line1 {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-.stat-callout .stat-counter {
-  font-family: var(--font-display);
-  font-size: 92px;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-  line-height: 0.9;
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  gap: 8px;
-}
-.stat-callout .stat-counter .x {
-  font-size: 56px;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* ========== SLIDE 7: Compare panels ========== */
-.compare-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  flex: 1;
-  margin-top: 56px;
-}
-.panel {
-  padding: 48px 44px;
-  border: 1px solid var(--line-bright);
-  background: var(--bg-elevated);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.panel.right {
-  border-color: var(--accent);
-  background: linear-gradient(180deg, rgba(189,32,45,0.05), rgba(189,32,45,0.01));
-}
-.panel.right::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  height: 3px;
-  background: var(--accent);
-}
-.panel-label {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 28px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.panel.right .panel-label {
-  color: var(--accent);
-  border-color: var(--line-bright);
-}
-.panel-label .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-subtle);
-}
-.panel.right .panel-label .dot {
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(189, 32, 45, 0.5);
-}
-.panel ul { list-style: none; }
-.panel ul li {
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.5;
-  padding: 13px 0;
-  color: var(--text);
-  position: relative;
-  padding-left: 26px;
-}
-.panel ul li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--text-subtle);
-  font-family: var(--font-label);
-}
-.panel.right ul li::before { color: var(--accent); }
-.panel.left ul li { color: var(--text-muted); }
-
-/* ========== SLIDE 8: Timeline ========== */
-.timeline-wrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 36px;
-}
-.timeline {
-  position: relative;
-  height: 220px;
-  width: 100%;
-  margin: 60px 0 60px;
-}
-.timeline-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--line);
-}
-.timeline-line-fill {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  box-shadow: 0 0 8px rgba(189, 32, 45, 0.5);
-}
-.slide.active .timeline-line-fill {
-  animation: timelineFill 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
-}
-@keyframes timelineFill {
-  from { width: 0; }
-  to { width: 100%; }
-}
-.milestone {
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 220px;
-  opacity: 0;
-}
-.slide.active .milestone {
-  animation: fadeIn 0.5s ease forwards;
-}
-.milestone .ms-top {
-  text-align: center;
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.milestone .ms-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 3px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--accent), 0 0 16px rgba(189, 32, 45, 0.5);
-  margin: 4px 0;
-}
-.milestone .ms-bottom { text-align: center; }
-.milestone .ms-label {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--text);
-  margin-bottom: 6px;
-  line-height: 1.15;
-  letter-spacing: -0.005em;
-}
-.milestone .ms-sub {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.timeline-body {
-  max-width: 1080px;
-  font-family: var(--font-body);
-  font-size: 19px;
-  color: var(--text-muted);
-  line-height: 1.5;
-  font-style: italic;
-}
-.timeline-accent {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 26px;
-  color: var(--accent);
-  margin-top: 24px;
-  letter-spacing: -0.005em;
-}
-
-/* ========== SLIDE 9: Frenzy curve ========== */
-.curve-wrap {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 60px;
-  margin-top: 42px;
-  align-items: center;
-}
-.curve-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.curve-svg .axis { stroke: var(--line); stroke-width: 1; }
-.curve-svg .axis-label {
-  font-family: var(--font-label);
-  font-size: 9px;
-  letter-spacing: 0.32em;
-  fill: var(--text-muted);
-  text-transform: uppercase;
-}
-.curve-svg .grid-line { stroke: var(--line); stroke-width: 0.5; stroke-dasharray: 2 4; opacity: 0.5; }
-.curve-svg .curve-path {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  filter: drop-shadow(0 0 6px rgba(189, 32, 45, 0.35));
-}
-.slide.active .curve-svg .curve-path {
-  animation: drawPath 2.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
-}
-@keyframes drawPath {
-  to { stroke-dashoffset: 0; }
-}
-.curve-svg .point { opacity: 0; }
-.slide.active .curve-svg .point { animation: fadeIn 0.5s ease forwards; }
-.curve-svg .point-dot {
-  fill: var(--accent);
-  stroke: var(--bg);
-  stroke-width: 3;
-}
-.curve-svg .point-dot.muted { fill: var(--text-muted); }
-.curve-svg .point-dot.light { fill: var(--text-subtle); }
-.curve-svg .point-dot.large { r: 7; }
-.curve-svg .point-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  fill: var(--text);
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.curve-svg .point-label.muted { fill: var(--text-muted); }
-.curve-svg .point-sublabel {
-  font-family: 'Vidaloka', Georgia, serif;
-  font-style: italic;
-  font-size: 12px;
-  fill: var(--accent);
-}
-.curve-svg .point-tick {
-  stroke: var(--text-subtle);
-  stroke-width: 1;
-  stroke-dasharray: 2 3;
-}
-
-.curve-body {
-  display: flex;
-  flex-direction: column;
-}
-.curve-body .body-list {
-  margin-top: 0;
-}
-.curve-body .body-list li { font-size: 16px; padding: 12px 0 12px 26px; }
-.curve-body .body-list li::before { top: 22px; width: 12px; }
-
-.curve-accent {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--accent);
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 1px solid var(--accent);
-  letter-spacing: -0.005em;
-  line-height: 1.3;
-}
-
-/* ========== SLIDE 10: Long Game ========== */
-.s10-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 36px;
-}
-.closing-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 32px;
-}
-.closing-panel {
-  padding: 44px 40px 40px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--line-bright);
-  position: relative;
-}
-.closing-panel.right {
-  border-color: var(--accent);
-  background: linear-gradient(180deg, rgba(189,32,45,0.06), rgba(189,32,45,0.01));
-}
-.closing-panel-num {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-subtle);
-  margin-bottom: 8px;
-}
-.closing-panel.right .closing-panel-num { color: var(--accent); }
-.closing-panel-title {
-  font-family: var(--font-display);
-  font-size: 32px;
-  color: var(--text);
-  margin-bottom: 28px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-}
-.closing-panel.right .closing-panel-title { border-color: var(--line-bright); }
-.closing-panel.right .closing-panel-title .em { font-style: italic; color: var(--accent); }
-.closing-panel ul { list-style: none; }
-.closing-panel ul li {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 11px 0;
-  color: var(--text);
-  position: relative;
-  padding-left: 22px;
-}
-.closing-panel ul li::before {
-  content: '·';
-  position: absolute;
-  left: 4px;
-  color: var(--accent);
-  font-size: 26px;
-  line-height: 1;
-  top: 14px;
-}
-
-.closing-statement {
-  text-align: center;
-  margin-top: 44px;
-  font-family: var(--font-display);
-  font-size: clamp(26px, 3.2vw, 44px);
-  line-height: 1.18;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  letter-spacing: -0.012em;
-  color: var(--text);
-}
-.closing-statement .accent { color: var(--accent); font-style: italic; }
-
-.closing-footer {
-  text-align: center;
-  margin-top: 26px;
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-}
-.closing-footer::before, .closing-footer::after {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
-
-/* ========== Responsiveness ========== */
-@media (max-width: 1100px) {
-  .slide { padding: 70px 60px 100px; }
-  .slide-num { left: 60px; }
-  .two-col { grid-template-columns: 1fr; gap: 40px; align-items: start; }
-  .icon-grid { grid-template-columns: repeat(2, 1fr); }
-  .step-flow { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
-  .step-flow::before { display: none; }
-  .closing-grid { grid-template-columns: 1fr; gap: 24px; }
-  .compare-grid { grid-template-columns: 1fr; gap: 24px; }
-  .curve-wrap { grid-template-columns: 1fr; gap: 30px; }
-  .stat-callout { position: static; width: auto; text-align: left; margin-top: 30px; }
-  .stat-callout .stat-counter { justify-content: flex-start; }
-}
-
-@media (max-width: 768px) {
-  html, body { font-size: 15px; }
-
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--bg); }
+  body {
+    font-family: var(--font-body); color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
   .slide {
-    padding: 60px 24px 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100vh;
-    height: 100dvh;
-    -webkit-overflow-scrolling: touch;
+    position: relative; min-height: 100vh; min-height: 100dvh;
+    scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center;
+    padding: 96px clamp(24px, 8vw, 140px); overflow: hidden;
   }
-
-  /* Reposition fixed UI for small screens */
-  .slide-num {
-    top: 24px;
-    left: 24px;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    gap: 10px;
+  .slide::after {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(189,32,45,0.07), transparent 55%),
+      radial-gradient(ellipse at 110% 120%, rgba(245,241,234,0.025), transparent 60%);
   }
-  .slide-num::before { width: 20px; }
-
-  .wordmark { left: 20px; bottom: 22px; gap: 8px; }
-  .wordmark img { width: 16px; height: 16px; }
-  .wordmark .text { font-size: 9px; letter-spacing: 0.25em; }
-
-  .counter { right: 20px; bottom: 22px; font-size: 9px; letter-spacing: 0.25em; gap: 8px; }
-  .counter .current { font-size: 11px; }
-  .counter .divider { width: 16px; }
-
-  .nav-buttons { bottom: 56px; }
-  .nav-btn { width: 48px; height: 36px; font-size: 18px; }
-
-  .nav-hint { bottom: 100px; font-size: 9px; letter-spacing: 0.3em; }
-  .nav-hint::before, .nav-hint::after { width: 18px; }
-
-  /* Common typography — stronger downscale */
-  .slide-title { font-size: clamp(32px, 9vw, 44px); margin-top: 36px; line-height: 1.05; }
-  .subtitle { font-size: 16px; margin-top: 12px; }
-  .problem-line { font-size: 19px; margin-top: 18px; }
-  .body-list { margin-top: 22px; }
-  .body-list li { font-size: 15px; padding: 12px 0 12px 22px; }
-  .body-list li::before { top: 22px; width: 10px; }
-  .accent-line { font-size: 18px; margin-top: 24px; padding-top: 18px; }
-
-  /* SLIDE 1 — Title */
-  .slide-1 { padding-top: 50px; padding-bottom: 130px; justify-content: flex-start; }
-  .s1-top { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .s1-tag-left, .s1-tag-right { font-size: 9px; letter-spacing: 0.25em; }
-  .s1-tag-left::before { width: 24px; }
-  .s1-main { margin-top: 36px; margin-bottom: 36px; }
-  .s1-title { font-size: clamp(48px, 16vw, 76px) !important; line-height: 0.98; }
-  .s1-sub { font-size: 16px; margin-top: 22px; }
-  .s1-bottom { flex-direction: column; align-items: flex-start; gap: 18px; }
-  .s1-presenter { font-size: 9px; letter-spacing: 0.28em; }
-  .s1-presenter .name { font-size: 22px; margin-top: 6px; }
-  .s1-frame { width: 110px; height: 150px; right: 6%; top: 12%; opacity: 0.18; }
-
-  /* SLIDE 2 — flow diagram boxes go full width */
-  .flow-box { width: 100%; padding: 22px 20px; }
-  .flow-box .box-label { font-size: 19px; }
-  .flow-arrow { height: 32px; }
-  .flow-diagram { padding: 0; }
-
-  /* SLIDE 3 — three-row collapse to stack */
-  .concept-line { font-size: 24px; margin: 12px auto 32px; }
-  .three-rows { gap: 0; }
-  .row-item {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 22px 0;
+  .inner { position: relative; z-index: 2; max-width: 920px; width: 100%; margin: 0 auto; }
+  .kicker {
+    font-family: var(--font-label); font-size: clamp(13px, 1.4vw, 15px); letter-spacing: 0.34em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
   }
-  .row-item .row-num { font-size: 11px; letter-spacing: 0.2em; }
-  .row-item .row-label { font-size: 22px; }
-  .row-item .row-desc { font-size: 15px; }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 6.4vw, 82px); line-height: 1.07; letter-spacing: -0.015em; }
+  h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(31px, 5.2vw, 60px); line-height: 1.12; letter-spacing: -0.01em; max-width: 18ch; }
+  .lead { font-size: clamp(18px, 2.2vw, 24px); line-height: 1.6; color: var(--muted); margin-top: 28px; max-width: 56ch; }
+  .lead .hot { color: var(--text); }
+  .lead + .lead { margin-top: 20px; }
+  .accent-text { color: var(--accent-bright); }
+  .title h1 { font-size: clamp(44px, 8vw, 104px); }
+  .title .sub { font-size: clamp(19px, 2.6vw, 27px); color: var(--muted); margin-top: 32px; max-width: 44ch; line-height: 1.5; }
+  .title .sub .hot { color: var(--text); }
+  .mono-note { font-family: var(--font-mono); font-size: clamp(12px, 1.5vw, 14px); color: var(--subtle); margin-top: 36px; letter-spacing: 0.02em; }
+  .mono-note .on { color: var(--accent); }
 
-  /* SLIDE 4 — file tree */
-  .file-tree { padding: 22px 18px; font-size: 12px; line-height: 1.5; }
-  .tree-row { padding: 4px 6px; gap: 8px; }
-  .tree-row .file-name.indent-1 { padding-left: 12px; }
-  .tree-row .file-name.indent-2 { padding-left: 24px; }
-  .tree-row .annotation { font-size: 8px; letter-spacing: 0.2em; }
-  .tree-row .annotation::before { width: 10px; }
+  /* breakthrough curve */
+  figure.fig { margin-top: 40px; border: 1px solid var(--line); border-radius: 14px; background: radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.06), transparent 60%), var(--bg-2); padding: clamp(18px, 3vw, 34px); max-width: 760px; }
+  figure.fig svg { display: block; width: 100%; height: auto; }
+  figure.fig figcaption { font-family: var(--font-label); font-size: clamp(12px, 1.5vw, 14px); letter-spacing: 0.12em; color: var(--muted); text-align: center; margin-top: 16px; }
 
-  /* SLIDE 5 — connectors */
-  .icon-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 32px auto 24px;
+  /* onward links */
+  .next { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .next a {
+    font-family: var(--font-label); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; border: 1px solid var(--line-bright); border-radius: 40px;
+    padding: 12px 24px; transition: border-color 0.2s ease, background 0.2s ease;
   }
-  .icon-cell {
-    padding: 22px 18px 18px;
-    min-height: 140px;
-    gap: 10px;
-  }
-  .icon-cell .icon { width: 24px; height: 24px; }
-  .icon-cell .icon-label { font-size: 18px; }
-  .icon-cell .icon-status { font-size: 9px; letter-spacing: 0.2em; padding-top: 10px; }
-  .takeaway { font-size: 17px; margin-top: 18px; }
+  .next a:hover { border-color: var(--accent); }
+  .next a.primary { border-color: var(--accent); }
+  .next a.primary:hover { background: var(--accent); color: #fff; }
 
-  /* SLIDE 6 — three-step + counter */
-  .step-flow { margin-top: 32px; gap: 28px; }
-  .step { padding-top: 40px; }
-  .step .step-num { font-size: 11px; letter-spacing: 0.25em; }
-  .step .step-num::before { width: 4px; height: 4px; transform: translate(-10px, -50%); }
-  .step .step-title { font-size: 24px; margin-bottom: 12px; }
-  .step .step-desc { font-size: 15px; max-width: none; }
-  .stat-callout { margin-top: 24px; padding-top: 12px; }
-  .stat-callout .stat-line1 { font-size: 9px; letter-spacing: 0.28em; }
-  .stat-callout .stat-counter { font-size: 64px; }
-  .stat-callout .stat-counter .x { font-size: 38px; }
-
-  /* SLIDE 7 — compare panels */
-  .compare-grid { margin-top: 28px; }
-  .panel { padding: 28px 22px; }
-  .panel-label { font-size: 9px; letter-spacing: 0.32em; margin-bottom: 18px; padding-bottom: 12px; }
-  .panel ul li { font-size: 15px; padding: 9px 0; padding-left: 22px; }
-
-  /* SLIDE 8 — timeline goes vertical */
-  .timeline-wrap { margin-top: 24px; }
-  .timeline {
-    height: auto;
-    margin: 24px 0 30px;
-    padding-left: 28px;
-  }
-  .timeline-line {
-    top: 0;
-    left: 4px;
-    width: 1px;
-    height: 100%;
-  }
-  .timeline-line-fill {
-    top: 0;
-    left: 4px;
-    width: 1px;
-    height: 0;
-    background: var(--accent);
-  }
-  .slide.active .timeline-line-fill {
-    animation: timelineFillVertical 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
-  }
-  @keyframes timelineFillVertical {
-    from { height: 0; }
-    to { height: 100%; }
-  }
-  .milestone {
-    position: relative;
-    top: auto;
-    left: auto !important;
-    transform: none;
-    height: auto;
-    width: 100%;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 14px;
-    padding: 14px 0;
-  }
-  .milestone .ms-top {
-    order: 1;
-    flex: 0 0 64px;
-    text-align: left;
-    padding-top: 4px;
-    font-size: 9px;
-    letter-spacing: 0.25em;
-  }
-  .milestone .ms-dot {
-    order: 0;
-    margin: 6px 0 0 -28px;
-    position: absolute;
-    left: 0;
-    width: 10px;
-    height: 10px;
-  }
-  .milestone .ms-bottom {
-    order: 2;
-    flex: 1;
-    text-align: left;
-  }
-  .milestone .ms-label { font-size: 18px; }
-  .milestone .ms-label br { display: none; }
-  .milestone .ms-sub { font-size: 9px; letter-spacing: 0.22em; margin-top: 4px; }
-  .timeline-body { font-size: 15px; }
-  .timeline-accent { font-size: 18px; margin-top: 16px; }
-
-  /* SLIDE 9 — frenzy */
-  .curve-wrap { margin-top: 24px; gap: 18px; }
-  .curve-svg { max-height: 220px; }
-  .curve-accent { font-size: 17px; margin-top: 18px; padding-top: 14px; }
-
-  /* SLIDE 10 — long game */
-  .closing-panel { padding: 26px 22px; }
-  .closing-panel-num { font-size: 9px; letter-spacing: 0.28em; }
-  .closing-panel-title { font-size: 22px; margin-bottom: 18px; padding-bottom: 12px; }
-  .closing-panel ul li { font-size: 15px; padding: 9px 0; padding-left: 20px; }
-  .closing-panel ul li::before { font-size: 22px; top: 12px; }
-  .closing-statement { font-size: 22px; margin-top: 26px; line-height: 1.25; }
-  .closing-footer { margin-top: 18px; font-size: 9px; letter-spacing: 0.32em; }
-  .closing-footer::before, .closing-footer::after { width: 20px; }
-}
-
-@media (max-width: 420px) {
-  .icon-grid { grid-template-columns: 1fr; }
-  .s1-title { font-size: clamp(40px, 14vw, 60px) !important; }
-}
+  /* fixed chrome */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--accent); z-index: 30; box-shadow: 0 0 12px rgba(189,32,45,0.6); transition: width 0.15s linear; }
+  .wordmark { position: fixed; bottom: 26px; left: clamp(20px, 4vw, 44px); z-index: 30; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .wordmark .red { color: var(--accent); }
+  .counter { position: fixed; bottom: 26px; right: clamp(20px, 4vw, 44px); z-index: 30; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--muted); }
+  .counter .cur { color: var(--text); }
+  .dots { position: fixed; top: 50%; right: clamp(14px, 2.4vw, 30px); transform: translateY(-50%); z-index: 30; display: flex; flex-direction: column; gap: 13px; }
+  .dots button { width: 9px; height: 9px; border-radius: 50%; padding: 0; cursor: pointer; background: transparent; border: 1px solid var(--line-bright); transition: all 0.25s ease; }
+  .dots button:hover { border-color: var(--muted); }
+  .dots button.active { background: var(--accent); border-color: var(--accent); transform: scale(1.25); }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--subtle); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .scroll-hint .arrow { width: 1px; height: 30px; background: linear-gradient(var(--subtle), transparent); animation: drop 1.8s ease-in-out infinite; }
+  @keyframes drop { 0%,100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(6px); } }
+  .js .inner > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js .slide.in .inner > * { opacity: 1; transform: none; }
+  .js .slide.in .inner > *:nth-child(2) { transition-delay: 0.08s; }
+  .js .slide.in .inner > *:nth-child(3) { transition-delay: 0.16s; }
+  .js .slide.in .inner > *:nth-child(4) { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .js .inner > * { opacity: 1; transform: none; transition: none; } .scroll-hint .arrow { animation: none; } }
+  @media (max-width: 680px) { .dots { display: none; } .slide { padding: 80px 24px; } }
 </style>
 </head>
 <body>
 <a href="chief-of-staff.html" style="position:fixed;top:20px;left:clamp(20px,4vw,44px);z-index:40;font-family:'Khand','Arial Narrow',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:#8d877c;text-decoration:none;"><span style="color:#BD202D">&lsaquo;</span> Chief of Staff</a>
+<script>document.documentElement.classList.add('js');</script>
 
-<div class="progress-bar" id="progress"></div>
+<div class="progress" id="progress"></div>
+<div class="wordmark">AREK RAINCZUK <span class="red">/</span> CHIEF OF STAFF</div>
+<div class="counter"><span class="cur" id="cur">01</span> / 11</div>
+<nav class="dots" id="dots"></nav>
 
-<div class="wordmark">
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2MTM4ZmY2M2MzYSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0NmM1Yy1hMDQyLTQzNmUtYmQ1Ni03NjEzOGZmNjNjM2EiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0NmM1Yy1hMDQyLTQzNmUtYmQ1Ni03NjEzOGZmNjNjM2EiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2MTM4ZmY2M2MzYSIgc3RFdnQ6d2hlbj0iMjAyMC0xMS0xNFQwOTo1MDoyMisxMTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIyLjEgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hIO+YwAAP0lJREFUeNrt3WuTI9l9J+bEdPcMJXE1ICVybpwdMOZKbrQb8wkG7fkAqv4ErIpYirouqzccIkVp1dUidSFFqVq2V0uJa1dNODbsXTuimx+gozDhV37VGM+bISVHgxEektI6TIhcmqTI7vI5haxmTXXhkpkHQAJ4nogc9KAKt4PMyl/+T56TjcPDwwwAAIp6RBMAACBIAgAgSAIAIEgCACBIAgCAIAkAgCAJAIAgCQCAIAkAgCAJAACCJAAAgiQAAIIkAACCJAAAgiQAAAiSAAAIkgAALNZ5TZBOo9HQCLCC/tOzH9/+3v37t/7lu+/0tQaslsPDQ41QJftoQEESONvt1sVmuNkb3L+/8d179wbh31dCmOxqGRAkGdK1DXB2iGyFm4OwbOR3xVB58O+feWVT6wAIkgCjQmQ73NwJS/uMH++FMLmnlQB0badtTF3bsAohcjOGxZP3De7fz757797pX+1mw67ugVaD5SUHVaMiCfCzELl3OkSO0QnLna8+80pbywHrSkUyZWOqSMKyBshmuLmZh8OHjKhIHgl/QQfhZuuT775zS0vC8pGDqlGRBNY9RLaz4aCaTsmnOAqhX33mlW2tCQiSAOsTIjt5iGwneLrdrxqEA6wZXdspG1PXNixTiNyO4W+a353QtX1aLyyXP2kQDiwFOagaFUlgHUPk3rQhsoR2WO4ahAOsAxXJlI2pIgl1D5DNrERXdsGK5IOHheXqJ999Z1/LQ33JQdWoSALrEiJjeLyTpTkfchoxtO599ZlXdrQ+sKpUJFM2pook1DVEbmbDruxmmceXrEietJ8Nq5MD3wbUixxUjYoksOohcicbTjLeXODbiEH24G+eeaXlGwFWiYpkysZUkYQ6BcgYHHfzEFdJgork8e8Ows3lX333nZ5vCOpBDqpGRRJY1RB5kCJEJhbf152/eeaVTd8SIEgC1C9EtsPN3Wx+g2rK2Athcte3BSw7XdspG1PXNiw6RG5mw/Mhk0rYtX1aNyxXftUgHFgYOagaFUlgVULk7ixC5Ix1suEgnLZvEFhGKpIpG1NFEhYRIJt5gNyY1WvMsCL54CWyYWWy6xuF+ZKDqlGRBJY5RLay4aCajSX/KM2wKzv4a4NwAEESYC4hspPN90o187AXwuSebxdYFrq2Uzamrm2YV4jczOZ4PuQcurZP/6wXlsufMggHZk4OqkZFEpglg2pSh8gV9zsfeNAGgCAJ5ItBNcsbIuPnzc9JBQRJgHRGTV6e8nzIRcrPSQUESYDqGo3GqMnLm2nfWaPb+OfLAQiSAJN1hcj3+f0nXli6S0ECgiSwYDFENhqNu+s+evGksI60Q5C8s47nRgKCJDB9oNgIN82wHDQajdY6tcHvfvj55hee+jecUiOEyRgmd6whgCAJZJND5MnqZAyTd9eoOhmrkaPaQXVyKB6oxOpkR1MAgiQwLkRG7xtdvKpVuvzz3clOjEafsB7p7s5VJ4FGI/4PEkbfyAAAAABJRU5ErkJggg==" alt="Fifth Castle Media">
-  <span class="text"><span class="red">Fifth</span>&nbsp;Castle Media</span>
-</div>
-
-<div class="counter">
-  <span class="current" id="cur">01</span>
-  <span class="divider"></span>
-  <span>10</span>
-</div>
-
-<div class="nav-hint" id="navHint">Press <span style="color: var(--text); margin: 0 4px;">→</span> to begin</div>
-
-<div class="nav-buttons">
-  <button class="nav-btn" id="prev" aria-label="Previous">←</button>
-  <button class="nav-btn" id="next" aria-label="Next">→</button>
-</div>
-
-<div class="slides">
-
-<!-- ===================== SLIDE 1 — TITLE ===================== -->
-<section class="slide slide-1 active" data-slide="1">
-  <div class="s1-frame anim-fade-in d2"></div>
-
-  <div class="s1-top">
-    <div class="s1-tag-left anim-fade-in d1">A talk by Arek Rainczuk</div>
-    <div class="s1-tag-right anim-fade-in d1">2026 · MMXXVI</div>
+<!-- 1 -->
+<section class="slide title">
+  <div class="inner">
+    <div class="kicker">The why</div>
+    <h1>AI that actually<br>does the work.</h1>
+    <p class="sub">Most AI answers your question and leaves the work to you. <span class="hot">A Chief of Staff does the work.</span> Here's the difference, and why it changes how you run your business.</p>
   </div>
+  <div class="scroll-hint">Read on<div class="arrow"></div></div>
+</section>
 
-  <div class="s1-main">
-    <h1 class="s1-title">
-      <span class="anim-fade-up d2" style="display:block">AI That</span>
-      <span class="anim-fade-up d3" style="display:block"><span class="it">Actually</span> Works.</span>
-    </h1>
-    <p class="s1-sub anim-fade-up d4">A practical guide to using AI agents as a thought worker. Not a search engine. Not a chatbot. A system that does the work.</p>
-  </div>
-
-  <div class="s1-bottom">
-    <div class="s1-presenter anim-fade-in d5">
-      Presented by
-      <span class="name">Arek Rainczuk</span>
-    </div>
-    <div class="s1-tag-right anim-fade-in d5">Belgrave · Victoria</div>
+<!-- 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">A morning</div>
+    <h2>This morning, my car drove me to the city. I just supervised.</h2>
+    <p class="lead">Through the rain, around an accident, past a lane closure, into a space across the road. I read and listened to a podcast. <span class="hot">It didn't answer a question about driving. It drove.</span></p>
+    <p class="lead">That's the gap that matters. Asking a chatbot something and getting an answer is not the same as having a system that does the thing.</p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 2 — THE COPY-PASTE TRAP ===================== -->
-<section class="slide" data-slide="2">
-  <div class="slide-num"><span class="num">01</span><span class="label">The Trap</span></div>
-  <div class="two-col">
-    <div>
-      <h2 class="slide-title anim-fade-up d1">The Copy-Paste<br>Trap.</h2>
-      <p class="problem-line anim-fade-up d2">You're still doing the last 20% manually.</p>
-      <ul class="body-list">
-        <li class="anim-fade-up d3">Most people use AI as a smarter search engine</li>
-        <li class="anim-fade-up d4">Ask a question, get an answer, copy it, paste it, then do the rest yourself</li>
-        <li class="anim-fade-up d5">The bottleneck is still you</li>
-        <li class="anim-fade-up d6">Every output is a dead end you carry forward alone</li>
-      </ul>
-    </div>
-    <div class="flow-diagram">
-      <div class="flow-box anim-fade-up d2">
-        <span class="num">Step 01</span>
-        <div class="box-label">AI generates text</div>
-      </div>
-      <div class="flow-arrow anim-fade-in d3"></div>
-      <div class="flow-box anim-fade-up d4">
-        <span class="num">Step 02</span>
-        <div class="box-label">You copy it</div>
-      </div>
-      <div class="flow-arrow anim-fade-in d5"></div>
-      <div class="flow-box highlight anim-fade-up d6">
-        <span class="num">Step 03</span>
-        <div class="box-label">You do the actual work</div>
-      </div>
-    </div>
+<!-- 3 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Where most people are</div>
+    <h2>The copy-paste trap.</h2>
+    <p class="lead">You ask, it answers, you copy the answer out, and you finish the job yourself. Tomorrow it's forgotten you ever spoke, so you start over. It's clever, but <span class="hot">the bottleneck is still you.</span> Every answer is a dead end.</p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 3 — DELEGATION ===================== -->
-<section class="slide" data-slide="3">
-  <div class="slide-num"><span class="num">02</span><span class="label">The Shift</span></div>
-  <div class="s3-content">
-    <h2 class="slide-title anim-fade-up d1" style="text-align:center;">Delegation, Not Prompting.</h2>
-    <p class="concept-line anim-fade-up d2">Stop asking <span class="accent">questions</span>. Start giving <span class="accent">briefs</span>.</p>
-
-    <div class="three-rows">
-      <div class="row-item anim-slide-left d3">
-        <div class="row-num">01 · Old</div>
-        <div class="row-label">The Prompt</div>
-        <div class="row-desc">Ask a question. Evaluate the answer. Then go and do the work.</div>
-      </div>
-      <div class="row-item anim-slide-left d4">
-        <div class="row-num">02 · New</div>
-        <div class="row-label">The <span class="em">Brief</span></div>
-        <div class="row-desc">Assign a task with context and constraints. Receive a completed output.</div>
-      </div>
-      <div class="row-item anim-slide-left d5">
-        <div class="row-num">03 · Mindset</div>
-        <div class="row-label">The Shift</div>
-        <div class="row-desc">AI is not a search engine. It is a capable colleague who can execute.</div>
-      </div>
-    </div>
+<!-- 4 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The shift</div>
+    <h2>From prompting to delegating.</h2>
+    <p class="lead">Treat it less like a search box and more like a sharp colleague. You hand over a brief with the context, it brings back the finished work, you check it. It moves from advisor to doer. <span class="hot">You approve, it acts.</span></p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 4 — FILES ARE THE FOUNDATION ===================== -->
-<section class="slide" data-slide="4">
-  <div class="slide-num"><span class="num">03</span><span class="label">Foundation</span></div>
-  <div class="two-col">
-    <div>
-      <h2 class="slide-title anim-fade-up d1">Files Are the<br>Foundation.</h2>
-      <p class="subtitle anim-fade-up d2">When the agent can work with your actual files, it stops being a conversation and starts being a workflow.</p>
-      <ul class="body-list">
-        <li class="anim-fade-up d3">Reads a brief and drafts a proposal</li>
-        <li class="anim-fade-up d4">Saves it to the right folder with the right name</li>
-        <li class="anim-fade-up d5">Updates a template based on new information</li>
-        <li class="anim-fade-up d6">Moves, organises, and restructures your documents</li>
-      </ul>
-      <p class="accent-line anim-fade-up d7">Your file system equals your workspace.</p>
-    </div>
-    <div class="file-tree-wrap">
-      <div class="file-tree-label anim-fade-in d1">live workspace</div>
-      <div class="file-tree" id="fileTree">
-        <div class="tree-row" data-tree="0"><span class="file-name folder">Client Projects/</span></div>
-        <div class="tree-row" data-tree="1"><span class="file-name folder indent-1">Acme Corp/</span></div>
-        <div class="tree-row" data-tree="2"><span class="file-name indent-2">brief.md</span><span class="annotation">AI reads this</span></div>
-        <div class="tree-row" data-tree="3"><span class="file-name indent-2">proposal_v1.docx</span><span class="annotation">AI creates</span></div>
-        <div class="tree-row" data-tree="4"><span class="file-name indent-2">proposal_v2.docx</span><span class="annotation">AI updates</span></div>
-        <div class="tree-row" data-tree="5"><span class="file-name folder indent-1">Templates/</span></div>
-        <div class="tree-row" data-tree="6"><span class="file-name indent-2">proposal_template.docx</span></div>
-      </div>
-    </div>
+<!-- 5 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">It remembers</div>
+    <h2>Decide once. It carries the decision everywhere.</h2>
+    <p class="lead">Put your prices up today, and your proposals, your website copy and your email templates carry the new number from that moment. Nothing to chase down. <span class="hot">A decision made is a decision implemented.</span></p>
+    <p class="lead">A chatbot can't do that. You'd redo each one by hand, and it still wouldn't remember tomorrow.</p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 5 — CONNECTORS ===================== -->
-<section class="slide" data-slide="5">
-  <div class="slide-num"><span class="num">04</span><span class="label">Execution</span></div>
-  <div class="s5-content">
-    <h2 class="slide-title anim-fade-up d1" style="text-align:center;">Connectors equal Execution.</h2>
-    <p class="subtitle anim-fade-up d2" style="text-align:center; max-width:900px; margin:18px auto 0;">Not "here's how to do it in ClickUp." Actually doing it in ClickUp.</p>
-
-    <div class="icon-grid">
-      <div class="icon-cell anim-pulse d3">
-        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10 H21"/><path d="M8 3 V7"/><path d="M16 3 V7"/></svg>
-        <div class="icon-label">Calendar</div>
-        <div class="icon-status">event created</div>
-      </div>
-      <div class="icon-cell anim-pulse d4">
-        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6 L12 14 L21 6"/></svg>
-        <div class="icon-label">Email</div>
-        <div class="icon-status">drafted &nbsp;+&nbsp; sent</div>
-      </div>
-      <div class="icon-cell anim-pulse d5">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21 C 4 16, 8 14, 12 14 C 16 14, 20 16, 20 21"/></svg>
-        <div class="icon-label">CRM</div>
-        <div class="icon-status">contact logged</div>
-      </div>
-      <div class="icon-cell anim-pulse d6">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M7 12.5 L11 16.5 L17.5 9.5"/></svg>
-        <div class="icon-label">Tasks</div>
-        <div class="icon-status">task assigned</div>
-      </div>
-      <div class="icon-cell anim-pulse d7">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M3 7 H10 L12 5 H21 V19 H3 Z"/></svg>
-        <div class="icon-label">Drive</div>
-        <div class="icon-status">file saved</div>
-      </div>
-      <div class="icon-cell anim-pulse d8">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M4 20 V4 H20 V20 Z"/><path d="M4 16 H20"/><path d="M8 16 V12"/><path d="M12 16 V8"/><path d="M16 16 V10"/></svg>
-        <div class="icon-label">Sheets</div>
-        <div class="icon-status">row added</div>
-      </div>
-    </div>
-
-    <p class="takeaway anim-fade-up d10">The agent shifts from advisor to <span class="accent">executor</span>. You approve. It acts.</p>
+<!-- 6 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Over time</div>
+    <h2>You stop re-explaining yourself.</h2>
+    <p class="lead">Week by week it learns your clients, your pricing, your voice and how you make decisions. After a while you don't really prompt it. You just talk, and it already has the context. <span class="hot">You're building a version of how you think.</span></p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 6 — SKILLS ===================== -->
-<section class="slide" data-slide="6">
-  <div class="slide-num"><span class="num">05</span><span class="label">Skills</span></div>
-  <div class="s6-content">
-    <h2 class="slide-title anim-fade-up d1">Skills equal Consistency at Scale.</h2>
-    <p class="subtitle anim-fade-up d2">Do it once. Save it. Run it forever.</p>
-
-    <div class="step-flow">
-      <div class="step anim-fade-up d3">
-        <div class="step-num">01 · Discover</div>
-        <h3 class="step-title">Work out the process</h3>
-        <p class="step-desc">Build an output you're happy with. Land on the right result.</p>
-      </div>
-      <div class="step anim-fade-up d5">
-        <div class="step-num">02 · Encode</div>
-        <h3 class="step-title">Save it as a skill</h3>
-        <p class="step-desc">The method, the specs, the quality bar. Encoded once.</p>
-      </div>
-      <div class="step anim-fade-up d7">
-        <div class="step-num">03 · Deploy</div>
-        <h3 class="step-title">Run it on demand</h3>
-        <p class="step-desc">Same output. Same quality. No prompting from scratch.</p>
-      </div>
-    </div>
-
-    <div class="stat-callout anim-fade-up d9">
-      <div class="stat-line1">Build once · Run</div>
-      <div class="stat-counter"><span id="counter">0</span><span class="x">×</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SLIDE 7 — ITERATIVE WORK ===================== -->
-<section class="slide" data-slide="7">
-  <div class="slide-num"><span class="num">06</span><span class="label">Compound</span></div>
-  <h2 class="slide-title anim-fade-up d1">Iterative Work Across Everything.</h2>
-  <p class="subtitle anim-fade-up d2">Update your thinking once. Everything updates with it.</p>
-
-  <div class="compare-grid">
-    <div class="panel left anim-slide-left d3">
-      <div class="panel-label"><span class="dot"></span>Chat AI</div>
-      <ul>
-        <li>Every answer is a dead end</li>
-        <li>New assumptions mean starting over</li>
-        <li>Six outputs? Update all six manually</li>
-        <li>Your work does not accumulate</li>
-      </ul>
-    </div>
-    <div class="panel right anim-slide-right d4">
-      <div class="panel-label"><span class="dot"></span>Agent + Files</div>
-      <ul>
-        <li>Revise the brief, re-run the skill</li>
-        <li>Every downstream output reflects the change</li>
-        <li>Past work updates automatically</li>
-        <li>Your work compounds</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SLIDE 8 — MEMORY AND CONTEXT ===================== -->
-<section class="slide" data-slide="8">
-  <div class="slide-num"><span class="num">07</span><span class="label">Memory</span></div>
-  <h2 class="slide-title anim-fade-up d1">Memory and Context Over Time.</h2>
-
-  <div class="timeline-wrap">
-    <div class="timeline">
-      <div class="timeline-line"></div>
-      <div class="timeline-line-fill"></div>
-
-      <div class="milestone" style="left: 5%; animation-delay: 0.25s;">
-        <div class="ms-top">Week 01</div>
-        <div class="ms-dot"></div>
-        <div class="ms-bottom">
-          <div class="ms-label">Learns your<br>brand voice</div>
-          <div class="ms-sub">Tone · Style · Language</div>
-        </div>
-      </div>
-
-      <div class="milestone" style="left: 35%; animation-delay: 0.85s;">
-        <div class="ms-top">Week 02</div>
-        <div class="ms-dot"></div>
-        <div class="ms-bottom">
-          <div class="ms-label">Knows your<br>clients</div>
-          <div class="ms-sub">Names · History · Pricing</div>
-        </div>
-      </div>
-
-      <div class="milestone" style="left: 65%; animation-delay: 1.30s;">
-        <div class="ms-top">Week 04</div>
-        <div class="ms-dot"></div>
-        <div class="ms-bottom">
-          <div class="ms-label">Follows your<br>principles</div>
-          <div class="ms-sub">Decisions · Ethics · Filters</div>
-        </div>
-      </div>
-
-      <div class="milestone" style="left: 95%; animation-delay: 1.85s;">
-        <div class="ms-top">Month 03</div>
-        <div class="ms-dot"></div>
-        <div class="ms-bottom">
-          <div class="ms-label">Runs without<br>explanation</div>
-          <div class="ms-sub">Full context established</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="timeline-body anim-fade-up d8" style="animation-delay: 2.0s !important;">
-      Over time, you stop re-explaining yourself. Your values, standards, and way of thinking are built into the system.
-    </p>
-    <p class="timeline-accent anim-fade-up d9" style="animation-delay: 2.2s !important;">
-      You're building a version of how you think.
-    </p>
-  </div>
-</section>
-
-<!-- ===================== SLIDE 9 — FRENZY PHASE ===================== -->
-<section class="slide" data-slide="9">
-  <div class="slide-num"><span class="num">08</span><span class="label">Reality</span></div>
-  <h2 class="slide-title anim-fade-up d1">The Frenzy Phase.</h2>
-  <p class="subtitle anim-fade-up d2">What actually happens after the breakthrough.</p>
-
-  <div class="curve-wrap">
-    <div>
-      <svg class="curve-svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet">
-        <!-- grid -->
-        <line class="grid-line" x1="40" y1="80" x2="620" y2="80"/>
-        <line class="grid-line" x1="40" y1="160" x2="620" y2="160"/>
-        <line class="grid-line" x1="40" y1="240" x2="620" y2="240"/>
-
-        <!-- axes -->
-        <line class="axis" x1="40" y1="40" x2="40" y2="320"/>
-        <line class="axis" x1="40" y1="320" x2="620" y2="320"/>
-
-        <!-- axis labels -->
-        <text class="axis-label" x="620" y="338" text-anchor="end">Time →</text>
-        <text class="axis-label" x="32" y="48" text-anchor="end" transform="rotate(-90 32 48)">↑ Capability</text>
-
-        <!-- the curve: flat, sharp tick, steep rise, plateau -->
-        <path class="curve-path" d="M 50 295 L 150 290 C 195 285, 215 270, 235 220 C 265 145, 330 90, 430 75 L 600 70" pathLength="1000"/>
-
-        <!-- ticks under labels -->
-        <g class="point" style="animation-delay: 0.6s;">
-          <line class="point-tick" x1="120" y1="291" x2="120" y2="320"/>
-          <circle class="point-dot muted" cx="120" cy="291" r="5"/>
-          <text class="point-label muted" x="120" y="345" text-anchor="middle">Days 1–3</text>
-          <text class="point-sublabel" x="120" y="280" text-anchor="middle" style="fill: var(--text-muted);">Uncertainty</text>
-        </g>
-        <g class="point" style="animation-delay: 1.3s;">
-          <line class="point-tick" x1="240" y1="220" x2="240" y2="320"/>
-          <circle class="point-dot large" cx="240" cy="220" r="7"/>
-          <text class="point-label" x="240" y="345" text-anchor="middle">Day 4–7</text>
-          <text class="point-sublabel" x="240" y="208" text-anchor="middle">Breakthrough</text>
-        </g>
-        <g class="point" style="animation-delay: 2.1s;">
-          <line class="point-tick" x1="360" y1="105" x2="360" y2="320"/>
-          <circle class="point-dot" cx="360" cy="105" r="6"/>
-          <text class="point-label" x="360" y="345" text-anchor="middle">Weeks 2–4</text>
-          <text class="point-sublabel" x="360" y="93" text-anchor="middle">Build Frenzy</text>
-          <text class="point-sublabel" x="360" y="333" text-anchor="middle" style="fill: var(--text-muted); font-style:italic; font-size:10px;">3–4 projects running</text>
-        </g>
-        <g class="point" style="animation-delay: 2.7s;">
-          <line class="point-tick" x1="540" y1="73" x2="540" y2="320"/>
-          <circle class="point-dot light" cx="540" cy="73" r="5"/>
-          <text class="point-label muted" x="540" y="345" text-anchor="middle">Month 2+</text>
-          <text class="point-sublabel" x="540" y="61" text-anchor="middle" style="fill: var(--text-muted);">Systems Built</text>
-          <text class="point-sublabel" x="540" y="333" text-anchor="middle" style="fill: var(--text-subtle); font-style:italic; font-size:10px;">calm</text>
-        </g>
+<!-- 7 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">What it feels like</div>
+    <h2>The breakthrough comes sooner than you'd think.</h2>
+    <figure class="fig">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A curve of capability over time. It stays flat for the first few days, rises sharply at the breakthrough, climbs through a build frenzy, then settles into a high plateau where the system is running.">
+        <line x1="60" y1="250" x2="720" y2="250" stroke="#3c3833"/>
+        <line x1="60" y1="40" x2="60" y2="250" stroke="#3c3833"/>
+        <text x="60" y="278" font-family="'Khand',sans-serif" font-size="13" letter-spacing="2" fill="#8d877c">TIME &#8594;</text>
+        <text x="32" y="48" font-family="'Khand',sans-serif" font-size="13" letter-spacing="2" fill="#8d877c" transform="rotate(-90 32 48)">CAPABILITY</text>
+        <path d="M60,238 L210,232 C300,228 320,150 380,120 C440,92 520,70 620,58 L720,54" fill="none" stroke="#BD202D" stroke-width="2.5"/>
+        <circle cx="210" cy="232" r="4" fill="#e0303e"/>
+        <circle cx="360" cy="128" r="4" fill="#e0303e"/>
+        <circle cx="720" cy="54" r="4" fill="#e0303e"/>
+        <text x="120" y="218" font-family="'Khand',sans-serif" font-size="13" fill="#8d877c">A few days unsure</text>
+        <text x="300" y="104" font-family="'Khand',sans-serif" font-size="13" fill="#F5F1EA">It clicks</text>
+        <text x="470" y="60" font-family="'Khand',sans-serif" font-size="13" fill="#8d877c">Build frenzy, then running</text>
       </svg>
-    </div>
-
-    <div class="curve-body">
-      <ul class="body-list" style="margin-top:0;">
-        <li class="anim-fade-up d3">The intimidation is temporary</li>
-        <li class="anim-fade-up d4">The technical barrier dissolves, the agent teaches you as you go</li>
-        <li class="anim-fade-up d5">If it doesn't know, it knows who to ask</li>
-        <li class="anim-fade-up d6">Most people run 3 to 4 projects simultaneously during the frenzy</li>
-        <li class="anim-fade-up d7">It ends not with burnout, but with infrastructure in place</li>
-      </ul>
-      <p class="curve-accent anim-fade-up d9">Nobody told you the frenzy was normal. Now you know.</p>
-    </div>
+      <figcaption>The moment you build something yourself and realise you can keep going.</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ===================== SLIDE 10 — THE LONG GAME ===================== -->
-<section class="slide" data-slide="10">
-  <div class="slide-num"><span class="num">09</span><span class="label">The Long Game</span></div>
-  <h2 class="slide-title anim-fade-up d1">The Long Game.</h2>
-
-  <div class="s10-content">
-    <div class="closing-grid">
-      <div class="closing-panel anim-slide-up d2">
-        <div class="closing-panel-num">Principle 01</div>
-        <h3 class="closing-panel-title">Compounding Output</h3>
-        <ul>
-          <li>Every hour invested builds something that saves future hours</li>
-          <li>A skill built today runs 200 times next year</li>
-          <li>A connector configured once replaces a weekly manual task</li>
-          <li>You are building infrastructure, not just getting tasks done</li>
-        </ul>
-      </div>
-      <div class="closing-panel right anim-slide-up d4">
-        <div class="closing-panel-num">Principle 02</div>
-        <h3 class="closing-panel-title">Encode <span class="em">Who You Are</span></h3>
-        <ul>
-          <li>Build your values and standards into the system</li>
-          <li>Encode your brand voice, ethics, and decision principles</li>
-          <li>Ask the agent to propose better solutions at every stage</li>
-          <li>Use a second agent to audit the first: one builds, one reviews</li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="closing-statement anim-fade-up d7" style="animation-delay: 1.2s !important;">
-      You're not just building systems.<br>
-      You're building systems that <span class="accent">think the way you think</span>.
-    </p>
-
-    <div class="closing-footer anim-fade-in d9" style="animation-delay: 1.6s !important;">Arek Rainczuk</div>
+<!-- 8 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">What you get back</div>
+    <h2>It frees you for the work that needs you.</h2>
+    <p class="lead">This isn't about shaving minutes off your day. The admin, the drafting, the chasing, the remembering, all of it moves off your desk. <span class="hot">Your attention goes to the clients, the relationships and the calls that only you can make.</span> You stay the face. The system does the rest.</p>
   </div>
 </section>
 
-</div>
+<!-- 9 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Who built this</div>
+    <h2>I'm not a technical person. I crossed the gap anyway.</h2>
+    <p class="lead">Molecular biologist, then a photographer, now I run a video agency. No engineering background. I run two businesses through this system every day, and I built it the same way you would. <span class="hot">You don't need to become an engineer. You need the right way to think about it.</span></p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Yours to keep</div>
+    <h2>It lives on your machine. It's yours.</h2>
+    <p class="lead">Private, on your own computer, and not tied to one AI company or one app. You build it once and keep building from there. <span class="hot">It's a system you own, not a subscription you're locked into.</span></p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide title">
+  <div class="inner">
+    <div class="kicker">The next step</div>
+    <h1>Want one of<br>your own?</h1>
+    <p class="sub">A Chief of Staff is built with you, in your voice, until it runs your day. Then it's yours to run. <span class="hot">See what it is, and how it's built.</span></p>
+    <div class="next">
+      <a href="your-ai-os.html">What it is &rarr;</a>
+      <a href="the-shape-of-the-system.html">How it's built &rarr;</a>
+      <a class="primary" href="chief-of-staff.html">The Chief of Staff &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <script>
-(function() {
-  const slides = document.querySelectorAll('.slide');
-  const total = slides.length;
-  const cur = document.getElementById('cur');
-  const progress = document.getElementById('progress');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  const navHint = document.getElementById('navHint');
-  let current = 0;
-  let counterRAF = null;
-
-  function showSlide(idx) {
-    if (idx < 0 || idx >= total) return;
-    if (idx === current && slides[idx].classList.contains('active') && idx !== 0) return;
-
-    slides.forEach(s => s.classList.remove('active'));
-
-    // Force reflow so animation classes restart cleanly
-    void slides[idx].offsetWidth;
-
-    slides[idx].classList.add('active');
-    current = idx;
-
-    cur.textContent = String(idx + 1).padStart(2, '0');
-    progress.style.width = ((idx + 1) / total * 100) + '%';
-    prevBtn.disabled = idx === 0;
-    nextBtn.disabled = idx === total - 1;
-    navHint.classList.toggle('show', idx === 0);
-
-    triggerSlideEffects(idx);
-  }
-
-  function triggerSlideEffects(idx) {
-    const slide = slides[idx];
-    const slideNum = idx + 1;
-
-    // Reset previous animations of file-tree and counter
-    if (slideNum !== 4) {
-      const treeRows = document.querySelectorAll('#fileTree .tree-row');
-      treeRows.forEach(r => { r.classList.remove('shown'); r.classList.remove('flash'); });
-    }
-
-    if (counterRAF) { cancelAnimationFrame(counterRAF); counterRAF = null; }
-
-    // Slide 4: file tree sequential reveal with brief highlight
-    if (slideNum === 4) {
-      const rows = slide.querySelectorAll('.tree-row');
-      rows.forEach((row, i) => {
-        row.classList.remove('shown');
-        row.classList.remove('flash');
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var dotsWrap = document.getElementById('dots');
+    var progress = document.getElementById('progress');
+    var curEl = document.getElementById('cur');
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', function () { s.scrollIntoView(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var current = 0;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          current = slides.indexOf(e.target);
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+          curEl.textContent = pad(current + 1);
+        }
       });
-      rows.forEach((row, i) => {
-        setTimeout(() => {
-          row.classList.add('shown');
-          row.classList.add('flash');
-          setTimeout(() => row.classList.remove('flash'), 700);
-        }, 350 + i * 230);
-      });
+    }, { threshold: 0.55 });
+    slides.forEach(function (s) { io.observe(s); });
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
     }
-
-    // Slide 6: counter 0 → 200
-    if (slideNum === 6) {
-      const counterEl = slide.querySelector('#counter');
-      if (counterEl) {
-        animateCounter(counterEl, 0, 200, 1700, 1000);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        if (current < slides.length - 1) slides[current + 1].scrollIntoView();
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (current > 0) slides[current - 1].scrollIntoView();
       }
-    }
-  }
-
-  function animateCounter(el, from, to, duration, startDelay) {
-    el.textContent = from;
-    setTimeout(() => {
-      const start = performance.now();
-      function tick(now) {
-        const t = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(from + (to - from) * eased);
-        if (t < 1) counterRAF = requestAnimationFrame(tick);
-      }
-      counterRAF = requestAnimationFrame(tick);
-    }, startDelay);
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-      e.preventDefault();
-      showSlide(current + 1);
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-      e.preventDefault();
-      showSlide(current - 1);
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      showSlide(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      showSlide(total - 1);
-    }
-  });
-
-  prevBtn.addEventListener('click', () => showSlide(current - 1));
-  nextBtn.addEventListener('click', () => showSlide(current + 1));
-
-  // Touch swipe (mobile)
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchActive = false;
-  document.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1) return;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchActive = true;
-  }, { passive: true });
-  document.addEventListener('touchend', (e) => {
-    if (!touchActive) return;
-    touchActive = false;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-      if (dx < 0) showSlide(current + 1);
-      else showSlide(current - 1);
-    }
-  }, { passive: true });
-
-  // Init
-  prevBtn.disabled = true;
-  navHint.classList.add('show');
-  triggerSlideEffects(0);
-})();
+    });
+  })();
 </script>
-
 </body>
 </html>

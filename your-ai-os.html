@@ -164,6 +164,12 @@
   }
   .mono-note .on { color: var(--accent); }
 
+  .next { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .next a { font-family: var(--font-label); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--line-bright); border-radius: 40px; padding: 12px 24px; transition: border-color 0.2s ease, background 0.2s ease; }
+  .next a:hover { border-color: var(--accent); }
+  .next a.primary { border-color: var(--accent); }
+  .next a.primary:hover { background: var(--accent); color: #fff; }
+
   /* fixed chrome */
   .progress {
     position: fixed; top: 0; left: 0; height: 2px; width: 0;
@@ -227,7 +233,7 @@
 
 <div class="progress" id="progress"></div>
 <div class="wordmark">AREK RAINCZUK <span class="red">/</span> CHIEF OF STAFF</div>
-<div class="counter"><span class="cur" id="cur">01</span> / 12</div>
+<div class="counter"><span class="cur" id="cur">01</span> / 13</div>
 <nav class="dots" id="dots"></nav>
 
 <!-- 1 -->
@@ -304,6 +310,15 @@
   </div>
 </section>
 
+<!-- decision propagation -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The part that surprises people</div>
+    <h2>Change something once. It updates everywhere.</h2>
+    <p class="lead">Put your prices up today, and your proposals, your website copy and your email templates carry the new number from that moment. You change your mind in one place, and it carries the decision everywhere. <span class="hot">A decision made is a decision implemented.</span></p>
+  </div>
+</section>
+
 <!-- 8 -->
 <section class="slide">
   <div class="inner">
@@ -357,7 +372,11 @@
     <div class="kicker">The next step</div>
     <h1>Want one of<br>your own?</h1>
     <p class="sub">This is your Chief of Staff: built with you, in your voice, until it runs your day. <span class="hot">If it's what you've been needing, tell me, and we'll build yours.</span></p>
-    <p class="mono-note" style="margin-top:40px"><span class="on">/</span> Arek Rainczuk</p>
+    <div class="next">
+      <a href="ai-that-actually-works.html">Why it matters &rarr;</a>
+      <a href="the-shape-of-the-system.html">How it's built &rarr;</a>
+      <a class="primary" href="chief-of-staff.html">The Chief of Staff &rarr;</a>
+    </div>
   </div>
 </section>
 

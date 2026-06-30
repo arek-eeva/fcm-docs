@@ -4,944 +4,369 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Shape of the System | Arek Rainczuk</title>
-<meta name="description" content="How your Chief of Staff is built under the hood: the folders, the memory, and the rhythms that keep it running. Part three of three short pieces.">
+<meta name="description" content="What a Chief of Staff actually is under the hood. Plain files, a simple daily rhythm, and the shortest road to the moment it clicks.">
 <link rel="canonical" href="https://docs.fifthcastle.media/the-shape-of-the-system.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Shape of the System">
-<meta property="og:description" content="How your Chief of Staff is built under the hood: the folders, the memory, and the rhythms that keep it running.">
+<meta property="og:description" content="What a Chief of Staff actually is under the hood. Plain files, a simple daily rhythm, and the shortest road to the moment it clicks.">
 <meta property="og:url" content="https://docs.fifthcastle.media/the-shape-of-the-system.html">
 <meta property="og:site_name" content="Fifth Castle Media">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--bg); }
+  body {
+    font-family: var(--font-body); color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+  .slide {
+    position: relative; min-height: 100vh; min-height: 100dvh;
+    scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center;
+    padding: 96px clamp(24px, 8vw, 140px); overflow: hidden;
+  }
+  .slide::after {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(189,32,45,0.07), transparent 55%),
+      radial-gradient(ellipse at 110% 120%, rgba(245,241,234,0.025), transparent 60%);
+  }
+  .inner { position: relative; z-index: 2; max-width: 920px; width: 100%; margin: 0 auto; }
+  .kicker {
+    font-family: var(--font-label); font-size: clamp(13px, 1.4vw, 15px); letter-spacing: 0.34em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 6.4vw, 82px); line-height: 1.07; letter-spacing: -0.015em; }
+  h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(31px, 5.2vw, 60px); line-height: 1.12; letter-spacing: -0.01em; max-width: 18ch; }
+  .lead { font-size: clamp(18px, 2.2vw, 24px); line-height: 1.6; color: var(--muted); margin-top: 28px; max-width: 56ch; }
+  .lead .hot { color: var(--text); }
+  .lead + .lead { margin-top: 20px; }
+  .title h1 { font-size: clamp(44px, 8vw, 104px); }
+  .title .sub { font-size: clamp(19px, 2.6vw, 27px); color: var(--muted); margin-top: 32px; max-width: 44ch; line-height: 1.5; }
+  .title .sub .hot { color: var(--text); }
 
-:root {
-  --bg: #0A0A0A;
-  --bg-elevated: #141413;
-  --text: #F5F1EA;
-  --text-muted: #88847C;
-  --text-subtle: #4A4744;
-  --accent: #BD202D;
-  --accent-soft: rgba(189, 32, 45, 0.18);
-  --accent-glow: rgba(189, 32, 45, 0.10);
-  --line: #2A2724;
-  --line-bright: #3A3632;
+  /* two-column wrapper */
+  .cols { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 880px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; gap: 20px; } }
 
-  --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
-  --font-label: 'Khand', sans-serif;
-  --font-body: Georgia, 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-}
+  /* zone rows */
+  .zones { display: flex; flex-direction: column; gap: 0; }
+  .zone { border-top: 1px solid var(--line); padding: 14px 0; }
+  .zone .z { font-family: var(--font-label); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+  .zone .d { font-size: clamp(15px, 1.8vw, 18px); color: var(--muted); margin-top: 4px; line-height: 1.45; }
 
-html, body {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* file tree */
+  .filetree { font-family: var(--font-mono); font-size: clamp(12px, 1.5vw, 13.5px); line-height: 1.7; color: var(--muted); background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+  .filetree .r { color: var(--accent); }
+  .filetree .f { color: var(--text); }
 
-/* Subtle texture overlay (FCM premium feel) */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.06   0 0 0 0 0.05   0 0 0 0 0.04   0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  z-index: 100;
-}
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.06), transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(245,241,234,0.03), transparent 60%);
-  z-index: 99;
-}
+  /* two speeds split */
+  .split { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; max-width: 840px; }
+  @media (max-width: 680px) { .split { grid-template-columns: 1fr; } }
+  .split .col { background: var(--bg-2); padding: 22px clamp(16px, 2.4vw, 26px); }
+  .split .col .h { font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 22px); color: var(--text); }
+  .split .col .t { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+  .split .col ul { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .split .col li { font-size: clamp(14px, 1.7vw, 16px); color: var(--muted); padding-left: 16px; position: relative; }
+  .split .col li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.7; }
+  .split .col .lives { font-family: var(--font-mono); font-size: 12px; color: var(--subtle); margin-top: 14px; }
 
-/* Progress bar */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--accent);
-  width: 10%;
-  transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: 200;
-  box-shadow: 0 0 12px rgba(189, 32, 45, 0.6);
-}
+  /* flow: open work log close */
+  .flow { margin-top: 36px; display: flex; align-items: stretch; flex-wrap: wrap; max-width: 840px; }
+  .flow .box { flex: 1 1 0; min-width: 120px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px 16px; text-align: center; }
+  .flow .box.end { border-color: var(--accent); box-shadow: 0 0 26px -12px rgba(189,32,45,0.7); }
+  .flow .box .s { font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 24px); color: var(--text); }
+  .flow .box .ss { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .flow .arr { display: flex; align-items: center; color: var(--accent); font-family: var(--font-mono); padding: 0 10px; }
+  @media (max-width: 680px) { .flow { flex-direction: column; } .flow .arr { justify-content: center; padding: 8px 0; transform: rotate(90deg); } }
+  .flow-note { font-family: var(--font-mono); font-size: clamp(12px, 1.5vw, 13px); color: var(--subtle); margin-top: 18px; }
 
-/* Persistent UI */
-.wordmark {
-  position: fixed;
-  bottom: 28px;
-  left: 44px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  z-index: 150;
-}
-.wordmark img { width: 22px; height: 22px; display: block; }
-.wordmark .text {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-.wordmark .text .red { color: var(--accent); }
+  /* numbered list */
+  .list { margin-top: 34px; max-width: 740px; display: flex; flex-direction: column; gap: 20px; }
+  .list .row { display: flex; gap: 20px; align-items: flex-start; }
+  .list .row .n { font-family: var(--font-display); color: var(--accent); font-size: clamp(20px, 2.6vw, 28px); line-height: 1; flex: 0 0 auto; width: 1.4em; }
+  .list .row .body { font-size: clamp(16px, 1.9vw, 20px); line-height: 1.5; }
+  .list .row .body strong { color: var(--text); font-family: var(--font-body); font-weight: 700; }
+  .list .row .body span { color: var(--muted); }
 
-.counter {
-  position: fixed;
-  bottom: 28px;
-  right: 44px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  z-index: 150;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.counter .current { color: var(--text); font-size: 13px; font-weight: 500; }
-.counter .divider { width: 24px; height: 1px; background: var(--line-bright); }
+  /* onward links */
+  .next { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .next a {
+    font-family: var(--font-label); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; border: 1px solid var(--line-bright); border-radius: 40px;
+    padding: 12px 24px; transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .next a:hover { border-color: var(--accent); }
+  .next a.primary { border-color: var(--accent); }
+  .next a.primary:hover { background: var(--accent); color: #fff; }
 
-.nav-buttons {
-  position: fixed;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0;
-  z-index: 150;
-  border: 1px solid var(--line);
-  background: rgba(20, 20, 19, 0.7);
-  backdrop-filter: blur(8px);
-}
-.nav-hint {
-  position: fixed;
-  bottom: 76px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-  z-index: 150;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.nav-hint::before, .nav-hint::after { content: ''; width: 28px; height: 1px; background: var(--accent); }
-.nav-hint.show { opacity: 1; animation: hintPulse 2s infinite ease-in-out; }
-@keyframes hintPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
-
-.nav-btn {
-  width: 44px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-family: var(--font-label);
-  font-size: 16px;
-  font-weight: 400;
-  transition: all 0.18s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid var(--line);
-}
-.nav-btn:last-child { border-right: none; }
-.nav-btn:hover { color: var(--accent); background: rgba(189, 32, 45, 0.08); }
-.nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
-.nav-btn:disabled:hover { color: var(--text-muted); background: transparent; }
-
-/* Slide container */
-.slides { position: relative; width: 100vw; height: 100vh; }
-.slide {
-  position: absolute;
-  inset: 0;
-  padding: 84px 100px 110px;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.slide.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  animation: slideEnter 0.5s ease;
-}
-@keyframes slideEnter { from { opacity: 0; } to { opacity: 1; } }
-
-/* Slide number badge */
-.slide-num {
-  position: absolute;
-  top: 56px;
-  left: 100px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-weight: 400;
-}
-.slide-num::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
-
-/* Shared type */
-.slide-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 4.6vw, 60px);
-  font-weight: 400;
-  line-height: 1.06;
-  letter-spacing: -0.01em;
-  margin-top: 34px;
-}
-.slide-title .accent { color: var(--accent); font-style: italic; }
-.concept-line {
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.45vw, 20px);
-  color: var(--text-muted);
-  max-width: 880px;
-  margin-top: 18px;
-  line-height: 1.6;
-}
-.takeaway {
-  font-family: var(--font-display);
-  font-size: clamp(18px, 1.8vw, 25px);
-  font-style: italic;
-  color: var(--text);
-  margin-top: auto;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
-}
-.takeaway .red { color: var(--accent); }
-
-/* Numbered rows (mental-model slides) */
-.rows { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
-.row-item {
-  display: grid;
-  grid-template-columns: 120px 250px 1fr;
-  gap: 36px;
-  padding: 26px 0;
-  border-top: 1px solid var(--line);
-  align-items: start;
-}
-.row-item:last-child { border-bottom: 1px solid var(--line); }
-.row-num {
-  font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-  padding-top: 6px;
-  white-space: nowrap;
-}
-.row-label {
-  font-family: var(--font-display);
-  font-size: clamp(19px, 1.8vw, 25px);
-  line-height: 1.2;
-}
-.row-desc {
-  font-family: var(--font-body);
-  font-size: clamp(14px, 1.2vw, 17px);
-  color: var(--text-muted);
-  line-height: 1.65;
-  max-width: 760px;
-}
-
-/* Two-column layout */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; flex: 1; align-items: center; }
-
-/* File tree */
-.file-tree-wrap { border: 1px solid var(--line); background: var(--bg-elevated); padding: 30px 34px; position: relative; }
-.file-tree-label {
-  position: absolute;
-  top: -9px;
-  left: 24px;
-  background: var(--bg-elevated);
-  padding: 0 12px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.file-tree { font-family: var(--font-mono); font-size: clamp(11.5px, 0.95vw, 14px); line-height: 2.05; color: var(--text); white-space: pre; }
-.file-tree .dim { color: var(--text-subtle); }
-.file-tree .cmt { color: var(--text-muted); font-size: 0.88em; }
-.file-tree .hot { color: var(--accent); }
-
-/* Zone blocks (anatomy left column) */
-.zones { display: flex; flex-direction: column; gap: 22px; margin-top: 36px; }
-.zone { border-left: 2px solid var(--accent); padding: 4px 0 6px 22px; }
-.zone h3 {
-  font-family: var(--font-label);
-  font-size: 14px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--text);
-}
-.zone p { font-size: clamp(13.5px, 1.1vw, 16px); color: var(--text-muted); margin-top: 6px; line-height: 1.6; max-width: 480px; }
-
-/* Whiteboard badge */
-.wb-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 30px;
-  border: 1px dashed var(--line-bright);
-  padding: 12px 20px;
-  font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.wb-badge .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; flex: none; }
-.wb-badge .em { color: var(--text); }
-
-/* Split columns (two speeds) */
-.speeds { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 44px; border: 1px solid var(--line); flex: none; }
-.speed { padding: 38px 44px 42px; }
-.speed + .speed { border-left: 1px solid var(--line); }
-.speed .tag {
-  font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.speed .tag::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-.speed h3 { font-family: var(--font-display); font-size: clamp(22px, 2.2vw, 30px); margin-top: 14px; font-weight: 400; }
-.speed h3 .sub { color: var(--text-muted); font-size: 0.62em; font-style: italic; }
-.speed ul { list-style: none; margin-top: 18px; }
-.speed li {
-  font-size: clamp(13.5px, 1.15vw, 16.5px);
-  color: var(--text-muted);
-  padding: 7px 0 7px 22px;
-  position: relative;
-  line-height: 1.5;
-}
-.speed li::before { content: ''; position: absolute; left: 0; top: 14px; width: 9px; height: 1px; background: var(--accent); }
-.speed .home {
-  margin-top: 18px;
-  font-family: var(--font-mono);
-  font-size: clamp(11px, 0.9vw, 13px);
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  padding: 9px 14px;
-  display: inline-block;
-}
-
-/* Flow diagram (rhythm) */
-.flow-diagram { display: flex; align-items: stretch; gap: 14px; margin-top: 46px; }
-.flow-box {
-  flex: 1;
-  border: 1px solid var(--line);
-  background: var(--bg-elevated);
-  padding: 24px 22px 26px;
-  position: relative;
-}
-.flow-box.highlight { border-color: var(--accent); background: linear-gradient(180deg, var(--accent-glow), var(--bg-elevated)); }
-.flow-step {
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.flow-box h3 { font-family: var(--font-display); font-size: clamp(17px, 1.5vw, 22px); font-weight: 400; margin-top: 10px; }
-.flow-box p { font-size: clamp(12.5px, 1.0vw, 15px); color: var(--text-muted); margin-top: 8px; line-height: 1.55; }
-.flow-arrow { display: flex; align-items: center; color: var(--text-subtle); font-family: var(--font-label); font-size: 20px; flex: none; }
-.loop-note {
-  margin-top: 16px;
-  font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.loop-note::before { content: '↺'; color: var(--accent); font-size: 18px; }
-
-/* Whiteboard slide */
-.wb-slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1100px; }
-.wb-prompt { display: grid; grid-template-columns: 90px 1fr; gap: 40px; padding: 34px 0; border-top: 1px solid var(--line); align-items: baseline; }
-.wb-prompt:last-of-type { border-bottom: 1px solid var(--line); }
-.wb-prompt .n { font-family: var(--font-display); font-size: clamp(30px, 3vw, 44px); color: var(--accent); font-style: italic; }
-.wb-prompt .q { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 34px); line-height: 1.25; }
-.wb-prompt .a {
-  font-family: var(--font-label);
-  font-size: 13px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 10px;
-  display: block;
-}
-.wb-prompt .a .red { color: var(--accent); }
-
-/* Closing slide */
-.close-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 44px; }
-.close-cell { border: 1px solid var(--line); background: var(--bg-elevated); padding: 26px 26px 30px; }
-.close-cell h3 { font-family: var(--font-display); font-size: clamp(17px, 1.6vw, 23px); font-weight: 400; }
-.close-cell h3 .red { color: var(--accent); }
-.close-cell p { font-size: clamp(12.5px, 1.05vw, 15.5px); color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
-.close-final {
-  margin-top: auto;
-  padding-top: 30px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.close-final .big { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 38px); }
-.close-final .big .mono { font-family: var(--font-mono); font-size: 0.62em; color: var(--accent); background: var(--bg-elevated); border: 1px solid var(--line-bright); padding: 6px 14px; vertical-align: middle; }
-.close-final .small { font-size: clamp(13px, 1.1vw, 16px); color: var(--text-muted); max-width: 420px; line-height: 1.6; }
-
-/* ===== Title slide ===== */
-.slide-1 { padding: 0; }
-.s1-frame { position: absolute; inset: 34px; border: 1px solid var(--line-bright); pointer-events: none; }
-.s1-top, .s1-bottom {
-  position: absolute;
-  left: 70px;
-  right: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.s1-top { top: 64px; }
-.s1-bottom { bottom: 64px; }
-.s1-main { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 80px; }
-.s1-title {
-  font-family: var(--font-display);
-  font-size: clamp(56px, 8.6vw, 122px);
-  font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-}
-.s1-title .it { font-style: italic; color: var(--accent); }
-.s1-sub {
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.5vw, 20px);
-  color: var(--text-muted);
-  max-width: 760px;
-  margin-top: 30px;
-  line-height: 1.65;
-}
-.s1-kicker {
-  font-family: var(--font-label);
-  font-size: 12px;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--text-subtle);
-  margin-top: 26px;
-}
-.s1-kicker .red { color: var(--accent); }
-.s1-presenter { display: flex; align-items: center; gap: 14px; }
-.s1-presenter .name { color: var(--text); }
-
-/* Animations */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideLeft { from { opacity: 0; transform: translateX(-26px); } to { opacity: 1; transform: none; } }
-.anim-fade-up, .anim-fade-in, .anim-slide-left { opacity: 0; }
-.slide.active .anim-fade-up { animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.slide.active .anim-fade-in { animation: fadeIn 0.8s ease forwards; }
-.slide.active .anim-slide-left { animation: slideLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.slide.active .d1 { animation-delay: 0.08s; }
-.slide.active .d2 { animation-delay: 0.2s; }
-.slide.active .d3 { animation-delay: 0.34s; }
-.slide.active .d4 { animation-delay: 0.48s; }
-.slide.active .d5 { animation-delay: 0.62s; }
-.slide.active .d6 { animation-delay: 0.76s; }
-.slide.active .d7 { animation-delay: 0.9s; }
-.slide.active .d8 { animation-delay: 1.05s; }
-.slide.active .d9 { animation-delay: 1.2s; }
-.slide.active .d10 { animation-delay: 1.35s; }
-.slide.active .d11 { animation-delay: 1.5s; }
-.slide.active .d12 { animation-delay: 1.65s; }
-
-/* Small screens: readable fallback */
-@media (max-width: 900px) {
-  html, body { overflow: auto; height: auto; }
-  .slides { height: auto; }
-  .slide { position: relative; inset: auto; opacity: 1; visibility: visible; pointer-events: auto; padding: 70px 26px 60px; min-height: 100vh; border-bottom: 1px solid var(--line); }
-  .anim-fade-up, .anim-fade-in, .anim-slide-left { opacity: 1; animation: none !important; }
-  .slide-num { left: 26px; top: 28px; }
-  .two-col, .speeds, .close-grid { grid-template-columns: 1fr; }
-  .speed + .speed { border-left: none; border-top: 1px solid var(--line); }
-  .row-item { grid-template-columns: 1fr; gap: 8px; }
-  .flow-diagram { flex-direction: column; }
-  .flow-arrow { transform: rotate(90deg); justify-content: center; }
-  .wb-prompt { grid-template-columns: 1fr; gap: 8px; }
-  .nav-buttons, .nav-hint, .counter, .progress-bar { display: none; }
-  .wordmark { position: static; margin: 30px 26px; }
-  .slide-1 { padding: 90px 26px; min-height: 90vh; }
-  .s1-main { position: static; padding: 0; }
-  .s1-top, .s1-bottom { position: static; margin: 16px 0; }
-  .s1-frame { display: none; }
-}
+  /* fixed chrome */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--accent); z-index: 30; box-shadow: 0 0 12px rgba(189,32,45,0.6); transition: width 0.15s linear; }
+  .wordmark { position: fixed; bottom: 26px; left: clamp(20px, 4vw, 44px); z-index: 30; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .wordmark .red { color: var(--accent); }
+  .counter { position: fixed; bottom: 26px; right: clamp(20px, 4vw, 44px); z-index: 30; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--muted); }
+  .counter .cur { color: var(--text); }
+  .dots { position: fixed; top: 50%; right: clamp(14px, 2.4vw, 30px); transform: translateY(-50%); z-index: 30; display: flex; flex-direction: column; gap: 13px; }
+  .dots button { width: 9px; height: 9px; border-radius: 50%; padding: 0; cursor: pointer; background: transparent; border: 1px solid var(--line-bright); transition: all 0.25s ease; }
+  .dots button:hover { border-color: var(--muted); }
+  .dots button.active { background: var(--accent); border-color: var(--accent); transform: scale(1.25); }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--subtle); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .scroll-hint .arrow { width: 1px; height: 30px; background: linear-gradient(var(--subtle), transparent); animation: drop 1.8s ease-in-out infinite; }
+  @keyframes drop { 0%,100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(6px); } }
+  .js .inner > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js .slide.in .inner > * { opacity: 1; transform: none; }
+  .js .slide.in .inner > *:nth-child(2) { transition-delay: 0.08s; }
+  .js .slide.in .inner > *:nth-child(3) { transition-delay: 0.16s; }
+  .js .slide.in .inner > *:nth-child(4) { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .js .inner > * { opacity: 1; transform: none; transition: none; } .scroll-hint .arrow { animation: none; } }
+  @media (max-width: 680px) { .dots { display: none; } .slide { padding: 80px 24px; } }
 </style>
 </head>
 <body>
 <a href="chief-of-staff.html" style="position:fixed;top:20px;left:clamp(20px,4vw,44px);z-index:40;font-family:'Khand','Arial Narrow',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:#8d877c;text-decoration:none;"><span style="color:#BD202D">&lsaquo;</span> Chief of Staff</a>
+<script>document.documentElement.classList.add('js');</script>
 
-<div class="progress-bar" id="progress"></div>
+<div class="progress" id="progress"></div>
+<div class="wordmark">AREK RAINCZUK <span class="red">/</span> CHIEF OF STAFF</div>
+<div class="counter"><span class="cur" id="cur">01</span> / 11</div>
+<nav class="dots" id="dots"></nav>
 
-<div class="wordmark">
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApIAAAKSCAYAAABhiDtmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDUgNzkuMTY0NTkwLCAyMDIwLzEyLzA5LTExOjU3OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTEtMTRUMDk6NTA6MjIrMTE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTAyLTAxVDIxOjE2OjAzKzExOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2MTM4ZmY2M2MzYSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0NmM1Yy1hMDQyLTQzNmUtYmQ1Ni03NjEzOGZmNjNjM2EiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozYjU0NmM1Yy1hMDQyLTQzNmUtYmQ1Ni03NjEzOGZmNjNjM2EiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjNiNTQ2YzVjLWEwNDItNDM2ZS1iZDU2LTc2MTM4ZmY2M2MzYSIgc3RFdnQ6d2hlbj0iMjAyMC0xMS0xNFQwOTo1MDoyMisxMTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIyLjEgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hIO+YwAAP0lJREFUeNrt3WuTI9l9J+bEdPcMJXE1ICVybpwdMOZKbrQb8wkG7fkAqv4ErIpYirouqzccIkVp1dUidSFFqVq2V0uJa1dNODbsXTuimx+gozDhV37VGM+bISVHgxEektI6TIhcmqTI7vI5haxmTXXhkpkHQAJ4nogc9KAKt4PMyl/+T56TjcPDwwwAAIp6RBMAACBIAgAgSAIAIEgCACBIAgCAIAkAgCAJAIAgCQCAIAkAgCAJAACCJAAAgiQAAIIkAACCJAAAgiQAAAiSAAAIkgAALNZ5TZBOo9HQCLCC/tOzH9/+3v37t/7lu+/0tQaslsPDQ41QJftoQEESONvt1sVmuNkb3L+/8d179wbh31dCmOxqGRAkGdK1DXB2iGyFm4OwbOR3xVB58O+feWVT6wAIkgCjQmQ73NwJS/uMH++FMLmnlQB0badtTF3bsAohcjOGxZP3De7fz757797pX+1mw67ugVaD5SUHVaMiCfCzELl3OkSO0QnLna8+80pbywHrSkUyZWOqSMKyBshmuLmZh8OHjKhIHgl/QQfhZuuT775zS0vC8pGDqlGRBNY9RLaz4aCaTsmnOAqhX33mlW2tCQiSAOsTIjt5iGwneLrdrxqEA6wZXdspG1PXNixTiNyO4W+a353QtX1aLyyXP2kQDiwFOagaFUlgHUPk3rQhsoR2WO4ahAOsAxXJlI2pIgl1D5DNrERXdsGK5IOHheXqJ999Z1/LQ33JQdWoSALrEiJjeLyTpTkfchoxtO599ZlXdrQ+sKpUJFM2pook1DVEbmbDruxmmceXrEietJ8Nq5MD3wbUixxUjYoksOohcicbTjLeXODbiEH24G+eeaXlGwFWiYpkysZUkYQ6BcgYHHfzEFdJgork8e8Ows3lX333nZ5vCOpBDqpGRRJY1RB5kCJEJhbf152/eeaVTd8SIEgC1C9EtsPN3Wx+g2rK2Athcte3BSw7XdspG1PXNiw6RG5mw/Mhk0rYtX1aNyxXftUgHFgYOagaFUlgVULk7ixC5Ix1suEgnLZvEFhGKpIpG1NFEhYRIJt5gNyY1WvMsCL54CWyYWWy6xuF+ZKDqlGRBJY5RLay4aCajSX/KM2wKzv4a4NwAEESYC4hspPN90o187AXwuSebxdYFrq2Uzamrm2YV4jczOZ4PuQcurZP/6wXlsufMggHZk4OqkZFEpglg2pSh8gV9zsfeNAGgCAJ5ItBNcsbIuPnzc9JBQRJgHRGTV6e8nzIRcrPSQUESYDqGo3GqMnLm2nfWaPb+OfLAQiSAJN1hcj3+f0nXli6S0ECgiSwYDFENhqNu+s+evGksI60Q5C8s47nRgKCJDB9oNgIN82wHDQajdY6tcHvfvj55hee+jecUiOEyRgmd6whgCAJZJND5MnqZAyTd9eoOhmrkaPaQXVyKB6oxOpkR1MAgiQwLkRG7xtdvKpVuvzz3clOjEafsB7p7s5VJ4FGI/4PEkbfyAAAAABJRU5ErkJggg==" alt="Fifth Castle Media">
-  <span class="text"><span class="red">Fifth</span>&nbsp;Castle Media</span>
-</div>
-
-<div class="counter">
-  <span class="current" id="cur">01</span>
-  <span class="divider"></span>
-  <span>10</span>
-</div>
-
-<div class="nav-hint" id="navHint">Press <span style="color: var(--text); margin: 0 4px;">→</span> to begin</div>
-
-<div class="nav-buttons">
-  <button class="nav-btn" id="prev" aria-label="Previous">←</button>
-  <button class="nav-btn" id="next" aria-label="Next">→</button>
-</div>
-
-<div class="slides">
-
-<!-- ===================== SLIDE 1 — TITLE ===================== -->
-<section class="slide slide-1 active" data-slide="1">
-  <div class="s1-frame anim-fade-in d2"></div>
-
-  <div class="s1-top">
-    <div class="anim-fade-in d1">A talk by Arek Rainczuk</div>
-    <div class="anim-fade-in d1">2026 · MMXXVI</div>
+<!-- 1 -->
+<section class="slide title">
+  <div class="inner">
+    <div class="kicker">The how</div>
+    <h1>The shape of<br>the system.</h1>
+    <p class="sub">What a Chief of Staff actually is under the hood. Plain files, a simple rhythm, and the shortest road to the moment it clicks. <span class="hot">Nothing you can't open and read yourself.</span></p>
   </div>
+  <div class="scroll-hint">Read on<div class="arrow"></div></div>
+</section>
 
-  <div class="s1-main">
-    <h1 class="s1-title">
-      <span class="anim-fade-up d2" style="display:block">The <span class="it">Shape</span></span>
-      <span class="anim-fade-up d3" style="display:block">of the System.</span>
-    </h1>
-    <p class="s1-sub anim-fade-up d4">How to think about your Chief of Staff before you build one. The architecture, the habits, and the shortest road to the moment it clicks.</p>
-    <p class="s1-kicker anim-fade-in d5">Part two · <span class="red">AI That Actually Works</span> was the why · this is the how</p>
-  </div>
-
-  <div class="s1-bottom">
-    <div class="s1-presenter anim-fade-in d5">
-      Presented by
-      <span class="name">Arek Rainczuk</span>
-    </div>
-    <div class="anim-fade-in d5">Belgrave · Victoria</div>
+<!-- 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The frame</div>
+    <h2>A hire, not an install.</h2>
+    <p class="lead">Think of it as a sharp colleague who's brilliant from day one and blank every morning. What would you do for that hire? <span class="hot">Write everything down and leave it on their desk.</span></p>
+    <p class="lead">That's all the system is. Plain files it reads at the start of every session, so it never turns up with amnesia again. If you can write it down, it can act on it.</p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 2 — A HIRE, NOT AN INSTALL ===================== -->
-<section class="slide" data-slide="2">
-  <div class="slide-num">02 · The Frame</div>
-  <h2 class="slide-title anim-fade-up d1">A Hire, Not an <span class="accent">Install.</span></h2>
-  <p class="concept-line anim-fade-up d2">The one frame that decides whether this works: you're not setting up software, you're onboarding a colleague.</p>
-
-  <div class="rows">
-    <div class="row-item anim-slide-left d3">
-      <div class="row-num">01 · The Trap</div>
-      <div class="row-label">Treat it like an app</div>
-      <div class="row-desc">Install, poke at the settings, expect it to know your business. It can't. A chat window has never met your clients, your prices, or your voice, and it forgets you the moment you close it.</div>
-    </div>
-    <div class="row-item anim-slide-left d4">
-      <div class="row-num">02 · The Frame</div>
-      <div class="row-label">Treat it like a hire</div>
-      <div class="row-desc">A sharp colleague with total amnesia: capable from day one, blank every morning. What would you do for that hire? You'd write everything down and leave it on their desk.</div>
-    </div>
-    <div class="row-item anim-slide-left d5">
-      <div class="row-num">03 · The System</div>
-      <div class="row-label">The folder cures the amnesia</div>
-      <div class="row-desc">Plain files it reads at the start of every session. Everything you'd tell a great hire in their first week, written down once, read every single day.</div>
-    </div>
-  </div>
-
-  <p class="takeaway anim-fade-up d7">If you can write it down, <span class="red">the system can act on it.</span></p>
-</section>
-
-<!-- ===================== SLIDE 3 — THE ANATOMY ===================== -->
-<section class="slide" data-slide="3">
-  <div class="slide-num">03 · The Architecture</div>
-  <div class="two-col">
-    <div>
-      <h2 class="slide-title anim-fade-up d1">The <span class="accent">Anatomy.</span></h2>
-      <p class="concept-line anim-fade-up d2">A handful of folders is the whole architecture. Plain files, plain English, nothing hidden. You can open and read every one of them.</p>
-
+<!-- 3 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The architecture</div>
+    <h2>Brain, memory, hands.</h2>
+    <p class="lead">A handful of folders is the whole thing, in plain English. You can open and read every file, and they live on your own machine.</p>
+    <div class="cols">
       <div class="zones">
-        <div class="zone anim-slide-left d3">
-          <h3>The brain</h3>
-          <p>One operating brief. Who you are, what you sell, your prices, your voice, your priorities. Read at the start of every session.</p>
-        </div>
-        <div class="zone anim-slide-left d4">
-          <h3>The memory</h3>
-          <p>Facts it keeps, plus a daily log of what happened. Tomorrow starts where today finished, not from zero.</p>
-        </div>
-        <div class="zone anim-slide-left d5">
-          <h3>The hands</h3>
-          <p>Trackers for tasks and pipeline, playbooks for the work you repeat, templates for the documents you send.</p>
-        </div>
+        <div class="zone"><div class="z">Brain</div><div class="d">How you run things: your pricing, your voice, your values and rules.</div></div>
+        <div class="zone"><div class="z">Memory</div><div class="d">What's happened, and what's on right now.</div></div>
+        <div class="zone"><div class="z">Hands</div><div class="d">The trackers, playbooks and templates it works with.</div></div>
       </div>
-
-      <div class="wb-badge anim-fade-in d8"><span class="dot"></span>Whiteboard · <span class="em">&nbsp;sketch yours: same skeleton, your names</span></div>
-    </div>
-
-    <div class="file-tree-wrap anim-fade-in d3">
-      <div class="file-tree-label">your Chief of Staff folder</div>
-      <div class="file-tree"><span class="anim-fade-in d3"><span class="hot">your-business/</span></span>
-<span class="anim-fade-in d4"><span class="dim">├─</span> CLAUDE.md            <span class="cmt">the brief · read every session</span></span>
-<span class="anim-fade-in d5"><span class="dim">├─</span> brand/               <span class="cmt">colours, fonts, voice</span></span>
-<span class="anim-fade-in d5"><span class="dim">├─</span> memory/              <span class="cmt">what it keeps between sessions</span></span>
-<span class="anim-fade-in d6"><span class="dim">├─</span> Operations/</span>
-<span class="anim-fade-in d6"><span class="dim">│  ├─</span> Task-Tracker.csv  <span class="cmt">the live task list</span></span>
-<span class="anim-fade-in d7"><span class="dim">│  ├─</span> Logs/             <span class="cmt">what happened, day by day</span></span>
-<span class="anim-fade-in d7"><span class="dim">│  ├─</span> Playbooks/        <span class="cmt">how you do things, written once</span></span>
-<span class="anim-fade-in d8"><span class="dim">│  └─</span> Templates/        <span class="cmt">proposal, brief, invoice</span></span>
-<span class="anim-fade-in d8"><span class="dim">├─</span> Finance/</span>
-<span class="anim-fade-in d9"><span class="dim">│  └─</span> Pipeline-Tracker.csv  <span class="cmt">prospects and money</span></span>
-<span class="anim-fade-in d9"><span class="dim">├─</span> Clients/             <span class="cmt">one folder per client</span></span>
-<span class="anim-fade-in d10"><span class="dim">├─</span> Prospects/           <span class="cmt">moves to Clients/ when they sign</span></span>
-<span class="anim-fade-in d10"><span class="dim">└─</span> Archive/             <span class="cmt">superseded, never deleted</span></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SLIDE 4 — TWO SPEEDS OF TRUTH ===================== -->
-<section class="slide" data-slide="4">
-  <div class="slide-num">04 · The Architecture</div>
-  <h2 class="slide-title anim-fade-up d1">Two Speeds of <span class="accent">Truth.</span></h2>
-  <p class="concept-line anim-fade-up d2">Every fact in the system moves at one of two speeds. Keep them apart and it stays calm.</p>
-
-  <div class="speeds">
-    <div class="speed anim-fade-up d3">
-      <div class="tag">Stable · changes rarely</div>
-      <h3>What the business is <span class="sub">· touched monthly, maybe</span></h3>
-      <ul>
-        <li>What you sell and what it costs</li>
-        <li>Your values and your strategic filter</li>
-        <li>Brand: colours, fonts, how you sound</li>
-        <li>How you like to work</li>
-      </ul>
-      <div class="home">lives in → CLAUDE.md, brand/</div>
-    </div>
-    <div class="speed anim-fade-up d4">
-      <div class="tag">Live · changes daily</div>
-      <h3>What's happening now <span class="sub">· touched every session</span></h3>
-      <ul>
-        <li>Which jobs are on and where they're up to</li>
-        <li>This week's focus and blockers</li>
-        <li>Who owes you money</li>
-        <li>What got decided today</li>
-      </ul>
-      <div class="home">lives in → trackers, Logs/, a current-state note</div>
-    </div>
-  </div>
-
-  <p class="takeaway anim-fade-up d6">Mix them and the brief goes stale while you re-explain your own business every morning. <span class="red">Separate them and the brief stays true while the day moves.</span></p>
-</section>
-
-<!-- ===================== SLIDE 5 — WHERE IT LIVES ===================== -->
-<section class="slide" data-slide="5">
-  <div class="slide-num">05 · The Foundation</div>
-  <h2 class="slide-title anim-fade-up d1">Where It <span class="accent">Lives.</span></h2>
-  <p class="concept-line anim-fade-up d2">One decision, made once, before anything is installed. Storage and live work are different jobs, and the failure happens when one tool is asked to do both.</p>
-
-  <div class="rows">
-    <div class="row-item anim-slide-left d3">
-      <div class="row-num">01 · Live Work</div>
-      <div class="row-label">Local, always</div>
-      <div class="row-desc">The system folder sits on your computer's own disk, in your home folder. Not inside iCloud, Google Drive or Dropbox. And watch the Desktop: many Macs quietly sync Desktop and Documents to iCloud, so "local" isn't where you think it is.</div>
-    </div>
-    <div class="row-item anim-slide-left d4">
-      <div class="row-num">02 · Backup</div>
-      <div class="row-label">Deliberate, separate</div>
-      <div class="row-desc">Time Machine to a drive, or a zipped snapshot dropped into your cloud drive. A synced folder is not a backup: a deletion syncs just as faithfully as a save.</div>
-    </div>
-    <div class="row-item anim-slide-left d5">
-      <div class="row-num">03 · Assets</div>
-      <div class="row-label">Cloud, as always</div>
-      <div class="row-desc">Big files, deliverables, client files stay in Drive or Dropbox. Storing finished work is exactly the job those tools are built for. Leave them to it.</div>
-    </div>
-  </div>
-
-  <p class="takeaway anim-fade-up d7">Live work local. Backup deliberate. Assets in the cloud. <span class="red">Three jobs, three places.</span></p>
-</section>
-
-<!-- ===================== SLIDE 6 — THE RHYTHM ===================== -->
-<section class="slide" data-slide="6">
-  <div class="slide-num">06 · The Habit</div>
-  <h2 class="slide-title anim-fade-up d1">The Rhythm Is the <span class="accent">Engine.</span></h2>
-  <p class="concept-line anim-fade-up d2">The architecture only pays off through one daily loop. Day one it knows what you wrote down. Day thirty it knows your clients, your pipeline, and how you like things done.</p>
-
-  <div class="flow-diagram">
-    <div class="flow-box anim-fade-up d3">
-      <div class="flow-step">Open</div>
-      <h3>Start informed</h3>
-      <p>It reads the brief, the tracker and yesterday's log before you've finished your coffee.</p>
-    </div>
-    <div class="flow-arrow anim-fade-in d4">→</div>
-    <div class="flow-box anim-fade-up d4">
-      <div class="flow-step">Work</div>
-      <h3>Do the day</h3>
-      <p>Quotes, briefs, emails, prep. You talk, it produces, you approve.</p>
-    </div>
-    <div class="flow-arrow anim-fade-in d5">→</div>
-    <div class="flow-box anim-fade-up d5">
-      <div class="flow-step">Log</div>
-      <h3>Capture as you go</h3>
-      <p>Decisions, status changes and new leads get written down the moment they're mentioned.</p>
-    </div>
-    <div class="flow-arrow anim-fade-in d6">→</div>
-    <div class="flow-box highlight anim-fade-up d6">
-      <div class="flow-step">Close</div>
-      <h3>End richer</h3>
-      <p>The session ends with the system knowing more than it did this morning. That's the whole trick.</p>
-    </div>
-  </div>
-  <div class="loop-note anim-fade-in d7">and tomorrow starts where today finished</div>
-
-  <p class="takeaway anim-fade-up d8">For the first month, start everything in the system, even what feels quicker elsewhere. <span class="red">You're not saving time yet. You're training your replacement for the boring parts.</span></p>
-</section>
-
-<!-- ===================== SLIDE 7 — PLAYBOOKS ===================== -->
-<section class="slide" data-slide="7">
-  <div class="slide-num">07 · The Habit</div>
-  <h2 class="slide-title anim-fade-up d1">Write It Down <span class="accent">Once.</span></h2>
-  <p class="concept-line anim-fade-up d2">A playbook is a procedure in your own words: how you quote, what goes in your project brief, the questions you ask a new lead, your prices and your rules.</p>
-
-  <div class="rows">
-    <div class="row-item anim-slide-left d3">
-      <div class="row-num">01 · The Rule</div>
-      <div class="row-label">The rule of three</div>
-      <div class="row-desc">Done something three times? Write it down. That's a playbook now, and you never start it from scratch again.</div>
-    </div>
-    <div class="row-item anim-slide-left d4">
-      <div class="row-num">02 · The Payoff</div>
-      <div class="row-label">Procedures, not prompts</div>
-      <div class="row-desc">"Do a proposal for Sarah" now runs your whole procedure: your structure, your prices, your tone, your checklist. One sentence in, finished document out.</div>
-    </div>
-    <div class="row-item anim-slide-left d5">
-      <div class="row-num">03 · The Start</div>
-      <div class="row-label">Three come in the kit</div>
-      <div class="row-desc">Job prep, proposal, project brief. Rewrite them until they sound like you, then add your own as the rule of three catches them.</div>
-    </div>
-  </div>
-
-  <p class="takeaway anim-fade-up d7">This is where the hours come back. <span class="red">Every playbook is a job you'll never explain twice.</span></p>
-</section>
-
-<!-- ===================== SLIDE 8 — THE FIRST HOUR ===================== -->
-<section class="slide" data-slide="8">
-  <div class="slide-num">08 · The Breakthrough</div>
-  <h2 class="slide-title anim-fade-up d1">The First <span class="accent">Hour.</span></h2>
-  <p class="concept-line anim-fade-up d2">Don't set up everything. The goal of the first sitting is one real piece of work, as fast as possible. Everything else can wait.</p>
-
-  <div class="rows">
-    <div class="row-item anim-slide-left d3">
-      <div class="row-num">01 · Begin</div>
-      <div class="row-label">Say "let's begin"</div>
-      <div class="row-desc">The wizard interviews you, gently. Your website does half the talking, ten minutes of questions does the rest. You talk, it builds.</div>
-    </div>
-    <div class="row-item anim-slide-left d4">
-      <div class="row-num">02 · Import</div>
-      <div class="row-label">The handover trick</div>
-      <div class="row-desc">Your existing AI chats already know a surprising amount about your business. The wizard shows you how to export that knowledge and fold it in: months of context in one move.</div>
-    </div>
-    <div class="row-item anim-slide-left d5">
-      <div class="row-num">03 · Win</div>
-      <div class="row-label">One real task, today</div>
-      <div class="row-desc">Before the first sitting ends, it does something real for your business: a quote, a brief, an email in your voice. Feel it work before you invest another minute.</div>
-    </div>
-  </div>
-
-  <p class="takeaway anim-fade-up d7">The breakthrough isn't a feature. <span class="red">It's the first output you'd actually send.</span></p>
-</section>
-
-<!-- ===================== SLIDE 9 — TO THE WHITEBOARD ===================== -->
-<section class="slide" data-slide="9">
-  <div class="slide-num">09 · The Room</div>
-  <div class="wb-slide-content">
-    <h2 class="slide-title anim-fade-up d1" style="margin-bottom: 40px;">To the <span class="accent">Whiteboard.</span></h2>
-
-    <div class="wb-prompt anim-fade-up d2">
-      <div class="n">1</div>
-      <div>
-        <div class="q">What do you find yourself re-explaining most often?</div>
-        <span class="a">that's your <span class="red">brief</span></span>
+      <div class="filetree">
+<span class="r">/</span> your-business/<br>
+&nbsp;&nbsp;<span class="f">CLAUDE.md</span> &nbsp;the brief<br>
+&nbsp;&nbsp;brand/<br>
+&nbsp;&nbsp;memory/<br>
+&nbsp;&nbsp;Operations/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Task-Tracker.csv<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Playbooks/<br>
+&nbsp;&nbsp;Finance/<br>
+&nbsp;&nbsp;Clients/
       </div>
     </div>
-    <div class="wb-prompt anim-fade-up d4">
-      <div class="n">2</div>
-      <div>
-        <div class="q">What do you do three or more times a month?</div>
-        <span class="a">that's your first <span class="red">playbook</span></span>
-      </div>
-    </div>
-    <div class="wb-prompt anim-fade-up d6">
-      <div class="n">3</div>
-      <div>
-        <div class="q">What would you hand over tomorrow, if you trusted it?</div>
-        <span class="a">that's your <span class="red">first win</span></span>
-      </div>
-    </div>
-
-    <p class="concept-line anim-fade-in d8" style="margin-top: 36px;">Markers out. The best answers get built this week.</p>
   </div>
 </section>
 
-<!-- ===================== SLIDE 10 — SAME SHAPE, SHARED PARTS ===================== -->
-<section class="slide" data-slide="10">
-  <div class="slide-num">10 · Together</div>
-  <h2 class="slide-title anim-fade-up d1">Same Shape, <span class="accent">Shared Parts.</span></h2>
-  <p class="concept-line anim-fade-up d2">This is why we're all installing one architecture instead of ten different ones.</p>
-
-  <div class="close-grid">
-    <div class="close-cell anim-fade-up d3">
-      <h3>Swap <span class="red">playbooks</span></h3>
-      <p>A pricing playbook written in one business drops into another with the names changed. Same shape, so the parts fit.</p>
+<!-- 4 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The architecture</div>
+    <h2>Two speeds of truth.</h2>
+    <div class="split">
+      <div class="col">
+        <div class="h">What the business is</div>
+        <div class="t">Stable &middot; changes rarely</div>
+        <ul>
+          <li>Pricing</li>
+          <li>Values</li>
+          <li>Brand voice</li>
+          <li>How you work</li>
+        </ul>
+        <div class="lives">lives in &rarr; the brief, brand/</div>
+      </div>
+      <div class="col">
+        <div class="h">What's happening now</div>
+        <div class="t">Live &middot; changes daily</div>
+        <ul>
+          <li>Live jobs</li>
+          <li>This week's focus</li>
+          <li>Money owed</li>
+          <li>Today's decisions</li>
+        </ul>
+        <div class="lives">lives in &rarr; trackers, logs, a current note</div>
+      </div>
     </div>
-    <div class="close-cell anim-fade-up d4">
-      <h3>Compare <span class="red">briefs</span></h3>
-      <p>When something works, we can see why, because we're all looking at the same files in the same places.</p>
-    </div>
-    <div class="close-cell anim-fade-up d5">
-      <h3>Build <span class="red">together</span></h3>
-      <p>Good brains in this room. An idea sketched on that whiteboard today can be in everyone's system by Friday.</p>
-    </div>
-  </div>
-
-  <div class="close-final anim-fade-up d7">
-    <div class="big">Open the folder. Say <span class="mono">let's begin</span></div>
-    <div class="small">The wizard takes it from there. We all leave from the same starting point, so everything any of us figures out from here is something we can hand each other.</div>
+    <p class="lead">Mix them and the brief goes stale while you re-explain your own business every morning. <span class="hot">Keep them apart and it stays true while the day moves.</span></p>
   </div>
 </section>
 
-</div>
+<!-- 5 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Why files win</div>
+    <h2>Change it once. It changes everywhere.</h2>
+    <p class="lead">Because it works from your files, not a one-off chat, one change carries through everything that follows. Change your price and your proposals, your site copy and your email templates all carry it from that moment. <span class="hot">A decision made is a decision implemented.</span></p>
+    <p class="lead">A chat window can't do that. It forgot you overnight.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The habit</div>
+    <h2>The rhythm is the engine.</h2>
+    <div class="flow">
+      <div class="box"><div class="s">Open</div><div class="ss">what matters today</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="box"><div class="s">Work</div><div class="ss">get it done</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="box"><div class="s">Log</div><div class="ss">what happened</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="box end"><div class="s">Close</div><div class="ss">tomorrow starts here</div></div>
+    </div>
+    <p class="flow-note">and tomorrow starts where today finished.</p>
+    <p class="lead">For the first month, start everything here, even when it feels slower. You're not saving time yet. <span class="hot">You're teaching it the boring parts, so you never have to do them again.</span></p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The habit</div>
+    <h2>Write it down once.</h2>
+    <div class="list">
+      <div class="row"><div class="n">1</div><div class="body"><strong>The rule of three.</strong> <span>Do something three times, write it down. It's a playbook now, and you never start it from scratch again.</span></div></div>
+      <div class="row"><div class="n">2</div><div class="body"><strong>Procedures, not prompts.</strong> <span>"Do a proposal for Sarah" runs your whole way of doing proposals, not a fresh ask each time.</span></div></div>
+      <div class="row"><div class="n">3</div><div class="body"><strong>A head start.</strong> <span>A few come ready-made when you begin. You rewrite them in your own voice.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Under the hood</div>
+    <h2>One you talk to. A team behind it.</h2>
+    <p class="lead">You deal with one assistant. Behind it, it puts a small team of helpers to work and checks their output before it reaches you. <span class="hot">One builds, one reviews.</span> You see the finished result, not the machinery.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The first hour</div>
+    <h2>You don't start from scratch.</h2>
+    <p class="lead">The architecture is already built, roughly 80% of it, before you arrive. In the first hour you say "let's begin", it reads your website, folds in your old AI chats, and asks a few good questions. Within ten minutes it knows most of your business.</p>
+    <p class="lead"><span class="hot">You're not building from zero. You're making a working system yours.</span></p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The point of it</div>
+    <h2>The breakthrough isn't a feature. It's the first thing you'd actually send.</h2>
+    <p class="lead">A quote, a brief, an email that's good enough to go out, in your voice, in the first sitting. That's the moment it clicks, and the moment you see you can run and extend this yourself.</p>
+    <p class="lead"><span class="hot">You don't need to be technical to get there. If you can write things down, you can run this.</span></p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">Start here</div>
+    <h2>Three questions to start with.</h2>
+    <div class="list">
+      <div class="row"><div class="n">1</div><div class="body"><strong>What do you find yourself re-explaining most often?</strong> <span>That's your brief.</span></div></div>
+      <div class="row"><div class="n">2</div><div class="body"><strong>What do you do three or more times a month?</strong> <span>That's your first playbook.</span></div></div>
+      <div class="row"><div class="n">3</div><div class="body"><strong>What would you hand over tomorrow, if you trusted it?</strong> <span>That's your first win.</span></div></div>
+    </div>
+    <div class="next">
+      <a href="ai-that-actually-works.html">Why it matters &rarr;</a>
+      <a href="your-ai-os.html">What it is &rarr;</a>
+      <a class="primary" href="chief-of-staff.html">The Chief of Staff &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <script>
-(function() {
-  const slides = document.querySelectorAll('.slide');
-  const total = slides.length;
-  const cur = document.getElementById('cur');
-  const progress = document.getElementById('progress');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  const navHint = document.getElementById('navHint');
-  let current = 0;
-
-  function showSlide(idx) {
-    if (idx < 0 || idx >= total) return;
-
-    slides.forEach(s => s.classList.remove('active'));
-
-    // Force reflow so animation classes restart cleanly
-    void slides[idx].offsetWidth;
-
-    slides[idx].classList.add('active');
-    current = idx;
-
-    cur.textContent = String(idx + 1).padStart(2, '0');
-    progress.style.width = ((idx + 1) / total * 100) + '%';
-    prevBtn.disabled = idx === 0;
-    nextBtn.disabled = idx === total - 1;
-    navHint.classList.toggle('show', idx === 0);
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-      e.preventDefault();
-      showSlide(current + 1);
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-      e.preventDefault();
-      showSlide(current - 1);
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      showSlide(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      showSlide(total - 1);
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var dotsWrap = document.getElementById('dots');
+    var progress = document.getElementById('progress');
+    var curEl = document.getElementById('cur');
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', function () { s.scrollIntoView(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var current = 0;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          current = slides.indexOf(e.target);
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+          curEl.textContent = pad(current + 1);
+        }
+      });
+    }, { threshold: 0.55 });
+    slides.forEach(function (s) { io.observe(s); });
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
     }
-  });
-
-  prevBtn.addEventListener('click', () => showSlide(current - 1));
-  nextBtn.addEventListener('click', () => showSlide(current + 1));
-
-  // Touch swipe (mobile)
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchActive = false;
-  document.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1) return;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchActive = true;
-  }, { passive: true });
-  document.addEventListener('touchend', (e) => {
-    if (!touchActive) return;
-    touchActive = false;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-      if (dx < 0) showSlide(current + 1);
-      else showSlide(current - 1);
-    }
-  }, { passive: true });
-
-  // Deep-link: open on a given slide with #2 to #10 in the URL
-  const hash = parseInt((location.hash || '').replace('#', ''), 10);
-
-  prevBtn.disabled = true;
-  navHint.classList.add('show');
-  if (!isNaN(hash) && hash >= 1 && hash <= total) showSlide(hash - 1);
-})();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        if (current < slides.length - 1) slides[current + 1].scrollIntoView();
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (current > 0) slides[current - 1].scrollIntoView();
+      }
+    });
+  })();
 </script>
-
 </body>
 </html>
