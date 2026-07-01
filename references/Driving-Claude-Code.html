@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driving Claude Code | Chief of Staff Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A; --panel: #141413; --text: #F5F1EA; --muted: #88847C;
+    --subtle: #4A4744; --accent: #BD202D; --line: #2A2724;
+    --display: 'Vidaloka', Georgia, serif; --label: 'Khand', sans-serif;
+    --body: Georgia, 'Times New Roman', serif; --mono: 'JetBrains Mono', monospace;
+  }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 18px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; padding: 72px 24px 96px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+  h1 { font-family: var(--display); font-size: 42px; line-height: 1.15; font-weight: 400; margin-bottom: 18px; }
+  .lede { color: var(--muted); font-size: 18px; }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 40px 0; }
+  .fn { padding: 24px 0; border-top: 1px solid var(--line); }
+  .fn:last-of-type { border-bottom: 1px solid var(--line); }
+  .fn h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .fn h2 .red { color: var(--accent); }
+  .fn p { color: var(--muted); font-size: 16.5px; margin-bottom: 10px; }
+  .fn p:last-child { margin-bottom: 0; }
+  .fn .lead { color: var(--text); font-family: var(--label); text-transform: uppercase; letter-spacing: 0.04em; font-size: 15px; }
+  .fn .accent { color: var(--accent); }
+  kbd { font-family: var(--mono); font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); padding: 1px 7px; border-radius: 3px; }
+  code { font-family: var(--mono); font-size: 14px; color: var(--accent); background: var(--panel); padding: 1px 6px; border-radius: 2px; }
+  .tip { background: var(--panel); border-left: 3px solid var(--accent); padding: 20px 24px; margin-top: 32px; color: var(--text); font-size: 17px; }
+  .warn { border-left-color: var(--accent); }
+  footer { margin-top: 52px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
+  footer .red { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Chief of Staff <span class="red">&middot;</span> Reference</div>
+  <h1>Driving Claude Code.</h1>
+  <p class="lede">Claude Code is the desktop app your Chief of Staff lives in. The controls that matter sit in a row just below the chat box. Here's what each one does, and when to reach for it.</p>
+
+  <hr class="rule">
+
+  <div class="fn">
+    <h2>The mode button <span class="red">(below the chat box)</span></h2>
+    <p>Three settings. Click the mode button below the chat box to change it, or tap <kbd>Shift</kbd>+<kbd>Tab</kbd> to cycle through them.</p>
+    <p><span class="lead">Default.</span> Your Chief of Staff asks before it changes a file or runs anything. Reading and looking around is free. Good while you're finding your feet.</p>
+    <p><span class="lead">Plan first.</span> Your Chief of Staff explores and writes out a plan, but changes nothing until you approve it. Reach for this on anything big or unfamiliar, you see the whole approach before a single file moves.</p>
+    <p><span class="lead">Auto-accept.</span> Your Chief of Staff makes changes without stopping to ask each time. Use it once you trust the direction and want a long job to run without interruptions.</p>
+    <p>Rule of thumb: plan first for anything new or risky, auto-accept once you're confident, default in between.</p>
+  </div>
+
+  <div class="fn">
+    <h2>Choosing the model <span class="red">(the picker next to it)</span></h2>
+    <p>Next to the mode button is the model picker. Three worth knowing, smartest to fastest:</p>
+    <p><span class="lead">Opus.</span> The deep thinker. For hard judgement, careful writing, anything where getting it right matters. Slower, and it uses up your plan faster.</p>
+    <p><span class="lead">Sonnet.</span> The balanced one. Quick and capable, the sensible default for most jobs.</p>
+    <p><span class="lead">Haiku.</span> The sprinter. Fast and cheap, great for simple or bulk work like sorting files or quick look-ups. Less sharp on hard problems.</p>
+    <p>Your Chief of Staff chooses sensibly by default. For a big, careful piece, switch to Opus; for a long, simple grind, Haiku saves time and tokens. You can also just say "use Opus for this one."</p>
+  </div>
+
+  <div class="fn">
+    <h2>The context meter <span class="red">(below the chat box)</span></h2>
+    <p>That little meter below the chat box shows how much working memory is left in this session. A long session fills it up.</p>
+    <p>When it's getting full, your Chief of Staff sums up the conversation so far and carries on, that's called <span class="accent">compacting</span>. You can ask for it yourself by typing <code>/compact</code>, or type <code>/context</code> to see what's taking up the room.</p>
+    <p>Nothing important is lost when this happens. Your real memory lives in your files; the meter is only the live conversation. When in doubt, start a fresh session and carry on.</p>
+  </div>
+
+  <div class="fn">
+    <h2>Previewing changes</h2>
+    <p>Before it changes a file, your Chief of Staff shows you exactly what it's about to do, the old and the new side by side, and waits for your okay (in default and plan-first mode). Read it, then approve or reject.</p>
+    <p>Changed your mind after the fact? Type <code>/undo</code>, or tap <kbd>Esc</kbd> twice, to rewind to before the change. Every edit can be undone.</p>
+  </div>
+
+  <div class="fn">
+    <h2>Steering and feedback</h2>
+    <p><span class="lead">Stop it.</span> Tap <kbd>Esc</kbd> at any time. Your Chief of Staff halts and waits for you.</p>
+    <p><span class="lead">Correct it.</span> Just say what's off, plainly: "too formal, warmer please." It takes the note and carries on.</p>
+    <p><span class="lead">Make it stick.</span> For something it should never do again, tell your Chief of Staff to remember it: "Never use that phrase. Save that." From then on it holds across every future session, not just this one.</p>
+    <p><span class="lead">Report a bug.</span> If the app itself misbehaves, type <code>/feedback</code> to tell the Claude Code team.</p>
+  </div>
+
+  <div class="fn">
+    <h2>Private tokens <span class="red">(treat them like passwords)</span></h2>
+    <p>Some tools connect with a private token, a long secret code such as an API key or an access key. It is a password. Anyone who has it can act as you, so guard it like one.</p>
+    <p><span class="lead">Never paste a token into the chat.</span> The chat is saved, synced and sometimes screenshotted, so a token dropped there is exposed for good.</p>
+    <p><span class="lead">The safe way.</span> Keep it in a private file your Chief of Staff can read but that never leaves your computer. Easiest path: ask your Chief of Staff to set it up. Say, "I need to give you my [X] key safely. Make me a secrets file that's kept out of backups, and tell me where to paste it." Your Chief of Staff creates the file, hides it from GitHub and from anything you publish, and you paste the key into the file, not the chat. From then on it reads the key from there and never prints it.</p>
+    <p><span class="lead">Safer still.</span> Your computer's keychain (Mac Keychain or Windows Credential Manager) or a password manager. Your Chief of Staff fetches the key with a command when it's needed, so the raw code never sits in a file at all. Ask for this if you want the stronger option.</p>
+    <p><span class="lead">If one slips out.</span> Pasted it in the chat, caught it in a screenshot, or backed it up by accident? Treat it as burned. Rotate it: go to the service, cancel the old key and generate a new one. It takes a minute, and the old key stops working straight away.</p>
+  </div>
+
+  <div class="tip">Don't try to memorise all this. The controls are right under the chat box when you need them, and your Chief of Staff will walk you through any of it.</div>
+
+  <footer>Fifth Castle <span class="red">Media</span></footer>
+
+</div>
+</body>
+</html>

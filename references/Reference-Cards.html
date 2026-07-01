@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference Cards | Chief of Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A; --panel: #141413; --text: #F5F1EA; --muted: #88847C;
+    --subtle: #4A4744; --accent: #BD202D; --line: #2A2724;
+    --display: 'Vidaloka', Georgia, serif; --label: 'Khand', sans-serif;
+    --body: Georgia, 'Times New Roman', serif; --mono: 'JetBrains Mono', monospace;
+  }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 18px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; padding: 72px 24px 96px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+  h1 { font-family: var(--display); font-size: 42px; line-height: 1.15; font-weight: 400; margin-bottom: 18px; }
+  .lede { color: var(--muted); font-size: 18px; }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 36px 0 8px; }
+  .refs { list-style: none; }
+  .refs li { border-top: 1px solid var(--line); }
+  .refs li:last-child { border-bottom: 1px solid var(--line); }
+  .refs a { display: block; text-decoration: none; border: 0; padding: 24px 4px; transition: padding-left 0.18s ease; }
+  .refs a:hover { padding-left: 14px; }
+  .refs .t { font-family: var(--display); font-size: 25px; color: var(--text); margin-bottom: 7px; line-height: 1.1; transition: color 0.15s; }
+  .refs a:hover .t { color: var(--accent); }
+  .refs .t .arrow { color: var(--accent); margin-left: 10px; opacity: 0; transition: opacity 0.15s; }
+  .refs a:hover .t .arrow { opacity: 1; }
+  .refs .d { color: var(--muted); font-size: 16px; line-height: 1.5; }
+  footer { margin-top: 52px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
+  footer .red { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Build your own <span class="red">Chief of Staff</span></div>
+  <h1>Reference cards.</h1>
+  <p class="lede">The handful of guides worth keeping. Open any one whenever you need it, no need to read them front to back.</p>
+
+  <hr class="rule">
+
+  <ul class="refs">
+    <li><a href="Driving-Claude-Code.html">
+      <div class="t">Driving Claude Code <span class="arrow">&rarr;</span></div>
+      <div class="d">The controls that sit below the chat box: plan and auto mode, choosing the model, the context meter, previewing changes, giving feedback, and handling private tokens safely.</div>
+    </a></li>
+    <li><a href="Briefing-Your-Chief-of-Staff.html">
+      <div class="t">Briefing Your Chief of Staff <span class="arrow">&rarr;</span></div>
+      <div class="d">How you brief it is the whole difference. Give a brief not a question, correct it once, be specific, and talk rather than type.</div>
+    </a></li>
+    <li><a href="Building-Something.html">
+      <div class="t">Building Something <span class="arrow">&rarr;</span></div>
+      <div class="d">Your build loop, start to finish: vision first, plan it together, build with Opus and a team, get a Codex audit, then tidy up and go again.</div>
+    </a></li>
+    <li><a href="Getting-Unstuck.html">
+      <div class="t">Getting Unstuck <span class="arrow">&rarr;</span></div>
+      <div class="d">When you hit a wall: paste the error, fix a stale file, the terminal, updating Claude Code, and when to call.</div>
+    </a></li>
+    <li><a href="Backing-It-Up.html">
+      <div class="t">Backing It Up <span class="arrow">&rarr;</span></div>
+      <div class="d">Keep your system safe and reachable: a live synced copy (Dropbox or Drive) plus version history (GitHub), and what to steer clear of.</div>
+    </a></li>
+  </ul>
+
+  <footer>Fifth Castle <span class="red">Media</span></footer>
+
+</div>
+</body>
+</html>
