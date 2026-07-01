@@ -6,7 +6,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 
 | Page | URL | Last updated |
 |---|---|---|
-| Chief of Staff — An AI that runs your business with you | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-06-30 |
+| Chief of Staff — An AI that runs your business with you | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-07-01 |
 | Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-06-30 |
 | Founder stories (testimonials) | [chief-of-staff-testimonials.html](https://docs.fifthcastle.media/chief-of-staff-testimonials.html) | 2026-06-25 |
 | Before We Begin | [before-we-begin.html](https://docs.fifthcastle.media/before-we-begin.html) | 2026-06-26 |

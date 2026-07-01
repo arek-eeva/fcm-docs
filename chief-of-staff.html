@@ -265,6 +265,26 @@
   .lede-line { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 30px; max-width: 60ch; }
   .lede-line .hot { color: var(--text); }
 
+  /* price */
+  .price { margin-top: 34px; }
+  .price .amounts { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 22px; }
+  .price .was {
+    font-family: var(--font-display); font-size: clamp(24px, 3.2vw, 34px);
+    color: var(--subtle); text-decoration: line-through;
+    text-decoration-color: var(--accent); text-decoration-thickness: 2px;
+  }
+  .price .now {
+    font-family: var(--font-display); font-size: clamp(42px, 6.4vw, 64px);
+    color: var(--text); line-height: 1;
+  }
+  .price .now .gst { font-size: 0.36em; color: var(--muted); letter-spacing: 0.02em; }
+  .price .tag {
+    display: inline-block; margin-top: 20px;
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--accent-bright); font-weight: 600;
+    border: 1px solid var(--accent); border-radius: 40px; padding: 8px 18px;
+  }
+
   /* cta */
   .cta { text-align: left; }
   .btn {
@@ -550,6 +570,13 @@
     <div class="eyebrow">The next step</div>
     <h2>Want one of your own?</h2>
     <p class="body">Watch the three above, and if it's what you've been needing, let's talk about what it would look like for your business.</p>
+    <div class="price">
+      <div class="amounts">
+        <span class="was">$5,000</span>
+        <span class="now">$2,500 <span class="gst">+ GST</span></span>
+      </div>
+      <span class="tag">Limited time offer &middot; 50% off</span>
+    </div>
     <a class="btn" href="https://portal.fifthcastle.media/schedule/call-with-arek">Book a quick call</a>
     <p class="or">Or just message me.</p>
     <p class="or">Prefer a room and two days? <a href="chief-of-staff-intensive.html" style="color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none;">Join the 2-Day Intensive</a> (Melbourne, Q4 2026).</p>
