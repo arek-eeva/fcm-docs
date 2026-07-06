@@ -28,6 +28,13 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Getting Unstuck | [references/Getting-Unstuck.html](https://docs.fifthcastle.media/references/Getting-Unstuck.html) | 2026-07-01 |
 | Backing It Up | [references/Backing-It-Up.html](https://docs.fifthcastle.media/references/Backing-It-Up.html) | 2026-07-01 |
 
+## Chief of Staff — Personal (per-recipient, noindex)
+
+| Page | URL | Last updated |
+|---|---|---|
+| Ken Fehily — homework (kickoff pilot) | [references/ken-homework.html](https://docs.fifthcastle.media/references/ken-homework.html) | 2026-07-06 |
+| Stephen Lewis — what you'd be running (IT/pricing overview) | [references/chief-of-staff-stephen.html](https://docs.fifthcastle.media/references/chief-of-staff-stephen.html) | 2026-07-06 |
+
 ## Client Proposals & Briefs
 
 | Page | URL | Last updated |
