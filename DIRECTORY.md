@@ -21,7 +21,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Page | URL | Last updated |
 |---|---|---|
 | Reference Cards (index) | [references/Reference-Cards.html](https://docs.fifthcastle.media/references/Reference-Cards.html) | 2026-07-01 |
-| Briefing Your Chief of Staff | [references/Briefing-Your-Chief-of-Staff.html](https://docs.fifthcastle.media/references/Briefing-Your-Chief-of-Staff.html) | 2026-07-01 |
+| Briefing Your Chief of Staff | [references/Briefing-Your-Chief-of-Staff.html](https://docs.fifthcastle.media/references/Briefing-Your-Chief-of-Staff.html) | 2026-07-07 |
 | Building Something | [references/Building-Something.html](https://docs.fifthcastle.media/references/Building-Something.html) | 2026-07-01 |
 | Driving Claude Code | [references/Driving-Claude-Code.html](https://docs.fifthcastle.media/references/Driving-Claude-Code.html) | 2026-07-01 |
 | Organising Your Workspace | [references/Organising-Your-Workspace.html](https://docs.fifthcastle.media/references/Organising-Your-Workspace.html) | 2026-07-01 |
