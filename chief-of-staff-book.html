@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a call | Chief of Staff | Arek Rainczuk</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0A0A0A; --text:#F5F1EA; --muted:#8d877c; --accent:#BD202D; --line:#2A2724; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:Georgia,serif; min-height:100vh; }
+  .topbar {
+    display:flex; justify-content:space-between; align-items:center;
+    max-width:980px; margin:0 auto; padding:26px clamp(20px,5vw,60px) 0;
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.26em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .topbar a { color:var(--muted); text-decoration:none; }
+  .topbar a:hover { color:var(--text); }
+  .topbar .red { color:var(--accent); }
+  header.intro { max-width:980px; margin:0 auto; padding:clamp(30px,6vh,60px) clamp(20px,5vw,60px) 8px; }
+  .kicker {
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.34em;
+    text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:16px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .kicker::before { content:''; width:30px; height:1px; background:var(--accent); }
+  h1 { font-family:'Vidaloka',serif; font-weight:400; font-size:clamp(30px,4.6vw,48px); line-height:1.1; }
+  p.sub { color:var(--muted); font-size:clamp(16px,1.9vw,19px); margin-top:14px; max-width:56ch; }
+  .widget-shell {
+    max-width:980px; margin:26px auto clamp(40px,8vh,80px);
+    padding:0 clamp(8px,3vw,60px);
+  }
+  .widget-frame {
+    background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.5);
+  }
+  .widget-frame iframe { display:block; width:100%; border:0; min-height:760px; }
+  footer { border-top:1px solid var(--line); padding:22px 0 34px; text-align:center;
+    font-family:'Khand',sans-serif; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1596350102005148');
+fbq('track','PageView');
+fbq('trackCustom','BookingPageView',{content_name:'CoS 1:1 booking page'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+  <nav class="topbar">
+    <a href="chief-of-staff.html"><span class="red">Arek Rainczuk</span> / Chief of Staff</a>
+    <a href="chief-of-staff.html">Back</a>
+  </nav>
+  <header class="intro">
+    <div class="kicker">Book a call</div>
+    <h1>Thirty minutes, live, on the real system.</h1>
+    <p class="sub">Pick a time that suits. I'll walk you through the AI operating system running my own two businesses and you can bring your hardest bottleneck.</p>
+  </header>
+  <div class="widget-shell">
+    <div class="widget-frame">
+      <iframe id="bookingFrame" title="Booking calendar"
+        src="https://app.fifthcastle.media/widget/bookings/cos-call-with-arek"></iframe>
+    </div>
+  </div>
+  <footer>Fifth Castle Media</footer>
+
+<script>
+/* Forward ad attribution (utm_*, fbclid, campaign_id) into the embedded widget,
+   because GHL only reads what is in the widget URL at submission. */
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var carry = [];
+  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  if (!carry.length) return;
+  var f = document.getElementById('bookingFrame');
+  try {
+    var u = new URL(f.src);
+    carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
+    f.src = u.toString();
+  } catch (e) { /* leave the default src */ }
+})();
+</script>
+<!-- GHL external tracking -->
+<script
+  src="https://app.fifthcastle.media/js/external-tracking.js"
+  data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
+></script>
+</body>
+</html>
