@@ -324,6 +324,23 @@
     .topbar .nav-learn { display: none; }
   }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1596350102005148');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -613,6 +630,27 @@
   "areaServed": "AU",
   "url": "https://docs.fifthcastle.media/chief-of-staff.html"
 }
+</script>
+
+<!-- Carry ad attribution (utm_*, fbclid) across to the GHL booking page.
+     GHL only reads what is in the URL at submission, so without this the
+     booked call cannot be traced back to the ad that produced it. -->
+<script>
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var carry = [];
+  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  if (!carry.length) return;
+  var links = document.querySelectorAll('a[href*="portal.fifthcastle.media/schedule"]');
+  Array.prototype.forEach.call(links, function (a) {
+    try {
+      var u = new URL(a.href, window.location.href);
+      carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
+      a.href = u.toString();
+    } catch (e) { /* leave the link untouched rather than break the CTA */ }
+  });
+})();
 </script>
 
 </body>
