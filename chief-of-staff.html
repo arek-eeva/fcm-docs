@@ -306,6 +306,30 @@
   .btn:hover { background: var(--accent); color: #fff; }
   .cta .or { margin-top: 18px; font-size: 16px; color: var(--subtle); }
 
+  /* objections / faq */
+  .faq { margin-top: 22px; border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 24px 6px;
+    font-family: var(--font-display); font-size: clamp(19px, 2.4vw, 25px);
+    color: var(--text); line-height: 1.28; transition: color 0.25s ease;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before {
+    content: '+'; font-family: var(--font-mono); color: var(--accent);
+    font-size: 24px; line-height: 1; flex: 0 0 auto; width: 0.7em; transition: color 0.25s ease;
+  }
+  .faq details[open] summary::before { content: '\2212'; }
+  .faq summary:hover { color: var(--accent-bright); }
+  .faq .ans {
+    padding: 0 6px 28px 40px;
+    font-size: clamp(16px, 1.8vw, 18px); color: var(--muted); line-height: 1.66; max-width: 62ch;
+  }
+  .faq .ans .hot { color: var(--text); }
+  @media (max-width: 600px) { .faq .ans { padding-left: 6px; } }
+
   footer {
     border-top: 1px solid var(--line); margin-top: 20px;
     padding: 40px 0 60px;
@@ -594,6 +618,33 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
         </span>
         <span class="arrow">&rarr;</span>
       </a>
+    </div>
+  </section>
+
+  <section id="questions">
+    <div class="eyebrow">Straight answers</div>
+    <h2>The questions founders ask.</h2>
+    <div class="faq">
+      <details>
+        <summary>Won't this be out of date in six months? AI moves so fast.</summary>
+        <div class="ans">The opposite. This isn't an app that ships once and dates. It's a set of instructions that runs on whatever the best model is that week. When a sharper model or a better harness lands, <span class="hot">your Chief of Staff gets sharper the same day</span>, no rebuild and no new invoice. Most tools lose value the moment you buy them. This one compounds.</div>
+      </details>
+      <details>
+        <summary>What if I want out, or you disappear? Am I locked in?</summary>
+        <div class="ans">No lock-in, by design. It lives on your own machine, Mac or PC, written in plain instructions you own, not buried on someone else's servers. It runs on Claude today and can be moved to another AI system down the track, with your Chief of Staff walking you through it. There's no retainer holding you in. <span class="hot">My whole job is to make myself unnecessary</span>, and I can't do that if I've trapped you.</div>
+      </details>
+      <details>
+        <summary>I'm not technical. Can I actually run this?</summary>
+        <div class="ans">Your three jobs are talk, record, approve. You describe how your business works, I build it around you and hand it over, and if it ever needs to move or change, your Chief of Staff sorts it out with you. <span class="hot">If you can explain your business out loud, you can run this.</span></div>
+      </details>
+      <details>
+        <summary>I already use ChatGPT. How is this different?</summary>
+        <div class="ans">Chat is level one. You re-explain your context every time and it answers a question. A Chief of Staff holds your whole business in memory and moves the work: a decision made becomes a decision carried through every system that depends on it. <span class="hot">A chatbot answers. This does the job.</span></div>
+      </details>
+      <details>
+        <summary>It's built bespoke to me. Doesn't that mean I'm stuck with how you set it up?</summary>
+        <div class="ans">The opposite of stuck. Because it's a set of instructions made bespoke to you, you can point it at any part of your business and run it however you need: marketing this week, finance next, a new hire's onboarding the week after. <span class="hot">It bends to you, and it keeps bending as you grow.</span></div>
+      </details>
     </div>
   </section>
 
