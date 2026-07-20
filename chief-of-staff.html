@@ -169,6 +169,14 @@
   .chips .chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.75; margin-right: 10px; }
   .chips-cap { margin-top: 24px; font-style: italic; font-size: clamp(17px, 1.9vw, 20px); color: var(--text); max-width: 58ch; }
 
+  /* VSL embed */
+  .vsl {
+    margin-top: 38px; position: relative; aspect-ratio: 16 / 9;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 11px;
+    overflow: hidden; box-shadow: 0 36px 70px -38px rgba(0,0,0,0.85);
+  }
+  .vsl iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
   /* screenshot-style mock windows */
   .shots { margin-top: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   .win {
@@ -461,6 +469,9 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     <div class="eyebrow">See it work</div>
     <h2>Less like a chatbot. More like a colleague.</h2>
     <p class="body">You ask the way you'd ask a good assistant. It already knows the context, so it gets straight to the work.</p>
+    <div class="vsl">
+      <iframe src="https://player.vimeo.com/video/1211265137?h=b4d8faadd9&title=0&byline=0&portrait=0&dnt=1" title="Build Your Own Chief of Staff — Arek Rainczuk" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <div class="shots">
       <div class="win">
         <div class="bar"><i></i><i></i><i></i><span class="ttl">Chief of Staff</span></div>
