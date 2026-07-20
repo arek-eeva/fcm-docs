@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plain-English Glossary | Chief of Staff Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A; --panel: #141413; --text: #F5F1EA; --muted: #88847C;
+    --subtle: #4A4744; --accent: #BD202D; --line: #2A2724;
+    --display: 'Vidaloka', Georgia, serif; --label: 'Khand', sans-serif;
+    --body: Georgia, 'Times New Roman', serif; --mono: 'JetBrains Mono', monospace;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--body);
+    font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 72px 24px 96px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+  h1 { font-family: var(--display); font-size: 42px; line-height: 1.15; font-weight: 400; margin-bottom: 18px; }
+  .lede { color: var(--muted); font-size: 18px; }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 40px 0 8px; }
+  .group { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em; font-size: 14px; color: var(--accent); margin: 40px 0 6px; }
+  .term { padding: 20px 0; border-top: 1px solid var(--line); }
+  .term:last-of-type { border-bottom: 1px solid var(--line); }
+  .term h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .term p { color: var(--muted); font-size: 16.5px; }
+  .term .key { color: var(--accent); }
+  footer { margin-top: 52px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
+  footer .red { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Chief of Staff <span class="red">&middot;</span> Reference</div>
+  <h1>Plain-English glossary.</h1>
+  <p class="lede">The words that come up in our sessions. None of them are complicated once you know what they actually mean. Start with the first few, the rest are there when you need them.</p>
+
+  <div class="group">Start with these</div>
+
+  <div class="term">
+    <h2>Claude Code</h2>
+    <p>The app we use to run your Chief of Staff, made by Anthropic (the same company that makes Claude). It runs on your own computer, so it can read your files and remember things between sessions. You open it like any other app, type in plain English, and it does the work. This is your one app. It runs on your computer, reads your files, and remembers between sessions. The Claude website, ChatGPT and Perplexity are just chat tools, so leave those closed and do your work here.</p>
+  </div>
+  <div class="term">
+    <h2>Session</h2>
+    <p>One working conversation with your Chief of Staff, like one meeting about one job. Keep separate jobs in separate sessions, your GST webinar in one, a newsletter in another, so each stays focused. Your recent sessions sit in the list on the left; <span class="key">pin</span> the ones you use often so they stay at the top.</p>
+  </div>
+  <div class="term">
+    <h2>Ingest</h2>
+    <p>Your word for adding a file so your Chief of Staff can read and remember it. Drag the file into the chat (or use the "+" button), then say <span class="key">"ingest this"</span>. That's the whole thing. One word, every time: ingest.</p>
+  </div>
+  <div class="term">
+    <h2>Your working folder</h2>
+    <p>The folder on your computer that Claude Code can see. Anything you want it to use lives in there. If a file isn't in that folder (or ingested into the session), the assistant can't read it, that's usually why it says it "can't find" something.</p>
+  </div>
+  <div class="term">
+    <h2>Prompt</h2>
+    <p>What you type or say to the assistant. It can be a question, an instruction, or a request to draft something. You don't need special wording, plain English is the point. Dictating (talking instead of typing) works well for longer thoughts.</p>
+  </div>
+
+  <div class="group">Good to know</div>
+
+  <div class="term">
+    <h2>Model, and "Fable"</h2>
+    <p>The AI itself, the part doing the thinking. Different models trade off how clever, fast, and costly they are. <span class="key">Fable</span> is the most capable one on your plan, so that's the one to use for real work like your webinar decks.</p>
+  </div>
+  <div class="term">
+    <h2>Tokens</h2>
+    <p>The unit the AI uses to count text, roughly word-sized chunks. When you see a number like "697 tokens", that's just it telling you how much text it's working through. You never need to manage this, it's only there for interest.</p>
+  </div>
+  <div class="term">
+    <h2>Memory</h2>
+    <p>Files where your assistant records what matters between sessions, your details, your decisions, how you like things. Without memory, every session starts from zero. With it, it picks up where it left off.</p>
+  </div>
+  <div class="term">
+    <h2>Skill</h2>
+    <p>A saved routine for a job you do often, like building a webinar deck or a newsletter in your style. Once it's built, you run it by name instead of explaining the task again. The skills get better as we refine them together.</p>
+  </div>
+  <div class="term">
+    <h2>Hallucination</h2>
+    <p>When the AI says something confidently that isn't true, most often with specific facts (dates, figures, legislation). It's not lying, it's pattern-matching. The rule: always check anything that matters before you rely on it. This is exactly why your legislation links get verified, not assumed.</p>
+  </div>
+
+  <div class="group">The technical words (for later)</div>
+
+  <div class="term">
+    <h2>Agent</h2>
+    <p>An AI that takes actions, not just answers questions. It can open a file, draft a document, and save it in the right place. Your Chief of Staff is an agent, which is what makes it different from a chat box.</p>
+  </div>
+  <div class="term">
+    <h2>Connector / integration</h2>
+    <p>A ready-made link between your assistant and another app, like your email or calendar, so it can work inside that tool instead of you copying between tabs. We switch these on only when you want them.</p>
+  </div>
+  <div class="term">
+    <h2>Git and GitHub</h2>
+    <p>The system that keeps a safe, backed-up history of your Chief of Staff, so nothing is ever really lost and we can go back if something breaks. You don't need to understand it; it just means your work is protected (handy given the odd accidental delete).</p>
+  </div>
+  <div class="term">
+    <h2>Repository (repo)</h2>
+    <p>The folder where your whole Chief of Staff lives, tracked by Git. Your brief, your memory, your skills. Think of it as the filing cabinet for the system. It's yours and it's private.</p>
+  </div>
+
+  <footer>Fifth Castle <span class="red">Media</span></footer>
+
+</div>
+</body>
+</html>
