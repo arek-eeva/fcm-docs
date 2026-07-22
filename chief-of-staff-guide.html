@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- PLACEHOLDER: guide title appears in 4 places on this page. Search "The Field Guide" to swap all of them. -->
+<title>The Field Guide | Chief of Staff | Arek Rainczuk</title>
+<meta name="description" content="A short, honest guide to building an AI that actually holds your business. Free, no course, no upsell.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff-guide.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Field Guide | Chief of Staff">
+<meta property="og:description" content="A short, honest guide to building an AI that actually holds your business.">
+<meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff-guide.html">
+<meta property="og:site_name" content="Fifth Castle Media">
+<meta property="og:locale" content="en_AU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); overflow-x: hidden; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+  .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
+
+  .topbar {
+    position: relative; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    max-width: 880px; margin: 0 auto; padding: 30px clamp(24px, 6vw, 80px) 0;
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
+  .topbar a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .topbar a:hover { color: var(--text); }
+  .topbar .red { color: var(--accent); }
+
+  header.intro { position: relative; z-index: 2; padding: clamp(40px, 8vh, 80px) 0 clamp(28px, 5vh, 46px); }
+  .kicker {
+    font-family: var(--font-label);
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 5.6vw, 62px); line-height: 1.08; letter-spacing: -0.015em;
+    max-width: 17ch;
+  }
+  .sub { font-size: clamp(18px, 2.2vw, 23px); color: var(--muted); margin-top: 26px; max-width: 52ch; line-height: 1.5; }
+  .sub .hot { color: var(--text); }
+
+  section { padding: clamp(38px, 7vh, 64px) 0; border-top: 1px solid var(--line); }
+  .eyebrow {
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(26px, 4vw, 40px); line-height: 1.14; letter-spacing: -0.01em;
+    max-width: 20ch; margin-bottom: 22px;
+  }
+  p.body { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); max-width: 60ch; }
+  p.body + p.body { margin-top: 18px; }
+  p.body .hot { color: var(--text); }
+
+  /* inside-the-guide list */
+  .inside { margin-top: 30px; border-top: 1px solid var(--line); max-width: 64ch; }
+  .inside .it {
+    display: flex; align-items: baseline; gap: clamp(14px, 2.4vw, 22px);
+    padding: 20px 4px; border-bottom: 1px solid var(--line);
+  }
+  .inside .it .n {
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent);
+    flex: 0 0 auto; width: 2.1em;
+  }
+  .inside .it .t { font-size: clamp(16px, 1.8vw, 18.5px); color: var(--text); line-height: 1.5; }
+  .inside .it .t span { color: var(--muted); display: block; margin-top: 5px; font-size: 0.92em; }
+
+  /* form panel */
+  .formpanel {
+    margin-top: 34px;
+    border: 1px solid var(--line-bright); border-radius: 14px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.07), transparent 62%),
+      var(--bg-2);
+    padding: clamp(22px, 4vw, 40px);
+  }
+  .formpanel .flabel {
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px;
+  }
+  .formpanel .fhead { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); line-height: 1.2; color: var(--text); }
+  .formpanel .fnote { margin-top: 12px; font-size: 16px; color: var(--muted); max-width: 46ch; }
+  /* Container is sized for a 2-field form (name + email) plus its button. */
+  .form-slot { margin-top: 26px; min-height: 320px; }
+  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 320px; }
+  .form-fallback {
+    display: flex; flex-direction: column; justify-content: center;
+    min-height: 320px; padding: 28px;
+    border: 1px dashed var(--line-bright); border-radius: 11px;
+    background: rgba(245,241,234,0.02);
+  }
+  .form-fallback .fb-tag {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    color: var(--accent-bright); margin-bottom: 14px;
+  }
+  .form-fallback p { font-size: 15.5px; color: var(--muted); line-height: 1.6; max-width: 48ch; }
+  .form-fallback p + p { margin-top: 10px; }
+  .form-fallback code { font-family: var(--font-mono); font-size: 13.5px; color: var(--text); }
+  .privacy { margin-top: 18px; font-size: 14px; color: var(--subtle); max-width: 52ch; }
+  .privacy a { color: var(--muted); }
+
+  .or { margin-top: 22px; font-size: 16px; color: var(--subtle); }
+  .or a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+
+  footer {
+    border-top: 1px solid var(--line); margin-top: 20px;
+    padding: 36px 0 56px;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--subtle);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--subtle); text-decoration: none; }
+  footer a:hover { color: var(--muted); }
+  footer .red { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .topbar { font-size: 11px; letter-spacing: 0.18em; }
+    .topbar .brand .pre { display: none; }
+    .inside .it { gap: 12px; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1596350102005148');
+fbq('track','PageView');
+fbq('trackCustom','GuidePageView',{content_name:'CoS field guide capture page'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="chief-of-staff.html"><span class="pre">Arek Rainczuk <span class="red">/</span> </span>Chief of Staff</a>
+  <a href="chief-of-staff.html">Back</a>
+</nav>
+
+<div class="wrap">
+
+  <header class="intro">
+    <div class="kicker">Free guide</div>
+    <!-- PLACEHOLDER: final guide title goes here -->
+    <h1>The Field Guide</h1>
+    <p class="sub">The short version of what I've spent two years working out: how to give an AI enough of your business that it stops answering questions and starts doing the work. <span class="hot">No course, no upsell, no sequence to escape from.</span></p>
+  </header>
+
+  <section>
+    <div class="eyebrow">What's inside</div>
+    <h2>Written for the founder who is already the bottleneck.</h2>
+    <p class="body">It's the practical stuff, not the theory: what to write down, what order to build in, and the two or three mistakes that quietly waste a month.</p>
+    <div class="inside">
+      <div class="it"><span class="n">01</span><span class="t">Why a chatbot forgets and a Chief of Staff doesn't<span>The difference is memory and rules, not a smarter model.</span></span></div>
+      <div class="it"><span class="n">02</span><span class="t">The first thing to write down<span>One file, an afternoon's work, and most of the value.</span></span></div>
+      <div class="it"><span class="n">03</span><span class="t">Teaching it to sound like you<span>How to capture a voice well enough that clients can't tell.</span></span></div>
+      <div class="it"><span class="n">04</span><span class="t">The daily rhythm that keeps it useful<span>Open, work, log, close. Skip the log and it forgets by Friday.</span></span></div>
+      <div class="it"><span class="n">05</span><span class="t">What to hand over first, and what to keep<span>Where to start so the first week pays for itself.</span></span></div>
+      <div class="it"><span class="n">06</span><span class="t">The mistakes that cost me months<span>Including the one nearly everyone makes in week one.</span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="formpanel">
+      <div class="flabel">Send it to me</div>
+      <div class="fhead">Where should I send the guide?</div>
+      <p class="fnote">Name and email, and it lands in your inbox straight away. You can also download it on the next page.</p>
+
+      <div class="form-slot">
+        <!-- GHL FORM EMBED GOES HERE -->
+        <!-- Replace the entire .form-fallback div below with the GHL embed iframe.
+             Keep the surrounding .form-slot wrapper: it holds the height and the
+             attribution passthrough script targets any iframe inside it.
+             Set the GHL form's redirect to:
+             https://docs.fifthcastle.media/chief-of-staff-guide-thanks.html -->
+        <div class="form-fallback">
+          <div class="fb-tag">FORM EMBED PENDING</div>
+          <p>The GHL form embed drops in here. Replace this <code>&lt;div class="form-fallback"&gt;</code> block with the embed iframe from GHL, leaving the <code>&lt;div class="form-slot"&gt;</code> wrapper in place.</p>
+          <p>Two fields only, name and email. Set the form's redirect to <code>chief-of-staff-guide-thanks.html</code> so the Lead event fires.</p>
+        </div>
+      </div>
+
+      <p class="privacy">Your details stay with me. No list swapping, no reselling, and one click unsubscribes. <a href="privacy.html">Privacy</a>.</p>
+    </div>
+
+    <p class="or">Already know you want one? <a href="chief-of-staff-book.html">Book a quick call instead</a>.</p>
+  </section>
+
+  <footer>
+    <span><a href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a></span>
+    <span>Fifth Castle Media</span>
+  </footer>
+
+</div>
+
+<!-- Carry ad attribution (utm_*, fbclid) into the booking link and into the
+     embedded GHL form, because GHL only reads what is in the URL at submission. -->
+<script>
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var carry = [];
+  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  if (!carry.length) return;
+
+  var links = document.querySelectorAll('a[href*="chief-of-staff-book.html"]');
+  Array.prototype.forEach.call(links, function (a) {
+    try {
+      var u = new URL(a.href, window.location.href);
+      carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
+      a.href = u.toString();
+    } catch (e) { /* leave the link untouched rather than break the CTA */ }
+  });
+
+  var frames = document.querySelectorAll('.form-slot iframe');
+  Array.prototype.forEach.call(frames, function (f) {
+    try {
+      var fu = new URL(f.src, window.location.href);
+      carry.forEach(function (pair) { fu.searchParams.set(pair[0], pair[1]); });
+      f.src = fu.toString();
+    } catch (e) { /* leave the default src */ }
+  });
+})();
+</script>
+
+<!-- GHL external tracking -->
+<script
+  src="https://app.fifthcastle.media/js/external-tracking.js"
+  data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
+></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- PLACEHOLDER: guide title appears in 3 places on this page. Search "The Field Guide" to swap all of them. -->
+<title>Your guide is ready | Chief of Staff | Arek Rainczuk</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #131210;
+    --text: #F5F1EA;
+    --muted: #8d877c;
+    --subtle: #56514a;
+    --accent: #BD202D;
+    --accent-bright: #e0303e;
+    --line: #2A2724;
+    --line-bright: #3c3833;
+    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
+    --font-label: 'Khand', 'Arial Narrow', sans-serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); overflow-x: hidden; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: screen;
+  }
+  .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
+
+  .topbar {
+    position: relative; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    max-width: 880px; margin: 0 auto; padding: 30px clamp(24px, 6vw, 80px) 0;
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
+  .topbar a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .topbar a:hover { color: var(--text); }
+  .topbar .red { color: var(--accent); }
+
+  header.intro { position: relative; z-index: 2; padding: clamp(44px, 9vh, 86px) 0 clamp(30px, 5vh, 48px); }
+  .kicker {
+    font-family: var(--font-label);
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 5.6vw, 62px); line-height: 1.08; letter-spacing: -0.015em;
+    max-width: 17ch;
+  }
+  .sub { font-size: clamp(18px, 2.2vw, 23px); color: var(--muted); margin-top: 26px; max-width: 50ch; line-height: 1.5; }
+  .sub .hot { color: var(--text); }
+
+  .btn {
+    display: inline-block; margin-top: 30px;
+    font-family: var(--font-label); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    border: 1px solid var(--accent); padding: 16px 34px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn:hover { background: var(--accent); color: #fff; }
+  .btn.solid { background: var(--accent); color: #fff; }
+  .btn.solid:hover { background: var(--accent-bright); border-color: var(--accent-bright); }
+  .inbox {
+    margin-top: 20px; font-size: 16px; color: var(--subtle); max-width: 52ch;
+  }
+  .inbox .hot { color: var(--muted); }
+
+  section { padding: clamp(40px, 7vh, 70px) 0; border-top: 1px solid var(--line); }
+  .eyebrow {
+    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(26px, 4vw, 40px); line-height: 1.14; letter-spacing: -0.01em;
+    max-width: 20ch; margin-bottom: 22px;
+  }
+  p.body { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); max-width: 60ch; }
+  p.body + p.body { margin-top: 18px; }
+  p.body .hot { color: var(--text); }
+
+  .whatnext { margin-top: 28px; border-top: 1px solid var(--line); max-width: 58ch; }
+  .whatnext .it {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 16px 4px; border-bottom: 1px solid var(--line);
+    font-size: 16.5px; color: var(--text); line-height: 1.5;
+  }
+  .whatnext .it .n { font-family: var(--font-mono); font-size: 13px; color: var(--accent); flex: 0 0 auto; width: 2.1em; }
+
+  .or { margin-top: 20px; font-size: 16px; color: var(--subtle); }
+  .or a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  .sig { margin-top: 30px; font-family: var(--font-label); letter-spacing: 0.1em; font-size: 17px; color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--line); margin-top: 20px;
+    padding: 36px 0 56px;
+    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--subtle);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--subtle); text-decoration: none; }
+  footer a:hover { color: var(--muted); }
+  footer .red { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .topbar { font-size: 11px; letter-spacing: 0.18em; }
+    .topbar .brand .pre { display: none; }
+    .btn { padding: 15px 26px; font-size: 15px; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1596350102005148');
+fbq('track','PageView');
+/* Browser-side Lead event for the guide download.
+   sessionStorage guard stops a page refresh double-counting the lead. */
+(function () {
+  try {
+    if (!sessionStorage.getItem('cos_guide_lead_fired')) {
+      fbq('track', 'Lead', {content_name: 'CoS field guide download'});
+      sessionStorage.setItem('cos_guide_lead_fired', '1');
+    }
+  } catch (e) {
+    fbq('track', 'Lead', {content_name: 'CoS field guide download'});
+  }
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="chief-of-staff.html"><span class="pre">Arek Rainczuk <span class="red">/</span> </span>Chief of Staff</a>
+  <a href="chief-of-staff.html">Back</a>
+</nav>
+
+<div class="wrap">
+
+  <header class="intro">
+    <div class="kicker">Here it is</div>
+    <h1>Your guide is ready.</h1>
+    <!-- PLACEHOLDER: final guide title goes here -->
+    <p class="sub">Grab <span class="hot">The Field Guide</span> now, and read it on the train, in the car park, wherever you get twenty quiet minutes.</p>
+    <a class="btn solid" href="https://docs.fifthcastle.media/downloads/cos-field-guide.pdf" download>Download the guide</a>
+    <p class="inbox">A copy is <span class="hot">also on its way to your inbox</span>, so you don't have to keep this tab open. If it hasn't landed in a few minutes, check your promotions or spam folder.</p>
+  </header>
+
+  <section>
+    <div class="eyebrow">While you've got it open</div>
+    <h2>Want me to look at yours?</h2>
+    <p class="body">The guide will get you moving on your own. Plenty of people would rather see the real thing first, and that's a fair ask.</p>
+    <p class="body">Book thirty minutes and I'll walk you through the system running my own two businesses, live, with the messy parts left in. <span class="hot">Bring your hardest bottleneck and we'll work out where yours would start.</span> No pitch deck, and no obligation at the end of it.</p>
+    <div class="whatnext">
+      <div class="it"><span class="n">01</span><span>Thirty minutes, on a call, on the real system.</span></div>
+      <div class="it"><span class="n">02</span><span>You bring the bottleneck. I'll show you how mine handles the same thing.</span></div>
+      <div class="it"><span class="n">03</span><span>If it's not a fit, I'll say so on the call.</span></div>
+    </div>
+    <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
+    <p class="or">Or just <a href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff%20field%20guide">message me</a> with a question about the guide.</p>
+    <p class="sig">Enjoy the read. Arek</p>
+  </section>
+
+  <footer>
+    <span><a href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a></span>
+    <span>Fifth Castle Media</span>
+  </footer>
+
+</div>
+
+<!-- Carry ad attribution (utm_*, fbclid) through to the booking page, so a call
+     booked off the back of the guide still traces to the ad that produced it. -->
+<script>
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var carry = [];
+  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  if (!carry.length) return;
+  var links = document.querySelectorAll('a[href*="chief-of-staff-book.html"]');
+  Array.prototype.forEach.call(links, function (a) {
+    try {
+      var u = new URL(a.href, window.location.href);
+      carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
+      a.href = u.toString();
+    } catch (e) { /* leave the link untouched rather than break the CTA */ }
+  });
+})();
+</script>
+
+<!-- GHL external tracking -->
+<script
+  src="https://app.fifthcastle.media/js/external-tracking.js"
+  data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
+></script>
+
+</body>
+</html>

@@ -672,6 +672,7 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
       <p class="foundingnote">I'm opening three founding places below the standing price. In return I ask for a short, honest testimonial and one introduction to someone who'd suit it. Once the three are taken, it's $5,500 + GST.</p>
     </div>
     <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
+    <p class="or" style="font-size: 15px; color: var(--subtle);">Not ready for a call? <a href="chief-of-staff-guide.html" style="color: var(--muted); border-bottom: 1px solid var(--line-bright); text-decoration: none;">Take the field guide instead</a>.</p>
     <p class="or">Or just <a href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff" style="color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none;">message me</a>.</p>
     <p class="or">Prefer a room and two days? <a href="chief-of-staff-intensive.html" style="color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none;">Join the 2-Day Intensive</a> (Melbourne, Q4 2026).</p>
   </section>
@@ -717,6 +718,27 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
       carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
       a.href = u.toString();
     } catch (e) { /* leave the link untouched rather than break the CTA */ }
+  });
+})();
+</script>
+
+<!-- Same carry, for the secondary lead-magnet link. Kept as its own block so the
+     booking passthrough above stays exactly as verified. The selectors are
+     mutually exclusive: "-guide.html" never matches "-book.html". -->
+<script>
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var carry = [];
+  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  if (!carry.length) return;
+  var links = document.querySelectorAll('a[href*="chief-of-staff-guide.html"]');
+  Array.prototype.forEach.call(links, function (a) {
+    try {
+      var u = new URL(a.href, window.location.href);
+      carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
+      a.href = u.toString();
+    } catch (e) { /* leave the link untouched rather than break it */ }
   });
 })();
 </script>
