@@ -121,11 +121,11 @@
   }
   .formpanel .fhead { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); line-height: 1.2; color: var(--text); }
   .formpanel .fnote { margin-top: 12px; font-size: 16px; color: var(--muted); max-width: 46ch; }
-  /* Sized for the live form: name, email, phone, business name, consent, button.
-     GHL's embed script auto-resizes the iframe; this floor stops it collapsing
-     before that script runs. */
-  .form-slot { margin-top: 26px; min-height: 640px; }
-  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 640px; }
+  /* Sized for the live form: name, email, business name, consent, button.
+     GHL's embed script auto-resizes upward if needed; this floor just stops the
+     frame collapsing before that script runs. */
+  .form-slot { margin-top: 26px; min-height: 470px; }
+  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 470px; }
   .form-fallback {
     display: flex; flex-direction: column; justify-content: center;
     min-height: 320px; padding: 28px;
@@ -230,7 +230,7 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
           data-deactivation-type="neverDeactivate"
           data-deactivation-value=""
           data-form-name="CoS Field Guide"
-          data-height="640"
+          data-height="470"
           data-layout-iframe-id="inline-dD3YGg6yyy7jYAQpbLtG"
           data-form-id="dD3YGg6yyy7jYAQpbLtG"
           title="Get the field guide"></iframe>
