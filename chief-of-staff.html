@@ -753,5 +753,49 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
   data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
 ></script>
 
+<!-- Funnel instrumentation. Standard events report natively in the Insights API,
+     which custom events do not, so we can finally see WHERE the funnel breaks:
+     did they read as far as the offer, did they click the CTA, did they reach
+     the booking step. Purely additive, never touches links or the passthrough. -->
+<script>
+(function () {
+  function seen(key) {
+    try {
+      if (window.sessionStorage.getItem(key)) { return true; }
+      window.sessionStorage.setItem(key, '1');
+      return false;
+    } catch (e) { return false; }
+  }
+
+  // Read depth: did they get as far as the offer?
+  function onScroll() {
+    var doc = document.documentElement;
+    var scrolled = (window.pageYOffset || doc.scrollTop) + window.innerHeight;
+    var height = Math.max(doc.scrollHeight, document.body ? document.body.scrollHeight : 0);
+    if (!height || (scrolled / height) < 0.75) { return; }
+    window.removeEventListener('scroll', onScroll);
+    if (typeof fbq !== 'function') { return; }
+    if (seen('cos_vc_fired')) { return; }
+    try { fbq('track', 'ViewContent', { content_name: 'CoS landing 75pct' }); } catch (e) {}
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // CTA intent: did they actually click through to book?
+  document.addEventListener('click', function (ev) {
+    var el = ev.target;
+    while (el && el !== document) {
+      if (el.tagName === 'A' && el.getAttribute('href') &&
+          el.getAttribute('href').indexOf('chief-of-staff-book.html') !== -1) {
+        if (typeof fbq === 'function' && !seen('cos_cta_fired')) {
+          try { fbq('trackCustom', 'CTAClick', { content_name: 'book cta' }); } catch (e) {}
+        }
+        return;
+      }
+      el = el.parentNode;
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
