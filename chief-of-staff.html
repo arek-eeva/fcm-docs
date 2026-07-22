@@ -123,6 +123,14 @@
     text-transform: uppercase; color: var(--muted);
   }
   .hero-full .hero-name::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); vertical-align: middle; margin-right: 12px; }
+  /* Secondary hero option. Deliberately quieter than .btn: no border, smaller,
+     muted. Present so a visitor can take something away without scrolling. */
+  .hero-full .hero-alt { display: block; margin-top: 18px; font-size: 15.5px; color: var(--muted); }
+  .hero-full .hero-alt a {
+    color: var(--text); border-bottom: 1px solid var(--line-bright);
+    text-decoration: none; transition: border-color 0.2s ease;
+  }
+  .hero-full .hero-alt a:hover { border-color: var(--accent); }
   @media (max-width: 700px) {
     .hero-full { min-height: min(82vh, 680px); }
     .hero-full .hero-img { object-position: 74% center; }
@@ -396,6 +404,7 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     <h1>You're the bottleneck. Your business shouldn't need you for everything.</h1>
     <p class="sub">A Chief of Staff that holds your context, writes in your voice, and gets the actual work done. <span class="hot">Built with you, then yours to run.</span></p>
     <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
+    <span class="hero-alt">Not ready to talk? <a href="chief-of-staff-guide.html">Take the free guide first</a>.</span>
     <span class="hero-name">Arek Rainczuk</span>
   </div>
 </header>
