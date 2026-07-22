@@ -235,6 +235,24 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
           data-form-id="dD3YGg6yyy7jYAQpbLtG"
           title="Get the field guide"></iframe>
       </div>
+      <script>
+      /* Stamp the ad attribution onto the form's src BEFORE the embed script runs.
+         Doing it afterwards reloads the frame and the widget never renders. */
+      (function () {
+        var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
+        var incoming = new URLSearchParams(window.location.search);
+        var f = document.getElementById('inline-dD3YGg6yyy7jYAQpbLtG');
+        if (!f) return;
+        try {
+          var u = new URL(f.getAttribute('src'), window.location.href);
+          var any = false;
+          KEEP.forEach(function (k) {
+            if (incoming.has(k)) { u.searchParams.set(k, incoming.get(k)); any = true; }
+          });
+          if (any) f.setAttribute('src', u.toString());
+        } catch (e) { /* leave the default src rather than break the form */ }
+      })();
+      </script>
       <script src="https://app.fifthcastle.media/js/form_embed.js"></script>
 
       <p class="privacy">Your details stay with me. No list swapping, no reselling, and one click unsubscribes. <a href="privacy.html">Privacy</a>.</p>
@@ -269,14 +287,9 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     } catch (e) { /* leave the link untouched rather than break the CTA */ }
   });
 
-  var frames = document.querySelectorAll('.form-slot iframe');
-  Array.prototype.forEach.call(frames, function (f) {
-    try {
-      var fu = new URL(f.src, window.location.href);
-      carry.forEach(function (pair) { fu.searchParams.set(pair[0], pair[1]); });
-      f.src = fu.toString();
-    } catch (e) { /* leave the default src */ }
-  });
+  /* The form iframe is NOT touched here. Rewriting its src after GHL's embed
+     script has initialised reloads the frame and leaves it blank. The params are
+     applied inline above, before form_embed.js loads. */
 })();
 </script>
 
