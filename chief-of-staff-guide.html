@@ -121,9 +121,11 @@
   }
   .formpanel .fhead { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); line-height: 1.2; color: var(--text); }
   .formpanel .fnote { margin-top: 12px; font-size: 16px; color: var(--muted); max-width: 46ch; }
-  /* Container is sized for a 2-field form (name + email) plus its button. */
-  .form-slot { margin-top: 26px; min-height: 320px; }
-  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 320px; }
+  /* Sized for the live form: name, email, phone, business name, consent, button.
+     GHL's embed script auto-resizes the iframe; this floor stops it collapsing
+     before that script runs. */
+  .form-slot { margin-top: 26px; min-height: 640px; }
+  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 640px; }
   .form-fallback {
     display: flex; flex-direction: column; justify-content: center;
     min-height: 320px; padding: 28px;
@@ -213,18 +215,27 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
       <p class="fnote">Name and email, and it lands in your inbox straight away. You can also download it on the next page.</p>
 
       <div class="form-slot">
-        <!-- GHL FORM EMBED GOES HERE -->
-        <!-- Replace the entire .form-fallback div below with the GHL embed iframe.
-             Keep the surrounding .form-slot wrapper: it holds the height and the
-             attribution passthrough script targets any iframe inside it.
-             Set the GHL form's redirect to:
-             https://docs.fifthcastle.media/chief-of-staff-guide-thanks.html -->
-        <div class="form-fallback">
-          <div class="fb-tag">FORM EMBED PENDING</div>
-          <p>The GHL form embed drops in here. Replace this <code>&lt;div class="form-fallback"&gt;</code> block with the embed iframe from GHL, leaving the <code>&lt;div class="form-slot"&gt;</code> wrapper in place.</p>
-          <p>Two fields only, name and email. Set the form's redirect to <code>chief-of-staff-guide-thanks.html</code> so the Lead event fires.</p>
-        </div>
+        <!-- Capture form. The attribution passthrough script below rewrites this
+             iframe's src with any utm_*/fbclid from the page URL, so the ad source
+             follows the person into the CRM record. Form redirect is set in GHL to
+             chief-of-staff-guide-thanks.html, which fires the Lead event. -->
+        <iframe
+          src="https://app.fifthcastle.media/widget/form/dD3YGg6yyy7jYAQpbLtG"
+          id="inline-dD3YGg6yyy7jYAQpbLtG"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="CoS Field Guide"
+          data-height="640"
+          data-layout-iframe-id="inline-dD3YGg6yyy7jYAQpbLtG"
+          data-form-id="dD3YGg6yyy7jYAQpbLtG"
+          title="Get the field guide"></iframe>
       </div>
+      <script src="https://app.fifthcastle.media/js/form_embed.js"></script>
 
       <p class="privacy">Your details stay with me. No list swapping, no reselling, and one click unsubscribes. <a href="privacy.html">Privacy</a>.</p>
     </div>
