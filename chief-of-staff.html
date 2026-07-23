@@ -1,375 +1,821 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chief of Staff | An AI that runs your business with you | Arek Rainczuk</title>
-<meta name="description" content="An AI that holds your whole business in memory, drafts in your voice, and does the actual work. Built with you, then yours to run. A done-with-you build for founders and small teams.">
+<meta name="description" content="A system that holds your whole business and moves the work while you're somewhere else.">
 <link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chief of Staff | Arek Rainczuk">
-<meta property="og:description" content="An AI that holds your whole business in memory, drafts in your voice, and does the actual work. Built with you, then yours to run.">
+<meta property="og:description" content="A system that holds your whole business and moves the work while you're somewhere else.">
 <meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff.html">
 <meta property="og:site_name" content="Fifth Castle Media">
 <meta property="og:locale" content="en_AU">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chief of Staff | Arek Rainczuk">
-<meta name="twitter:description" content="An AI that knows your business, drafts in your voice, and runs to a daily rhythm.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&amp;family=Vidaloka&amp;display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0A0A0A;
-    --bg-2: #131210;
-    --text: #F5F1EA;
-    --muted: #8d877c;
-    --subtle: #56514a;
+    --paper: #FAF9F7;
+    --ink: #14110F;
+    --muted: #5F5851;
+    --rule: #D8D3CB;
+    --rule-soft: #E8E4DD;
     --accent: #BD202D;
-    --accent-bright: #e0303e;
-    --line: #2A2724;
-    --line-bright: #3c3833;
-    --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
-    --font-label: 'Khand', 'Arial Narrow', sans-serif;
-    --font-body: Georgia, 'Times New Roman', serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --white: #FFFFFF;
+    --shade: #F1EEE8;
+    --font-display: "Vidaloka", Georgia, "Times New Roman", serif;
+    --font-label: "Khand", Arial, sans-serif;
+    --font-body: Georgia, "Times New Roman", serif;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 80px; overflow-x: hidden; }
-  body {
-    font-family: var(--font-body);
-    color: var(--text);
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
     overflow-x: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    scroll-behavior: smooth;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 1; pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
-    opacity: 0.4; mix-blend-mode: screen;
-  }
-  .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
 
-  /* nav */
+  body {
+    margin: 0;
+    min-width: 0;
+    overflow-x: hidden;
+    background:
+      linear-gradient(90deg, rgba(20, 17, 15, 0.025) 1px, transparent 1px) 0 0 / 96px 96px,
+      linear-gradient(0deg, rgba(20, 17, 15, 0.018) 1px, transparent 1px) 0 0 / 96px 96px,
+      var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img,
+  iframe {
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .page {
+    width: min(100%, 1220px);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
   .topbar {
-    position: relative; z-index: 3;
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    max-width: 880px; margin: 0 auto; padding: 30px clamp(24px, 6vw, 80px) 0;
-    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.26em;
-    text-transform: uppercase; color: var(--muted); font-weight: 500;
-  }
-  .topbar a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
-  .topbar a:hover { color: var(--text); }
-  .topbar .brand { color: var(--muted); white-space: nowrap; }
-  .topbar .red { color: var(--accent); }
-  .topbar .navlinks { display: flex; gap: clamp(16px, 3vw, 30px); white-space: nowrap; }
-  .topbar .nav-book {
-    color: var(--text); border: 1px solid var(--accent);
-    padding: 9px 16px; transition: background 0.25s ease, color 0.25s ease;
-  }
-  .topbar .nav-book:hover { background: var(--accent); color: #fff; }
-
-  /* hero */
-  .hero { padding: clamp(60px, 12vh, 140px) 0 clamp(50px, 9vh, 100px); }
-  .kicker {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 18px 0 0;
     font-family: var(--font-label);
-    font-size: clamp(13px, 1.4vw, 15px);
-    letter-spacing: 0.34em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600; margin-bottom: 26px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
-  h1 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(40px, 6.8vw, 78px); line-height: 1.06; letter-spacing: -0.015em;
-  }
-  .hero .sub {
-    font-size: clamp(19px, 2.4vw, 26px); color: var(--muted);
-    margin-top: 30px; max-width: 48ch; line-height: 1.5;
-  }
-  .hero .sub .hot { color: var(--text); }
-
-  /* full-bleed portrait hero */
-  .hero-full {
-    position: relative; z-index: 2;
-    min-height: min(86vh, 740px);
-    display: flex; align-items: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero-full .hero-img {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: 70% center; z-index: 0;
-  }
-  .hero-full .hero-scrim {
-    position: absolute; inset: 0; z-index: 1;
-    background:
-      linear-gradient(90deg, var(--bg) 4%, rgba(10,10,10,0.82) 34%, rgba(10,10,10,0.30) 62%, rgba(10,10,10,0.05) 100%),
-      linear-gradient(0deg, var(--bg) 0%, transparent 26%);
-  }
-  .hero-full .hero-inner {
-    position: relative; z-index: 2; width: 100%;
-    max-width: 880px; margin: 0 auto;
-    padding: clamp(80px,14vh,150px) clamp(24px,6vw,80px) clamp(50px,9vh,90px);
-  }
-  .hero-full .sub { font-size: clamp(19px, 2.4vw, 26px); color: var(--muted); margin-top: 30px; max-width: 46ch; line-height: 1.5; }
-  .hero-full .sub .hot { color: var(--text); }
-  .hero-full .hero-name {
-    display: block; margin-top: 42px;
-    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--muted);
-  }
-  .hero-full .hero-name::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); vertical-align: middle; margin-right: 12px; }
-  /* Secondary hero option. Deliberately quieter than .btn: no border, smaller,
-     muted. Present so a visitor can take something away without scrolling. */
-  .hero-full .hero-alt { display: block; margin-top: 18px; font-size: 15.5px; color: var(--muted); }
-  .hero-full .hero-alt a {
-    color: var(--text); border-bottom: 1px solid var(--line-bright);
-    text-decoration: none; transition: border-color 0.2s ease;
-  }
-  .hero-full .hero-alt a:hover { border-color: var(--accent); }
-  @media (max-width: 700px) {
-    .hero-full { min-height: min(82vh, 680px); }
-    .hero-full .hero-img { object-position: 74% center; }
-    .hero-full .hero-scrim { background: linear-gradient(0deg, var(--bg) 8%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.42) 100%); }
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    text-transform: uppercase;
   }
 
-  section { padding: clamp(44px, 8vh, 84px) 0; border-top: 1px solid var(--line); }
+  .brand-mark {
+    color: var(--muted);
+  }
+
+  .slash {
+    color: var(--accent);
+  }
+
+  .topbar .button {
+    margin: 0;
+  }
+
+  .button {
+    display: inline-flex;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    background: var(--accent);
+    color: var(--white);
+    font-family: var(--font-label);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    line-height: 1;
+    padding: 15px 20px 13px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+  }
+
+  .button:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+
+  .text-link {
+    font-weight: 700;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    align-items: end;
+    padding: 54px 0 58px;
+  }
+
+  .kicker,
+  .eyebrow,
+  .fact-label,
+  .price-tag,
+  .window-title,
+  .road-label,
+  .person-role {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .kicker,
   .eyebrow {
-    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 22px;
+    color: var(--accent);
+    font-size: 16px;
+    margin: 0 0 18px;
   }
+
+  h1,
   h2 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(28px, 4.4vw, 46px); line-height: 1.14; letter-spacing: -0.01em;
-    max-width: 20ch; margin-bottom: 26px;
-  }
-  p.body { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); max-width: 60ch; }
-  p.body + p.body { margin-top: 20px; }
-  p.body .hot { color: var(--text); }
-
-  /* system map */
-  figure.map {
-    margin-top: 44px;
-    border: 1px solid var(--line); border-radius: 14px;
-    background:
-      radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.06), transparent 60%),
-      var(--bg-2);
-    padding: clamp(18px, 4vw, 38px) clamp(14px, 3vw, 30px) clamp(8px, 2vw, 18px);
-  }
-  figure.map svg.sysmap { display: block; width: 100%; height: auto; }
-  figure.map figcaption {
-    font-family: var(--font-label); font-size: clamp(12px, 1.5vw, 14px);
-    letter-spacing: 0.12em; color: var(--muted); text-align: center;
-    margin-top: 18px; padding: 0 10px; line-height: 1.5;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
-  /* admin chips — who it's for */
-  .chips { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; max-width: 64ch; }
-  .chips .chip {
-    display: inline-flex; align-items: center;
-    font-family: var(--font-label); font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--muted); border: 1px solid var(--line-bright); border-radius: 40px; padding: 9px 18px;
+  h1 {
+    max-width: 17em;
+    font-size: 34px;
+    line-height: 1.14;
   }
-  .chips .chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.75; margin-right: 10px; }
-  .chips-cap { margin-top: 24px; font-style: italic; font-size: clamp(17px, 1.9vw, 20px); color: var(--text); max-width: 58ch; }
 
-  /* VSL embed */
+  h2 {
+    max-width: 14.5em;
+    font-size: 33px;
+    line-height: 1.14;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .sub {
+    max-width: 42em;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1.55;
+  }
+
+  .hero-actions,
+  .section-actions {
+    display: grid;
+    gap: 15px;
+    align-items: center;
+    margin-top: 28px;
+  }
+
+  .alt-line,
+  .close-links p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+
+  .hero-shot {
+    margin-top: 36px;
+  }
+
+  .diagram {
+    margin: 34px 0 0;
+  }
+
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .diagram figcaption {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  main {
+    display: block;
+  }
+
+  section {
+    border-top: 1px solid var(--rule);
+    padding: 58px 0;
+  }
+
+  .copy {
+    max-width: 43em;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.64;
+  }
+
+  .copy + .copy {
+    margin-top: 18px;
+  }
+
+  .hot {
+    color: var(--ink);
+  }
+
+  .facts {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 44px;
+  }
+
+  .fact-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .fact-item {
+    display: grid;
+    gap: 7px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .fact-label {
+    color: var(--accent);
+    font-size: 15px;
+  }
+
+  .fact-text {
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.42;
+  }
+
+  .media-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    margin-top: 30px;
+  }
+
   .vsl {
-    margin-top: 38px; position: relative; aspect-ratio: 16 / 9;
-    background: var(--bg-2); border: 1px solid var(--line); border-radius: 11px;
-    overflow: hidden; box-shadow: 0 36px 70px -38px rgba(0,0,0,0.85);
-  }
-  .vsl iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-  /* screenshot-style mock windows */
-  .shots { margin-top: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-  .win {
-    background: var(--bg-2); border: 1px solid var(--line-bright); border-radius: 11px;
-    overflow: hidden; box-shadow: 0 36px 70px -38px rgba(0,0,0,0.85);
-  }
-  .win .bar {
-    display: flex; align-items: center; gap: 8px;
-    padding: 13px 16px; border-bottom: 1px solid var(--line);
-    background: rgba(245,241,234,0.02);
-  }
-  .win .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-bright); display: inline-block; }
-  .win .bar i:first-child { background: #4a4642; }
-  .win .bar .ttl {
-    margin-left: 8px; font-family: var(--font-label); font-size: 12px;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
-  }
-  .win .scr { padding: 22px; }
-
-  .chat .msg { margin-bottom: 16px; }
-  .chat .msg:last-child { margin-bottom: 0; }
-  .chat .who {
-    display: block; font-family: var(--font-label); font-size: 11px;
-    letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px;
-  }
-  .chat .you .who { color: var(--subtle); }
-  .chat .cos .who { color: var(--accent-bright); }
-  .chat .line { font-size: 15.5px; line-height: 1.5; color: var(--text); }
-  .chat .cos .line { color: var(--muted); }
-  .chat .draft {
-    margin-top: 12px; padding: 13px 15px; border-left: 2px solid var(--accent);
-    background: rgba(189,32,45,0.07); color: var(--text); font-size: 14.5px; line-height: 1.55;
-  }
-  .chat .cursor { color: var(--accent); font-family: var(--font-mono); }
-
-  .road .rl {
-    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.26em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
-  }
-  .road .rsub { font-size: 13px; color: var(--subtle); margin-bottom: 14px; }
-  .road .ri {
-    display: flex; align-items: baseline; gap: 12px;
-    padding: 13px 0; border-top: 1px solid var(--line);
-    font-size: 15.5px; color: var(--text); line-height: 1.4;
-  }
-  .road .ri b { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; align-self: center; }
-  .road .ri .rt { color: var(--subtle); font-size: 13px; display: block; margin-top: 3px; }
-  .road .ri .rt.warn { color: var(--accent-bright); }
-  .road .ri .col { display: flex; flex-direction: column; }
-
-  /* testimonial */
-  figure.quote { margin-top: 12px; max-width: 66ch; }
-  figure.quote .mark { font-family: var(--font-display); font-size: clamp(60px, 9vw, 100px); line-height: 0.5; color: var(--accent); display: block; margin-bottom: 8px; }
-  figure.quote blockquote p { font-size: clamp(17px, 2vw, 21px); color: var(--text); line-height: 1.65; }
-  figure.quote blockquote p + p { margin-top: 16px; }
-  figure.quote figcaption { margin-top: 28px; }
-  figure.quote figcaption .nm { font-family: var(--font-display); font-size: clamp(19px, 2.2vw, 23px); color: var(--text); display: block; }
-  figure.quote figcaption .rl { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 6px; }
-
-  /* compact proof grid */
-  .proofgrid { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  .pq { background: var(--bg); padding: 26px clamp(18px, 2.6vw, 30px); display: flex; flex-direction: column; }
-  .pq p { font-size: 15.5px; line-height: 1.62; color: var(--text); }
-  .pq .nm { margin-top: 16px; font-family: var(--font-label); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-  .proofmore { display: inline-block; margin-top: 32px; font-family: var(--font-label); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line-bright); padding-bottom: 5px; transition: color 0.2s ease, border-color 0.2s ease; }
-  .proofmore:hover { color: var(--text); border-color: var(--accent); }
-  @media (max-width: 600px) { .proofgrid { grid-template-columns: 1fr; } }
-
-  /* presentation cards */
-  .cards { margin-top: 14px; display: flex; flex-direction: column; }
-  a.card {
-    display: flex; align-items: baseline; gap: clamp(18px, 3vw, 34px);
-    text-decoration: none; color: inherit;
-    padding: 28px 6px; border-top: 1px solid var(--line);
-    transition: padding-left 0.3s ease, border-color 0.3s ease;
-  }
-  a.card:last-child { border-bottom: 1px solid var(--line); }
-  a.card:hover { padding-left: 16px; border-color: var(--line-bright); }
-  a.card .num {
-    font-family: var(--font-display); color: var(--accent);
-    font-size: clamp(26px, 4vw, 40px); line-height: 1; flex: 0 0 auto; width: 1.3em;
-  }
-  a.card .text { flex: 1; }
-  a.card .text .t {
-    font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 28px);
-    color: var(--text); line-height: 1.2;
-  }
-  a.card .text .d { font-size: clamp(15px, 1.7vw, 17px); color: var(--muted); margin-top: 8px; }
-  a.card .text .tag {
-    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--subtle); margin-top: 10px;
-  }
-  a.card .arrow {
-    font-family: var(--font-mono); color: var(--subtle); font-size: 20px;
-    flex: 0 0 auto; align-self: center; transition: color 0.3s ease, transform 0.3s ease;
-  }
-  a.card:hover .arrow { color: var(--accent-bright); transform: translateX(4px); }
-
-  .lede-line { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 30px; max-width: 60ch; }
-  .lede-line .hot { color: var(--text); }
-
-  /* price */
-  .price { margin-top: 34px; }
-  .price .amounts { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 22px; }
-  .price .was {
-    font-family: var(--font-display); font-size: clamp(24px, 3.2vw, 34px);
-    color: var(--subtle); text-decoration: line-through;
-    text-decoration-color: var(--accent); text-decoration-thickness: 2px;
-  }
-  .price .now {
-    font-family: var(--font-display); font-size: clamp(42px, 6.4vw, 64px);
-    color: var(--text); line-height: 1;
-  }
-  .price .now .gst { font-size: 0.36em; color: var(--muted); letter-spacing: 0.02em; }
-  .price .tag {
-    display: inline-block; margin-top: 20px;
-    font-family: var(--font-label); font-size: 13px; letter-spacing: 0.24em;
-    text-transform: uppercase; color: var(--accent-bright); font-weight: 600;
-    border: 1px solid var(--accent); border-radius: 40px; padding: 8px 18px;
-  }
-  .price .foundingnote {
-    margin-top: 18px; max-width: 52ch;
-    font-size: 15.5px; line-height: 1.55; color: var(--subtle);
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--ink);
   }
 
-  /* cta */
-  .cta { text-align: left; }
-  .btn {
-    display: inline-block; margin-top: 30px;
-    font-family: var(--font-label); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--text); text-decoration: none;
-    border: 1px solid var(--accent); padding: 16px 34px;
-    transition: background 0.25s ease, color 0.25s ease;
+  .vsl iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
-  .btn:hover { background: var(--accent); color: #fff; }
-  .cta .or { margin-top: 18px; font-size: 16px; color: var(--subtle); }
 
-  /* objections / faq */
-  .faq { margin-top: 22px; border-top: 1px solid var(--line); }
-  .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary {
-    list-style: none; cursor: pointer;
-    display: flex; align-items: baseline; gap: 16px;
-    padding: 24px 6px;
-    font-family: var(--font-display); font-size: clamp(19px, 2.4vw, 25px);
-    color: var(--text); line-height: 1.28; transition: color 0.25s ease;
+  .shots {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::before {
-    content: '+'; font-family: var(--font-mono); color: var(--accent);
-    font-size: 24px; line-height: 1; flex: 0 0 auto; width: 0.7em; transition: color 0.25s ease;
+
+  .window {
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 18px 34px rgba(20, 17, 15, 0.08);
   }
-  .faq details[open] summary::before { content: '\2212'; }
-  .faq summary:hover { color: var(--accent-bright); }
-  .faq .ans {
-    padding: 0 6px 28px 40px;
-    font-size: clamp(16px, 1.8vw, 18px); color: var(--muted); line-height: 1.66; max-width: 62ch;
+
+  .window-bar {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--shade);
+    padding: 12px 14px;
   }
-  .faq .ans .hot { color: var(--text); }
-  @media (max-width: 600px) { .faq .ans { padding-left: 6px; } }
+
+  .window-dot {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 auto;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .window-dot:first-child {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .window-title {
+    min-width: 0;
+    margin-left: 6px;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .window-screen {
+    padding: 18px;
+  }
+
+  .message + .message {
+    margin-top: 16px;
+  }
+
+  .speaker {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .message.user .speaker {
+    color: var(--muted);
+  }
+
+  .message-line {
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .draft {
+    margin-top: 12px;
+    border-left: 2px solid var(--accent);
+    background: rgba(189, 32, 45, 0.08);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.52;
+    padding: 12px 14px;
+  }
+
+  .road-label {
+    color: var(--accent);
+    font-size: 16px;
+  }
+
+  .road-sub {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .road-item {
+    display: grid;
+    grid-template-columns: 8px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    border-top: 1px solid var(--rule-soft);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 13px 0;
+  }
+
+  .road-item:first-of-type {
+    margin-top: 14px;
+  }
+
+  .road-dot {
+    width: 8px;
+    height: 8px;
+    margin-top: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .road-note {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .road-note.warn {
+    color: var(--accent);
+  }
+
+  .proof-lead {
+    margin-top: 22px;
+    border-left: 3px solid var(--accent);
+    padding-left: 18px;
+  }
+
+  blockquote {
+    margin: 0;
+  }
+
+  .quote-text {
+    color: var(--ink);
+    font-size: 21px;
+    line-height: 1.57;
+  }
+
+  .quote-person {
+    margin-top: 20px;
+  }
+
+  .person-name {
+    display: block;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 23px;
+    line-height: 1.15;
+  }
+
+  .person-role {
+    display: block;
+    margin-top: 5px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+    margin-top: 32px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+
+  .proof-card {
+    min-width: 0;
+    background: var(--paper);
+    padding: 22px 20px;
+  }
+
+  .proof-card p {
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .proof-card .person-role {
+    color: var(--muted);
+  }
+
+  .tamir-card {
+    margin-top: 20px;
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    background: rgba(189, 32, 45, 0.055);
+    padding: 22px 20px;
+  }
+
+  .tamir-card p {
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  .translation {
+    margin-top: 24px;
+  }
+
+  .standout {
+    margin-top: 28px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0;
+  }
+
+  .price-panel {
+    display: grid;
+    gap: 22px;
+    margin-top: 28px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.58);
+    padding: 22px 20px;
+  }
+
+  .price-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: baseline;
+  }
+
+  .was {
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 31px;
+    line-height: 1;
+    text-decoration: line-through;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+
+  .now {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 49px;
+    line-height: 1;
+  }
+
+  .price-tag {
+    display: block;
+    width: fit-content;
+    border-top: 2px solid var(--accent);
+    color: var(--accent);
+    font-size: 15px;
+    padding-top: 8px;
+  }
+
+  .faq-list {
+    margin-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+
+  details {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 23px;
+    line-height: 1.22;
+    padding: 20px 0;
+  }
+
+  summary::marker {
+    color: var(--accent);
+  }
+
+  .answer {
+    max-width: 44em;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.62;
+    padding: 0 0 22px;
+  }
+
+  .close-links {
+    display: grid;
+    gap: 7px;
+    margin-top: 18px;
+  }
 
   footer {
-    border-top: 1px solid var(--line); margin-top: 20px;
-    padding: 40px 0 60px;
-    font-family: var(--font-label); font-size: 12px; letter-spacing: 0.28em;
-    text-transform: uppercase; color: var(--subtle);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    border-top: 1px solid var(--rule);
+    padding: 28px 0 42px;
+    color: var(--muted);
+    font-family: var(--font-label);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
   }
-  footer a { color: var(--subtle); text-decoration: none; }
-  footer a:hover { color: var(--muted); }
-  footer .red { color: var(--accent); }
 
-  @media (max-width: 760px) {
-    .shots { grid-template-columns: 1fr; }
+  .reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
   }
-  @media (max-width: 600px) {
-    a.card { gap: 14px; }
-    a.card .arrow { display: none; }
-    .hero .sub { font-size: 19px; }
-    .topbar { font-size: 11px; letter-spacing: 0.18em; }
-    .topbar .brand .pre { display: none; }
-    .topbar .nav-learn { display: none; }
+
+  .reveal-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding: 0 32px;
+    }
+
+    .topbar {
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding-top: 24px;
+    }
+
+    .topbar .button,
+    .button {
+      width: fit-content;
+    }
+
+    .hero-actions,
+    .section-actions {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .media-grid {
+      gap: 24px;
+    }
+
+    .shots {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 19px;
+    }
+
+    .hero {
+      grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
+      gap: 52px;
+      align-items: center;
+      padding: 64px 0 66px;
+    }
+
+    .hero-shot {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 44px;
+    }
+
+    h2 {
+      font-size: 42px;
+    }
+
+    .copy {
+      font-size: 19px;
+    }
+
+    .fact-list {
+      grid-template-columns: 1.08fr 0.9fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .fact-item {
+      border-right: 1px solid var(--rule-soft);
+      padding: 24px 22px 24px 0;
+    }
+
+    .fact-item:nth-child(2n) {
+      border-right: 0;
+      padding-left: 22px;
+    }
+
+    .fact-item:nth-last-child(-n+2) {
+      border-bottom: 0;
+    }
+
+    .proof-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .proof-card {
+      padding: 25px 24px;
+    }
+
+    .proof-card:nth-child(1) {
+      grid-column: span 7;
+    }
+
+    .proof-card:nth-child(2) {
+      grid-column: span 5;
+    }
+
+    .proof-card:nth-child(3) {
+      grid-column: span 4;
+    }
+
+    .proof-card:nth-child(4) {
+      grid-column: span 8;
+    }
+
+    .proof-card:nth-child(5) {
+      grid-column: span 12;
+    }
+
+    .price-panel {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: start;
+      padding: 28px;
+    }
+  }
+
+  @media (min-width: 1060px) {
+    .page {
+      padding: 0 48px;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    .hero {
+      padding: 84px 0 78px;
+    }
+
+    .fact-list {
+      grid-template-columns: 1.05fr 0.82fr 1.04fr 1.32fr;
+    }
+
+    .fact-item,
+    .fact-item:nth-child(2n) {
+      border-right: 1px solid var(--rule-soft);
+      border-bottom: 0;
+      padding: 24px 20px;
+    }
+
+    .fact-item:first-child {
+      padding-left: 0;
+    }
+
+    .fact-item:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .media-grid {
+      grid-template-columns: minmax(0, 1.14fr) minmax(320px, 0.86fr);
+      align-items: start;
+    }
+
+    .shots {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal-ready .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .button {
+      transition: none;
+    }
   }
 </style>
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -382,318 +828,287 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1596350102005148');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1596350102005148&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+<div class="page" id="top">
+  <nav class="topbar" aria-label="Primary">
+    <div class="brand-mark">Arek Rainczuk <span class="slash">/</span> Chief of Staff</div>
+    <a class="button" href="chief-of-staff-book.html">Book a call</a>
+  </nav>
 
-<nav class="topbar">
-  <a class="brand" href="chief-of-staff.html"><span class="pre">Arek Rainczuk <span class="red">/</span> </span>Chief of Staff</a>
-  <span class="navlinks">
-    <a class="nav-book" href="chief-of-staff-book.html">Book a call</a>
-  </span>
-</nav>
-
-<header class="hero-full">
-  <img class="hero-img" src="images/arek-portrait.jpg" alt="Arek Rainczuk, founder of Fifth Castle Media">
-  <div class="hero-scrim"></div>
-  <div class="hero-inner">
-    <div class="kicker">A different way to work</div>
-    <h1>You're the bottleneck. Your business shouldn't need you for everything.</h1>
-    <p class="sub">A Chief of Staff that holds your context, writes in your voice, and gets the actual work done. <span class="hot">Built with you, then yours to run.</span></p>
-    <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
-    <span class="hero-alt">Not ready to talk? <a href="chief-of-staff-guide.html">Take the free guide first</a>.</span>
-    <span class="hero-name">Arek Rainczuk</span>
-  </div>
-</header>
-
-<div class="wrap">
-
-  <section>
-    <div class="eyebrow">What it is</div>
-    <h2>The problem isn't your workload. It's that only you hold the map.</h2>
-    <p class="body">You're probably good at this already, and I'll say what most people selling AI won't: chat is good. Work at it and it writes a genuinely decent email. The first time it remembered something you hadn't just told it, you sat back in your chair. But it remembers things about you. It doesn't hold your business: every client, every price, every promise, the standard you hold work to. And everything it makes still lands back on your desk to carry across. <span class="hot">A chat window only exists while you're typing into it.</span></p>
-    <p class="body">A Chief of Staff works the other way. It holds how you actually run things and does the work: drafting, updating, tracking, chasing, writing in your voice. It runs in the background, or as a session you set going and walk away from, so things move while you're on a shoot or doing the school run. Change your price once and it carries that through your documents, your website and your emails from that moment. <span class="hot">A decision made is a decision implemented.</span> It lives on your own machine, private and yours, and we build it with you until you can run and extend it yourself.</p>
-    <p class="body">What that adds up to is roughly five times as many finished things in a day. Not typing five times faster: five times as many things actually done, because the work keeps moving when you're not at the desk. <span class="hot">And the standard holds across all of it.</span> The eighteenth follow-up gets the same care as the first, including the ones you'd otherwise have rushed at eleven at night or skipped altogether.</p>
-
-    <figure class="map">
-      <svg class="sysmap" viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
-        <defs>
-          <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
-          </marker>
-        </defs>
-
-        <!-- daily rhythm -->
-        <rect x="328" y="32" width="244" height="34" rx="17" fill="none" stroke="#3c3833"/>
-        <text x="450" y="54" text-anchor="middle" font-family="'Khand',sans-serif" font-size="13" letter-spacing="3" fill="#8d877c">OPEN &#183; WORK &#183; LOG &#183; CLOSE</text>
-        <line x1="450" y1="66" x2="450" y2="150" stroke="#3c3833" stroke-dasharray="3 5"/>
-
-        <!-- YOU -->
-        <rect x="40" y="184" width="150" height="88" rx="10" fill="#131210" stroke="#3c3833"/>
-        <text x="115" y="225" text-anchor="middle" font-family="'Vidaloka',serif" font-size="25" fill="#F5F1EA">You</text>
-        <text x="115" y="250" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="1.5" fill="#8d877c">ASK IN PLAIN ENGLISH</text>
-
-        <line x1="192" y1="228" x2="320" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
-
-        <!-- CHIEF OF STAFF -->
-        <rect x="330" y="150" width="240" height="150" rx="12" fill="#131210" stroke="#BD202D" stroke-width="1.5"/>
-        <circle cx="352" cy="173" r="3.5" fill="#e0303e"/>
-        <text x="450" y="217" text-anchor="middle" font-family="'Vidaloka',serif" font-size="26" fill="#F5F1EA">Chief of Staff</text>
-        <text x="450" y="244" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12.5" letter-spacing="1.5" fill="#8d877c">DRAFTS IN YOUR VOICE</text>
-
-        <line x1="572" y1="228" x2="710" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
-
-        <!-- THE WORK -->
-        <rect x="720" y="184" width="150" height="88" rx="10" fill="#131210" stroke="#3c3833"/>
-        <text x="795" y="221" text-anchor="middle" font-family="'Vidaloka',serif" font-size="22" fill="#F5F1EA">The work</text>
-        <text x="795" y="246" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11" letter-spacing="1.2" fill="#8d877c">READY TO SEND</text>
-
-        <!-- feeder lines -->
-        <path d="M408,300 L290,348" stroke="#3c3833" fill="none"/>
-        <path d="M450,300 L450,348" stroke="#3c3833" fill="none"/>
-        <path d="M492,300 L610,348" stroke="#3c3833" fill="none"/>
-
-        <!-- BRAIN -->
-        <rect x="209" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
-        <text x="284" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">BRAIN</text>
-        <text x="284" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">rules &#183; voice &#183; prices</text>
-
-        <!-- MEMORY -->
-        <rect x="375" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
-        <text x="450" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">MEMORY</text>
-        <text x="450" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">clients &#183; this week</text>
-
-        <!-- HANDS -->
-        <rect x="541" y="350" width="150" height="86" rx="10" fill="#0e0d0b" stroke="#2A2724"/>
-        <text x="616" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">HANDS</text>
-        <text x="616" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#8d877c">trackers &#183; playbooks</text>
-      </svg>
-      <figcaption>One place that holds how you run things. You ask, it draws on what it knows, and the work comes back sounding like you.</figcaption>
-    </figure>
-  </section>
-
-  <section>
-    <div class="eyebrow">See it work</div>
-    <h2>Less like a chatbot. More like a colleague.</h2>
-    <p class="body">You ask the way you'd ask a good assistant, and it already knows the context. I come off a client call and the proposal is ready before I've written a single note, because it read the transcript and it knows my pricing and my format. <span class="hot">I've held one back a day so the client didn't think I'd dashed it off in four minutes.</span></p>
-    <div class="vsl">
-      <iframe src="https://player.vimeo.com/video/1211265137?h=b4d8faadd9&title=0&byline=0&portrait=0&dnt=1" title="Build Your Own Chief of Staff — Arek Rainczuk" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <header class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="kicker">EVERYTHING ON THIS PAGE IS CHECKABLE</p>
+      <h1 id="hero-title">By 8:40 this morning it had triaged my inbox, chased an invoice, drafted a proposal and updated every tracker.</h1>
+      <p class="sub">I was making school lunches. That's a Chief of Staff: a system that holds your whole business and moves the work while you're somewhere else. Below you'll find the film, the founders who've built one, the exact price, and what actually happens if you book a call. No mystery.</p>
+      <div class="hero-actions">
+        <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
+        <p class="alt-line">Not ready to talk? <a class="text-link" href="chief-of-staff-guide.html">Take the free field guide.</a></p>
+      </div>
     </div>
-    <div class="shots">
-      <div class="win">
-        <div class="bar"><i></i><i></i><i></i><span class="ttl">Chief of Staff</span></div>
-        <div class="scr chat">
-          <div class="msg you">
-            <span class="who">You</span>
-            <span class="line">Draft a follow-up on the Acme proposal, and remind me what we quoted.</span>
+    <div class="hero-shot" aria-label="Example of the daily roadmap the system produces">
+      <div class="window">
+            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Your morning</span></div>
+            <div class="window-screen">
+              <div class="road-label">Today</div>
+              <p class="road-sub">Three things, in the order that matters.</p>
+              <div class="road-item"><span class="road-dot"></span><span>Send the Acme proposal<span class="road-note">last step before the invoice</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Follow up Rivera<span class="road-note warn">quoted 8 days ago, no reply</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Call the venue back<span class="road-note">you said you would on Tuesday</span></span></div>
+            </div>
           </div>
-          <div class="msg cos">
-            <span class="who">Chief of Staff</span>
-            <span class="line">Acme was $6,500 + GST, sent 12 days ago, no reply yet. Here's a nudge in your voice:</span>
-            <div class="draft">Hi Sarah, just circling back on the proposal from a couple of weeks ago. Still keen to make this one for you, and I can hold a spot in the calendar if it helps. Want me to talk it through on a quick call this week?</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="facts reveal" aria-labelledby="facts-title">
+      <p class="eyebrow" id="facts-title">THE FACTS</p>
+      <dl class="fact-list">
+        <div class="fact-item">
+          <dt class="fact-label">LIVES ON</dt>
+          <dd class="fact-text">your own machine, Mac or PC. The files are yours.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">BUILT</dt>
+          <dd class="fact-text">with you, over a fortnight. Then handed over.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">COSTS</dt>
+          <dd class="fact-text">$2,500 + GST founding price. Standing price $5,500 + GST.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">THE SAME ROLE IN HUMANS</dt>
+          <dd class="fact-text">north of $250,000 a year, and you'd still brief them every morning.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="reveal" aria-labelledby="see-title">
+      <p class="eyebrow">SEE IT WORK</p>
+      <h2 id="see-title">Nothing here asks you to take my word for it.</h2>
+      <p class="copy">The film is me explaining it once, properly. The system on screen isn't a demo build dressed up for the camera: it's the one that runs my own two companies every day. And if you book the call, you'll watch it work live, on whatever you throw at it.</p>
+      <div class="media-grid">
+        <div class="vsl">
+          <iframe src="https://player.vimeo.com/video/1211265137?h=b4d8faadd9&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Chief of Staff film with Arek Rainczuk" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="shots" aria-label="Chief of Staff interface examples">
+          <div class="window">
+            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Chief of Staff</span></div>
+            <div class="window-screen">
+              <div class="message user">
+                <span class="speaker">You</span>
+                <p class="message-line">Draft a follow-up on the Acme proposal, and remind me what we quoted.</p>
+              </div>
+              <div class="message">
+                <span class="speaker">Chief of Staff</span>
+                <p class="message-line">Acme was $6,500 + GST, sent 12 days ago, no reply yet. Here's a nudge in your voice:</p>
+                <p class="draft">Hi Sarah, just circling back on the proposal from a couple of weeks ago. Still keen to make this one for you, and I can hold a spot in the calendar if it helps. Want me to talk it through on a quick call this week?</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="win">
-        <div class="bar"><i></i><i></i><i></i><span class="ttl">Your morning</span></div>
-        <div class="scr road">
-          <div class="rl">Today</div>
-          <div class="rsub">Three things, in the order that matters.</div>
-          <div class="ri"><b></b><span class="col"><span>Send the Acme proposal</span><span class="rt">last step before the invoice</span></span></div>
-          <div class="ri"><b></b><span class="col"><span>Follow up Rivera</span><span class="rt warn">quoted 8 days ago, no reply</span></span></div>
-          <div class="ri"><b></b><span class="col"><span>Call the venue back</span><span class="rt">you said you would on Tuesday</span></span></div>
+      <div class="section-actions">
+        <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="proof-title">
+      <p class="eyebrow">FOUNDERS WHO'VE BUILT ONE</p>
+      <h2 id="proof-title">"People who came in unsure walked out building."</h2>
+      <figure class="proof-lead">
+        <blockquote>
+          <p class="quote-text">"Arek spent two days with my members last week and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building. What sets him apart is the generosity behind it, and the care he's put into making it genuinely usable. There's no one in the marketplace doing this with more intention right now. If you get the chance to learn from him, take it."</p>
+        </blockquote>
+        <figcaption class="quote-person">
+          <span class="person-name">Den Lennie</span>
+          <span class="person-role">Founder, Video Business Accelerator</span>
+        </figcaption>
+      </figure>
+      <div class="proof-grid">
+        <article class="proof-card">
+          <p>"Arek helped us build the foundations of an AI operating system that is already delivering real value."</p>
+          <span class="person-role">Orville, Greater Visuals</span>
+        </article>
+        <article class="proof-card">
+          <p>"It feels like having a second set of hands rather than another app to babysit."</p>
+          <span class="person-role">Isaac Viglione, Bloom Films</span>
+        </article>
+        <article class="proof-card">
+          <p>"Arek really unlocked how to connect it all together and make it work for me, not just with me."</p>
+          <span class="person-role">Matt Smolen, Balloon Tree Productions</span>
+        </article>
+        <article class="proof-card">
+          <p>"It's like having an extra person on the team who knows the whole business. The best part is it sounds like us, not like a robot."</p>
+          <span class="person-role">Jess Vieira, Zarco Creative</span>
+        </article>
+        <article class="proof-card">
+          <p>"I've built a system that actually runs the way my brain works and holds my whole business."</p>
+          <span class="person-role">Jose Fernandez, Speck of Dust</span>
+        </article>
+      </div>
+      <article class="tamir-card">
+        <p>"Chat is simply not the right tool. It's like trying to build a deck with a screwdriver. For running a business it won't do."</p>
+        <span class="person-role">Tamir Berkman, Founder, Berkman Academy</span>
+      </article>
+      <p class="copy translation">You'll notice most of these founders make videos for a living. That's my own trade, so it's where the first builds happened. The system doesn't mind: a quote is a quote, a follow-up is a follow-up, an invoice is an invoice, whether you're cutting films or laying floors.</p>
+      <div class="section-actions">
+        <a class="text-link" href="chief-of-staff-testimonials.html">Read the full founder stories</a>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="ceiling-title">
+      <p class="eyebrow">WHY NOT JUST CHATGPT?</p>
+      <h2 id="ceiling-title">You're already good at ChatGPT. So was I.</h2>
+      <p class="copy">Work at it and it writes a genuinely decent email. The first time it remembered something you hadn't just told it, you probably sat back in your chair. None of that is the problem.</p>
+      <p class="copy">The problem is that everything it makes still lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise, the standard you hold work to. <span class="hot">A chat window only exists while you're typing into it.</span></p>
+      <p class="copy">A Chief of Staff runs in the background, or as a session you set going and walk away from. It knows what needs you and what doesn't, and it carries a decision through every document that depends on it. Across my two companies that adds up to roughly five times as many finished things in a day, with the standard held on all of them. The eleven o'clock proposal gets the same care as the morning one.</p>
+      <figure class="diagram">
+        <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
+          <defs>
+            <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
+            </marker>
+          </defs>
+          <rect x="328" y="32" width="244" height="34" rx="17" fill="none" stroke="#D8D3CB"/>
+          <text x="450" y="54" text-anchor="middle" font-family="'Khand',sans-serif" font-size="13" letter-spacing="3" fill="#5F5851">OPEN &#183; WORK &#183; LOG &#183; CLOSE</text>
+          <line x1="450" y1="66" x2="450" y2="150" stroke="#D8D3CB" stroke-dasharray="3 5"/>
+          <rect x="40" y="184" width="150" height="88" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="115" y="225" text-anchor="middle" font-family="'Vidaloka',serif" font-size="25" fill="#14110F">You</text>
+          <text x="115" y="250" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="1.5" fill="#5F5851">ASK IN PLAIN ENGLISH</text>
+          <line x1="192" y1="228" x2="320" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+          <rect x="330" y="150" width="240" height="150" rx="12" fill="#FFFFFF" stroke="#BD202D" stroke-width="1.5"/>
+          <circle cx="352" cy="173" r="3.5" fill="#BD202D"/>
+          <text x="450" y="217" text-anchor="middle" font-family="'Vidaloka',serif" font-size="26" fill="#14110F">Chief of Staff</text>
+          <text x="450" y="244" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12.5" letter-spacing="1.5" fill="#5F5851">DRAFTS IN YOUR VOICE</text>
+          <line x1="572" y1="228" x2="710" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+          <rect x="720" y="184" width="150" height="88" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="795" y="221" text-anchor="middle" font-family="'Vidaloka',serif" font-size="22" fill="#14110F">The work</text>
+          <text x="795" y="246" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11" letter-spacing="1.2" fill="#5F5851">READY TO SEND</text>
+          <path d="M408,300 L290,348" stroke="#D8D3CB" fill="none"/>
+          <path d="M450,300 L450,348" stroke="#D8D3CB" fill="none"/>
+          <path d="M492,300 L610,348" stroke="#D8D3CB" fill="none"/>
+          <rect x="209" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="284" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">BRAIN</text>
+          <text x="284" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">rules &#183; voice &#183; prices</text>
+          <rect x="375" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="450" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">MEMORY</text>
+          <text x="450" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">clients &#183; this week</text>
+          <rect x="541" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="616" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">HANDS</text>
+          <text x="616" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">trackers &#183; playbooks</text>
+        </svg>
+        <figcaption>One place that holds how you run things. You ask, it draws on what it knows, and the work comes back sounding like you.</figcaption>
+      </figure>
+    </section>
+
+    <section class="reveal" aria-labelledby="own-title">
+      <p class="eyebrow">WHAT YOU OWN</p>
+      <h2 id="own-title">The models are rented. The system is yours.</h2>
+      <p class="copy">Your rules, your prices, your voice and your history live in plain files on your own machine. When a sharper model arrives, you point at it and keep everything: no rebuild, no migration, no new invoice. Most tools lose value the moment you buy them. This one compounds, because every correction you make banks into it. Someone could commission the identical build tomorrow and still not have your system.</p>
+      <p class="copy">After the handover you pay for the AI model the way you pay for any subscription, to the provider, not to me. No retainer, no platform fee, nothing quietly attached in month three. The build is the last invoice I send unless you ask me back.</p>
+      <figure class="diagram">
+        <svg viewBox="0 0 900 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The handover. We build it with you over a few short sessions, then you take the controls, then you run and grow it yourself. My involvement fades stage by stage.">
+          <defs>
+            <marker id="ja" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
+            </marker>
+          </defs>
+          <text x="450" y="16" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2.5" fill="#5F5851">MY INVOLVEMENT, FADING</text>
+          <line x1="145" y1="40" x2="755" y2="40" stroke="#D8D3CB"/>
+          <circle cx="145" cy="40" r="7" fill="#BD202D"/>
+          <circle cx="450" cy="40" r="5" fill="#BD202D" fill-opacity="0.5"/>
+          <circle cx="755" cy="40" r="3" fill="#BD202D" fill-opacity="0.25"/>
+          <rect x="40" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="145" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">We build it</text>
+          <text x="145" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">TOGETHER</text>
+          <line x1="256" y1="103" x2="338" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
+          <rect x="345" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="450" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">You take over</text>
+          <text x="450" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">THE CONTROLS</text>
+          <line x1="561" y1="103" x2="643" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
+          <rect x="650" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#BD202D" stroke-width="1.5"/>
+          <text x="755" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">You run it</text>
+          <text x="755" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">AND GROW IT</text>
+        </svg>
+        <figcaption>We build it with you, then hand over the controls. My job is to make myself unnecessary.</figcaption>
+      </figure>
+    </section>
+
+    <section class="reveal" aria-labelledby="price-title">
+      <p class="eyebrow">WHAT IT COSTS</p>
+      <h2 id="price-title">The price, plainly.</h2>
+      <div class="price-panel">
+        <div>
+          <div class="price-row">
+            <span class="was">$5,500 + GST</span>
+            <span class="now">$2,500 + GST</span>
+          </div>
+          <span class="price-tag">Founding price, first three builds only.</span>
         </div>
+        <p class="copy">I'm opening three founding places below the standing price. In return I ask for a short, honest testimonial and one introduction to someone who'd suit it. Once the three are taken, it's $5,500 + GST. If you advise founders yourself, the introduction can be a conversation about your own clients.</p>
       </div>
-    </div>
-    <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
-  </section>
-
-  <section>
-    <div class="eyebrow">Who it's for</div>
-    <h2>Great at the work, buried in the admin.</h2>
-    <p class="body">Solo operators and small teams. Service businesses especially: studios, consultants, advisers, agencies, trades. <span class="hot">If you're the one who turns the lights on and also writes every email, this is for you.</span></p>
-    <div class="chips">
-      <span class="chip">Inbox</span>
-      <span class="chip">Quotes</span>
-      <span class="chip">Follow-ups</span>
-      <span class="chip">Invoices</span>
-      <span class="chip">Scheduling</span>
-      <span class="chip">Reminders</span>
-      <span class="chip">Enquiries</span>
-      <span class="chip">Notes</span>
-    </div>
-    <p class="chips-cap">The admin that buries you. Your Chief of Staff takes the lot, so you stay on the work you're good at.</p>
-  </section>
-
-  <section>
-    <div class="eyebrow">How it works</div>
-    <h2>You don't build it alone.</h2>
-    <p class="body">We build it together over a few short sessions, then you run it yourself. <span class="hot">If you're a single founder, it works best as a simple chat where you can do anything, backed by your own rules, a few automations, and a dashboard or two.</span></p>
-
-    <figure class="map">
-      <svg viewBox="0 0 900 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The handover. We build it with you over a few short sessions, then you take the controls, then you run and grow it yourself. My involvement fades stage by stage.">
-        <defs>
-          <marker id="ja" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
-          </marker>
-        </defs>
-        <text x="450" y="16" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2.5" fill="#8d877c">MY INVOLVEMENT, FADING</text>
-        <line x1="145" y1="40" x2="755" y2="40" stroke="#2A2724"/>
-        <circle cx="145" cy="40" r="7" fill="#BD202D"/>
-        <circle cx="450" cy="40" r="5" fill="#BD202D" fill-opacity="0.5"/>
-        <circle cx="755" cy="40" r="3" fill="#BD202D" fill-opacity="0.25"/>
-
-        <rect x="40" y="66" width="210" height="74" rx="10" fill="#131210" stroke="#3c3833"/>
-        <text x="145" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#F5F1EA">We build it</text>
-        <text x="145" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#8d877c">TOGETHER</text>
-
-        <line x1="256" y1="103" x2="338" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
-
-        <rect x="345" y="66" width="210" height="74" rx="10" fill="#131210" stroke="#3c3833"/>
-        <text x="450" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#F5F1EA">You take over</text>
-        <text x="450" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#8d877c">THE CONTROLS</text>
-
-        <line x1="561" y1="103" x2="643" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
-
-        <rect x="650" y="66" width="210" height="74" rx="10" fill="#131210" stroke="#BD202D" stroke-width="1.5"/>
-        <text x="755" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#F5F1EA">You run it</text>
-        <text x="755" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#8d877c">AND GROW IT</text>
-      </svg>
-      <figcaption>We build it with you, then hand over the controls. My job is to make myself unnecessary.</figcaption>
-    </figure>
-    <p class="body">If you've got a team, you stay the one at the controls while they get a simple front door to everything you've built, so they get the benefit without anyone having to learn AI.</p>
-    <p class="body">And it stays yours in a way software doesn't. <span class="hot">The models are rented, the system is owned.</span> Your rules, your prices, your voice and the standards you hold work to sit in plain files on your own machine, so when a sharper model turns up you point at it and keep everything. You pay for the model like everyone does. You don't pay me a retainer to keep the lights on.</p>
-    <p class="body">Meanwhile it's banking your decisions. Someone could commission the same build tomorrow and still not have your system, because they haven't spent a year correcting it into yours. <span class="hot">Better models arriving from outside, deeper context accumulating from inside.</span> Both point the same way.</p>
-  </section>
-
-  <section id="proof">
-    <div class="eyebrow">Proof</div>
-    <h2>"People who came in unsure walked out building."</h2>
-    <figure class="quote">
-      <span class="mark">&ldquo;</span>
-      <blockquote>
-        <p>Arek spent two days with my members last week and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building. What sets him apart is the generosity behind it, and the care he's put into making it genuinely usable. There's no one in the marketplace doing this with more intention right now. If you get the chance to learn from him, take it.</p>
-      </blockquote>
-      <figcaption>
-        <span class="nm">Den Lennie</span>
-        <span class="rl">Founder, Video Business Accelerator</span>
-      </figcaption>
-    </figure>
-    <p class="lede-line" style="margin-top: 48px;">More founders who've built their own:</p>
-    <div class="proofgrid">
-      <div class="pq">
-        <p>"Arek helped us build the foundations of an AI operating system that is already delivering real value."</p>
-        <span class="nm">Orville, Greater Visuals</span>
+      <div class="section-actions">
+        <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
       </div>
-      <div class="pq">
-        <p>"It feels like having a second set of hands rather than another app to babysit."</p>
-        <span class="nm">Isaac Viglione, Bloom Films</span>
-      </div>
-      <div class="pq">
-        <p>"Arek really unlocked how to connect it all together and make it work for me, not just with me."</p>
-        <span class="nm">Matt Smolen, Balloon Tree Productions</span>
-      </div>
-      <div class="pq">
-        <p>"It's like having an extra person on the team who knows the whole business. The best part is it sounds like us, not like a robot."</p>
-        <span class="nm">Jess Vieira, Zarco Creative</span>
-      </div>
-      <div class="pq" style="grid-column: 1 / -1;">
-        <p>"I've built a system that actually runs the way my brain works and holds my whole business."</p>
-        <span class="nm">Jose Fernandez, Speck of Dust</span>
-      </div>
-    </div>
-    <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
-    <p class="or" style="margin-top: 18px;"><a class="proofmore" style="margin-top: 0;" href="chief-of-staff-testimonials.html" target="_blank" rel="noopener">Read the full founder stories &rarr;</a></p>
-  </section>
+    </section>
 
-  <section id="learn">
-    <div class="eyebrow">Go deeper &middot; Learn more</div>
-    <h2>Three short pieces. Go in order.</h2>
-    <p class="lede-line">Each one sets up the next: <span class="hot">first the why, then the what, then the how.</span></p>
-    <div class="cards">
-      <a class="card" href="https://docs.fifthcastle.media/ai-that-actually-works.html" target="_blank" rel="noopener">
-        <span class="num">1</span>
-        <span class="text">
-          <span class="t">AI That Actually Works</span>
-          <span class="d">Why an AI that does the work beats asking a chatbot a question and then doing the real work yourself.</span>
-          <span class="tag">The why</span>
-        </span>
-        <span class="arrow">&rarr;</span>
-      </a>
-      <a class="card" href="https://docs.fifthcastle.media/your-ai-os.html" target="_blank" rel="noopener">
-        <span class="num">2</span>
-        <span class="text">
-          <span class="t">Your AI OS</span>
-          <span class="d">What it actually is: an AI that remembers your business across every session, not another app to learn.</span>
-          <span class="tag">The what</span>
-        </span>
-        <span class="arrow">&rarr;</span>
-      </a>
-      <a class="card" href="https://docs.fifthcastle.media/the-shape-of-the-system.html" target="_blank" rel="noopener">
-        <span class="num">3</span>
-        <span class="text">
-          <span class="t">The Shape of the System</span>
-          <span class="d">How it's built under the hood: the folders, the memory, and the rhythms that keep it running.</span>
-          <span class="tag">The how</span>
-        </span>
-        <span class="arrow">&rarr;</span>
-      </a>
-    </div>
-  </section>
-
-  <section id="questions">
-    <div class="eyebrow">Straight answers</div>
-    <h2>The questions founders ask.</h2>
-    <div class="faq">
-      <details>
-        <summary>Won't this be out of date in six months? AI moves so fast.</summary>
-        <div class="ans">The opposite. This isn't an app that ships once and dates. It's a set of instructions that runs on whatever the best model is that week. When a sharper model or a better harness lands, <span class="hot">your Chief of Staff gets sharper the same day</span>, no rebuild and no new invoice. Most tools lose value the moment you buy them. This one compounds.</div>
-      </details>
-      <details>
-        <summary>What if I want out, or you disappear? Am I locked in?</summary>
-        <div class="ans">No lock-in, by design. It lives on your own machine, Mac or PC, written in plain instructions you own, not buried on someone else's servers. It runs on Claude today and can be moved to another AI system down the track, with your Chief of Staff walking you through it. There's no retainer holding you in. <span class="hot">My whole job is to make myself unnecessary</span>, and I can't do that if I've trapped you.</div>
-      </details>
-      <details>
-        <summary>I'm not technical. Can I actually run this?</summary>
-        <div class="ans">Your three jobs are talk, record, approve. You describe how your business works, I build it around you and hand it over, and if it ever needs to move or change, your Chief of Staff sorts it out with you. <span class="hot">If you can explain your business out loud, you can run this.</span></div>
-      </details>
-      <details>
-        <summary>I already use ChatGPT. How is this different?</summary>
-        <div class="ans">Chat is level one. You re-explain your context every time and it answers a question. A Chief of Staff holds your whole business in memory and moves the work: a decision made becomes a decision carried through every system that depends on it. <span class="hot">A chatbot answers. This does the job.</span></div>
-      </details>
-      <details>
-        <summary>It's built bespoke to me. Doesn't that mean I'm stuck with how you set it up?</summary>
-        <div class="ans">The opposite of stuck. Because it's a set of instructions made bespoke to you, you can point it at any part of your business and run it however you need: marketing this week, finance next, a new hire's onboarding the week after. <span class="hot">It bends to you, and it keeps bending as you grow.</span></div>
-      </details>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="eyebrow">The next step</div>
-    <h2>Want one of your own?</h2>
-    <p class="body">If this is what you've been needing, let's talk about what it would look like for your business. For scale: an operations manager, an executive assistant and a marketing coordinator would run you well north of $250,000 a year in Australia, and you'd still be the one briefing all three every morning.</p>
-    <div class="price">
-      <div class="amounts">
-        <span class="was">$5,500</span>
-        <span class="now">$2,500 <span class="gst">+ GST</span></span>
+    <section class="reveal" aria-labelledby="call-title">
+      <p class="eyebrow">BEFORE YOU BOOK</p>
+      <h2 id="call-title">What the half hour actually looks like.</h2>
+      <p class="copy">I share my screen and show you the system running my own two businesses, live. We map what yours would look like. There's no deck and no script, and there's no price reveal at the end, because the price is already on this page. Bring your hardest bottleneck and I'll show you how the system would take it. If it's not for you, you'll know inside the half hour, and that's a fine outcome for both of us.</p>
+      <div class="section-actions">
+        <a class="button" href="chief-of-staff-book.html">Book the walkthrough</a>
+        <p class="alt-line">Or <a class="text-link" href="chief-of-staff-guide.html">take the field guide first.</a></p>
       </div>
-      <span class="tag">Founding price &middot; first three builds only</span>
-      <p class="foundingnote">I'm opening three founding places below the standing price. In return I ask for a short, honest testimonial and one introduction to someone who'd suit it. Once the three are taken, it's $5,500 + GST.</p>
-    </div>
-    <a class="btn" href="chief-of-staff-book.html">Book a quick call</a>
-    <p class="or" style="font-size: 15px; color: var(--subtle);">Not ready for a call? <a href="chief-of-staff-guide.html" style="color: var(--muted); border-bottom: 1px solid var(--line-bright); text-decoration: none;">Take the field guide instead</a>.</p>
-    <p class="or">Or just <a href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff" style="color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none;">message me</a>.</p>
-    <p class="or">Prefer a room and two days? <a href="chief-of-staff-intensive.html" style="color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none;">Join the 2-Day Intensive</a> (Melbourne, Q4 2026).</p>
-  </section>
+    </section>
+
+    <section class="reveal" aria-labelledby="faq-title">
+      <h2 id="faq-title">Straight answers.</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Won't this be out of date in six months? AI moves fast.</summary>
+          <p class="answer">The opposite. It isn't an app that ships once and dates. It's a set of instructions that runs on whatever the best model is that week, so when a sharper model lands, your system gets sharper the same day. No rebuild, no new invoice.</p>
+        </details>
+        <details>
+          <summary>Where does my data live, and what can the system see?</summary>
+          <p class="answer">The files live on your own machine, not on my servers or anyone's platform. When it works on something, the model reads what it needs in that moment, the same way text you paste into ChatGPT does, and you set the rules about what it can and can't touch. Ask the hard version of this question on the call: you'll get a straight answer, including the boundaries.</p>
+        </details>
+        <details>
+          <summary>What does it cost to run after the build?</summary>
+          <p class="answer">The model subscription, paid to the AI provider at their standard rate. No retainer to me, no per-seat licence, no platform fee. If you never want to see me again after the fortnight, the system doesn't care.</p>
+        </details>
+        <details>
+          <summary>I'm not technical. Can I actually run this?</summary>
+          <p class="answer">Your three jobs are talk, record, approve. You describe how your business works, I build it around you, and we don't finish until you're running it without me. If you can explain your business out loud, you can run this.</p>
+        </details>
+        <details>
+          <summary>Am I locked in to you, or to one AI company?</summary>
+          <p class="answer">Neither, by design. Everything sits in plain files you own, it can move to another model or harness with the system itself walking you through it, and there's no retainer holding you anywhere. My whole job is to make myself unnecessary.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="next-title">
+      <p class="eyebrow">THE NEXT STEP</p>
+      <h2 id="next-title">Want one of your own?</h2>
+      <p class="copy">If this is what you've been needing, book the half hour and bring the bottleneck.</p>
+      <div class="section-actions">
+        <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
+      </div>
+      <div class="close-links">
+        <p>Not ready for a call? <a class="text-link" href="chief-of-staff-guide.html">Take the field guide.</a></p>
+        <p>Or just <a class="text-link" href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff">message me.</a></p>
+        <p>Prefer a room and two days? <a class="text-link" href="chief-of-staff-intensive.html">Join the 2-Day Intensive</a> (Melbourne, Q4 2026).</p>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <span><a href="chief-of-staff.html">Arek Rainczuk <span class="red">/</span> Chief of Staff</a></span>
+    <span>Arek Rainczuk <span class="slash">/</span> Chief of Staff</span>
     <span>Fifth Castle Media</span>
   </footer>
-
 </div>
 
 <script type="application/ld+json">
@@ -713,59 +1128,48 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
 }
 </script>
 
-<!-- Carry ad attribution (utm_*, fbclid) across to the GHL booking widget.
-     GHL only reads what is in the URL at submission, so without this the
-     booked call cannot be traced back to the ad that produced it. -->
 <script>
 (function () {
-  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
   var incoming = new URLSearchParams(window.location.search);
   var carry = [];
-  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
+  incoming.forEach(function (value, key) {
+    if (key.indexOf('utm_') === 0 || key === 'fbclid' || key === 'gclid') {
+      carry.push([key, value]);
+    }
+  });
   if (!carry.length) return;
-  var links = document.querySelectorAll('a[href*="chief-of-staff-book.html"]');
+  var links = document.querySelectorAll('a[href*="chief-of-staff-book.html"], a[href*="chief-of-staff-guide.html"]');
   Array.prototype.forEach.call(links, function (a) {
     try {
-      var u = new URL(a.href, window.location.href);
+      var u = new URL(a.getAttribute('href'), window.location.href);
       carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
-      a.href = u.toString();
-    } catch (e) { /* leave the link untouched rather than break the CTA */ }
+      a.setAttribute('href', u.toString());
+    } catch (e) {}
   });
 })();
 </script>
 
-<!-- Same carry, for the secondary lead-magnet link. Kept as its own block so the
-     booking passthrough above stays exactly as verified. The selectors are
-     mutually exclusive: "-guide.html" never matches "-book.html". -->
+<script src="https://app.fifthcastle.media/js/external-tracking.js" data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"></script>
+
 <script>
 (function () {
-  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
-  var incoming = new URLSearchParams(window.location.search);
-  var carry = [];
-  KEEP.forEach(function (k) { if (incoming.has(k)) carry.push([k, incoming.get(k)]); });
-  if (!carry.length) return;
-  var links = document.querySelectorAll('a[href*="chief-of-staff-guide.html"]');
-  Array.prototype.forEach.call(links, function (a) {
-    try {
-      var u = new URL(a.href, window.location.href);
-      carry.forEach(function (pair) { u.searchParams.set(pair[0], pair[1]); });
-      a.href = u.toString();
-    } catch (e) { /* leave the link untouched rather than break it */ }
-  });
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('reveal-ready');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(document.querySelectorAll('main section'), function (section) {
+      revealObserver.observe(section);
+    });
+  }
 })();
 </script>
 
-<!-- GHL external tracking: gives the CRM first-party sight of page views on this
-     funnel before the booking, so ad-sourced visits appear on the contact timeline. -->
-<script
-  src="https://app.fifthcastle.media/js/external-tracking.js"
-  data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
-></script>
-
-<!-- Funnel instrumentation. Standard events report natively in the Insights API,
-     which custom events do not, so we can finally see WHERE the funnel breaks:
-     did they read as far as the offer, did they click the CTA, did they reach
-     the booking step. Purely additive, never touches links or the passthrough. -->
 <script>
 (function () {
   function seen(key) {
@@ -776,7 +1180,6 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     } catch (e) { return false; }
   }
 
-  // Read depth: did they get as far as the offer?
   function onScroll() {
     var doc = document.documentElement;
     var scrolled = (window.pageYOffset || doc.scrollTop) + window.innerHeight;
@@ -785,18 +1188,17 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     window.removeEventListener('scroll', onScroll);
     if (typeof fbq !== 'function') { return; }
     if (seen('cos_vc_fired')) { return; }
-    try { fbq('track', 'ViewContent', { content_name: 'CoS landing 75pct' }); } catch (e) {}
+    try { fbq('track', 'ViewContent', { content_name: 'CoS landing B 75pct' }); } catch (e) {}
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // CTA intent: did they actually click through to book?
   document.addEventListener('click', function (ev) {
     var el = ev.target;
     while (el && el !== document) {
       if (el.tagName === 'A' && el.getAttribute('href') &&
           el.getAttribute('href').indexOf('chief-of-staff-book.html') !== -1) {
         if (typeof fbq === 'function' && !seen('cos_cta_fired')) {
-          try { fbq('trackCustom', 'CTAClick', { content_name: 'book cta' }); } catch (e) {}
+          try { fbq('trackCustom', 'CTAClick', { content_name: 'book cta B' }); } catch (e) {}
         }
         return;
       }
@@ -805,6 +1207,5 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
   }, true);
 })();
 </script>
-
 </body>
 </html>
