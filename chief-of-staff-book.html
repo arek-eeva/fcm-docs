@@ -9,38 +9,81 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0A0A0A; --text:#F5F1EA; --muted:#8d877c; --accent:#BD202D; --line:#2A2724; }
+  :root {
+    --paper:#FAF9F7; --ink:#14110F; --muted:#5F5851;
+    --rule:#D8D3CB; --rule-soft:#E8E4DD; --accent:#BD202D; --shade:#F2EFEA;
+  }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font-family:Georgia,serif; min-height:100vh; }
+  body {
+    background:
+      linear-gradient(90deg, rgba(20,17,15,0.025) 1px, transparent 1px) 0 0 / 96px 96px,
+      linear-gradient(0deg, rgba(20,17,15,0.018) 1px, transparent 1px) 0 0 / 96px 96px,
+      var(--paper);
+    color:var(--ink); font-family:Georgia,"Times New Roman",serif; min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page { width:min(100%,1180px); margin:0 auto; padding:0 clamp(20px,5vw,60px); }
   .topbar {
-    display:flex; justify-content:space-between; align-items:center;
-    max-width:980px; margin:0 auto; padding:26px clamp(20px,5vw,60px) 0;
-    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.26em;
+    display:flex; justify-content:space-between; align-items:center; padding:24px 0 0;
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.22em;
     text-transform:uppercase; color:var(--muted);
   }
   .topbar a { color:var(--muted); text-decoration:none; }
-  .topbar a:hover { color:var(--text); }
+  .topbar a:hover { color:var(--ink); }
   .topbar .red { color:var(--accent); }
-  header.intro { max-width:980px; margin:0 auto; padding:clamp(30px,6vh,60px) clamp(20px,5vw,60px) 8px; }
+  header.intro { padding:clamp(30px,6vh,58px) 0 6px; }
   .kicker {
-    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.34em;
+    font-family:'Khand',sans-serif; font-size:14px; letter-spacing:0.32em;
     text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:16px;
-    display:flex; align-items:center; gap:12px;
   }
-  .kicker::before { content:''; width:30px; height:1px; background:var(--accent); }
-  h1 { font-family:'Vidaloka',serif; font-weight:400; font-size:clamp(30px,4.6vw,48px); line-height:1.1; }
-  p.sub { color:var(--muted); font-size:clamp(16px,1.9vw,19px); margin-top:14px; max-width:56ch; }
-  .widget-shell {
-    max-width:980px; margin:26px auto clamp(40px,8vh,80px);
-    padding:0 clamp(8px,3vw,60px);
+  h1 { font-family:'Vidaloka',serif; font-weight:400; font-size:clamp(30px,4.4vw,46px); line-height:1.1; max-width:16ch; }
+  p.sub { color:var(--muted); font-size:clamp(16px,1.7vw,19px); margin-top:14px; max-width:52ch; line-height:1.5; }
+
+  .layout {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(24px,3vw,44px);
+    padding:clamp(26px,4vh,40px) 0 clamp(48px,9vh,90px); align-items:start;
   }
+  @media (min-width:900px) { .layout { grid-template-columns:minmax(280px,0.82fr) minmax(0,1.18fr); } }
+
+  .rail { display:flex; flex-direction:column; gap:24px; }
+  @media (min-width:900px) { .rail { position:sticky; top:28px; } }
+
+  .rail-lbl {
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--accent); font-weight:600;
+  }
+  .price-card { border:1px solid var(--rule); border-radius:10px; background:#fff; padding:18px 20px; }
+  .price-card .now { font-family:'Vidaloka',serif; font-size:30px; line-height:1; }
+  .price-card .now small { font-size:16px; color:var(--muted); }
+  .price-card .then { margin-top:7px; font-size:14.5px; color:var(--muted); }
+  .price-card .tag {
+    display:inline-block; margin-top:11px; font-family:'Khand',sans-serif; font-size:11.5px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--accent);
+    border:1px solid var(--accent); border-radius:2px; padding:2px 7px;
+  }
+
+  .points { display:flex; flex-direction:column; gap:15px; }
+  .point { display:grid; grid-template-columns:15px 1fr; gap:11px; align-items:start; font-size:15.5px; line-height:1.5; }
+  .point b { color:var(--ink); font-weight:600; }
+  .point .m { color:var(--muted); }
+  .point::before { content:''; width:7px; height:7px; margin-top:8px; border-radius:50%; background:var(--accent); }
+
+  figure.q { border-left:2px solid var(--accent); padding:2px 0 2px 16px; }
+  figure.q p { font-size:15.5px; line-height:1.5; color:var(--ink); }
+  figure.q figcaption { margin-top:8px; font-family:'Khand',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+
+  .widget-col { display:flex; flex-direction:column; gap:12px; }
   .widget-frame {
-    background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,0.5);
+    background:#fff; border:1px solid var(--rule); border-radius:14px; overflow:hidden;
+    box-shadow:0 20px 44px rgba(20,17,15,0.10);
   }
-  .widget-frame iframe { display:block; width:100%; border:0; min-height:760px; }
-  footer { border-top:1px solid var(--line); padding:22px 0 34px; text-align:center;
-    font-family:'Khand',sans-serif; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); }
+  .widget-frame iframe { display:block; width:100%; border:0; min-height:820px; }
+  .safe { font-size:13.5px; color:var(--muted); line-height:1.5; text-align:center; padding:0 8px; }
+
+  footer {
+    border-top:1px solid var(--rule); padding:20px 0 34px; text-align:center;
+    font-family:'Khand',sans-serif; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -60,22 +103,51 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <nav class="topbar">
-    <a href="chief-of-staff.html"><span class="red">Arek Rainczuk</span> / Chief of Staff</a>
-    <a href="chief-of-staff.html">Back</a>
-  </nav>
-  <header class="intro">
-    <div class="kicker">Book a call</div>
-    <h1>Thirty minutes, live, on the real system.</h1>
-    <p class="sub">Pick a time that suits. I'll walk you through the AI operating system running my own two businesses and you can bring your hardest bottleneck.</p>
-  </header>
-  <div class="widget-shell">
-    <div class="widget-frame">
-      <iframe id="bookingFrame" title="Booking calendar"
-        src="https://app.fifthcastle.media/widget/bookings/cos-call-with-arek"></iframe>
+  <div class="page">
+    <nav class="topbar">
+      <a href="chief-of-staff.html"><span class="red">Arek Rainczuk</span> / Chief of Staff</a>
+      <a href="chief-of-staff.html">Back</a>
+    </nav>
+    <header class="intro">
+      <div class="kicker">Book a call</div>
+      <h1>Thirty minutes, live, on the real system.</h1>
+      <p class="sub">Pick a time that suits. I'll share my screen and walk you through the system running my own two businesses, and you bring the thing that's eating your week.</p>
+    </header>
+
+    <div class="layout">
+      <aside class="rail">
+        <div>
+          <div class="rail-lbl" style="margin-bottom:12px;">What it costs, so nothing lands as a surprise</div>
+          <div class="price-card">
+            <div class="now">$2,500 <small>+ GST</small></div>
+            <div class="then">Founding price, first three builds. Then $5,500 + GST.</div>
+            <span class="tag">The price is here, not at the end of the call</span>
+          </div>
+        </div>
+
+        <div class="points">
+          <div class="point"><span><b>No deck, no pitch.</b> <span class="m">You watch the system do real work, live, and ask whatever you like.</span></span></div>
+          <div class="point"><span><b>Bring your hardest bottleneck.</b> <span class="m">I'll show you how the system would take it, on the spot.</span></span></div>
+          <div class="point"><span><b>Nothing to prepare.</b> <span class="m">If it's not for you, you'll know inside the half hour. That's a fine outcome.</span></span></div>
+        </div>
+
+        <figure class="q">
+          <p>"It's like having an extra person on the team who knows the whole business. It sounds like us, not like a robot."</p>
+          <figcaption>Jess Vieira, Zarco Creative</figcaption>
+        </figure>
+      </aside>
+
+      <div class="widget-col">
+        <div class="widget-frame">
+          <iframe id="bookingFrame" title="Booking calendar"
+            src="https://app.fifthcastle.media/widget/bookings/cos-call-with-arek"></iframe>
+        </div>
+        <p class="safe">Your details come straight to me. No list, no spam, no automated follow-up you didn't ask for.</p>
+      </div>
     </div>
+
+    <footer>Fifth Castle Media</footer>
   </div>
-  <footer>Fifth Castle Media</footer>
 
 <script>
 /* Forward ad attribution (utm_*, fbclid, campaign_id) into the embedded widget,
