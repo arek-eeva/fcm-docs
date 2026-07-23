@@ -219,6 +219,27 @@
   }
 
 
+  .hero-shot {
+    margin-top: 36px;
+  }
+
+  .diagram {
+    margin: 34px 0 0;
+  }
+
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .diagram figcaption {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
   main {
     display: block;
   }
@@ -661,7 +682,14 @@
     }
 
     .hero {
-      padding: 72px 0 70px;
+      grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
+      gap: 52px;
+      align-items: center;
+      padding: 64px 0 66px;
+    }
+
+    .hero-shot {
+      margin-top: 0;
     }
 
     h1 {
@@ -820,6 +848,18 @@ fbq('track', 'PageView');
         <p class="alt-line">Not ready to talk? <a class="text-link" href="chief-of-staff-guide.html">Take the free field guide.</a></p>
       </div>
     </div>
+    <div class="hero-shot" aria-label="Example of the daily roadmap the system produces">
+      <div class="window">
+            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Your morning</span></div>
+            <div class="window-screen">
+              <div class="road-label">Today</div>
+              <p class="road-sub">Three things, in the order that matters.</p>
+              <div class="road-item"><span class="road-dot"></span><span>Send the Acme proposal<span class="road-note">last step before the invoice</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Follow up Rivera<span class="road-note warn">quoted 8 days ago, no reply</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Call the venue back<span class="road-note">you said you would on Tuesday</span></span></div>
+            </div>
+          </div>
+    </div>
   </header>
 
   <main>
@@ -866,16 +906,6 @@ fbq('track', 'PageView');
                 <p class="message-line">Acme was $6,500 + GST, sent 12 days ago, no reply yet. Here's a nudge in your voice:</p>
                 <p class="draft">Hi Sarah, just circling back on the proposal from a couple of weeks ago. Still keen to make this one for you, and I can hold a spot in the calendar if it helps. Want me to talk it through on a quick call this week?</p>
               </div>
-            </div>
-          </div>
-          <div class="window">
-            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Your morning</span></div>
-            <div class="window-screen">
-              <div class="road-label">Today</div>
-              <p class="road-sub">Three things, in the order that matters.</p>
-              <div class="road-item"><span class="road-dot"></span><span>Send the Acme proposal<span class="road-note">last step before the invoice</span></span></div>
-              <div class="road-item"><span class="road-dot"></span><span>Follow up Rivera<span class="road-note warn">quoted 8 days ago, no reply</span></span></div>
-              <div class="road-item"><span class="road-dot"></span><span>Call the venue back<span class="road-note">you said you would on Tuesday</span></span></div>
             </div>
           </div>
         </div>
@@ -935,6 +965,43 @@ fbq('track', 'PageView');
       <p class="copy">Work at it and it writes a genuinely decent email. The first time it remembered something you hadn't just told it, you probably sat back in your chair. None of that is the problem.</p>
       <p class="copy">The problem is that everything it makes still lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise, the standard you hold work to. <span class="hot">A chat window only exists while you're typing into it.</span></p>
       <p class="copy">A Chief of Staff runs in the background, or as a session you set going and walk away from. It knows what needs you and what doesn't, and it carries a decision through every document that depends on it. Across my two companies that adds up to roughly five times as many finished things in a day, with the standard held on all of them. The eleven o'clock proposal gets the same care as the morning one.</p>
+      <figure class="diagram">
+        <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
+          <defs>
+            <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
+            </marker>
+          </defs>
+          <rect x="328" y="32" width="244" height="34" rx="17" fill="none" stroke="#D8D3CB"/>
+          <text x="450" y="54" text-anchor="middle" font-family="'Khand',sans-serif" font-size="13" letter-spacing="3" fill="#5F5851">OPEN &#183; WORK &#183; LOG &#183; CLOSE</text>
+          <line x1="450" y1="66" x2="450" y2="150" stroke="#D8D3CB" stroke-dasharray="3 5"/>
+          <rect x="40" y="184" width="150" height="88" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="115" y="225" text-anchor="middle" font-family="'Vidaloka',serif" font-size="25" fill="#14110F">You</text>
+          <text x="115" y="250" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="1.5" fill="#5F5851">ASK IN PLAIN ENGLISH</text>
+          <line x1="192" y1="228" x2="320" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+          <rect x="330" y="150" width="240" height="150" rx="12" fill="#FFFFFF" stroke="#BD202D" stroke-width="1.5"/>
+          <circle cx="352" cy="173" r="3.5" fill="#BD202D"/>
+          <text x="450" y="217" text-anchor="middle" font-family="'Vidaloka',serif" font-size="26" fill="#14110F">Chief of Staff</text>
+          <text x="450" y="244" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12.5" letter-spacing="1.5" fill="#5F5851">DRAFTS IN YOUR VOICE</text>
+          <line x1="572" y1="228" x2="710" y2="228" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ah)"/>
+          <rect x="720" y="184" width="150" height="88" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="795" y="221" text-anchor="middle" font-family="'Vidaloka',serif" font-size="22" fill="#14110F">The work</text>
+          <text x="795" y="246" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11" letter-spacing="1.2" fill="#5F5851">READY TO SEND</text>
+          <path d="M408,300 L290,348" stroke="#D8D3CB" fill="none"/>
+          <path d="M450,300 L450,348" stroke="#D8D3CB" fill="none"/>
+          <path d="M492,300 L610,348" stroke="#D8D3CB" fill="none"/>
+          <rect x="209" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="284" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">BRAIN</text>
+          <text x="284" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">rules &#183; voice &#183; prices</text>
+          <rect x="375" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="450" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">MEMORY</text>
+          <text x="450" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">clients &#183; this week</text>
+          <rect x="541" y="350" width="150" height="86" rx="10" fill="#F2EFEA" stroke="#D8D3CB"/>
+          <text x="616" y="385" text-anchor="middle" font-family="'Khand',sans-serif" font-size="15" font-weight="600" letter-spacing="2.5" fill="#BD202D">HANDS</text>
+          <text x="616" y="408" text-anchor="middle" font-family="'Khand',sans-serif" font-size="12" letter-spacing="0.4" fill="#5F5851">trackers &#183; playbooks</text>
+        </svg>
+        <figcaption>One place that holds how you run things. You ask, it draws on what it knows, and the work comes back sounding like you.</figcaption>
+      </figure>
     </section>
 
     <section class="reveal" aria-labelledby="own-title">
@@ -942,6 +1009,32 @@ fbq('track', 'PageView');
       <h2 id="own-title">The models are rented. The system is yours.</h2>
       <p class="copy">Your rules, your prices, your voice and your history live in plain files on your own machine. When a sharper model arrives, you point at it and keep everything: no rebuild, no migration, no new invoice. Most tools lose value the moment you buy them. This one compounds, because every correction you make banks into it. Someone could commission the identical build tomorrow and still not have your system.</p>
       <p class="copy">After the handover you pay for the AI model the way you pay for any subscription, to the provider, not to me. No retainer, no platform fee, nothing quietly attached in month three. The build is the last invoice I send unless you ask me back.</p>
+      <figure class="diagram">
+        <svg viewBox="0 0 900 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The handover. We build it with you over a few short sessions, then you take the controls, then you run and grow it yourself. My involvement fades stage by stage.">
+          <defs>
+            <marker id="ja" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L7,3 L0,6 Z" fill="#BD202D"/>
+            </marker>
+          </defs>
+          <text x="450" y="16" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2.5" fill="#5F5851">MY INVOLVEMENT, FADING</text>
+          <line x1="145" y1="40" x2="755" y2="40" stroke="#D8D3CB"/>
+          <circle cx="145" cy="40" r="7" fill="#BD202D"/>
+          <circle cx="450" cy="40" r="5" fill="#BD202D" fill-opacity="0.5"/>
+          <circle cx="755" cy="40" r="3" fill="#BD202D" fill-opacity="0.25"/>
+          <rect x="40" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="145" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">We build it</text>
+          <text x="145" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">TOGETHER</text>
+          <line x1="256" y1="103" x2="338" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
+          <rect x="345" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#D8D3CB"/>
+          <text x="450" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">You take over</text>
+          <text x="450" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">THE CONTROLS</text>
+          <line x1="561" y1="103" x2="643" y2="103" stroke="#BD202D" stroke-width="1.5" marker-end="url(#ja)"/>
+          <rect x="650" y="66" width="210" height="74" rx="10" fill="#FFFFFF" stroke="#BD202D" stroke-width="1.5"/>
+          <text x="755" y="101" text-anchor="middle" font-family="'Vidaloka',serif" font-size="21" fill="#14110F">You run it</text>
+          <text x="755" y="123" text-anchor="middle" font-family="'Khand',sans-serif" font-size="11.5" letter-spacing="2" fill="#5F5851">AND GROW IT</text>
+        </svg>
+        <figcaption>We build it with you, then hand over the controls. My job is to make myself unnecessary.</figcaption>
+      </figure>
     </section>
 
     <section class="reveal" aria-labelledby="price-title">
