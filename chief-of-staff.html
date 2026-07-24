@@ -293,6 +293,33 @@
     line-height: 1.42;
   }
 
+  .fit-strip {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--shade);
+    padding: 18px 20px;
+  }
+
+  .fit-label {
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .fit-copy {
+    max-width: 49em;
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
   .media-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -722,6 +749,13 @@
       border-bottom: 0;
     }
 
+    .fit-strip {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 24px;
+      align-items: baseline;
+      padding: 20px 24px;
+    }
+
     .proof-grid {
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
@@ -878,10 +912,14 @@ fbq('track', 'PageView');
           <dd class="fact-text">$2,500 + GST founding price. Standing price $5,500 + GST.</dd>
         </div>
         <div class="fact-item">
-          <dt class="fact-label">THE SAME ROLE IN HUMANS</dt>
-          <dd class="fact-text">north of $250,000 a year, and you'd still brief them every morning.</dd>
+          <dt class="fact-label">THE COVERAGE</dt>
+          <dd class="fact-text">work that would normally sit across operations, administration and marketing roles.</dd>
         </div>
       </dl>
+      <div class="fit-strip" aria-label="Who the Chief of Staff build suits">
+        <span class="fit-label">BEST FIT</span>
+        <p class="fit-copy">You run a service business, use ChatGPT most days and are comfortable with everyday computer work. We build the system together, then you take the controls.</p>
+      </div>
     </section>
 
     <section class="reveal" aria-labelledby="see-title">
@@ -1080,8 +1118,12 @@ fbq('track', 'PageView');
           <p class="answer">The model subscription, paid to the AI provider at their standard rate. No retainer to me, no per-seat licence, no platform fee. If you never want to see me again after the fortnight, the system doesn't care.</p>
         </details>
         <details>
-          <summary>I'm not technical. Can I actually run this?</summary>
-          <p class="answer">Your three jobs are talk, record, approve. You describe how your business works, I build it around you, and we don't finish until you're running it without me. If you can explain your business out loud, you can run this.</p>
+          <summary>Will it keep working while I'm away from the computer?</summary>
+          <p class="answer">Some jobs run automatically, provided the machine running them stays on and awake. Other jobs run as a session you start and leave. We set up the right mode for each job during the build, so you know what runs on its own and what you start.</p>
+        </details>
+        <details>
+          <summary>Do I need to be technical?</summary>
+          <p class="answer">You won't be writing code. You should be comfortable with files, browser tabs, installing an application and following a setup checklist. If you already use ChatGPT most days and can explain how your business works, you're in the right range.</p>
         </details>
         <details>
           <summary>Am I locked in to you, or to one AI company?</summary>
