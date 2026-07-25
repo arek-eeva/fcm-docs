@@ -1,6 +1,12 @@
 # docs.fifthcastle.media — Page Directory
 
-Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-07-01.
+Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-07-25.
+
+## Fifth Castle Media
+
+| Page | URL | Last updated |
+|---|---|---|
+| Digital business card thank-you (noindex, no tracking) | [digital-card-thanks.html](https://docs.fifthcastle.media/digital-card-thanks.html) | 2026-07-25 |
 
 ## Chief of Staff (product/marketing)
 
@@ -104,4 +110,4 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 |---|---|---|
 | FCM Docs (site home) | [index.html](https://docs.fifthcastle.media/index.html) | 2026-03-13 |
 
-**Total pages:** 60 HTML files live on the site.
+**Total pages:** 61 HTML files live on the site.
