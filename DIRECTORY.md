@@ -12,8 +12,8 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 
 | Page | URL | Last updated |
 |---|---|---|
-| Chief of Staff — An AI that runs your business with you | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-07-27 |
-| Chief of Staff — Page B conversion variant | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-07-27 |
+| Chief of Staff — the operating system your AI tools run on | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-07-27 |
+| Chief of Staff — page B, noindex twin of the main page | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-07-27 |
 | Chief of Staff — booking page (30-minute walkthrough) | [chief-of-staff-book.html](https://docs.fifthcastle.media/chief-of-staff-book.html) | 2026-07-27 |
 | Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-07-02 |
 | Intensive waitlist thank-you (conversion page, noindex) | [chief-of-staff-intensive-thanks.html](https://docs.fifthcastle.media/chief-of-staff-intensive-thanks.html) | 2026-07-02 |

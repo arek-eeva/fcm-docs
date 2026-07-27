@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>Chief of Staff | Arek Rainczuk</title>
-<meta name="description" content="A system that holds your whole business and moves the work while you're somewhere else.">
+<meta name="description" content="The operating system your AI tools run on. If you've already tried and nothing connects, this is the missing piece. Everything you've built gets folded in.">
 <link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff-b.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chief of Staff | Arek Rainczuk">
-<meta property="og:description" content="A system that holds your whole business and moves the work while you're somewhere else.">
+<meta property="og:description" content="The operating system your AI tools run on. If you've already tried and nothing connects, this is the missing piece. Everything you've built gets folded in.">
 <meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff-b.html">
 <meta property="og:site_name" content="Fifth Castle Media">
 <meta property="og:locale" content="en_AU">
@@ -292,6 +292,33 @@
     color: var(--ink);
     font-size: 19px;
     line-height: 1.42;
+  }
+
+  .fit-strip {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--shade);
+    padding: 18px 20px;
+  }
+
+  .fit-label {
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .fit-copy {
+    max-width: 49em;
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.55;
   }
 
   .media-grid {
@@ -723,6 +750,13 @@
       border-bottom: 0;
     }
 
+    .fit-strip {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 24px;
+      align-items: baseline;
+      padding: 20px 24px;
+    }
+
     .proof-grid {
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
@@ -840,9 +874,9 @@ fbq('track', 'PageView');
 
   <header class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="kicker">EVERYTHING ON THIS PAGE IS CHECKABLE</p>
+      <p class="kicker">FOR PEOPLE WHO HAVE ALREADY TRIED</p>
       <h1 id="hero-title">By 8:40 this morning it had triaged my inbox, chased an invoice, drafted a proposal and updated every tracker.</h1>
-      <p class="sub">I was making school lunches. That's a Chief of Staff: a system that holds your whole business and moves the work while you're somewhere else. Below you'll find the film, the founders who've built one, the exact price, and what actually happens if you book a call. No mystery.</p>
+      <p class="sub">I was making school lunches. You have probably built pieces of this already: something that drafts proposals, something that chews through transcripts, a pricing sheet you made with Claude. They work, and none of them know about each other. A Chief of Staff is the operating system they run on, and <span class="hot">everything you have already built gets folded in</span>. Below you will find the film, the founders who have built one, the exact price, and what happens if you book a call.</p>
       <div class="hero-actions">
         <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
         <p class="alt-line">Not ready to talk? <a class="text-link" href="chief-of-staff-guide.html">Take the free field guide.</a></p>
@@ -876,13 +910,17 @@ fbq('track', 'PageView');
         </div>
         <div class="fact-item">
           <dt class="fact-label">COSTS</dt>
-          <dd class="fact-text">$5,500 + GST for the full build.</dd>
+          <dd class="fact-text">$5,500 + GST per person. Two founders is two builds.</dd>
         </div>
         <div class="fact-item">
-          <dt class="fact-label">THE SAME ROLE IN HUMANS</dt>
-          <dd class="fact-text">north of $250,000 a year, and you'd still brief them every morning.</dd>
+          <dt class="fact-label">YOUR EXISTING WORK</dt>
+          <dd class="fact-text">folded in, not thrown away. Nothing you have built is wasted.</dd>
         </div>
       </dl>
+      <div class="fit-strip" aria-label="Who the Chief of Staff build suits">
+        <span class="fit-label">BEST FIT</span>
+        <p class="fit-copy">You use ChatGPT or Claude most days, you have had a go at making it do more than chat, and you have hit the point where nothing connects to anything. You might have built a few things that work on their own. You might have tried and quietly given up. Either way, the missing piece is the same.</p>
+      </div>
     </section>
 
     <section class="reveal" aria-labelledby="see-title">
@@ -963,8 +1001,10 @@ fbq('track', 'PageView');
       <p class="eyebrow">WHY NOT JUST CHATGPT?</p>
       <h2 id="ceiling-title">You're already good at ChatGPT. So was I.</h2>
       <p class="copy">Work at it and it writes a genuinely decent email. The first time it remembered something you hadn't just told it, you probably sat back in your chair. None of that is the problem.</p>
-      <p class="copy">The problem is that everything it makes still lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise, the standard you hold work to. <span class="hot">A chat window only exists while you're typing into it.</span></p>
-      <p class="copy">A Chief of Staff runs in the background, or as a session you set going and walk away from. It knows what needs you and what doesn't, and it carries a decision through every document that depends on it. Across my two companies that adds up to roughly five times as many finished things in a day, with the standard held on all of them. The eleven o'clock proposal gets the same care as the morning one.</p>
+      <p class="copy">The problem is that everything it makes still lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise, the standard you hold work to. <span class="hot">Every output is a dead end that you carry forward alone.</span></p>
+      <p class="copy">You feel it most when something changes. You update your prices, and now the pricing sheet is right and eleven proposals are wrong, and you are the one who has to go and fix them. A Chief of Staff carries that decision through every document that depends on it, because they are all connected to the same source. Change it once and everything downstream changes with it.</p>
+      <p class="copy">It also runs in the background, or as a session you set going and walk away from, and it knows what needs you and what doesn't. Across my two companies that adds up to roughly five times as many finished things in a day, with the standard held on all of them. The eleven o'clock proposal gets the same care as the morning one.</p>
+      <p class="copy">The other thing worth knowing early: it has no ego. I told it five times that I don't use em dashes. It logged that, and it comes back now and then to say it made a mistake, that it looked in one place and not another, and that it has already made itself a note to check both next time. You can correct it as bluntly as you like and it just gets better.</p>
       <figure class="diagram">
         <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
           <defs>
@@ -1045,10 +1085,11 @@ fbq('track', 'PageView');
           <div class="price-row">
             <span class="now">$5,500 + GST</span>
           </div>
-          <span class="price-tag">The full build. Six sessions.</span>
+          <span class="price-tag">Per person. The full build, six sessions.</span>
         </div>
-        <p class="copy">Six sessions, the architecture, the skills and the playbooks, set up around how you actually work rather than a template. Your data and everything it produces stay yours. The one running cost on your side is a Claude or ChatGPT subscription at the $100 a month tier, which is what gives it the room to build rather than just chat.</p>
+        <p class="copy">Six sessions, the architecture, the skills and the playbooks, set up around how you actually work rather than a template. Everything you have already built gets folded in during the build. Your data and everything it produces stay yours. The one running cost on your side is a Claude or ChatGPT subscription at the $100 a month tier, which is what gives it the room to build rather than just chat.</p>
       </div>
+      <p class="copy">If there is more than one of you, each founder gets their own. They are personal systems, so two founders is two builds at $5,500 each. Connecting them, so you share what should be shared and nothing overwrites anyone else's decisions, is a separate piece of work that we scope once we know how you actually operate together. It is not part of the build price and I will not guess at it on a page.</p>
       <div class="section-actions">
         <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
       </div>
@@ -1068,6 +1109,14 @@ fbq('track', 'PageView');
       <h2 id="faq-title">Straight answers.</h2>
       <div class="faq-list">
         <details>
+          <summary>I've tried this before and it didn't stick. Why is this different?</summary>
+          <p class="answer">Because most people are told to start small, and small is where it dies. You build one tidy thing, it works, and it sits on its own with nothing to connect to, so the next thing starts from scratch again. That's not a discipline problem, it's an architecture problem. We start with the architecture, so the first thing you build has somewhere to live and the second one is faster because of the first. If you've already built things, they get folded in rather than replaced.</p>
+        </details>
+        <details>
+          <summary>What's the catch?</summary>
+          <p class="answer">The honest one is what happens two or three weeks in, when it clicks. People stop sleeping properly. You'll find yourself running six things at once because the cost of not building the idea you just had feels too high, and you'll cancel things you shouldn't. It passes, and what's left is a system built exactly the way you want it, but nobody warns you about that stretch and it's worth knowing it's normal.</p>
+        </details>
+        <details>
           <summary>Won't this be out of date in six months? AI moves fast.</summary>
           <p class="answer">The opposite. It isn't an app that ships once and dates. It's a set of instructions that runs on whatever the best model is that week, so when a sharper model lands, your system gets sharper the same day. No rebuild, no new invoice.</p>
         </details>
@@ -1080,8 +1129,12 @@ fbq('track', 'PageView');
           <p class="answer">The model subscription, paid to the AI provider at their standard rate. No retainer to me, no per-seat licence, no platform fee. If you never want to see me again after the fortnight, the system doesn't care.</p>
         </details>
         <details>
-          <summary>I'm not technical. Can I actually run this?</summary>
-          <p class="answer">Your three jobs are talk, record, approve. You describe how your business works, I build it around you, and we don't finish until you're running it without me. If you can explain your business out loud, you can run this.</p>
+          <summary>Will it keep working while I'm away from the computer?</summary>
+          <p class="answer">Some jobs run automatically, provided the machine running them stays on and awake. Other jobs run as a session you start and leave. We set up the right mode for each job during the build, so you know what runs on its own and what you start.</p>
+        </details>
+        <details>
+          <summary>Do I need to be technical?</summary>
+          <p class="answer">You won't be writing code. You should be comfortable with files, browser tabs, installing an application and following a setup checklist. If you already use ChatGPT or Claude most days and can explain how your business works, you're in the right range.</p>
         </details>
         <details>
           <summary>Am I locked in to you, or to one AI company?</summary>
@@ -1124,7 +1177,7 @@ fbq('track', 'PageView');
     "url": "https://fifthcastle.media"
   },
   "areaServed": "AU",
-  "url": "https://docs.fifthcastle.media/chief-of-staff-b.html"
+  "url": "https://docs.fifthcastle.media/chief-of-staff.html"
 }
 </script>
 
