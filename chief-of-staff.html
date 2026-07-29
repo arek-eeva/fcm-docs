@@ -264,6 +264,64 @@
   }
 
   .film {
+    position: relative;
+  }
+
+  .film-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 74px;
+    height: 74px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(245, 241, 234, 0.55);
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.55);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    color: #F5F1EA;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+  }
+
+  .film-play svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 3px;
+    fill: currentColor;
+  }
+
+  .film-play:hover {
+    background: rgba(189, 32, 45, 0.9);
+    border-color: rgba(189, 32, 45, 0.9);
+  }
+
+  .film-play:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .film.is-playing .film-play {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .film.is-playing:hover .film-play {
+    opacity: 0.85;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .film-play {
+      transition: none;
+    }
+  }
+
+  .film {
     max-width: 540px;
     background: #0A0A0A;
     border: 1px solid var(--rule);
@@ -1189,6 +1247,9 @@ fbq('track', 'PageView');
                  aria-label="A year of a real business drawn as a network. Scattered islands of files at the start, a single dense connected system by the end.">
             <source src="media/cos-graph.mp4" type="video/mp4">
           </video>
+          <button class="film-play" id="graphPlay" type="button" aria-label="Play the graph animation">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg>
+          </button>
         </div>
         <figcaption>One year of Fifth Castle Media and EEVA, drawn by the system itself. Nobody arranged this; it is what the files did as they connected.</figcaption>
       </figure>
@@ -1471,18 +1532,56 @@ fbq('track', 'PageView');
 })();
 </script>
 <script>
-/* Honour reduced-motion: hold the finished graph rather than looping it. */
+/* The graph film. Autoplay is blocked by reduced-motion settings, low-power mode
+   and per-site browser rules, so nothing here depends on it: the film is played
+   when it scrolls into view, and a real button is always available if that fails. */
 (function () {
   var v = document.getElementById('graphFilm');
-  if (!v) return;
-  try {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      v.removeAttribute('autoplay');
-      v.loop = false;
-      v.pause();
-      v.setAttribute('controls', '');
-    }
-  } catch (e) { /* leave the default behaviour */ }
+  var btn = document.getElementById('graphPlay');
+  if (!v || !btn) return;
+  var wrap = v.parentNode;
+
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  var userPaused = reduce;   // reduced-motion starts held, and the button still works
+  var inView = true;
+
+  function mark() { wrap.className = 'film' + (v.paused ? '' : ' is-playing'); }
+
+  function attempt() {
+    var p;
+    try { p = v.play(); } catch (e) { mark(); return; }
+    if (p && p.catch) { p.catch(function () { mark(); }); }
+  }
+
+  v.addEventListener('play', mark);
+
+  /* Some browsers stop a looping video at the wrap point, or when the tab loses
+     focus. If the reader did not ask for that, start it again. A failed play()
+     rejects rather than firing another pause, so this cannot spin. */
+  v.addEventListener('pause', function () {
+    mark();
+    if (!userPaused && inView) { setTimeout(function () { if (v.paused && !userPaused && inView) { attempt(); } }, 120); }
+  });
+
+  btn.addEventListener('click', function () {
+    if (v.paused) { userPaused = false; attempt(); } else { userPaused = true; v.pause(); }
+  });
+
+  if (reduce) { v.removeAttribute('autoplay'); v.pause(); mark(); return; }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        inView = entries[i].isIntersecting;
+        if (inView) { if (!userPaused) { attempt(); } } else { v.pause(); }
+      }
+    }, { threshold: 0.25 }).observe(v);
+  } else {
+    attempt();
+  }
+  mark();
 })();
 </script>
 </body>
