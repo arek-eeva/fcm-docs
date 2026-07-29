@@ -240,6 +240,147 @@
     line-height: 1.5;
   }
 
+  .proof-line {
+    margin-top: 14px;
+    max-width: 34em;
+    color: var(--muted);
+    font-family: var(--font-label);
+    font-size: 13.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .close-quiet {
+    opacity: 0.78;
+  }
+
+  #graph-title {
+    max-width: 17em;
+    text-wrap: balance;
+  }
+
+  .filmwrap {
+    margin: 34px 0 0;
+  }
+
+  .film {
+    max-width: 540px;
+    background: #0A0A0A;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 44px rgba(20, 17, 15, 0.10);
+  }
+
+  .film video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .filmwrap figcaption {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.5;
+    max-width: 43em;
+  }
+
+  .ways {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  @media (min-width: 880px) {
+    .ways {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .way {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 24px 24px 20px;
+  }
+
+  .way-n {
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .way h3 {
+    margin-top: 9px;
+    font-family: var(--font-display);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.16;
+    color: var(--ink);
+  }
+
+  .way-lede {
+    margin-top: 11px;
+    color: var(--ink);
+    font-size: 16.5px;
+    line-height: 1.5;
+  }
+
+  .way ul {
+    list-style: none;
+    margin: 17px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .way li {
+    position: relative;
+    padding-left: 17px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .way li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .way-foot {
+    margin-top: auto;
+    padding-top: 17px;
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--font-label);
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .asterisk {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 43em;
+  }
+
   main {
     display: block;
   }
@@ -875,22 +1016,24 @@ fbq('track', 'PageView');
   <header class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="kicker">FOR PEOPLE WHO HAVE ALREADY TRIED</p>
-      <h1 id="hero-title">By 8:40 this morning it had triaged my inbox, chased an invoice, drafted a proposal and updated every tracker.</h1>
-      <p class="sub">I was making school lunches. You have probably built pieces of this already: something that drafts proposals, something that chews through transcripts, a pricing sheet you made with Claude. They work, and none of them know about each other. A Chief of Staff is the operating system they run on, and <span class="hot">everything you have already built gets folded in</span>. Below you will find the film, the founders who have built one, the exact price, and what happens if you book a call.</p>
+      <h1 id="hero-title">I got back from the meeting. The proposal was already written, waiting for me to approve it.</h1>
+      <p class="sub">Nine pages, in my template, in my voice, priced off my own rate card, with the client's history already in it. Work like that used to cost me days. <span class="hot">It hadn't been sent, and it never would be. Nothing leaves without me.</span></p>
+      <p class="sub">You have probably built pieces of this already, and none of them talk to each other. This is the operating system they run on.</p>
       <div class="hero-actions">
         <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
         <p class="alt-line">Not ready to talk? <a class="text-link" href="chief-of-staff-guide.html">Take the free field guide.</a></p>
+        <p class="proof-line">Built with founders at Berkman Academy, Mr GST, Bloom Films, Balloon Tree and Zarco Creative. And running Fifth Castle Media and EEVA every day.</p>
       </div>
     </div>
-    <div class="hero-shot" aria-label="Example of the daily roadmap the system produces">
+    <div class="hero-shot" aria-label="Example: a proposal drafted while you were out, held for your approval">
       <div class="window">
-            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Your morning</span></div>
+            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">Waiting for you</span></div>
             <div class="window-screen">
-              <div class="road-label">Today</div>
-              <p class="road-sub">Three things, in the order that matters.</p>
-              <div class="road-item"><span class="road-dot"></span><span>Send the Acme proposal<span class="road-note">last step before the invoice</span></span></div>
-              <div class="road-item"><span class="road-dot"></span><span>Follow up Rivera<span class="road-note warn">quoted 8 days ago, no reply</span></span></div>
-              <div class="road-item"><span class="road-dot"></span><span>Call the venue back<span class="road-note">you said you would on Tuesday</span></span></div>
+              <div class="road-label">Rivera Group proposal</div>
+              <p class="road-sub">Written while you were at the meeting.</p>
+              <div class="road-item"><span class="road-dot"></span><span>Nine pages, your template<span class="road-note">voice and layout matched</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Priced from your own rate card<span class="road-note">every number traced to source</span></span></div>
+              <div class="road-item"><span class="road-dot"></span><span>Held, not sent<span class="road-note warn">waiting for your yes</span></span></div>
             </div>
           </div>
     </div>
@@ -910,7 +1053,7 @@ fbq('track', 'PageView');
         </div>
         <div class="fact-item">
           <dt class="fact-label">COSTS</dt>
-          <dd class="fact-text">$5,500 + GST per person. Two founders is two builds.</dd>
+          <dd class="fact-text">$5,500 + GST per person, once.</dd>
         </div>
         <div class="fact-item">
           <dt class="fact-label">YOUR EXISTING WORK</dt>
@@ -958,7 +1101,7 @@ fbq('track', 'PageView');
       <h2 id="proof-title">"People who came in unsure walked out building."</h2>
       <figure class="proof-lead">
         <blockquote>
-          <p class="quote-text">"Arek spent two days with my members last week and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building. What sets him apart is the generosity behind it, and the care he's put into making it genuinely usable. There's no one in the marketplace doing this with more intention right now. If you get the chance to learn from him, take it."</p>
+          <p class="quote-text">"Arek spent two days with my members and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building. There's no one in the marketplace doing this with more intention right now."</p>
         </blockquote>
         <figcaption class="quote-person">
           <span class="person-name">Den Lennie</span>
@@ -966,10 +1109,6 @@ fbq('track', 'PageView');
         </figcaption>
       </figure>
       <div class="proof-grid">
-        <article class="proof-card">
-          <p>"Arek helped us build the foundations of an AI operating system that is already delivering real value."</p>
-          <span class="person-role">Orville, Greater Visuals</span>
-        </article>
         <article class="proof-card">
           <p>"It feels like having a second set of hands rather than another app to babysit."</p>
           <span class="person-role">Isaac Viglione, Bloom Films</span>
@@ -982,16 +1121,12 @@ fbq('track', 'PageView');
           <p>"It's like having an extra person on the team who knows the whole business. The best part is it sounds like us, not like a robot."</p>
           <span class="person-role">Jess Vieira, Zarco Creative</span>
         </article>
-        <article class="proof-card">
-          <p>"I've built a system that actually runs the way my brain works and holds my whole business."</p>
-          <span class="person-role">Jose Fernandez, Speck of Dust</span>
-        </article>
       </div>
       <article class="tamir-card">
         <p>"Chat is simply not the right tool. It's like trying to build a deck with a screwdriver. For running a business it won't do."</p>
         <span class="person-role">Tamir Berkman, Founder, Berkman Academy</span>
       </article>
-      <p class="copy translation">You'll notice most of these founders make videos for a living. That's my own trade, so it's where the first builds happened. The system doesn't mind: a quote is a quote, a follow-up is a follow-up, an invoice is an invoice, whether you're cutting films or laying floors.</p>
+      <p class="copy translation">Most of these founders make videos for a living, because that's my own trade and it's where the first builds happened. A quote is a quote and an invoice is an invoice, whether you're cutting films or laying floors.</p>
       <div class="section-actions">
         <a class="text-link" href="chief-of-staff-testimonials.html">Read the full founder stories</a>
       </div>
@@ -1000,11 +1135,10 @@ fbq('track', 'PageView');
     <section class="reveal" aria-labelledby="ceiling-title">
       <p class="eyebrow">WHY NOT JUST CHATGPT?</p>
       <h2 id="ceiling-title">You're already good at ChatGPT. So was I.</h2>
-      <p class="copy">Work at it and it writes a genuinely decent email. The first time it remembered something you hadn't just told it, you probably sat back in your chair. None of that is the problem.</p>
-      <p class="copy">The problem is that everything it makes still lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise, the standard you hold work to. <span class="hot">Every output is a dead end that you carry forward alone.</span></p>
-      <p class="copy">You feel it most when something changes. You update your prices, and now the pricing sheet is right and eleven proposals are wrong, and you are the one who has to go and fix them. A Chief of Staff carries that decision through every document that depends on it, because they are all connected to the same source. Change it once and everything downstream changes with it.</p>
-      <p class="copy">It also runs in the background, or as a session you set going and walk away from, and it knows what needs you and what doesn't. It runs both my companies every day, and the standard holds across all of it. The eleven o'clock proposal gets the same care as the morning one.</p>
-      <p class="copy">The other thing worth knowing early: it has no ego. I told it five times that I don't use em dashes. It logged that, and it comes back now and then to say it made a mistake, that it looked in one place and not another, and that it has already made itself a note to check both next time. You can correct it as bluntly as you like and it just gets better.</p>
+      <p class="copy">Work at it and it writes a genuinely decent email. That was never the problem.</p>
+      <p class="copy">The problem is that everything a chat window makes lands back on your desk. Prompt, wait, read, copy, paste, fix, send. It remembers things about you, but it doesn't hold your business: every client, every price, every promise. <span class="hot">In a chat window, every output is a dead end you carry forward alone.</span> In a system, it isn't.</p>
+      <p class="copy">You feel it when something changes. You update your prices, and now the pricing sheet is right and eleven proposals are wrong, and you're the one fixing them. A Chief of Staff carries that one decision through every document that depends on it. <span class="hot">Change it once, everything downstream follows.</span></p>
+      <p class="copy">You also only say things once. I told it I don't use em dashes, and that was the end of it. <span class="hot">And it takes correction without ego.</span> When it does get something wrong it tells you what it missed and notes to check both places next time. No defensiveness, no apologising three times, no working around its feelings.</p>
       <figure class="diagram">
         <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the system. You ask in plain English. The Chief of Staff draws on your brain, memory and hands, and the work comes back ready to send, in your voice. It runs to a daily rhythm: open, work, log, close.">
           <defs>
@@ -1044,11 +1178,84 @@ fbq('track', 'PageView');
       </figure>
     </section>
 
+    <section class="reveal" aria-labelledby="graph-title">
+      <p class="eyebrow">WHAT A YEAR LOOKS LIKE</p>
+      <h2 id="graph-title">You have built the tools. This is the operating system they run&nbsp;on.</h2>
+      <p class="copy">Every dot is a real file in my business: a client, a price, a decision, a playbook. Every line is one of them knowing about another. A year of two companies, in fifteen seconds.</p>
+      <p class="copy">It starts the way most setups look right now: small islands that each work on their own. <span class="hot">What changes isn't the number of tools. It's that they start knowing about each other.</span></p>
+      <figure class="filmwrap">
+        <div class="film">
+          <video id="graphFilm" width="720" height="720" autoplay muted loop playsinline preload="metadata"
+                 poster="media/cos-graph-poster.jpg"
+                 aria-label="A year of a real business drawn as a network. Scattered islands of files at the start, a single dense connected system by the end.">
+            <source src="media/cos-graph.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>One year of Fifth Castle Media and EEVA, drawn by the system itself. Nobody arranged this; it is what the files did as they connected.</figcaption>
+      </figure>
+      <p class="copy" style="margin-top:26px;">Everything you have already made gets folded into that. <span class="hot">Nothing you have built is wasted</span>, and you will not be asked to start again.</p>
+    </section>
+
+    <section class="reveal" aria-labelledby="wait-title">
+      <p class="eyebrow">WHY NOW RATHER THAN LATER</p>
+      <h2 id="wait-title">Waiting isn't free.</h2>
+      <p class="copy">Every month without an architecture, the work still gets done. It just doesn't add up. The proposal you wrote this week doesn't make next week's faster. The clever thing you built in March isn't talking to the clever thing you built in June.</p>
+      <p class="copy">That cost never arrives as a bill. It arrives in instalments, as evenings, and as starting over. One founder told me he'd been at this three years. Not ignoring it, trying: <span class="hot">"We've started and stopped a few times."</span> He wasn't behind. He'd been paying the whole time.</p>
+      <p class="copy">Here's the part most people have backwards. The AI is rented, it's cheap, and it improves whether you use it or not. Anyone can have your model by lunchtime. <span class="hot">What nobody can buy is a system that has spent six months learning how you work.</span> Your decisions, your corrections, your voice, your clients.</p>
+      <p class="copy">That's the whole argument for starting now. Not that you'll fall behind. That your effort finally starts compounding instead of resetting.</p>
+      <div class="section-actions">
+        <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
+        <p class="alt-line">Half an hour, my screen, your hardest bottleneck. No deck, and the price is already on this page.</p>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="ways-title">
+      <p class="eyebrow">THREE WAYS IT RUNS</p>
+      <h2 id="ways-title">The same system, three sizes.</h2>
+      <p class="copy">The rules never change: nothing sends itself, and the brain is files you own. What changes is who else is in the business with you.</p>
+      <div class="ways">
+        <article class="way">
+          <p class="way-n">One</p>
+          <h3>Just you</h3>
+          <p class="way-lede">One operator, one brain. The core install.</p>
+          <ul>
+            <li>Opens every session already knowing the business, so you never brief it from scratch.</li>
+            <li>Drafts in your voice and logs as it goes, which is why tomorrow is sharper than today.</li>
+            <li>Nothing reaches a client until you have read it and said yes.</li>
+          </ul>
+          <p class="way-foot">One build</p>
+        </article>
+        <article class="way">
+          <p class="way-n">Two</p>
+          <h3>You and a co-founder</h3>
+          <p class="way-lede">Two assistants, one shared brain, and no way to collide.</p>
+          <ul>
+            <li>You each get your own. Private briefs, private drafts, private questions.</li>
+            <li>Both read the same shared files, neither writes to them, so you can never fork the truth.</li>
+            <li>The team gets simple apps for timesheets and job status. Nobody else opens a chat window.</li>
+          </ul>
+          <p class="way-foot">One build per person</p>
+        </article>
+        <article class="way">
+          <p class="way-n">Three</p>
+          <h3>Inside a bigger company</h3>
+          <p class="way-lede">The same assistant, living in their building.</p>
+          <ul>
+            <li>The engine runs in their own cloud, so the work never leaves the building.</li>
+            <li>Their IT cuts the keys: one mailbox, one folder. Never your full access.</li>
+            <li>At go-live we try the doors it has no keys to and show they don't open.</li>
+          </ul>
+          <p class="way-foot">Built to what their IT approves</p>
+        </article>
+      </div>
+      <p class="asterisk">One honest note on the third: the model provider's automated safety checks can still see a flagged snippet, and Australian-only data residency isn't available yet. Both are true of every serious AI tool, and you should hear it from me rather than your IT provider.</p>
+    </section>
+
     <section class="reveal" aria-labelledby="own-title">
       <p class="eyebrow">WHAT YOU OWN</p>
       <h2 id="own-title">The models are rented. The system is yours.</h2>
-      <p class="copy">Your rules, your prices, your voice and your history live in plain files on your own machine. When a sharper model arrives, you point at it and keep everything: no rebuild, no migration, no new invoice. Most tools lose value the moment you buy them. This one compounds, because every correction you make banks into it. Someone could commission the identical build tomorrow and still not have your system.</p>
-      <p class="copy">After the handover you pay for the AI model the way you pay for any subscription, to the provider, not to me. No retainer, no platform fee, nothing quietly attached in month three. The build is the last invoice I send unless you ask me back.</p>
+      <p class="copy">Your rules, your prices, your voice and your history live in plain files on your own machine. When a sharper model arrives you point at it and keep everything. Most tools lose value the moment you buy them; this one compounds, because every correction banks into it. <span class="hot">Someone could commission the identical build tomorrow and still not have your system.</span></p>
+      <p class="copy">After handover you pay the AI provider directly, not me. No retainer, no platform fee. The build is the last invoice I send unless you ask me back.</p>
       <figure class="diagram">
         <svg viewBox="0 0 900 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The handover. We build it with you over a few short sessions, then you take the controls, then you run and grow it yourself. My involvement fades stage by stage.">
           <defs>
@@ -1087,9 +1294,8 @@ fbq('track', 'PageView');
           </div>
           <span class="price-tag">Per person. Four sessions, then two follow-ups.</span>
         </div>
-        <p class="copy">Four sessions to build it, then two follow-ups once you are running it yourself, where we swap what we have each built since. The architecture, the skills and the playbooks, set up around how you actually work rather than a template. Everything you have already built gets folded in during the build. Your data and everything it produces stay yours. The one running cost on your side is a Claude or ChatGPT subscription at the $100 a month tier, which is what gives it the room to build rather than just chat.</p>
+        <p class="copy">Four sessions to build it, then two follow-ups once you're running it yourself. Architecture, skills and playbooks built around how you actually work, not a template. Everything you've already made gets folded in, and it all stays yours. Your only running cost is a Claude or ChatGPT subscription at the $100 a month tier.</p>
       </div>
-      <p class="copy">If there is more than one of you, each founder gets their own. They are personal systems, so two founders is two builds at $5,500 each. Connecting them, so you share what should be shared and nothing overwrites anyone else's decisions, is a separate piece of work that we scope once we know how you actually operate together. It is not part of the build price and I will not guess at it on a page.</p>
       <div class="section-actions">
         <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
       </div>
@@ -1151,15 +1357,14 @@ fbq('track', 'PageView');
 
     <section class="reveal" aria-labelledby="next-title">
       <p class="eyebrow">THE NEXT STEP</p>
-      <h2 id="next-title">Want one of your own?</h2>
-      <p class="copy">If this is what you've been needing, book the half hour and bring the bottleneck.</p>
+      <h2 id="next-title">Bring me your worst bottleneck.</h2>
+      <p class="copy">Half an hour, on my screen, on whatever is eating your week. If it isn't for you, you'll know inside the half hour and that's a fine outcome.</p>
       <div class="section-actions">
         <a class="button" href="chief-of-staff-book.html">Book a 30-minute walkthrough</a>
       </div>
       <div class="close-links">
         <p>Not ready for a call? <a class="text-link" href="chief-of-staff-guide.html">Take the field guide.</a></p>
-        <p>Or just <a class="text-link" href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff">message me.</a></p>
-        <p>Prefer a room and two days? <a class="text-link" href="chief-of-staff-intensive.html">Join the 2-Day Intensive</a> (Melbourne, Q4 2026).</p>
+        <p class="close-quiet">Prefer a room and two days? <a class="text-link" href="chief-of-staff-intensive.html">The 2-Day Intensive</a> runs in Melbourne, Q4 2026. Or <a class="text-link" href="mailto:info@fifthcastle.media?subject=Chief%20of%20Staff">message me</a>.</p>
       </div>
     </section>
   </main>
@@ -1264,6 +1469,21 @@ fbq('track', 'PageView');
       el = el.parentNode;
     }
   }, true);
+})();
+</script>
+<script>
+/* Honour reduced-motion: hold the finished graph rather than looping it. */
+(function () {
+  var v = document.getElementById('graphFilm');
+  if (!v) return;
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.removeAttribute('autoplay');
+      v.loop = false;
+      v.pause();
+      v.setAttribute('controls', '');
+    }
+  } catch (e) { /* leave the default behaviour */ }
 })();
 </script>
 </body>
