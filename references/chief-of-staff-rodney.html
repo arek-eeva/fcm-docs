@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <!--
-  STATUS as at 29 Jul 2026: this page now matches Arek's decisions. It states
-  $5,500 ex GST / $550 GST / $6,050 inc, two payments of $3,025, no guarantee, and
-  the amended licence. THE GHL DOCUMENT MUST BE AMENDED TO MATCH BEFORE SENDING.
+  STATUS as at 30 Jul 2026. PRICE RESOLVED: Arek's decision is to HONOUR the figure
+  Rodney has already seen, $5,500 INCLUDING GST ($5,000 ex + $500 GST), two payments
+  of $2,750. This page and the agreement now agree. Every client quoted from 30 Jul
+  onward pays $5,500 PLUS GST ($6,050), so do not copy this page's price treatment
+  into the next proposal. Recorded as an honoured exception in
+  Chief-of-Staff-OFFER-SSOT.md section 5.
 
-  DONE on document eaa0c26a-a28a-4268-9c38-6f75b8399f4b (verified in browser
-  29 Jul): the amended licence clauses 6 and 7 are in, the Part 1 promises are in,
-  Client Materials and 8.1 are in, clause 4 is now Refunds and 3.3 is fixed. The
-  duplicate Rodney contacts have been merged.
+  DONE on document eaa0c26a-a28a-4268-9c38-6f75b8399f4b (verified in browser): the
+  amended licence clauses 6 and 7, the Part 1 promises, Client Materials, 8.1,
+  clause 4 replaced with Refunds, 3.3 fixed. Duplicate Rodney contacts merged.
 
-  STILL WRONG on that document, all three verified 29 Jul:
+  STILL WRONG on that document, two items, both verified:
 
-  1. PRICE, the blocking one. Still built GST-INCLUSIVE: subtotal $5,500, GST $500
-     shown as included, amount due $5,500, two payments of $2,750. Arek's decision
-     was $6,050. Change the product line so GST is ADDED, not included, giving $550
-     GST, $6,050 due, two payments of $3,025. This page already says that, so the
-     page and the agreement currently disagree by $550.
-
-  2. GUARANTEE, half removed. Clause 4 was correctly replaced with Refunds, but the
+  1. GUARANTEE, half removed. Clause 4 was correctly replaced with Refunds, but the
      "Guarantee:" line still sits in THE ENGAGEMENT AT A GLANCE and the whole Part 1
      "The guarantee" section is still there, including "That is the whole of your
      risk". So Part 1 promises a guarantee that Part 2 no longer contains, and Part 1
      itself says Part 2 governs. That contradiction is worse than either version on
      its own. Delete both Part 1 pieces.
 
-  3. LEGAL ENTITY still empty. The GHL contact's customFields array is empty, so
+  2. LEGAL ENTITY still empty. The GHL contact's customFields array is empty, so
      "PN Digital" went into the Business name field rather than Legal entity. Clause
      1 still reads "Client means Rodney Ferro" and there is no "Client:" line in the
      CLIENT block. Combined with 6.3 excluding related bodies corporate, the licence
      may not reach the company he trades through. Fill Legal entity, then REGENERATE,
      because merge fields bake in at generation.
+
+  Root cause of all of this and the standing fix:
+  Legal/Agreement-Generation-Fix-2026-07-29.md
 
   Names deliberately avoided: Rodney's partner is rendered as both "Aaron" and
   "Erin" in the transcript, and "Luke" is unconfirmed (T-340). No name is used in
@@ -340,7 +339,7 @@
       <div><span class="k">Zero</span><span class="v">Connections in session one</span></div>
       <div><span class="k">Your Mac</span><span class="v">Where every file lives</span></div>
       <div><span class="k">4 + 2</span><span class="v">Sessions and follow-ups</span></div>
-      <div><span class="k">$5,500</span><span class="v">Plus GST, one seat</span></div>
+      <div><span class="k">$5,500</span><span class="v">Including GST, one seat</span></div>
     </div>
   </section>
 
@@ -358,7 +357,7 @@
       <p style="margin-top:18px;">And the honest part, because you'll ask and you should: <strong>this is a design discipline, not a solved technical problem.</strong> Nothing in the industry automatically detects that a summary has picked up something sensitive. Anyone telling you that's handled is selling you something. What makes it safe is deciding the rules while the system is empty, which is precisely why session one connects nothing at all.</p>
 
       <div class="cta-inline">
-        <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/eaa0c26a-a28a-4268-9c38-6f75b8399f4b?locale=en-US">Sign and start &middot; $5,500 + GST</a>
+        <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/eaa0c26a-a28a-4268-9c38-6f75b8399f4b?locale=en-US">Sign and start &middot; $5,500 inc GST</a>
         <span class="aside">Or read the rest first. The button follows you down.</span>
       </div>
     </div>
@@ -690,26 +689,26 @@
     <div class="price-box">
       <div class="price-row">
         <div class="l">Build Your Own Chief of Staff<small>Four build sessions, two follow-ups, the packaged system, your AI and data-handling policy, the negative testing at go-live, call-me-when-you're-stuck support through the build, and the licence to run it.</small></div>
-        <div class="r">$5,500<em>plus GST</em></div>
+        <div class="r">$5,000<em>plus GST</em></div>
       </div>
       <div class="price-row">
         <div class="l">GST</div>
-        <div class="r">$550</div>
+        <div class="r">$500</div>
       </div>
       <div class="price-row total">
         <div class="l">Total</div>
-        <div class="r">$6,050<em>including GST</em></div>
+        <div class="r">$5,500<em>including GST</em></div>
       </div>
     </div>
 
     <div style="margin-top:26px;">
       <ul class="rows">
         <li>
-          <h3>On signing &middot; $3,025 including GST</h3>
+          <h3>On signing &middot; $2,750 including GST</h3>
           <div class="d">Half, which locks your session dates and gets you the folder and your homework the same day.</div>
         </li>
         <li>
-          <h3>Two weeks later &middot; $3,025 including GST</h3>
+          <h3>Two weeks later &middot; $2,750 including GST</h3>
           <div class="d">The other half, which falls around the end of the build.</div>
         </li>
       </ul>
@@ -760,7 +759,7 @@
 <div class="floatbar" id="floatbar" aria-hidden="true">
   <div class="fb-text">
     <span class="fb-lead">One seat &middot; PN Digital</span>
-    <span class="fb-sum">$5,500 + GST</span>
+    <span class="fb-sum">$5,500 inc GST</span>
   </div>
   <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/eaa0c26a-a28a-4268-9c38-6f75b8399f4b?locale=en-US">Sign and get started</a>
   <a class="btn btn-ghost" href="https://app.fifthcastle.media/widget/booking/R4zNxfwXaVVV0qh6wccH">Book session 1</a>
