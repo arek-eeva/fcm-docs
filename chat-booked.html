@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call booked | Fifth Castle Media</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Light theme, matched to the Chat with Arek booking widget this page follows,
+     so the flow does not switch surfaces at the last step. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FAF9F7; color: #14110F;
+    font-family: Georgia, serif; line-height: 1.65;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .card { max-width: 560px; text-align: center; }
+  .kicker {
+    font-family: 'Khand', sans-serif; text-transform: uppercase;
+    letter-spacing: 0.22em; font-size: 13px; color: #BD202D; margin-bottom: 18px;
+  }
+  h1 { font-family: 'Vidaloka', serif; font-size: clamp(30px, 5vw, 44px); margin-bottom: 18px; color: #14110F; }
+  p { margin-bottom: 14px; color: #5F5851; font-size: 17px; }
+  .steps { text-align: left; margin: 26px auto 8px; max-width: 440px; }
+  .steps div {
+    padding: 12px 0; border-top: 1px solid #D8D3CB; display: flex; gap: 14px; align-items: baseline;
+  }
+  .steps div:last-child { border-bottom: 1px solid #D8D3CB; }
+  .n { font-family: 'JetBrains Mono', monospace; color: #BD202D; font-size: 14px; }
+  .sig { margin-top: 26px; font-family: 'Khand', sans-serif; letter-spacing: 0.08em; color: #14110F; }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1596350102005148');
+fbq('track','PageView');
+/* The conversion event for the general Chat with Arek calendar. Distinct
+   content_name from the Chief of Staff one so the two are separable in Events
+   Manager rather than pooled. sessionStorage guard stops a refresh
+   double-counting the booking. */
+(function () {
+  try {
+    if (!sessionStorage.getItem('fcm_chat_schedule_fired')) {
+      fbq('track', 'Schedule', {content_name: 'FCM general chat booked'});
+      sessionStorage.setItem('fcm_chat_schedule_fired', '1');
+    }
+  } catch (e) {
+    fbq('track', 'Schedule', {content_name: 'FCM general chat booked'});
+  }
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+  <main class="card">
+    <div class="kicker">Fifth Castle Media</div>
+    <h1>You're booked.</h1>
+    <p>The calendar invite is on its way to your inbox now, with the meeting link inside.</p>
+    <div class="steps">
+      <div><span class="n">01</span><span>You'll get a reminder the day before.</span></div>
+      <div><span class="n">02</span><span>Bring whatever you're working on. A specific challenge is ideal, and so is not being sure yet.</span></div>
+      <div><span class="n">03</span><span>Nothing to prepare, and no obligation at the end of it.</span></div>
+    </div>
+    <p class="sig">See you then. Arek</p>
+  </main>
+<!-- GHL external tracking -->
+<script
+  src="https://app.fifthcastle.media/js/external-tracking.js"
+  data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
+></script>
+</body>
+</html>
