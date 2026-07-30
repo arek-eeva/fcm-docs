@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Twelve Jobs You Shouldn't Still Be Doing | Chief of Staff | Arek Rainczuk</title>
-<meta name="description" content="A short, honest guide to building an AI that actually holds your business. Free, no course, no upsell.">
+<meta name="description" content="You've built the tools. This is the operating system they run on. A free sixteen-page guide to the twelve jobs that only work once the parts share one memory.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff-guide.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Twelve Jobs You Shouldn't Still Be Doing | Chief of Staff">
-<meta property="og:description" content="A short, honest guide to building an AI that actually holds your business.">
+<meta property="og:description" content="You've built the tools. This is the operating system they run on. Free, no course, no upsell.">
 <meta property="og:url" content="https://docs.fifthcastle.media/chief-of-staff-guide.html">
 <meta property="og:site_name" content="Fifth Castle Media">
 <meta property="og:locale" content="en_AU">
@@ -17,16 +17,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Light theme, tokens matched to the field guide this page gives away
+     (cos-field-guide.html) so the page and the document read as one thing.
+     Converted from the dark landing-page palette 30 Jul 2026. */
   :root {
-    --bg: #0A0A0A;
-    --bg-2: #131210;
-    --text: #F5F1EA;
-    --muted: #8d877c;
-    --subtle: #56514a;
+    --bg: #FAF9F7;
+    --bg-2: #F1EEE8;
+    --text: #14110F;
+    --muted: #5F5851;
+    --subtle: #6E675F;
     --accent: #BD202D;
-    --accent-bright: #e0303e;
-    --line: #2A2724;
-    --line-bright: #3c3833;
+    --accent-bright: #A31B26;
+    --line: #D8D3CB;
+    --line-bright: #C9C3B9;
     --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
     --font-label: 'Khand', 'Arial Narrow', sans-serif;
     --font-body: Georgia, 'Times New Roman', serif;
@@ -42,12 +45,6 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 1; pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
-    opacity: 0.4; mix-blend-mode: screen;
   }
   .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
 
@@ -107,12 +104,13 @@
   .inside .it .t span { color: var(--muted); display: block; margin-top: 5px; font-size: 0.92em; }
 
   /* form panel */
+  /* Flat panel, no radius and no glow: the guide is all-sharp with a single
+     flat tone for callouts, and this holds that shape lock. */
   .formpanel {
     margin-top: 34px;
-    border: 1px solid var(--line-bright); border-radius: 14px;
-    background:
-      radial-gradient(ellipse at 50% 0%, rgba(189,32,45,0.07), transparent 62%),
-      var(--bg-2);
+    border: 1px solid var(--line-bright);
+    border-left: 2px solid var(--accent);
+    background: var(--bg-2);
     padding: clamp(22px, 4vw, 40px);
   }
   .formpanel .flabel {
@@ -126,11 +124,15 @@
      frame collapsing before that script runs. */
   .form-slot { margin-top: 26px; min-height: 470px; }
   .form-slot iframe { display: block; width: 100%; border: 0; min-height: 470px; }
+  /* form_embed.js injects its own wrappers with an 8px radius, which is the only
+     rounded corner on an otherwise all-sharp page. Square them to hold the lock. */
+  .form-slot .ep-wrapper,
+  .form-slot .ep-iFrameContainer { border-radius: 0 !important; }
   .form-fallback {
     display: flex; flex-direction: column; justify-content: center;
     min-height: 320px; padding: 28px;
-    border: 1px dashed var(--line-bright); border-radius: 11px;
-    background: rgba(245,241,234,0.02);
+    border: 1px dashed var(--line-bright);
+    background: rgba(20,17,15,0.02);
   }
   .form-fallback .fb-tag {
     font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
@@ -189,23 +191,23 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
 
   <header class="intro">
     <div class="kicker">Free guide</div>
-    <!-- PLACEHOLDER: final guide title goes here -->
     <h1>The Twelve Jobs You Shouldn't Still Be Doing</h1>
-    <p class="sub">The short version of what I've spent two years working out: how to give an AI enough of your business that it stops answering questions and starts doing the work. <span class="hot">No course, no upsell, no sequence to escape from.</span></p>
+    <p class="sub">You've built the tools. This is the operating system they run on. Sixteen pages on twelve jobs that only work once the parts share one memory. <span class="hot">No course, no upsell, no sequence to escape from.</span></p>
   </header>
 
   <section>
     <div class="eyebrow">What's inside</div>
-    <h2>Written for the founder who is already the bottleneck.</h2>
-    <p class="body">It's the practical stuff, not the theory: what to write down, what order to build in, and the two or three mistakes that quietly waste a month.</p>
+    <h2>Written for someone who has already had a go.</h2>
+    <p class="body">If you've used chat hard, or built a few things that don't talk to each other, this is the missing piece rather than an introduction. <span class="hot">It's concrete on purpose</span>, so you can hold each job against your own week and work out which ones you're still carrying.</p>
     <div class="inside">
-      <div class="it"><span class="n">01</span><span class="t">Why a chatbot forgets and a Chief of Staff doesn't<span>The difference is memory and rules, not a smarter model.</span></span></div>
-      <div class="it"><span class="n">02</span><span class="t">The first thing to write down<span>One file, an afternoon's work, and most of the value.</span></span></div>
-      <div class="it"><span class="n">03</span><span class="t">Teaching it to sound like you<span>How to capture a voice well enough that clients can't tell.</span></span></div>
-      <div class="it"><span class="n">04</span><span class="t">The daily rhythm that keeps it useful<span>Open, work, log, close. Skip the log and it forgets by Friday.</span></span></div>
-      <div class="it"><span class="n">05</span><span class="t">What to hand over first, and what to keep<span>Where to start so the first week pays for itself.</span></span></div>
-      <div class="it"><span class="n">06</span><span class="t">The mistakes that cost me months<span>Including the one nearly everyone makes in week one.</span></span></div>
+      <div class="it"><span class="n">01</span><span class="t">The problem is the architecture, not the tools<span>Why every build starts near zero, and what that costs you over a year.</span></span></div>
+      <div class="it"><span class="n">02</span><span class="t">Twelve jobs, described end to end<span>Money, clients, output and the work that happens while you're elsewhere.</span></span></div>
+      <div class="it"><span class="n">03</span><span class="t">Why a chat window can't hold any of it<span>Not a quality ceiling. It remembers you and it doesn't hold your business.</span></span></div>
+      <div class="it"><span class="n">04</span><span class="t">The models are rented, the system is owned<span>Why a sharper model next quarter makes yours better instead of obsolete.</span></span></div>
+      <div class="it"><span class="n">05</span><span class="t">What you'd actually have to bring<span>Your pricing logic, your voice, your rules. None of it technical.</span></span></div>
+      <div class="it"><span class="n">06</span><span class="t">Six reasons I'd tell you not to do it<span>Written to talk you out of it if you're the wrong fit, and I mean it.</span></span></div>
     </div>
+    <p class="body" style="margin-top:22px">And a short exercise worth doing whether or not you ever build one: mark each of the twelve A, B or C. Most founders come back with two As.</p>
   </section>
 
   <section>

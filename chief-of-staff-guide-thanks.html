@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0A0A0A;
-    --bg-2: #131210;
-    --text: #F5F1EA;
-    --muted: #8d877c;
-    --subtle: #56514a;
+    --bg: #FAF9F7;
+    --bg-2: #F1EEE8;
+    --text: #14110F;
+    --muted: #5F5851;
+    --subtle: #6E675F;
     --accent: #BD202D;
-    --accent-bright: #e0303e;
-    --line: #2A2724;
-    --line-bright: #3c3833;
+    --accent-bright: #A31B26;
+    --line: #D8D3CB;
+    --line-bright: #C9C3B9;
     --font-display: 'Vidaloka', Georgia, 'Times New Roman', serif;
     --font-label: 'Khand', 'Arial Narrow', sans-serif;
     --font-body: Georgia, 'Times New Roman', serif;
@@ -34,12 +34,6 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 1; pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
-    opacity: 0.4; mix-blend-mode: screen;
   }
   .wrap { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(24px, 6vw, 80px); }
 
