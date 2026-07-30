@@ -119,11 +119,12 @@
   }
   .formpanel .fhead { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); line-height: 1.2; color: var(--text); }
   .formpanel .fnote { margin-top: 12px; font-size: 16px; color: var(--muted); max-width: 46ch; }
-  /* Sized for the live form: name, email, business name, consent, button.
+  /* Sized for the live form (CoS Guide form, 415px): full name, email,
+     business name, consent, button.
      GHL's embed script auto-resizes upward if needed; this floor just stops the
      frame collapsing before that script runs. */
-  .form-slot { margin-top: 26px; min-height: 470px; }
-  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 470px; }
+  .form-slot { margin-top: 26px; min-height: 415px; }
+  .form-slot iframe { display: block; width: 100%; border: 0; min-height: 415px; }
   /* form_embed.js injects its own wrappers with an 8px radius, which is the only
      rounded corner on an otherwise all-sharp page. Square them to hold the lock. */
   .form-slot .ep-wrapper,
@@ -222,8 +223,8 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
              follows the person into the CRM record. Form redirect is set in GHL to
              chief-of-staff-guide-thanks.html, which fires the Lead event. -->
         <iframe
-          src="https://app.fifthcastle.media/widget/form/dD3YGg6yyy7jYAQpbLtG"
-          id="inline-dD3YGg6yyy7jYAQpbLtG"
+          src="https://app.fifthcastle.media/widget/form/ejVPGu1CE8CHyQYf4ATq"
+          id="inline-ejVPGu1CE8CHyQYf4ATq"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
           data-trigger-value=""
@@ -231,11 +232,11 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
           data-activation-value=""
           data-deactivation-type="neverDeactivate"
           data-deactivation-value=""
-          data-form-name="CoS Field Guide"
-          data-height="470"
-          data-layout-iframe-id="inline-dD3YGg6yyy7jYAQpbLtG"
-          data-form-id="dD3YGg6yyy7jYAQpbLtG"
-          title="Get the field guide"></iframe>
+          data-form-name="CoS Guide form"
+          data-height="415"
+          data-layout-iframe-id="inline-ejVPGu1CE8CHyQYf4ATq"
+          data-form-id="ejVPGu1CE8CHyQYf4ATq"
+          title="CoS Guide form"></iframe>
       </div>
       <script>
       /* Stamp the ad attribution onto the form's src BEFORE the embed script runs.
@@ -243,7 +244,7 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
       (function () {
         var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','campaign_id','fbclid','gclid'];
         var incoming = new URLSearchParams(window.location.search);
-        var f = document.getElementById('inline-dD3YGg6yyy7jYAQpbLtG');
+        var f = document.getElementById('inline-ejVPGu1CE8CHyQYf4ATq');
         if (!f) return;
         try {
           var u = new URL(f.getAttribute('src'), window.location.href);
