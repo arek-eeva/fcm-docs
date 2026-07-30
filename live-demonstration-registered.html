@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>You're in | Live Demonstration | Arek Rainczuk</title>
+<meta name="description" content="Your place is confirmed for the live demonstration on Wednesday 26 August at 12:00pm AEST.">
+<link rel="canonical" href="https://docs.fifthcastle.media/live-demonstration-registered.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="You're in | Live Demonstration | Arek Rainczuk">
+<meta property="og:description" content="Your place is confirmed for the live demonstration on Wednesday 26 August at 12:00pm AEST.">
+<meta property="og:url" content="https://docs.fifthcastle.media/live-demonstration-registered.html">
+<meta property="og:site_name" content="Fifth Castle Media">
+<meta property="og:locale" content="en_AU">
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&amp;family=Vidaloka&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF9F7;
+    --ink: #14110F;
+    --muted: #5F5851;
+    --rule: #D8D3CB;
+    --rule-soft: #E8E4DD;
+    --accent: #BD202D;
+    --white: #FFFFFF;
+    --shade: #F1EEE8;
+    --panel: rgba(255, 255, 255, 0.58);
+    --accent-wash: rgba(189, 32, 45, 0.07);
+    --shadow: rgba(20, 17, 15, 0.08);
+    --grid-vertical: rgba(20, 17, 15, 0.025);
+    --grid-horizontal: rgba(20, 17, 15, 0.018);
+    --transparent: transparent;
+    --font-display: "Vidaloka", Georgia, "Times New Roman", serif;
+    --font-label: "Khand", Arial, sans-serif;
+    --font-body: Georgia, "Times New Roman", serif;
+    --radius-control: 3px;
+    --radius-surface: 10px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    overflow-x: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 0;
+    overflow-x: hidden;
+    background:
+      linear-gradient(90deg, var(--grid-vertical) 1px, var(--transparent) 1px) 0 0 / 96px 96px,
+      linear-gradient(0deg, var(--grid-horizontal) 1px, var(--transparent) 1px) 0 0 / 96px 96px,
+      var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .page {
+    width: min(100%, 1220px);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 18px 0 0;
+    font-family: var(--font-label);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .brand-mark {
+    color: var(--muted);
+  }
+
+  .slash {
+    color: var(--accent);
+  }
+
+  .topbar .button {
+    margin: 0;
+  }
+
+  .button {
+    display: inline-flex;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-control);
+    background: var(--accent);
+    color: var(--white);
+    font-family: var(--font-label);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    line-height: 1;
+    padding: 15px 20px 13px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+  }
+
+  .button:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+    align-items: center;
+    padding: 70px 0 76px;
+  }
+
+  .hero-copy,
+  .hero-shot {
+    min-width: 0;
+  }
+
+  .hero-copy {
+    max-width: 980px;
+  }
+
+  .kicker,
+  .eyebrow,
+  .fact-label,
+  .window-title {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .kicker,
+  .eyebrow {
+    margin: 0 0 18px;
+    color: var(--accent);
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  h1 {
+    max-width: 17em;
+    font-size: 39px;
+    line-height: 1.12;
+  }
+
+  h2 {
+    max-width: 14.5em;
+    font-size: 33px;
+    line-height: 1.14;
+  }
+
+  h3 {
+    font-size: 23px;
+    line-height: 1.24;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .sub {
+    max-width: 46em;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1.55;
+  }
+
+  .hero-actions,
+  .section-actions {
+    display: grid;
+    gap: 15px;
+    align-items: center;
+    margin-top: 28px;
+  }
+
+  main {
+    display: block;
+  }
+
+  section {
+    border-top: 1px solid var(--rule);
+    padding: 62px 0;
+    scroll-margin-top: 24px;
+  }
+
+  .section-inner {
+    max-width: 920px;
+  }
+
+  .copy {
+    max-width: 43em;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.64;
+  }
+
+  h2 + .copy,
+  .eyebrow + h2 + .copy {
+    margin-top: 24px;
+  }
+
+  .copy + .copy {
+    margin-top: 18px;
+  }
+
+  .field-note {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .window {
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-surface);
+    background: var(--panel);
+    box-shadow: 0 18px 34px var(--shadow);
+  }
+
+  .window-bar {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--shade);
+    padding: 12px 14px;
+  }
+
+  .window-dot {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 auto;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .window-dot:first-child {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .window-title {
+    min-width: 0;
+    margin-left: 6px;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .window-screen {
+    padding: 18px;
+  }
+
+  .facts {
+    border-top: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 0 0 44px;
+  }
+
+  .fact-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .fact-item {
+    display: grid;
+    gap: 7px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .fact-label {
+    color: var(--accent);
+    font-size: 15px;
+  }
+
+  .fact-text {
+    margin: 0;
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .resource-list {
+    max-width: 48em;
+    margin: 30px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+  }
+
+  .resource-item {
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 22px 0;
+  }
+
+  .resource-link {
+    text-decoration-thickness: 2px;
+  }
+
+  .resource-copy {
+    max-width: 43em;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px 0 42px;
+    color: var(--muted);
+    font-family: var(--font-label);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+
+  .reveal-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding: 0 32px;
+    }
+
+    .topbar {
+      padding-top: 24px;
+    }
+
+    .topbar .button,
+    .button {
+      width: fit-content;
+    }
+
+    .hero-actions,
+    .section-actions {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 19px;
+    }
+
+    .hero {
+      padding: 90px 0 96px;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    h2 {
+      font-size: 42px;
+    }
+
+    .copy {
+      font-size: 19px;
+    }
+
+    .fact-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .fact-item {
+      border-right: 1px solid var(--rule-soft);
+      padding: 24px 22px 24px 0;
+    }
+
+    .fact-item:nth-child(2n) {
+      border-right: 0;
+      padding-left: 22px;
+    }
+
+    .fact-item:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+  }
+
+  @media (min-width: 1060px) {
+    .page {
+      padding: 0 48px;
+    }
+
+    .hero {
+      padding: 112px 0 118px;
+    }
+
+    h1 {
+      font-size: 58px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .facts {
+      padding: 0 0 44px;
+    }
+
+    .fact-list {
+      grid-template-columns: 1.3fr 1fr 1.15fr 1.4fr;
+    }
+
+    .fact-item,
+    .fact-item:nth-child(2n) {
+      border-right: 1px solid var(--rule-soft);
+      border-bottom: 0;
+      padding: 24px 20px;
+    }
+
+    .fact-item:first-child {
+      padding-left: 0;
+    }
+
+    .fact-item:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal-ready .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .button {
+      transition: none;
+    }
+  }
+</style>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1596350102005148');
+fbq('track', 'PageView');
+fbq('track','CompleteRegistration');
+</script>
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1596350102005148&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+<div class="page" id="top">
+  <nav class="topbar" aria-label="Primary">
+    <div class="brand-mark">Fifth Castle Media <span class="slash">/</span> Arek Rainczuk</div>
+  </nav>
+
+  <header class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="kicker">YOU'RE IN · WEDNESDAY 26 AUGUST · 12:00 TO 1:00PM AEST</p>
+      <h1 id="hero-title">Saved. See you on the 26th.</h1>
+      <p class="sub">Your calendar invite is on its way. The link to watch comes in the reminder the day before, and again an hour before we start. If something comes up and you can't make it live, stay registered: the recording goes to everyone who signed up.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="facts reveal" aria-labelledby="facts-title">
+      <h2 class="sr-only" id="facts-title">Event details</h2>
+      <dl class="fact-list">
+        <div class="fact-item">
+          <dt class="fact-label">WHEN</dt>
+          <dd class="fact-text">Wednesday 26 August, 12:00 to 1:00pm AEST. Add it to your calendar now so it survives a busy week.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">WHERE</dt>
+          <dd class="fact-text">Online. Your link arrives in the reminder the day before.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">ON CAMERA</dt>
+          <dd class="fact-text">No. It's a one-way stream. You watch, and questions go through a box on the page. You can stay quiet the whole hour.</dd>
+        </div>
+        <div class="fact-item">
+          <dt class="fact-label">ONE QUESTION</dt>
+          <dd class="fact-text">What would you point a system like this at first? It shapes what I cover.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="reveal" aria-labelledby="task-title">
+      <div class="section-inner">
+        <h2 id="task-title">One thing that would help.</h2>
+        <p class="copy">If you did not answer it on the form, reply to the confirmation email in your inbox and tell me what you would point a system like this at first. It takes a sentence, and it tells me what to spend the hour on.</p>
+        <p class="field-note">I delete these after the session.</p>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="map-title">
+      <div class="section-inner">
+        <h2 id="map-title">Before the day, I'll send you the map.</h2>
+        <p class="copy">Most demonstrations show you a clever result and leave you guessing how it was done. Before the 26th you'll get the map of how the whole thing is put together: the source of truth, the gates, the layers of control, and the three ways it runs depending on whether you're on your own, sharing a business, or inside a company with an IT department. It's worth ten minutes before you watch it move.</p>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="wait-title">
+      <div class="section-inner">
+        <h2 id="wait-title">While you wait.</h2>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <h3><a class="resource-link" href="https://docs.fifthcastle.media/chief-of-staff-guide.html" target="_blank" rel="noopener">The field guide</a></h3>
+            <p class="resource-copy">The written version of the argument, in about twenty minutes.</p>
+          </li>
+          <li class="resource-item">
+            <h3><a class="resource-link" href="https://docs.fifthcastle.media/chief-of-staff-testimonials.html" target="_blank" rel="noopener">What people say after they've built one</a></h3>
+            <p class="resource-copy">Six founders, in their own words.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>Fifth Castle Media · Arek Rainczuk · <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a></footer>
+</div>
+
+<script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('reveal-ready');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(document.querySelectorAll('main section'), function (section) {
+      revealObserver.observe(section);
+    });
+  }
+})();
+</script>
+</body>
+</html>
