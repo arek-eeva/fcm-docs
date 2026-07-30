@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Chief of Staff, for Lisa | Fifth Castle Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF8F4;
+    --panel: #F2EEE7;
+    --panel-2: #FFFFFF;
+    --text: #191815;
+    --muted: #6B665D;
+    --subtle: #A29C92;
+    --accent: #BD202D;
+    --accent-soft: rgba(189, 32, 45, 0.07);
+    --accent-line: rgba(189, 32, 45, 0.32);
+    --line: #E4DED4;
+    --display: 'Vidaloka', Georgia, serif;
+    --label: 'Khand', 'Helvetica Neue', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r: 3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 0 120px;
+  }
+
+  .wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+    margin-bottom: 68px;
+    background: linear-gradient(180deg, var(--accent-soft), transparent);
+  }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 13px; font-weight: 600; }
+  .mark .red { color: var(--accent); }
+  .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--subtle); text-transform: uppercase; }
+
+  /* ---------- type ---------- */
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+
+  h1 { font-family: var(--display); font-size: 47px; line-height: 1.11; font-weight: 400; margin-bottom: 22px; }
+  .lede { color: var(--muted); font-size: 19px; margin-bottom: 16px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  h2 .red { color: var(--accent); }
+  h3 { font-family: var(--label); font-size: 20px; letter-spacing: 0.02em; font-weight: 500; margin: 0 0 5px; }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  .sub { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .note { color: var(--subtle); font-size: 15px; font-style: italic; }
+
+  a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 52px 0; }
+  section { scroll-margin-top: 24px; }
+
+  /* ---------- facts strip ---------- */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 34px 0 8px; background: var(--panel-2); }
+  .facts div { padding: 18px 16px; border-right: 1px solid var(--line); }
+  .facts div:last-child { border-right: 0; }
+  .facts .k { font-family: var(--display); font-size: 25px; line-height: 1.1; display: block; margin-bottom: 5px; }
+  .facts .v { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 11.5px; line-height: 1.45; color: var(--muted); display: block; min-height: 2.9em; }
+
+  /* ---------- lists ---------- */
+  ul.rows { list-style: none; }
+  ul.rows li { padding: 19px 0; border-top: 1px solid var(--line); }
+  ul.rows li:last-child { border-bottom: 1px solid var(--line); }
+  ul.rows .d { color: var(--muted); font-size: 16.5px; }
+
+  ul.check { color: var(--muted); font-size: 16.5px; padding-left: 20px; }
+  ul.check li { margin-bottom: 10px; }
+  ul.check strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- figures ---------- */
+  figure { margin: 32px 0 0; }
+  .fig-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fig-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .fig-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 16px 14px; }
+  .fig-card .cap {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 11.5px; color: var(--accent); margin-bottom: 12px;
+  }
+  .fig-card svg { display: block; width: 100%; height: auto; }
+  figcaption { color: var(--subtle); font-size: 15px; font-style: italic; margin-top: 14px; }
+
+  .svg-lbl { font-family: 'Khand', sans-serif; font-size: 12.5px; letter-spacing: 0.02em; fill: var(--muted); }
+  .svg-lbl-dark { font-family: 'Khand', sans-serif; font-size: 13px; letter-spacing: 0.03em; fill: var(--text); }
+  .svg-lbl-sm { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.04em; fill: var(--subtle); }
+  .svg-node { fill: var(--panel); stroke: var(--line); stroke-width: 1; }
+  .svg-hub { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+  .svg-wire { stroke: var(--subtle); stroke-width: 1; fill: none; }
+  .svg-wire-hot { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+  .svg-wire-cut { stroke: var(--subtle); stroke-width: 1; fill: none; stroke-dasharray: 4 4; }
+
+  /* ---------- the opening statement ---------- */
+  .gesture { border: 1px solid var(--accent); border-radius: var(--r); padding: 32px; background: linear-gradient(180deg, var(--accent-soft), transparent 72%); }
+  .gesture .badge { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+  .gesture .big { font-family: var(--display); font-size: 30px; line-height: 1.24; margin-bottom: 16px; }
+  .gesture p { color: var(--muted); font-size: 16.5px; }
+  .gesture p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- session timeline ---------- */
+  .arc { list-style: none; position: relative; margin-top: 30px; }
+  .arc::before { content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+  .arc li { position: relative; padding: 0 0 30px 52px; }
+  .arc li:last-child { padding-bottom: 0; }
+  .arc .n { position: absolute; left: 0; top: -1px; width: 31px; height: 31px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--line); font-family: var(--label); font-size: 14px; font-weight: 600; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+  .arc li.now .n { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .arc .when { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11.5px; color: var(--accent); margin-bottom: 3px; }
+  .arc .d { color: var(--muted); font-size: 16.5px; }
+
+  /* ---------- two paths ---------- */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .path { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: var(--panel-2); }
+  .path .tag { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 11.5px; color: var(--accent); margin-bottom: 8px; }
+  .path h3 { margin-bottom: 8px; }
+  .path p { color: var(--muted); font-size: 16px; }
+
+  /* ---------- panels ---------- */
+  .panel { background: var(--panel); border-left: 3px solid var(--accent); padding: 24px 28px; border-radius: 0 var(--r) var(--r) 0; }
+  .panel h3 { margin-bottom: 10px; }
+  .panel p { color: var(--muted); font-size: 16.5px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 24px 0; }
+  .qa:last-of-type { border-bottom: 1px solid var(--line); }
+  .qa .q { font-family: var(--display); font-size: 21px; line-height: 1.35; margin-bottom: 12px; }
+  .qa .q::before { content: '“'; color: var(--accent); }
+  .qa .q::after { content: '”'; color: var(--accent); }
+  .qa p { color: var(--muted); font-size: 16.5px; }
+  .qa p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- the policy sheet ---------- */
+  .policy { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel-2); overflow: hidden; margin-top: 28px; }
+  .policy .head { background: var(--panel); border-bottom: 1px solid var(--line); padding: 16px 24px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--muted); }
+  .policy .row { display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 17px 24px; border-bottom: 1px solid var(--line); }
+  .policy .row:last-child { border-bottom: 0; }
+  .policy .row .k { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .policy .row .v { color: var(--muted); font-size: 16px; }
+  .policy .yes { color: var(--accent); }
+
+  /* ---------- price ---------- */
+  .price-box { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 30px 26px; }
+  .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .price-row:last-of-type { border-bottom: 0; }
+  .price-row .l { font-family: var(--label); font-size: 18px; letter-spacing: 0.02em; }
+  .price-row .l small { display: block; font-family: var(--body); font-size: 14.5px; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+  .price-row .r { font-family: var(--mono); font-size: 17px; white-space: nowrap; }
+  .price-row.total .r { font-family: var(--display); font-size: 28px; }
+  .price-row .r em { font-style: normal; color: var(--muted); font-size: 13px; display: block; text-align: right; font-family: var(--body); }
+
+  /* ---------- CTA ---------- */
+  .cta-block { text-align: center; }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 26px 0 14px; }
+  .btn { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 15px; font-weight: 600; padding: 17px 30px; border-radius: var(--r); border: 1px solid var(--accent); display: inline-block; transition: transform .18s ease, background .18s ease; }
+  .btn-primary { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
+  .btn-primary:hover { background: #a91b27; color: #fff; transform: translateY(-2px); }
+  .btn-ghost { background: var(--panel-2); color: var(--text); border-color: var(--line); border-bottom-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* ---------- inline CTA ---------- */
+  .cta-inline { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 22px; }
+  .cta-inline .btn { padding: 14px 24px; font-size: 14px; }
+  .cta-inline .aside { color: var(--muted); font-size: 15px; font-style: italic; }
+
+  /* ---------- floating CTA ---------- */
+  .floatbar {
+    position: fixed; left: 50%; bottom: 22px; z-index: 40;
+    transform: translateX(-50%) translateY(140%);
+    opacity: 0; pointer-events: none;
+    transition: transform .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease;
+    display: flex; align-items: center; gap: 14px;
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 44px; padding: 10px 12px 10px 24px;
+    box-shadow: 0 6px 28px rgba(25, 24, 21, 0.13), 0 1px 3px rgba(25, 24, 21, 0.07);
+    max-width: calc(100vw - 32px);
+  }
+  .floatbar.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+  .floatbar .fb-text { line-height: 1.3; white-space: nowrap; }
+  .floatbar .fb-lead { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px; color: var(--accent); display: block; }
+  .floatbar .fb-sum { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .floatbar .btn { padding: 13px 22px; font-size: 13.5px; border-radius: 44px; }
+  .floatbar .btn-ghost { background: transparent; }
+
+  /* ---------- signature ---------- */
+  .sig { display: flex; gap: 18px; align-items: flex-start; }
+  .sig .rule-v { width: 3px; align-self: stretch; background: var(--accent); flex: none; }
+  .sig .who { font-family: var(--label); font-size: 19px; letter-spacing: 0.02em; margin-top: 14px; }
+  .sig .who span { display: block; font-family: var(--body); font-size: 15px; color: var(--muted); }
+
+  footer { margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line); font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  footer .red { color: var(--accent); }
+
+  /* ---------- motion ---------- */
+  .rise { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .rise.in { opacity: 1; transform: none; }
+  .draw { stroke-dasharray: 260; stroke-dashoffset: 260; }
+  .in .draw { animation: draw 1.1s ease forwards; }
+  .in .draw:nth-of-type(2) { animation-delay: .08s; }
+  .in .draw:nth-of-type(3) { animation-delay: .16s; }
+  .in .draw:nth-of-type(4) { animation-delay: .24s; }
+  .in .draw:nth-of-type(5) { animation-delay: .32s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise { opacity: 1; transform: none; transition: none; }
+    .draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+    .in .draw { animation: none; }
+    .btn { transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .wrap { padding: 0 20px; }
+    .masthead { margin-bottom: 46px; }
+    h1 { font-size: 33px; }
+    .lede { font-size: 17.5px; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .facts div:nth-child(2) { border-right: 0; }
+    .facts div:nth-child(1), .facts div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .paths, .fig-pair { grid-template-columns: 1fr; }
+    .fig-trio { grid-template-columns: 1fr; }
+    .price-box, .gesture { padding: 24px 20px; }
+    .gesture .big { font-size: 24px; }
+    .policy .row { grid-template-columns: 1fr; gap: 4px; padding: 15px 20px; }
+    .btn { width: 100%; }
+    .qa .q { font-size: 19px; }
+    .cta-inline .btn { width: auto; }
+
+    .floatbar {
+      left: 0; right: 0; bottom: 0; max-width: none; width: 100%;
+      transform: translateY(140%); border-radius: 0;
+      border-left: 0; border-right: 0; border-bottom: 0;
+      padding: 12px 16px; gap: 10px;
+      justify-content: space-between;
+    }
+    .floatbar.show { transform: translateY(0); }
+    .floatbar .fb-sum { font-size: 15px; }
+    .floatbar .btn { padding: 12px 16px; font-size: 12.5px; width: auto; letter-spacing: 0.1em; }
+    .floatbar .btn-ghost { display: none; }
+  }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { padding: 0; }
+    .rise { opacity: 1 !important; transform: none !important; }
+    .draw { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; animation: none !important; }
+    .masthead { margin-bottom: 34px; }
+    .floatbar { display: none !important; }
+    .gesture, .price-box, .panel, .path, .qa, .arc li, ul.rows li, .fig-card, .policy { break-inside: avoid; }
+    hr.rule { margin: 34px 0; }
+    h1 { font-size: 34px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="mark">Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
+    <div class="stamp">Prepared for Lisa Sweeting &middot; Sweet Style Marketing &middot; 30 July 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="eyebrow">The proposal <span class="red">&middot;</span> For Lisa</div>
+    <h1>You've already tried handing the writing to someone else. It came back still needing you.</h1>
+    <p class="lede">You said the work still needed too much of your input for the value it gave you, especially at its cost. So you took it back and you're doing all of it again.</p>
+    <p class="lede"><strong>This isn't that. It's the opposite shape. It never stops needing your judgement, it stops needing your hands.</strong></p>
+
+    <div class="facts">
+      <div><span class="k">3 + 5</span><span class="v">Embedded clients, plus monthly content clients</span></div>
+      <div><span class="k">Your Mac</span><span class="v">Where every file lives</span></div>
+      <div><span class="k">4 + 2</span><span class="v">Build sessions and follow-ups</span></div>
+      <div><span class="k">$5,500</span><span class="v">Plus GST, one seat, $6,050 inc</span></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise" id="offer">
+    <div class="gesture">
+      <div class="badge">First, the one you called critical</div>
+      <div class="big">You hold accountants' data, and sometimes their clients'. It needs clear controls.</div>
+      <p>You said the security factor is critical for you, and you were right to put it first. You're not just carrying your own material. You're carrying eight or nine accounting practices' work, and inside some of it sits detail about their clients. Your exposure isn't embarrassment, it's a practice ringing you about confidentiality.</p>
+      <p style="margin-top:14px;"><strong>We only had time for a partial answer on the call. These are the three controls.</strong></p>
+      <p style="margin-top:14px;"><strong>One. It isn't reading anything on its own.</strong> There's no standing process going through your mailbox or your client folders deciding what's interesting. It reads when you point it at one specific thing, the way you'd ask a person to go and find a thread. Point it at nothing and it sees nothing.</p>
+      <p style="margin-top:14px;"><strong>Two. Before a single thing is connected, we write down what it must never keep.</strong> Named clients, named categories, whole topics. Their clients' personal or financial details, anything a practice would treat as privileged, anything one of them has told you no about. That sits in the brief it reads before every task, and it governs the notes it writes, not only what it says back to you.</p>
+      <p style="margin-top:14px;"><strong>Three. We decide up front where its notes are allowed to land</strong>, and that place inherits the restrictions of wherever the material came from. The real failure in a setup like yours isn't the system reading a file. It's a summary appearing in a looser place than the source did. So we name the destination before there's anything to put in it.</p>
+      <p style="margin-top:18px;">And the part you should hear from me rather than find later: <strong>this is a design discipline, not a solved technical problem.</strong> Nothing in the industry reliably detects that a summary has picked up something sensitive. Anyone telling you that's handled is selling you something. What makes it safe is deciding the rules while the system is still empty, which is exactly why session one connects nothing at all.</p>
+
+      <div class="cta-inline">
+        <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/1f5ac148-b999-4a11-9b72-6f990b03919e?locale=en-US">Sign and start &middot; $5,500 + GST</a>
+        <span class="aside">Or read the rest first. The button follows you down.</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>What I heard <span class="red">from you</span></h2>
+    <p class="sub">Correct me on any of this before we start.</p>
+    <ul class="rows">
+      <li>
+        <h3>You're at the ceiling, and what worries you isn't the workload</h3>
+        <div class="d">You said you'd be stretched by one more good client, and when I pushed you on it you were precise: "not without my service level and my turnaround times dropping. And that's what I'm worried about." That's a quality fear, not a busyness complaint. It's also the reason the usual answer, hire someone, hasn't worked for you.</div>
+      </li>
+      <li>
+        <h3>You've already run the outsourcing experiment, and it failed on judgement</h3>
+        <div class="d">Not on capability or price, even though you mentioned the price. It failed because the work came back and you still had to put yourself through it before you'd stand behind it. Anything I propose has to survive that test, so I've written this around it.</div>
+      </li>
+      <li>
+        <h3>Three embedded practices, five or six on monthly content, and every one has to sound like itself</h3>
+        <div class="d">You take a white paper or a subject-matter conversation and adapt it per client, strict on their brand voice and their ideal client. Two or three blogs a month, then the client newsletter, then the month's social. Same source material, eight or nine different outputs. That's the hardest thing you do and it's the thing this is best at.</div>
+      </li>
+      <li>
+        <h3>You've looked at other solutions and couldn't get your head around them</h3>
+        <div class="d">You told me the point of difference is that this one lives on your computer and becomes yours. That's not a feature I'd have led with, so I'm glad you said it. It's also why this is taught over four sessions rather than handed over as a product.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>Your first question <span class="red">&middot; the security, properly</span></h2>
+    <p>The three-part answer above is the principle. This is the mechanism. Access arrives in tiers, and you move between them when you decide to, not on a schedule of mine.</p>
+
+    <figure>
+      <div class="fig-card">
+        <div class="cap">Three tiers, and you choose when to move</div>
+        <svg viewBox="0 0 640 250" role="img" aria-label="Three tiers of access: session one connects nothing, session two adds read-only connections you name one at a time, and anything that sends or publishes stops and asks you first">
+          <rect x="4" y="30" width="192" height="180" rx="3" fill="var(--panel-2)" stroke="var(--line)"/>
+          <text class="svg-lbl" x="20" y="20" fill="var(--accent)">SESSION ONE</text>
+          <rect class="svg-hub" x="34" y="58" width="132" height="46" rx="3"/>
+          <text class="svg-lbl-dark" x="100" y="79" text-anchor="middle">Your COO</text>
+          <text class="svg-lbl-sm" x="100" y="95" text-anchor="middle">on your machine</text>
+          <path class="svg-wire-hot draw" d="M100 104 L100 132"/>
+          <rect class="svg-node" x="34" y="132" width="132" height="40" rx="3"/>
+          <text class="svg-lbl" x="100" y="150" text-anchor="middle">One folder</text>
+          <text class="svg-lbl-sm" x="100" y="164" text-anchor="middle">files only</text>
+          <text class="svg-lbl-sm" x="100" y="194" text-anchor="middle">Nothing else connected</text>
+
+          <rect x="224" y="30" width="192" height="180" rx="3" fill="var(--panel-2)" stroke="var(--line)"/>
+          <text class="svg-lbl" x="240" y="20" fill="var(--accent)">SESSION TWO</text>
+          <rect class="svg-hub" x="254" y="58" width="132" height="46" rx="3"/>
+          <text class="svg-lbl-dark" x="320" y="79" text-anchor="middle">Your COO</text>
+          <text class="svg-lbl-sm" x="320" y="95" text-anchor="middle">read only</text>
+          <path class="svg-wire draw" d="M320 104 L268 134"/>
+          <path class="svg-wire draw" d="M320 104 L320 134"/>
+          <path class="svg-wire draw" d="M320 104 L372 134"/>
+          <rect class="svg-node" x="236" y="134" width="62" height="34" rx="3"/>
+          <text class="svg-lbl-sm" x="267" y="155" text-anchor="middle">Calendar</text>
+          <rect class="svg-node" x="290" y="134" width="62" height="34" rx="3"/>
+          <text class="svg-lbl-sm" x="321" y="155" text-anchor="middle">One inbox</text>
+          <rect class="svg-node" x="344" y="134" width="62" height="34" rx="3"/>
+          <text class="svg-lbl-sm" x="375" y="155" text-anchor="middle">Your CRM</text>
+          <text class="svg-lbl-sm" x="320" y="194" text-anchor="middle">Each one named by you</text>
+
+          <rect x="444" y="30" width="192" height="180" rx="3" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <text class="svg-lbl" x="460" y="20" fill="var(--accent)">ONLY WHEN YOU ASK</text>
+          <rect class="svg-hub" x="474" y="58" width="132" height="34" rx="3"/>
+          <text class="svg-lbl-dark" x="540" y="79" text-anchor="middle">Your COO</text>
+          <path class="svg-wire-hot draw" d="M540 92 L540 116"/>
+          <rect x="474" y="116" width="132" height="30" rx="15" fill="var(--panel-2)" stroke="var(--accent)"/>
+          <text class="svg-lbl" x="540" y="136" text-anchor="middle" fill="var(--accent)">STOPS AND ASKS</text>
+          <path class="svg-wire-cut draw" d="M540 146 L540 170"/>
+          <rect class="svg-node" x="474" y="170" width="132" height="30" rx="3"/>
+          <text class="svg-lbl-sm" x="540" y="189" text-anchor="middle">Send &middot; publish &middot; spend &middot; delete</text>
+        </svg>
+      </div>
+      <figcaption>You start on the left. You only move right when you've decided to, and you can move back at any point by revoking one credential.</figcaption>
+    </figure>
+
+    <p style="margin-top:30px;">Then the deliverable that matters most for someone in your position. <strong>We write your AI and data-handling policy in session one, before anything is connected.</strong> Not a template with your name at the top. We write it while the system is empty, because that's the only moment the rules are a real choice rather than a description of what already happened.</p>
+
+    <div class="policy">
+      <div class="head">Sweet Style Marketing &middot; AI and data handling &middot; what it covers</div>
+      <div class="row"><div class="k">What it may read</div><div class="v">Named sources only. Which mailbox, which client folders, which brand-asset library. Anything not on the list is off the list.</div></div>
+      <div class="row"><div class="k">What it may never read</div><div class="v">The categories you rule out. Their clients' personal and financial detail, anything a practice would treat as privileged, any client who has said no.</div></div>
+      <div class="row"><div class="k">What it may write, and where</div><div class="v">The named destination for every draft, note and summary, carrying the same restrictions as the source it came from.</div></div>
+      <div class="row"><div class="k">What it may never write down</div><div class="v">The standing exclusion list. This is the clause a practice manager will actually want to read.</div></div>
+      <div class="row"><div class="k">What needs you first</div><div class="v">Anything that sends, publishes, spends or deletes. Named, so nobody has to guess where the line sits.</div></div>
+      <div class="row"><div class="k">Client separation</div><div class="v">How eight or nine practices stay walled off from each other, so one client's material never surfaces inside another's work.</div></div>
+      <div class="row"><div class="k">How to stop it</div><div class="v">The rollback. Revoke credentials, in what order. Written down before it's needed rather than during.</div></div>
+      <div class="row"><div class="k">What a client is told</div><div class="v">A short passage you can paste into your own terms or send to a practice that asks. You'll use this one most, and it's worth having before you're asked rather than after.</div></div>
+    </div>
+
+    <div class="panel" style="margin-top:28px;">
+      <h3>Two facts you'd rather have now than in a client's security review</h3>
+      <p>These are facts, not policy choices, and they go in the document either way. On a commercial plan your content isn't used to train models and it's held for a short set window, <strong>but that depends on which plan you're actually running</strong>, because consumer plans are governed differently. We check that setting together at go-live rather than assume it. And <strong>processing does not happen in Australia today.</strong> Your clients are accountants, so if any of them carry contractual data-residency requirements, that's a genuine constraint and you should know it before you're asked, not during.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>The proof is a test, not my word for it</h3>
+      <p>At the end of session two we do the thing I'd want done if I were you. <strong>We deliberately ask it for material it should not be able to reach</strong>, a client folder you ruled out, a mailbox you didn't connect, and we watch it come back with nothing. Then we revoke a credential and watch that connection die. You keep the results written down. It's the only part of this that's evidence rather than assurance.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>Your second question <span class="red">&middot; what happens after the four sessions</span></h2>
+    <p class="sub">You asked whether there's ongoing support, or whether I'm levelling the system up in the background. Both, and neither is a retainer.</p>
+
+    <ul class="rows">
+      <li>
+        <h3>Two follow-up sessions, included</h3>
+        <div class="d">Not support calls. We each show the other what we've built since. By then you'll have made things I haven't thought of, because you'll be applying it to a content operation I don't run.</div>
+      </li>
+      <li>
+        <h3>You get stuck, you call me</h3>
+        <div class="d">Through the whole build and after it. If something jams and I'm free, we jump on a screen share and sort it there. No ticket, no queue, no hourly rate for it.</div>
+      </li>
+      <li>
+        <h3>The updates, which is the part you were asking about</h3>
+        <div class="d">I build on mine daily across two businesses. When something's worth passing on, a better memory structure, a new skill, a fix, I package it and send my clients a link and a short instruction. Your system reads what changed and folds in what fits how you work. It ignores what doesn't. You're never handed a version upgrade you have to install.</div>
+      </li>
+      <li>
+        <h3>And the goal, which is a strange thing for a supplier to write</h3>
+        <div class="d">That you don't need me. Within a few sessions you should be able to drive it, extend it and unstick it yourself. If you're still ringing me every fortnight in six months, I've done this badly.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>The bit that's actually <span class="red">yours, not mine</span></h2>
+    <p class="sub">Eight or nine accounting brands, one source, and every output has to sound like the practice that's paying for it.</p>
+    <p>You described your month better than I could have. A white paper or a conversation with someone's subject-matter expert goes in. You adapt it for each practice's brand voice and their ideal client. That becomes two or three blogs, then the monthly newsletter, then the month's social posts. You rarely start from scratch and you're strict about the adaptation, which is precisely why outsourcing it didn't hold.</p>
+    <p><strong>That adaptation is the thing you were paying a person to do and then redoing yourself.</strong> It's also the single job an operating system like this does best, because it's judgement written down once and applied consistently rather than judgement re-explained every month.</p>
+
+    <figure>
+      <div class="fig-card">
+        <div class="cap">One source in, eight or nine voices out</div>
+        <svg viewBox="0 0 640 300" role="img" aria-label="One source document enters a voice layer holding each practice's brand voice and ideal client, and comes out as a separate set of blogs, newsletter and social posts for each practice">
+          <rect class="svg-node" x="6" y="118" width="112" height="62" rx="3"/>
+          <text class="svg-lbl-dark" x="62" y="142" text-anchor="middle">One source</text>
+          <text class="svg-lbl-sm" x="62" y="158" text-anchor="middle">white paper or</text>
+          <text class="svg-lbl-sm" x="62" y="170" text-anchor="middle">expert interview</text>
+
+          <path class="svg-wire-hot draw" d="M118 149 L182 149"/>
+
+          <rect class="svg-hub" x="182" y="88" width="150" height="122" rx="3"/>
+          <text class="svg-lbl" x="257" y="78" fill="var(--accent)">THE LAYER YOU BUILD</text>
+          <text class="svg-lbl-dark" x="257" y="114" text-anchor="middle">Your standards</text>
+          <text class="svg-lbl-sm" x="257" y="134" text-anchor="middle">each brand voice</text>
+          <text class="svg-lbl-sm" x="257" y="150" text-anchor="middle">each ideal client</text>
+          <text class="svg-lbl-sm" x="257" y="166" text-anchor="middle">your adaptation method</text>
+          <text class="svg-lbl-sm" x="257" y="188" text-anchor="middle">written once, applied every time</text>
+
+          <path class="svg-wire draw" d="M332 149 L392 58"/>
+          <path class="svg-wire draw" d="M332 149 L392 149"/>
+          <path class="svg-wire draw" d="M332 149 L392 240"/>
+
+          <rect class="svg-node" x="392" y="34" width="104" height="48" rx="3"/>
+          <text class="svg-lbl-dark" x="444" y="54" text-anchor="middle">Practice A</text>
+          <text class="svg-lbl-sm" x="444" y="70" text-anchor="middle">its own voice</text>
+          <rect class="svg-node" x="392" y="125" width="104" height="48" rx="3"/>
+          <text class="svg-lbl-dark" x="444" y="145" text-anchor="middle">Practice B</text>
+          <text class="svg-lbl-sm" x="444" y="161" text-anchor="middle">its own voice</text>
+          <rect class="svg-node" x="392" y="216" width="104" height="48" rx="3"/>
+          <text class="svg-lbl-dark" x="444" y="236" text-anchor="middle">Practice C</text>
+          <text class="svg-lbl-sm" x="444" y="252" text-anchor="middle">its own voice</text>
+
+          <path class="svg-wire draw" d="M496 58 L536 58"/>
+          <path class="svg-wire draw" d="M496 149 L536 149"/>
+          <path class="svg-wire draw" d="M496 240 L536 240"/>
+
+          <rect x="536" y="34" width="98" height="48" rx="3" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <text class="svg-lbl-sm" x="585" y="52" text-anchor="middle">Blogs</text>
+          <text class="svg-lbl-sm" x="585" y="66" text-anchor="middle">newsletter &middot; social</text>
+          <rect x="536" y="125" width="98" height="48" rx="3" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <text class="svg-lbl-sm" x="585" y="143" text-anchor="middle">Blogs</text>
+          <text class="svg-lbl-sm" x="585" y="157" text-anchor="middle">newsletter &middot; social</text>
+          <rect x="536" y="216" width="98" height="48" rx="3" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <text class="svg-lbl-sm" x="585" y="234" text-anchor="middle">Blogs</text>
+          <text class="svg-lbl-sm" x="585" y="248" text-anchor="middle">newsletter &middot; social</text>
+
+          <text class="svg-lbl-sm" x="578" y="286" text-anchor="middle">and so on, to eight or nine</text>
+        </svg>
+      </div>
+      <figcaption>You still decide the angle, hold the client relationship and press approve. What you stop doing is the adapting, the packaging and the retyping.</figcaption>
+    </figure>
+
+    <div class="paths">
+      <div class="path">
+        <div class="tag">Build one, together</div>
+        <h3>One practice's month, end to end</h3>
+        <p>We take a real source document and one real client, and build the run: blogs in their voice, the newsletter that comes out of them, the month's social. You watch me do the first one and you'll immediately see where your own method has to go in.</p>
+      </div>
+      <div class="path">
+        <div class="tag">Build two, you</div>
+        <h3>The second practice, and I keep quiet</h3>
+        <p>You do it again for a different client, with a different voice and a different ideal reader, while I watch and say nothing unless you ask. That moment, you building it properly unaided, is the actual deliverable of the fortnight. Everything else is scaffolding for it.</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:28px;">
+      <h3>The proposal problem, which you've already solved with Canva and shouldn't have to</h3>
+      <p>You told me you build proposals in Canva and send them out through your CRM. <strong>You're reading the version of that I'd build you.</strong> This document was drafted from the recording of our call, in my voice, to my standard, with the questions you asked answered in the order you asked them. I dictated the direction and reviewed it. I didn't lay out a page.</p>
+      <p style="margin-top:14px;">I said on the call that you should judge my Chief of Staff by the proposal that arrives and how fast it gets to you. That's a fair test, so this is the exhibit. Yours would end where mine does: a button through to your own agreement, so a client signs, gets invoiced, and drops into your existing onboarding automation without you touching any of it.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>Two things I said on the call <span class="red">that I'm correcting</span></h2>
+    <p class="sub">You'd find both of these in week three and think less of me for it. Better here.</p>
+
+    <div class="panel">
+      <h3>I said I'd double or triple your capacity, easily, and that I wasn't exaggerating</h3>
+      <p>I'll stand behind the direction and not the arithmetic. What genuinely compresses is the production half of your week: first drafts, per-client adaptation, packaging one source into the blog, the newsletter and the month's social, then the admin around it. That's a large share of what you're personally typing today, and it does drop hard.</p>
+      <p style="margin-top:14px;"><strong>What doesn't compress is the half that's actually you.</strong> The strategic plan you write with a practice at the start, the relationship, the judgement about what a client should be saying this quarter, the read-and-approve on everything that goes out. Those stay yours and they should. <strong>And it takes a few weeks of teaching before any of it is trustworthy.</strong> A more honest version of what I said: you'd take on the next good client without your turnaround times slipping, which is the thing you told me you were worried about. That I'll stand behind.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>I told you you'd skip the Canva bit, and I cancelled my own account</h3>
+      <p>True for me, and I got ahead of myself for you. I do document and graphic work through mine now and I don't miss it. <strong>But you're a marketer with brand systems built in Canva for eight or nine practices, and that's a different use than mine.</strong> Expect to keep it and use it less. You'll cancel some subscriptions over the first few months. I shouldn't have promised you that one.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>How we <span class="red">do it</span></h2>
+    <p class="sub">Four build sessions and two follow-ups over about a fortnight, on a screen share. You share your screen and you drive. I don't touch your machine and I never hold a copy of anything.</p>
+
+    <ul class="arc">
+      <li class="now">
+        <div class="n">1</div>
+        <div class="when">60 to 90 minutes &middot; nothing connected</div>
+        <h3>Install, then write the policy</h3>
+        <div class="d">You install the folder and unpack it, so you see exactly what arrived rather than take my word for it. Then it interviews you about how Sweet Style actually works, and the questions are better than you're expecting. We finish by writing your AI and data-handling policy while the system is still empty.</div>
+      </li>
+      <li class="now">
+        <div class="n">2</div>
+        <div class="when">60 to 90 minutes &middot; the connection session</div>
+        <h3>Connect what you choose, then try to break it</h3>
+        <div class="d">One credential at a time, you issuing each one, me explaining what it reaches before you do. Your calendar, one mailbox, your CRM, your accounting file if you want it there. Then the negative test: we ask for material it shouldn't reach, confirm nothing comes back, revoke a credential and watch it die.</div>
+      </li>
+      <li>
+        <div class="n">3</div>
+        <div class="when">About 45 minutes</div>
+        <h3>Driving it properly</h3>
+        <div class="d">The difference between using it and running it. When to let it go and when to make it show you the plan first. How to get your standard in as a hard rule so you never repeat yourself. How to unstick yourself instead of waiting on me.</div>
+      </li>
+      <li>
+        <div class="n">4</div>
+        <div class="when">About 45 minutes</div>
+        <h3>One client's month with me, the next one on your own</h3>
+        <div class="d">We build the content run for a real practice together. Then you build it for a second one, different voice, different reader, while I watch and keep quiet. That's the session that decides whether this worked.</div>
+      </li>
+      <li>
+        <div class="n">5</div>
+        <div class="when">Two sessions, after the build</div>
+        <h3>We swap what we've built</h3>
+        <div class="d">You show me what you've made, I show you what I've made. Both included, and they're usually the most useful hour of the whole thing.</div>
+      </li>
+    </ul>
+
+    <div class="panel" style="margin-top:30px;">
+      <h3>What actually arrives</h3>
+      <p>A zip file, and you should have the contents rather than a summary you'd have to trust. Around thirty-four Markdown files, which are the substance: the operating brief, the memory structure, the skills, the approval gates. Then a handful of short Python scripts that do housekeeping, a couple of spreadsheets, and some HTML and CSS for the dashboards.</p>
+      <p><strong>All of it is readable source. Nothing compiled, nothing hidden, and the scripts are short enough to read in one sitting before you run one.</strong> Open every file in a text editor, and do, because that's how you'll see the architecture instead of taking my word for it. What you're paying for is that architecture and the fortnight of me sitting beside you, not a piece of software.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>And the honest bit about week one</h3>
+      <p>The front of this is the heaviest part. Logins, keys, teaching it how you write for each practice, deciding the rules. It thins out fast, but it's real work, and there's usually a day in the middle where it frustrates you before it frees you. I've watched that day land on people who came out the other side of it, and on one who hit a wall and needed me to sit with him through it. Both are normal. I'd rather you heard it from me now than met it on day three and assumed you'd bought a dud.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>The rest of your <span class="red">questions</span></h2>
+
+    <div class="qa">
+      <div class="q">It's on my computer and it becomes mine. Where does the learning actually sit?</div>
+      <p>In a folder on your machine and nowhere else. <strong>I don't have access to it, I don't hold a copy, and there's no account of mine it reports into.</strong> Everything we do happens over a screen share where you're the one typing.</p>
+      <p>Back it up like anything else that matters, and you pick where. Within a few months that folder is one of the more valuable things your business owns, because it holds how you write for every practice you look after. Treat the backup seriously from week one.</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">Can I use it for the work I bill my clients for?</div>
+      <p>Yes, and this matters more for you than for most people I build for, so I want it in writing rather than remembered. <strong>One seat, one installation, yours to run in the conduct of your business, and that expressly includes work you invoice your clients for.</strong> The blogs, the newsletters, the social, the proposals, the dashboards, anything you build with it and hand to a practice. Those outputs are yours.</p>
+      <p>The single boundary is the one you'd guess: you don't hand on the system itself, or repackage it as something Sweet Style sells as a product. That part stays mine. It's in the agreement rather than only here, and it's worth reading rather than taking from me.</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">Did you build this yourself?</div>
+      <p>Yes. You asked on the call and I want to give you the fuller answer. It's built on Claude Code, which was made for software developers, and the work was recognising it's a better fit for knowledge work like yours and mine than for the job it was designed for. I've never written code professionally. What I have is a science background and months of building, breaking and rebuilding this daily across two businesses, with the version history to show for it.</p>
+      <p><strong>That's why the architecture is legible rather than clever.</strong> It's built by someone who has to be able to read every part of it himself. Given that you told me other solutions lost you, I'd argue that's the right background rather than the wrong one, and you'll form your own view in session one when you open the files.</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">What if I do hire someone eventually?</div>
+      <p>You said it's still just you. If that changes, a second install at the standing price, built for that person's job rather than cloned from yours. The layer that joins two of them onto one shared source of truth is real engineering and I'd scope it properly at the time instead of guessing now.</p>
+      <p><strong>My honest advice is do yours, run it for a month, and let the shape of the second one become obvious.</strong> It will, and by then you'll specify it better than I could today. It's also worth saying that the reason to hire may look different after a fortnight of this.</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">What if it goes wrong?</div>
+      <p>Revoke the credentials, which kills every connection immediately, then delete the folder. There's nothing of mine to unwind: no account with me to close, and no copy of your material for me to hold or hand back.</p>
+      <p>To be exact rather than reassuring, because it's the same subject as your security question: <strong>anything already sent to the model sits in the vendor's own retention window and runs down on their clock, not on mine.</strong> That window is short and it's one of the settings we check at go-live. Deleting the folder ends everything on your side straight away; it doesn't reach back into what's already been processed. Nobody in this industry can offer you that, and I'd rather say so than let you assume otherwise.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>What it <span class="red">costs</span></h2>
+    <div class="price-box">
+      <div class="price-row">
+        <div class="l">Build Your Own Chief of Staff<small>Four build sessions, two follow-ups, the packaged system, your AI and data-handling policy, the negative testing at go-live, call-me-when-you're-stuck support through the build, the ongoing updates, and the licence to run it in your business.</small></div>
+        <div class="r">$5,500<em>plus GST</em></div>
+      </div>
+      <div class="price-row">
+        <div class="l">GST</div>
+        <div class="r">$550</div>
+      </div>
+      <div class="price-row total">
+        <div class="l">Total</div>
+        <div class="r">$6,050<em>including GST</em></div>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;">
+      <ul class="rows">
+        <li>
+          <h3>On signing &middot; $3,025 including GST</h3>
+          <div class="d">Half, which locks your session dates and gets you the folder and your homework the same day.</div>
+        </li>
+        <li>
+          <h3>At the end of the build &middot; $3,025 including GST</h3>
+          <div class="d">The other half, about a fortnight later.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel" style="margin-top:28px;">
+      <h3>The second half is only due if you're happy</h3>
+      <p>I said this on the call and I'm putting it in writing. If you get to the end of the build and it isn't for you, you don't pay the second instalment. You don't have to justify it to me and there's no process to go through. That's the whole of your risk on this.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>One cost that isn't mine, so you should see it now</h3>
+      <p><strong>You'll need your own paid Claude plan, in your business's name.</strong> That's what the system runs on. It's paid to Anthropic rather than to me and it isn't included in the fee. You mentioned you've been dabbling with Claude already, so this may be a change of plan rather than a new cost. We'll work out which one suits how you'll actually use it before we start.</p>
+    </div>
+
+    <p class="note" style="margin-top:22px;">One seat. Prices are ex GST and GST is added, which is the standard for the business-to-business work we both do.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise cta-block" id="final-cta">
+    <div class="eyebrow">Two things <span class="red">&middot;</span> and we're away</div>
+    <h1 style="font-size:37px;">Sign the agreement, pick your first session.</h1>
+    <p class="sub" style="max-width:560px; margin:0 auto 4px;">Signing takes the first payment and locks your dates. Your homework comes the same day and it's short: where your brand assets live, two or three pieces of writing you're genuinely happy with, and one practice's month you'd want rebuilt first.</p>
+
+    <div class="btns">
+      <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/1f5ac148-b999-4a11-9b72-6f990b03919e?locale=en-US">Sign and get started</a>
+      <a class="btn btn-ghost" href="https://app.fifthcastle.media/widget/booking/R4zNxfwXaVVV0qh6wccH">Book session 1</a>
+    </div>
+    <p class="note">Grab any slot that suits and I'll extend it to the full ninety minutes. If either button plays up, just reply and I'll sort it the same day.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>One other thing, <span class="red">deliberately separate</span></h2>
+    <p>You said you'd love another call about the video and photography side, and that you encourage your practices towards the same thing. Agreed, and it's a different conversation with different money in it, so it stays out of this document. Our financial services portfolio is coming to you separately as promised. When you've had a look, we'll book that one properly.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <div class="sig">
+      <div class="rule-v"></div>
+      <div>
+        <p>Lisa, you saw the thing working before I explained any of it. I'd taken my six-year-old up the mountain for his first snow that morning, and while we were up there my emails were being drafted, my client work was moving and nothing was waiting on me. Your response was "that's why I'm here," and that's a better description of the product than anything on this page.</p>
+        <p>Your ceiling isn't hours, it's whether the work stays as good when there's more of it. That's the right thing to protect, and it's the reason handing the writing to a person didn't work: they could take the task off you but not the standard. This gives you somewhere to put the standard.</p>
+        <div class="who">Arek Rainczuk<span>Fifth Castle Media &middot; 0467 676 205 &middot; info@fifthcastle.media</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
+    <div>Prepared for Lisa Sweeting, 30 July 2026. Valid 30 days.</div>
+  </footer>
+
+</div>
+
+<div class="floatbar" id="floatbar" aria-hidden="true">
+  <div class="fb-text">
+    <span class="fb-lead">One seat &middot; Sweet Style Marketing</span>
+    <span class="fb-sum">$5,500 + GST &middot; $6,050 inc</span>
+  </div>
+  <a class="btn btn-primary" href="https://app.fifthcastle.media/documents/v1/1f5ac148-b999-4a11-9b72-6f990b03919e?locale=en-US">Sign and get started</a>
+  <a class="btn btn-ghost" href="https://app.fifthcastle.media/widget/booking/R4zNxfwXaVVV0qh6wccH">Book session 1</a>
+</div>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.rise');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    items.forEach(function (el) { obs.observe(el); });
+  })();
+
+  (function () {
+    var bar = document.getElementById('floatbar');
+    var offer = document.getElementById('offer');
+    var finalCta = document.getElementById('final-cta');
+    if (!bar || !offer) return;
+
+    var pastOffer = false, atFinal = false;
+
+    function apply() {
+      var show = pastOffer && !atFinal;
+      bar.classList.toggle('show', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+
+    if (!('IntersectionObserver' in window)) return;
+
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        pastOffer = !e.isIntersecting && e.boundingClientRect.top < 0;
+        apply();
+      });
+    }, { threshold: 0 }).observe(offer);
+
+    if (finalCta) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { atFinal = e.isIntersecting; apply(); });
+      }, { threshold: 0.12 }).observe(finalCta);
+    }
+  })();
+</script>
+
+</body>
+</html>

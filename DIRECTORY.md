@@ -48,6 +48,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Melinda Mayne (Pet Let) — Chief of Staff proposal | [references/chief-of-staff-melinda.html](https://docs.fifthcastle.media/references/chief-of-staff-melinda.html) | 2026-07-28 |
 | Rodney Ferro (PN Digital) — Chief of Staff proposal | [references/chief-of-staff-rodney.html](https://docs.fifthcastle.media/references/chief-of-staff-rodney.html) | 2026-07-29 |
 | Chris McNaughton (ShadowSight) — Chief of Staff proposal | [references/chief-of-staff-chris.html](https://docs.fifthcastle.media/references/chief-of-staff-chris.html) | 2026-07-29 |
+| Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-07-30 |
 
 ## Client Proposals & Briefs
 
