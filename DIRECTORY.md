@@ -15,6 +15,8 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Chief of Staff — the operating system your AI tools run on | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-07-27 |
 | Chief of Staff — page B, noindex twin of the main page | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-07-27 |
 | Chief of Staff — booking page (30-minute walkthrough) | [chief-of-staff-book.html](https://docs.fifthcastle.media/chief-of-staff-book.html) | 2026-07-27 |
+| Chief of Staff — the build checklist v1.5 (127 items, linked from every proposal) | [chief-of-staff-build-checklist.html](https://docs.fifthcastle.media/chief-of-staff-build-checklist.html) | 2026-08-03 |
+| Chief of Staff — what's included v1.5 | [chief-of-staff-included.html](https://docs.fifthcastle.media/chief-of-staff-included.html) | 2026-08-03 |
 | Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-07-02 |
 | Intensive waitlist thank-you (conversion page, noindex) | [chief-of-staff-intensive-thanks.html](https://docs.fifthcastle.media/chief-of-staff-intensive-thanks.html) | 2026-07-02 |
 | Field guide lead capture (noindex) | [chief-of-staff-guide.html](https://docs.fifthcastle.media/chief-of-staff-guide.html) | 2026-07-30 |
@@ -48,6 +50,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Melinda Mayne (Pet Let) — Chief of Staff proposal | [references/chief-of-staff-melinda.html](https://docs.fifthcastle.media/references/chief-of-staff-melinda.html) | 2026-07-28 |
 | Rodney Ferro (PN Digital) — Chief of Staff proposal | [references/chief-of-staff-rodney.html](https://docs.fifthcastle.media/references/chief-of-staff-rodney.html) | 2026-07-29 |
 | Chris McNaughton (ShadowSight) — Chief of Staff proposal | [references/chief-of-staff-chris.html](https://docs.fifthcastle.media/references/chief-of-staff-chris.html) | 2026-07-29 |
+| Chris McNaughton (ShadowSight) — build checklist (gift after declining) | [references/chief-of-staff-chris-checklist.html](https://docs.fifthcastle.media/references/chief-of-staff-chris-checklist.html) | 2026-08-03 |
 | Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-07-30 |
 
 ## Client Proposals & Briefs

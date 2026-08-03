@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<!--
+  THE BUILD CHECKLIST, version 1.5. CANONICAL, GENERAL, NOT PER-CLIENT.
+
+  This is the master. Every proposal links to it, so it must never name a client.
+  Per-recipient copies are made by copying this file and changing only the
+  masthead stamp, the hero lede and the sign-off. Recipients are listed in the
+  registry, never named in this file, because every client reads this one. Never fork the list itself; if an item changes it changes here
+  and the copies are regenerated.
+
+  Where everything lives, how to cut a new version, and what to update when the
+  count changes: fcm_os/Operations/Product/Chief-of-Staff/Build-Checklist-REGISTRY.md
+
+  VERSIONING: the version in the masthead, the eyebrow and the footer tracks the
+  Starter-OS kit version, so v1.5 of the kit means v1.5 of this list. Bumping it
+  means updating those three places, the item count in the facts strip (count it,
+  never estimate) and the registry.
+
+  NO JAVASCRIPT ON PURPOSE. The shared design system hides .rise sections until a
+  script reveals them, which shipped this page blank on 3 Aug 2026. .rise is inert
+  here. Do not reintroduce the reveal script.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Chief of Staff build checklist v1.5 | Fifth Castle Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF8F4;
+    --panel: #F2EEE7;
+    --panel-2: #FFFFFF;
+    --text: #191815;
+    --muted: #6B665D;
+    --subtle: #A29C92;
+    --accent: #BD202D;
+    --accent-soft: rgba(189, 32, 45, 0.07);
+    --accent-line: rgba(189, 32, 45, 0.32);
+    --line: #E4DED4;
+    --display: 'Vidaloka', Georgia, serif;
+    --label: 'Khand', 'Helvetica Neue', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r: 3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 0 120px;
+  }
+
+  .wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+    margin-bottom: 68px;
+    background: linear-gradient(180deg, var(--accent-soft), transparent);
+  }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 13px; font-weight: 600; }
+  .mark .red { color: var(--accent); }
+  .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--subtle); text-transform: uppercase; }
+
+  /* ---------- type ---------- */
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+
+  h1 { font-family: var(--display); font-size: 47px; line-height: 1.11; font-weight: 400; margin-bottom: 22px; }
+  .lede { color: var(--muted); font-size: 19px; margin-bottom: 16px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  h2 .red { color: var(--accent); }
+  h3 { font-family: var(--label); font-size: 20px; letter-spacing: 0.02em; font-weight: 500; margin: 0 0 5px; }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  .sub { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .note { color: var(--subtle); font-size: 15px; font-style: italic; }
+
+  a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 52px 0; }
+  section { scroll-margin-top: 24px; }
+
+  /* ---------- facts strip ---------- */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 34px 0 8px; background: var(--panel-2); }
+  .facts div { padding: 18px 16px; border-right: 1px solid var(--line); }
+  .facts div:last-child { border-right: 0; }
+  .facts .k { font-family: var(--display); font-size: 25px; line-height: 1.1; display: block; margin-bottom: 5px; }
+  .facts .v { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 11.5px; line-height: 1.45; color: var(--muted); display: block; min-height: 2.9em; }
+
+  /* ---------- lists ---------- */
+  ul.rows { list-style: none; }
+  ul.rows li { padding: 19px 0; border-top: 1px solid var(--line); }
+  ul.rows li:last-child { border-bottom: 1px solid var(--line); }
+  ul.rows .d { color: var(--muted); font-size: 16.5px; }
+
+  ul.check { color: var(--muted); font-size: 16.5px; padding-left: 20px; }
+  ul.check li { margin-bottom: 10px; }
+  ul.check strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- figures ---------- */
+  figure { margin: 32px 0 0; }
+  .fig-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fig-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .fig-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 16px 14px; }
+  .fig-card .cap {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 11.5px; color: var(--accent); margin-bottom: 12px;
+  }
+  .fig-card svg { display: block; width: 100%; height: auto; }
+  figcaption { color: var(--subtle); font-size: 15px; font-style: italic; margin-top: 14px; }
+
+  .svg-lbl { font-family: 'Khand', sans-serif; font-size: 12.5px; letter-spacing: 0.02em; fill: var(--muted); }
+  .svg-lbl-dark { font-family: 'Khand', sans-serif; font-size: 13px; letter-spacing: 0.03em; fill: var(--text); }
+  .svg-lbl-sm { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.04em; fill: var(--subtle); }
+  .svg-node { fill: var(--panel); stroke: var(--line); stroke-width: 1; }
+  .svg-hub { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+  .svg-wire { stroke: var(--subtle); stroke-width: 1; fill: none; }
+  .svg-wire-hot { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+  .svg-wire-cut { stroke: var(--subtle); stroke-width: 1; fill: none; stroke-dasharray: 4 4; }
+
+  /* ---------- the opening statement ---------- */
+  .gesture { border: 1px solid var(--accent); border-radius: var(--r); padding: 32px; background: linear-gradient(180deg, var(--accent-soft), transparent 72%); }
+  .gesture .badge { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+  .gesture .big { font-family: var(--display); font-size: 30px; line-height: 1.24; margin-bottom: 16px; }
+  .gesture p { color: var(--muted); font-size: 16.5px; }
+  .gesture p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- session timeline ---------- */
+  .arc { list-style: none; position: relative; margin-top: 30px; }
+  .arc::before { content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+  .arc li { position: relative; padding: 0 0 30px 52px; }
+  .arc li:last-child { padding-bottom: 0; }
+  .arc .n { position: absolute; left: 0; top: -1px; width: 31px; height: 31px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--line); font-family: var(--label); font-size: 14px; font-weight: 600; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+  .arc li.now .n { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .arc .when { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11.5px; color: var(--accent); margin-bottom: 3px; }
+  .arc .d { color: var(--muted); font-size: 16.5px; }
+
+  /* ---------- two paths ---------- */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .path { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: var(--panel-2); }
+  .path .tag { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 11.5px; color: var(--accent); margin-bottom: 8px; }
+  .path h3 { margin-bottom: 8px; }
+  .path p { color: var(--muted); font-size: 16px; }
+
+  /* ---------- panels ---------- */
+  .panel { background: var(--panel); border-left: 3px solid var(--accent); padding: 24px 28px; border-radius: 0 var(--r) var(--r) 0; }
+  .panel h3 { margin-bottom: 10px; }
+  .panel p { color: var(--muted); font-size: 16.5px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 24px 0; }
+  .qa:last-of-type { border-bottom: 1px solid var(--line); }
+  .qa .q { font-family: var(--display); font-size: 21px; line-height: 1.35; margin-bottom: 12px; }
+  .qa .q::before { content: '“'; color: var(--accent); }
+  .qa .q::after { content: '”'; color: var(--accent); }
+  .qa p { color: var(--muted); font-size: 16.5px; }
+  .qa p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- the policy sheet ---------- */
+  .policy { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel-2); overflow: hidden; margin-top: 28px; }
+  .policy .head { background: var(--panel); border-bottom: 1px solid var(--line); padding: 16px 24px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--muted); }
+  .policy .row { display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 17px 24px; border-bottom: 1px solid var(--line); }
+  .policy .row:last-child { border-bottom: 0; }
+  .policy .row .k { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .policy .row .v { color: var(--muted); font-size: 16px; }
+  .policy .yes { color: var(--accent); }
+
+  /* ---------- price ---------- */
+  .price-box { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 30px 26px; }
+  .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .price-row:last-of-type { border-bottom: 0; }
+  .price-row .l { font-family: var(--label); font-size: 18px; letter-spacing: 0.02em; }
+  .price-row .l small { display: block; font-family: var(--body); font-size: 14.5px; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+  .price-row .r { font-family: var(--mono); font-size: 17px; white-space: nowrap; }
+  .price-row.total .r { font-family: var(--display); font-size: 28px; }
+  .price-row .r em { font-style: normal; color: var(--muted); font-size: 13px; display: block; text-align: right; font-family: var(--body); }
+
+  /* ---------- CTA ---------- */
+  .cta-block { text-align: center; }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 26px 0 14px; }
+  .btn { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 15px; font-weight: 600; padding: 17px 30px; border-radius: var(--r); border: 1px solid var(--accent); display: inline-block; transition: transform .18s ease, background .18s ease; }
+  .btn-primary { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
+  .btn-primary:hover { background: #a91b27; color: #fff; transform: translateY(-2px); }
+  .btn-ghost { background: var(--panel-2); color: var(--text); border-color: var(--line); border-bottom-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* ---------- inline CTA ---------- */
+  .cta-inline { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 22px; }
+  .cta-inline .btn { padding: 14px 24px; font-size: 14px; }
+  .cta-inline .aside { color: var(--muted); font-size: 15px; font-style: italic; }
+
+  /* ---------- floating CTA ---------- */
+  .floatbar {
+    position: fixed; left: 50%; bottom: 22px; z-index: 40;
+    transform: translateX(-50%) translateY(140%);
+    opacity: 0; pointer-events: none;
+    transition: transform .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease;
+    display: flex; align-items: center; gap: 14px;
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 44px; padding: 10px 12px 10px 24px;
+    box-shadow: 0 6px 28px rgba(25, 24, 21, 0.13), 0 1px 3px rgba(25, 24, 21, 0.07);
+    max-width: calc(100vw - 32px);
+  }
+  .floatbar.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+  .floatbar .fb-text { line-height: 1.3; white-space: nowrap; }
+  .floatbar .fb-lead { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px; color: var(--accent); display: block; }
+  .floatbar .fb-sum { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .floatbar .btn { padding: 13px 22px; font-size: 13.5px; border-radius: 44px; }
+  .floatbar .btn-ghost { background: transparent; }
+
+  /* ---------- signature ---------- */
+  .sig { display: flex; gap: 18px; align-items: flex-start; }
+  .sig .rule-v { width: 3px; align-self: stretch; background: var(--accent); flex: none; }
+  .sig .who { font-family: var(--label); font-size: 19px; letter-spacing: 0.02em; margin-top: 14px; }
+  .sig .who span { display: block; font-family: var(--body); font-size: 15px; color: var(--muted); }
+
+  footer { margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line); font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  footer .red { color: var(--accent); }
+
+  /* ---------- motion ---------- */
+  /* .rise is inert on this document. A scroll-reveal that hides content until
+     JavaScript says otherwise is a bad trade on a client-facing list: it shipped
+     invisible on 3 Aug 2026, and preview panes, email clients and some PDF tools
+     run scripts but never fire observers or timers. Legibility beats the animation. */
+  .rise { opacity: 1; transform: none; }
+  .rise.in { opacity: 1; transform: none; }
+  .draw { stroke-dasharray: 260; stroke-dashoffset: 260; }
+  .in .draw { animation: draw 1.1s ease forwards; }
+  .in .draw:nth-of-type(2) { animation-delay: .08s; }
+  .in .draw:nth-of-type(3) { animation-delay: .16s; }
+  .in .draw:nth-of-type(4) { animation-delay: .24s; }
+  .in .draw:nth-of-type(5) { animation-delay: .32s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise { opacity: 1; transform: none; }
+    .draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+    .in .draw { animation: none; }
+    .btn { transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .wrap { padding: 0 20px; }
+    .masthead { margin-bottom: 46px; }
+    h1 { font-size: 33px; }
+    .lede { font-size: 17.5px; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .facts div:nth-child(2) { border-right: 0; }
+    .facts div:nth-child(1), .facts div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .paths, .fig-pair { grid-template-columns: 1fr; }
+    .fig-trio { grid-template-columns: 1fr; }
+    .price-box, .gesture { padding: 24px 20px; }
+    .gesture .big { font-size: 24px; }
+    .policy .row { grid-template-columns: 1fr; gap: 4px; padding: 15px 20px; }
+    .btn { width: 100%; }
+    .qa .q { font-size: 19px; }
+    .cta-inline .btn { width: auto; }
+
+    .floatbar {
+      left: 0; right: 0; bottom: 0; max-width: none; width: 100%;
+      transform: translateY(140%); border-radius: 0;
+      border-left: 0; border-right: 0; border-bottom: 0;
+      padding: 12px 16px; gap: 10px;
+      justify-content: space-between;
+    }
+    .floatbar.show { transform: translateY(0); }
+    .floatbar .fb-sum { font-size: 15px; }
+    .floatbar .btn { padding: 12px 16px; font-size: 12.5px; width: auto; letter-spacing: 0.1em; }
+    .floatbar .btn-ghost { display: none; }
+  }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { padding: 0; }
+    .rise { opacity: 1 !important; transform: none !important; }
+    .draw { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; animation: none !important; }
+    .masthead { margin-bottom: 34px; }
+    .floatbar { display: none !important; }
+    .gesture, .price-box, .panel, .path, .qa, .arc li, ul.rows li, .fig-card, .policy { break-inside: avoid; }
+    hr.rule { margin: 34px 0; }
+    h1 { font-size: 34px; }
+  }
+
+  /* ---- Download-PDF control. Reusable: drop this block plus the .pdfbtn markup
+         into any client-facing page. The @media print rules already in this
+         stylesheet do the rest, so no library and no server are involved. ---- */
+  .pdfbtn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 60;
+    display: inline-flex;
+    gap: 9px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper);
+    box-shadow: 0 2px 10px rgba(20, 17, 15, 0.08);
+    color: var(--ink);
+    cursor: pointer;
+    font-family: var(--font-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 11px 15px 9px;
+    text-transform: uppercase;
+    transition: background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out;
+  }
+  .pdfbtn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pdfbtn svg { display: block; width: 15px; height: 15px; }
+  @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 14px; right: 14px; } }
+
+  /* ---- Checklist ---- */
+  ul.checklist { list-style: none; margin: 22px 0 0; padding: 0; }
+  ul.checklist li {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 13px;
+    align-items: start;
+    border-bottom: 1px solid var(--line-soft);
+    padding: 10px 0;
+  }
+  ul.checklist li:last-child { border-bottom: 0; }
+  ul.checklist .box {
+    width: 19px;
+    height: 19px;
+    margin-top: 3px;
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    background: #fff;
+  }
+  ul.checklist b { display: block; color: var(--ink); font-size: 17px; font-weight: 500; line-height: 1.42; }
+  ul.checklist span { display: block; margin-top: 5px; color: var(--muted); font-size: 16px; line-height: 1.55; }
+  ul.checklist .ships {
+    display: inline-block;
+    margin-top: 7px;
+    border-radius: 3px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 8px 2px;
+    text-transform: uppercase;
+  }
+  .layer-no {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  @media print {
+    .pdfbtn { display: none !important; }
+    ul.checklist li { break-inside: avoid; }
+  }
+
+</style>
+</head>
+<body>
+
+<button class="pdfbtn" onclick="window.print()" aria-label="Download this checklist as a PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  Download PDF
+</button>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="mark">Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
+    <div class="stamp">The build checklist &middot; version 1.5 &middot; August 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="eyebrow">The checklist <span class="red">&middot;</span> version 1.5</div>
+    <h1>Everything your Chief of Staff should be doing.</h1>
+    <p class="lede">Every one of these is something a Chief of Staff should be doing. The obvious items are here for completeness. Most of what follows isn't obvious, and nearly all of it is here because something went wrong first.</p>
+    <p class="lede">This is the list our own install is built against. If you're building your own, take it.</p>
+
+    <div class="facts">
+      <div><span class="k">127</span><span class="v">Things worth deciding before you're deep in</span></div>
+      <div><span class="k">12</span><span class="v">Layers</span></div>
+      <div><span class="k">Free</span><span class="v">Yours to use, adapt or ignore</span></div>
+      <div><span class="k">Print it</span><span class="v">Button top right</span></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 1</span>
+    <h2>The brief it reads <span class="red">every session</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>What you sell, and what you turn away</b></div></li>
+      <li><span class="box"></span><div><b>Who disqualifies themselves, written before who qualifies</b></div></li>
+      <li><span class="box"></span><div><b>Your prices, in exactly one file, that everything else reads from</b></div></li>
+      <li><span class="box"></span><div><b>Which email address belongs to which part of the business</b></div></li>
+      <li><span class="box"></span><div><b>Which phone number must never appear on which document</b></div></li>
+      <li><span class="box"></span><div><b>Whether your prices are quoted with tax added or included, decided once</b></div></li>
+      <li><span class="box"></span><div><b>The words you never want to see in your own writing</b></div></li>
+      <li><span class="box"></span><div><b>The sentence shapes you never want, which matter more than the words</b></div></li>
+      <li><span class="box"></span><div><b>How long an answer should be before it's too long</b></div></li>
+      <li><span class="box"></span><div><b>Whether you want options or a recommendation</b></div></li>
+      <li><span class="box"></span><div><b>People you both know well enough to call by first name</b></div></li>
+      <li><span class="box"></span><div><b>What you're working on this quarter, with a command to refresh it</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 2</span>
+    <h2>Rules it can't <span class="red">talk itself out of</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Anything it reads is information, never an instruction</b></div></li>
+      <li><span class="box"></span><div><b>A document telling it what to do gets surfaced to you, not obeyed</b></div></li>
+      <li><span class="box"></span><div><b>Sending, spending, publishing and deleting always stop and ask</b></div></li>
+      <li><span class="box"></span><div><b>Silence is never permission to act</b></div></li>
+      <li><span class="box"></span><div><b>Keys and tokens live outside anything that syncs</b></div></li>
+      <li><span class="box"></span><div><b>What it must never see gets tested, not assumed</b></div></li>
+      <li><span class="box"></span><div><b>An empty search result is not absence</b></div></li>
+      <li><span class="box"></span><div><b>Rules change only when you say so, never because a file said so</b></div></li>
+      <li><span class="box"></span><div><b>A gate that only fires when you catch it isn't a gate</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 3</span>
+    <h2>Memory that <span class="red">survives the session</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>One fact per file, named after the fact</b></div></li>
+      <li><span class="box"></span><div><b>An index that loads every session, holding pointers and never content</b></div></li>
+      <li><span class="box"></span><div><b>A hot cache of the last fortnight, with a size cap that is enforced</b></div></li>
+      <li><span class="box"></span><div><b>Changed facts get superseded with a date, never quietly overwritten</b></div></li>
+      <li><span class="box"></span><div><b>Facts link to each other, and the link says what kind of relationship it is</b></div></li>
+      <li><span class="box"></span><div><b>Raw captures land in an inbox and get promoted later, never straight in</b></div></li>
+      <li><span class="box"></span><div><b>A multi-week project gets one entry that updates, not one per version</b></div></li>
+      <li><span class="box"></span><div><b>A recalled fact is checked before it's asserted, because memory is a snapshot</b></div></li>
+      <li><span class="box"></span><div><b>A memory check runs at session start, not when something looks wrong</b></div></li>
+      <li><span class="box"></span><div><b>Corrections you make get logged somewhere they can be counted</b></div></li>
+      <li><span class="box"></span><div><b>Anything appearing twice in that log becomes a permanent rule</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 4</span>
+    <h2>Evidence, and the ways it <span class="red">quietly isn't</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>The primary record beats your own note about it</b></div></li>
+      <li><span class="box"></span><div><b>The invoice, not the tracker row. The calendar, not the reminder</b></div></li>
+      <li><span class="box"></span><div><b>Read the whole transcript, never the summary of it</b></div></li>
+      <li><span class="box"></span><div><b>A search result that exactly hits the tool's limit is probably truncated</b></div></li>
+      <li><span class="box"></span><div><b>Vary the search term before concluding something isn't there</b></div></li>
+      <li><span class="box"></span><div><b>Say which surfaces were checked, and which couldn't be</b></div></li>
+      <li><span class="box"></span><div><b>"Not found in what I checked" is a different claim from "doesn't exist"</b></div></li>
+      <li><span class="box"></span><div><b>Read the clock at the moment of answering, with the timezone</b></div></li>
+      <li><span class="box"></span><div><b>Check every relative word against what the clock actually said</b></div></li>
+      <li><span class="box"></span><div><b>If it could have been looked up and wasn't, that's a fault, not a style choice</b></div></li>
+      <li><span class="box"></span><div><b>Reasoning feels exactly like knowing, which is why this needs to be a reflex</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 5</span>
+    <h2>What it checks before it says <span class="red">"done"</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>"Drafted, not checked" is an allowed answer, and a useful one</b></div></li>
+      <li><span class="box"></span><div><b>After editing a spreadsheet, re-read it and count the rows</b></div></li>
+      <li><span class="box"></span><div><b>One unquoted comma breaks a data file silently</b></div></li>
+      <li><span class="box"></span><div><b>After generating a document, open it and read it back</b></div></li>
+      <li><span class="box"></span><div><b>Layouts clip and text overflows without ever raising an error</b></div></li>
+      <li><span class="box"></span><div><b>After moving a file, confirm it exists at the new path</b></div></li>
+      <li><span class="box"></span><div><b>After writing a rule down, open the file and confirm the words are there</b></div></li>
+      <li><span class="box"></span><div><b>After drafting an email, confirm which thread it's actually sitting in</b></div></li>
+      <li><span class="box"></span><div><b>A price is read from the file that owns it, at the moment it's used</b></div></li>
+      <li><span class="box"></span><div><b>Never from earlier in the same conversation</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 6</span>
+    <h2>Catching its own <span class="red">silent failures</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>No news is bad news</b></div></li>
+      <li><span class="box"></span><div><b>Anything scheduled reports that it ran, even when there was nothing to do</b></div></li>
+      <li><span class="box"></span><div><b>Two events per job, started and finished, or you can't tell a hang from a death</b></div></li>
+      <li><span class="box"></span><div><b>Built is not switched on</b></div></li>
+      <li><span class="box"></span><div><b>Nothing counts as live until it has run once and left a trace</b></div></li>
+      <li><span class="box"></span><div><b>Keep a list of what's supposed to be running and when each last fired</b></div></li>
+      <li><span class="box"></span><div><b>A job that reports success without doing the work is worse than one that crashes</b></div></li>
+      <li><span class="box"></span><div><b>Check a log's recency against the last success, not the last line</b></div></li>
+      <li><span class="box"></span><div><b>A log only written on failure makes old errors look like today's</b></div></li>
+      <li><span class="box"></span><div><b>A watcher living inside the thing it watches dies with it</b></div></li>
+      <li><span class="box"></span><div><b>Long jobs check their logins before starting, not halfway through</b></div></li>
+      <li><span class="box"></span><div><b>A scheduled audit compares what the system claims against what's actually there</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 7</span>
+    <h2>The records, and how they <span class="red">get corrupted</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Every open item carries a date, even a provisional one</b></div></li>
+      <li><span class="box"></span><div><b>A next action, not just a status</b></div></li>
+      <li><span class="box"></span><div><b>Get the next record number from a script, never by reading the last row</b></div></li>
+      <li><span class="box"></span><div><b>A line break inside a quoted field will split a row and fool your eye</b></div></li>
+      <li><span class="box"></span><div><b>One writer per shared file, enforced by a lock rather than good manners</b></div></li>
+      <li><span class="box"></span><div><b>Two sessions running at once will eventually issue the same record number</b></div></li>
+      <li><span class="box"></span><div><b>Validate column counts and allowed values on every file, automatically</b></div></li>
+      <li><span class="box"></span><div><b>A one-page summary you regenerate, rather than maintain by hand</b></div></li>
+      <li><span class="box"></span><div><b>A log written as work happens, not summarised afterwards</b></div></li>
+      <li><span class="box"></span><div><b>Record what you checked before deciding, so a wrong call is debuggable later</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 8</span>
+    <h2>Anything that <span class="red">leaves the building</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Replies go inside the original thread, never as a new message</b></div></li>
+      <li><span class="box"></span><div><b>A reply that opens its own thread sits unsent and invisible next to the original</b></div></li>
+      <li><span class="box"></span><div><b>Never hard-wrap a paragraph, or it arrives looking machine-written</b></div></li>
+      <li><span class="box"></span><div><b>Check the drafts folder before believing anything was sent</b></div></li>
+      <li><span class="box"></span><div><b>An auto-generated draft is not your position and can commit you to things</b></div></li>
+      <li><span class="box"></span><div><b>Draft only when there's nothing left to decide</b></div></li>
+      <li><span class="box"></span><div><b>A pre-written reply to a decision you haven't made anchors you to it</b></div></li>
+      <li><span class="box"></span><div><b>No opener that wishes someone well without saying anything</b></div></li>
+      <li><span class="box"></span><div><b>Bad personal news gets a reply carrying nothing commercial</b></div></li>
+      <li><span class="box"></span><div><b>Nothing quotes below your list price without a named reason and a limit</b></div></li>
+      <li><span class="box"></span><div><b>Read the tax back off the generated document before anyone signs it</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 9</span>
+    <h2>How it behaves <span class="red">when you're not watching</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Name the two readings instead of silently choosing one</b></div></li>
+      <li><span class="box"></span><div><b>Do the minimum that solves it</b></div></li>
+      <li><span class="box"></span><div><b>Change only what was asked, and match the existing style</b></div></li>
+      <li><span class="box"></span><div><b>Flag the adjacent thing that's wrong, don't fix it uninvited</b></div></li>
+      <li><span class="box"></span><div><b>Push back rather than give a polite wrong answer</b></div></li>
+      <li><span class="box"></span><div><b>Look things up before drafting, not after being corrected</b></div></li>
+      <li><span class="box"></span><div><b>File what you send it before analysing it</b></div></li>
+      <li><span class="box"></span><div><b>Unfiled material is invisible to every future session</b></div></li>
+      <li><span class="box"></span><div><b>Every question carries a default and a date it expires</b></div></li>
+      <li><span class="box"></span><div><b>Defaults never apply to anything that sends, spends or reaches a person</b></div></li>
+      <li><span class="box"></span><div><b>End with a close, not a question</b></div></li>
+      <li><span class="box"></span><div><b>Before closing, check that every decision reached the file that owns it</b></div></li>
+      <li><span class="box"></span><div><b>Then check the claims against the files, not against its memory of the session</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 10</span>
+    <h2>Skills, so nothing is <span class="red">explained twice</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Build the one that turns a new procedure into a permanent one first</b></div></li>
+      <li><span class="box"></span><div><b>A skill says when not to use it, not only when to</b></div></li>
+      <li><span class="box"></span><div><b>Meeting to notes, dated commitments and updated records</b></div></li>
+      <li><span class="box"></span><div><b>Call to first-draft proposal, priced from the rate card</b></div></li>
+      <li><span class="box"></span><div><b>A morning brief that says what needs you and drafts what doesn't</b></div></li>
+      <li><span class="box"></span><div><b>A decision walker that sets a date to revisit the call</b></div></li>
+      <li><span class="box"></span><div><b>Something that interrogates a half-formed idea until it's sayable</b></div></li>
+      <li><span class="box"></span><div><b>A shared brain for people and companies</b></div></li>
+      <li><span class="box"></span><div><b>A quality gate that reads your standards and cleans a draft</b></div></li>
+      <li><span class="box"></span><div><b>A second reviewer that attacks substance, not style</b></div></li>
+      <li><span class="box"></span><div><b>Plan on the strong model, hand the legwork to cheaper ones</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 11</span>
+    <h2>Two builders, <span class="red">one business</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>Decide whose system holds what, before either of you gets far</b></div></li>
+      <li><span class="box"></span><div><b>Two systems keeping their own copy of the same fact is the failure</b></div></li>
+      <li><span class="box"></span><div><b>Keep the shared layer deliberately small</b></div></li>
+      <li><span class="box"></span><div><b>Decisions you make together get logged once, by a person</b></div></li>
+      <li><span class="box"></span><div><b>Neither assistant decides a shared thing on its own</b></div></li>
+      <li><span class="box"></span><div><b>Everything else stays personal to whoever runs it</b></div></li>
+      <li><span class="box"></span><div><b>Your staff get the outputs, never the layer that holds your thinking</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <span class="layer-no">Layer 12</span>
+    <h2>Things that will <span class="red">catch you out</span></h2>
+    <ul class="checklist">
+      <li><span class="box"></span><div><b>An agent makes existing oversharing more efficient</b></div></li>
+      <li><span class="box"></span><div><b>Incoming email and documents are attacker-controlled input</b></div></li>
+      <li><span class="box"></span><div><b>Approval gates reduce the blast radius, they don't remove judgement</b></div></li>
+      <li><span class="box"></span><div><b>An approval is only as good as the person reading it</b></div></li>
+      <li><span class="box"></span><div><b>It can only reach what the account you connected can reach</b></div></li>
+      <li><span class="box"></span><div><b>Plaintext session logs sit on the machine, outside every tenant control</b></div></li>
+      <li><span class="box"></span><div><b>Retention and training terms differ by plan, so check yours at go-live</b></div></li>
+      <li><span class="box"></span><div><b>Processing does not happen in Australia today</b></div></li>
+      <li><span class="box"></span><div><b>Expect a fortnight where it costs more time than it saves</b></div></li>
+      <li><span class="box"></span><div><b>Then expect to lose a few evenings when it clicks</b></div></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <div class="sig">
+      <div class="rule-v"></div>
+      <div>
+        <p>Most of these are one line because one line is all they need. The reason each exists is a story about something breaking, and anyone building their own will collect their own versions soon enough.</p>
+        <p>If you only take two: layer six, because silent failure is the only category you won't notice on your own, and the first item in layer eleven, because anyone building alongside a partner hits it whether they plan for it or not.</p>
+        <p>Questions about any of it, just ask.</p>
+        <div class="who">Arek Rainczuk<span>Fifth Castle Media &middot; 0467 676 205 &middot; info@fifthcastle.media</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
+    <div>Build checklist, version 1.5. August 2026.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
