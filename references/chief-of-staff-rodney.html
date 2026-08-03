@@ -316,9 +316,30 @@
     hr.rule { margin: 34px 0; }
     h1 { font-size: 34px; }
   }
+
+  /* ---- Download-PDF control (added 2026-08-03). The @media print rules above
+         do the work; this is just the visible trigger. No library, no server. ---- */
+  .pdfbtn { position: fixed; top: 16px; right: 16px; z-index: 60; display: inline-flex; gap: 9px;
+    align-items: center; border: 1px solid var(--line); border-radius: 4px; background: var(--paper);
+    box-shadow: 0 2px 10px rgba(20,17,15,.08); color: var(--ink); cursor: pointer;
+    font-family: var(--font-label); font-size: 14px; font-weight: 600; letter-spacing: .08em;
+    padding: 11px 15px 9px; text-transform: uppercase;
+    transition: background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out; }
+  .pdfbtn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pdfbtn svg { display: block; width: 15px; height: 15px; }
+  @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 76px; right: 14px; } }
+  @media print { .pdfbtn { display: none !important; } }
 </style>
 </head>
 <body>
+
+<button class="pdfbtn" onclick="window.print()" aria-label="Download this proposal as a PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  Download PDF
+</button>
+
 
 <div class="masthead">
   <div class="wrap">
@@ -686,6 +707,13 @@
 
   <section class="rise">
     <h2>What it <span class="red">costs</span></h2>
+    <p class="note" style="margin-bottom:22px;">
+      Everything a Chief of Staff should be doing, 127 things in plain English:
+      <a href="https://docs.fifthcastle.media/chief-of-staff-build-checklist.html">the build checklist</a>.
+      Everything included in this build:
+      <a href="https://docs.fifthcastle.media/chief-of-staff-included.html">what's included</a>.
+    </p>
+
     <div class="price-box">
       <div class="price-row">
         <div class="l">Build Your Own Chief of Staff<small>Four build sessions, two follow-ups, the packaged system, your AI and data-handling policy, the negative testing at go-live, call-me-when-you're-stuck support through the build, and the licence to run it.</small></div>
