@@ -84,6 +84,12 @@ nav a:hover { color: var(--red); }
 .warn-box { background: var(--amber-bg); border: 1px solid #e8d9a8; border-left: 3px solid var(--amber); padding: 22px 26px; margin-bottom: 20px; }
 .warn-box h4 { font-size: 18px; margin-bottom: 8px; color: #7a5c07; font-family: 'Vidaloka', Georgia, serif; }
 .warn-box p:last-child { margin-bottom: 0; }
+.amend-badge { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; background: var(--amber); color: var(--white); padding: 2px 8px 1px; border-radius: 2px; vertical-align: middle; margin-left: 6px; white-space: nowrap; }
+.amend-note { font-style: italic; color: #7a5c07; font-size: 15px; border-bottom: 1px solid #e8d9a8; padding-bottom: 14px; }
+.src-note { font-size: 13.5px; line-height: 1.75; color: var(--mid); border-top: 1px solid #e8d9a8; padding-top: 14px; }
+.src-note strong { font-family: 'Khand', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; font-size: 12px; color: #7a5c07; }
+.src-note a { color: #7a5c07; text-decoration: underline; text-underline-offset: 2px; }
+.src-note a:hover { color: var(--red); }
 
 .good-box { background: var(--green-bg); border: 1px solid #cfe0d6; border-left: 3px solid var(--green); padding: 22px 26px; margin-bottom: 20px; }
 .good-box h4 { font-size: 18px; margin-bottom: 8px; color: #245140; font-family: 'Vidaloka', Georgia, serif; }
@@ -431,8 +437,19 @@ footer .wordmark { font-size: 22px; margin-bottom: 12px; }
     </div>
 
     <div class="warn-box">
-      <h4>Australian data residency: a hard no today</h4>
-      <p>The Azure-hosted deployment types on offer are a global option and a United States data zone. There is no Australian data zone for these models yet. If a client's requirement is contractual "data does not leave Australia", this path doesn't give them that, and the honest move is to say so in the first meeting and stop rather than discover it in procurement. It will change, and it's worth re-checking quarterly rather than taking my word for it in six months.</p>
+      <h4>Australian data residency: it depends on the path <span class="amend-badge">Amended 5 Aug</span></h4>
+      <p class="amend-note">Tal asked why this was a flat no, which was the right question to ask. The first version of this box was researched on one deployment path and then written as though it covered every model, which was too broad. Here's the accurate version, with sources, so you can check it rather than take my word for it.</p>
+      <p><strong>On the Microsoft path, no.</strong> The Azure-hosted deployment types for these models are a global option and a United States data zone. There's no Australian data zone for them yet. If the requirement is a contractual "data does not leave Australia", the Foundry route doesn't give you that today.</p>
+      <p><strong>On AWS, yes.</strong> Claude Sonnet 4.5 and Haiku 4.5 run on Bedrock with Australian-geography cross-region inference, added specifically so customers can keep processing inside their own geography. Sydney, <code>ap-southeast-2</code>, carries Claude models and offers "Cross-region inference (AU)" as a deployment type. Azure OpenAI also has an Australia East presence, though which models and deployment types are available there varies enough that it needs checking per model rather than assuming.</p>
+      <p><strong>The trap worth knowing about.</strong> APAC is not AU. A prompt originating in Sydney and routed through an <code>apac.*</code> inference profile can be processed in Tokyo, Seoul, Osaka, Mumbai, Hyderabad or Singapore. Australian residency needs the AU profile specifically. That distinction passes a procurement questionnaire and fails an audit, which makes it the one to check first when someone tells you their AI runs in region.</p>
+      <p><strong>What none of this covers.</strong> All of the above is the model layer only. It says nothing about where the files sit, what the local machine writes down, or where a third-party connector processes. Residency is a property of the whole chain, and the model is the part people check because it's the part with a marketing page.</p>
+      <p class="src-note"><strong>Sources:</strong>
+        <a href="https://aws.amazon.com/blogs/machine-learning/introducing-amazon-bedrock-cross-region-inference-for-claude-sonnet-4-5-and-haiku-4-5-in-japan-and-australia">AWS, cross-region inference for Claude Sonnet 4.5 and Haiku 4.5 in Japan and Australia</a> ·
+        <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html">AWS, model support by Region in Amazon Bedrock</a> ·
+        <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html">AWS, supported Regions and models for inference profiles</a> ·
+        <a href="https://learn.microsoft.com/en-au/answers/questions/5778056/ai-model-availability-and-processing-constraints">Microsoft, AI model availability and processing constraints</a> ·
+        <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/geographies/">Microsoft, Azure geographies and data residency</a>
+      </p>
     </div>
 
     <h3 class="sub">Prompt injection, since it will come up</h3>
@@ -582,7 +599,7 @@ footer .wordmark { font-size: 22px; margin-bottom: 12px; }
       </a>
     </div>
 
-    <p class="footnote">Prepared for Tal Evans and Jenny Boymal at Majestic Computer Technology following our call on 4 August 2026. Not indexed and not circulated further. The Microsoft and Anthropic detail is drawn from primary vendor documentation and was accurate when checked in late July 2026; a good deal of it will have moved within two quarters, so treat it as the thing to re-verify rather than as settled.</p>
+    <p class="footnote">Prepared for Tal Evans and Jenny Boymal at Majestic Computer Technology following our call on 4 August 2026. Not indexed and not circulated further. The vendor detail is drawn from primary documentation and was accurate when checked in late July 2026, with the residency section rechecked and corrected on 5 August after Tal questioned it. A good deal of this will have moved within two quarters, so treat the sources as the thing to re-read rather than this page as settled. If you find another claim in here that doesn't hold up, tell me and I'll amend it the same way.</p>
   </div>
 </div>
 
@@ -590,7 +607,7 @@ footer .wordmark { font-size: 22px; margin-bottom: 12px; }
   <div class="footer-inner">
     <span class="wordmark">FIFTH CASTLE<em>MEDIA</em></span>
     <p>Fifth Castle Media · Five Castles Pty Ltd · fifthcastle.media</p>
-    <p class="draft-foot">For Majestic Computer Technology · 4 August 2026</p>
+    <p class="draft-foot">For Majestic Computer Technology · 4 August 2026, residency section amended 5 August</p>
   </div>
 </footer>
 
