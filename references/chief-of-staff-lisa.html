@@ -289,6 +289,46 @@
   .pdfbtn svg { display: block; width: 15px; height: 15px; }
   @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 76px; right: 14px; } }
   @media print { .pdfbtn { display: none !important; } }
+
+  /* ---------- collapsible, for what she has already read ---------- */
+  details.prev { border-top: 1px solid var(--line); }
+  details.prev:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  details.prev > summary {
+    cursor: pointer; list-style: none; padding: 19px 0;
+    display: flex; align-items: baseline; gap: 13px;
+    font-family: var(--label); font-size: 19px; letter-spacing: 0.02em;
+  }
+  details.prev > summary::-webkit-details-marker { display: none; }
+  details.prev > summary::before {
+    content: '+'; color: var(--accent); font-family: var(--mono);
+    font-size: 16px; width: 13px; flex: none; line-height: 1;
+  }
+  details.prev[open] > summary::before { content: '\2212'; }
+  details.prev > summary:hover { color: var(--accent); }
+  details.prev > summary .why { font-family: var(--body); font-size: 15px; color: var(--subtle); font-style: italic; }
+  details.prev .inner { padding: 2px 0 34px 26px; }
+  details.prev .inner > section:first-child { margin-top: 0; }
+  details.prev .inner hr.rule { margin: 34px 0; }
+  @media (max-width: 640px) {
+    details.prev > summary { font-size: 17px; }
+    details.prev > summary .why { display: none; }
+    details.prev .inner { padding-left: 0; }
+  }
+
+  /* ---------- the new-answers band ---------- */
+  .newband { background: var(--panel); border-left: 3px solid var(--accent); padding: 22px 26px; border-radius: 0 var(--r) var(--r) 0; margin-bottom: 8px; }
+  .newband p { color: var(--muted); font-size: 16.5px; }
+  .newband strong { color: var(--text); font-weight: normal; }
+
+  .verdict { display: grid; grid-template-columns: 172px 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .verdict:last-of-type { border-bottom: 1px solid var(--line); }
+  .verdict .tool { font-family: var(--label); font-size: 19px; letter-spacing: 0.02em; }
+  .verdict .tool small { display: block; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; margin-top: 4px; }
+  .verdict .yes { color: var(--accent); }
+  .verdict .part { color: var(--muted); }
+  .verdict .body { color: var(--muted); font-size: 16.5px; }
+  .verdict .body strong { color: var(--text); font-weight: normal; }
+  @media (max-width: 640px) { .verdict { grid-template-columns: 1fr; gap: 6px; } }
 </style>
 </head>
 
@@ -305,21 +345,21 @@
 <div class="masthead">
   <div class="wrap">
     <div class="mark">Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
-    <div class="stamp">Prepared for Lisa Sweeting &middot; Sweet Style Marketing &middot; 30 July 2026</div>
+    <div class="stamp">Lisa Sweeting &middot; Sweet Style Marketing &middot; updated 7 August 2026</div>
   </div>
 </div>
 
 <div class="wrap">
 
   <section>
-    <div class="eyebrow">The proposal <span class="red">&middot;</span> For Lisa</div>
-    <h1>You've already tried handing the writing to someone else. It came back still needing you.</h1>
-    <p class="lede">You said the work still needed too much of your input for the value it gave you, especially at its cost. So you took it back and you're doing all of it again.</p>
-    <p class="lede"><strong>This isn't that. It's the opposite shape. It never stops needing your judgement, it stops needing your hands.</strong></p>
+    <div class="eyebrow">Updated after Friday <span class="red">&middot;</span> For Lisa</div>
+    <h1>The answers I promised, and what they actually mean for your month.</h1>
+    <p class="lede">You asked whether it can go into Mailchimp or Campaign Monitor and build the newsletter, whether the same holds for Metricool and Canva, and what happens to the photos. I said I'd look properly rather than guess. I have.</p>
+    <p class="lede"><strong>Those answers are below, first, along with the three things you raised later that deserve more than I gave you on the call.</strong> Everything you've already read is still here, further down, folded away so you don't have to scroll past it.</p>
 
     <div class="facts">
-      <div><span class="k">3 + 5</span><span class="v">Embedded clients, plus monthly content clients</span></div>
-      <div><span class="k">Your Mac</span><span class="v">Where every file lives</span></div>
+      <div><span class="k">Yes</span><span class="v">Campaign Monitor, and Mailchimp</span></div>
+      <div><span class="k">Your PC</span><span class="v">Where every file lives</span></div>
       <div><span class="k">4 + 2</span><span class="v">Build sessions and follow-ups</span></div>
       <div><span class="k">$5,500</span><span class="v">Plus GST, one seat, $6,050 inc</span></div>
     </div>
@@ -327,7 +367,191 @@
 
   <hr class="rule">
 
-  <section class="rise" id="offer">
+  <section class="rise" id="platforms">
+    <h2>Your question <span class="red">&middot; can it actually operate the platforms</span></h2>
+    <p class="sub">You asked it three ways, and it's the same question each time: can it go in and do the work, or is that still my hands?</p>
+
+    <p>Short version: <strong>on the platforms you named, mostly yes, and the newsletter is the strongest case of the lot.</strong> Here it is platform by platform, with what it can't do stated as plainly as what it can.</p>
+
+    <div style="margin-top:30px;">
+      <div class="verdict">
+        <div class="tool">Campaign Monitor<small class="yes">Yes, the whole loop</small></div>
+        <div class="body">The best of your platforms for this. Its API covers <strong>creating a campaign, setting the content, sending yourself a test, scheduling it and sending it</strong>, then pulling opens, clicks and bounces back afterwards. Your templates already exist, so the monthly job is populating one: this month's articles into their slots, the link to the blog you've already published, the photos placed. That is exactly the shape of work an API does well.</div>
+      </div>
+      <div class="verdict">
+        <div class="tool">Mailchimp<small class="yes">Yes, with one caveat</small></div>
+        <div class="body">The same capability is there. The caveat is worth knowing because it's the sort of thing you'd find out later: <strong>Mailchimp's own published connector only covers their transactional product, not the marketing side you use.</strong> The marketing API itself is mature and well documented, so the work gets done, it just gets done through a small piece we write rather than something Mailchimp hands over. More on that below, because it matters for your clients' data.</div>
+      </div>
+      <div class="verdict">
+        <div class="tool">Metricool<small class="yes">Yes, and it's official</small></div>
+        <div class="body">Metricool publishes their own connector and it's hosted, so there's nothing to install. You authorise it in a browser once. It <strong>schedules posts, reads your analytics, tells you best posting times and pulls competitor data</strong>, in conversation, without opening the dashboard. <strong>One correction to what I said on the call:</strong> the connector works on the free account, but Metricool's full API is Advanced-plan only, and Advanced starts at about $53 a month for 15 brands, not 50. Fifty brands is a good deal more. I'd rather correct my own number than have you budget off it.</div>
+      </div>
+      <div class="verdict">
+        <div class="tool">Canva<small class="part">Partly, and the part that matters</small></div>
+        <div class="body">Canva has a published connector too. It can generate designs, <strong>autofill your clients' brand templates</strong>, search, resize and export as PNG, PDF, MP4 or PowerPoint. What it cannot do is art-direct. But you weren't asking it to. You described the actual pain on the call: <em>"I've got to get them out of Canva, download them, save them somewhere, upload them into"</em> the newsletter. <strong>That loop is what dies.</strong> Template populated, exported, placed, without the download-rename-reupload in the middle.</div>
+      </div>
+      <div class="verdict">
+        <div class="tool">The blog itself<small class="yes">Yes, if it's WordPress</small></div>
+        <div class="body">You publish to their sites before the newsletter goes out, so it's upstream of everything else. WordPress has an official adapter maintained by the WordPress project, and since March this year agents can draft, edit and publish posts and pages. <strong>New posts save as drafts by default and every action needs you to say yes</strong>, which is the same shape as the rest of this build rather than a bolt-on. Worth checking per practice, though: WordPress yes, a proprietary or agency-built site may have no way in at all.</div>
+      </div>
+      <div class="verdict">
+        <div class="tool">The photos<small class="part">Half, and it's the tedious half</small></div>
+        <div class="body">Getting them out of the client is still you, because that's a human chasing a human. <strong>Everything after that isn't:</strong> renaming, resizing, cropping to the right ratio, placing them in the right slot, uploading. The anniversary and community photos you described are exactly the coordinator work you said isn't strategic. It isn't, and it shouldn't be yours.</div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:32px;">
+      <h3>The constraint I should have picked up on the call, and didn't</h3>
+      <p>You told me something important and I moved past it: <strong>"They own the platform and they've got me set up as an administrative user. I don't have their logins, I have my own login."</strong></p>
+      <p style="margin-top:14px;">That makes every one of these a <strong>client-side decision, not just yours.</strong> An API key is issued from inside their account. Some practices will hand you one without blinking. Some will want to know what it's for, and one or two may say no. That isn't a technical problem and it doesn't stop you starting, but it does mean the rollout goes practice by practice rather than all at once, and you should hear that from me now rather than discover it in week three.</p>
+      <p style="margin-top:14px;"><strong>The practical order:</strong> start with your own business, where you own everything and can move fast. Then your most trusting practice. By the time you approach the cautious one you'll have a working example and a written policy to show them, which is a much easier conversation than asking cold.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>Why I won't just install someone else's connector</h3>
+      <p>For Mailchimp and Campaign Monitor there are ready-made connectors floating around, built by strangers. <strong>They're third-party code running on your machine with your clients' API keys inside them.</strong> You hold administrative access to several accounting practices. That is not where we take a shortcut.</p>
+      <p style="margin-top:14px;">So we write the connection directly against the vendor's own documented interface: small, readable, and something you can open and understand rather than trust. It's the same reason the whole system is plain files instead of a clever black box. Where a vendor publishes their own connector, as Metricool and Canva and WordPress do, we use theirs.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>And the honest gaps, so you can hear them from me first</h3>
+      <p>There will be things it can't do. Some platforms hold back their most sensitive actions, and some open their interface only on higher plans. <strong>When it hits one of those it tells you: here's everything I've done, here's the one step I need you to do.</strong> That's a handover, not a failure, and it's a much smaller job than the whole task.</p>
+      <p style="margin-top:14px;">The one that's genuinely closed rather than partly open: <strong>automation platforms generally won't let anything build their internal automations for you</strong>, including the one I use myself. Those stay hand-built. The deterministic plumbing stays where it is; what comes across is the judgement and the production.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>Your month <span class="red">&middot; put together</span></h2>
+    <p class="sub">You put a number on this yourself, and it's the number that matters more than anything I could claim.</p>
+    <p>I asked how long the graphics, captions and scheduling take you for one round. You said <strong>"at least an hour, if not longer"</strong>, and then <em>"if it's for a client, I'd probably take longer, because that's a bit more consideration."</em></p>
+    <p>Set against that, here is the chain as it exists in your month. Source material in at the top, three practices' worth of output at the bottom, and your judgement at every gate.</p>
+
+    <figure>
+      <div class="fig-card">
+        <div class="cap">One month, one client, end to end</div>
+        <svg viewBox="0 0 640 232" role="img" aria-label="A month's chain: source material becomes a blog on the client website, which becomes the newsletter in Campaign Monitor or Mailchimp, which becomes scheduled social through Metricool with graphics from Canva, with an approval gate before each publish">
+          <rect class="svg-node" x="4" y="86" width="104" height="60" rx="3"/>
+          <text class="svg-lbl-dark" x="56" y="110" text-anchor="middle">Source</text>
+          <text class="svg-lbl-sm" x="56" y="126" text-anchor="middle">white paper or</text>
+          <text class="svg-lbl-sm" x="56" y="138" text-anchor="middle">their expert</text>
+
+          <path class="svg-wire-hot draw" d="M108 116 L152 116"/>
+
+          <rect class="svg-hub" x="152" y="80" width="120" height="72" rx="3"/>
+          <text class="svg-lbl" x="212" y="70" fill="var(--accent)">YOUR STANDARD</text>
+          <text class="svg-lbl-dark" x="212" y="106" text-anchor="middle">Their voice</text>
+          <text class="svg-lbl-sm" x="212" y="124" text-anchor="middle">their ideal client</text>
+          <text class="svg-lbl-sm" x="212" y="140" text-anchor="middle">your method</text>
+
+          <path class="svg-wire draw" d="M272 116 L316 116"/>
+
+          <rect class="svg-node" x="316" y="16" width="128" height="50" rx="3"/>
+          <text class="svg-lbl-dark" x="380" y="36" text-anchor="middle">Blog</text>
+          <text class="svg-lbl-sm" x="380" y="52" text-anchor="middle">their website</text>
+
+          <rect class="svg-node" x="316" y="90" width="128" height="52" rx="3"/>
+          <text class="svg-lbl-dark" x="380" y="110" text-anchor="middle">Newsletter</text>
+          <text class="svg-lbl-sm" x="380" y="126" text-anchor="middle">Campaign Monitor</text>
+
+          <rect class="svg-node" x="316" y="166" width="128" height="52" rx="3"/>
+          <text class="svg-lbl-dark" x="380" y="186" text-anchor="middle">Social</text>
+          <text class="svg-lbl-sm" x="380" y="202" text-anchor="middle">Metricool &middot; Canva</text>
+
+          <path class="svg-wire draw" d="M272 110 L316 41"/>
+          <path class="svg-wire draw" d="M272 122 L316 192"/>
+
+          <path class="svg-wire-hot draw" d="M444 41 L490 41"/>
+          <path class="svg-wire-hot draw" d="M444 116 L490 116"/>
+          <path class="svg-wire-hot draw" d="M444 192 L490 192"/>
+
+          <rect x="490" y="24" width="146" height="34" rx="17" fill="var(--panel-2)" stroke="var(--accent)"/>
+          <text class="svg-lbl" x="563" y="45" text-anchor="middle" fill="var(--accent)">YOU APPROVE</text>
+          <rect x="490" y="99" width="146" height="34" rx="17" fill="var(--panel-2)" stroke="var(--accent)"/>
+          <text class="svg-lbl" x="563" y="120" text-anchor="middle" fill="var(--accent)">YOU APPROVE</text>
+          <rect x="490" y="175" width="146" height="34" rx="17" fill="var(--panel-2)" stroke="var(--accent)"/>
+          <text class="svg-lbl" x="563" y="196" text-anchor="middle" fill="var(--accent)">YOU APPROVE</text>
+        </svg>
+      </div>
+      <figcaption>Nothing publishes without you. What changes is that you're reading and approving rather than making, and the same source feeds all three instead of being rebuilt at each step.</figcaption>
+    </figure>
+
+    <p style="margin-top:26px;"><strong>The newsletter is the one I'd build first</strong>, and not because it's the biggest. It's because it's derivative: it comes out of blogs you have already written and already approved. The judgement happened upstream. That makes it the safest place to start and the fastest thing to trust.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>What if something <span class="red">happens to you</span></h2>
+    <p class="sub">You asked this at the end and I gave you a verbal answer. It deserves a written one, because it's the right question.</p>
+
+    <ul class="rows">
+      <li>
+        <h3>There is nothing of mine to switch off</h3>
+        <div class="d">The kit is a folder of plain files on your machine. No licence server, no account with me, nothing phoning home. If I disappeared tomorrow it would keep working, because nothing about it depends on me being reachable. Move the folder to a new computer and it carries on.</div>
+      </li>
+      <li>
+        <h3>It runs on a model you pay for directly</h3>
+        <div class="d">Your Anthropic subscription is in your name, not mine. I am not between you and the thing that makes it work, and that is deliberate.</div>
+      </li>
+      <li>
+        <h3>Independence is the deliverable, not a side effect</h3>
+        <div class="d">The whole build is designed so you can drive, extend and unstick it yourself within a few sessions. If you still needed me every fortnight in six months, I'd have done this badly.</div>
+      </li>
+      <li>
+        <h3>The updates are a bonus, not a dependency</h3>
+        <div class="d">When I package something worth passing on, your system reads what changed and folds in what fits. If those stopped arriving you would lose an improvement, not a capability.</div>
+      </li>
+      <li>
+        <h3>And the honest part</h3>
+        <div class="d">There is no escrow arrangement and no succession clause in the agreement today. I am not going to dress up a one-person business as something it isn't. What protects you isn't a clause, it's that you hold every file, you pay the model provider directly, and there is no lock to be locked out of.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>This <span class="red">versus hiring someone</span></h2>
+    <p class="sub">You raised this and I let it go by. It's the comparison you're actually making, so here it is straight.</p>
+    <p>Your words: <em>"I am trying to understand the benefits of this kind of model versus a human. But I can see that I can brief them and coach them."</em> You can. And you already ran the experiment once, with the blog copywriting, and took it back because <em>"it still felt like I was touching them too much."</em></p>
+    <p><strong>The honest case for a person:</strong> they can chase a client for photos, sit in a meeting, exercise judgement you haven't taught yet, and tell you when something feels wrong. If what you need is another pair of hands with a brain attached and you can afford the management, hire.</p>
+    <p><strong>The honest case for this:</strong> the thing that failed last time was that corrections washed out. You explained it, they did it, and next month you explained it again. <strong>Here a correction becomes a rule and stays one.</strong> You say "never sign off that way" once and it holds, on every client, permanently. That is the difference between coaching a person and teaching a system, and it's the whole reason the outsourcing didn't stick.</p>
+    <p>The other honest difference is the floor. A contractor costs the same in a quiet month. This doesn't, and it doesn't leave.</p>
+    <p><strong>What I'd actually say:</strong> they're not alternatives forever. Build this first, because it makes the eventual hire cheaper and better, since you'd be handing a new person a documented business instead of a head full of context. And it may change what you'd hire for.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="rise">
+    <h2>Two smaller things <span class="red">I owe you</span></h2>
+
+    <div class="panel">
+      <h3>Where the processing happens, corrected and expanded</h3>
+      <p><strong>Your files never leave your computer.</strong> The prompt travels, the files don't, and that's the part most people get wrong.</p>
+      <p style="margin-top:14px;">On the plan you'd be running, that prompt is processed in the United States or Europe, not Australia. I want to be exact rather than reassuring. <strong>But there is now an Australian path if you ever need one:</strong> the same models can be run pinned to a Sydney region through Amazon's cloud, which has been possible for the main models since around April this year. It's more setup and more cost, so it isn't where we'd start. It matters because if one of your practices ever puts a data-residency clause in front of you, the answer is "yes, and here's how" instead of "no".</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>You're on Windows, and everything I showed you was a Mac</h3>
+      <p>I demonstrated on my machine without flagging that. <strong>It runs on Windows and we'll set it up on yours in session one.</strong> The system itself, the folder, the files, the way you talk to it, all identical. A couple of the accessories I had on screen are Mac conveniences and we'll find the Windows equivalents where you want them, which is a five-minute job, not a limitation.</p>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <h3>Someone like you, to talk to</h3>
+      <p>You asked for a solo operator running one of these. There is one, a sole practitioner in a completely different field, about a month in and past the point of needing me. <strong>I've asked whether he's happy for me to pass on his details and I'll introduce you the moment he says yes</strong>, rather than hand out someone's contact details before asking. I'd rather you heard it from him than from me.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section class="rise">
+    <h2>Everything from <span class="red">before</span></h2>
+    <p class="sub">You&rsquo;ve read all of this. It&rsquo;s here so nothing is lost, folded away so you don&rsquo;t have to scroll past it. Open any of it.</p>
+    <details class="prev">
+      <summary>The security answer <span class="why">your clients&rsquo; data, in full</span></summary>
+      <div class="inner">
+<section class="rise" id="offer">
     <div class="gesture">
       <div class="badge">First, the one you called critical</div>
       <div class="big">You hold accountants' data, and sometimes their clients'. It needs clear controls.</div>
@@ -344,10 +568,12 @@
       </div>
     </div>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>What I heard from you <span class="why">the four things, from the first call</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>What I heard <span class="red">from you</span></h2>
     <p class="sub">Correct me on any of this before we start.</p>
     <ul class="rows">
@@ -369,10 +595,12 @@
       </li>
     </ul>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>Security, the mechanism <span class="why">the tiers, your policy sheet, the negative test</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>Your first question <span class="red">&middot; the security, properly</span></h2>
     <p>The three-part answer above is the principle. This is the mechanism. Access arrives in tiers, and you move between them when you decide to, not on a schedule of mine.</p>
 
@@ -446,10 +674,12 @@
       <p>At the end of session two we do the thing I'd want done if I were you. <strong>We deliberately ask it for material it should not be able to reach</strong>, a client folder you ruled out, a mailbox you didn't connect, and we watch it come back with nothing. Then we revoke a credential and watch that connection die. You keep the results written down. It's the only part of this that's evidence rather than assurance.</p>
     </div>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>What happens after the four sessions <span class="why">support, updates, and the goal</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>Your second question <span class="red">&middot; what happens after the four sessions</span></h2>
     <p class="sub">You asked whether there's ongoing support, or whether I'm levelling the system up in the background. Both, and neither is a retainer.</p>
 
@@ -472,10 +702,12 @@
       </li>
     </ul>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>Eight or nine voices, one system <span class="why">the diagram, and what I&rsquo;d build first</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>The bit that's actually <span class="red">yours, not mine</span></h2>
     <p class="sub">Eight or nine accounting brands, one source, and every output has to sound like the practice that's paying for it.</p>
     <p>You described your month better than I could have. A white paper or a conversation with someone's subject-matter expert goes in. You adapt it for each practice's brand voice and their ideal client. That becomes two or three blogs, then the monthly newsletter, then the month's social posts. You rarely start from scratch and you're strict about the adaptation, which is precisely why outsourcing it didn't hold.</p>
@@ -553,10 +785,12 @@
       <p style="margin-top:14px;">I said on the call that you should judge my Chief of Staff by the proposal that arrives and how fast it gets to you. That's a fair test, so this is the exhibit. Yours would end where mine does: a button through to your own agreement, so a client signs, gets invoiced, and drops into your existing onboarding automation without you touching any of it.</p>
     </div>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>Two things I corrected <span class="why">the capacity claim, and Canva</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>Two things I said on the call <span class="red">that I'm correcting</span></h2>
     <p class="sub">You'd find both of these in week three and think less of me for it. Better here.</p>
 
@@ -571,10 +805,12 @@
       <p>True for me, and I got ahead of myself for you. I do document and graphic work through mine now and I don't miss it. <strong>But you're a marketer with brand systems built in Canva for eight or nine practices, and that's a different use than mine.</strong> Expect to keep it and use it less. You'll cancel some subscriptions over the first few months. I shouldn't have promised you that one.</p>
     </div>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>How we do it <span class="why">the six sessions, what arrives, week one</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>How we <span class="red">do it</span></h2>
     <p class="sub">Four build sessions and two follow-ups over about a fortnight, on a screen share. You share your screen and you drive. I don't touch your machine and I never hold a copy of anything.</p>
 
@@ -622,10 +858,12 @@
       <p>The front of this is the heaviest part. Logins, keys, teaching it how you write for each practice, deciding the rules. It thins out fast, but it's real work, and there's usually a day in the middle where it frustrates you before it frees you. I've watched that day land on people who came out the other side of it, and on one who hit a wall and needed me to sit with him through it. Both are normal. I'd rather you heard it from me now than met it on day three and assumed you'd bought a dud.</p>
     </div>
   </section>
-
-  <hr class="rule">
-
-  <section class="rise">
+      </div>
+    </details>
+    <details class="prev">
+      <summary>The rest of your questions <span class="why">ownership, licence, what if it goes wrong</span></summary>
+      <div class="inner">
+<section class="rise">
     <h2>The rest of your <span class="red">questions</span></h2>
 
     <div class="qa">
@@ -658,10 +896,13 @@
       <p>To be exact rather than reassuring, because it's the same subject as your security question: <strong>anything already sent to the model sits in the vendor's own retention window and runs down on their clock, not on mine.</strong> That window is short and it's one of the settings we check at go-live. Deleting the folder ends everything on your side straight away; it doesn't reach back into what's already been processed. Nobody in this industry can offer you that, and I'd rather say so than let you assume otherwise.</p>
     </div>
   </section>
+      </div>
+    </details>
+  </section>
 
   <hr class="rule">
 
-  <section class="rise">
+<section class="rise">
     <h2>What it <span class="red">costs</span></h2>
     <p class="note" style="margin-bottom:22px;">
       Everything a Chief of Staff should be doing, 127 things in plain English:
@@ -713,7 +954,7 @@
 
   <hr class="rule">
 
-  <section class="rise cta-block" id="final-cta">
+<section class="rise cta-block" id="final-cta">
     <div class="eyebrow">Two things <span class="red">&middot;</span> and we're away</div>
     <h1 style="font-size:37px;">Sign the agreement, pick your first session.</h1>
     <p class="sub" style="max-width:560px; margin:0 auto 4px;">Signing takes the first payment and locks your dates. Your homework comes the same day and it's short: where your brand assets live, two or three pieces of writing you're genuinely happy with, and one practice's month you'd want rebuilt first.</p>
@@ -727,14 +968,14 @@
 
   <hr class="rule">
 
-  <section class="rise">
+<section class="rise">
     <h2>One other thing, <span class="red">deliberately separate</span></h2>
     <p>You said you'd love another call about the video and photography side, and that you encourage your practices towards the same thing. Agreed, and it's a different conversation with different money in it, so it stays out of this document. Our financial services portfolio is coming to you separately as promised. When you've had a look, we'll book that one properly.</p>
   </section>
 
   <hr class="rule">
 
-  <section class="rise">
+<section class="rise">
     <div class="sig">
       <div class="rule-v"></div>
       <div>
@@ -747,7 +988,7 @@
 
   <footer>
     <div>Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
-    <div>Prepared for Lisa Sweeting, 30 July 2026. Valid 30 days.</div>
+    <div>Prepared for Lisa Sweeting, 30 July 2026. Updated 7 August 2026. Valid 30 days from 30 July.</div>
   </footer>
 
 </div>
@@ -805,6 +1046,27 @@
         entries.forEach(function (e) { atFinal = e.isIntersecting; apply(); });
       }, { threshold: 0.12 }).observe(finalCta);
     }
+  })();
+
+  /* Everything she has already read is collapsed on screen, but a printed or saved
+     copy must be complete, so open every panel before printing and restore after. */
+  (function () {
+    var opened = [];
+    function openAll() {
+      opened = [];
+      document.querySelectorAll('details.prev').forEach(function (d) {
+        if (!d.open) { opened.push(d); d.open = true; }
+      });
+    }
+    function restore() { opened.forEach(function (d) { d.open = false; }); opened = []; }
+    if (window.matchMedia) {
+      var mq = window.matchMedia('print');
+      if (mq.addEventListener) {
+        mq.addEventListener('change', function (e) { e.matches ? openAll() : restore(); });
+      }
+    }
+    window.addEventListener('beforeprint', openAll);
+    window.addEventListener('afterprint', restore);
   })();
 </script>
 
