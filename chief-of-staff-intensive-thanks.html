@@ -75,6 +75,16 @@
   footer a { color: var(--subtle); text-decoration: none; }
   footer a:hover { color: var(--muted); }
   footer .red { color: var(--accent); }
+
+  /* Chief of Staff figure: one shared treatment across every published page. */
+  .photo { margin: 34px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 </head>
 <body>
@@ -88,6 +98,9 @@
   <header class="hero">
     <div class="kicker">Intensive Waitlist</div>
     <h1>Your hand is up.</h1>
+      <figure class="photo">
+        <img src="images/cos/fig-30-four-plus-two.jpg" alt="Four build platforms followed by two bridges where work is swapped both ways." loading="lazy" width="1122" height="631">
+      </figure>
     <p class="sub">You're on the list for the 2-Day Intensive. <span class="hot">When dates land, you'll get them first, along with the final price and how to claim a seat before anyone else.</span> No payment, no obligation, and no flood of email.</p>
   </header>
 

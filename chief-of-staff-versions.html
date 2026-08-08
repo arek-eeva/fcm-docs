@@ -130,6 +130,16 @@
     .masthead { background: none; }
     .rel { break-inside: avoid; }
   }
+
+  /* Chief of Staff figure: one shared treatment across every published page. */
+  .photo { margin: 34px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 </head>
 <body>
@@ -208,6 +218,9 @@
 
   <section>
     <h2>What each release <span class="red">added</span></h2>
+      <figure class="photo">
+        <img src="images/cos/fig-03-effort-that-compounds.jpg" alt="A staircase built block by block, each step lighting the next." loading="lazy" width="1122" height="631">
+      </figure>
     <p class="sub">Newest first. Every one of these was promoted out of a live deployment after it earned its place, not designed in advance.</p>
 
     <div class="rel current">

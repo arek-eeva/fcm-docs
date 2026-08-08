@@ -9,11 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Light theme, matched to chief-of-staff-book.html which sends people here,
-     so the flow does not switch surfaces at the final step. Converted 31 Jul 2026. */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #FAF9F7; color: #14110F;
+    background: #0d0d0f; color: #e8e6e1;
     font-family: Georgia, serif; line-height: 1.65;
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 24px;
@@ -23,15 +21,26 @@
     font-family: 'Khand', sans-serif; text-transform: uppercase;
     letter-spacing: 0.22em; font-size: 13px; color: #BD202D; margin-bottom: 18px;
   }
-  h1 { font-family: 'Vidaloka', serif; font-size: clamp(30px, 5vw, 44px); margin-bottom: 18px; color: #14110F; }
-  p { margin-bottom: 14px; color: #5F5851; font-size: 17px; }
+  h1 { font-family: 'Vidaloka', serif; font-size: clamp(30px, 5vw, 44px); margin-bottom: 18px; color: #fff; }
+  p { margin-bottom: 14px; color: #b9b6af; font-size: 17px; }
   .steps { text-align: left; margin: 26px auto 8px; max-width: 440px; }
   .steps div {
-    padding: 12px 0; border-top: 1px solid #D8D3CB; display: flex; gap: 14px; align-items: baseline;
+    padding: 12px 0; border-top: 1px solid #232326; display: flex; gap: 14px; align-items: baseline;
   }
-  .steps div:last-child { border-bottom: 1px solid #D8D3CB; }
+  .steps div:last-child { border-bottom: 1px solid #232326; }
   .n { font-family: 'JetBrains Mono', monospace; color: #BD202D; font-size: 14px; }
-  .sig { margin-top: 26px; font-family: 'Khand', sans-serif; letter-spacing: 0.08em; color: #14110F; }
+  .sig { margin-top: 26px; font-family: 'Khand', sans-serif; letter-spacing: 0.08em; color: #e8e6e1; }
+
+  /* Chief of Staff figure: one shared treatment across every published page so
+     the surfaces read as one system. 16:9 crop of the visual library art. */
+  .photo { margin: 30px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -64,6 +73,9 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
   <main class="card">
     <div class="kicker">Chief of Staff</div>
     <h1>You're booked.</h1>
+      <figure class="photo">
+        <img src="images/cos/fig-28-decision-loop.jpg" alt="A decision card moving through its stages and being scheduled to come back." loading="lazy" width="1122" height="631">
+      </figure>
     <p>The calendar invite is on its way to your inbox now, with the meeting link inside.</p>
     <div class="steps">
       <div><span class="n">01</span><span>You'll get a reminder the day before the call.</span></div>

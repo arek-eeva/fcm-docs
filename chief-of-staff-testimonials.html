@@ -143,6 +143,16 @@
     .topbar { font-size: 11px; letter-spacing: 0.18em; }
     .topbar .brand .pre { display: none; }
   }
+
+  /* Chief of Staff figure: one shared treatment across every published page. */
+  .photo { margin: 34px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 </head>
 <body>
@@ -160,6 +170,9 @@
   <header class="hero">
     <div class="kicker">Proof</div>
     <h1>What founders say.</h1>
+      <figure class="photo">
+        <img src="images/cos/fig-31-build-with-you.jpg" alt="Two pairs of hands assembling a modular system together." loading="lazy" width="1122" height="631">
+      </figure>
     <p class="sub">Real founders, real builds. <span class="hot">Here's what changed for them, in their own words.</span></p>
   </header>
 

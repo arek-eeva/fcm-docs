@@ -122,6 +122,17 @@
     .topbar .brand .pre { display: none; }
     .btn { padding: 15px 26px; font-size: 15px; }
   }
+
+  /* Chief of Staff figure: one shared treatment across every published page so
+     the surfaces read as one system. 16:9 crop of the visual library art. */
+  .photo { margin: 30px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -164,6 +175,9 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     <h1>Your guide is ready.</h1>
     <!-- PLACEHOLDER: final guide title goes here -->
     <p class="sub">Grab <span class="hot">Twelve Jobs, One Memory</span> now, and read it on the train, in the car park, wherever you get twenty quiet minutes.</p>
+      <figure class="photo">
+        <img src="images/cos/fig-30-four-plus-two.jpg" alt="Four build platforms followed by two bridges where work is swapped both ways." loading="lazy" width="1122" height="631">
+      </figure>
     <a class="btn solid" href="https://docs.fifthcastle.media/downloads/cos-field-guide.pdf?v=20260722c" download>Download the guide</a>
     <p class="inbox">A copy is <span class="hot">also on its way to your inbox</span>, so you don't have to keep this tab open. If it hasn't landed in a few minutes, check your promotions or spam folder.</p>
   </header>

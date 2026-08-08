@@ -515,6 +515,16 @@
       transition: none;
     }
   }
+
+  /* Chief of Staff figure: one shared treatment across every published page. */
+  .photo { margin: 34px 0 0; }
+  .photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+  }
 </style>
 <script>
 !function(f,b,e,v,n,t,s)
@@ -541,6 +551,9 @@ fbq('track','CompleteRegistration');
     <div class="hero-copy">
       <p class="kicker">YOU'RE IN · WEDNESDAY 26 AUGUST · 12:00 TO 1:00PM AEST</p>
       <h1 id="hero-title">Saved. See you on the 26th.</h1>
+      <figure class="photo">
+        <img src="images/cos/fig-28-decision-loop.jpg" alt="A decision card moving through its stages and being scheduled to come back." loading="lazy" width="1122" height="631">
+      </figure>
       <p class="sub">Your calendar invite is on its way. The link to watch comes in the reminder the day before, and again an hour before we start. If something comes up and you can't make it live, stay registered: the recording goes to everyone who signed up.</p>
     </div>
   </header>
