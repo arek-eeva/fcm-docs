@@ -18,6 +18,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Chief of Staff — the build checklist v1.5 (127 items, linked from every proposal) | [chief-of-staff-build-checklist.html](https://docs.fifthcastle.media/chief-of-staff-build-checklist.html) | 2026-08-08 |
 | Chief of Staff — what's included v1.5 | [chief-of-staff-included.html](https://docs.fifthcastle.media/chief-of-staff-included.html) | 2026-08-08 |
 | Chief of Staff, versions and capabilities (current release 1.6.2) | [chief-of-staff-versions.html](https://docs.fifthcastle.media/chief-of-staff-versions.html) | 2026-08-07 |
+| Chief of Staff, interactive system map (12 layers, 127 considerations, build standard v1.5) | [chief-of-staff-system-map.html](https://docs.fifthcastle.media/chief-of-staff-system-map.html) | 2026-08-08 |
 | Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-08-08 |
 | Intensive waitlist thank-you (conversion page, noindex) | [chief-of-staff-intensive-thanks.html](https://docs.fifthcastle.media/chief-of-staff-intensive-thanks.html) | 2026-07-02 |
 | Field guide lead capture (noindex) | [chief-of-staff-guide.html](https://docs.fifthcastle.media/chief-of-staff-guide.html) | 2026-08-08 |
@@ -120,4 +121,4 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 |---|---|---|
 | FCM Docs (site home) | [index.html](https://docs.fifthcastle.media/index.html) | 2026-03-13 |
 
-**Total pages:** 61 HTML files live on the site.
+**Total pages:** 62 HTML files live on the site.
