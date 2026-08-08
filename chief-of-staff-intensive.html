@@ -751,13 +751,12 @@
     padding-top: 0;
   }
 
+  /* The form brings its own panel (shade fill, hairline, 8px radius) from its
+     GHL style settings, so this wrapper adds no frame of its own. Two frames
+     read as a doubled box. */
   .formwrap {
     margin-top: 30px;
     max-width: 620px;
-    border: 1px solid var(--rule);
-    border-radius: 10px;
-    background: var(--shade);
-    padding: 14px;
   }
 
   .formwrap iframe {
