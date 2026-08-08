@@ -1,6 +1,6 @@
 # docs.fifthcastle.media — Page Directory
 
-Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-07-25.
+Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-08-08.
 
 ## Fifth Castle Media
 
@@ -12,17 +12,18 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 
 | Page | URL | Last updated |
 |---|---|---|
-| Chief of Staff — the operating system your AI tools run on | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-07-27 |
-| Chief of Staff — page B, noindex twin of the main page | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-07-27 |
-| Chief of Staff — booking page (30-minute walkthrough) | [chief-of-staff-book.html](https://docs.fifthcastle.media/chief-of-staff-book.html) | 2026-07-27 |
-| Chief of Staff — the build checklist v1.5 (127 items, linked from every proposal) | [chief-of-staff-build-checklist.html](https://docs.fifthcastle.media/chief-of-staff-build-checklist.html) | 2026-08-03 |
-| Chief of Staff — what's included v1.5 | [chief-of-staff-included.html](https://docs.fifthcastle.media/chief-of-staff-included.html) | 2026-08-03 |
+| Chief of Staff — the operating system your AI tools run on | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-08-08 |
+| Chief of Staff — page B, noindex twin of the main page | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-08-08 |
+| Chief of Staff — booking page (30-minute walkthrough) | [chief-of-staff-book.html](https://docs.fifthcastle.media/chief-of-staff-book.html) | 2026-08-08 |
+| Chief of Staff — the build checklist v1.5 (127 items, linked from every proposal) | [chief-of-staff-build-checklist.html](https://docs.fifthcastle.media/chief-of-staff-build-checklist.html) | 2026-08-08 |
+| Chief of Staff — what's included v1.5 | [chief-of-staff-included.html](https://docs.fifthcastle.media/chief-of-staff-included.html) | 2026-08-08 |
 | Chief of Staff, versions and capabilities (current release 1.6.2) | [chief-of-staff-versions.html](https://docs.fifthcastle.media/chief-of-staff-versions.html) | 2026-08-07 |
-| Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-07-02 |
+| Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-08-08 |
 | Intensive waitlist thank-you (conversion page, noindex) | [chief-of-staff-intensive-thanks.html](https://docs.fifthcastle.media/chief-of-staff-intensive-thanks.html) | 2026-07-02 |
-| Field guide lead capture (noindex) | [chief-of-staff-guide.html](https://docs.fifthcastle.media/chief-of-staff-guide.html) | 2026-07-30 |
+| Field guide lead capture (noindex) | [chief-of-staff-guide.html](https://docs.fifthcastle.media/chief-of-staff-guide.html) | 2026-08-08 |
 | Field guide delivery + booking invite (noindex) | [chief-of-staff-guide-thanks.html](https://docs.fifthcastle.media/chief-of-staff-guide-thanks.html) | 2026-07-30 |
-| Founder stories (testimonials) | [chief-of-staff-testimonials.html](https://docs.fifthcastle.media/chief-of-staff-testimonials.html) | 2026-06-25 |
+| Founder stories (testimonials) | [chief-of-staff-testimonials.html](https://docs.fifthcastle.media/chief-of-staff-testimonials.html) | 2026-08-08 |
+| Live demonstration, registration page | [live-demonstration.html](https://docs.fifthcastle.media/live-demonstration.html) | 2026-08-08 |
 | Before We Begin | [before-we-begin.html](https://docs.fifthcastle.media/before-we-begin.html) | 2026-06-26 |
 | Your Chief of Staff | [your-ai-os.html](https://docs.fifthcastle.media/your-ai-os.html) | 2026-06-30 |
 | The Shape of the System | [the-shape-of-the-system.html](https://docs.fifthcastle.media/the-shape-of-the-system.html) | 2026-06-30 |
