@@ -51,10 +51,8 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Stephen Lewis — what you'd be running (IT/pricing overview) | [references/chief-of-staff-stephen.html](https://docs.fifthcastle.media/references/chief-of-staff-stephen.html) | 2026-07-27 |
 | Melinda Mayne (Pet Let) — Chief of Staff proposal | [references/chief-of-staff-melinda.html](https://docs.fifthcastle.media/references/chief-of-staff-melinda.html) | 2026-08-03 |
 | Rodney Ferro (PN Digital) — Chief of Staff proposal | [references/chief-of-staff-rodney.html](https://docs.fifthcastle.media/references/chief-of-staff-rodney.html) | 2026-08-03 |
-| Chris McNaughton (ShadowSight) — Chief of Staff proposal | [references/chief-of-staff-chris.html](https://docs.fifthcastle.media/references/chief-of-staff-chris.html) | 2026-08-03 |
 | Chris McNaughton (ShadowSight) — build checklist (gift after declining) | [references/chief-of-staff-chris-checklist.html](https://docs.fifthcastle.media/references/chief-of-staff-chris-checklist.html) | 2026-08-03 |
 | Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-08-03 |
-| Majestic Computer Technology (Tal Evans, Jenny Boymal), partnership and Microsoft-tenant overview | [references/chief-of-staff-majestic.html](https://docs.fifthcastle.media/references/chief-of-staff-majestic.html) | 2026-08-04 |
 
 ## Client Proposals & Briefs
 

@@ -290,6 +290,14 @@
   .pdfbtn svg { display: block; width: 15px; height: 15px; }
   @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 76px; right: 14px; } }
   @media print { .pdfbtn { display: none !important; } }
+
+  /* Chief of Staff figure: the shared treatment used across every published page. */
+  .photo { margin: 30px 0 0; }
+  .photo img {
+    display: block; width: 100%; aspect-ratio: 16 / 9;
+    object-fit: cover; border-radius: 3px;
+    break-inside: avoid;
+  }
 </style>
 </head>
 <body>
@@ -348,6 +356,9 @@
 
   <section class="rise">
     <h2>What I heard <span class="red">from you</span></h2>
+      <figure class="photo">
+        <img src="../images/cos/fig-01-business-in-your-head.jpg" alt="A founder's head holding client folders, an unread email, a calendar and a ringing phone." loading="lazy" width="1122" height="631">
+      </figure>
     <p class="sub">Correct me on any of this before we start.</p>
     <ul class="rows">
       <li>
@@ -441,6 +452,9 @@
 
   <section class="rise">
     <h2>Blocker two <span class="red">&middot; the AI policy</span></h2>
+      <figure class="photo">
+        <img src="../images/cos/fig-40-judgement-stays-in-charge.jpg" alt="Low-risk work passing through while high-risk work stops at a human gate." loading="lazy" width="1122" height="631">
+      </figure>
     <p>You named this on the call and I didn't address it once, which is the biggest miss of the forty-six minutes. You run an agency holding client data. A policy isn't paperwork for you, it's the thing you show a client who asks whether their material goes near AI, and it's what your insurer will want to see.</p>
     <p><strong>So it's a deliverable, written in session one, before anything is connected.</strong> Not a template with PN's name on it. We write it while the system is empty, because that's the only moment when the rules are a genuine choice rather than a description of what already happened.</p>
 

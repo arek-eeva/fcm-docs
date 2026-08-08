@@ -225,6 +225,20 @@
     .dots { display: none; }
     .slide { padding: 80px 24px; }
   }
+
+  /* Image slide: full-bleed art behind the existing text with a scrim, so the
+     deck gains pictures without gaining slides. Dark-theme library art only,
+     because a light image inverts this deck. Spaced three slides apart so the
+     text-image rhythm holds and no two images land side by side. */
+  .slide.has-art > .art {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center 66%;
+  }
+  .slide.has-art > .art::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(9,9,9,.94) 0%, rgba(9,9,9,.86) 38%, rgba(9,9,9,.45) 72%, rgba(9,9,9,.30) 100%);
+  }
+  .slide.has-art > *:not(.art) { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
@@ -247,7 +261,8 @@
 </section>
 
 <!-- 2 -->
-<section class="slide">
+<section class="slide has-art">
+      <div class="art" style="background-image:url(images/cos/fig-43-chat-ceiling.jpg)"></div>
   <div class="inner">
     <div class="kicker">The problem</div>
     <h2>Most AI forgets you the moment you close the tab.</h2>
@@ -275,7 +290,8 @@
 </section>
 
 <!-- 5 -->
-<section class="slide">
+<section class="slide has-art">
+      <div class="art" style="background-image:url(images/cos/fig-17-clear-queues.jpg)"></div>
   <div class="inner">
     <div class="kicker">What it does</div>
     <h2>If you'd do it on the computer, start here.</h2>
@@ -311,7 +327,8 @@
 </section>
 
 <!-- decision propagation -->
-<section class="slide">
+<section class="slide has-art">
+      <div class="art" style="background-image:url(images/cos/fig-23-one-update-everywhere.jpg)"></div>
   <div class="inner">
     <div class="kicker">The part that surprises people</div>
     <h2>Change something once. It updates everywhere.</h2>
@@ -358,7 +375,8 @@
 </section>
 
 <!-- 11 -->
-<section class="slide">
+<section class="slide has-art">
+      <div class="art" style="background-image:url(images/cos/fig-41-months-into-fortnight.jpg)"></div>
   <div class="inner">
     <div class="kicker">What changes</div>
     <h2>You stop starting from scratch.</h2>

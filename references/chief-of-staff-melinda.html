@@ -293,6 +293,14 @@
   .pdfbtn svg { display: block; width: 15px; height: 15px; }
   @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 76px; right: 14px; } }
   @media print { .pdfbtn { display: none !important; } }
+
+  /* Chief of Staff figure: the shared treatment used across every published page. */
+  .photo { margin: 30px 0 0; }
+  .photo img {
+    display: block; width: 100%; aspect-ratio: 16 / 9;
+    object-fit: cover; border-radius: 3px;
+    break-inside: avoid;
+  }
 </style>
 </head>
 <body>
@@ -432,6 +440,9 @@
 
   <section class="rise">
     <h2>What you'd <span class="red">actually have</span></h2>
+      <figure class="photo">
+        <img src="../images/cos/fig-47-what-you-keep.jpg" alt="An open case holding the kit, memory, rules and builds you keep." loading="lazy" width="1122" height="631">
+      </figure>
     <p>A Chief of Staff. Not an app you log into, not a service holding your data. It's Claude Code working inside one folder on your MacBook Air, and that folder is your business written down: how Pet Let runs, what you charge, who does what in which town, your voice, your standards, your decisions.</p>
     <p>You talk to it and it does the work. Because it knows the business rather than being briefed cold every time, a decision you make once gets implemented everywhere it touches instead of becoming four conversations you now have to have.</p>
     <p>It's yours permanently. Plain text files you can open and read. When a better model turns up next quarter you point it at the same folder and carry on, so you're never holding somebody else's platform.</p>
