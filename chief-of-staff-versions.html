@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Versions and capabilities | Chief of Staff 1.6.2 | Fifth Castle Media</title>
+<meta name="description" content="What the Chief of Staff can do as of version 1.6.2, and what each release since July added.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF8F4;
+    --panel: #F2EEE7;
+    --panel-2: #FFFFFF;
+    --text: #191815;
+    --muted: #6B665D;
+    --subtle: #A29C92;
+    --accent: #BD202D;
+    --accent-soft: rgba(189, 32, 45, 0.07);
+    --accent-line: rgba(189, 32, 45, 0.32);
+    --line: #E4DED4;
+    --display: 'Vidaloka', Georgia, serif;
+    --label: 'Khand', 'Helvetica Neue', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r: 3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 0 120px;
+  }
+
+  .wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+    margin-bottom: 68px;
+    background: linear-gradient(180deg, var(--accent-soft), transparent);
+  }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 13px; font-weight: 600; }
+  .mark .red { color: var(--accent); }
+  .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--subtle); text-transform: uppercase; }
+
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+
+  h1 { font-family: var(--display); font-size: 47px; line-height: 1.11; font-weight: 400; margin-bottom: 22px; }
+  .lede { color: var(--muted); font-size: 19px; margin-bottom: 16px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  h2 .red { color: var(--accent); }
+  h3 { font-family: var(--label); font-size: 20px; letter-spacing: 0.02em; font-weight: 500; margin: 0 0 5px; }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  .sub { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .note { color: var(--subtle); font-size: 15px; font-style: italic; }
+
+  a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 52px 0; }
+  section { scroll-margin-top: 24px; }
+
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 34px 0 8px; background: var(--panel-2); }
+  .facts div { padding: 18px 16px; border-right: 1px solid var(--line); }
+  .facts div:last-child { border-right: 0; }
+  .facts .k { font-family: var(--display); font-size: 25px; line-height: 1.1; display: block; margin-bottom: 5px; }
+  .facts .v { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 11.5px; line-height: 1.45; color: var(--muted); display: block; min-height: 2.9em; }
+
+  ul.rows { list-style: none; }
+  ul.rows li { padding: 19px 0; border-top: 1px solid var(--line); }
+  ul.rows li:last-child { border-bottom: 1px solid var(--line); }
+  ul.rows .d { color: var(--muted); font-size: 16.5px; }
+
+  /* ---------- version log ---------- */
+  .rel { border-top: 1px solid var(--line); padding: 30px 0 4px; }
+  .rel:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .rel-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+  .rel-no { font-family: var(--display); font-size: 30px; line-height: 1; }
+  .rel-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--subtle); text-transform: uppercase; }
+  .rel-tag {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 11.5px; color: var(--accent); border: 1px solid var(--accent-line);
+    border-radius: var(--r); padding: 2px 9px 1px;
+  }
+  .rel-theme { color: var(--muted); font-size: 16.5px; margin-bottom: 16px; }
+  .rel ul { list-style: none; }
+  .rel ul li { position: relative; padding-left: 20px; margin-bottom: 11px; color: var(--muted); font-size: 16.5px; }
+  .rel ul li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 8px; height: 1px; background: var(--accent-line); }
+  .rel ul li strong { color: var(--text); font-weight: normal; }
+
+  .current { background: var(--accent-soft); margin: 0 -18px; padding-left: 18px; padding-right: 18px; border-radius: var(--r); }
+
+  .box { background: var(--panel-2); border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: var(--r); padding: 22px 24px; margin: 32px 0; }
+  .box p { font-size: 16.5px; color: var(--muted); }
+  .box p strong { color: var(--text); font-weight: normal; }
+
+  code { font-family: var(--mono); font-size: 0.85em; background: var(--panel); padding: 1px 5px; border-radius: var(--r); }
+
+  footer { border-top: 1px solid var(--line); margin-top: 64px; padding-top: 26px; }
+  footer p { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--subtle); }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    h1 { font-size: 34px; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .facts div:nth-child(2) { border-right: 0; }
+    .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .current { margin: 0; padding-left: 0; padding-right: 0; }
+  }
+
+  @media print {
+    body { background: #fff; padding-bottom: 0; }
+    .masthead { background: none; }
+    .rel { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <span class="mark">Fifth Castle <span class="red">Media</span></span>
+    <span class="stamp">Version 1.6.2 &middot; 8 August 2026</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <p class="eyebrow">Chief of Staff <span class="red">&middot;</span> Versions and capabilities</p>
+  <h1>What it can do now, and what each version added.</h1>
+  <p class="lede">The system gets a release when something it did in the field turns out to be worth shipping to everyone. <strong>Six releases since late July.</strong> This page is the current state of it, and the record of how it got here.</p>
+  <p class="sub">Every release upgrades in place. Nothing you have built is replaced, and no version has changed the folder contract.</p>
+
+  <div class="facts">
+    <div><span class="k">1.6.2</span><span class="v">Current release<br>8 Aug 2026</span></div>
+    <div><span class="k">15</span><span class="v">Skills it can run<br>on its own</span></div>
+    <div><span class="k">3</span><span class="v">Review agents<br>that check its work</span></div>
+    <div><span class="k">6</span><span class="v">Releases since<br>25 July</span></div>
+  </div>
+  <p class="note">Counts are from the shipped kit, not a roadmap.</p>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Where it stands <span class="red">now</span></h2>
+    <p class="sub">Nine layers, built in that order. Each one exists because the one before it was not enough on its own.</p>
+
+    <ul class="rows">
+      <li>
+        <h3>A brief it reads every session</h3>
+        <p class="d">Who you are, what you sell, what you charge, how you write, what matters this quarter. In your words, not a profile it guessed. Everything else reads from this.</p>
+      </li>
+      <li>
+        <h3>Memory that survives the session</h3>
+        <p class="d">What happened, what is open, what you decided and why. Plain files on your machine, so a new session picks up where the last one stopped rather than asking you to explain your business again.</p>
+      </li>
+      <li>
+        <h3>Evidence before it answers</h3>
+        <p class="d">A search result is an index, not the content. A result that exactly fills a tool's limit is truncated, not complete. And it never tells you something is not there until it has looked and named the places it checked.</p>
+      </li>
+      <li>
+        <h3>Proof before it says done</h3>
+        <p class="d">One concrete check per kind of work. Re-read the tracker and count the rows, because one unquoted comma breaks a CSV silently. Open the PDF, because layouts clip without ever raising an error. Read a price from the file that owns it, not from earlier in the conversation.</p>
+      </li>
+      <li>
+        <h3>Catching its own silent failures</h3>
+        <p class="d">The mistakes you cannot see are the ones that cost most. A job that has gone quiet is treated as broken until proven otherwise, nothing counts as switched on until it has run once and left a trace, and it audits itself on a schedule rather than when you finally notice.</p>
+      </li>
+      <li>
+        <h3>Judging its own work</h3>
+        <p class="d">Three review agents. The assessor reads anything going out to a client. The adversary attacks whether it survives the recipient, and is run on anything committing money, scope, dates or a position. The inspector checks what the assistant built for itself, because a bad email fails immediately and a bad rule fails quietly for months.</p>
+      </li>
+      <li>
+        <h3>Learning from what you change</h3>
+        <p class="d">You correct it far more often than you tell it. You open a draft, cut a paragraph, change a price, warm up the sign-off and send. It reads that difference and records the lesson, so the same correction is not needed a third time.</p>
+      </li>
+      <li>
+        <h3>An honest account of what it was worth</h3>
+        <p class="d">One question per entry: if this had not existed, what would actually have happened? You would have done it yourself, or paid someone, or it would not have happened at all. Its own rework goes in the same ledger, because one with no mistakes in it is not being kept properly.</p>
+      </li>
+      <li>
+        <h3>A licence it actually holds</h3>
+        <p class="d">The system is licensed to your business and the terms sit inside it rather than in a document nobody reopens. Your copy carries your business name and a build ID. What you build with it is yours and moves freely.</p>
+      </li>
+    </ul>
+
+    <p class="note" style="margin-top:22px">The full manifest, feature by feature, is on <a href="chief-of-staff-included.html">what is included</a>.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>What each release <span class="red">added</span></h2>
+    <p class="sub">Newest first. Every one of these was promoted out of a live deployment after it earned its place, not designed in advance.</p>
+
+    <div class="rel current">
+      <div class="rel-head">
+        <span class="rel-no">1.6.2</span>
+        <span class="rel-tag">Current</span>
+        <span class="rel-date">8 August 2026 &middot; The licence release</span>
+      </div>
+      <p class="rel-theme">The terms were always in the box. Nothing ever read them again.</p>
+      <ul>
+        <li><strong>The licence became something the assistant holds.</strong> Asked to send the setup process to a friend, it used to just do it, helpfully and at once, because the terms were never its problem. Now it names the clause and stops.</li>
+        <li><strong>The rules survive being folded into a system you already had.</strong> That path previously delivered every capability and none of the terms, which hit the people furthest along hardest.</li>
+        <li><strong>Provenance said plainly.</strong> Your copy records which business it belongs to and can prove the shipped files have not been altered. Nothing reports anywhere, there is no licence server, and nobody can see inside your system.</li>
+      </ul>
+    </div>
+
+    <div class="rel">
+      <div class="rel-head">
+        <span class="rel-no">1.6.1</span>
+        <span class="rel-date">7 August 2026</span>
+      </div>
+      <p class="rel-theme">One change, on the ledger 1.6.0 introduced.</p>
+      <ul>
+        <li><strong>Its own checks now feed the same learning loop you do.</strong> The corrections ledger took what you said and what it found in your edits, and ignored the largest source of all: the mistakes its own reviews catch before they ever reach you. Those now land in the same file and go through the same promotion.</li>
+        <li><strong>With one discipline attached.</strong> Log the lesson, not the defect. A review returning twenty findings yields the one or two classes of mistake behind them, never twenty lines.</li>
+      </ul>
+    </div>
+
+    <div class="rel">
+      <div class="rel-head">
+        <span class="rel-no">1.6.0</span>
+        <span class="rel-date">6 August 2026 &middot; The judgement release</span>
+      </div>
+      <p class="rel-theme">A bad email fails the moment someone reads it. A bad rule fails silently, every day, for months.</p>
+      <ul>
+        <li><strong>The inspector agent.</strong> A second reader for the machinery the assistant builds for itself, before it reports the build as done. Fresh agent, no memory of building it.</li>
+        <li><strong>The adversary agent.</strong> Where the assessor checks how a draft reads, this attacks whether it survives the person receiving it. Figures against the record that owns them, commitments against real capacity, and one hostile read as the least generous plausible reader.</li>
+        <li><strong>Six rules on judging its own work,</strong> including the one that stops rules rotting: write them at the weakest level that still catches the incident, because a rule written about that client, that wording, that channel never applies again.</li>
+        <li><strong>The value ledger,</strong> and the <strong>learn-from-edits</strong> skill that reads what you silently changed before sending.</li>
+      </ul>
+    </div>
+
+    <div class="rel">
+      <div class="rel-head">
+        <span class="rel-no">1.5.0</span>
+        <span class="rel-date">3 August 2026 &middot; The observability release</span>
+      </div>
+      <p class="rel-theme">1.4 made it tell the truth about what it just did. 1.5 makes the system notice what quietly did not happen.</p>
+      <ul>
+        <li><strong>No news is bad news.</strong> Anything running in the background reports that it ran, every time, even when there was nothing to do. Silence is the alarm.</li>
+        <li><strong>A fix is not done until it has run once and left proof.</strong> Something built and never fired is the same as not built.</li>
+        <li><strong>The system-audit skill:</strong> a whole-system health check it runs on itself, worst first, checking whether the jobs fired and whether anything claimed as done matches the files.</li>
+      </ul>
+    </div>
+
+    <div class="rel">
+      <div class="rel-head">
+        <span class="rel-no">1.4.0</span>
+        <span class="rel-date">29 July 2026 &middot; The verification release</span>
+      </div>
+      <p class="rel-theme">Promoted from three live deployments reporting the same thing at once.</p>
+      <ul>
+        <li><strong>Never say something is not there until you have looked.</strong> An absence is a claim and needs proof exactly like a presence. This is the one error you cannot catch, because there is nothing to look at.</li>
+        <li><strong>Reading evidence before answering,</strong> and a table of concrete checks before it says done, one per kind of work.</li>
+        <li><strong>The assessor pass became required</strong> rather than available, for anything leaving the business, run as a fresh agent that did not write the piece.</li>
+        <li><strong>Working the way founders actually work:</strong> dictation decoded rather than transcribed, client material filed on arrival before it is analysed, and anything you will paste elsewhere arriving as plain lines instead of markdown that lands as grey bars in your email.</li>
+      </ul>
+    </div>
+
+    <div class="rel">
+      <div class="rel-head">
+        <span class="rel-no">1.3.0</span>
+        <span class="rel-date">25 July 2026 &middot; Reliability and packaging</span>
+      </div>
+      <p class="rel-theme">Promoted from a self-audit of the deployment this kit is built out of.</p>
+      <ul>
+        <li><strong>Tracker and memory checks that run:</strong> schema, row width, allowed statuses and priorities, and a bound on how large the working memory can grow before it stops being useful.</li>
+        <li><strong>A data-handling gate before go-live,</strong> covering cloud processing, account terms, model-improvement settings, transcript retention and the data that should never enter the system at all.</li>
+        <li><strong>The ownership boundary written down:</strong> what belongs to the licensed kit, what is your data, and what is the operating content you created.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>How updates <span class="red">reach you</span></h2>
+    <p>Each release is a single file with a published checksum, and a prompt you paste into your assistant. It reads the release, compares it against what you already have, and gives you a table before it touches anything: what your system does now, what the release adds, and whether to adopt, adapt, skip or leave it for later.</p>
+    <p>It stops there and waits. Nothing is changed until you say so, and where you already have your own version of something, it tells you which is stronger rather than assuming the newer one wins.</p>
+
+    <div class="box">
+      <p><strong>Upgrading is not the same as installing.</strong> If you already run a system, the release is a reference to fold ideas out of, never a replacement to copy over the top. Your business facts, client records, credentials, custom skills and deliberate local changes are identified and preserved first. A configured system is never described afterwards as an untouched installation, because it is not one.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Fifth Castle Media &middot; Chief of Staff 1.6.2 &middot; <a href="chief-of-staff.html">Overview</a> &middot; <a href="chief-of-staff-included.html">What is included</a> &middot; <a href="the-shape-of-the-system.html">The shape of the system</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
