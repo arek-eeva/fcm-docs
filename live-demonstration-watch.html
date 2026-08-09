@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch live | Chief of Staff | Arek Rainczuk</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://docs.fifthcastle.media/live-demonstration-watch.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FAF9F7; --ink:#14110F; --muted:#5F5851;
+    --rule:#D8D3CB; --rule-soft:#E8E4DD; --accent:#BD202D; --shade:#F1EEE8;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      linear-gradient(90deg, rgba(20,17,15,0.025) 1px, transparent 1px) 0 0 / 96px 96px,
+      linear-gradient(0deg, rgba(20,17,15,0.018) 1px, transparent 1px) 0 0 / 96px 96px,
+      var(--paper);
+    color:var(--ink); font-family:Georgia,"Times New Roman",serif;
+    min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .page { width:min(100%,1180px); margin:0 auto; padding:0 clamp(20px,5vw,60px); }
+
+  .topbar {
+    display:flex; justify-content:space-between; align-items:center; padding:24px 0 0;
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .topbar .red { color:var(--accent); }
+
+  header.intro { padding:clamp(26px,5vh,44px) 0 0; }
+  .kicker {
+    font-family:'Khand',sans-serif; font-size:14px; letter-spacing:0.32em;
+    text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:14px;
+  }
+  h1 {
+    font-family:'Vidaloka',serif; font-weight:400;
+    font-size:clamp(28px,4vw,42px); line-height:1.1; max-width:20ch;
+  }
+  p.sub { color:var(--muted); font-size:clamp(15px,1.6vw,18px); margin-top:12px; max-width:56ch; line-height:1.5; }
+
+  /* ---- the player. This is the whole point of the page, so it leads. ---- */
+  .player-wrap {
+    margin:clamp(22px,3.5vh,34px) 0 0;
+    border:1px solid var(--rule); border-radius:14px; overflow:hidden;
+    background:#0A0A0A; box-shadow:0 1px 3px rgba(20,17,15,0.06);
+  }
+  .player {
+    position:relative; width:100%; aspect-ratio:16/9;
+  }
+  .player iframe {
+    position:absolute; inset:0; width:100%; height:100%; border:0; display:block;
+  }
+
+  .layout {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(20px,2.6vw,34px);
+    padding:clamp(22px,3vh,32px) 0 clamp(48px,8vh,84px); align-items:start;
+  }
+  @media (min-width:900px) { .layout { grid-template-columns:minmax(0,1.55fr) minmax(280px,0.85fr); } }
+
+  .panel {
+    border:1px solid var(--rule); border-radius:12px; background:#fff; padding:22px 24px;
+  }
+  .panel h2 {
+    font-family:'Khand',sans-serif; text-transform:uppercase; letter-spacing:0.16em;
+    font-size:14px; font-weight:600; color:var(--accent); margin-bottom:10px;
+  }
+  .panel p { font-size:16px; line-height:1.6; color:var(--muted); }
+  .panel p + p { margin-top:10px; }
+  .panel a.ask {
+    display:inline-block; margin-top:14px; padding:11px 20px;
+    background:var(--accent); color:#fff; text-decoration:none; border-radius:6px;
+    font-family:'Khand',sans-serif; text-transform:uppercase; letter-spacing:0.14em;
+    font-size:15px; font-weight:600;
+  }
+
+  .facts { margin-top:18px; }
+  .facts div {
+    display:flex; gap:12px; align-items:baseline;
+    padding:11px 0; border-top:1px solid var(--rule-soft); font-size:15px;
+  }
+  .facts div:last-child { border-bottom:1px solid var(--rule-soft); }
+  .facts .k {
+    font-family:'Khand',sans-serif; text-transform:uppercase; letter-spacing:0.12em;
+    font-size:12px; color:var(--accent); min-width:74px;
+  }
+
+  footer.foot {
+    border-top:1px solid var(--rule); padding:22px 0 40px; text-align:center;
+    font-family:'Khand',sans-serif; text-transform:uppercase; letter-spacing:0.2em;
+    font-size:12px; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <span><span class="red">Arek Rainczuk</span> / Chief of Staff</span>
+      <span>Live</span>
+    </div>
+
+    <header class="intro">
+      <div class="kicker">Watch live</div>
+      <h1>The live demonstration.</h1>
+      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. The player below goes live at noon. If you are early, it will show a countdown.</p>
+    </header>
+
+    <div class="player-wrap">
+      <div class="player">
+        <iframe
+          src="https://www.youtube.com/embed/Zu0FFXc3bOA?rel=0&modestbranding=1"
+          title="Chief of Staff, live demonstration"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h2>Ask a question</h2>
+        <p>You are not on camera and nothing you send is visible to anyone else watching. Questions come straight to me and I answer them out loud as we go.</p>
+        <p>Send it here and I will pick it up on screen.</p>
+        <a class="ask" href="mailto:info@fifthcastle.media?subject=Question%20during%20the%20demonstration">Send a question</a>
+      </section>
+
+      <aside>
+        <div class="facts">
+          <div><span class="k">When</span><span>Wednesday 26 August, 12:00 to 1:00pm AEST</span></div>
+          <div><span class="k">Format</span><span>One hour, live. No slides, no pitch.</span></div>
+          <div><span class="k">Missed it</span><span>The recording appears in this same player afterwards, and I email everyone who registered.</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="foot">Fifth Castle Media</footer>
+  </div>
+</body>
+</html>
