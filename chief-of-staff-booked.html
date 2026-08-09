@@ -9,40 +9,59 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --paper:#FAF9F7; --ink:#14110F; --muted:#5F5851;
+    --rule:#D8D3CB; --rule-soft:#E8E4DD; --accent:#BD202D; --shade:#F2EFEA;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #0d0d0f; color: #e8e6e1;
-    font-family: Georgia, serif; line-height: 1.65;
+    background:
+      linear-gradient(90deg, rgba(20,17,15,0.025) 1px, transparent 1px) 0 0 / 96px 96px,
+      linear-gradient(0deg, rgba(20,17,15,0.018) 1px, transparent 1px) 0 0 / 96px 96px,
+      var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif; line-height: 1.65;
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 24px;
+    -webkit-font-smoothing: antialiased;
   }
   .card { max-width: 560px; text-align: center; }
   .kicker {
     font-family: 'Khand', sans-serif; text-transform: uppercase;
-    letter-spacing: 0.22em; font-size: 13px; color: #BD202D; margin-bottom: 18px;
+    letter-spacing: 0.22em; font-size: 13px; color: var(--accent);
+    font-weight: 600; margin-bottom: 18px;
   }
-  h1 { font-family: 'Vidaloka', serif; font-size: clamp(30px, 5vw, 44px); margin-bottom: 18px; color: #fff; }
-  p { margin-bottom: 14px; color: #b9b6af; font-size: 17px; }
+  h1 {
+    font-family: 'Vidaloka', serif; font-weight: 400;
+    font-size: clamp(30px, 5vw, 44px); line-height: 1.1;
+    margin-bottom: 18px; color: var(--ink);
+  }
+  p { margin-bottom: 14px; color: var(--muted); font-size: 17px; }
   .steps { text-align: left; margin: 26px auto 8px; max-width: 440px; }
   .steps div {
-    padding: 12px 0; border-top: 1px solid #232326; display: flex; gap: 14px; align-items: baseline;
+    padding: 12px 0; border-top: 1px solid var(--rule-soft);
+    display: flex; gap: 14px; align-items: baseline;
   }
-  .steps div:last-child { border-bottom: 1px solid #232326; }
-  .n { font-family: 'JetBrains Mono', monospace; color: #BD202D; font-size: 14px; }
-  .sig { margin-top: 26px; font-family: 'Khand', sans-serif; letter-spacing: 0.08em; color: #e8e6e1; }
+  .steps div:last-child { border-bottom: 1px solid var(--rule-soft); }
+  .steps span:last-child { color: var(--ink); font-size: 16px; }
+  .n { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 14px; }
+  .sig {
+    margin-top: 26px; font-family: 'Khand', sans-serif;
+    letter-spacing: 0.08em; color: var(--ink);
+  }
 
-  /* Chief of Staff figure: one shared treatment across every published page so
-     the surfaces read as one system. 16:9 crop of the visual library art. */
   .photo { margin: 30px 0 0; }
   .photo img {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    border: 1px solid var(--rule);
     border-radius: 3px;
+    background: var(--shade);
   }
 </style>
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -51,8 +70,6 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1596350102005148');
 fbq('track','PageView');
-/* Browser-side Schedule event: the backup to the GHL CAPI server event.
-   sessionStorage guard stops a page refresh double-counting the booking. */
 (function () {
   try {
     if (!sessionStorage.getItem('cos_schedule_fired')) {
@@ -67,7 +84,6 @@ fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
   <main class="card">
@@ -84,7 +100,6 @@ src="https://www.facebook.com/tr?id=1596350102005148&ev=PageView&noscript=1"
     </div>
     <p class="sig">See you on the call. Arek</p>
   </main>
-<!-- GHL external tracking -->
 <script
   src="https://app.fifthcastle.media/js/external-tracking.js"
   data-tracking-id="tk_9e87f071140c4e4b88f4cebef835993a"
