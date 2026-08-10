@@ -54,6 +54,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Rodney Ferro (PN Digital) — Chief of Staff proposal | [references/chief-of-staff-rodney.html](https://docs.fifthcastle.media/references/chief-of-staff-rodney.html) | 2026-08-03 |
 | Chris McNaughton (ShadowSight) — build checklist (gift after declining) | [references/chief-of-staff-chris-checklist.html](https://docs.fifthcastle.media/references/chief-of-staff-chris-checklist.html) | 2026-08-03 |
 | Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-08-03 |
+| Define Technologies (Tony Psaila, Joe Baranyai, Kevin Yang), two-co-founder overview, IT posture and offer | [references/chief-of-staff-define.html](https://docs.fifthcastle.media/references/chief-of-staff-define.html) | 2026-08-10 |
 
 ## Client Proposals & Briefs
 
