@@ -235,6 +235,49 @@
     line-height: 1.5;
   }
 
+  .second-cta {
+    max-width: 43em;
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* Inside the two-column action rows, the secondary CTA takes its own full
+     row under the button rather than stealing the note's column. */
+  .hero-actions .second-cta,
+  .section-actions .second-cta {
+    grid-column: 1 / -1;
+  }
+
+  /* The version under the form carries the weight, because by then the free
+     hour has been declined or deferred and this is the only door left. */
+  .second-cta.is-strong {
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: var(--radius-surface);
+    background: var(--white);
+    padding: 18px 18px;
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .second-cta.is-strong a {
+    font-weight: 700;
+  }
+
+  .second-cta a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .second-cta a:hover {
+    color: var(--accent);
+  }
+
   main {
     display: block;
   }
@@ -694,11 +737,16 @@
   }
 
   .form-side,
-  .form-under {
+  .form-under,
+  .form-over {
     max-width: 43em;
     color: var(--muted);
     font-size: 16px;
     line-height: 1.55;
+  }
+
+  .form-over {
+    margin: 0 0 18px;
   }
 
   .form-embed {
@@ -706,15 +754,8 @@
     margin-top: 28px;
   }
 
-  .form-embed .field-note {
-    margin-top: 14px;
-  }
-
-  .field-note {
-    margin: 8px 0 0;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.5;
+  .form-embed .second-cta {
+    margin-top: 22px;
   }
 
   .form-side {
@@ -834,6 +875,11 @@
       grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
       gap: 44px;
       padding: 68px 0 76px;
+    }
+
+    .second-cta.is-strong {
+      padding: 22px 24px;
+      font-size: 20px;
     }
 
     h1 {
@@ -988,6 +1034,7 @@ fbq('track', 'PageView');
       <div class="hero-actions">
         <a class="button" href="#register">Register free</a>
         <p class="alt-line">Hosted by Arek Rainczuk, Fifth Castle Media. You're never on camera.</p>
+        <p class="second-cta">Can't wait? <a class="walkthrough-link" href="https://docs.fifthcastle.media/chief-of-staff-book.html">Book a 30-minute walkthrough.</a></p>
       </div>
     </div>
     <div class="hero-shot">
@@ -1240,9 +1287,10 @@ fbq('track', 'PageView');
       </figure>
         
         <div class="form-embed">
+          <p class="form-over">A calendar invite, reminders before the day, a few things worth reading along the way, and the recording afterwards. Unsubscribe any time.</p>
           <iframe
             src="https://app.fifthcastle.media/widget/form/xuheuJ6oDISImcGbkfBL"
-            style="width:100%;min-height:540px;border:none;border-radius:3px;display:block"
+            style="width:100%;min-height:500px;border:none;border-radius:3px;display:block"
             id="inline-xuheuJ6oDISImcGbkfBL"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"
@@ -1256,8 +1304,7 @@ fbq('track', 'PageView');
             data-layout-iframe-id="inline-xuheuJ6oDISImcGbkfBL"
             data-form-id="xuheuJ6oDISImcGbkfBL"
             title="Register for the live demonstration"></iframe>
-          <p class="field-note">The last question is optional, and I delete the answers after the session.</p>
-          <p class="form-under">A calendar invite, reminders before the day, a few things worth reading along the way, and the recording afterwards. Unsubscribe any time.</p>
+          <p class="second-cta is-strong">Can't wait? <a class="walkthrough-link" href="https://docs.fifthcastle.media/chief-of-staff-book.html">Book a 30-minute walkthrough.</a> Same system, one to one, whenever suits you.</p>
         </div>
       </div>
     </section>
@@ -1287,6 +1334,34 @@ fbq('track', 'PageView');
       revealObserver.observe(section);
     });
   }
+})();
+</script>
+<script>
+/* Secondary CTA, the walkthrough door.
+   Two jobs: carry ad attribution across to the booking page (that page forwards
+   utm_* and fbclid into the GHL widget, but only reads what is in its own URL),
+   and record the click as its own Meta event so a walkthrough booking is never
+   read as a webinar registration. The booked conversion itself is still measured
+   on chief-of-staff-booked.html, which fires Schedule. */
+(function () {
+  var KEEP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_id','campaign_id','fbclid','gclid'];
+  var incoming = new URLSearchParams(window.location.search);
+  var links = document.querySelectorAll('a.walkthrough-link');
+  Array.prototype.forEach.call(links, function (link) {
+    try {
+      var u = new URL(link.href, window.location.href);
+      KEEP.forEach(function (k) { if (incoming.has(k)) u.searchParams.set(k, incoming.get(k)); });
+      /* utm_term is the door marker. The demo ads set utm_content dynamically per
+         ad, so that one is left alone and the ad-level name survives. */
+      u.searchParams.set('utm_term', 'live-demo-walkthrough');
+      link.href = u.toString();
+    } catch (e) { /* leave the plain href */ }
+    link.addEventListener('click', function () {
+      if (window.fbq) {
+        fbq('trackCustom', 'WalkthroughCTAClick', { content_name: 'Live demonstration page secondary CTA' });
+      }
+    });
+  });
 })();
 </script>
 <script src="https://app.fifthcastle.media/js/form_embed.js"></script>
