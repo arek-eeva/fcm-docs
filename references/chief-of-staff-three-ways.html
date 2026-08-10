@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chief of Staff: three ways it runs</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #17181c;
+  --panel: #1f2126;
+  --panel-border: #2c2f36;
+  --text: #d7d9de;
+  --dim: #8b8f98;
+}
+html, body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; height: 100%; }
+#app { display: flex; height: 100vh; overflow: hidden; }
+#stage { flex: 1; position: relative; min-width: 0; }
+canvas { display: block; width: 100%; height: 100%; }
+#panel {
+  width: 340px; flex-shrink: 0; background: var(--panel);
+  border-left: 1px solid var(--panel-border);
+  padding: 20px 22px 16px; overflow-y: auto;
+}
+#panel h1 { font-size: 18px; font-weight: 650; line-height: 1.3; color: #f2f3f5; }
+#tiers { display: flex; gap: 5px; margin: 14px 0 4px; }
+.tbtn {
+  flex: 1; text-align: center; font-size: 11.5px; padding: 8px 4px;
+  background: #26282e; border: 1px solid var(--panel-border); color: var(--dim);
+  border-radius: 7px; cursor: pointer; user-select: none; line-height: 1.25;
+  transition: all 0.15s;
+}
+.tbtn:hover { border-color: #3d4149; color: var(--text); }
+.tbtn.act { background: #2e3138; border-color: #4a4e58; color: #fff; font-weight: 600; }
+#tiersub { font-size: 12.5px; color: var(--dim); margin: 10px 0 14px; line-height: 1.55; min-height: 58px; }
+#play {
+  width: 100%; padding: 10px; font-size: 13px; font-weight: 600;
+  background: #2e3138; color: #f0f1f4; border: 1px solid #4a4e58;
+  border-radius: 8px; cursor: pointer; transition: all 0.15s;
+}
+#play:hover { background: #383c45; }
+#play:focus-visible, .tbtn:focus-visible, .sbtn:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
+.sect { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin: 18px 0 8px; }
+.chip {
+  display: flex; align-items: center; gap: 10px;
+  background: #26282e; border: 1px solid var(--panel-border);
+  border-radius: 7px; padding: 7px 12px; margin-bottom: 5px;
+  font-size: 12.5px; cursor: pointer; user-select: none;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+.chip:hover { border-color: #3d4149; }
+.chip.off { opacity: 0.38; }
+.dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.toggle { display: flex; align-items: center; gap: 9px; font-size: 12.5px; margin: 4px 0 0; cursor: pointer; user-select: none; color: var(--text); }
+.toggle input { accent-color: #6b7280; }
+.cad { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; color: var(--text); }
+.cad small { display: block; color: var(--dim); font-size: 10.5px; margin-top: 1px; }
+.cad svg { flex-shrink: 0; }
+.rules { font-size: 12.5px; color: var(--text); line-height: 1.55; }
+.rules li { margin: 0 0 8px 16px; }
+.rules b { color: #f0f1f4; font-weight: 600; }
+.foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--panel-border); font-size: 10.5px; color: var(--dim); line-height: 1.5; }
+#tip {
+  position: absolute; pointer-events: none; display: none;
+  background: #26282e; border: 1px solid #3d4149; border-radius: 8px;
+  padding: 10px 13px; max-width: 260px; font-size: 12px; line-height: 1.5;
+  color: var(--text); box-shadow: 0 6px 24px rgba(0,0,0,0.45); z-index: 10;
+}
+#tip b { display: block; color: #fff; font-size: 12.5px; margin-bottom: 3px; }
+#story {
+  position: absolute; left: 24px; bottom: 22px; max-width: 430px;
+  background: rgba(31,33,38,0.96); border: 1px solid #3d4149; border-radius: 12px;
+  padding: 16px 18px 13px; display: none; z-index: 20;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.5);
+}
+#story h3 { font-size: 14.5px; color: #fff; margin-bottom: 5px; }
+#story p { font-size: 12.5px; line-height: 1.55; color: var(--text); margin-bottom: 11px; }
+#sbar { display: flex; align-items: center; gap: 10px; }
+.sbtn {
+  font-size: 12px; padding: 6px 14px; background: #2e3138; color: var(--text);
+  border: 1px solid #4a4e58; border-radius: 7px; cursor: pointer;
+}
+.sbtn:hover { background: #383c45; }
+#sdots { display: flex; gap: 5px; margin-left: auto; }
+.sd { width: 6px; height: 6px; border-radius: 50%; background: #4a4e58; }
+.sd.on { background: #d7d9de; }
+#sx { margin-left: 10px; color: var(--dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 4px; }
+#sx:hover { color: #fff; }
+#sprog { position: absolute; left: 0; top: 0; height: 2px; background: #6b7280; border-radius: 2px 0 0 0; width: 0%; }
+@media (max-width: 880px) {
+  #app { flex-direction: column; height: auto; }
+  #stage { height: 62vh; }
+  #panel { width: 100%; border-left: none; border-top: 1px solid var(--panel-border); }
+  #story { left: 12px; right: 12px; max-width: none; bottom: 12px; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <div id="tip"></div>
+    <div id="story">
+      <div id="sprog"></div>
+      <h3 id="sh"></h3>
+      <p id="sp"></p>
+      <div id="sbar">
+        <button class="sbtn" id="sback" type="button">Back</button>
+        <button class="sbtn" id="snext" type="button">Next</button>
+        <div id="sdots"></div>
+        <span id="sx" title="Exit">&#10005;</span>
+      </div>
+    </div>
+  </div>
+  <aside id="panel">
+    <h1>Chief of Staff: three ways it runs</h1>
+    <div id="tiers">
+      <div class="tbtn act" data-t="t1" tabindex="0">Solo<br>founder</div>
+      <div class="tbtn" data-t="t2" tabindex="0">Two<br>co-founders</div>
+      <div class="tbtn" data-t="t3" tabindex="0">Inside a<br>company</div>
+    </div>
+    <p id="tiersub"></p>
+    <button id="play" type="button">Play the day</button>
+
+    <div class="sect">Groups (click to dim)</div>
+    <div id="chips"></div>
+    <label class="toggle"><input type="checkbox" id="quiet"> Quiet mode (hide read-only lines)</label>
+
+    <div class="sect">Pace</div>
+    <div class="cad">
+      <svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" stroke="#e5484d" stroke-width="2"/></svg>
+      <span>Live<small>inside a session, seconds</small></span>
+    </div>
+    <div class="cad">
+      <svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" stroke="#46c68b" stroke-width="2" stroke-dasharray="6 5"/></svg>
+      <span>Batch<small>gated, checked, or at session end</small></span>
+    </div>
+    <div class="cad">
+      <svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" stroke="#e0b341" stroke-width="2" stroke-dasharray="2 7"/></svg>
+      <span>Weekly<small>the humans, in the room</small></span>
+    </div>
+    <div class="cad">
+      <svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" stroke="#8b8f98" stroke-width="1" opacity="0.5"/></svg>
+      <span>Read only<small>anyone can look, nobody writes</small></span>
+    </div>
+
+    <div class="sect">What this tier encodes</div>
+    <ul class="rules" id="rules"></ul>
+
+    <div class="foot">Fifth Castle Media · Chief of Staff working models · August 2026. Hover any node for what it is. Keys: 1, 2, 3 switch tiers · P plays the day · arrows step · Esc exits.</div>
+  </aside>
+</div>
+
+<script>
+(function () {
+  var G = {
+    person: { c: '#cfcfcf', label: 'People' },
+    agent:  { c: '#e5484d', label: 'Chief of Staff (private world)' },
+    agentB: { c: '#3b82f6', label: 'Second founder (private world)' },
+    brain:  { c: '#e0b341', label: 'Source of truth' },
+    bus:    { c: '#46c68b', label: 'Gates, queues, keys' },
+    door:   { c: '#a78bfa', label: 'Outputs & front door' },
+    model:  { c: '#2dd4bf', label: 'The engine (model runtime)' },
+    world:  { c: '#ee8a3f', label: 'The real world' },
+    ext:    { c: '#8b8f98', label: 'Outside the boundary' }
+  };
+
+  var TIERS = {
+    t1: {
+      sub: 'One operator, one brain. Your Chief of Staff opens every session already knowing the business, produces in your voice, and nothing reaches the real world without you. Built in the shape of your brain.',
+      groups: ['person', 'agent', 'brain', 'bus', 'door', 'world'],
+      rules: [
+        '<b>Nothing sends itself.</b> Reading and drafting run free; anything that reaches a client waits at the gate for you. The gate moves further out as your trust grows.',
+        '<b>The models are rented. The system is owned.</b> The brain is plain files on your own machine; point any capable model at it. New models make it better, not obsolete.',
+        '<b>Corrections compound.</b> Fix something once and it becomes a rule, so the fix never needs making twice. Corrections to a person wash out; here they stack.'
+      ],
+      nodes: [
+        { id:'you', g:'person', x:10, y:42, r:12, label:'You', d:'<b>You, the founder</b>The judgement stays here. You talk, decide and approve; the system does the producing and the remembering.' },
+        { id:'cos', g:'agent', x:30, y:42, r:14, label:'Your Chief of Staff', d:'<b>Your Chief of Staff</b>Reads the whole brain at the start of every session, drafts in your voice, logs as it goes, and asks before anything leaves.' },
+        { id:'morning', g:'door', x:10, y:16, r:8, label:'Morning brief', d:'<b>The morning brief</b>What is due, who owes you money, what slipped overnight. Two minutes to read, and the day starts pointed at the right things.' },
+        { id:'loops', g:'bus', x:25, y:24, r:8, label:'Open loops', d:'<b>Open loops</b>Every promise, question and follow-up becomes a dated item, chased until it closes. The second touch stops slipping.' },
+        { id:'review', g:'brain', x:44, y:8, r:8, ring:true, label:'Weekly review', d:'<b>Weekly review</b>Once a week the system prunes itself: what changed is promoted into the brief, what rotted is cut.' },
+        { id:'brief', g:'brain', x:58, y:16, r:10, label:'Operating brief', d:'<b>Operating brief</b>Who you are, what you sell, your prices, your voice. The slow layer. Changes deliberately, read constantly.' },
+        { id:'voice', g:'brain', x:47, y:26, r:8, label:'Voice standards', d:'<b>Voice standards</b>How you actually write, encoded, so output sounds like you on the first draft rather than the fourth.' },
+        { id:'memory', g:'brain', x:68, y:24, r:9, label:'Memory & log', d:'<b>Memory and daily log</b>Facts, decisions and the day-by-day record, signed and dated. Every correction you make becomes a rule here, which is why tomorrow is smarter than today.' },
+        { id:'playbooks', g:'brain', x:58, y:34, r:8, label:'Playbooks', d:'<b>Playbooks</b>Anything done three times gets written down once, then reused forever.' },
+        { id:'tracker', g:'brain', x:77, y:36, r:9, label:'Clients & jobs', d:'<b>Clients and jobs tracker</b>The fast layer: live work, prices quoted, money owed. The file the morning brief is built from.' },
+        { id:'crm', g:'door', x:86, y:50, r:7, label:'CRM & invoices', d:'<b>CRM and invoicing</b>Connected tools the system reads freely and updates through the gate.' },
+        { id:'cal', g:'door', x:78, y:62, r:7, label:'Calendar', d:'<b>Calendar</b>Read for the brief and for scheduling. The school run stays protected.' },
+        { id:'email', g:'door', x:66, y:71, r:8, label:'Email', d:'<b>Email</b>Read freely, drafted freely, sent only through the gate.' },
+        { id:'gate', g:'bus', x:49, y:59, r:9, label:'Approval gate', d:'<b>The approval gate</b>Anything that sends, spends, publishes or deletes stops here and asks. You place the gate, and you move it further out as trust grows.' },
+        { id:'qc', g:'bus', x:33, y:57, r:8, label:'Second opinions', d:'<b>Second opinions</b>Before a draft reaches you, a second agent checks the style and a third attacks the substance on anything high-stakes. You see the checked version, not the first attempt.' },
+        { id:'proposals', g:'door', x:32, y:71, r:8, label:'Proposals & quotes', d:'<b>Proposals and quotes</b>Built from pricing, history and voice while you drive to the next job.' },
+        { id:'content', g:'door', x:17, y:64, r:8, label:'Content & posts', d:'<b>Content and posts</b>The marginal work, the eighteenth post, now gets done to standard every time.' },
+        { id:'wClient', g:'world', x:92, y:70, r:9, label:'Clients', d:'<b>Your clients</b>They receive the quote only after you approved it. Their replies are read next session, and everything they say gets remembered.' },
+        { id:'wProspects', g:'world', x:80, y:82, r:7, label:'Prospects', d:'<b>Prospects and enquiries</b>New enquiries land in the inbox overnight. The system reads them, and the right ones become tracker rows before you have finished your coffee.' },
+        { id:'wAudience', g:'world', x:8, y:80, r:7, label:'Audience', d:'<b>Your audience</b>Where the posts land. Engagement comes back as replies and enquiries, and the loop feeds itself.' },
+        { id:'wAcct', g:'world', x:94, y:38, r:7, label:'Accountant', d:'<b>Your accountant</b>Gets clean books, because every payment was logged the day it happened rather than reconstructed at quarter end.' }
+      ],
+      edges: [
+        { a:'you', b:'cos', k:'live', both:true },
+        { a:'cos', b:'brief', k:'live' }, { a:'cos', b:'memory', k:'live' }, { a:'cos', b:'tracker', k:'live' },
+        { a:'cos', b:'playbooks', k:'read' }, { a:'cos', b:'voice', k:'read' },
+        { a:'cos', b:'morning', k:'live' }, { a:'morning', b:'you', k:'read' },
+        { a:'cos', b:'loops', k:'live' }, { a:'loops', b:'morning', k:'read' },
+        { a:'cos', b:'qc', k:'live' }, { a:'qc', b:'proposals', k:'live' }, { a:'qc', b:'content', k:'live' },
+        { a:'cos', b:'email', k:'read' }, { a:'cos', b:'cal', k:'read' }, { a:'cos', b:'crm', k:'read' },
+        { a:'cos', b:'gate', k:'live' }, { a:'gate', b:'email', k:'session' }, { a:'gate', b:'crm', k:'session' },
+        { a:'email', b:'wClient', k:'session' }, { a:'wClient', b:'email', k:'read' },
+        { a:'wProspects', b:'email', k:'read' },
+        { a:'content', b:'wAudience', k:'session' },
+        { a:'crm', b:'wAcct', k:'session' },
+        { a:'you', b:'review', k:'weekly' }, { a:'review', b:'brief', k:'weekly' }, { a:'review', b:'memory', k:'weekly' }, { a:'review', b:'tracker', k:'weekly' }
+      ],
+      steps: [
+        { h:'7:05, the session opens', d:'Your Chief of Staff reads the brief, the memory and the tracker before your coffee is done. It starts every day already knowing the business.', f:['cos','brief','memory','tracker'] },
+        { h:'The morning brief lands', d:'What is due, who owes you money, which promises need chasing. Two minutes to read, and the day starts pointed at the right things.', f:['morning','loops','you','cos'] },
+        { h:'You talk, it builds', d:'A quote request comes in. It drafts from your pricing, against the client history, in your voice. You judge; it produces.', f:['you','cos','voice','tracker','proposals'] },
+        { h:'It checks its own work', d:'Before the quote reaches you, a second agent checks the style and a third attacks the substance. You see the checked version, not the first attempt.', f:['cos','qc','proposals','content'] },
+        { h:'The gate holds', d:'Nothing sends itself. The quote waits at the approval gate until you have read it, and only then does it reach the client.', f:['cos','gate','email','wClient'] },
+        { h:'The world writes back', d:'Replies and new enquiries land overnight. The next session reads them, and the right ones become tracker rows without you touching a spreadsheet.', f:['wClient','wProspects','email','cos','tracker'] },
+        { h:'Corrections become rules', d:'Every decision lands in the log, and every correction you make becomes a rule it follows from then on. The session closes smarter than it opened.', f:['cos','memory','tracker'] },
+        { h:'Friday, the review', d:'Once a week the system prunes itself. What changed is promoted into the brief, what rotted is cut. That is why it compounds instead of cluttering.', f:['review','brief','memory','tracker','you'] }
+      ]
+    },
+
+    t2: {
+      sub: 'A seven-person business, two co-founders, each with their own Chief of Staff. One shared brain, guarded entrances for the team, and nothing can collide. This tier solves coordination, not just personal output.',
+      groups: ['person', 'agent', 'agentB', 'brain', 'bus', 'door', 'world'],
+      rules: [
+        '<b>A decision made is a decision implemented.</b> Change the price once and every quote, app and assistant reads the new number. Nobody chases the update around the business.',
+        '<b>Nobody writes the gold files directly.</b> Everyone proposes; the applier folds changes in one at a time, so two founders can never fork the truth.',
+        '<b>The red and blue worlds never touch.</b> Private briefs, logs, drafts, and anything said in confidence. Discretion is a written rule both founders agreed on day one.',
+        '<b>One seat first, then two.</b> Each Chief of Staff is its own install, built in the shape of its founder. The shared layer is added once the first seat is running.'
+      ],
+      nodes: [
+        { id:'maria', g:'person', x:9, y:34, r:11, label:'Maria', d:'<b>Maria, co-founder</b>Sales, quoting, clients, money. Talks to her own Chief of Staff all day and never edits the gold files by hand.' },
+        { id:'josh', g:'person', x:91, y:34, r:11, label:'Josh', d:'<b>Josh, co-founder</b>Production and the crew. Same arrangement on his side of the map.' },
+        { id:'nat', g:'person', x:14, y:86, r:8, label:'Nat', d:'<b>Nat, office manager</b>Runs the money admin through the payment logger. She updates the brain every day and has never opened a chat window.' },
+        { id:'c1', g:'person', x:44, y:90, r:5, label:'', d:'<b>Crew</b>On the tools. They log hours through the timesheet app; the purple doors are all they ever see.' },
+        { id:'c2', g:'person', x:51, y:92, r:5, label:'', d:'<b>Crew</b>On the tools. They log hours through the timesheet app; the purple doors are all they ever see.' },
+        { id:'c3', g:'person', x:58, y:90, r:5, label:'', d:'<b>Crew</b>On the tools. They log hours through the timesheet app; the purple doors are all they ever see.' },
+        { id:'c4', g:'person', x:66, y:87, r:5, label:'', d:'<b>Crew</b>On the tools. They log hours through the timesheet app; the purple doors are all they ever see.' },
+        { id:'cosA', g:'agent', x:22, y:39, r:13, label:'Maria’s Chief of Staff', d:'<b>Maria’s Chief of Staff</b>Her operator. Reads the shared brain freely, writes only to her own red files and her handoff queue. Adapted to how she sells and sounds.' },
+        { id:'faBrief', g:'agent', x:12, y:51, r:7, label:'Her brief', d:'<b>Her operating brief</b>Who Maria is, what she owns, how she writes. Private. Changes slowly.' },
+        { id:'faLog', g:'agent', x:21, y:57, r:7, label:'Her daily log', d:'<b>Her daily log</b>What happened, in her words, signed and dated. One log per person means logs can never collide.' },
+        { id:'faDrafts', g:'agent', x:30, y:52, r:7, label:'Quotes, drafts', d:'<b>Quotes and drafts</b>Work in progress, shared only when she decides. Anything told to her in confidence stays here too; a human would have the discretion to keep it, so the system is given the same rule in writing.' },
+        { id:'cosB', g:'agentB', x:78, y:39, r:13, label:'Josh’s Chief of Staff', d:'<b>Josh’s Chief of Staff</b>His operator. Same rules, different personality: it holds jobs, scheduling and the workshop, because that is his half of the business.' },
+        { id:'fbBrief', g:'agentB', x:88, y:51, r:7, label:'His brief', d:'<b>His operating brief</b>Who Josh is and what he runs. Private.' },
+        { id:'fbLog', g:'agentB', x:79, y:57, r:7, label:'His daily log', d:'<b>His daily log</b>His record, his voice, his signature.' },
+        { id:'fbJobs', g:'agentB', x:70, y:52, r:7, label:'Job planning', d:'<b>Job planning notes</b>Workshop scheduling in progress. Private until promoted.' },
+        { id:'sCompany', g:'brain', x:50, y:37, r:13, label:'Company brief', d:'<b>Company brief</b>What the business is, what it sells, how it sounds. The slow layer. Both assistants read it constantly; it changes deliberately and rarely.' },
+        { id:'sPricing', g:'brain', x:40, y:45, r:8, label:'Pricing', d:'<b>Pricing</b>One price list, one place. Change it here once and every quote downstream reads the new number.' },
+        { id:'sClients', g:'brain', x:60, y:45, r:9, label:'Clients & jobs', d:'<b>Clients and jobs tracker</b>The fast layer, and the file that would fork if two people wrote to it at once. That is exactly why only the applier touches it.' },
+        { id:'sPlaybooks', g:'brain', x:39, y:29, r:8, label:'Playbooks', d:'<b>Playbooks</b>How the business does repeated things. Written once, read by everything.' },
+        { id:'sPeople', g:'brain', x:61, y:29, r:8, label:'Contacts', d:'<b>Contacts and suppliers</b>Everyone the business deals with, held once.' },
+        { id:'sDecisions', g:'brain', x:50, y:22, r:8, label:'Decisions log', d:'<b>Decisions log</b>What was decided, by whom, when. The file that keeps two founders honest with each other, and the reason a decision made on one side lands on both.' },
+        { id:'weekly', g:'brain', x:50, y:9, r:9, ring:true, label:'Weekly founders’ sync', d:'<b>Weekly founders’ sync</b>Fifteen minutes, both humans, no assistants deciding anything. Settle what the systems cannot arbitrate, bless the week’s changes to the brain.' },
+        { id:'qA', g:'bus', x:35, y:57, r:8, label:'Her queue', d:'<b>Maria’s handoff queue</b>At the end of each session her Chief of Staff drops proposed changes here, stamped with who and when. It proposes; it never applies.' },
+        { id:'qB', g:'bus', x:65, y:57, r:8, label:'His queue', d:'<b>Josh’s handoff queue</b>Same on this side. Two queues, so the two worlds never write to the same file.' },
+        { id:'qT', g:'bus', x:40, y:68, r:8, label:'Team captures', d:'<b>Team captures, verified</b>Everything entered through the front door lands here first: stamped with who and what, checked against the tracker, then folded in. Garbage never reaches the brain.' },
+        { id:'applier', g:'bus', x:50, y:62, r:10, label:'The applier', d:'<b>The applier, single writer</b>The only process allowed to change the gold files. Folds all three queues in, one change at a time, signatures preserved. Collisions become impossible instead of unlikely.' },
+        { id:'dQuote', g:'door', x:30, y:76, r:8, label:'Quote lookup', d:'<b>Quote lookup</b>A simple branded app that reads pricing and clients. Built by the Chiefs of Staff for the humans who need answers, not chat windows.' },
+        { id:'dJobs', g:'door', x:50, y:78, r:8, label:'Job board', d:'<b>Job status board</b>The crew’s view of what is on, read straight from the shared tracker.' },
+        { id:'dForms', g:'door', x:64, y:74, r:8, label:'Timesheets', d:'<b>Timesheets</b>The crew log hours here. Each entry is stamped, checked and queued; payroll stops being a Sunday job.' },
+        { id:'dPay', g:'door', x:22, y:75, r:8, label:'Payment logger', d:'<b>Payment logger</b>An app the Chiefs of Staff designed for Nat: she logs a payment in ten seconds, the entry is verified against the invoice, and the books update without anyone opening the tracker.' },
+        { id:'wClients2', g:'world', x:90, y:74, r:9, label:'Clients', d:'<b>Clients</b>Quotes go out of Maria’s world after her gate. Payments come back in through Nat’s logger. The loop closes without a spreadsheet in sight.' },
+        { id:'wSupp', g:'world', x:80, y:91, r:7, label:'Suppliers', d:'<b>Suppliers</b>Josh’s job planning turns into orders, and deliveries get logged at the door like everything else: stamped, checked, folded in.' }
+      ],
+      edges: [
+        { a:'maria', b:'cosA', k:'live', both:true },
+        { a:'cosA', b:'faBrief', k:'live' }, { a:'cosA', b:'faLog', k:'live' }, { a:'cosA', b:'faDrafts', k:'live' },
+        { a:'josh', b:'cosB', k:'live', both:true },
+        { a:'cosB', b:'fbBrief', k:'live' }, { a:'cosB', b:'fbLog', k:'live' }, { a:'cosB', b:'fbJobs', k:'live' },
+        { a:'cosA', b:'sCompany', k:'read' }, { a:'cosA', b:'sPricing', k:'read' }, { a:'cosA', b:'sClients', k:'read' }, { a:'cosA', b:'sPlaybooks', k:'read' },
+        { a:'cosB', b:'sCompany', k:'read' }, { a:'cosB', b:'sClients', k:'read' }, { a:'cosB', b:'sPeople', k:'read' }, { a:'cosB', b:'sPlaybooks', k:'read' },
+        { a:'cosA', b:'qA', k:'session' }, { a:'qA', b:'applier', k:'session' },
+        { a:'cosB', b:'qB', k:'session' }, { a:'qB', b:'applier', k:'session' },
+        { a:'applier', b:'sClients', k:'session' }, { a:'applier', b:'sDecisions', k:'session' }, { a:'applier', b:'sPeople', k:'session' },
+        { a:'maria', b:'weekly', k:'weekly' }, { a:'josh', b:'weekly', k:'weekly' },
+        { a:'weekly', b:'sDecisions', k:'weekly' }, { a:'weekly', b:'sCompany', k:'weekly' },
+        { a:'dQuote', b:'sPricing', k:'read' }, { a:'dQuote', b:'sClients', k:'read' },
+        { a:'dJobs', b:'sClients', k:'read' },
+        { a:'dForms', b:'qT', k:'session' }, { a:'dPay', b:'qT', k:'session' }, { a:'qT', b:'applier', k:'session' },
+        { a:'nat', b:'dPay', k:'use' }, { a:'nat', b:'dQuote', k:'use' },
+        { a:'c1', b:'dJobs', k:'use' }, { a:'c2', b:'dForms', k:'use' }, { a:'c3', b:'dForms', k:'use' }, { a:'c4', b:'dJobs', k:'use' },
+        { a:'faDrafts', b:'wClients2', k:'session' }, { a:'wClients2', b:'dPay', k:'read' },
+        { a:'fbJobs', b:'wSupp', k:'session' }
+      ],
+      steps: [
+        { h:'Maria’s morning', d:'Her Chief of Staff opens her world: her brief, her log, her drafts. Private, and adapted to how she sells.', f:['maria','cosA','faBrief','faLog','faDrafts'] },
+        { h:'Josh’s workshop', d:'His assistant runs his half: jobs, scheduling, the crew. Same rules, different personality.', f:['josh','cosB','fbBrief','fbLog','fbJobs'] },
+        { h:'One brain, read by both', d:'Both assistants read the same gold files constantly. Pricing, clients, playbooks, decisions. Neither is allowed to write to them.', f:['sCompany','sPricing','sClients','sPlaybooks','sPeople','cosA','cosB'] },
+        { h:'Session end, the handoff', d:'Each assistant drops its proposed changes into its own queue, stamped with who and when. It proposes; it never applies.', f:['cosA','qA','cosB','qB'] },
+        { h:'The applier folds them in', d:'One process, one change at a time, signatures kept. Two founders can never fork the truth, because neither of them ever touches it.', f:['qA','qB','qT','applier','sClients','sDecisions','sPeople'] },
+        { h:'One change lands everywhere', d:'Maria lifts a price. The applier folds it into the one price list, and Josh’s next quote and the crew’s lookup app read the new number without anyone being told. A decision made is a decision implemented.', f:['cosA','qA','applier','sPricing','dQuote','cosB'] },
+        { h:'The entrances are guarded', d:'The front door goes both ways. Nat logs a payment, the crew log hours, and every entry is stamped, checked against the tracker, then folded in. The team updates the brain without ever touching it.', f:['nat','dPay','dForms','qT','applier','wClients2'] },
+        { h:'The crew see apps, not AI', d:'Job board, timesheets, quote lookup, payment logger. Interfaces the Chiefs of Staff designed, scoped to exactly what each person needs. Nobody on the team ever opens a chat window.', f:['dJobs','dQuote','dForms','dPay','nat','c1','c2','c3','c4'] },
+        { h:'Friday, the humans', d:'Fifteen minutes, both founders. They settle what the systems cannot arbitrate and bless the week’s changes. What stays private stays private, and that line was agreed on day one.', f:['weekly','maria','josh','sDecisions'] }
+      ]
+    },
+
+    t3: {
+      sub: 'For an operator inside a governed company: blue-chip clients, accreditations, an IT provider who signs things off. The same assistant with the same rules, but it lives in their building and their IT holds the keys.',
+      groups: ['person', 'agent', 'brain', 'bus', 'door', 'model', 'ext'],
+      rules: [
+        '<b>Same assistant, their building.</b> Everything from the solo view still happens. The difference is where it lives and who holds the keys.',
+        '<b>Three worries, pulled apart.</b> Training on your data: not under commercial terms. Where it runs: inside your own cloud fence. What it can reach: the real question, and the keys answer it.',
+        '<b>IT cuts the keys.</b> One mailbox, one folder, read-first by default. We build to what their IT approves, and we never claim we can make anyone compliant.',
+        '<b>Proof, not promises.</b> A break-in test at go-live, an audit log that was already on, and the honest limits said before anyone asks.'
+      ],
+      nodes: [
+        { id:'exec', g:'person', x:10, y:42, r:12, label:'The operator', d:'<b>The operator</b>An exec or founder inside a governed company. Gets the same rhythm a solo founder gets; the difference is where everything lives.' },
+        { id:'cos', g:'agent', x:30, y:42, r:14, label:'Their Chief of Staff', d:'<b>Their Chief of Staff</b>Same operating layer as the solo view: brief, memory, rhythm, gates. It holds keys to exactly what it needs and nothing else.' },
+        { id:'model', g:'model', x:30, y:13, r:10, label:'The engine, in their cloud', d:'<b>The engine</b>The AI itself runs inside the company’s own cloud, Microsoft’s or Amazon’s, under their identity and billing. Work does not have to leave the building to get done.' },
+        { id:'vendor', g:'ext', x:91, y:9, r:8, label:'AI company (safety only)', d:'<b>The AI company</b>It no longer processes the work; the engine inside the fence does. Automated safety checks can still send a flagged snippet out, and we say that before anyone asks.' },
+        { id:'mem', g:'brain', x:52, y:22, r:10, label:'Working memory', d:'<b>Working memory</b>The brief, the logs and the trackers, in a locked, versioned folder inside the company’s own system. Everything the assistant writes lands here too, so its notes carry the same controls as their sources.' },
+        { id:'mail', g:'brain', x:70, y:34, r:8, label:'One mailbox', d:'<b>One mailbox</b>The assistant reads the mailbox it was given a key to. Not every mailbox the operator could technically open.' },
+        { id:'files', g:'brain', x:74, y:52, r:8, label:'One folder', d:'<b>One folder</b>One named place for its files. Not the whole document store, and never the HR drive.' },
+        { id:'entra', g:'bus', x:52, y:48, r:9, label:'The keys (IT cuts them)', d:'<b>The keys</b>Their IT cuts a separate, smaller set of keys for the assistant: this mailbox, this folder, read before write, nothing else. Losing a key never means losing the building.' },
+        { id:'line', g:'bus', x:13, y:20, r:8, label:'The line (they draw it)', d:'<b>The line</b>Business layer by default. The operator draws the boundary from the company’s own obligations and accreditations, and anything out of bounds never goes in at all.' },
+        { id:'gate', g:'bus', x:44, y:64, r:8, label:'Approval gate', d:'<b>The approval gate</b>Same rule as every tier: anything that sends or changes stops and asks a human first.' },
+        { id:'briefs', g:'door', x:14, y:66, r:8, label:'Briefs & drafts', d:'<b>Briefs and drafts</b>The operator’s outputs: the morning brief, drafts ready for review, the day already sorted.' },
+        { id:'audit', g:'brain', x:60, y:75, r:8, label:'Audit log (always on)', d:'<b>The audit log</b>Every read and write leaves a trace in the log their IT already watches. Attribution is a record, not a promise.' },
+        { id:'neg', g:'bus', x:78, y:70, r:8, label:'The break-in test', d:'<b>The break-in test</b>At go-live we deliberately try doors the assistant has no keys to, and show they do not open. A failed attempt is the only proof that counts.' },
+        { id:'it', g:'person', x:10, y:82, r:10, label:'Their IT', d:'<b>Their IT provider</b>Owns the building: the keys, the cameras, the rules. We work inside what they approve and bring them in early rather than route around them.' }
+      ],
+      edges: [
+        { a:'exec', b:'cos', k:'live', both:true },
+        { a:'exec', b:'line', k:'use' }, { a:'line', b:'cos', k:'read' },
+        { a:'model', b:'cos', k:'live' },
+        { a:'model', b:'vendor', k:'egress' },
+        { a:'cos', b:'mem', k:'live' },
+        { a:'cos', b:'briefs', k:'live' }, { a:'briefs', b:'exec', k:'read' },
+        { a:'cos', b:'entra', k:'session' }, { a:'entra', b:'mail', k:'session' }, { a:'entra', b:'files', k:'session' },
+        { a:'cos', b:'gate', k:'live' }, { a:'gate', b:'mail', k:'session' },
+        { a:'it', b:'entra', k:'use' }, { a:'it', b:'audit', k:'use' },
+        { a:'mail', b:'audit', k:'read' }, { a:'files', b:'audit', k:'read' },
+        { a:'neg', b:'mail', k:'read' }, { a:'neg', b:'files', k:'read' }
+      ],
+      steps: [
+        { h:'Same assistant, their building', d:'Everything you saw in the solo view still happens: the brief, the memory, the drafts, the rhythm. The difference is where it all lives.', f:['exec','cos','mem','briefs'] },
+        { h:'The engine moved inside', d:'The AI itself runs in the company’s own cloud, Microsoft’s or Amazon’s. Work does not have to leave the building to get done.', f:['model','cos'] },
+        { h:'IT cuts the keys', d:'The assistant gets keys to one mailbox and one folder, cut by their own IT, read-first by default. Not the operator’s full access, and never the whole building.', f:['it','entra','mail','files'] },
+        { h:'The operator draws the line', d:'Business layer by default. The boundary comes from the company’s own obligations and accreditations, and anything out of bounds never goes in at all.', f:['exec','line','cos'] },
+        { h:'The gate still holds', d:'Same rule as the solo founder: nothing sends itself. A human reads it first.', f:['cos','gate','mail'] },
+        { h:'The break-in test', d:'At go-live we try doors the assistant has no keys to, and show they do not open. That is the proof IT actually wants.', f:['neg','mail','files'] },
+        { h:'Always on camera', d:'Every read and write lands in the audit log their IT already watches. If a question ever comes up, the answer is a record, not a recollection.', f:['audit','mail','files','it'] },
+        { h:'The honest asterisks', d:'Automated safety checks can still send a flagged snippet to the AI company. Australia-only processing exists on the Amazon path but not the Microsoft one today, so we verify it at sale time rather than promise it. All of it gets said before anyone asks.', f:['vendor','model'] }
+      ],
+      fence: { x: 3, y: 3, w: 80, h: 92, label: 'Their cloud tenancy (their building)' }
+    }
+  };
+
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var tip = document.getElementById('tip');
+  var stage = document.getElementById('stage');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, DPR = 1;
+
+  var tierKey = 't1';
+  var tier = TIERS[tierKey];
+  var byId = {};
+  var on = {};
+  var quiet = false;
+  var parts = [];
+  var ghosts = [];
+  var morphT = 1;
+  var morphStart = 0;
+  var morphFrom = {};
+  var step = -1;
+  var stepStart = 0;
+  var AUTO_MS = 10000;
+
+  var SPEED = { live: 0.45, session: 0.14, weekly: 0.05, egress: 0.03 };
+
+  function rebuild(prevNodes) {
+    tier = TIERS[tierKey];
+    byId = {};
+    tier.nodes.forEach(function (n) { byId[n.id] = n; });
+    on = {};
+    tier.groups.forEach(function (g) { on[g] = true; });
+    parts = [];
+    tier.edges.forEach(function (e, i) {
+      var sp = SPEED[e.k];
+      if (sp) {
+        parts.push({ e: e, t: (i * 0.37) % 1, rev: false });
+        if (e.k === 'live') parts.push({ e: e, t: (i * 0.37 + 0.5) % 1, rev: !!e.both });
+      }
+    });
+    morphFrom = {};
+    ghosts = [];
+    if (prevNodes) {
+      var newIds = {};
+      tier.nodes.forEach(function (n) { newIds[n.id] = true; });
+      prevNodes.forEach(function (n) {
+        if (newIds[n.id]) morphFrom[n.id] = { x: n.x, y: n.y };
+        else ghosts.push({ x: n.x, y: n.y, r: n.r, g: n.g });
+      });
+      morphT = 0; morphStart = performance.now();
+    } else { morphT = 1; morphStart = 0; }
+    buildChips();
+    buildRules();
+    document.getElementById('tiersub').textContent = tier.sub;
+  }
+
+  function resize() {
+    DPR = window.devicePixelRatio || 1;
+    W = stage.clientWidth; H = stage.clientHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function nx(n) {
+    var t = ease(morphT);
+    var fx = morphFrom[n.id] ? morphFrom[n.id].x : n.x;
+    return 40 + ((fx + (n.x - fx) * t) / 100) * (W - 80);
+  }
+  function ny(n) {
+    var t = ease(morphT);
+    var fy = morphFrom[n.id] ? morphFrom[n.id].y : n.y;
+    return 28 + ((fy + (n.y - fy) * t) / 100) * (H - 76);
+  }
+  function ux(v) { return 40 + (v / 100) * (W - 80); }
+  function uy(v) { return 28 + (v / 100) * (H - 76); }
+  function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+  function inFocus(id) {
+    if (step < 0) return true;
+    return tier.steps[step].f.indexOf(id) >= 0;
+  }
+  function nodeAlpha(n) {
+    var a = on[n.g] ? 1 : 0.1;
+    if (step >= 0) a *= inFocus(n.id) ? 1 : 0.13;
+    if (!morphFrom[n.id] && morphT < 1) a *= ease(morphT);
+    return a;
+  }
+  function edgeAlpha(e) {
+    var a = byId[e.a], b = byId[e.b];
+    var al = (on[a.g] && on[b.g]) ? 1 : 0.05;
+    if (step >= 0) al *= (inFocus(e.a) && inFocus(e.b)) ? 1 : 0.05;
+    if (morphT < 1) al *= ease(morphT);
+    return al;
+  }
+  function edgeColour(e) {
+    if (e.k === 'live') {
+      var ga = byId[e.a].g;
+      return G[(ga === 'person') ? byId[e.b].g : ga].c;
+    }
+    if (e.k === 'session') return G.bus.c;
+    if (e.k === 'weekly') return G.brain.c;
+    if (e.k === 'egress') return G.ext.c;
+    return '#8b8f98';
+  }
+  function ctrl(e, i) {
+    var a = byId[e.a], b = byId[e.b];
+    var ax = nx(a), ay = ny(a), bx = nx(b), by = ny(b);
+    var mx = (ax + bx) / 2, my = (ay + by) / 2;
+    var dx = bx - ax, dy = by - ay;
+    var len = Math.hypot(dx, dy) || 1;
+    var bend = len * 0.10 * ((i % 2) ? 1 : -1);
+    return { ax: ax, ay: ay, bx: bx, by: by, cx: mx - (dy / len) * bend, cy: my + (dx / len) * bend };
+  }
+  function qpoint(c, t) {
+    var u = 1 - t;
+    return { x: u * u * c.ax + 2 * u * t * c.cx + t * t * c.bx,
+             y: u * u * c.ay + 2 * u * t * c.cy + t * t * c.by };
+  }
+
+  var last = performance.now();
+  function draw(now) {
+    var dt = Math.min((now - last) / 1000, 0.05); last = now;
+    if (morphStart) morphT = Math.min(1, (now - morphStart) / 700);
+    ctx.clearRect(0, 0, W, H);
+
+    if (tier.fence) {
+      var f = tier.fence;
+      var fx = ux(f.x), fy = uy(f.y), fw = ux(f.x + f.w) - fx, fh = uy(f.y + f.h) - fy;
+      ctx.globalAlpha = ease(morphT);
+      ctx.fillStyle = 'rgba(224,179,65,0.025)';
+      ctx.strokeStyle = 'rgba(224,179,65,0.4)';
+      ctx.lineWidth = 1.2; ctx.setLineDash([7, 6]);
+      roundRect(fx, fy, fw, fh, 16); ctx.fill(); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '600 11px -apple-system, "Segoe UI", sans-serif';
+      ctx.fillStyle = 'rgba(224,179,65,0.75)';
+      ctx.textAlign = 'left';
+      ctx.fillText(f.label.toUpperCase(), fx + 14, fy + 20);
+    }
+
+    tier.edges.forEach(function (e, i) {
+      if (quiet && (e.k === 'read' || e.k === 'use')) return;
+      var c = ctrl(e, i), al = edgeAlpha(e);
+      ctx.beginPath();
+      ctx.moveTo(c.ax, c.ay);
+      ctx.quadraticCurveTo(c.cx, c.cy, c.bx, c.by);
+      ctx.strokeStyle = edgeColour(e);
+      if (e.k === 'read') { ctx.globalAlpha = 0.22 * al; ctx.lineWidth = 1; ctx.setLineDash([]); }
+      else if (e.k === 'use') { ctx.globalAlpha = 0.32 * al; ctx.lineWidth = 1.2; ctx.setLineDash([]); }
+      else if (e.k === 'live') { ctx.globalAlpha = 0.55 * al; ctx.lineWidth = 1.8; ctx.setLineDash([]); }
+      else if (e.k === 'session') { ctx.globalAlpha = 0.5 * al; ctx.lineWidth = 1.6; ctx.setLineDash([6, 5]); }
+      else if (e.k === 'egress') { ctx.globalAlpha = 0.4 * al; ctx.lineWidth = 1.2; ctx.setLineDash([3, 6]); }
+      else { ctx.globalAlpha = 0.5 * al; ctx.lineWidth = 1.6; ctx.setLineDash([2, 7]); }
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    if (!reduced) {
+      parts.forEach(function (p) {
+        if (quiet && (p.e.k === 'read' || p.e.k === 'use')) return;
+        var al = edgeAlpha(p.e);
+        if (al < 0.4) return;
+        p.t += dt * SPEED[p.e.k];
+        if (p.t > 1) p.t -= 1;
+        var c = ctrl(p.e, tier.edges.indexOf(p.e));
+        var pt = qpoint(c, p.rev ? 1 - p.t : p.t);
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, p.e.k === 'live' ? 2.4 : 2.8, 0, Math.PI * 2);
+        ctx.globalAlpha = 0.9;
+        ctx.fillStyle = edgeColour(p.e);
+        ctx.fill();
+      });
+    }
+
+    if (morphT < 1) {
+      ghosts.forEach(function (n) {
+        ctx.globalAlpha = 0.5 * (1 - ease(morphT));
+        ctx.beginPath();
+        ctx.arc(ux(n.x), uy(n.y), n.r, 0, Math.PI * 2);
+        ctx.fillStyle = G[n.g].c; ctx.fill();
+      });
+    }
+
+    tier.nodes.forEach(function (n) {
+      var x = nx(n), y = ny(n), col = G[n.g].c;
+      var al = nodeAlpha(n);
+      ctx.globalAlpha = al;
+      if (n.r >= 10 && al > 0.5) { ctx.shadowColor = col; ctx.shadowBlur = 14; }
+      ctx.beginPath(); ctx.arc(x, y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.fill();
+      ctx.shadowBlur = 0;
+      if (n.ring) {
+        ctx.beginPath(); ctx.arc(x, y, n.r + 5, 0, Math.PI * 2);
+        ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.setLineDash([3, 4]); ctx.stroke(); ctx.setLineDash([]);
+      }
+      if (step >= 0 && inFocus(n.id)) {
+        var pulse = 3 + Math.sin(now / 300) * 1.5;
+        ctx.beginPath(); ctx.arc(x, y, n.r + pulse + 3, 0, Math.PI * 2);
+        ctx.strokeStyle = col; ctx.globalAlpha = 0.5 * al; ctx.lineWidth = 1.4; ctx.stroke();
+        ctx.globalAlpha = al;
+      }
+      if (n.label && !(quiet && n.r < 8)) {
+        ctx.globalAlpha = 0.85 * al;
+        ctx.fillStyle = '#c9ccd3';
+        ctx.font = (n.r >= 11 ? '600 ' : '') + '11px -apple-system, "Segoe UI", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(n.label, x, y + n.r + 15);
+      }
+    });
+    ctx.globalAlpha = 1;
+
+    if (step >= 0 && !reduced && !document.hidden) {
+      var el = now - stepStart;
+      document.getElementById('sprog').style.width = Math.min(100, (el / AUTO_MS) * 100) + '%';
+      if (el > AUTO_MS) { advance(1); }
+    }
+  }
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function loop(now) { draw(now); requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
+  setInterval(function () { if (document.hidden) draw(performance.now()); }, 900);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) { last = performance.now(); if (step >= 0) stepStart = performance.now(); }
+  });
+
+  cv.addEventListener('mousemove', function (ev) {
+    var r = cv.getBoundingClientRect();
+    var mx = ev.clientX - r.left, my = ev.clientY - r.top;
+    var hit = null;
+    tier.nodes.forEach(function (n) { if (Math.hypot(nx(n) - mx, ny(n) - my) < n.r + 8) hit = n; });
+    if (hit && on[hit.g]) {
+      tip.innerHTML = hit.d;
+      tip.style.display = 'block';
+      tip.style.left = Math.min(mx + 16, W - 275) + 'px';
+      tip.style.top = Math.min(my + 12, H - 120) + 'px';
+      cv.style.cursor = 'pointer';
+    } else { tip.style.display = 'none'; cv.style.cursor = 'default'; }
+  });
+  cv.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+
+  function buildChips() {
+    var chips = document.getElementById('chips');
+    chips.innerHTML = '';
+    tier.groups.forEach(function (k) {
+      var el = document.createElement('div');
+      el.className = 'chip';
+      el.innerHTML = '<span class="dot" style="background:' + G[k].c + '"></span>' + G[k].label;
+      el.addEventListener('click', function () { on[k] = !on[k]; el.classList.toggle('off', !on[k]); });
+      chips.appendChild(el);
+    });
+  }
+  function buildRules() {
+    document.getElementById('rules').innerHTML = tier.rules.map(function (r) { return '<li>' + r + '</li>'; }).join('');
+  }
+
+  function setTier(key) {
+    if (key === tierKey || !TIERS[key]) return;
+    exitStory();
+    var prev = tier.nodes;
+    tierKey = key;
+    document.querySelectorAll('.tbtn').forEach(function (x) { x.classList.toggle('act', x.dataset.t === key); });
+    rebuild(prev);
+  }
+  document.querySelectorAll('.tbtn').forEach(function (b) {
+    b.addEventListener('click', function () { setTier(b.dataset.t); });
+  });
+
+  var story = document.getElementById('story');
+  function showStep() {
+    var s = tier.steps[step];
+    document.getElementById('sh').textContent = (step + 1) + '. ' + s.h;
+    document.getElementById('sp').textContent = s.d;
+    var dots = document.getElementById('sdots');
+    dots.innerHTML = tier.steps.map(function (_, i) {
+      return '<span class="sd' + (i === step ? ' on' : '') + '"></span>';
+    }).join('');
+    stepStart = performance.now();
+    story.style.display = 'block';
+  }
+  function advance(dir) {
+    step += dir;
+    if (step >= tier.steps.length) { exitStory(); return; }
+    if (step < 0) step = 0;
+    showStep();
+  }
+  function exitStory() {
+    step = -1;
+    story.style.display = 'none';
+    document.getElementById('sprog').style.width = '0%';
+  }
+  document.getElementById('play').addEventListener('click', function () { step = 0; showStep(); });
+  document.getElementById('snext').addEventListener('click', function () { advance(1); });
+  document.getElementById('sback').addEventListener('click', function () { advance(-1); });
+  document.getElementById('sx').addEventListener('click', exitStory);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '1') setTier('t1');
+    else if (e.key === '2') setTier('t2');
+    else if (e.key === '3') setTier('t3');
+    else if (e.key === 'p' || e.key === 'P') { step = 0; showStep(); }
+    else if (step >= 0) {
+      if (e.key === 'Escape') exitStory();
+      else if (e.key === 'ArrowRight') advance(1);
+      else if (e.key === 'ArrowLeft') advance(-1);
+      else if (e.key === ' ') { e.preventDefault(); advance(1); }
+    }
+  });
+
+  document.getElementById('quiet').addEventListener('change', function (e) { quiet = e.target.checked; });
+
+  rebuild(null);
+})();
+</script>
+</body>
+</html>
