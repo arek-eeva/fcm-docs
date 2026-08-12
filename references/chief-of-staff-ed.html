@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Chief of Staff, for Ed | Fifth Castle Media</title>
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF8F4;
+    --panel: #F2EEE7;
+    --panel-2: #FFFFFF;
+    --text: #191815;
+    --muted: #6B665D;
+    --subtle: #A29C92;
+    --accent: #BD202D;
+    --accent-soft: rgba(189, 32, 45, 0.07);
+    --accent-line: rgba(189, 32, 45, 0.32);
+    --line: #E4DED4;
+    --display: 'Vidaloka', Georgia, serif;
+    --label: 'Khand', 'Helvetica Neue', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r: 3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 0 120px;
+  }
+
+  .wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+    margin-bottom: 68px;
+    background: linear-gradient(180deg, var(--accent-soft), transparent);
+  }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 13px; font-weight: 600; }
+  .mark .red { color: var(--accent); }
+  .stamp { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--subtle); text-transform: uppercase; }
+
+  /* ---------- type ---------- */
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow .red { color: var(--accent); }
+
+  h1 { font-family: var(--display); font-size: 47px; line-height: 1.11; font-weight: 400; margin-bottom: 22px; }
+  .lede { color: var(--muted); font-size: 19px; margin-bottom: 16px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  h2 .red { color: var(--accent); }
+  h3 { font-family: var(--label); font-size: 20px; letter-spacing: 0.02em; font-weight: 500; margin: 0 0 5px; }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  .sub { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .note { color: var(--subtle); font-size: 15px; font-style: italic; }
+
+  a { color: var(--text); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 52px 0; }
+  section { scroll-margin-top: 24px; }
+
+  /* ---------- facts strip ---------- */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 34px 0 8px; background: var(--panel-2); }
+  .facts div { padding: 18px 16px; border-right: 1px solid var(--line); }
+  .facts div:last-child { border-right: 0; }
+  .facts .k { font-family: var(--display); font-size: 25px; line-height: 1.1; display: block; margin-bottom: 5px; }
+  .facts .v { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 11.5px; line-height: 1.45; color: var(--muted); display: block; min-height: 2.9em; }
+
+  /* ---------- lists ---------- */
+  ul.rows { list-style: none; }
+  ul.rows li { padding: 19px 0; border-top: 1px solid var(--line); }
+  ul.rows li:last-child { border-bottom: 1px solid var(--line); }
+  ul.rows .d { color: var(--muted); font-size: 16.5px; }
+
+  ul.check { color: var(--muted); font-size: 16.5px; padding-left: 20px; }
+  ul.check li { margin-bottom: 10px; }
+  ul.check strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- figures ---------- */
+  figure { margin: 32px 0 0; }
+  .fig-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fig-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .fig-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 16px 14px; }
+  .fig-card .cap {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 11.5px; color: var(--accent); margin-bottom: 12px;
+  }
+  .fig-card svg { display: block; width: 100%; height: auto; }
+  figcaption { color: var(--subtle); font-size: 15px; font-style: italic; margin-top: 14px; }
+
+  .svg-lbl { font-family: 'Khand', sans-serif; font-size: 12.5px; letter-spacing: 0.02em; fill: var(--muted); }
+  .svg-lbl-dark { font-family: 'Khand', sans-serif; font-size: 13px; letter-spacing: 0.03em; fill: var(--text); }
+  .svg-lbl-sm { font-family: 'Khand', sans-serif; font-size: 11px; letter-spacing: 0.04em; fill: var(--subtle); }
+  .svg-node { fill: var(--panel); stroke: var(--line); stroke-width: 1; }
+  .svg-hub { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+  .svg-wire { stroke: var(--subtle); stroke-width: 1; fill: none; }
+  .svg-wire-hot { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+  .svg-wire-cut { stroke: var(--subtle); stroke-width: 1; fill: none; stroke-dasharray: 4 4; }
+
+  /* ---------- the opening statement ---------- */
+  .gesture { border: 1px solid var(--accent); border-radius: var(--r); padding: 32px; background: linear-gradient(180deg, var(--accent-soft), transparent 72%); }
+  .gesture .badge { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+  .gesture .big { font-family: var(--display); font-size: 30px; line-height: 1.24; margin-bottom: 16px; }
+  .gesture p { color: var(--muted); font-size: 16.5px; }
+  .gesture p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- session timeline ---------- */
+  .arc { list-style: none; position: relative; margin-top: 30px; }
+  .arc::before { content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+  .arc li { position: relative; padding: 0 0 30px 52px; }
+  .arc li:last-child { padding-bottom: 0; }
+  .arc .n { position: absolute; left: 0; top: -1px; width: 31px; height: 31px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--line); font-family: var(--label); font-size: 14px; font-weight: 600; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+  .arc li.now .n { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .arc .when { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11.5px; color: var(--accent); margin-bottom: 3px; }
+  .arc .d { color: var(--muted); font-size: 16.5px; }
+
+  /* ---------- two paths ---------- */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .path { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; background: var(--panel-2); }
+  .path .tag { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 11.5px; color: var(--accent); margin-bottom: 8px; }
+  .path h3 { margin-bottom: 8px; }
+  .path p { color: var(--muted); font-size: 16px; }
+
+  /* ---------- panels ---------- */
+  .panel { background: var(--panel); border-left: 3px solid var(--accent); padding: 24px 28px; border-radius: 0 var(--r) var(--r) 0; }
+  .panel h3 { margin-bottom: 10px; }
+  .panel p { color: var(--muted); font-size: 16.5px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 24px 0; }
+  .qa:last-of-type { border-bottom: 1px solid var(--line); }
+  .qa .q { font-family: var(--display); font-size: 21px; line-height: 1.35; margin-bottom: 12px; }
+  .qa .q::before { content: '“'; color: var(--accent); }
+  .qa .q::after { content: '”'; color: var(--accent); }
+  .qa p { color: var(--muted); font-size: 16.5px; }
+  .qa p strong { color: var(--text); font-weight: normal; }
+
+  /* ---------- the policy sheet ---------- */
+  .policy { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel-2); overflow: hidden; margin-top: 28px; }
+  .policy .head { background: var(--panel); border-bottom: 1px solid var(--line); padding: 16px 24px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--muted); }
+  .policy .row { display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; padding: 17px 24px; border-bottom: 1px solid var(--line); }
+  .policy .row:last-child { border-bottom: 0; }
+  .policy .row .k { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .policy .row .v { color: var(--muted); font-size: 16px; }
+  .policy .yes { color: var(--accent); }
+
+  /* ---------- price ---------- */
+  .price-box { background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 30px 26px; }
+  .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .price-row:last-of-type { border-bottom: 0; }
+  .price-row .l { font-family: var(--label); font-size: 18px; letter-spacing: 0.02em; }
+  .price-row .l small { display: block; font-family: var(--body); font-size: 14.5px; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+  .price-row .r { font-family: var(--mono); font-size: 17px; white-space: nowrap; }
+  .price-row.total .r { font-family: var(--display); font-size: 28px; }
+  .price-row .r em { font-style: normal; color: var(--muted); font-size: 13px; display: block; text-align: right; font-family: var(--body); }
+
+  /* ---------- CTA ---------- */
+  .cta-block { text-align: center; }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 26px 0 14px; }
+  .btn { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 15px; font-weight: 600; padding: 17px 30px; border-radius: var(--r); border: 1px solid var(--accent); display: inline-block; transition: transform .18s ease, background .18s ease; }
+  .btn-primary { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
+  .btn-primary:hover { background: #a91b27; color: #fff; transform: translateY(-2px); }
+  .btn-ghost { background: var(--panel-2); color: var(--text); border-color: var(--line); border-bottom-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* ---------- inline CTA ---------- */
+  .cta-inline { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 22px; }
+  .cta-inline .btn { padding: 14px 24px; font-size: 14px; }
+  .cta-inline .aside { color: var(--muted); font-size: 15px; font-style: italic; }
+
+  /* ---------- floating CTA ---------- */
+  .floatbar {
+    position: fixed; left: 50%; bottom: 22px; z-index: 40;
+    transform: translateX(-50%) translateY(140%);
+    opacity: 0; pointer-events: none;
+    transition: transform .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease;
+    display: flex; align-items: center; gap: 14px;
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 44px; padding: 10px 12px 10px 24px;
+    box-shadow: 0 6px 28px rgba(25, 24, 21, 0.13), 0 1px 3px rgba(25, 24, 21, 0.07);
+    max-width: calc(100vw - 32px);
+  }
+  .floatbar.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+  .floatbar .fb-text { line-height: 1.3; white-space: nowrap; }
+  .floatbar .fb-lead { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px; color: var(--accent); display: block; }
+  .floatbar .fb-sum { font-family: var(--label); font-size: 17px; letter-spacing: 0.02em; }
+  .floatbar .btn { padding: 13px 22px; font-size: 13.5px; border-radius: 44px; }
+  .floatbar .btn-ghost { background: transparent; }
+
+  /* ---------- signature ---------- */
+  .sig { display: flex; gap: 18px; align-items: flex-start; }
+  .sig .rule-v { width: 3px; align-self: stretch; background: var(--accent); flex: none; }
+  .sig .who { font-family: var(--label); font-size: 19px; letter-spacing: 0.02em; margin-top: 14px; }
+  .sig .who span { display: block; font-family: var(--body); font-size: 15px; color: var(--muted); }
+
+  footer { margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line); font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  footer .red { color: var(--accent); }
+
+  /* ---------- motion ---------- */
+  .rise { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .rise.in { opacity: 1; transform: none; }
+  .draw { stroke-dasharray: 260; stroke-dashoffset: 260; }
+  .in .draw { animation: draw 1.1s ease forwards; }
+  .in .draw:nth-of-type(2) { animation-delay: .08s; }
+  .in .draw:nth-of-type(3) { animation-delay: .16s; }
+  .in .draw:nth-of-type(4) { animation-delay: .24s; }
+  .in .draw:nth-of-type(5) { animation-delay: .32s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise { opacity: 1; transform: none; transition: none; }
+    .draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+    .in .draw { animation: none; }
+    .btn { transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .wrap { padding: 0 20px; }
+    .masthead { margin-bottom: 46px; }
+    h1 { font-size: 33px; }
+    .lede { font-size: 17.5px; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .facts div:nth-child(2) { border-right: 0; }
+    .facts div:nth-child(1), .facts div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .paths, .fig-pair { grid-template-columns: 1fr; }
+    .fig-trio { grid-template-columns: 1fr; }
+    .price-box, .gesture { padding: 24px 20px; }
+    .gesture .big { font-size: 24px; }
+    .policy .row { grid-template-columns: 1fr; gap: 4px; padding: 15px 20px; }
+    .btn { width: 100%; }
+    .qa .q { font-size: 19px; }
+    .cta-inline .btn { width: auto; }
+
+    .floatbar {
+      left: 0; right: 0; bottom: 0; max-width: none; width: 100%;
+      transform: translateY(140%); border-radius: 0;
+      border-left: 0; border-right: 0; border-bottom: 0;
+      padding: 12px 16px; gap: 10px;
+      justify-content: space-between;
+    }
+    .floatbar.show { transform: translateY(0); }
+    .floatbar .fb-sum { font-size: 15px; }
+    .floatbar .btn { padding: 12px 16px; font-size: 12.5px; width: auto; letter-spacing: 0.1em; }
+    .floatbar .btn-ghost { display: none; }
+  }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { padding: 0; }
+    .rise { opacity: 1 !important; transform: none !important; }
+    .draw { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; animation: none !important; }
+    .masthead { margin-bottom: 34px; }
+    .floatbar { display: none !important; }
+    .gesture, .price-box, .panel, .path, .qa, .arc li, ul.rows li, .fig-card, .policy { break-inside: avoid; }
+    hr.rule { margin: 34px 0; }
+    h1 { font-size: 34px; }
+  }
+
+  /* ---- Download-PDF control (added 2026-08-03). The @media print rules above
+         do the work; this is just the visible trigger. No library, no server. ---- */
+  .pdfbtn { position: fixed; top: 16px; right: 16px; z-index: 60; display: inline-flex; gap: 9px;
+    align-items: center; border: 1px solid var(--line); border-radius: 4px; background: var(--paper);
+    box-shadow: 0 2px 10px rgba(20,17,15,.08); color: var(--ink); cursor: pointer;
+    font-family: var(--font-label); font-size: 14px; font-weight: 600; letter-spacing: .08em;
+    padding: 11px 15px 9px; text-transform: uppercase;
+    transition: background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out; }
+  .pdfbtn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pdfbtn svg { display: block; width: 15px; height: 15px; }
+  @media (max-width: 700px) { .pdfbtn { top: auto; bottom: 76px; right: 14px; } }
+  @media print { .pdfbtn { display: none !important; } }
+
+  /* ---------- collapsible, for what she has already read ---------- */
+  details.prev { border-top: 1px solid var(--line); }
+  details.prev:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  details.prev > summary {
+    cursor: pointer; list-style: none; padding: 19px 0;
+    display: flex; align-items: baseline; gap: 13px;
+    font-family: var(--label); font-size: 19px; letter-spacing: 0.02em;
+  }
+  details.prev > summary::-webkit-details-marker { display: none; }
+  details.prev > summary::before {
+    content: '+'; color: var(--accent); font-family: var(--mono);
+    font-size: 16px; width: 13px; flex: none; line-height: 1;
+  }
+  details.prev[open] > summary::before { content: '\2212'; }
+  details.prev > summary:hover { color: var(--accent); }
+  details.prev > summary .why { font-family: var(--body); font-size: 15px; color: var(--subtle); font-style: italic; }
+  details.prev .inner { padding: 2px 0 34px 26px; }
+  details.prev .inner > section:first-child { margin-top: 0; }
+  details.prev .inner hr.rule { margin: 34px 0; }
+  @media (max-width: 640px) {
+    details.prev > summary { font-size: 17px; }
+    details.prev > summary .why { display: none; }
+    details.prev .inner { padding-left: 0; }
+  }
+
+  /* ---------- the new-answers band ---------- */
+  .newband { background: var(--panel); border-left: 3px solid var(--accent); padding: 22px 26px; border-radius: 0 var(--r) var(--r) 0; margin-bottom: 8px; }
+  .newband p { color: var(--muted); font-size: 16.5px; }
+  .newband strong { color: var(--text); font-weight: normal; }
+
+  .verdict { display: grid; grid-template-columns: 172px 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .verdict:last-of-type { border-bottom: 1px solid var(--line); }
+  .verdict .tool { font-family: var(--label); font-size: 19px; letter-spacing: 0.02em; }
+  .verdict .tool small { display: block; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; margin-top: 4px; }
+  .verdict .yes { color: var(--accent); }
+  .verdict .part { color: var(--muted); }
+  .verdict .body { color: var(--muted); font-size: 16.5px; }
+  .verdict .body strong { color: var(--text); font-weight: normal; }
+  @media (max-width: 640px) { .verdict { grid-template-columns: 1fr; gap: 6px; } }
+</style>
+</head>
+
+<body>
+
+<button class="pdfbtn" onclick="window.print()" aria-label="Download this proposal as a PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  Download PDF
+</button>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="mark">Fifth Castle <span class="red">&middot;</span> Chief of Staff</div>
+    <div class="stamp">Ed Frame &middot; Exemplify &middot; 12 August 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="eyebrow">From this afternoon's call <span class="red">&middot;</span> For Ed</div>
+    <h1>The depository you described, and what it takes to actually have one.</h1>
+    <p class="lede">Near the end you said the thing this is really about: you want somewhere that holds a client end to end, every transcript, everything from the sales process, all of it in one place, and that it's <strong>sort of what HubSpot is supposed to be, but it's not all there.</strong></p>
+    <p class="lede">You're right that it isn't there, and I don't think it's a HubSpot failing. It holds relationship data, and it holds it well. What you're describing sits a layer above that, and nothing you can buy fills it. This is what filling it looks like.</p>
+
+    <div class="facts">
+      <div><span class="k">4 + 2</span><span class="v">Build sessions, then follow-ups</span></div>
+      <div><span class="k">$5,500</span><span class="v">Plus GST, once, per person</span></div>
+      <div><span class="k">Your Mac</span><span class="v">Where every file lives</span></div>
+      <div><span class="k">Nothing</span><span class="v">Ongoing, from me</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The handover is the part that goes first</h2>
+    <p>You described the loop precisely: you have a conversation with a client, then you're writing a Slack message, then you're doing a handover, when what should happen is that the transcript goes to Rosie and she can go back and ask it anything she needs.</p>
+    <p>That's not a wish, it's a fortnight of setup. The recording already exists, whether it comes from Gemini or the HubSpot note taker. What's missing is something that reads it the moment it lands, knows which client it belongs to, files it where Rosie can reach it, pulls out what you committed to, and puts those commitments somewhere that chases them. You stop being the transport layer between your own meeting and your own team.</p>
+    <p>I'm not describing a feature I'd build for you. It's how I ran the call we just had. This document exists because the system read our transcript, not because I sat down to write it.</p>
+  </section>
+
+  <section>
+    <h2>"It's not in my tone of voice"</h2>
+    <p>You said that about the note taker's summarise-this-email output, and then the sharper version: <strong>it's not an email that I would send anyway.</strong> That's the real objection to every AI writing tool you've been shown, and it's why the generic ones get abandoned about three weeks in.</p>
+    <p>The difference here is what happens to a correction. When you change a line in something it drafted, that change doesn't evaporate when the chat window closes. It gets written down as a rule, and the next draft already has it. Correct a person and it fades. Correct a system and it compounds, which is why the thing gets more like you the longer you use it rather than less.</p>
+    <p>The honest version: week one it will not sound like you. It sounds like you somewhere around week three, and only because you spent week one telling it when it didn't.</p>
+  </section>
+
+  <section>
+    <h2>You and Rosie, without a team account</h2>
+    <p>You asked how you both get access to the same things when you're both on Claude but you don't have a team account. There are three answers and they're deliberately in order of cost.</p>
+    <div class="rows">
+      <div class="row"><span class="n">1</span><div><strong>Share a folder.</strong> The system lives in a folder on your machine that syncs to your Google Drive. You share one sub-folder, transcripts say, and Rosie has everything it files there. She can't reach the memory, the rules or anything else. This costs nothing and it's usually most of what people actually wanted.</div></div>
+      <div class="row"><span class="n">2</span><div><strong>Build her a door.</strong> A small internal page where she logs in, sees what she's allowed to see, and writes back into it. What she writes passes a check before it becomes part of the record, so she can contribute without being able to overwrite anything. This is half a day of work once you know how to ask for it, and by then you will.</div></div>
+      <div class="row"><span class="n">3</span><div><strong>Her own build.</strong> A separate install, her own brief, her own memory. Real, and a later conversation. Two installs diverge fast, day one they have different briefs and by day ten different versions of the truth, so a shared layer has to sit between them. That layer is separate work and I'd scope it when you need it rather than guess at it now.</div></div>
+    </div>
+    <p>My advice is to run it on yourself first. You'll know within a fortnight which of the three Rosie actually needs, and it's usually the first one.</p>
+  </section>
+
+  <section>
+    <h2>Where this sits next to HubSpot</h2>
+    <p>You said you're not betting that CRM stays as it is, but you don't know what it changes into. I'd put it this way: the big platforms aren't going anywhere, because the infrastructure, the deliverability and the compliance are genuinely hard and genuinely theirs. What changes is that you stop opening them.</p>
+    <p>The judgement layer moves up. Your Chief of Staff reads from HubSpot and writes back to it, within whatever scopes you grant it, and you talk to the thing that has your context rather than the thing that has your records. That's better for you as an implementer, not worse. It makes a well-built HubSpot more valuable, because something is finally using it properly every day.</p>
+    <p>The other half of it: the models are rented and the system is owned. It's a folder on your machine, so if Claude changes its terms tomorrow you point it at Codex or whatever comes next, and nothing you've built goes with them.</p>
+  </section>
+
+  <section>
+    <h2>What we'd actually do</h2>
+    <p>Four sessions over about a fortnight, then two follow-ups. Every one is a screen share, and you're driving.</p>
+    <div class="rows">
+      <div class="row"><span class="n">1</span><div><strong>Install, and teach it the business.</strong> About an hour. I walk you through the install, then it interviews you: what Exemplify does, who you sell to, your site, your positioning, how you write. This part is heavier than you'll expect and it's the part everything else rests on.</div></div>
+      <div class="row"><span class="n">2</span><div><strong>Connect your tools, with the guardrails on.</strong> HubSpot first, since that's where the records are. Then your recorder, Slack, Xero and Drive. We set what it can reach and what it must ask about before we let it near anything. <strong>An honest caveat, and you'll know this better than I will:</strong> what it can actually reach depends on your admin settings and what HubSpot allows a private app to do. I've had builds where a connector went in cleanly and builds where a client's IT policy stopped one dead. We map yours together in this session rather than assume it.</div></div>
+      <div class="row"><span class="n">3</span><div><strong>Driving it properly.</strong> Which model for which job, how to hand it something big, how to build a small tool for yourself when you want one. This is where most of the speed comes from and it's the session people underrate.</div></div>
+      <div class="row"><span class="n">4</span><div><strong>Your own bottlenecks.</strong> Whatever's still awkward by then, plus one thing you build without me. That last part is the actual deliverable.</div></div>
+      <div class="row"><span class="n">+</span><div><strong>Two follow-ups.</strong> A few weeks apart, and they run in both directions. You show me what you've built, I show you what I have, and we both take something away.</div></div>
+    </div>
+    <p>Between sessions you can call me when you're stuck. After them, you mostly won't need to, because the thing you ask is the thing that knows.</p>
+  </section>
+
+  <section>
+    <h2>What it costs</h2>
+    <p><strong>$5,500 plus GST, which is $6,050 including GST.</strong> One person, once. Not a subscription, and there's no ongoing fee to me.</p>
+    <div class="rows">
+      <div class="row"><span class="n">1</span><div><strong>$3,025 including GST on signing</strong>, which locks the session dates.</div></div>
+      <div class="row"><span class="n">2</span><div><strong>$3,025 including GST at go-live</strong>, about four weeks later.</div></div>
+    </div>
+    <p class="sub">And the part I said on the call: if by then it isn't working for you, the second payment doesn't happen. You keep the system and everything you've built in it either way.</p>
+
+    <h3>The cost that isn't mine, since you asked</h3>
+    <p>You need your own Claude subscription. Most people run comfortably on the $100 USD a month plan, and you'd only go past that if you're building heavily. That's the whole ongoing cost.</p>
+    <p>Worth doing the other side of that arithmetic too. You'll find you stop paying for things once you're not opening their interfaces, and the ones people drop first are the small single-purpose tools. I'm not going to put a number on your stack, because I haven't seen it.</p>
+  </section>
+
+  <section>
+    <h2>A second seat, since you asked</h2>
+    <p>You asked whether two builds means $5,500 and then another $5,500. Yes. A second seat is $5,500 plus GST, which is $6,050 including GST, the same as the first, because it's two installs and two sets of sessions and the second one isn't a copy of the first. It takes the shape of that person's role, not just their brain.</p>
+    <p>The layer that keeps two of them agreeing with each other is separate work with its own fee, and I'm not going to quote it here. It depends entirely on how much the two roles overlap, and for you and Rosie today I don't think you need it at all.</p>
+  </section>
+
+  <section>
+    <h2>The partnership, and where it honestly stands</h2>
+    <p>You saw my own system flag this live on the call, which is a slightly awkward way to find out, so let me say it plainly: <strong>I don't have partner commercials yet.</strong> No revenue share, no agreed split, nothing on who owns the client. That's not me holding back, it's genuinely not built, because I hadn't met the right person to build it with.</p>
+    <p>The three shapes are in the note you watched being written on the call, and it's attached rather than repeated here. Nothing in it has changed since you saw it.</p>
+    <p>What I'd add is the order, and it isn't a sales technique. You said you'd be keen to give it a go and see. Do that first. I'd rather build the commercial shape with someone who has lived in the thing for a month than agree a split with someone who's watched a demo, because the second version is how partnerships get signed and then quietly not used.</p>
+  </section>
+
+  <section>
+    <h2>Two things from the call I want to be exact about</h2>
+    <div class="qa">
+      <div class="q">The guarantee, in full, because I said it loosely</div>
+      <p>On the call I said that if it isn't working for you we don't worry about the second payment, and I said it as though there were no conditions on it. There is one, it was in the note you watched me build, and you should have it from me plainly rather than find it later.</p>
+      <p>Two weeks or more after the first session, if you tell me what isn't working and why it can't be resolved, and it then can't reasonably be resolved, the second payment is waived. <strong>I'm the one who decides whether it can be resolved</strong>, in good faith and after a genuine attempt at fixing it. That's the honest shape of it. The first payment isn't refundable, and you keep the system and everything you've built in it either way.</p>
+      <p>If that reads as narrower than what you heard this afternoon, it is, and I'd rather you push back on it now than sign around it.</p>
+    </div>
+    <div class="qa">
+      <div class="q">The numbers I quoted off the top of my head</div>
+      <p>I threw around a couple of figures on the call about hours saved and how many founders are running this. I'm not going to repeat them here, because I said them from memory and I haven't checked them. If they matter to your decision, ask me and I'll come back with the actual numbers rather than the remembered ones.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What happens next</h2>
+    <p>You said you'd read this and come back Friday or early next week. That works. When you're ready we'll put the four dates in the diary together, rather than me promising a start week before I've looked at what else is booked.</p>
+    <p>Claudia, my assistant, will check in with you toward the end of next week if we haven't spoken. She's an AI, which you know, and she handles the scheduling so I don't have to chase you.</p>
+    <p>Anything you want answered before then, send it over. If I don't know, I'll say so and go and find out, which is roughly the same standard I'm asking you to hold the system to.</p>
+    <p class="sub">Arek Rainczuk <span class="red">&middot;</span> Fifth Castle Media <span class="red">&middot;</span> info@fifthcastle.media <span class="red">&middot;</span> 0467 676 205</p>
+  </section>
+
+  <section class="panel">
+    <h2>One other thing, deliberately separate</h2>
+    <p>You mentioned video, next quarter or the one after. That's the other half of what I do and it has nothing to do with this. It shouldn't be bundled in here and it isn't. Raise it when the timing's right and we'll treat it as its own conversation.</p>
+  </section>
+
+</div>
+
+</body>
+</html>
