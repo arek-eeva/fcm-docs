@@ -55,6 +55,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Chris McNaughton (ShadowSight) — build checklist (gift after declining) | [references/chief-of-staff-chris-checklist.html](https://docs.fifthcastle.media/references/chief-of-staff-chris-checklist.html) | 2026-08-03 |
 | Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-08-03 |
 | Define Technologies (Tony Psaila, Joe Baranyai, Kevin Yang), two-co-founder overview, IT posture and offer | [references/chief-of-staff-define.html](https://docs.fifthcastle.media/references/chief-of-staff-define.html) | 2026-08-10 |
+| Peace of Mind IT (Adi Segev, Vered Segev), managed IT partner overview: Microsoft tenant requirements and open questions | [references/chief-of-staff-peace-of-mind-it.html](https://docs.fifthcastle.media/references/chief-of-staff-peace-of-mind-it.html) | 2026-08-17 |
 | Chief of Staff, three ways it runs (interactive: solo, two co-founders, inside a governed company) | [references/chief-of-staff-three-ways.html](https://docs.fifthcastle.media/references/chief-of-staff-three-ways.html) | 2026-08-10 |
 
 ## Client Proposals & Briefs
