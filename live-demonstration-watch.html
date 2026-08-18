@@ -58,6 +58,25 @@
   .player iframe {
     position:absolute; inset:0; width:100%; height:100%; border:0; display:block;
   }
+  /* Holding block, in place of the player until the Meet link exists. Same frame
+     as the player so the page keeps its shape when the link replaces it. */
+  .holding {
+    background:#fff; padding:clamp(26px,4vw,40px) clamp(24px,4vw,44px);
+  }
+  .holding .tag {
+    font-family:'Khand',sans-serif; font-size:13px; letter-spacing:0.28em;
+    text-transform:uppercase; color:var(--accent); font-weight:600;
+  }
+  .holding h2 {
+    font-family:'Vidaloka',serif; font-weight:400; font-size:clamp(21px,2.6vw,28px);
+    line-height:1.2; margin:12px 0 0; max-width:26ch;
+  }
+  .holding ul { list-style:none; margin:20px 0 0; display:grid; gap:12px; max-width:62ch; }
+  .holding li { position:relative; padding-left:20px; line-height:1.55; color:var(--ink); }
+  .holding li::before {
+    content:""; position:absolute; left:0; top:0.62em;
+    width:7px; height:1px; background:var(--accent);
+  }
 
   .layout {
     display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(20px,2.6vw,34px);
@@ -109,33 +128,36 @@
     <header class="intro">
       <div class="kicker">Watch live</div>
       <h1>The live demonstration.</h1>
-      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. The player below goes live at noon. If you are early, it will show a countdown.</p>
+      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. We're running it on Google Meet, and the join link appears on this page before the day.</p>
     </header>
 
     <div class="player-wrap">
-      <div class="player">
-        <iframe
-          src="https://www.youtube.com/embed/Zu0FFXc3bOA?rel=0&modestbranding=1"
-          title="Chief of Staff, live demonstration"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>
+      <div class="holding">
+        <div class="tag">The link is coming</div>
+        <h2>It's a Google Meet, and the link lands on this page.</h2>
+        <ul>
+          <li>Keep your camera off if you'd rather. Plenty of people will, and nobody is put on the spot.</li>
+          <li>The join link goes here before the day, and I email it to everyone who registered.</li>
+          <li>Can't make it live? The replay comes back to this same page, so you lose nothing by missing it.</li>
+          <li>Because it's a room rather than a broadcast, you can talk to me while it runs. If there's something specific you want to see, say so and I'll point the system at it on the spot.</li>
+        </ul>
       </div>
     </div>
 
     <div class="layout">
       <section class="panel">
         <h2>Ask a question</h2>
-        <p>You are not on camera and nothing you send is visible to anyone else watching. Questions come straight to me and I answer them out loud as we go.</p>
-        <p>Send it here and I will pick it up on screen.</p>
+        <p>Ask it live in the room, or send it now and I'll work it into the hour. Either way I answer out loud as we go.</p>
+        <p>One thing worth knowing: it's a Meet room, so other people can see your name in the attendee list. Your camera and microphone stay yours to switch on or leave off, and most people leave them off.</p>
         <a class="ask" href="mailto:info@fifthcastle.media?subject=Question%20during%20the%20demonstration">Send a question</a>
       </section>
 
       <aside>
         <div class="facts">
           <div><span class="k">When</span><span>Wednesday 26 August, 12:00 to 1:00pm AEST</span></div>
-          <div><span class="k">Format</span><span>One hour, live. No slides, no pitch.</span></div>
-          <div><span class="k">Missed it</span><span>The recording appears in this same player afterwards, and I email everyone who registered.</span></div>
+          <div><span class="k">Where</span><span>Google Meet. The join link appears on this page before the day.</span></div>
+          <div><span class="k">Format</span><span>One hour, live. No slides, no pitch. Camera off is fine.</span></div>
+          <div><span class="k">Missed it</span><span>The replay comes back to this page afterwards, and I email everyone who registered.</span></div>
         </div>
       </aside>
     </div>
