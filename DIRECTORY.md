@@ -52,7 +52,8 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Stephen Lewis — what you'd be running (IT/pricing overview) | [references/chief-of-staff-stephen.html](https://docs.fifthcastle.media/references/chief-of-staff-stephen.html) | 2026-07-27 |
 | Melinda Mayne (Pet Let) — Chief of Staff proposal | [references/chief-of-staff-melinda.html](https://docs.fifthcastle.media/references/chief-of-staff-melinda.html) | 2026-08-03 |
 | Chris McNaughton (ShadowSight) — build checklist (gift after declining) | [references/chief-of-staff-chris-checklist.html](https://docs.fifthcastle.media/references/chief-of-staff-chris-checklist.html) | 2026-08-03 |
-| Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-08-03 |
+| Lisa Sweeting (Sweet Style Marketing) — Chief of Staff proposal | [references/chief-of-staff-lisa.html](https://docs.fifthcastle.media/references/chief-of-staff-lisa.html) | 2026-08-19 |
+| Ed Frame (Exemplify) — Chief of Staff proposal | [references/chief-of-staff-ed.html](https://docs.fifthcastle.media/references/chief-of-staff-ed.html) | 2026-08-19 |
 | Define Technologies (Tony Psaila, Joe Baranyai, Kevin Yang), two-co-founder overview, IT posture and offer | [references/chief-of-staff-define.html](https://docs.fifthcastle.media/references/chief-of-staff-define.html) | 2026-08-10 |
 | Peace of Mind IT (Adi Segev, Vered Segev), managed IT partner overview: Microsoft tenant requirements and open questions | [references/chief-of-staff-peace-of-mind-it.html](https://docs.fifthcastle.media/references/chief-of-staff-peace-of-mind-it.html) | 2026-08-17 |
 | Chief of Staff, three ways it runs (interactive: solo, two co-founders, inside a governed company) | [references/chief-of-staff-three-ways.html](https://docs.fifthcastle.media/references/chief-of-staff-three-ways.html) | 2026-08-10 |
