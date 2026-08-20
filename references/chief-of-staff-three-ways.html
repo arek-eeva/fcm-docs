@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chief of Staff: three ways it runs</title>
+<title>Chief of Staff: four ways it runs</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
 <link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
@@ -29,7 +29,7 @@ canvas { display: block; width: 100%; height: 100%; }
 #panel h1 { font-size: 18px; font-weight: 650; line-height: 1.3; color: #f2f3f5; }
 #tiers { display: flex; gap: 5px; margin: 14px 0 4px; }
 .tbtn {
-  flex: 1; text-align: center; font-size: 11.5px; padding: 8px 4px;
+  flex: 1; min-width: 0; text-align: center; font-size: 10.5px; padding: 8px 2px;
   background: #26282e; border: 1px solid var(--panel-border); color: var(--dim);
   border-radius: 7px; cursor: pointer; user-select: none; line-height: 1.25;
   transition: all 0.15s;
@@ -117,9 +117,10 @@ canvas { display: block; width: 100%; height: 100%; }
     </div>
   </div>
   <aside id="panel">
-    <h1>Chief of Staff: three ways it runs</h1>
+    <h1>Chief of Staff: four ways it runs</h1>
     <div id="tiers">
       <div class="tbtn act" data-t="t1" tabindex="0">Solo<br>founder</div>
+      <div class="tbtn" data-t="t1b" tabindex="0">Solo<br>+ team</div>
       <div class="tbtn" data-t="t2" tabindex="0">Two<br>co-founders</div>
       <div class="tbtn" data-t="t3" tabindex="0">Inside a<br>company</div>
     </div>
@@ -151,7 +152,7 @@ canvas { display: block; width: 100%; height: 100%; }
     <div class="sect">What this tier encodes</div>
     <ul class="rules" id="rules"></ul>
 
-    <div class="foot">Fifth Castle Media · Chief of Staff working models · August 2026. Hover any node for what it is. Keys: 1, 2, 3 switch tiers · P plays the day · arrows step · Esc exits.</div>
+    <div class="foot">Numbered badges are access levels: <b>1</b> a front-door app, no account · <b>2</b> their own seat running your skills · <b>3</b> their own workspace, building.<br><br>Fifth Castle Media · Chief of Staff working models · August 2026. Hover any node for what it is. Keys: 1 to 4 switch tiers · P plays the day · arrows step · Esc exits.</div>
   </aside>
 </div>
 
@@ -161,6 +162,8 @@ canvas { display: block; width: 100%; height: 100%; }
     person: { c: '#cfcfcf', label: 'People' },
     agent:  { c: '#e5484d', label: 'Chief of Staff (private world)' },
     agentB: { c: '#3b82f6', label: 'Second founder (private world)' },
+    seat:   { c: '#3b82f6', label: 'Team seat (your skills, their window)' },
+    hold:   { c: '#6b7280', label: 'Deliberately not yet' },
     brain:  { c: '#e0b341', label: 'Source of truth' },
     bus:    { c: '#46c68b', label: 'Gates, queues, keys' },
     door:   { c: '#a78bfa', label: 'Outputs & front door' },
@@ -225,6 +228,96 @@ canvas { display: block; width: 100%; height: 100%; }
         { h:'The world writes back', d:'Replies and new enquiries land overnight. The next session reads them, and the right ones become tracker rows without you touching a spreadsheet.', f:['wClient','wProspects','email','cos','tracker'] },
         { h:'Corrections become rules', d:'Every decision lands in the log, and every correction you make becomes a rule it follows from then on. The session closes smarter than it opened.', f:['cos','memory','tracker'] },
         { h:'Friday, the review', d:'Once a week the system prunes itself. What changed is promoted into the brief, what rotted is cut. That is why it compounds instead of cluttering.', f:['review','brief','memory','tracker','you'] }
+      ]
+    },
+
+    t1b: {
+      sub: 'One founder, five staff, and nobody else needs a Chief of Staff. Your team reaches the business through doors built for their job, and one assistant gets her own seat running your skills. Nothing they touch reaches your private world.',
+      groups: ['person', 'agent', 'seat', 'brain', 'bus', 'door', 'hold', 'world'],
+      rules: [
+        '<b>Doors, not seats.</b> Most of your team never needs an account. They get a small app shaped like their job, built by your Chief of Staff, running on yours. Nothing to license, nothing to revoke.',
+        '<b>The job’s shape decides the level, not the person’s seniority.</b> A proposal writer can be a front-door app or a skill pushed to their own seat. Same capability, different blast radius. Start at the app; move them up when they ask for something it cannot do.',
+        '<b>Separate by sensitivity, not by topic.</b> Financials, agreements and pricing logic sit outside what the team can reach, in a different folder. Not in the same place behind an instruction telling the model to stay out.',
+        '<b>Design the exit on day one.</b> If getting your business back means getting a laptop back, you gave them a copy. If it means switching off a login, you gave them access.'
+      ],
+      nodes: [
+        { id:'you', g:'person', x:9, y:40, r:12, label:'You', d:'<b>You, the founder</b>The same person as the solo view, one year and five hires later. The judgement still stays here. What changed is that five other people now feed the same brain.' },
+        { id:'cos', g:'agent', x:28, y:42, r:14, label:'Your Chief of Staff', d:'<b>Your Chief of Staff</b>Still yours alone. It also builds and maintains the doors your team uses, which is why they get software shaped like their job instead of a chat window they have to learn.' },
+        { id:'private', g:'agent', x:8, y:58, r:8, label:'Your private world', d:'<b>Your private world</b>Your brief, your daily log, your drafts, your half-formed pricing thinking. Nothing on the team side of this map has a line into it, and that absence is the control. A folder they cannot reach beats a sentence telling the model to stay out.' },
+        { id:'gate', g:'bus', x:30, y:60, r:9, label:'Approval gate', d:'<b>The approval gate</b>Your drafts, Priya’s drafts and Gus’s proposals all stop here. Judge by how reversible a thing is rather than how big it feels: a one-line client email is riskier than a large internal reorganisation, because you cannot get it back.' },
+
+        { id:'pSeat', g:'seat', x:16, y:76, r:11, label:'Priya’s seat', d:'<b>Priya’s seat, level 2</b>Her own window on a plan you own, with your proposal writer and brand rules pushed to it from your account. She toggles them on. She cannot fork them, build off them, or see anything else you own. No build required, and it works this week.' },
+        { id:'priya', g:'person', x:8, y:91, r:9, lvl:2, label:'Priya · assistant', d:'<b>Priya, your assistant</b>Gets: your skills, the company brief, pricing, client history, and a window she can actually think in. Gives back: drafts, scheduling, a tidy record. She proposes changes; the applier writes them.' },
+
+        { id:'hold3', g:'hold', x:15, y:28, r:9, ring:true, lvl:3, label:'Level 3, not yet', d:'<b>Level 3: their own workspace</b>A seat plus real comfort in a terminal, and they can build. This is the rung where who writes what and who decides what stops being theoretical. Give one person one skill for thirty days first. What they ask for next tells you whether you ever need this.' },
+        { id:'holdHire', g:'hold', x:20, y:95, r:7, ring:true, label:'The seat you didn’t refill', d:'<b>The seat you didn’t refill</b>Someone leaves and the work routes to the Chief of Staff instead of into a job ad. Nobody buys it for this reason, and it is the thing they notice about six weeks in.' },
+
+        { id:'gus', g:'person', x:31, y:93, r:9, lvl:1, label:'Gus · sales', d:'<b>Gus, sales</b>Gets: a proposal at current prices in your voice, and what this client bought last time. Gives back: every conversation logged and the pipeline stage kept honest, so your forecast stops being a guess.' },
+        { id:'dProposal', g:'door', x:34, y:79, r:8, label:'Proposal writer', d:'<b>The proposal writer</b>Gus picks the client and the scope; out comes a proposal built from current pricing, this client’s history and your voice. He sees the price. He never sees the pricing logic. The same skill could sit on his own seat instead, and the job’s shape decides which, not his seniority.' },
+        { id:'dCRM', g:'door', x:45, y:71, r:7, label:'CRM sync', d:'<b>CRM sync</b>Gets: contacts, history, what is owed. Gives back: what was said and where it got to. This is the door that stops the brain guessing at the pipeline.' },
+
+        { id:'tash', g:'person', x:53, y:93, r:8, lvl:1, label:'Tash · delivery', d:'<b>Tash, delivery lead</b>Gets: what is on, what is due, what moved overnight. Gives back: job status and time against the job, which turns "how is it tracking" from a phone call into a number.' },
+        { id:'wes', g:'person', x:66, y:95, r:7, lvl:1, label:'Wes · delivery', d:'<b>Wes, delivery</b>Gets: today’s jobs and nothing else. Gives back: hours, stamped and checked at the point of entry. Payroll stops being a Sunday job.' },
+        { id:'dJobs', g:'door', x:56, y:79, r:8, label:'Job board', d:'<b>Job status board</b>The crew’s view of the work, read straight from the shared tracker. Read only, so nobody on the tools can move a date by accident.' },
+        { id:'dTime', g:'door', x:67, y:82, r:7, label:'Timesheets', d:'<b>Timesheets</b>Hours in, checked against the job before they are folded in. The checking happens at the door rather than at month end, so nothing rubbish reaches the record.' },
+
+        { id:'fran', g:'person', x:84, y:90, r:9, lvl:1, label:'Fran · books', d:'<b>Fran, bookkeeping</b>Gets: a payment logged in ten seconds, verified against the invoice. Gives back: books that are current rather than reconstructed at quarter end. She has never opened a chat window.' },
+        { id:'dPay', g:'door', x:80, y:75, r:8, label:'Payment logger', d:'<b>Payment logger</b>An app your Chief of Staff built for one job. Fixed-shape work like this stays at level one forever; there is no reason to give it a seat.' },
+        { id:'dMail', g:'door', x:91, y:62, r:8, label:'Shared mailbox', d:'<b>The shared mailbox</b>The one everyone drops things into. If your own inbox is the only mailbox the system can see, the manager mailbox is a blind spot, and that is where the thing you missed will be. Give it a key to that one too.' },
+
+        { id:'captures', g:'bus', x:63, y:67, r:8, label:'Captures, checked', d:'<b>Team captures, verified</b>Everything entered through a door lands here first, stamped with who and what, checked against the tracker, then folded in. The team updates the business without ever touching it.' },
+        { id:'applier', g:'bus', x:50, y:57, r:10, label:'The applier', d:'<b>The applier, single writer</b>The only process allowed to change the record. Folds every queue in, one change at a time, signatures kept. Five people can write to the business and none of them can fork it.' },
+
+        { id:'review', g:'brain', x:44, y:8, r:8, ring:true, label:'Weekly review', d:'<b>Weekly review</b>The system prunes itself, and now it also shows you what came in through the doors: whose numbers moved, what the team fed back, what nobody logged.' },
+        { id:'brief', g:'brain', x:58, y:16, r:10, label:'Company brief', d:'<b>Company brief</b>What the business is, what it sells, how it sounds. Read by your Chief of Staff, by Priya’s seat and by every door. The slow layer.' },
+        { id:'pricing', g:'brain', x:70, y:11, r:8, label:'Pricing', d:'<b>Pricing</b>One price list, one place. Lift a price here and the proposal writer, the job board and Priya’s next draft all read the new number without anyone being told.' },
+        { id:'voice', g:'brain', x:47, y:26, r:8, label:'Voice standards', d:'<b>Voice standards</b>How you write, encoded. This is what stops five people producing five different-sounding businesses.' },
+        { id:'memory', g:'brain', x:68, y:26, r:9, label:'Memory & log', d:'<b>Memory and daily log</b>Facts, decisions and the record, signed and dated. Corrections still compound, and now they compound across five people instead of one.' },
+        { id:'playbooks', g:'brain', x:58, y:35, r:8, label:'Playbooks', d:'<b>Playbooks</b>How the business does repeated things. This is the layer that used to walk out the door when someone left.' },
+        { id:'tracker', g:'brain', x:79, y:38, r:9, label:'Clients & jobs', d:'<b>Clients and jobs tracker</b>The fast layer, and the file that would fork if five people wrote to it at once. That is exactly why only the applier touches it.' },
+
+        { id:'wClients', g:'world', x:95, y:48, r:9, label:'Clients', d:'<b>Your clients</b>They get the proposal after you approved it, not after Gus wrote it. Their replies land in the shared mailbox, and the next session reads them.' }
+      ],
+      edges: [
+        { a:'you', b:'cos', k:'live', both:true },
+        { a:'cos', b:'private', k:'live' },
+        { a:'cos', b:'brief', k:'read' }, { a:'cos', b:'voice', k:'read' }, { a:'cos', b:'pricing', k:'read' },
+        { a:'cos', b:'memory', k:'live' }, { a:'cos', b:'tracker', k:'read' }, { a:'cos', b:'playbooks', k:'read' },
+        { a:'cos', b:'gate', k:'live' }, { a:'cos', b:'applier', k:'session' },
+        { a:'cos', b:'pSeat', k:'session' }, { a:'cos', b:'dMail', k:'read' },
+        { a:'you', b:'review', k:'weekly' }, { a:'review', b:'brief', k:'weekly' }, { a:'review', b:'memory', k:'weekly' },
+
+        { a:'priya', b:'pSeat', k:'live', both:true },
+        { a:'pSeat', b:'brief', k:'read' }, { a:'pSeat', b:'pricing', k:'read' }, { a:'pSeat', b:'tracker', k:'read' }, { a:'pSeat', b:'playbooks', k:'read' },
+        { a:'pSeat', b:'gate', k:'session' }, { a:'pSeat', b:'applier', k:'session' },
+        { a:'hold3', b:'pSeat', k:'read' }, { a:'holdHire', b:'cos', k:'read' },
+
+        { a:'gus', b:'dProposal', k:'use' }, { a:'gus', b:'dCRM', k:'use' },
+        { a:'dProposal', b:'pricing', k:'read' }, { a:'dProposal', b:'voice', k:'read' }, { a:'dProposal', b:'tracker', k:'read' },
+        { a:'dProposal', b:'gate', k:'session' }, { a:'dCRM', b:'captures', k:'session' },
+
+        { a:'tash', b:'dJobs', k:'use' }, { a:'tash', b:'dTime', k:'use' }, { a:'tash', b:'dMail', k:'use' },
+        { a:'wes', b:'dJobs', k:'use' }, { a:'wes', b:'dTime', k:'use' },
+        { a:'dJobs', b:'tracker', k:'read' }, { a:'dTime', b:'captures', k:'session' },
+
+        { a:'fran', b:'dPay', k:'use' }, { a:'dPay', b:'captures', k:'session' },
+
+        { a:'captures', b:'applier', k:'session' },
+        { a:'applier', b:'tracker', k:'session' }, { a:'applier', b:'memory', k:'session' }, { a:'applier', b:'pricing', k:'session' },
+
+        { a:'gate', b:'wClients', k:'session' },
+        { a:'wClients', b:'dMail', k:'read' }, { a:'dMail', b:'captures', k:'session' }
+      ],
+      steps: [
+        { h:'Your world, unchanged', d:'Everything from the solo view still runs: the brief, the memory, the gate, the rhythm. Your private world stays private, and it is the one thing on this map nobody else can reach.', f:['you','cos','private','memory'] },
+        { h:'Most of the team never gets an account', d:'Gus, Tash, Wes and Fran reach the business through small apps shaped like their jobs. Your Chief of Staff built them and the back end runs on your account. No seats, no licences, nothing to revoke.', f:['gus','tash','wes','fran','dProposal','dCRM','dJobs','dTime','dPay'] },
+        { h:'The salesperson gets a proposal writer', d:'Gus picks the client and the scope, and out comes a proposal at current prices, in your voice, against what that client bought last time. He sees the price. He never sees the pricing logic.', f:['gus','dProposal','pricing','voice','tracker'] },
+        { h:'One assistant gets a seat', d:'Priya works in her own window, with your proposal writer and brand rules pushed to it from your account. She reads the company brief. She cannot read your private world, and that is a boundary rather than an instruction.', f:['priya','pSeat','cos','brief','pricing','private'] },
+        { h:'The door swings both ways', d:'This is the half founders do not expect. Gus’s conversations, Wes’s hours, Fran’s payments and whatever the team drops in the shared mailbox all come back in. The system stops guessing because the team is feeding it.', f:['dCRM','dTime','dPay','dMail','captures'] },
+        { h:'Checked, then folded in', d:'Every entry is stamped with who and what, checked against the tracker, then folded into the record by one applier, one change at a time. Five people can write to the business and none of them can break it.', f:['captures','applier','tracker','memory','pricing'] },
+        { h:'Nothing leaves without you', d:'Priya’s drafts and Gus’s proposals stop at the same gate your own work does. Judge by how reversible a thing is rather than how big it feels.', f:['pSeat','dProposal','gate','wClients'] },
+        { h:'The rung you do not climb yet', d:'Level three is their own workspace, building their own things. Hold it. Give one person one skill for thirty days, and what they ask for next tells you whether you ever need it.', f:['hold3','priya','pSeat'] },
+        { h:'The seat you didn’t refill', d:'Someone leaves and the work routes here instead of into a job ad. Nobody buys it for that reason, and it is the thing they notice about six weeks in.', f:['holdHire','cos','tracker'] }
       ]
     },
 
@@ -438,6 +531,7 @@ canvas { display: block; width: 100%; height: 100%; }
   }
   function nodeAlpha(n) {
     var a = on[n.g] ? 1 : 0.1;
+    if (n.g === 'hold') a *= 0.62;
     if (step >= 0) a *= inFocus(n.id) ? 1 : 0.13;
     if (!morphFrom[n.id] && morphT < 1) a *= ease(morphT);
     return a;
@@ -563,6 +657,18 @@ canvas { display: block; width: 100%; height: 100%; }
         ctx.textAlign = 'center';
         ctx.fillText(n.label, x, y + n.r + 15);
       }
+      if (n.lvl) {
+        var bx = x + n.r * 0.78, by = y - n.r * 0.78;
+        ctx.globalAlpha = al;
+        ctx.beginPath(); ctx.arc(bx, by, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#1f2126'; ctx.fill();
+        ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.setLineDash([]); ctx.stroke();
+        ctx.fillStyle = '#e8eaee';
+        ctx.font = '600 9px -apple-system, "Segoe UI", sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(String(n.lvl), bx, by);
+        ctx.textBaseline = 'alphabetic';
+      }
     });
     ctx.globalAlpha = 1;
 
@@ -657,10 +763,9 @@ canvas { display: block; width: 100%; height: 100%; }
   document.getElementById('snext').addEventListener('click', function () { advance(1); });
   document.getElementById('sback').addEventListener('click', function () { advance(-1); });
   document.getElementById('sx').addEventListener('click', exitStory);
+  var ORDER = ['t1', 't1b', 't2', 't3'];
   document.addEventListener('keydown', function (e) {
-    if (e.key === '1') setTier('t1');
-    else if (e.key === '2') setTier('t2');
-    else if (e.key === '3') setTier('t3');
+    if (e.key >= '1' && e.key <= '4') setTier(ORDER[parseInt(e.key, 10) - 1]);
     else if (e.key === 'p' || e.key === 'P') { step = 0; showStep(); }
     else if (step >= 0) {
       if (e.key === 'Escape') exitStory();
