@@ -91,15 +91,37 @@
   <h3 style="margin-top:24px;">The Claude desktop app</h3>
   <p class="sub" style="margin-bottom:16px;">Download it from claude.ai, install it, sign in. You've already got a paid plan, so you're set. One honest note: building is heavier than chatting and you may start hitting the ceiling. If you do, we'll talk about the bigger plan then rather than you paying for it up front. That subscription is the one running cost of the whole thing, and it goes to Anthropic, not to me.</p>
 
-  <h3 style="margin-top:28px;">The one check that catches people</h3>
-  <p class="sub" style="margin-bottom:16px;">There's a small background tool called git that Claude needs in order to work on files on your own computer. You'll never open it or look at it. Most Macs have it already. Some don't, and a brand new machine is exactly where it can be missing.</p>
+  <h3 style="margin-top:28px;">Git, the one that catches people</h3>
+  <p class="sub" style="margin-bottom:16px;">There's a small background tool called git that Claude needs in order to work on files on your own computer. You'll never open it, look at it, or think about it again. Most Macs have it already and this takes fifteen seconds. A brand new machine is exactly where it can be missing, and if it is, the fix is a big slow download that we do not want eating the front of session one. So it's worth doing now, properly, while there's no clock on you.</p>
+
+  <h4 style="font-family:var(--label);font-size:16px;letter-spacing:.02em;font-weight:500;margin:22px 0 6px;">First, the check</h4>
   <ol class="mini">
-    <li>Press Command and Space, type <strong>Terminal</strong>, press Enter.</li>
-    <li>Type <code>git --version</code> and press Enter.</li>
-    <li>Send me whatever comes back, even if it looks like nonsense.</li>
+    <li>Press <strong>Command</strong> and <strong>Space</strong> together, type <strong>Terminal</strong>, press <strong>Enter</strong>. A small window opens with plain text in it. This is normal and you cannot break anything by typing in it.</li>
+    <li>Type <code>git --version</code> and press <strong>Enter</strong>. Type it exactly, with the two dashes.</li>
+    <li>Read what comes back.</li>
   </ol>
-  <p style="margin-top:18px;"><strong>Please don't fight this one alone.</strong> If it's missing, the fix is a 2GB download behind a system dialog that likes to hide behind your other windows, and it is the single most common place people get stuck. Message me and we'll do it together on a screen share. Ten minutes, I drive, you watch. It has nothing to do with being good with computers.</p>
-  <p class="note">This is the only step I need confirmed in writing before session one, because if it's missing we lose the opening stretch of the session to it.</p>
+
+  <h4 style="font-family:var(--label);font-size:16px;letter-spacing:.02em;font-weight:500;margin:26px 0 6px;">If you get a version number</h4>
+  <p class="sub" style="margin-bottom:0;">Something like <code>git version 2.50.1</code>. That's it, you're done. Copy that line into an email to me, close Terminal, and skip to step 2. The number itself doesn't matter, any version is fine.</p>
+
+  <h4 style="font-family:var(--label);font-size:16px;letter-spacing:.02em;font-weight:500;margin:26px 0 6px;">If you get anything else</h4>
+  <p class="sub" style="margin-bottom:16px;">Either a box pops up offering to install "command line developer tools", or you get an error. Same fix either way.</p>
+  <ol class="mini">
+    <li><strong>If the box appeared:</strong> click <strong>Install</strong>, then <strong>Agree</strong> to the licence. Skip to point 3.</li>
+    <li><strong>If no box appeared:</strong> type <code>xcode-select --install</code> into Terminal, press <strong>Enter</strong>, then click <strong>Install</strong> and <strong>Agree</strong> when the box comes up.</li>
+    <li><strong>Now leave it alone and let it finish.</strong> It's about 2GB, so anywhere from a few minutes to most of an hour depending on your connection. The progress bar barely moves for long stretches. That is normal and it is not stuck.</li>
+    <li><strong>If nothing seems to be happening, look behind your other windows.</strong> It's an ordinary Mac dialog and it loves opening behind Chrome. More people think this has failed for that reason than any other.</li>
+    <li>When it says it's finished, go back to Terminal, type <code>git --version</code> again and press <strong>Enter</strong>.</li>
+    <li>You should now get a version number. Copy that line into an email to me and you're done.</li>
+  </ol>
+
+  <h4 style="font-family:var(--label);font-size:16px;letter-spacing:.02em;font-weight:500;margin:26px 0 6px;">If it goes wrong</h4>
+  <ul class="mini" style="list-style:disc;">
+    <li><strong>"Can't be installed at this time"</strong>, or it stops partway. Almost always Apple's servers being busy rather than anything you did. Wait an hour, then type <code>xcode-select --install</code> again.</li>
+    <li><strong>It says the tools are already installed, but <code>git --version</code> still fails.</strong> Stop there. There's a short fix and which one depends on your machine, so let me do it.</li>
+    <li><strong>Twenty minutes in and it's still fighting you.</strong> Stop. Message me and we'll do it together on a screen share, ten minutes, I drive and you watch. This is the single most common place people get stuck, it happens to people who are perfectly good with computers, and it is not a sign of anything.</li>
+  </ul>
+  <p class="note" style="margin-top:18px;">Either way, send me the line that comes back. This is the one thing I need confirmed in writing before session one, because if it's missing on the day we lose the opening stretch of the session to a download.</p>
 
   <hr class="rule">
 
@@ -114,6 +136,10 @@
 
   <h2><span class="step">3.</span> Drop your work into <span class="red">Ingest</span></h2>
   <p class="sub">Straight into the Ingest folder. A few of each is plenty, don't go hunting for everything, and don't tidy any of it.</p>
+  <div class="boundary" style="margin-bottom:26px;">
+    <p style="margin-bottom:10px;"><strong>Before you ask: any format at all.</strong> Photos, screenshots, Word documents, PDFs, Excel spreadsheets, Pages files, Keynote decks, text files, Markdown files, voice memos, a screenshot of a screenshot. It genuinely does not matter.</p>
+    <p style="margin-bottom:0;">Don't convert anything, don't rename anything, don't put things in subfolders, don't decide what's worth including. Just dump it in. Working out what's in there is Catherine's first job, not yours, and the mess itself tells me more than a tidied version would.</p>
+  </div>
   <ul class="bring">
     <li>
       <h3>Your pricing sheet</h3>
@@ -149,10 +175,7 @@
   <div class="promptwrap">
     <div class="top">
       <span class="cap">Paste this into each AI project</span>
-      <span style="display:flex;gap:8px;">
-        <button class="copy" onclick="const b=this;navigator.clipboard.writeText(document.getElementById('handover').innerText).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy the prompt',1600)})">Copy the prompt</button>
-        <a class="copy" style="border-bottom:1px solid var(--accent);display:inline-block;" download="catherine-handover-prompt.md" id="dl">Download as .md</a>
-      </span>
+      <button class="copy" onclick="const b=this;navigator.clipboard.writeText(document.getElementById('handover').innerText).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy the prompt',1600)})">Copy the prompt</button>
     </div>
 <pre id="handover">You're helping me hand over to a new AI assistant that will run the business side of my coaching and consulting practice. Using everything you know about me and my work from our chats and this project, write a clear, plain handover brief a new assistant could read to get up to speed.
 
@@ -167,9 +190,11 @@ Cover these, with a heading for each:
 8. My preferences: how I like to work, and what I do and don't want from an assistant.
 9. Anything else important you know about my work.
 
-Format the whole thing as Markdown so I can save it straight to a .md file. Use # for the title and ## for each section heading. Start with a title line naming which AI tool this brief came from, and today's date underneath it.
+Format the whole thing as Markdown. Use # for the title and ## for each section heading. Start with a title line naming which AI tool this brief came from, and today's date underneath it.
 
-Give it to me as one complete document in a single block I can copy out in full. No preamble before it and no commentary after it.
+Then save it as a Markdown file and give me a download link for it. Name the file handover-claude.md, or handover-chatgpt.md if you are ChatGPT. I want an actual .md file I can download, not just text on the screen.
+
+If you cannot create a file for me to download, say so plainly and give me the whole thing as Markdown in one block I can copy instead. No preamble before it and no commentary after it.
 
 Important: keep it to the business layer only. Do not include any client names, coaching notes, session detail, or anything private about the people I work with. If something can't be shared, leave it out and say so.</pre>
   </div>
@@ -177,11 +202,18 @@ Important: keep it to the business layer only. Do not include any client names, 
   <p class="sub" style="margin-top:22px;">Then, for each one:</p>
   <ol class="steps">
     <li>Run it in each of your projects, in both Claude and ChatGPT. Each one remembers different things, so each will give you a different brief. Run it in an ordinary chat too, to catch anything sitting in general memory.</li>
-    <li>Copy the answer, open <strong>TextEdit</strong>, and before you paste anything go to <strong>Format &gt; Make Plain Text</strong>. This is the step that matters. TextEdit saves in its own format otherwise and the file arrives unreadable.</li>
-    <li>Paste it in, then <strong>File &gt; Save</strong>, and name it ending in <code>.md</code>. Something like <code>claude-handover.md</code> or <code>chatgpt-handover.md</code>. If it asks whether you really want to use that ending, say yes.</li>
-    <li>Save it into the <strong>Ingest</strong> folder, alongside everything else. A separate file for each tool is exactly right.</li>
+    <li><strong>Download the .md file it gives you</strong> and drag it into the Ingest folder. That's the whole job. Rename it if two land with the same name, otherwise leave it alone.</li>
+    <li>If it tells you it can't make a file, copy the text instead, open <strong>TextEdit</strong>, and before pasting anything go to <strong>Format &gt; Make Plain Text</strong>. That step matters, TextEdit saves in its own format otherwise and the file arrives unreadable. Paste, then <strong>File &gt; Save</strong> with a name ending in <code>.md</code>, and say yes when it asks whether you really want that ending. Save it into Ingest.</li>
   </ol>
-  <p class="note" style="margin-top:14px;">If any of that gets fiddly, just paste the answers into an email to me and I'll turn them into files. It is not worth twenty minutes of your evening.</p>
+  <p class="note" style="margin-top:14px;">If any of that turns fiddly, just paste the answers into an email to me and I'll turn them into files. It is not worth twenty minutes of your evening.</p>
+
+  <hr class="rule">
+
+  <h2>Worth setting up: <span class="red">talking instead of typing</span></h2>
+  <p>Most of what Catherine needs from you isn't written down anywhere. It's in your head, and you're far faster saying it than typing it. So before we start, get dictation working and use it.</p>
+  <p><strong>The one already on your Mac.</strong> System Settings, then Keyboard, then turn on <strong>Dictation</strong>. It gives you a shortcut key, usually pressing the microphone key or Control twice, and from then on you can talk into any text box on the machine. Free, already there, and good enough.</p>
+  <p><strong>Or a paid one, if you'll lean on it.</strong> Something like Wispr Flow or Superwhisper is noticeably more accurate on long stretches of speech and handles the way people actually talk, with the false starts and the doubling back. Worth the small monthly cost if you're going to be dictating a lot, which I suspect you will be.</p>
+  <p>Either way, it changes how this feels. Rather than writing a brief, you talk for four minutes about how you price a Leaders Lab and why, and that recording becomes something Catherine can work from. If it's easier, dictate straight into a note and drop that into Ingest as well.</p>
 
   <hr class="rule">
 
@@ -204,13 +236,5 @@ Important: keep it to the business layer only. Do not include any client names, 
   <footer>Fifth Castle <span class="red">Media</span></footer>
 
 </div>
-<script>
-  (function () {
-    var pre = document.getElementById('handover');
-    var link = document.getElementById('dl');
-    if (!pre || !link) return;
-    link.href = URL.createObjectURL(new Blob([pre.innerText], { type: 'text/markdown' }));
-  })();
-</script>
 </body>
 </html>
