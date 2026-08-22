@@ -1,6 +1,6 @@
 # docs.fifthcastle.media — Page Directory
 
-Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-08-08.
+Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-docs/`. Last generated: 2026-08-22.
 
 ## Fifth Castle Media
 
@@ -26,6 +26,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Founder stories (testimonials) | [chief-of-staff-testimonials.html](https://docs.fifthcastle.media/chief-of-staff-testimonials.html) | 2026-08-08 |
 | Live demonstration, registration page | [live-demonstration.html](https://docs.fifthcastle.media/live-demonstration.html) | 2026-08-08 |
 | Before We Begin | [before-we-begin.html](https://docs.fifthcastle.media/before-we-begin.html) | 2026-06-26 |
+| Run Your Kit — the self-serve setup and operating instructions, linked from the kit delivery email | [run-your-kit.html](https://docs.fifthcastle.media/run-your-kit.html) | 2026-08-22 |
 | Your Chief of Staff | [your-ai-os.html](https://docs.fifthcastle.media/your-ai-os.html) | 2026-06-30 |
 | The Shape of the System | [the-shape-of-the-system.html](https://docs.fifthcastle.media/the-shape-of-the-system.html) | 2026-06-30 |
 | AI That Actually Works | [ai-that-actually-works.html](https://docs.fifthcastle.media/ai-that-actually-works.html) | 2026-06-30 |
@@ -43,6 +44,10 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Organising Your Workspace | [references/Organising-Your-Workspace.html](https://docs.fifthcastle.media/references/Organising-Your-Workspace.html) | 2026-07-01 |
 | Getting Unstuck | [references/Getting-Unstuck.html](https://docs.fifthcastle.media/references/Getting-Unstuck.html) | 2026-07-01 |
 | Backing It Up | [references/Backing-It-Up.html](https://docs.fifthcastle.media/references/Backing-It-Up.html) | 2026-07-01 |
+| Your Homework (self-serve wording) | [references/your-homework.html](https://docs.fifthcastle.media/references/your-homework.html) | 2026-08-22 |
+| Skills for Inspiration (self-serve wording) | [references/skills-for-inspiration.html](https://docs.fifthcastle.media/references/skills-for-inspiration.html) | 2026-08-22 |
+| Connecting Your Tools (self-serve wording) | [references/connecting-your-tools.html](https://docs.fifthcastle.media/references/connecting-your-tools.html) | 2026-08-22 |
+| Install the Reader (self-serve wording) | [references/install-the-reader.html](https://docs.fifthcastle.media/references/install-the-reader.html) | 2026-08-22 |
 
 ## Chief of Staff — Personal (per-recipient, noindex)
 

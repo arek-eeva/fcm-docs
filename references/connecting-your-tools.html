@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting Your Tools | Chief of Staff</title>
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:#FBF9F5; --panel:#F2EEE7; --text:#17150F; --muted:#6A645B; --subtle:#A29B90;
+    --accent:#BD202D; --line:#E2DCD1;
+    --display:'Vidaloka',Georgia,serif; --label:'Khand',sans-serif;
+    --body:Georgia,'Times New Roman',serif; --mono:'JetBrains Mono',monospace; --r:4px;
+  }
+  body { background:var(--bg); color:var(--text); font-family:var(--body);
+    font-size:18px; line-height:1.65; -webkit-font-smoothing:antialiased; padding:64px 24px 88px; }
+  .wrap { max-width:720px; margin:0 auto; }
+  .eyebrow { font-family:var(--label); text-transform:uppercase; letter-spacing:0.24em;
+    font-size:12px; color:var(--muted); margin-bottom:18px; }
+  .eyebrow a { color:var(--muted); border:0; }
+  .eyebrow a:hover { color:var(--accent); }
+  .eyebrow .red { color:var(--accent); }
+  h1 { font-family:var(--display); font-size:40px; line-height:1.15; font-weight:400; margin-bottom:26px; }
+  h2 { font-family:var(--label); text-transform:uppercase; letter-spacing:0.16em;
+    font-size:15px; font-weight:600; margin:40px 0 14px; }
+  h3 { font-family:var(--label); font-size:20px; font-weight:500; margin:28px 0 8px; }
+  p { margin-bottom:16px; }
+  a { color:var(--text); text-decoration:none; border-bottom:1px solid var(--accent); }
+  a:hover { color:var(--accent); }
+  ul, ol { margin:0 0 18px 22px; }
+  li { margin-bottom:8px; }
+  hr { height:1px; background:var(--line); border:0; margin:40px 0; }
+  code { font-family:var(--mono); font-size:15px; color:#8E1620; background:var(--panel);
+    border:1px solid var(--line); border-radius:var(--r); padding:1px 6px; }
+  footer { margin-top:56px; padding-top:26px; border-top:1px solid var(--line);
+    font-family:var(--label); text-transform:uppercase; letter-spacing:0.3em;
+    font-size:12px; color:var(--subtle); }
+  footer .red { color:var(--accent); }
+  @media (max-width:640px){ body{padding:40px 18px 64px; font-size:17px;} h1{font-size:31px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow"><a href="../run-your-kit.html">Run your <span class="red">kit</span></a></div>
+  <h1>Connecting your tools</h1>
+  <p>Your Chief of Staff is useful on its own, working with your files. It gets a lot more useful when it can reach the other tools you already use: your email, your calendar, your customer list. Here&#x27;s how that works, in plain terms. Your Chief of Staff can walk you through it: ask it to take you through one connection at a time, and do them one at a time rather than in a burst.</p>
+  <hr>
+  <h2>The words, quickly</h2>
+  <ul>
+  <li>A <strong>connector</strong> (or <strong>integration</strong>) is a ready-made link between your assistant and another app. Same idea, two words for it. It lets your assistant work inside that tool instead of you copying and pasting between tabs.</li>
+  <li><strong>MCP</strong> is the standard way those connections are made. Think of it as a universal adaptor: any tool that speaks MCP can plug straight into your assistant. (There&#x27;s a fuller note in the glossary.)</li>
+  <li>A <strong>plugin</strong> is a bundle you add that brings a set of skills or connectors at once, rather than switching them on one by one.</li>
+  <li>A <strong>skill</strong> is a routine your assistant runs (see the skills-for-inspiration list). Skills often use connectors to get their job done: a &quot;book the meeting&quot; skill uses your calendar connector.</li>
+  <li>An <strong>API</strong> is how one piece of software talks to another directly. Some tools connect through their API and need an <strong>API key</strong>, which is just a password for software. Keep keys private, never put them in your repo, and never share them. Your assistant reads them from a separate, private file.</li>
+  <li>A <strong>CRM</strong> is your customer database: contacts, deals, notes, the history of who you&#x27;ve spoken to. Connecting it lets your assistant read and update that record, so your pipeline stays current without you typing everything twice.</li>
+  </ul>
+  <hr>
+  <h2>The two worth connecting first: email and calendar</h2>
+  <p>Email and calendar are where most of the day-to-day value sits.</p>
+  <p>With your <strong>email</strong> connected, your assistant can read a thread, find the one you mean, pull the facts out of it, and draft a reply in your voice, ready for you to read and send. You stay the one who hits send.</p>
+  <p>With your <strong>calendar</strong> connected, it can check what&#x27;s on, find a free slot, prep you for your next meeting, and book time when you ask.</p>
+  <p>How it works, plainly: you log in once with your Google account and grant permission, the same screen you see whenever an app asks to connect to Google. From then on your assistant can do those things. Start with reading and drafting rather than sending, so you stay in control of anything that leaves your inbox.</p>
+  <hr>
+  <h2>The boundary still holds</h2>
+  <p>Connecting a tool gives your assistant access to what&#x27;s inside it. So connect your business tools, not anything holding client records or sensitive personal information. For your work, email and calendar are fine. A clinical or client records system is not, and it stays separate.</p>
+  <p>A few simple habits keep this safe:</p>
+  <ul>
+  <li>Start with read-and-draft access where you can, rather than full send-and-delete.</li>
+  <li>Keep any API keys secret, and keep your repo private.</li>
+  <li>You approve anything that sends a message or spends money.</li>
+  </ul>
+  <hr>
+  <h2>A sensible order</h2>
+  <p>1. Email and calendar, the daily wins.</p>
+  <p>2. Your CRM or pipeline, so your customer record keeps itself current.</p>
+  <p>3. Anything else that earns its place: your accounting tool, your project tool, your social scheduler.</p>
+  <p>Add one, use it for a week, then add the next. There&#x27;s no prize for connecting everything at once, and a tool you haven&#x27;t learned to trust yet is one more thing to watch.</p>
+  <footer>Fifth Castle <span class="red">Media</span></footer>
+</div>
+</body>
+</html>

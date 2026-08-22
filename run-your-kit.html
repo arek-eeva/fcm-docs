@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run Your Kit | Build Your Own Chief of Staff</title>
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FBF9F5;
+    --panel: #F2EEE7;
+    --panel2: #EDE8DF;
+    --text: #17150F;
+    --muted: #6A645B;
+    --subtle: #A29B90;
+    --accent: #BD202D;
+    --line: #E2DCD1;
+    --nav: rgba(251, 249, 245, 0.94);
+    --display: 'Vidaloka', Georgia, serif;
+    --label: 'Khand', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', monospace;
+    --r: 4px;
+    --navh: 54px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 18px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Navigation */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav); backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+    height: var(--navh);
+  }
+  .nav-in {
+    max-width: 1080px; margin: 0 auto; height: 100%;
+    display: flex; align-items: center; gap: 28px;
+    padding: 0 24px;
+  }
+  .brand {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em;
+    font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap;
+    border: 0; text-decoration: none;
+  }
+  .brand .red { color: var(--accent); }
+  .nav-links {
+    display: flex; gap: 22px; margin-left: auto; align-items: center;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    white-space: nowrap; border: 0; text-decoration: none;
+    padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.on { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+  section { scroll-margin-top: calc(var(--navh) + 20px); }
+
+  .eyebrow {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em;
+    font-size: 13px; color: var(--muted); margin-bottom: 22px;
+  }
+  .eyebrow .red { color: var(--accent); }
+  h1 { font-family: var(--display); font-size: 46px; line-height: 1.1; font-weight: 400; margin-bottom: 20px; }
+  .promise { font-size: 21px; margin-bottom: 14px; }
+  .lede { color: var(--muted); font-size: 18px; }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 52px 0; }
+  h2 {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em;
+    font-size: 15px; font-weight: 600; margin-bottom: 8px;
+  }
+  h2 .red { color: var(--accent); }
+  h2 .num { font-family: var(--mono); font-size: 13px; color: var(--accent); margin-right: 10px; letter-spacing: 0; }
+  .sub { font-family: var(--display); font-size: 31px; line-height: 1.2; margin-bottom: 8px; }
+  .time { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--subtle); margin-bottom: 26px; }
+  h3 { font-family: var(--label); font-size: 21px; font-weight: 500; letter-spacing: 0.02em; margin: 34px 0 10px; }
+  h4 { font-family: var(--label); font-size: 16px; font-weight: 600; letter-spacing: 0.08em; color: var(--muted); margin: 26px 0 8px; text-transform: uppercase; }
+  p { margin-bottom: 16px; }
+  a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); }
+  a:hover { color: var(--accent); }
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 8px; }
+  code {
+    font-family: var(--mono); font-size: 15px; color: #8E1620;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 1px 6px;
+  }
+  pre {
+    font-family: var(--mono); font-size: 15px; line-height: 1.55; color: var(--text);
+    background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: var(--r); padding: 16px 18px; margin-bottom: 16px;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+  }
+  pre code { background: none; border: 0; padding: 0; font-size: 15px; color: var(--text); }
+  kbd {
+    font-family: var(--label); font-size: 14px; letter-spacing: 0.04em;
+    background: #fff; border: 1px solid var(--subtle); border-bottom-width: 2px;
+    border-radius: var(--r); padding: 1px 7px; color: var(--text);
+  }
+  .callout {
+    background: var(--panel); border-left: 3px solid var(--accent);
+    padding: 20px 24px; margin: 26px 0; border-radius: 0 var(--r) var(--r) 0;
+  }
+  .callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
+  .callout .cl {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.18em;
+    font-size: 12px; color: var(--accent); display: block; margin-bottom: 8px;
+  }
+  .quiet { border-left-color: var(--subtle); background: var(--panel2); }
+  .quiet .cl { color: var(--muted); }
+
+  /* Prompt blocks */
+  .prompt { margin: 22px 0; }
+  .prompt .use {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 12px; color: var(--accent); margin-bottom: 6px;
+  }
+  .prompt .why { color: var(--muted); font-size: 16px; margin-top: -6px; }
+
+  /* Video slots */
+  .video {
+    border: 1px dashed var(--subtle); border-radius: var(--r);
+    padding: 20px 22px; margin: 30px 0; background: var(--panel2);
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .video .vn {
+    font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: var(--r); padding: 2px 7px; flex: none;
+  }
+  .video .vl {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em;
+    font-size: 11px; color: var(--subtle); display: block; margin-bottom: 4px;
+  }
+  .video .vt { font-family: var(--label); font-size: 19px; font-weight: 500; margin-bottom: 3px; }
+  .video .vd { color: var(--muted); font-size: 15px; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 16px; }
+  th {
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 12px; color: var(--muted); text-align: left; font-weight: 600;
+    padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line);
+  }
+  td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--muted); }
+  td:first-child { color: var(--text); font-family: var(--label); font-size: 17px; white-space: nowrap; }
+
+  .toc { list-style: none; margin-left: 0; }
+  .toc li { padding: 10px 0; border-top: 1px solid var(--line); display: flex; gap: 16px; align-items: baseline; }
+  .toc li:last-child { border-bottom: 1px solid var(--line); }
+  .toc .n { font-family: var(--mono); font-size: 13px; color: var(--accent); min-width: 26px; }
+  .toc a { border: 0; }
+  .toc a:hover { color: var(--accent); }
+  .toc .d { color: var(--subtle); font-size: 15px; margin-left: auto; text-align: right; white-space: nowrap; }
+
+  /* Resource cards */
+  .res { list-style: none; margin: 0 0 24px 0; }
+  .res li { padding: 14px 0; border-top: 1px solid var(--line); }
+  .res li:last-child { border-bottom: 1px solid var(--line); }
+  .res .rt { font-family: var(--label); font-size: 18px; font-weight: 500; margin-bottom: 2px; }
+  .res .rp { font-family: var(--mono); font-size: 13px; color: var(--subtle); }
+  .res .rd { color: var(--muted); font-size: 16px; }
+
+  .os { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 13px; color: var(--accent); display: block; margin: 30px 0 6px; }
+  footer {
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line);
+    font-family: var(--label); text-transform: uppercase;
+    letter-spacing: 0.3em; font-size: 12px; color: var(--subtle);
+  }
+  footer .red { color: var(--accent); }
+
+  @media (max-width: 700px) {
+    .wrap { padding: 40px 18px 72px; }
+    body { font-size: 17px; }
+    h1 { font-size: 34px; }
+    .sub { font-size: 25px; }
+    .toc .d { display: none; }
+    .nav-in { gap: 16px; padding: 0 18px; }
+    .brand { font-size: 12px; letter-spacing: 0.14em; }
+    .video { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">Run your <span class="red">kit</span></a>
+    <div class="nav-links">
+      <a href="#git">Setup</a>
+      <a href="#context">Context</a>
+      <a href="#interface">Interface</a>
+      <a href="#codex">Second opinion</a>
+      <a href="#running">Running it</a>
+      <a href="#resources">Resources</a>
+      <a href="#support">Support</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="eyebrow">Build your own <span class="red">Chief of Staff</span></div>
+  <h1>Run your kit.</h1>
+  <p class="promise">Everything I'd show you across the first few sessions, written down so you can do it on your own.</p>
+  <p class="lede">Start at the top and work down. You'll go from a computer with nothing on it to an assistant that knows your business, remembers your last conversation and drafts in your voice. Set aside about half an hour for setup and an hour for the first real session, and don't do them on the same afternoon if you'd rather not.</p>
+
+  <hr class="rule">
+
+  <h2>The <span class="red">order</span></h2>
+  <ol class="toc">
+    <li><span class="n">01</span><a href="#git">Set up Git</a><span class="d">10 min, or an hour if it's missing</span></li>
+    <li><span class="n">02</span><a href="#app">Install the Claude app</a><span class="d">5 min</span></li>
+    <li><span class="n">03</span><a href="#unpack">Unpack your kit</a><span class="d">5 min</span></li>
+    <li><span class="n">04</span><a href="#wake">Open the folder and wake it up</a><span class="d">5 min</span></li>
+    <li><span class="n">05</span><a href="#context">Bring your context</a><span class="d">30 to 60 min</span></li>
+    <li><span class="n">06</span><a href="#interface">The interface, part by part</a><span class="d">15 min</span></li>
+    <li><span class="n">07</span><a href="#model">Choosing the model and how hard it thinks</a><span class="d">5 min</span></li>
+    <li><span class="n">08</span><a href="#files">Attaching files</a><span class="d">3 min</span></li>
+    <li><span class="n">09</span><a href="#dictate">Dictating</a><span class="d">5 min</span></li>
+    <li><span class="n">10</span><a href="#codex">A second opinion: connect Codex</a><span class="d">optional, 20 min</span></li>
+    <li><span class="n">11</span><a href="#running">How to run a session</a><span class="d">read once, come back</span></li>
+    <li><span class="n">12</span><a href="#stuck">When you get stuck</a><span class="d">read once, come back</span></li>
+    <li><span class="n">13</span><a href="#resources">What else is in your kit</a><span class="d">browse</span></li>
+    <li><span class="n">14</span><a href="#support">What's included, and what isn't</a><span class="d">2 min</span></li>
+  </ol>
+
+  <h3>What you need before you start</h3>
+  <ul>
+    <li><strong>A Mac or a Windows PC.</strong> Both work. Where a step differs, both versions are given.</li>
+    <li><strong>A paid Claude plan in your own name.</strong> The free plan doesn't include the part the kit uses. You pay Anthropic directly, it's separate from the price of the kit, and it's the ongoing running cost of the whole system.</li>
+    <li><strong>Git, and Python.</strong> Two small free background tools. Step 1 installs both. You'll never open either of them.</li>
+    <li><strong>A folder of your own material.</strong> Old chats, writing samples, your price list. Step 5 covers what's worth gathering. It can be a complete mess.</li>
+  </ul>
+
+  <h3>Worth watching first</h3>
+  <p>Three short presentations, about half an hour all up. They're the introduction I'd otherwise deliver in the first session, and the rest of this page makes more sense after them.</p>
+  <ul>
+    <li><a href="https://docs.fifthcastle.media/ai-that-actually-works.html">AI that actually works</a>, on why asking questions stays shallow and what it looks like when AI does your work instead.</li>
+    <li><a href="https://docs.fifthcastle.media/your-ai-os.html">Your AI OS</a>, the three parts of what you're building: a brain, a memory, and hands.</li>
+    <li><a href="https://docs.fifthcastle.media/the-shape-of-the-system.html">The shape of the system</a>, how the pieces connect, whatever kind of business you run.</li>
+  </ul>
+
+  <hr class="rule">
+
+  <section id="git">
+  <h2><span class="num">01</span>Set up <span class="red">Git</span></h2>
+  <p class="sub">The one that catches people.</p>
+  <p class="time">10 minutes if it's already there, up to an hour if it isn't</p>
+
+  <p><strong>What it is.</strong> Git is a small background tool that keeps track of changes to files. You'll never open it or look at it. Claude needs it to work on files on your own computer, and your Chief of Staff uses it to keep a private history of your system, which is what lets any file be put back the way it was last Tuesday.</p>
+
+  <p>Most Macs already have it, which is why nobody thinks about it until they hit a machine that doesn't. If yours is one of those, Claude stops and says it can't proceed. That isn't you doing something wrong, it's a missing part.</p>
+
+  <div class="callout">
+    <span class="cl">Worth knowing up front</span>
+    <p>This is the single most common place people get stuck, and it happens to people who are perfectly comfortable with computers. It's also the one step nobody can do for you remotely, because on a Mac it ends in a system dialog that has to be clicked at your own keyboard. Read the whole of this section before you click anything.</p>
+  </div>
+
+  <span class="os">On a Mac</span>
+  <h3>Check whether you already have it</h3>
+  <p>Open the Terminal app: press <kbd>Command</kbd> and <kbd>Space</kbd>, type "Terminal", press <kbd>Enter</kbd>. Then type this and press <kbd>Enter</kbd>:</p>
+  <pre><code>git --version</code></pre>
+  <p><strong>A version number</strong> such as <code>git version 2.50.1</code> means you're set. Skip to the Python check at the end of this step.</p>
+  <p><strong>Anything else</strong>, including a window popping up offering to install "command line developer tools", means it isn't there yet.</p>
+
+  <h3>If it's missing</h3>
+  <p>Type this in Terminal and press <kbd>Enter</kbd>:</p>
+  <pre><code>xcode-select --install</code></pre>
+  <p>Click <strong>Install</strong> when the window appears, and let it finish. Then run <code>git --version</code> again and you should get a version number.</p>
+  <p>Two things about that install, because they're what make people think it's broken when it isn't:</p>
+  <ul>
+    <li><strong>It's big and slow.</strong> Roughly 2GB, and depending on your connection anywhere from a few minutes to the better part of an hour, with no useful progress detail while it runs.</li>
+    <li><strong>The window can hide behind everything else.</strong> It's an ordinary Mac system dialog, so it can open behind your browser and sit there waiting for a click you never gave it. If nothing seems to be happening, check behind your other windows before assuming it failed.</li>
+  </ul>
+
+  <h3>If it goes wrong</h3>
+  <ul>
+    <li><strong>"Can't be installed at this time", or it stops partway.</strong> Almost always Apple's servers being busy rather than anything at your end. Wait an hour and run <code>xcode-select --install</code> again.</li>
+    <li><strong>It says the tools are already installed but <code>git --version</code> still fails.</strong> Run <code>sudo xcode-select --reset</code>, enter your Mac password when asked (the typing stays invisible, that's normal), then check again.</li>
+    <li><strong>Not sure whether it worked?</strong> Run <code>git --version</code>. A version number means yes, anything else means no. That's the whole test.</li>
+  </ul>
+
+  <span class="os">On Windows</span>
+  <h3>Install Git for Windows</h3>
+  <p>Same requirement, easier install, no system dialog to hunt for.</p>
+  <ol>
+    <li>Go to <a href="https://git-scm.com/downloads/win">git-scm.com/downloads/win</a> and download the 64-bit installer.</li>
+    <li>Run it and accept every default. There are a lot of screens and none of them need changing.</li>
+    <li>Open the Start menu, type "PowerShell", press <kbd>Enter</kbd>, then type <code>git --version</code> and press <kbd>Enter</kbd>.</li>
+  </ol>
+  <p>A version number means you're done.</p>
+
+  <h3>Install Python too</h3>
+  <p>Your kit uses Python for a handful of small jobs: giving each task a unique number, taking the snapshots that let a file be restored, and recording the licence against your business name. On a Mac it arrives with the Git install above. On Windows it's a separate two-minute job.</p>
+  <ol>
+    <li>Go to <a href="https://www.python.org/downloads/">python.org/downloads</a> and download the current version for Windows.</li>
+    <li>Run the installer. <strong>Tick "Add python.exe to PATH" on the first screen</strong> before you click Install. This is the one box that matters, and it's easy to miss.</li>
+    <li>Check it in PowerShell: <code>python --version</code>.</li>
+  </ol>
+
+  <div class="callout quiet">
+    <span class="cl">Your final check, either machine</span>
+    <p>Both of these should give you a version number. Mac: <code>git --version</code> and <code>python3 --version</code>. Windows: <code>git --version</code> and <code>python --version</code>. If they do, the hard part of setup is behind you.</p>
+    <p>On Windows, if your assistant ever hands you a command starting with <code>python3</code> and Windows says it doesn't recognise it, type <code>python</code> instead. Tell your assistant you're on Windows and it will stop doing that.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V1</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Checking and installing Git</div>
+    <div class="vd">Both machines, start to finish, including what the slow install actually looks like.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="app">
+  <h2><span class="num">02</span>Install the <span class="red">Claude app</span></h2>
+  <p class="sub">Where your Chief of Staff lives.</p>
+  <p class="time">5 minutes</p>
+
+  <ol>
+    <li>Go to <a href="https://claude.ai/download">claude.ai/download</a>, download the desktop app for your machine, and install it.</li>
+    <li>Open it and sign in with the account your paid plan is on.</li>
+    <li>Along the top you'll see <strong>Home</strong> and <strong>Code</strong>. Home is ordinary chat. <strong>Code is where your Chief of Staff lives</strong>, because that's the side that can read and write the files in your folder. From now on, switch to Code.</li>
+  </ol>
+
+  <p>It'll be empty the first time. That's expected, there's nothing pointed at it yet.</p>
+
+  <div class="callout quiet">
+    <span class="cl">Keep it updated</span>
+    <p>The app changes often. When something looks off or a control isn't where this page says it is, update the app first and try again. New abilities arrive this way too, so it's worth staying current rather than skipping a few months of them.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V2</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Installing the app and finding the Code tab</div>
+    <div class="vd">Two minutes, including what an empty Code tab looks like before you point it anywhere.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="unpack">
+  <h2><span class="num">03</span>Unpack <span class="red">your kit</span></h2>
+  <p class="sub">Get the folder into the right place, once.</p>
+  <p class="time">5 minutes</p>
+
+  <p>Your kit arrives by email as a single compressed file, stamped with your business name and a purchase reference. Download it, then:</p>
+
+  <h4>Unzip it</h4>
+  <ul>
+    <li><strong>Mac:</strong> double-click the file. It expands into a folder next to itself.</li>
+    <li><strong>Windows:</strong> right-click the file, choose <strong>Extract All</strong>, then Extract.</li>
+  </ul>
+
+  <h4>Choose where it lives</h4>
+  <p>Move the unzipped folder somewhere that gets backed up. <strong>Documents is the right answer for most people</strong>, particularly if it syncs to iCloud Drive or OneDrive. The Desktop is the wrong answer: it's where things get dragged around and lost.</p>
+  <p>This is your business's operating system. Treat the folder the way you'd treat your accounts.</p>
+
+  <h4>Pull the working folder out</h4>
+  <p>Open the kit folder. Inside you'll find the written material you're reading now, and a folder called <strong>Starter-OS</strong>. Those are two different things:</p>
+  <ul>
+    <li><strong>The kit folder</strong> is the manual. Reference material you dip into, listed in <a href="#resources">step 13</a>.</li>
+    <li><strong>Starter-OS</strong> is the actual assistant. It's what you'll open every day.</li>
+  </ul>
+  <p>Drag <strong>Starter-OS</strong> out so it sits beside the kit folder rather than inside it. Keeping them nested works, but it means your daily folder is buried one level down inside a folder you rarely open, and that's the sort of small friction that quietly costs you.</p>
+
+  <h4>Name it</h4>
+  <p>Rename the Starter-OS folder to your assistant's name. Give it one. People who name theirs talk to it more naturally, brief it better and get more out of it, and that isn't sentimentality, it's that you stop composing prompts and start talking to a colleague.</p>
+  <p>If you call yours Dotty, the folder becomes <code>Dotty-OS</code>. Tell your assistant its name in the first session and it'll use it from then on.</p>
+
+  <div class="callout">
+    <span class="cl">Two things not to do</span>
+    <p><strong>Don't move the folder again</strong> once you've settled it, at least not without telling your assistant. It knows where it lives, and moving it is the sort of thing that produces a confusing morning.</p>
+    <p><strong>Don't delete or edit the licence stamp.</strong> There's a small file at the folder root recording which business this copy is licensed to. Nothing reports anywhere and nobody can see inside your system. It stays.</p>
+  </div>
+
+  <div class="callout quiet">
+    <span class="cl">While you're here</span>
+    <p>Most files in the kit end in <code>.md</code>, which is plain text with light formatting. On a Mac they open as raw symbols unless you install the small reader that ships with the kit. Your assistant does it for you: once you're up and running in step 4, say <em>"install the Markdown Viewer from the kit folder for me"</em>. Full note in <a href="https://docs.fifthcastle.media/references/install-the-reader.html">Install the Reader</a>. Mac only.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V3</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Unpacking and placing the folder</div>
+    <div class="vd">The full move, on both machines, including where not to put it.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="wake">
+  <h2><span class="num">04</span>Open the folder and <span class="red">wake it up</span></h2>
+  <p class="sub">The moment it becomes yours.</p>
+  <p class="time">5 minutes, then it does the talking</p>
+
+  <ol>
+    <li>Open the Claude app and switch to the <strong>Code</strong> tab.</li>
+    <li>Just above the message box at the bottom, there's a folder control. Click it and choose to open a folder.</li>
+    <li>Point it at your renamed Starter-OS folder. Open it.</li>
+    <li>When it asks whether you trust this workspace, say yes. It's your own folder.</li>
+    <li>In the message box, type <strong>Hello</strong> and press <kbd>Enter</kbd>.</li>
+  </ol>
+
+  <p>From now on the app opens straight into that folder. If you ever want to talk to your Chief of Staff, that's where it lives.</p>
+
+  <h3>What happens next</h3>
+  <p>Your assistant reads its operating brief before it answers anything, sees that the brief is still a blank template, and takes that as its cue. It greets you, tells you in a sentence what you're about to do together, and offers to set itself up.</p>
+  <p>Say yes, and it writes a visible plan into the folder called <code>Setup-Plan.md</code> so you can watch it tick items off:</p>
+  <ul>
+    <li><strong>Point it to your stuff.</strong> Your context folder, however messy.</li>
+    <li><strong>Your website.</strong> It reads it for your brand, your tone and what you actually do, so you repeat less of it.</li>
+    <li><strong>The drill.</strong> It interviews you about your business, your voice, your pricing and what matters right now, one question at a time.</li>
+    <li><strong>It tidies up.</strong> Your dumped-in files get sorted and renamed into something sensible.</li>
+    <li><strong>Your brief, and a first real win.</strong> It fills in the operating brief in your words, then does one real task with you end to end.</li>
+    <li><strong>Licence it to your business.</strong> One command recording which business this copy belongs to. Seconds.</li>
+  </ul>
+  <p>It pauses between items so you can stop whenever you like. When everything's ticked, it deletes the plan file and just gets on with being your Chief of Staff.</p>
+
+  <div class="callout quiet">
+    <span class="cl">Before you go far</span>
+    <p>Set the permission mode to <strong>Auto</strong> now, so it isn't asking your approval for every small thing. It still asks before anything reaches outside your system. That control, and the rest of them, are in <a href="#interface">step 6</a>.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V4</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">First launch, from empty app to first hello</div>
+    <div class="vd">Including the setup plan writing itself and the first few questions of the drill.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="context">
+  <h2><span class="num">05</span>Bring your <span class="red">context</span></h2>
+  <p class="sub">The difference between a clever chat and a Chief of Staff.</p>
+  <p class="time">30 to 60 minutes of gathering, and it's the highest-value hour you'll spend</p>
+
+  <p>An assistant that knows nothing about you writes generic work. Everything useful it will ever do comes from what it knows about your business, and the fastest way to give it that is to hand over what you've already got.</p>
+
+  <h3>What's worth gathering</h3>
+  <ul>
+    <li><strong>Old AI conversations.</strong> If you've been using ChatGPT, Claude or anything else, export them. This is the single richest source, because it's months of you explaining your business in your own words.</li>
+    <li><strong>Writing that sounds like you.</strong> Emails you were happy with, a proposal that won, a post that landed, a page off your site.</li>
+    <li><strong>Your price list.</strong> Whatever form it's in. A scribble is fine.</li>
+    <li><strong>The documents you reach for repeatedly.</strong> Your standard quote, your terms, your onboarding email, your checklist.</li>
+    <li><strong>Your website address.</strong> It'll read the site itself.</li>
+    <li><strong>Anything half-finished you've been meaning to sort out.</strong> Genuinely. The mess is informative.</li>
+  </ul>
+  <p>The fuller list, with the reasoning behind each one, is in <a href="https://docs.fifthcastle.media/references/your-homework.html">Your Homework</a> in your kit folder.</p>
+
+  <div class="callout">
+    <span class="cl">Don't tidy it</span>
+    <p>Don't sort it, don't rename anything, don't make it presentable. Sorting it is one of the first things your assistant does, and seeing it in its natural state tells it more about how you work than a tidied version would. Tidying first is wasted effort that also destroys information.</p>
+  </div>
+
+  <h3>The prompts, in the order you'll use them</h3>
+  <p>Copy these, change the details to yours, and say them out loud rather than typing if you can. None of the wording is magic, and getting it slightly wrong costs you nothing. They're here so you're not staring at an empty box wondering how to start.</p>
+
+  <div class="prompt">
+    <div class="use">1. Hand over the folder</div>
+    <p class="why">Drag the folder into the message box first, then send this with it.</p>
+    <pre><code>This is everything I could find from the last couple of
+years. It's a mess and I haven't tidied it, which I gather
+is the point. Read through it before you ask me anything
+you could work out from a file, then tell me three things
+you now know about my business and two things you're still
+guessing at.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">2. Your website</div>
+    <p class="why">Faster than describing your own business, and it catches the words you actually use.</p>
+    <pre><code>My site is [yoursite.com]. Read it properly, then give me
+your read of what I do, who I do it for and how I sound,
+as a guess I can correct rather than a summary. Where the
+site is out of date or says something I'd no longer claim,
+say so, because I'd rather fix that than have you learn it.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">3. Your voice</div>
+    <p class="why">Point it at the writing samples specifically. This is what stops the drafts sounding like everyone else's.</p>
+    <pre><code>The writing samples in that folder are mine and they're the
+ones I was happy with. Work out how I actually sound:
+sentence length, how formal I am, the words I reach for,
+the ones I'd never use, how I open and close an email.
+Write that up as my voice profile and keep it where you can
+reach it, then draft me one short reply in it so I can tell
+you what you got wrong.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">4. Your prices</div>
+    <p class="why">Get this in once, properly, and every quote afterwards comes out right.</p>
+    <pre><code>Here's my pricing. Put it in my brief as the single place
+prices live, so nothing quotes off a stale copy. Where a
+figure is missing, out of date, or I've clearly been making
+it up per job, ask me rather than guessing. Also tell me
+which of my prices you'd expect a client to push back on,
+and why.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">5. The contradictions instruction</div>
+    <p class="why">The one to give on day one. Old material always disagrees with itself.</p>
+    <pre><code>You'll find contradictions in what I've given you: prices
+that changed, things I renamed, two versions of the same
+document. Don't pick a winner yourself. Spot them, mark
+them, and bring them to me as decisions, one at a time,
+with a recommendation and what it depends on. When I make
+a call, apply it everywhere it reaches, not just where we
+were looking.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">6. Your week</div>
+    <p class="why">This is what turns it from a writer into an operator. The answers become your first skills.</p>
+    <pre><code>Ask me about my week: what I do on repeat, what always
+slips, what I dread, and the one job I'd hand over
+tomorrow if I could. One question at a time and dig into
+the answers rather than moving on. At the end, tell me
+which two of those you could take off me this month, and
+what you'd need from me to do it.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">7. What don't you know</div>
+    <p class="why">Run this once setup is done, and again in a fortnight. It finds the gaps you'd never think to fill.</p>
+    <pre><code>Based on everything you've read so far, what are the ten
+things you still don't know about my business that would
+most change the quality of your work? Rank them by what it
+would cost you not to know, and ask me the top three now.</code></pre>
+  </div>
+
+  <div class="prompt">
+    <div class="use">8. Lock in how it talks to you</div>
+    <p class="why">Say this the first time a reply is longer than you wanted. The last two words are the important ones.</p>
+    <pre><code>Answer first, keep it short, and skip the working unless I
+ask for it. When you're not sure what I want, ask me one
+question rather than writing three versions. Save that.</code></pre>
+  </div>
+
+  <p><strong>"Save that" is the phrase worth remembering.</strong> It's what turns a correction in this conversation into a rule that holds in every conversation afterwards.</p>
+
+  <h3>Decision made is decision implemented</h3>
+  <p>When you settle one of those contradictions, your assistant doesn't just record your answer. It goes back and applies it everywhere the contradiction reached. That's one of the things that makes this feel different from a chat window, and it's worth testing early so you trust it.</p>
+
+  <h3>The one boundary</h3>
+  <div class="callout">
+    <span class="cl">Keep this line</span>
+    <p>Your Chief of Staff handles the business layer: marketing, admin, scheduling, templates, content, pricing and general correspondence.</p>
+    <p>Client-identifying and sensitive personal information stays out of it. Health records, government identifiers, anything held under a professional duty of confidence. This protects you, your clients and your good name, and it's much easier to hold the line from day one than to clean up later.</p>
+  </div>
+
+  <h3>Where your material actually goes</h3>
+  <p>Said plainly, because you should know rather than assume. <strong>Your files stay in your folder on your computer.</strong> They aren't uploaded anywhere or stored by us, and we can't see inside your system. When your assistant needs to read something to answer you, the content of that file goes to Anthropic to be processed, in the same way anything you type into the app does. That's the boundary. It's why the rule above exists in the form it does.</p>
+
+  <div class="video">
+    <span class="vn">V5</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Handing over a messy folder</div>
+    <div class="vd">A real context folder going in, the first four prompts used live, and what comes back out.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="interface">
+  <h2><span class="num">06</span>The interface, <span class="red">part by part</span></h2>
+  <p class="sub">Five controls do ninety per cent of the work.</p>
+  <p class="time">15 minutes, and worth reading properly once</p>
+
+  <h3>Down the left: your sessions</h3>
+  <p>Every conversation is a session, listed down the left the way chats are. Above them is a calendar that fills in as you use it, so you can see your own rhythm at a glance.</p>
+  <ul>
+    <li><strong>Rename them.</strong> You'll have several open at once before long, and "handover documents" beats a wall of identical entries.</li>
+    <li><strong>Group them.</strong> Right-click to make groups and drag sessions in and out. Most people end up with a group per part of their business: client work, marketing, admin, the personal one.</li>
+    <li><strong>One session, one subject.</strong> When a conversation has wandered a long way from where it started, start a fresh one. Nothing is lost by doing that, because your assistant's real memory lives in your files rather than in the conversation.</li>
+  </ul>
+
+  <h3>The permission button</h3>
+  <p>Below the message box. It's the control that decides how often you're asked before anything happens, and it matters more than it looks.</p>
+  <table>
+    <tr><th>Setting</th><th>What it does</th></tr>
+    <tr><td>Default</td><td>Asks before changing a file or running anything. Reading and looking around is free. Fine while you're finding your feet, tiring after a day.</td></tr>
+    <tr><td>Auto</td><td><strong>The one to use.</strong> Approves the ordinary mechanical things without stopping, and still asks you for anything that matters. This is the setting that lets it get on with a long job.</td></tr>
+    <tr><td>Plan</td><td>It explores and writes out a full plan, and changes nothing until you approve. Reach for this on anything big or unfamiliar.</td></tr>
+    <tr><td>Bypass</td><td>Approves everything, including things you'd want to see. It exists, and it isn't recommended. Leave it alone.</td></tr>
+  </table>
+  <p>Click the button to change it, or press <kbd>Shift</kbd> + <kbd>Tab</kbd> to cycle. Rule of thumb: plan for anything new or risky, auto the rest of the time.</p>
+
+  <div class="callout quiet">
+    <span class="cl">What Auto never approves</span>
+    <p>Auto is about mechanical work inside your own folder. It doesn't loosen the gates. Sending an email, publishing anything, spending money and deleting things all still need your explicit yes, every time, in every session. That's built into your assistant's brief rather than into the button, so it holds regardless of which mode you're in.</p>
+  </div>
+
+  <h3>Working with a plan</h3>
+  <p>In plan mode, your assistant thinks it through and then opens the finished plan in its own panel, the whole approach laid out before anything happens. This is the cheapest moment to change direction, so read it.</p>
+  <p>Four choices sit at the bottom:</p>
+  <ul>
+    <li><strong>Reject.</strong> Wrong track. It starts over.</li>
+    <li><strong>Revise.</strong> Tell it what to change and it re-plans, keeping what worked.</li>
+    <li><strong>Accept.</strong> Good to go, checking in as it works.</li>
+    <li><strong>Accept and auto.</strong> Go, and run the whole thing through without stopping.</li>
+  </ul>
+  <p><strong>The trick worth knowing:</strong> select any line in the plan to leave a comment right there. "Do this differently." "Drop this step." Far more precise than describing it from the top, and it's how you shape a big build into exactly what you wanted.</p>
+
+  <h3>The model picker</h3>
+  <p>Bottom right, showing the name of whatever model you're currently on. Click it to change. Full detail in <a href="#model">step 7</a>.</p>
+
+  <h3>The usage ring</h3>
+  <p>The small ring with a diamond in it. It's a set of dials showing what you've used against your plan's limits, and how full the current conversation is.</p>
+  <p>That second one is the one to watch. Every session has a working memory, and a long one fills it up. When it does, your assistant summarises the conversation so far and carries on, which is called compacting. <strong>Nothing important is lost when that happens</strong>, because your real memory lives in your files. You can ask for it yourself by typing <code>/compact</code>, or type <code>/context</code> to see what's taking up the room.</p>
+
+  <h3>Slash commands worth knowing</h3>
+  <table>
+    <tr><th>Command</th><th>What it does</th></tr>
+    <tr><td>/model</td><td>Switch model without reaching for the picker.</td></tr>
+    <tr><td>/effort</td><td>Set how hard it thinks. See step 7.</td></tr>
+    <tr><td>/context</td><td>Show what's filling up this session.</td></tr>
+    <tr><td>/compact</td><td>Summarise and carry on, freeing up room.</td></tr>
+    <tr><td>/undo</td><td>Rewind the last change. Pressing <kbd>Esc</kbd> twice does the same.</td></tr>
+    <tr><td>/feedback</td><td>Report a problem with the app itself to the people who make it.</td></tr>
+  </table>
+  <p>You don't have to memorise these, and you don't have to use them at all. Your kit's skills have slash commands too, but plain English reaches them just as well: "interview me for setup" finds the same thing as typing the command, because your assistant knows what it has.</p>
+
+  <h3>Stopping and steering</h3>
+  <ul>
+    <li><strong>Stop it.</strong> Press <kbd>Esc</kbd> at any time. It halts and waits for you. Do this the moment you see it heading the wrong way rather than letting it finish out of politeness.</li>
+    <li><strong>Correct it.</strong> Say what's off, plainly. "Too formal, warmer please." It takes the note and carries on.</li>
+    <li><strong>Make it stick.</strong> For something it should never do again, tell it to remember: "Never use that phrase. Save that." From then on it holds across every future session, not just this one.</li>
+    <li><strong>Undo it.</strong> Changed your mind after the fact? <code>/undo</code>, or <kbd>Esc</kbd> twice. Every edit can be rewound.</li>
+  </ul>
+
+  <p>There's a longer version of this section in your kit: <a href="https://docs.fifthcastle.media/references/Driving-Claude-Code.html">Driving Claude Code</a>, one of the five reference cards.</p>
+
+  <div class="video">
+    <span class="vn">V6</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">A tour of the interface</div>
+    <div class="vd">Every control named above, on screen, in the order you'll meet them.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="model">
+  <h2><span class="num">07</span>The model, and <span class="red">how hard it thinks</span></h2>
+  <p class="sub">Two settings, and one of them is quietly costing people their results.</p>
+  <p class="time">5 minutes</p>
+
+  <h3>The models</h3>
+  <p>They're named after literary forms, and the names tell you something. Haiku is the short one. Click the model name at the bottom right to switch.</p>
+  <table>
+    <tr><th>Model</th><th>Use it for</th></tr>
+    <tr><td>Haiku</td><td>The sprinter. Renaming and sorting files, quick look-ups, bulk mechanical work. Still capable, but don't hand it your thinking.</td></tr>
+    <tr><td>Sonnet</td><td>The daily driver. Quick and genuinely capable, and the sensible default for most jobs.</td></tr>
+    <tr><td>Opus</td><td>The deep thinker. Hard judgement, careful writing, anything where getting it right matters. Slower, and it uses your plan's allowance faster.</td></tr>
+  </table>
+  <p><strong>What I actually run:</strong> Opus, for nearly everything. The extra time it takes is repaid several times over in not having to fix the answer. Start on Sonnet if you'd rather feel your way in, and move up the moment you're doing something that matters.</p>
+
+  <h3>How hard it thinks</h3>
+  <p>Beside the model name is the effort setting, a slider running from low up through medium, high and higher still. Type <code>/effort</code> to reach it directly.</p>
+  <p>Effort is how much thinking it does before it answers. Higher means slower, better, and more of your allowance. <strong>High is a good home setting.</strong> Push it up for anything that deserves real thought: a proposal, a pricing decision, a piece of writing that's going to be read closely, a plan for something big. Drop it to low for grinding through a hundred files.</p>
+
+  <div class="callout">
+    <span class="cl">The trap</span>
+    <p>Whatever you picked last tends to carry into your next session, so it sticks quietly. If answers start feeling oddly literal, forgetful, or it keeps losing track of what you told it, <strong>check the picker before you conclude anything about the system</strong>. You're most likely on Haiku, or on low effort, from some bulk job three days ago. A surprising amount of "why is it being dense today" is this one setting.</p>
+  </div>
+
+  <p>You can also just ask. "Use Opus for this one" and "think harder about this" both work, mid-conversation, without touching a control.</p>
+
+  <div class="video">
+    <span class="vn">V7</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Switching model and effort</div>
+    <div class="vd">Where both live, and the same question answered on Haiku and on Opus so you can see the difference.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="files">
+  <h2><span class="num">08</span>Attaching <span class="red">files</span></h2>
+  <p class="sub">Three ways, all of them quick.</p>
+  <p class="time">3 minutes</p>
+
+  <ul>
+    <li><strong>Drag and drop.</strong> Pull a file, or a whole folder, straight into the message box. This is the fastest way and it's what you'll use most.</li>
+    <li><strong>The plus button.</strong> Beside the message box, if you'd rather browse to it.</li>
+    <li><strong>Paste a screenshot.</strong> Take one and paste it straight in with <kbd>Command</kbd> + <kbd>V</kbd> (or <kbd>Ctrl</kbd> + <kbd>V</kbd> on Windows). Perfect for an error message or something you're looking at and can't describe.</li>
+  </ul>
+
+  <p>Whatever you attach appears above the message box before you send, with a small <strong>x</strong> to remove it if you grabbed the wrong thing. Attach several at once if you need to.</p>
+
+  <p><strong>For anything large or permanent</strong>, put the file into your folder and tell your assistant where it is, rather than attaching it every time. Attaching hands it over for that message. Filing it makes it part of your system.</p>
+
+  <div class="callout">
+    <span class="cl">Never attach or paste these</span>
+    <p>Passwords, API keys and access tokens don't go into the chat, ever. The conversation is saved, synced and sometimes screenshotted, so a key dropped there is exposed for good.</p>
+    <p>When you need to give your assistant a key, ask it to set that up properly: "I need to give you my [X] key safely. Make me a secrets file that stays out of backups, and tell me where to paste it." It creates the file, keeps it out of anything that gets published or backed up, and reads the key from there without ever printing it.</p>
+    <p>If one does slip out, treat it as burned. Go to the service, cancel the old key and generate a new one. It takes a minute.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V8</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Attaching files and folders</div>
+    <div class="vd">All three ways, plus the safe way to hand over a key.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="dictate">
+  <h2><span class="num">09</span><span class="red">Dictating</span></h2>
+  <p class="sub">Talk to it. Don't type at it.</p>
+  <p class="time">5 minutes to set up, and it changes how you work</p>
+
+  <p>This is the habit that separates people who get a lot out of this from people who get a little, and it has nothing to do with typing speed.</p>
+  <p>When you type, you edit as you go. You compress, you leave out the background, you get to the point and stop. That's good writing and it's terrible briefing, because the background you trimmed is exactly what your assistant needed. When you talk, you ramble, you repeat yourself, you double back and add the bit you forgot. All of that is useful. It picks up not just what you want but how you think about it, and it gets better at sounding like you as a direct result.</p>
+  <p><strong>Ramble on purpose.</strong> For anything longer than a line, talk.</p>
+
+  <h3>What to use</h3>
+  <ul>
+    <li><strong>Built into your machine, free.</strong> On a Mac, turn on Dictation in System Settings under Keyboard, then press the key it assigns you. On Windows, press <kbd>Windows</kbd> + <kbd>H</kbd>. Both are good enough to start today.</li>
+    <li><strong>A dedicated tool, better.</strong> Wispr Flow is what several people running this kit use. It's noticeably more accurate on long rambling speech, it works in any application, and it's a small monthly cost. Worth it if you take to dictating, and there's no need to decide now.</li>
+  </ul>
+
+  <h3>Tell your assistant you dictate</h3>
+  <p>Dictation mangles names. The same supplier arrives three different ways in a week, and your own product names come out as nonsense. Say this once, early:</p>
+  <pre><code>I use dictation software to talk to you rather than typing.
+That means you'll get mishearings and odd spellings,
+especially on names. Work out what I meant rather than
+transcribing me literally, and don't correct me on it in
+your reply. When you work out that a garble maps to a real
+name, remember it so it resolves on sight next time. Save
+that.</code></pre>
+  <p>From then on it decodes you instead of taking you literally, and it keeps a running list of your recurring garbles. It still won't guess a name into a document, an email or a tracker: if it isn't certain who you meant, it asks.</p>
+
+  <div class="video">
+    <span class="vn">V9</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Briefing by voice</div>
+    <div class="vd">A real dictated brief, unedited, and the work that comes back from it.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="codex">
+  <h2><span class="num">10</span>A second opinion: <span class="red">connect Codex</span></h2>
+  <p class="sub">Optional, and the best thing you can add in the first month.</p>
+  <p class="time">20 minutes, and you need a paid ChatGPT plan</p>
+
+  <p><strong>If you already pay for ChatGPT, you're paying for something you probably aren't using.</strong> That subscription includes Codex, OpenAI's coding assistant, and Codex can be plugged straight into your Chief of Staff as a second module it can call on.</p>
+
+  <p>Why that's worth twenty minutes: an assistant checking its own work is one mind doing both jobs, and it tends to find what it was already looking for. Codex is a different model from a different company that hasn't sat through your conversation and has no stake in the answer being right. Hand it something to audit and it will tell you plainly when it's wrong. That's a genuinely independent check rather than a second opinion from the same head.</p>
+
+  <h3>What to use it for</h3>
+  <ul>
+    <li><strong>Auditing what your assistant built.</strong> A new skill, a playbook, a change to your operating brief. Ask Codex whether it actually does what it claims and where it would fail.</li>
+    <li><strong>Checking numbers and figures.</strong> A quote, a set of prices, anything where an arithmetic slip costs real money.</li>
+    <li><strong>Verifying that something works</strong> rather than just looks finished. It will run and test things, which is the difference between "this should work" and "I ran it".</li>
+    <li><strong>A second read on an important document</strong> before it goes out. Different model, different blind spots.</li>
+    <li><strong>Heavy grinding work</strong> you'd rather not spend your Claude allowance on, since it draws on a separate subscription.</li>
+  </ul>
+
+  <h3>Setting it up</h3>
+  <p>The honest version: this is the most technical thing on this page, and it's also the thing your assistant is best at doing for you. Try the easy way first.</p>
+
+  <h4>The easy way</h4>
+  <p>Ask your Chief of Staff to do it. Something like:</p>
+  <pre><code>I have a paid ChatGPT subscription and I'd like to connect
+Codex to you as a second opinion, so I can ask you to have
+it audit and verify things independently. Walk me through
+installing it and connecting it, one step at a time, and
+tell me exactly what to paste where. Check what I already
+have installed before you assume anything, and stop and
+ask if a step needs a decision from me.</code></pre>
+
+  <h4>What it involves, so you know what you're agreeing to</h4>
+  <ol>
+    <li><strong>A paid ChatGPT plan.</strong> Plus, Pro or Business. The free tier doesn't include Codex.</li>
+    <li><strong>Node.js</strong>, a background tool much like Git, downloaded from <a href="https://nodejs.org/">nodejs.org</a>. Accept the defaults.</li>
+    <li><strong>The Codex tool itself</strong>, one line in the Terminal: <code>npm install -g @openai/codex</code></li>
+    <li><strong>Sign in</strong>: type <code>codex</code>, and choose to sign in with your ChatGPT account when it asks.</li>
+    <li><strong>Connect it to your Chief of Staff</strong>: <code>claude mcp add codex -- codex mcp-server</code></li>
+  </ol>
+  <p>Restart the Claude app afterwards. To check it worked, ask your assistant: "Is Codex connected? Ask it to say hello."</p>
+
+  <h3>How to actually use it</h3>
+  <p>You never talk to Codex directly. You ask your Chief of Staff to bring it in, and it hands over the job and reports back.</p>
+  <pre><code>Get Codex to review the skill we just built. Don't tell it
+what we were trying to do or why we made the choices we
+made, just point it at the file and the standard it should
+be judged against. I want its read, not its agreement with
+yours. Bring me back what it found, including anything you
+disagree with.</code></pre>
+  <p>That last instruction matters more than it looks. <strong>Hand a reviewer your reasoning and it starts grading your reasoning</strong> instead of the thing you built, and it inherits the blind spot that produced it. Give it the artefact and the standard, and nothing else.</p>
+
+  <div class="callout quiet">
+    <span class="cl">Two honest caveats</span>
+    <p><strong>It's a second subscription.</strong> If you don't already pay for ChatGPT, this isn't a reason to start. Everything in this kit works without it.</p>
+    <p><strong>Your files go to a second company.</strong> When Codex reviews something, that content reaches OpenAI in the same way your work reaches Anthropic. The boundary in <a href="#context">step 5</a> applies exactly the same way, and it applies twice over now.</p>
+  </div>
+
+  <div class="video">
+    <span class="vn">V10</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">Connecting Codex and running an audit</div>
+    <div class="vd">The install, then a real review where the second opinion disagrees and turns out to be right.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="running">
+  <h2><span class="num">11</span>How to run a <span class="red">session</span></h2>
+  <p class="sub">The habits that make the difference.</p>
+
+  <h3>Give a brief, not a question</h3>
+  <p>A chat answers a question and leaves the doing to you. Your Chief of Staff takes the whole job.</p>
+  <p>Not "what should I say to Sarah about the half-day?" but <strong>"Draft the follow-up to Sarah, she asked about the half-day, keep it warm and short."</strong> It writes it in your voice, prices it off your own price list, and files it where it belongs.</p>
+  <p>You aren't writing prompts. You're briefing a capable colleague who already knows your business. There's a reference card on this in your kit: <a href="https://docs.fifthcastle.media/references/Briefing-Your-Chief-of-Staff.html">Briefing your Chief of Staff</a>.</p>
+
+  <h3>Open informed, close captured</h3>
+  <p>Your assistant reads what's current before it answers anything, so you'll usually get a few lines on what's overdue, what's due today and what it suggests you focus on. That's built in rather than something you trigger.</p>
+  <p>At the other end, before you finish, check the session was captured: a dated entry in this month's log, trackers updated, anything still open written down with a date on it. <strong>The log is the one people skip and the one that pays off latest.</strong> Trackers tell you what happened. The log tells you why, and the why is what you won't be able to reconstruct next year.</p>
+
+  <h3>Log as you go, not at the end</h3>
+  <p>When something changes mid-session, a decision gets made, a task finishes, something new comes up, say so then. A week-old memory is much less useful than one written in the moment.</p>
+
+  <h3>Correct once, and make it stick</h3>
+  <p>Say what's wrong plainly, then tell it to remember. "Never open an email that way. Save that." A chat forgets. Your Chief of Staff doesn't. Every correction you bother to save is one you never make again, which means the first fortnight feels like work and the second feels like having staff.</p>
+
+  <h3>Push back, and let it push back</h3>
+  <p>If an answer is wrong, say so straight. It would rather be corrected than be politely wrong. And when it tells you something you didn't want to hear about a price or a deadline, that's it doing its job.</p>
+
+  <h3>The rule of three</h3>
+  <p>If you've done something manually three times, it should be a skill. Say "let's write this up as a skill so I don't have to explain it again", walk through it out loud once, and it writes the instructions. From then on it just runs. Common first ones: a particular kind of email, preparing for a call, checking content against your voice, generating a quote.</p>
+  <p>Before you build one, check whether it already exists. Nineteen ship with your kit and they're listed in <code>reference/Skills-Catalogue.md</code> inside your assistant's folder, along with good free ones other people have published. There's also a menu of ideas in <a href="https://docs.fifthcastle.media/references/skills-for-inspiration.html">Skills for inspiration</a>.</p>
+
+  <h3>Five minutes a week</h3>
+  <p>Once a week, ask it: what got done, what's stuck, what's overdue, what's the most important thing next week. Five minutes of that saves hours of catching up, and it's how the system stays honest rather than becoming a pile of files.</p>
+
+  <h3>Back it up</h3>
+  <p>Your whole system is a folder, which makes backing it up simple and makes losing it entirely possible. The <a href="https://docs.fifthcastle.media/references/Backing-It-Up.html">Backing it up</a> card in your kit covers it in a couple of minutes. Do it in your first week rather than your first bad week.</p>
+
+  <div class="video">
+    <span class="vn">V11</span>
+    <div><span class="vl">Video</span>
+    <div class="vt">A real working session, start to finish</div>
+    <div class="vd">One ordinary job briefed, done, corrected and logged.</div></div>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="stuck">
+  <h2><span class="num">12</span>When you get <span class="red">stuck</span></h2>
+  <p class="sub">Everyone hits a wall in the first fortnight.</p>
+
+  <h4>An error popped up</h4>
+  <p>Errors are normal. Paste it straight back to your assistant, or screenshot it and drop it in: "this came up, can you fix it?" Most of the time it can, and you never need to understand what the error said.</p>
+
+  <h4>It's behaving strangely</h4>
+  <p>Two causes, in order of likelihood. <strong>You're on the wrong model or effort setting</strong>, so check the picker first (<a href="#model">step 7</a>). Otherwise it's a stale or contradictory file: ask it to check its operating brief and its recent memory for anything out of date or clashing, then fix the source rather than adding more instructions on top. Do less, check more.</p>
+
+  <h4>Something needs the terminal</h4>
+  <p>Now and then a job needs something installed or a command run. Your assistant hands you a line to paste. Copy, paste, done. You don't need to understand it, and it isn't a sign that things have gone wrong.</p>
+
+  <h4>Something's missing or looks different from this page</h4>
+  <p>Update the Claude app, then try again. The app changes often and this page describes it as it was written.</p>
+
+  <h4>Still stuck</h4>
+  <p><strong>Ask your assistant to get you unstuck.</strong> Describe what you were trying to do, what happened, and what you've already tried. That's the muscle worth building, and it works far more often than people expect on their first go. The <a href="https://docs.fifthcastle.media/references/Getting-Unstuck.html">Getting unstuck</a> card has the short version to keep beside you.</p>
+
+  <div class="callout quiet">
+    <span class="cl">Worth hearing</span>
+    <p>Being stuck is part of it rather than a sign you're doing it wrong. It passes fast, and it passes faster if you ask the assistant sitting right there before you go looking anywhere else.</p>
+  </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="resources">
+  <h2><span class="num">13</span>What else is in <span class="red">your kit</span></h2>
+  <p class="sub">You don't need any of this to start. It's here for when you want it.</p>
+
+  <h3>The five reference cards</h3>
+  <p>Short, one screen each, written to be dipped into rather than read through. <a href="https://docs.fifthcastle.media/references/Reference-Cards.html">Open the set</a>, or go straight to one:</p>
+  <ul class="res">
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Driving-Claude-Code.html">Driving Claude Code</a></div>
+      <div class="rd">The long version of step 6: modes, plans, models, the context meter, undo, and how to handle a private key safely.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Briefing-Your-Chief-of-Staff.html">Briefing your Chief of Staff</a></div>
+      <div class="rd">The gap between a frustrating chat and work you'd send. Briefs rather than questions, correcting once, making it talk your way.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Building-Something.html">Building something</a></div>
+      <div class="rd">How to go from an idea to a working skill or playbook without it sprawling.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Getting-Unstuck.html">Getting unstuck</a></div>
+      <div class="rd">The one-page version of step 12. Keep it somewhere you can find it in a hurry.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Backing-It-Up.html">Backing it up</a></div>
+      <div class="rd">Your whole system is a folder. This is how you make sure you can't lose it.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/Organising-Your-Workspace.html">Organising your workspace</a></div>
+      <div class="rd">The sixth card. Where things go and why, so your folder stays navigable at month six.</div>
+    </li>
+  </ul>
+
+  <h3>Guides in the kit folder</h3>
+  <ul class="res">
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/glossary.html">Plain-English glossary</a></div>
+      <div class="rp">also in your kit folder as 03-Glossary.md</div>
+      <div class="rd">Every word you'll meet, explained without jargon. Keep it open for the first fortnight.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/your-homework.html">Your homework</a></div>
+      <div class="rd">The fuller version of what to gather for step 5, and why each thing earns its place.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/skills-for-inspiration.html">Skills for inspiration</a></div>
+      <div class="rd">A menu of what an assistant can be taught to do, drawn from what I run in my own businesses. Ideas, not a shopping list.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/connecting-your-tools.html">Connecting your tools</a></div>
+      <div class="rd">Plain English on connectors, plugins and keys, and how to plug in your email, calendar and customer list.</div>
+    </li>
+    <li>
+      <div class="rt"><a href="https://docs.fifthcastle.media/references/install-the-reader.html">Install the reader</a></div>
+      <div class="rd">The small app that makes every file in the kit open clean. Mac only, and your assistant installs it for you.</div>
+    </li>
+  </ul>
+
+  <h3>Inside your assistant's folder</h3>
+  <p>These sit in the folder you renamed in step 3, so open them from there rather than from here. You can also just ask your assistant to read you any of them.</p>
+  <ul class="res">
+    <li>
+      <div class="rt">Operating Manual</div>
+      <div class="rp">Operating-Manual.md</div>
+      <div class="rd">How to run it day to day: the session rhythm, the rule of three, how memory works, how to extend it safely.</div>
+    </li>
+    <li>
+      <div class="rt">Your operating brief</div>
+      <div class="rp">CLAUDE.md</div>
+      <div class="rd">The most important file you own. It's what your assistant reads first, every time. After setup it's full of your answers, in your words. Edit it whenever something changes.</div>
+    </li>
+    <li>
+      <div class="rt">Skills catalogue</div>
+      <div class="rp">reference/Skills-Catalogue.md</div>
+      <div class="rd">The nineteen skills that ship with your kit, what each is for, and good free ones other people have published.</div>
+    </li>
+    <li>
+      <div class="rt">Running it remotely</div>
+      <div class="rp">reference/Running-It-Remotely.md</div>
+      <div class="rd">Driving it from your phone, mostly for capture: the thought in the car park, the thing you agreed to on a call.</div>
+    </li>
+    <li>
+      <div class="rt">Judgement, and Reliability</div>
+      <div class="rp">reference/Judgement.md, reference/Reliability.md</div>
+      <div class="rd">Where your assistant decides on its own and where it stops to ask, and what it does when something fails. Worth reading before you trust it with anything expensive.</div>
+    </li>
+    <li>
+      <div class="rt">Writing standards</div>
+      <div class="rp">reference/Writing-Standards.md</div>
+      <div class="rd">The rules it drafts to. Change them to yours, that's the point of them being a file.</div>
+    </li>
+    <li>
+      <div class="rt">Your licence, and what changed</div>
+      <div class="rp">LICENCE.md, CHANGELOG.md, VERSION.md</div>
+      <div class="rd">What you're licensed to do with the kit, which version you have, and the full history of what's been built into it.</div>
+    </li>
+  </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section id="support">
+  <h2><span class="num">14</span>What's included, and <span class="red">what isn't</span></h2>
+  <p class="sub">Stated plainly, because it's easier to read now than to discover later.</p>
+
+  <p><strong>What's included:</strong> a working download. If your file is broken, corrupt or won't open, email us and we'll replace it.</p>
+  <p><strong>What isn't:</strong> setup help, troubleshooting, answering questions about how to use it, screen shares, or reviewing what you've built. This is the self-paced product, and these written instructions are the support. If you email a setup question, the honest answer will be a pointer back to this page or an invitation to book a build.</p>
+  <p>We spell it out because "no support" is easy to write and easy to misread.</p>
+
+  <h3>If you'd rather have someone alongside you</h3>
+  <p>Two options exist, and <strong>the full price you paid for the kit comes off either one if you book within 30 days</strong>:</p>
+  <ul>
+    <li><strong>The guided build.</strong> Four sessions plus two follow-ups, on your own business, wherever you are.</li>
+    <li><strong>The Melbourne day.</strong> One full day in a room, ten seats, lunch and drinks after.</li>
+  </ul>
+  <p>Email <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a> and say which one.</p>
+
+  <h3>Your licence, in a line</h3>
+  <p>The kit is licensed to your business to run your business. Use it in full, change it, extend it, make it yours. What you can't do is sell it, share it, publish it or build a competing product from it. The full terms came with your purchase.</p>
+  </section>
+
+  <hr class="rule">
+
+  <div class="callout">
+    <span class="cl">If you read nothing else again</span>
+    <p><strong>Talk to it, don't type at it. Correct it once and tell it to save that. Check the model picker before you blame the system.</strong> Those three habits are most of the distance between people who get a great deal out of this and people who get a little.</p>
+  </div>
+
+  <footer>Fifth Castle <span class="red">Media</span></footer>
+
+</div>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var map = {};
+  links.forEach(function (a) {
+    var el = document.querySelector(a.getAttribute('href'));
+    if (el) { map[a.getAttribute('href').slice(1)] = a; }
+  });
+  var ids = Object.keys(map);
+  if (!ids.length || !('IntersectionObserver' in window)) return;
+  var seen = {};
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+    var current = null;
+    for (var i = 0; i < ids.length; i++) { if (seen[ids[i]]) { current = ids[i]; break; } }
+    links.forEach(function (a) { a.classList.remove('on'); });
+    if (current) { map[current].classList.add('on'); }
+  }, { rootMargin: '-60px 0px -70% 0px' });
+  ids.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) obs.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
