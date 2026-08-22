@@ -26,7 +26,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Founder stories (testimonials) | [chief-of-staff-testimonials.html](https://docs.fifthcastle.media/chief-of-staff-testimonials.html) | 2026-08-08 |
 | Live demonstration, registration page | [live-demonstration.html](https://docs.fifthcastle.media/live-demonstration.html) | 2026-08-08 |
 | Before We Begin | [before-we-begin.html](https://docs.fifthcastle.media/before-we-begin.html) | 2026-06-26 |
-| Run Your Kit — the self-serve setup and operating instructions, linked from the kit delivery email | [run-your-kit.html](https://docs.fifthcastle.media/run-your-kit.html) | 2026-08-22 |
+| Run Your Kit — the self-serve setup and operating instructions (unlisted, noindex; the URL is given only in the kit delivery email) | [run-your-kit-a0ecda574b95953b.html](https://docs.fifthcastle.media/run-your-kit-a0ecda574b95953b.html) | 2026-08-22 |
 | Your Chief of Staff | [your-ai-os.html](https://docs.fifthcastle.media/your-ai-os.html) | 2026-06-30 |
 | The Shape of the System | [the-shape-of-the-system.html](https://docs.fifthcastle.media/the-shape-of-the-system.html) | 2026-06-30 |
 | AI That Actually Works | [ai-that-actually-works.html](https://docs.fifthcastle.media/ai-that-actually-works.html) | 2026-06-30 |
