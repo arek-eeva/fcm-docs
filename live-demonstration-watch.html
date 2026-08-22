@@ -78,6 +78,32 @@
     width:7px; height:1px; background:var(--accent);
   }
 
+  .doors { display:grid; gap:16px; margin-top:24px; }
+  @media (min-width:760px) { .doors { grid-template-columns:1fr 1fr; } }
+  .door {
+    border:1px solid var(--rule); border-radius:12px; background:#fff;
+    padding:24px 24px 26px; display:flex; flex-direction:column;
+  }
+  .door.primary { border-color:var(--accent); border-width:2px; }
+  .door .lead {
+    font-family:'Khand',sans-serif; text-transform:uppercase; letter-spacing:0.16em;
+    font-size:12px; font-weight:600; color:var(--accent);
+  }
+  .door h3 {
+    font-family:'Vidaloka',serif; font-weight:400; font-size:clamp(19px,2.2vw,23px);
+    line-height:1.25; margin:10px 0 0;
+  }
+  .door p { font-size:15.5px; line-height:1.6; color:var(--muted); margin-top:10px; }
+  .door .btn {
+    display:inline-block; margin-top:18px; padding:12px 22px; border-radius:6px;
+    text-decoration:none; font-family:'Khand',sans-serif; text-transform:uppercase;
+    letter-spacing:0.14em; font-size:15px; font-weight:600; text-align:center;
+  }
+  .door.primary .btn { background:var(--accent); color:#fff; }
+  .door.secondary .btn { background:#fff; color:var(--ink); border:1px solid var(--rule); }
+  .door .btn[aria-disabled="true"] { opacity:0.45; pointer-events:none; }
+  .door .note { margin-top:auto; padding-top:14px; font-size:13.5px; color:var(--muted); }
+
   .layout {
     display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(20px,2.6vw,34px);
     padding:clamp(22px,3vh,32px) 0 clamp(48px,8vh,84px); align-items:start;
@@ -128,19 +154,26 @@
     <header class="intro">
       <div class="kicker">Watch live</div>
       <h1>The live demonstration.</h1>
-      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. We're running it on Google Meet, and the join link appears on this page before the day.</p>
+      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. Two ways in: join the room if you might want to ask something, or just watch the stream.</p>
     </header>
 
-    <div class="player-wrap">
-      <div class="holding">
-        <div class="tag">The link is coming</div>
-        <h2>It's a Google Meet, and the link lands on this page.</h2>
-        <ul>
-          <li>Keep your camera off if you'd rather. Plenty of people will, and nobody is put on the spot.</li>
-          <li>The join link goes here before the day, and I email it to everyone who registered.</li>
-          <li>Can't make it live? The replay comes back to this same page, so you lose nothing by missing it.</li>
-          <li>Because it's a room rather than a broadcast, you can talk to me while it runs. If there's something specific you want to see, say so and I'll point the system at it on the spot.</li>
-        </ul>
+    <div class="doors">
+      <div class="door primary">
+        <div class="lead">Option one</div>
+        <h3>Join the room.</h3>
+        <p>Google Meet. You can ask questions while it runs, and I answer them out loud as we go. If there's something specific you want to see, say so and I'll point the system at it on the spot.</p>
+        <p>Camera and microphone are yours. Most people leave both off and just type. Other people in the room can see your name.</p>
+        <a class="btn" href="https://meet.google.com/uyk-wsst-wjo">Join the Meet room</a>
+        <p class="note">The room holds 100 and opens at 11:30. If it's full, take option two.</p>
+      </div>
+
+      <div class="door secondary">
+        <div class="lead">Option two</div>
+        <h3>Just watch.</h3>
+        <p>A live stream on YouTube. Nothing to set up, nobody sees you, and you can leave and come back. You won't be able to ask anything, so take option one if you might want to.</p>
+        <p>The same link becomes the recording the moment we finish, so this is also where to come back to afterwards.</p>
+        <a class="btn" href="https://youtube.com/live/Zu0FFXc3bOA">Watch the stream</a>
+        <p class="note">Starts at 12:00 sharp. Unlisted, so it's this link or nothing.</p>
       </div>
     </div>
 
@@ -148,6 +181,7 @@
       <section class="panel">
         <h2>Ask a question</h2>
         <p>Ask it live in the room, or send it now and I'll work it into the hour. Either way I answer out loud as we go.</p>
+        <p>If you're watching the stream rather than joining the room, send it here beforehand, because the stream is one way.</p>
         <p>One thing worth knowing: it's a Meet room, so other people can see your name in the attendee list. Your camera and microphone stay yours to switch on or leave off, and most people leave them off.</p>
         <a class="ask" href="mailto:info@fifthcastle.media?subject=Question%20during%20the%20demonstration">Send a question</a>
       </section>
@@ -155,9 +189,11 @@
       <aside>
         <div class="facts">
           <div><span class="k">When</span><span>Wednesday 26 August, 12:00 to 1:00pm AEST</span></div>
-          <div><span class="k">Where</span><span>Google Meet. The join link appears on this page before the day.</span></div>
-          <div><span class="k">Format</span><span>One hour, live. No slides, no pitch. Camera off is fine.</span></div>
-          <div><span class="k">Missed it</span><span>The replay comes back to this page afterwards, and I email everyone who registered.</span></div>
+          <div><span class="k">Where</span><span>Google Meet for the room, or the YouTube stream to watch. Both above.</span></div>
+          <div><span class="k">Format</span><span>One hour, live. No slides. Camera off is fine, and most people keep it off.</span></div>
+          <div><span class="k">Recorded</span><span>The hour is recorded from 12:00 and it stops at 1:00. Before and after that, nothing is.</span></div>
+          <div><span class="k">Missed it</span><span>The stream link becomes the recording as soon as we finish, and I email it to everyone who registered.</span></div>
+          <div><span class="k">After 1:00</span><span>Recording off. Anyone who wants to stay on for questions is welcome to.</span></div>
         </div>
       </aside>
     </div>
