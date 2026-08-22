@@ -496,6 +496,57 @@
 
   /* ---- faq ---- */
 
+  .close-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 900px) {
+    .close-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .close-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--white);
+    padding: 22px 22px 20px;
+  }
+
+  .close-card.feature { border-color: var(--accent); }
+
+  .close-card h3 {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.16;
+  }
+
+  .close-price {
+    margin-top: 8px;
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .close-note {
+    flex: 1 1 auto;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .close-card .button { margin-top: 16px; width: 100%; }
+
   .faq-list {
     margin-top: 24px;
     border-top: 1px solid var(--rule);
@@ -700,11 +751,6 @@
       <h2 id="value-title">You're hiring, not subscribing.</h2>
       <p class="copy" style="margin-top:18px">You're putting in place something you hand most of your computer work to: the drafting, the chasing, the filing, remembering who said what in March. Your rules, your voice, your records, at eleven on a Sunday night.</p>
       <p class="copy"><span class="hot">$5,500 plus GST once</span>, then about a hundred a month to Anthropic. No seat licence, no per-user pricing, no renewal that creeps. Hold that against what the same work costs you now, in your hours or someone else's wage.</p>
-
-      <div class="fit-strip">
-        <span class="fit-label">Where the comparison stops</span>
-        <p class="fit-copy">It has no judgement and I won't pretend otherwise. It won't sit in a room with a client or take responsibility. What it takes off you is the two or three hours a day that never needed you.</p>
-      </div>
     </section>
 
     <section aria-labelledby="honest-title">
@@ -797,6 +843,33 @@
           <p class="answer">A Mac or a Windows PC, a paid Claude plan in your own name, and two small free background tools, Git and Python. You'll never open either one. A few minutes to install on a Mac, where Python comes along with Git, and a couple more on Windows, where it's a separate download. The kit's instructions walk you through both. On the build and the day we do it together.</p>
         </details>
 
+      </div>
+    </section>
+
+    <section aria-labelledby="close-title">
+      <p class="eyebrow">Pick one</p>
+      <h2 id="close-title">That's everything. Over to you.</h2>
+      <p class="copy" style="margin-top:18px">If you've read this far you already know which one it is. All three take a card, and the $299 on either of the first two moves with you if your plans change.</p>
+
+      <div class="close-grid">
+        <div class="close-card feature">
+          <h3>The Melbourne day</h3>
+          <p class="close-price">$5,500 + GST &middot; $6,050 inc</p>
+          <p class="close-note">Wednesday 14 October, ten seats, lunch and drinks after. $299 holds one, balance 1 October.</p>
+          <a class="button" href="https://app.fifthcastle.media/widget/form/wL1SPYEKACKVz2DlFoyq" data-checkout="room">Yes, hold my seat for $299</a>
+        </div>
+        <div class="close-card">
+          <h3>The guided build</h3>
+          <p class="close-price">$5,500 + GST &middot; $6,050 inc</p>
+          <p class="close-note">Four sessions and two follow-ups over about four weeks, remote, on your own business.</p>
+          <a class="button" href="https://app.fifthcastle.media/widget/form/ncW10Pab6IsO8S7FqSEv" data-checkout="build">Yes, lock my dates for $299</a>
+        </div>
+        <div class="close-card">
+          <h3>The kit</h3>
+          <p class="close-price">$1,500 + GST &middot; $1,650 inc &middot; expires Sunday</p>
+          <p class="close-note">19 skills, 3 review agents, 8 playbooks and 3 trackers. Yours to install, none of my time in it.</p>
+          <a class="button" href="https://app.fifthcastle.media/widget/form/iyEnpAfDnfxv7l5nItj5" data-checkout="kit">Yes, send me the kit</a>
+        </div>
       </div>
     </section>
 
