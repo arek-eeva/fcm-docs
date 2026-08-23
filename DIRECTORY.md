@@ -62,6 +62,7 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Define Technologies (Tony Psaila, Joe Baranyai, Kevin Yang), two-co-founder overview, IT posture and offer | [references/chief-of-staff-define.html](https://docs.fifthcastle.media/references/chief-of-staff-define.html) | 2026-08-10 |
 | Peace of Mind IT (Adi Segev, Vered Segev), managed IT partner overview: Microsoft tenant requirements and open questions | [references/chief-of-staff-peace-of-mind-it.html](https://docs.fifthcastle.media/references/chief-of-staff-peace-of-mind-it.html) | 2026-08-17 |
 | Chief of Staff, four ways it runs (interactive: solo, solo plus team, two co-founders, inside a governed company) | [references/chief-of-staff-three-ways.html](https://docs.fifthcastle.media/references/chief-of-staff-three-ways.html) | 2026-08-21 |
+| Joe Doe (Doe & Co), SAMPLE proposal for the 26 Aug live demonstration. Fictional client, composite of recurring patterns, no real client detail | [references/chief-of-staff-sample.html](https://docs.fifthcastle.media/references/chief-of-staff-sample.html) | 2026-08-23 |
 
 ## Client Proposals & Briefs
 
