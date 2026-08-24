@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your dates are locked | Chief of Staff, the guided build | Fifth Castle Media</title>
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<meta name="description" content="Your deposit is in for the Chief of Staff guided build, one to one on your own business. Here's what happens before your first session.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://docs.fifthcastle.media/chief-of-staff-build-thanks.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF9F7;
+    --ink: #14110F;
+    --muted: #5F5851;
+    --rule: #D8D3CB;
+    --rule-soft: #E8E4DD;
+    --accent: #BD202D;
+    --white: #FFFFFF;
+    --shade: #F1EEE8;
+    --font-display: "Vidaloka", Georgia, "Times New Roman", serif;
+    --font-label: "Khand", Arial, sans-serif;
+    --font-body: Georgia, "Times New Roman", serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--paper); }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--font-body);
+    font-size: 18px; line-height: 1.62; -webkit-font-smoothing: antialiased;
+    padding-bottom: 90px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 40px); }
+
+  .topbar {
+    border-bottom: 1px solid var(--rule-soft); padding: 22px 0; margin-bottom: 0;
+    background: linear-gradient(180deg, rgba(189,32,45,0.06), transparent);
+  }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .mark { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 13px; font-weight: 600; }
+  .mark .red { color: var(--accent); }
+  .stamp { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+  .hero { padding: clamp(50px, 9vh, 84px) 0 clamp(30px, 5vh, 48px); }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 11px;
+    font-family: var(--font-label); font-weight: 600; font-size: 13.5px;
+    letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 22px;
+  }
+  .kicker .tick {
+    width: 21px; height: 21px; border-radius: 50%; background: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center; flex: none;
+  }
+  .kicker .tick svg { width: 11px; height: 11px; display: block; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(36px, 6vw, 54px); line-height: 1.08; letter-spacing: -0.01em; }
+  .lede { font-size: 19.5px; color: var(--muted); margin-top: 20px; }
+  .lede strong { color: var(--ink); font-weight: normal; }
+
+  hr.rule { height: 1px; border: 0; background: var(--rule-soft); margin: clamp(34px, 6vh, 52px) 0; }
+
+  h2 {
+    font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.2em;
+    font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 18px;
+  }
+  h2 .red { color: var(--accent); }
+
+  .win {
+    background: var(--white); border: 2px solid var(--accent); border-radius: 3px;
+    padding: clamp(26px, 4vw, 36px);
+  }
+  .win .tag {
+    font-family: var(--font-label); font-weight: 600; font-size: 12.5px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 14px;
+  }
+  .win h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(25px, 3.4vw, 31px); line-height: 1.18; margin-bottom: 14px; }
+  .win p { color: var(--muted); margin-bottom: 13px; }
+  .win p:last-child { margin-bottom: 0; }
+  .win p strong { color: var(--ink); font-weight: normal; }
+
+  .btn {
+    display: inline-block; margin-top: 8px; background: var(--accent); color: var(--white);
+    font-family: var(--font-label); font-weight: 600; font-size: 15px; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 13px 26px; border-radius: 2px; text-decoration: none;
+  }
+  .btn:hover { background: #a11b26; }
+
+  ol.steps { list-style: none; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s; position: relative; padding: 17px 0 17px 52px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  ol.steps li:last-child { border-bottom: 1px solid var(--rule-soft); }
+  ol.steps li::before {
+    content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 19px;
+    font-family: var(--font-label); font-weight: 600; font-size: 14px;
+    letter-spacing: 0.1em; color: var(--accent);
+  }
+  ol.steps b { font-weight: normal; display: block; font-family: var(--font-display); font-size: 21px; line-height: 1.25; margin-bottom: 3px; }
+  ol.steps span { color: var(--muted); font-size: 16.5px; }
+  ol.steps .when {
+    font-family: var(--font-label); font-weight: 600; font-size: 12.5px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px;
+  }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { background: var(--shade); border: 1px solid var(--rule-soft); border-radius: 3px; padding: 22px 20px; }
+  .card b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 19px; margin-bottom: 6px; }
+  .card span { color: var(--muted); font-size: 16px; }
+  .card a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(189,32,45,0.35); }
+
+  footer { margin-top: clamp(40px, 7vh, 64px); padding-top: 24px; border-top: 1px solid var(--rule-soft); color: var(--muted); font-size: 16px; }
+  footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(189,32,45,0.35); }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span class="mark">Fifth Castle <span class="red">&middot;</span> Chief of Staff</span>
+  <span class="stamp">Dates locked</span>
+</div></div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <span class="kicker">
+      <span class="tick"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 6.3L4.4 9.2L10.5 3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      That's done
+    </span>
+    <h1>Right, let's build yours.</h1>
+    <p class="lede">Your $299 is in. This is the one where I'm properly in your business for four weeks, and I'm looking forward to it, this is the part of the work I like best. <strong>Your receipt's already in your inbox. Next is a short call to put real dates on the calendar, usually within the next couple of days.</strong></p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="win">
+    <span class="tag">What we're going to do</span>
+    <h3>Four sessions, about five hours of build time, spread over roughly a month.</h3>
+    <p><strong>This isn't a course you work through alone.</strong> Each session we build a real piece of your Chief of Staff together, on your machine, using your prices, your clients and your voice, and between sessions you're not stuck: if something breaks or you're unsure what to say to it, you message me and I unstick it.</p>
+    <p>Then two follow-ups after the main build, where we look at what you've been using it for and tighten whatever's rubbing. That's usually where the real gains show up, once it's had a few weeks of real work put through it.</p>
+    <p>Clear a bit of runway around each session, not the whole day like the Melbourne room, but treat them as fixed. The system comes together fastest when the gap between sessions doesn't stretch out.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>What happens <span class="red">next</span></h2>
+    <ol class="steps">
+      <li>
+        <span class="when">Now, in your inbox</span>
+        <b>Your receipt, and a copy of these details</b>
+        <span>Keep it, it carries your reference for the balance.</span>
+      </li>
+      <li>
+        <span class="when">In the next couple of days</span>
+        <b>A short call to set the four dates</b>
+        <span>I'll reach out to find a time. Fifteen minutes, and we walk out with all four sessions and the two follow-ups on the calendar.</span>
+      </li>
+      <li>
+        <span class="when">Before your first session</span>
+        <b>The balance, $5,751 inc GST, and a short pre-work list</b>
+        <span>Card, invoiced directly. Your $299 deposit plus this balance is $6,050 inc GST all up, the same $5,500 + GST shown on the offer page. The pre-work is the same folder of your own material the kit setup asks for, so session one starts on the build instead of on gathering documents.</span>
+      </li>
+      <li>
+        <span class="when">Session one</span>
+        <b>We start</b>
+        <span>On your machine, on your business. Not a demo, the real thing, from the first minute.</span>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Two things worth <span class="red">knowing</span></h2>
+    <div class="cards">
+      <div class="card">
+        <b>Not in Melbourne, or can't clear a day?</b>
+        <span>This is exactly built for that. Every session runs over video, so where you are doesn't matter.</span>
+      </div>
+      <div class="card">
+        <b>Changed your mind? Nothing's lost</b>
+        <span>The $299 moves in full onto the Melbourne day, the kit, or a later date, whichever suits. Reply to the receipt email and say so.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Arek Rainczuk, Fifth Castle Media. <a href="mailto:info@fifthcastle.media">info@fifthcastle.media</a>
+  </footer>
+
+</div>
+</body>
+</html>
