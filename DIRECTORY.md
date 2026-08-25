@@ -13,7 +13,6 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Page | URL | Last updated |
 |---|---|---|
 | Chief of Staff — the operating system your AI tools run on | [chief-of-staff.html](https://docs.fifthcastle.media/chief-of-staff.html) | 2026-08-08 |
-| Chief of Staff — page B, noindex twin of the main page | [chief-of-staff-b.html](https://docs.fifthcastle.media/chief-of-staff-b.html) | 2026-08-08 |
 | Chief of Staff — booking page (30-minute walkthrough) | [chief-of-staff-book.html](https://docs.fifthcastle.media/chief-of-staff-book.html) | 2026-08-08 |
 | Chief of Staff — the build checklist v1.5 (127 items, linked from every proposal) | [chief-of-staff-build-checklist.html](https://docs.fifthcastle.media/chief-of-staff-build-checklist.html) | 2026-08-08 |
 | Chief of Staff — what's included v1.5 | [chief-of-staff-included.html](https://docs.fifthcastle.media/chief-of-staff-included.html) | 2026-08-08 |
