@@ -79,7 +79,7 @@
   }
 
   .doors { display:grid; gap:16px; margin-top:24px; }
-  @media (min-width:760px) { .doors { grid-template-columns:1fr 1fr; } }
+  @media (min-width:760px) { .doors { grid-template-columns:1fr; max-width:620px; } }
   .door {
     border:1px solid var(--rule); border-radius:12px; background:#fff;
     padding:24px 24px 26px; display:flex; flex-direction:column;
@@ -154,37 +154,28 @@
     <header class="intro">
       <div class="kicker">Watch live</div>
       <h1>The live demonstration.</h1>
-      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. Two ways in: join the room if you might want to ask something, or just watch the stream.</p>
+      <p class="sub">Wednesday 26 August, 12:00 to 1:00pm AEST. One link, below.</p>
     </header>
 
     <div class="doors">
       <div class="door primary">
-        <div class="lead">Option one</div>
         <h3>Join the room.</h3>
         <p>Google Meet. You can ask questions while it runs, and I answer them out loud as we go. If there's something specific you want to see, say so and I'll point the system at it on the spot.</p>
         <p>Camera and microphone are yours. Most people leave both off and just type. Other people in the room can see your name.</p>
         <a class="btn" href="https://meet.google.com/uyk-wsst-wjo">Join the Meet room</a>
-        <p class="note">The room holds 100 and opens at 11:45. If it's full, take option two.</p>
+        <p class="note">Opens at 11:45.</p>
       </div>
 
-      <div class="door secondary">
-        <div class="lead">Option two</div>
-        <h3>Just watch.</h3>
-        <p>A live stream on YouTube. Nothing to set up, nobody sees you, and you can leave and come back. You won't be able to ask anything, so take option one if you might want to.</p>
-        <p>The same link becomes the recording the moment we finish, so this is also where to come back to afterwards.</p>
-        <a class="btn" href="https://youtube.com/live/Zu0FFXc3bOA">Watch the stream</a>
-        <p class="note">Starts at 12:00 sharp. Unlisted, so it's this link or nothing.</p>
-      </div>
     </div>
 
     <div class="layout">
       <aside>
         <div class="facts">
           <div><span class="k">When</span><span>Wednesday 26 August, 12:00 to 1:00pm AEST</span></div>
-          <div><span class="k">Where</span><span>Google Meet for the room, or the YouTube stream to watch. Both above.</span></div>
+          <div><span class="k">Where</span><span>Google Meet. The link is above.</span></div>
           <div><span class="k">Format</span><span>One hour, live. No slides. Camera off is fine, and most people keep it off.</span></div>
           <div><span class="k">Recorded</span><span>The hour is recorded from 12:00 and it stops at 1:00. Before and after that, nothing is.</span></div>
-          <div><span class="k">Missed it</span><span>The stream link becomes the recording as soon as we finish, and I email it to everyone who registered.</span></div>
+          <div><span class="k">Missed it</span><span>I email the recording to everyone who registered, as soon as we finish.</span></div>
           <div><span class="k">After 1:00</span><span>Recording off. Anyone who wants to stay on for questions is welcome to.</span></div>
         </div>
       </aside>
