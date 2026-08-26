@@ -582,6 +582,24 @@
     line-height: 1.5;
   }
 
+  .replay-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0A0A0A;
+  }
+
+  .replay-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
   /* ---- faq ---- */
 
   .close-grid {
@@ -769,6 +787,19 @@
   </header>
 
   <main>
+
+    <section aria-labelledby="replay-title">
+      <div class="replay">
+        <p class="replay-title" id="replay-title">The demonstration, 32 minutes.</p>
+        <div class="replay-player">
+          <iframe src="https://share.descript.com/embed/vL0UqbENjQg"
+                  title="Chief of Staff, the demonstration"
+                  allowfullscreen
+                  allow="fullscreen; picture-in-picture"></iframe>
+        </div>
+        <p class="replay-note">A recorded sales call turned into a published proposal and a drafted covering email in 16 minutes. A name change found in 22,410 places and handled in 880. An old agreement read back with $38,000 of exposure in it. Watch it first if you haven't, then come back to the three below.</p>
+      </div>
+    </section>
 
     <section id="ways" aria-labelledby="ways-title">
       <p class="eyebrow">What you can take</p>
