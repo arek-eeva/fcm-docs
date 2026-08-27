@@ -850,6 +850,31 @@
     .promise-row { grid-template-columns: 190px minmax(0, 1fr); gap: 20px; align-items: start; }
   }
 
+
+  /* the two-audience fork under the hero */
+  .fork {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+    margin: 4px 0 0;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: var(--rule);
+    overflow: hidden;
+  }
+  .fork-side { background: var(--shade); padding: 20px 22px 22px; min-width: 0; }
+  .fork-q {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .fork-a { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.55; }
+  @media (min-width: 768px) {
+    .fork { grid-template-columns: 1fr 1fr; }
+    .fork-q { font-size: 22px; }
+  }
 </style>
 <body>
 <div class="page">
@@ -861,8 +886,8 @@
   <header class="hero">
     <div>
       <p class="kicker">Chief of Staff &middot; three ways in</p>
-      <h1>You've built the pieces. This is the thing that makes them add up.</h1>
-      <p class="sub">And what you get back isn't a faster inbox. It's the hours you used to block out for the thinking. Three ways to build one on your own business, the same architecture in each, and what changes is how much of me comes with it.</p>
+      <h1>Your AI is a very good assistant with no memory of your business.</h1>
+      <p class="sub">So you re-explain yourself forever and nothing you build compounds. An operating system fixes that: your business written down once, one memory everything reads from, rules about what it never does without asking. Three ways to build one, and you finish running it yourself.</p>
       <div class="hero-actions">
         <a class="button" href="#ways">See all three</a>
         <p class="alt-line">Rather just talk it through? Ring me on <a class="text-link" href="tel:+61467676205">0467&nbsp;676&nbsp;205</a>. That's my mobile, not a switchboard.</p>
@@ -870,12 +895,23 @@
     </div>
   </header>
 
+  <div class="fork">
+    <div class="fork-side">
+      <p class="fork-q">&ldquo;This goes over my head.&rdquo;</p>
+      <p class="fork-a">You won't write code. I never have, and I built all of this. Plain English, an architecture that already exists so you're not facing a blank page, and me next to you while you put it in. The ones who worry about this usually end up with the tidiest systems.</p>
+    </div>
+    <div class="fork-side">
+      <p class="fork-q">&ldquo;I've already got this sorted.&rdquo;</p>
+      <p class="fork-a">Then you've built three or four good things that don't know each other exists, and you're still the one holding them together. That isn't a skill gap and you're not behind. It's a missing layer, and it's why every new build starts near zero however good you got at the last one.</p>
+    </div>
+  </div>
+
   <main>
 
     <section aria-labelledby="why-title">
-      <p class="eyebrow">Why it keeps not adding up</p>
-      <h2 id="why-title">The tools work. You're still the one holding them together.</h2>
-      <p class="copy" style="margin-top:18px">A proposal generator. Something that reads transcripts. A dashboard, or most of one. Each works, none of them knows the others exist, and the thing tying them together is you, at ten at night. Another tool won't touch that. What's missing is underneath: one place your business is written down, one memory everything reads from. <span class="hot">Put that in and nothing you've built gets thrown away. It gets plugged in.</span></p>
+      <p class="eyebrow">The part that isn't obvious</p>
+      <h2 id="why-title">Nothing you've built gets thrown away. It gets plugged in.</h2>
+      <p class="copy" style="margin-top:18px">People brace to be told to start again, and it's the opposite. Whatever you've made folds in and keeps working. What changes is that your builds start sharing one memory, so the next takes a fraction of the time the last one did.</p>
       <p class="copy">And the quieter worry, said out loud: not that you're behind, but that you're building the wrong thing and will find out after another year of evenings. An architecture is the only honest answer to that.</p>
 
       <div class="fit-strip">
@@ -887,27 +923,29 @@
     <section aria-labelledby="worth-title">
       <p class="eyebrow">What it's worth once it's running</p>
       <h2 id="worth-title">One month of mine, counted properly.</h2>
-      <p class="copy" style="margin-top:18px">Numbers off my own system rather than a promise about yours. July, measured as it happened.</p>
+      <p class="copy" style="margin-top:18px">Off my own system, not a promise about yours. July, measured as it happened.</p>
 
       <div class="plan-grid three">
         <div class="plan-card">
-          <p class="plan-label">Work I'd have done myself</p>
+          <p class="plan-label">Taken off my plate</p>
           <p class="plan-figure">72.5 hours</p>
-          <p class="plan-note">Nearly two working weeks, out of one month, back in my hands.</p>
+          <p class="plan-note">206 jobs I'd have sat down and done myself. Nearly two working weeks, out of one month.</p>
         </div>
         <div class="plan-card">
-          <p class="plan-label">Work I'd have paid for</p>
+          <p class="plan-label">I'd have had to hire it out</p>
           <p class="plan-figure">$159,762</p>
-          <p class="plan-note">At what I actually pay people, or charge clients. Includes $18,864 of work I'd have wanted and never justified buying.</p>
+          <p class="plan-note">96 jobs, priced at what I actually pay people or charge clients for the same work.</p>
         </div>
         <div class="plan-card">
-          <p class="plan-label">How much of that is solid</p>
-          <p class="plan-figure">83%</p>
-          <p class="plan-note">Traced to a real rate. The other 17% is my own estimate and I've flagged it as such.</p>
+          <p class="plan-label">Never would have happened at all</p>
+          <p class="plan-figure">143 jobs</p>
+          <p class="plan-note">Work I'd never have commissioned, because I couldn't justify it or wouldn't have thought to ask. On top of the figure beside it, not inside it.</p>
         </div>
       </div>
 
-      <p class="lift"><b>The number isn't the point, though.</b> It's what a Tuesday looks like afterwards: six client contexts held at once without me carrying any of them, the thinking done in the ten minutes before a call instead of the three hours I used to protect for it, and the school pickup at half three still happening. That's the part I couldn't have described a year ago, and it's what you're buying.</p>
+      <p class="asterisk" style="margin-top:20px">83% of that $159,762 sits on rates I actually pay or charge; the other 17% is my estimate and I've flagged it rather than buried it. The third column is the one I find hardest to argue with. $18,864 of it I'd have wanted and couldn't justify. The rest has no price, because I'd never have thought to ask.</p>
+
+      <p class="lift"><b>The numbers aren't the point, though.</b> It's what a Tuesday looks like: six client contexts held at once without me carrying any of them, the thinking done in ten minutes instead of the three hours I used to protect, and the school pickup at half three still happening. That's what you're buying, and it's the part I couldn't have described a year ago.</p>
     </section>
 
     <section aria-labelledby="plan-title">
@@ -916,9 +954,9 @@
       <p class="copy" style="margin-top:18px">All three run the same arc. What differs is how long you get with me, not what you end up with.</p>
 
       <div style="margin-top:22px;max-width:46em">
-        <div class="road-item"><span class="road-dot"></span><span><b>One. We start with the thing eating your week.</b><span class="road-note">Not a demo on a made-up business. The job you're dreading, on your own files, fixed while you watch.</span></span></div>
-        <div class="road-item"><span class="road-dot"></span><span><b>Two. You build it, with me next to you.</b><span class="road-note">Your machine, your clients, your prices, your voice. I'm not building it for you, because a system somebody else built is one you can't change.</span></span></div>
-        <div class="road-item"><span class="road-dot"></span><span><b>Three. You build the next piece on your own.</b><span class="road-note">The moment the whole thing is designed around, and when I stop being necessary.</span></span></div>
+        <div class="road-item"><span class="road-dot"></span><span><b>One. We work out what you actually need.</b><span class="road-note">A conversation about how your business really runs and where it jams, not a demonstration of features.</span></span></div>
+        <div class="road-item"><span class="road-dot"></span><span><b>Two. You install the architecture, with me at your shoulder.</b><span class="road-note">You feed it your context, connect it to the tools you already use, and learn to drive it. Your hands on it, not mine, because a system somebody else installed is one you can't change.</span></span></div>
+        <div class="road-item"><span class="road-dot"></span><span><b>Three. You run it, and start building your own on top.</b><span class="road-note">Full control of the whole thing, extending it yourself as the business changes. That's when I stop being necessary, which is the point.</span></span></div>
       </div>
     </section>
 
