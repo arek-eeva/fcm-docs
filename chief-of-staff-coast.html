@@ -835,6 +835,37 @@
     .pip { width: 18px; height: 26px; }
     .seats-line { font-size: 24px; }
   }
+
+  /* The room: photographs of the format */
+  .room { margin: 0; }
+  .room-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+  .room-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: var(--shade);
+  }
+  .room-shot { margin: 0; overflow: hidden; }
+  .room-note {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.62;
+    color: var(--muted);
+    margin: 16px 0 0;
+    max-width: 62ch;
+  }
+  .room-note strong { color: var(--ink); font-weight: normal; }
+  @media (min-width: 768px) {
+    .room-grid { gap: 18px; }
+    .room-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .room-grid.two { grid-template-columns: 1fr 1fr; align-items: start; }
+  }
 </style>
 </head>
 <body>
@@ -888,6 +919,22 @@
         <p class="seats-scale"><span id="seats-scale-left">Six to run</span> &middot; ten seats in the room</p>
         <p class="seats-foot" id="seats-foot"></p>
       </div>
+    </section>
+
+    <section class="room" aria-labelledby="room-title">
+      <p class="eyebrow">What two days actually looks like</p>
+      <h2 id="room-title">A house, not a function room.</h2>
+      <p class="copy" style="margin-top:18px">This was Sydney in June, two days of Den Lennie's mastermind, and the working block on both days was the same one the coast runs: everyone on their own machine, building their own Chief of Staff on their own business. Ten of us, a kitchen table, a couple of couches and a screen on the wall. The coast is that, for two days, with your business in the middle of it.</p>
+
+      <div class="room-grid two" style="margin-top:26px">
+        <figure class="room-shot">
+          <img src="images/room-presenting-wide.jpg" srcset="images/room-presenting-wide-800.jpg 800w, images/room-presenting-wide.jpg 1600w" sizes="(min-width:768px) 57vw, 100vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Arek Rainczuk presenting from a chair with a laptop on a stool, a slide reading A second AI runs the business while I sleep on the screen behind him">
+        </figure>
+        <figure class="room-shot">
+          <img src="images/room-group.jpg" srcset="images/room-group-800.jpg 800w, images/room-group.jpg 1600w" sizes="(min-width:768px) 43vw, 100vw" width="1600" height="1067" loading="lazy" decoding="async" alt="The full group standing together in the conservatory at the end of the two days">
+        </figure>
+      </div>
+      <p class="room-note">Photographs by Ecko Media. Everyone in these frames came from Den's mastermind, so it wasn't a public room. <strong>What doesn't change is how the two days run.</strong></p>
     </section>
 
     <section aria-labelledby="replay-title">

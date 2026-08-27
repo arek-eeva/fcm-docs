@@ -765,6 +765,37 @@
     html { scroll-behavior: auto; }
     .button { transition: none; }
   }
+
+  /* The room: photographs of the format */
+  .room { margin: 0; }
+  .room-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+  .room-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: var(--shade);
+  }
+  .room-shot { margin: 0; overflow: hidden; }
+  .room-note {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.62;
+    color: var(--muted);
+    margin: 16px 0 0;
+    max-width: 62ch;
+  }
+  .room-note strong { color: var(--ink); font-weight: normal; }
+  @media (min-width: 768px) {
+    .room-grid { gap: 18px; }
+    .room-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .room-grid.two { grid-template-columns: 1fr 1fr; align-items: start; }
+  }
 </style>
 </head>
 <body>
@@ -892,6 +923,25 @@
         <p>&ldquo;Arek spent two days with my members last week and handed over the entire AI operating system he's built, no holding back. The room shifted in front of me: people who came in unsure walked out building.&rdquo;</p>
         <figcaption><cite><b>Den Lennie</b>Founder, Video Business Accelerator</cite></figcaption>
       </figure>
+
+    <section class="room" aria-labelledby="room-title">
+      <p class="eyebrow">The room Den's talking about</p>
+      <h2 id="room-title">Sydney, two days in June.</h2>
+      <p class="copy" style="margin-top:18px">Ten of us in a house, and the working block on both days was this: everyone on their own machine, building their own Chief of Staff off the same kit that ships with all three options above. That room is the reason the Melbourne one exists. It runs the same way in October, with two more seats and a better plan, because I've now watched a room of founders do it once.</p>
+
+      <div class="room-grid three" style="margin-top:26px">
+        <figure class="room-shot">
+          <img src="images/room-presenting.jpg" srcset="images/room-presenting-800.jpg 800w, images/room-presenting.jpg 1600w" sizes="(min-width:768px) 33vw, 100vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Arek Rainczuk seated with a laptop on a stool, mid-sentence, presenting to the room">
+        </figure>
+        <figure class="room-shot">
+          <img src="images/room-working.jpg" srcset="images/room-working-800.jpg 800w, images/room-working.jpg 1600w" sizes="(min-width:768px) 33vw, 100vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Arek Rainczuk working through a build at a laptop alongside another founder">
+        </figure>
+        <figure class="room-shot">
+          <img src="images/room-group.jpg" srcset="images/room-group-800.jpg 800w, images/room-group.jpg 1600w" sizes="(min-width:768px) 33vw, 100vw" width="1600" height="1067" loading="lazy" decoding="async" alt="The full group standing together in the conservatory at the end of the two days">
+        </figure>
+      </div>
+      <p class="room-note">Photographs by Ecko Media. That was Den's mastermind rather than a Chief of Staff room, so everyone there was one of his members. <strong>What doesn't change is how the two days run.</strong></p>
+    </section>
 
     <section aria-labelledby="faq-title">
       <h2 id="faq-title">Straight answers.</h2>
