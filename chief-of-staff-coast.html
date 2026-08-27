@@ -837,9 +837,10 @@
 <body>
 <!--
   SUNSHINE COAST BOOKING PAGE, built 27 Aug 2026.
-  NOT PUBLISHED. The deposit button below points at SEAT-FORM-PLACEHOLDER and cannot take money
-  until Arek duplicates the "CoS seat deposit" form in the GoHighLevel UI (the v2 API cannot
-  create or edit forms, verified 27 Aug: POST /forms/ returns 401 "route is not yet supported").
+  LIVE. Form id xH8etp44r0ZXuHSiykLq, built by hand in the GoHighLevel UI on 27 Aug because the
+  v2 API cannot create or edit forms (POST /forms/ returns 401 "route is not yet supported").
+  The two deposit buttons now point at the real form, so the self-disabling guard below finds
+  nothing pending and returns early. Do not re-introduce the placeholder string into an href.
   The product and price already exist: product 6a8f8dddb0ee3f5a5345b807, price 6a8f8de6268581b2faba4820, $299 AUD one-time.
   Steps for Arek and the swap-in are in fcm_os/Operations/Product/Chief-of-Staff/Coast-Booking-Page-Build-2026-08-27.md
 -->
@@ -919,7 +920,7 @@
             <li><strong>Lunch and drinks after</strong>, which is where a room earns its keep</li>
             <li>A <strong>fortnight plan</strong>, two weeks of stuck-support, and every <strong>update</strong> for twelve months</li>
           </ul>
-          <a class="button" href="SEAT-FORM-PLACEHOLDER" data-checkout="coast-room">Yes, hold my seat for $299</a>
+          <a class="button" href="https://app.fifthcastle.media/widget/form/xH8etp44r0ZXuHSiykLq" data-checkout="coast-room">Yes, hold my seat for $299</a>
           <p class="way-foot urgent">$299 holds it. Balance $2,946 on Friday 4 September. The venue is being confirmed and you'll have the address the moment the room is locked.</p>
         </article>
       </div>
@@ -957,7 +958,7 @@
       <h2 id="close-title">Tuesday's the deadline, not the day.</h2>
         <p class="copy" style="margin-top:18px">If the room fills by Tuesday I lock the venue and book the flights and I'll see you on the 8th. If it doesn't, every dollar comes back and nothing is lost but a week. That's the whole risk. The two moving parts are the six seats and the venue, and I'll tell you straight away if either one doesn't come off.</p>
       <div class="hero-actions" style="margin-top:22px">
-        <a class="button" href="SEAT-FORM-PLACEHOLDER" data-checkout="coast-room">Yes, hold my seat for $299</a>
+        <a class="button" href="https://app.fifthcastle.media/widget/form/xH8etp44r0ZXuHSiykLq" data-checkout="coast-room">Yes, hold my seat for $299</a>
       </div>
     </section>
 
