@@ -964,16 +964,6 @@
       <h2 id="ways-title">Same system. Different amounts of me.</h2>
       <p class="copy" style="margin-top:18px">All three ship the whole kit: 76 files, 19 skills, 3 review agents, 9 tools, 8 playbooks, 3 trackers and a 6,500-word operating brief, inside 60,000 words of instruction. A year of decisions already made, the ones that don't announce themselves until you get them wrong.</p>
 
-      <div class="timer" id="timer" data-deadline="2026-08-30T13:59:59Z">
-        <span class="timer-label">The $950 kit closes Sunday 30 August, 11:59pm</span>
-        <div class="timer-clock" id="timer-clock">
-          <span class="timer-unit"><b class="timer-num" data-unit="d">--</b><span class="timer-word">days</span></span>
-          <span class="timer-unit"><b class="timer-num" data-unit="h">--</b><span class="timer-word">hours</span></span>
-          <span class="timer-unit"><b class="timer-num" data-unit="m">--</b><span class="timer-word">mins</span></span>
-          <span class="timer-unit"><b class="timer-num" data-unit="s">--</b><span class="timer-word">secs</span></span>
-        </div>
-        <p class="timer-note">After Sunday the kit is $2,500 + GST. The room and the guided build aren't on a clock. The room just has twelve seats.</p>
-      </div>
 
       <div class="ways">
 
@@ -1021,9 +1011,7 @@
           <span class="way-n">Three</span>
           <h3>The kit</h3>
           <div class="way-price">
-            <span class="way-now">$950 + GST</span>
-            <span class="way-was">$2,500</span>
-            <span class="way-flag">Until Sunday</span>
+            <span class="way-now">$2,500 + GST</span>
           </div>
           <p class="way-lede">The same architecture as files you install yourself, at your own pace, with none of my time in it.</p>
           <ul>
@@ -1111,7 +1099,7 @@
         <details>
           <summary>I've already built things. Is any of it wasted?</summary>
           <p class="answer">None of it. That's close to the whole point. Once the architecture is in, whatever you've already made folds into it and keeps working, whatever you built it in. What changes is that your builds start sharing one memory, so the next one takes a fraction of the time the last one did. People arrive braced to be told to start again and it's the opposite.</p>
-          <p class="answer">On worth against cost: your numbers will be your own, but the kit at $950 is roughly two hours of most people's charge-out rate.</p>
+          <p class="answer">On worth against cost: your numbers will be your own, but the kit at $2,500 is roughly a day of most people's charge-out rate.</p>
         </details>
 
         <details>
@@ -1195,8 +1183,8 @@
         </div>
         <div class="close-card">
           <h3>The kit</h3>
-          <p class="close-price">$950 + GST</p>
-          <p class="close-note">The whole architecture as files, installed by you. $2,500 after Sunday.</p>
+          <p class="close-price">$2,500 + GST</p>
+          <p class="close-note">The whole architecture as files, installed by you, at your own pace.</p>
           <a class="button" href="https://app.fifthcastle.media/widget/form/iyEnpAfDnfxv7l5nItj5" data-checkout="kit">Send me the kit</a>
         </div>
       </div>
@@ -1214,31 +1202,7 @@
 </div>
 
 <script>
-(function () {
-  var box = document.getElementById('timer');
-  if (!box) return;
-  var end = Date.parse(box.getAttribute('data-deadline'));
-  var out = {};
-  box.querySelectorAll('[data-unit]').forEach(function (el) { out[el.getAttribute('data-unit')] = el; });
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
-  function tick() {
-    var left = end - Date.now();
-    if (left <= 0) {
-      box.querySelector('.timer-label').textContent = 'The $950 kit price has closed';
-      box.querySelector('.timer-clock').style.display = 'none';
-      box.querySelector('.timer-note').textContent = 'The kit is $2,500 + GST. The room and the guided build are unchanged.';
-      clearInterval(id);
-      return;
-    }
-    var s = Math.floor(left / 1000);
-    out.d.textContent = Math.floor(s / 86400);
-    out.h.textContent = pad(Math.floor(s / 3600) % 24);
-    out.m.textContent = pad(Math.floor(s / 60) % 60);
-    out.s.textContent = pad(s % 60);
-  }
-  tick();
-  var id = setInterval(tick, 1000);
-})();
+
 </script>
 </body>
 </html>
