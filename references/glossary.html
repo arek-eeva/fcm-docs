@@ -24,16 +24,19 @@
   .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
   .eyebrow .red { color: var(--accent); }
   h1 { font-family: var(--display); font-size: 42px; line-height: 1.15; font-weight: 400; margin-bottom: 18px; }
-  .lede { color: var(--muted); font-size: 18px; }
-  .rule { height: 1px; background: var(--line); border: 0; margin: 40px 0 8px; }
-  .group { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em; font-size: 14px; color: var(--accent); margin: 40px 0 6px; }
+  .lede { color: var(--muted); font-size: 18px; margin-bottom: 14px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+  .group { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em; font-size: 14px; color: var(--accent); margin: 46px 0 6px; }
+  .group-note { color: var(--subtle); font-size: 15.5px; font-style: italic; margin-bottom: 4px; }
   .term { padding: 20px 0; border-top: 1px solid var(--line); }
   .term:last-of-type { border-bottom: 1px solid var(--line); }
   .term h2 { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
   .term p { color: var(--muted); font-size: 16.5px; }
+  .term p + p { margin-top: 10px; }
   .term .key { color: var(--accent); }
-  footer { margin-top: 52px; font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
+  footer { margin-top: 52px; padding-top: 24px; border-top: 1px solid var(--line); font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
   footer .red { color: var(--accent); }
+  @media (max-width: 600px) { body { padding: 48px 20px 72px; } h1 { font-size: 32px; } }
 </style>
 </head>
 <body>
@@ -41,74 +44,131 @@
 
   <div class="eyebrow">Chief of Staff <span class="red">&middot;</span> Reference</div>
   <h1>Plain-English glossary.</h1>
-  <p class="lede">The words that come up in our sessions. None of them are complicated once you know what they actually mean. Start with the first few, the rest are there when you need them.</p>
+  <p class="lede">The words that come up in our sessions. <strong>None of them are complicated once you know what they actually mean.</strong></p>
+  <p class="lede">You don't need to read this end to end. Start with the first six, which are the ones you'll meet in your first week. The rest are here for whenever a word trips you up.</p>
 
-  <div class="group">Start with these</div>
+  <div class="group">Start here</div>
+  <div class="group-note">The six you'll meet in your first week.</div>
 
   <div class="term">
     <h2>Claude Code</h2>
-    <p>The app we use to run your Chief of Staff, made by Anthropic (the same company that makes Claude). It runs on your own computer, so it can read your files and remember things between sessions. You open it like any other app, type in plain English, and it does the work. This is your one app. It runs on your computer, reads your files, and remembers between sessions. The Claude website, ChatGPT and Perplexity are just chat tools, so leave those closed and do your work here.</p>
+    <p>The app we use to run your Chief of Staff, made by Anthropic (the same company that makes Claude). It runs on your own computer, which is what lets it read your files and remember things between sessions. You open it like any other app, type in plain English, and it does the work.</p>
+    <p><strong>This is your one app.</strong> The Claude website, ChatGPT and the rest are just chat tools. Leave those closed and do your work here.</p>
   </div>
   <div class="term">
     <h2>Session</h2>
-    <p>One working conversation with your Chief of Staff, like one meeting about one job. Keep separate jobs in separate sessions, your GST webinar in one, a newsletter in another, so each stays focused. Your recent sessions sit in the list on the left; <span class="key">pin</span> the ones you use often so they stay at the top.</p>
-  </div>
-  <div class="term">
-    <h2>Ingest</h2>
-    <p>Your word for adding a file so your Chief of Staff can read and remember it. Drag the file into the chat (or use the "+" button), then say <span class="key">"ingest this"</span>. That's the whole thing. One word, every time: ingest.</p>
-  </div>
-  <div class="term">
-    <h2>Your working folder</h2>
-    <p>The folder on your computer that Claude Code can see. Anything you want it to use lives in there. If a file isn't in that folder (or ingested into the session), the assistant can't read it, that's usually why it says it "can't find" something.</p>
+    <p>One working conversation with your Chief of Staff, like one meeting about one job. Keep separate jobs in separate sessions so each stays focused: one for a piece of client work, another for your marketing, another for admin.</p>
+    <p>Your recent sessions sit in the list on the left. <span class="key">Pin</span> the ones you use often so they stay at the top.</p>
   </div>
   <div class="term">
     <h2>Prompt</h2>
-    <p>What you type or say to the assistant. It can be a question, an instruction, or a request to draft something. You don't need special wording, plain English is the point. Dictating (talking instead of typing) works well for longer thoughts.</p>
-  </div>
-
-  <div class="group">Good to know</div>
-
-  <div class="term">
-    <h2>Model, and "Fable"</h2>
-    <p>The AI itself, the part doing the thinking. Different models trade off how clever, fast, and costly they are. <span class="key">Fable</span> is the most capable one on your plan, so that's the one to use for real work like your webinar decks.</p>
+    <p>What you type or say to your assistant. It can be a question, an instruction, or a request to draft something. You don't need special wording, plain English is the point. Dictating rather than typing works well for longer thoughts, and most people find it easier.</p>
   </div>
   <div class="term">
-    <h2>Tokens</h2>
-    <p>The unit the AI uses to count text, roughly word-sized chunks. When you see a number like "697 tokens", that's just it telling you how much text it's working through. You never need to manage this, it's only there for interest.</p>
+    <h2>Ingest</h2>
+    <p>Our word for adding a file so your Chief of Staff can read and remember it. Drag the file into the chat (or use the "+" button), then say <span class="key">"ingest this"</span>. That's the whole thing. One word, every time: ingest.</p>
+  </div>
+  <div class="term">
+    <h2>Your working folder</h2>
+    <p>The folder on your computer that Claude Code can see. Anything you want it to use lives in there. If a file isn't in that folder, or hasn't been ingested into the session, your assistant can't read it. That's almost always the reason it says it can't find something.</p>
+  </div>
+  <div class="term">
+    <h2>Your OS (operating system)</h2>
+    <p>Your OS is that folder, organised. It holds everything your assistant needs to know about your business: how you work, what you charge, who your clients are, your way of doing things.</p>
+    <p>It isn't software you install and it isn't a computer system. It's a well-organised folder that your assistant reads from, and it's the thing we build together.</p>
+  </div>
+
+  <div class="group">The pieces that make it yours</div>
+  <div class="group-note">What turns a general AI into one that knows your business.</div>
+
+  <div class="term">
+    <h2>CLAUDE.md, your operating brief</h2>
+    <p>The main instruction file at the centre of your OS. It tells your assistant who you are, how your business runs, what you charge, how you like to communicate, and the rules to follow.</p>
+    <p>It loads automatically at the start of every session, so the guidance is always there without you repeating it. Think of it as the briefing document you'd give a new hire, except this one actually gets read every single time.</p>
   </div>
   <div class="term">
     <h2>Memory</h2>
-    <p>Files where your assistant records what matters between sessions, your details, your decisions, how you like things. Without memory, every session starts from zero. With it, it picks up where it left off.</p>
+    <p>Files where your assistant records what matters between sessions: client details, decisions you've made, preferences you've stated. Without memory, every session starts from zero. With it, your assistant picks up where it left off and you don't tell it the same thing twice.</p>
   </div>
   <div class="term">
     <h2>Skill</h2>
-    <p>A saved routine for a job you do often, like building a webinar deck or a newsletter in your style. Once it's built, you run it by name instead of explaining the task again. The skills get better as we refine them together.</p>
+    <p>A saved routine for a job you do often. A skill might draft a proposal, process a recorded call, or put together a weekly summary. Once it's built you run it by name instead of explaining the task from scratch each time.</p>
+    <p>We build skills together, and they get better as we refine them.</p>
   </div>
   <div class="term">
-    <h2>Hallucination</h2>
-    <p>When the AI says something confidently that isn't true, most often with specific facts (dates, figures, legislation). It's not lying, it's pattern-matching. The rule: always check anything that matters before you rely on it. This is exactly why your legislation links get verified, not assumed.</p>
+    <h2>Playbook</h2>
+    <p>A written guide for how you handle a recurring situation: how you respond to a new enquiry, how you follow up after a meeting, how you post on a particular platform. Your assistant follows playbooks the way a well-briefed team member follows a process document. The difference is that it actually follows them, every time.</p>
+  </div>
+  <div class="term">
+    <h2>Context window</h2>
+    <p>How much your assistant can hold in mind at once: everything you've said, everything it's replied, and any documents you've shared. Once a conversation fills the window, the older parts start dropping out.</p>
+    <p>It works like working memory, and there's a limit to how much can be live at any one moment. That limit is the reason we build memory files rather than relying on one long conversation.</p>
   </div>
 
-  <div class="group">The technical words (for later)</div>
+  <div class="group">How it actually works</div>
+  <div class="group-note">Useful background. None of it needs managing.</div>
 
   <div class="term">
     <h2>Agent</h2>
-    <p>An AI that takes actions, not just answers questions. It can open a file, draft a document, and save it in the right place. Your Chief of Staff is an agent, which is what makes it different from a chat box.</p>
+    <p>An AI that takes actions, not just one that answers questions. An agent can read a file, draft a document, check your calendar and chain those steps together. Your Chief of Staff is an agent, and that is the whole difference between it and a chat box.</p>
   </div>
   <div class="term">
-    <h2>Connector / integration</h2>
-    <p>A ready-made link between your assistant and another app, like your email or calendar, so it can work inside that tool instead of you copying between tabs. We switch these on only when you want them.</p>
+    <h2>Model</h2>
+    <p>The AI itself, the part doing the thinking. Different models vary in how capable they are, how fast they answer and what they cost to run. It's the difference between a junior assistant and a senior one: same role, different level of experience. We'll set yours to the most capable one on your plan and leave it there.</p>
+  </div>
+  <div class="term">
+    <h2>Token</h2>
+    <p>The unit the AI uses to count text, roughly word-sized chunks. A page of writing is about 500 tokens. When you see a number like "697 tokens" it's just telling you how much text it's working through. You never need to manage this.</p>
+  </div>
+  <div class="term">
+    <h2>Hallucination</h2>
+    <p>When the AI says something confidently that isn't true. It isn't lying, it's pattern-matching its way to a plausible-sounding answer. It happens most with specific facts: dates, figures, names, legal detail.</p>
+    <p><strong>The rule is simple.</strong> Don't ask it to recall facts it couldn't know, and always check anything that matters before you rely on it.</p>
+  </div>
+
+  <div class="group">Connecting your other tools</div>
+  <div class="group-note">How your assistant reaches into the software you already use.</div>
+
+  <div class="term">
+    <h2>Connector, or integration</h2>
+    <p>A ready-made link between your assistant and another app, such as your email or your calendar. "Integration" is the general word for the same thing. A connector lets your assistant work inside the other tool instead of you copying between tabs. We switch these on only when you want them.</p>
+  </div>
+  <div class="term">
+    <h2>MCP</h2>
+    <p>Short for Model Context Protocol. In plain terms it's the standard that makes connectors possible, so your assistant can reach into your calendar, your email, your CRM or anything else that offers one. When someone says "is there an MCP for that?", they're asking whether your assistant can be plugged into it.</p>
+  </div>
+  <div class="term">
+    <h2>Plugin</h2>
+    <p>A bundle you add to your assistant that brings a set of skills or connectors at once, rather than adding them one at a time. A quick way to switch on a group of related abilities.</p>
+  </div>
+  <div class="term">
+    <h2>API</h2>
+    <p>The way one piece of software talks to another directly, with no person in the middle. Some tools connect through their API, and a few need an API key, which is just a password for software. Keep those keys private and out of your files.</p>
+  </div>
+  <div class="term">
+    <h2>CRM</h2>
+    <p>Customer relationship management, which is a long name for your customer database. It holds your contacts, your deals and the history of who you've spoken to and when. Connecting it lets your assistant keep it current for you.</p>
+  </div>
+
+  <div class="group">The technical words</div>
+  <div class="group-note">You'll meet these during setup. You don't need to understand them to use the system.</div>
+
+  <div class="term">
+    <h2>Terminal</h2>
+    <p>A text-based window for sending instructions straight to your computer, without clicking through menus. It looks old-fashioned and it puts a lot of people off, which is fair enough.</p>
+    <p><strong>You will never have to guess what to type.</strong> We use it occasionally, mostly to install something or run a script, and when we do you get the exact text to copy and paste. If it ever feels uncomfortable, say so and we'll do it together on a screen share instead.</p>
   </div>
   <div class="term">
     <h2>Git and GitHub</h2>
-    <p>The system that keeps a safe, backed-up history of your Chief of Staff, so nothing is ever really lost and we can go back if something breaks. You don't need to understand it; it just means your work is protected (handy given the odd accidental delete).</p>
+    <p>Git is a system that tracks changes to files over time, so you can see what changed, when, and go back if something breaks. GitHub is where those files are stored online, privately.</p>
+    <p>Together they mean your Chief of Staff is backed up and nothing is ever really lost, including after an accidental delete. You don't need to understand how it works underneath.</p>
   </div>
   <div class="term">
-    <h2>Repository (repo)</h2>
-    <p>The folder where your whole Chief of Staff lives, tracked by Git. Your brief, your memory, your skills. Think of it as the filing cabinet for the system. It's yours and it's private.</p>
+    <h2>Repository, or repo</h2>
+    <p>The folder where your whole Chief of Staff lives, tracked by Git. Your operating brief, your memory, your skills and your playbooks. Think of it as the filing cabinet for the system. It's yours, it's private, and it travels with you.</p>
   </div>
 
-  <footer>Fifth Castle <span class="red">Media</span></footer>
+  <footer>Fifth Castle <span class="red">Media</span> &middot; Chief of Staff reference &middot; September 2026</footer>
 
 </div>
 </body>
