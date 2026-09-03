@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here | Chief of Staff</title>
+<link rel="icon" href="/images/favicon/cos.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon/cos-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/favicon/cos-180-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Khand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FBF9F5; --panel: #FFFFFF; --text: #17150F; --muted: #6A645B;
+    --subtle: #A29B90; --accent: #BD202D; --line: #E2DCD1;
+    --display: 'Vidaloka', Georgia, serif; --label: 'Khand', sans-serif;
+    --body: Georgia, 'Times New Roman', serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--body);
+    font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 64px 24px 88px; }
+  .wrap { max-width: 940px; margin: 0 auto; }
+  .eyebrow { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.28em; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .eyebrow .red { color: var(--accent); }
+  h1 { font-family: var(--display); font-size: 46px; line-height: 1.12; font-weight: 400; margin-bottom: 16px; }
+  .lede { color: var(--muted); font-size: 19px; max-width: 640px; }
+  .lede strong { color: var(--text); font-weight: normal; }
+  .group { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.2em; font-size: 14px; color: var(--accent); margin: 52px 0 4px; }
+  .group-note { color: var(--subtle); font-size: 15.5px; font-style: italic; margin-bottom: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; list-style: none; }
+  .cards li a { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 3px;
+    padding: 20px 22px; text-decoration: none; color: inherit; height: 100%;
+    transition: border-color .16s ease, transform .16s ease; }
+  .cards li a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cards .t { font-family: var(--label); text-transform: uppercase; letter-spacing: 0.1em; font-size: 17px; font-weight: 600; margin-bottom: 7px; }
+  .cards .arrow { color: var(--accent); }
+  .cards .d { color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+  .wide { grid-column: 1 / -1; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-family: var(--label); text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--subtle); }
+  footer .red { color: var(--accent); }
+  @media (max-width: 720px) { body { padding: 44px 20px 64px; } h1 { font-size: 33px; } .cards { grid-template-columns: 1fr; } }
+  @media print { body { padding: 0; } .cards li a:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Chief of Staff <span class="red">&middot;</span> Everything in one place</div>
+  <h1>Start here.</h1>
+  <p class="lede">Every reference and instruction page for your Chief of Staff, on one page. <strong>You don't need to read it all.</strong> Take the first row in your first week and come back to the rest when a question actually comes up.</p>
+
+  <div class="group">Your first week</div>
+  <div class="group-note">These four, in this order. Nothing else matters yet.</div>
+  <ul class="cards">
+    <li><a href="references/glossary.html">
+      <div class="t">Plain-English Glossary <span class="arrow">&rarr;</span></div>
+      <div class="d">Every word you'll meet, explained without jargon: session, prompt, ingest, memory, skill, playbook, agent, connector, Terminal, Git. Start with the first six.</div>
+    </a></li>
+    <li><a href="references/your-homework.html">
+      <div class="t">Your Homework <span class="arrow">&rarr;</span></div>
+      <div class="d">What to gather before we build, so your assistant knows your business from day one instead of spending a fortnight catching up.</div>
+    </a></li>
+    <li><a href="references/install-the-reader.html">
+      <div class="t">Install the Reader <span class="arrow">&rarr;</span></div>
+      <div class="d">Getting set up on your own machine, step by step, with nothing assumed about what you already know.</div>
+    </a></li>
+    <li><a href="chief-of-staff-guide.html">
+      <div class="t">Twelve Jobs, One Memory <span class="arrow">&rarr;</span></div>
+      <div class="d">The idea behind the whole thing, written for someone who has already had a go with AI and wants to know why this is different.</div>
+    </a></li>
+  </ul>
+
+  <div class="group">Running it day to day</div>
+  <div class="group-note">The six reference cards. Keep them open for the first month.</div>
+  <ul class="cards">
+    <li><a href="references/Driving-Claude-Code.html">
+      <div class="t">Driving Claude Code <span class="arrow">&rarr;</span></div>
+      <div class="d">The controls below the chat box: plan and auto mode, shaping a plan before it runs, choosing the model, the context meter, previewing changes.</div>
+    </a></li>
+    <li><a href="references/Organising-Your-Workspace.html">
+      <div class="t">Organising Your Workspace <span class="arrow">&rarr;</span></div>
+      <div class="d">Keeping the session list tidy and letting it work while you're away: status dots, forking, pinning, renaming, groups, scheduled routines.</div>
+    </a></li>
+    <li><a href="references/Briefing-Your-Chief-of-Staff.html">
+      <div class="t">Briefing Your Chief of Staff <span class="arrow">&rarr;</span></div>
+      <div class="d">How to tell it what it needs to know, and why a good brief is the difference between useful work and generic work.</div>
+    </a></li>
+    <li><a href="references/Building-Something.html">
+      <div class="t">Building Something <span class="arrow">&rarr;</span></div>
+      <div class="d">Going from an idea to a working tool you actually use, which is the moment the whole thing clicks.</div>
+    </a></li>
+    <li><a href="references/Getting-Unstuck.html">
+      <div class="t">Getting Unstuck <span class="arrow">&rarr;</span></div>
+      <div class="d">What to do when it does something odd, forgets something, or stops. Almost always fixable in a minute once you know where to look.</div>
+    </a></li>
+    <li><a href="references/Backing-It-Up.html">
+      <div class="t">Backing It Up <span class="arrow">&rarr;</span></div>
+      <div class="d">Keeping your work safe, so nothing is ever really lost and you can go back if something breaks.</div>
+    </a></li>
+  </ul>
+
+  <div class="group">Going further</div>
+  <div class="group-note">Once it's running and you want more out of it.</div>
+  <ul class="cards">
+    <li><a href="references/connecting-your-tools.html">
+      <div class="t">Connecting Your Tools <span class="arrow">&rarr;</span></div>
+      <div class="d">Plugging your email, calendar and other software in, so your assistant works inside them instead of you copying between tabs.</div>
+    </a></li>
+    <li><a href="references/skills-for-inspiration.html">
+      <div class="t">Skills for Inspiration <span class="arrow">&rarr;</span></div>
+      <div class="d">What other people have built, as a prompt for what yours could do. Useful when you know it's capable of more but can't picture what.</div>
+    </a></li>
+  </ul>
+
+  <div class="group">Understanding the system</div>
+  <div class="group-note">Worth a look at some point. None of it is needed to use the thing.</div>
+  <ul class="cards">
+    <li><a href="chief-of-staff-system-map.html">
+      <div class="t">Inside your Chief of Staff <span class="arrow">&rarr;</span></div>
+      <div class="d">An interactive map of how a decision travels through the system, from what you say to what it does. Best explored on a big screen.</div>
+    </a></li>
+    <li><a href="references/chief-of-staff-three-ways.html">
+      <div class="t">Four Ways It Runs <span class="arrow">&rarr;</span></div>
+      <div class="d">The shapes this takes for a solo operator, a founder with a team, and everything between.</div>
+    </a></li>
+    <li><a href="chief-of-staff-build-checklist.html">
+      <div class="t">The Build Checklist <span class="arrow">&rarr;</span></div>
+      <div class="d">Everything a Chief of Staff can be taught over time. A menu of what's possible rather than a list of what you're missing.</div>
+    </a></li>
+    <li><a href="chief-of-staff-versions.html">
+      <div class="t">Versions and Capabilities <span class="arrow">&rarr;</span></div>
+      <div class="d">What the system can do now and what each version added, so you can see it's still being built.</div>
+    </a></li>
+  </ul>
+
+  <footer>Fifth Castle <span class="red">Media</span> &middot; docs.fifthcastle.media/start.html</footer>
+
+</div>
+</body>
+</html>
