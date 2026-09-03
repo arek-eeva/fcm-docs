@@ -19,7 +19,8 @@ Every page published on the live site, grouped by purpose. Source: `fcm_os/fcm-d
 | Chief of Staff, versions and capabilities (current release 1.6.2) | [chief-of-staff-versions.html](https://docs.fifthcastle.media/chief-of-staff-versions.html) | 2026-08-07 |
 | Chief of Staff, interactive system map (12 layers, 127 considerations, build standard v1.5) | [chief-of-staff-system-map.html](https://docs.fifthcastle.media/chief-of-staff-system-map.html) | 2026-08-08 |
 | Build Your Chief of Staff: 2-Day Intensive | [chief-of-staff-intensive.html](https://docs.fifthcastle.media/chief-of-staff-intensive.html) | 2026-08-08 |
-| Sunshine Coast workshop, 8-9 Sept 2026, booking page with live seat counter (noindex) | [chief-of-staff-coast.html](https://docs.fifthcastle.media/chief-of-staff-coast.html) | 2026-08-27 |
+| Sunshine Coast, superseded. **Now a redirect**, not a booking page. The 8-9 Sept window it advertised never opened and no checkout was ever pointed at those dates (noindex) | [chief-of-staff-coast.html](https://docs.fifthcastle.media/chief-of-staff-coast.html) | 2026-08-31 |
+| **Sunshine Coast workshop, Sun 13 and Mon 14 Sept 2026**, the room that is actually running. Four seats at a private home at Little Mountain, private link shared through Julie Ellenberger only (noindex) | [chief-of-staff-coast-september.html](https://docs.fifthcastle.media/chief-of-staff-coast-september.html) | 2026-09-01 |
 | Intensive waitlist thank-you (conversion page, noindex) | [chief-of-staff-intensive-thanks.html](https://docs.fifthcastle.media/chief-of-staff-intensive-thanks.html) | 2026-07-02 |
 | Field guide lead capture (noindex) | [chief-of-staff-guide.html](https://docs.fifthcastle.media/chief-of-staff-guide.html) | 2026-08-08 |
 | Field guide delivery + booking invite (noindex) | [chief-of-staff-guide-thanks.html](https://docs.fifthcastle.media/chief-of-staff-guide-thanks.html) | 2026-07-30 |
